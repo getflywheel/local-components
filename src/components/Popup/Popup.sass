@@ -1,0 +1,128 @@
+@import '../../styles/_partials/index'
+
+.Popup
+	$transiton-duration: 80ms
+	$ease-in: cubic-bezier(.2,.3,.25,.9)
+
+	position: relative
+	display: inline-block
+	@include cursorPointer
+
+	// states / modifiers
+	&.Popup__Open
+	&.Popup__Padding
+	&.Popup__PositionBottom
+	&.Popup__PositionRight
+	&.Popup__PositionTop
+
+	.Popup_BubbleWrapper
+		position: absolute
+		z-index: 6 // this need to be on this parent object for pseudo element to appear below
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		transition: transform $transiton-duration $ease-in $transiton-duration
+
+		@include selectors_ifHostHasModifier('.Popup__PositionTop')
+			transform: scale(0) translateY(0%) translateZ(0)
+			transform-origin: 90% -15px
+
+		@include selectors_ifHostHasModifier('.Popup__PositionTop.Popup__Open')
+			transform: scale(1) translateY(0) translateZ(0)
+
+		@include selectors_ifHostHasModifier('.Popup__PositionBottom')
+			transform: scale(0) translateY(100%) translateZ(0)
+			transform-origin: 90% calc(100% + 15px)
+
+		@include selectors_ifHostHasModifier('.Popup__PositionBottom.Popup__Open')
+			transform: scale(1) translateY(100%) translateZ(0)
+
+		@include selectors_ifHostHasModifier('.Popup__PositionRight')
+			transform: scale(0) translateY(100%) translateY(-50%) translateZ(0)
+			transform-origin: 100% 50%
+
+		@include selectors_ifHostHasModifier('.Popup__PositionRight.Popup__Open')
+			transform: scale(1) translateY(100%) translateY(-50%) translateZ(0)
+
+	.Popup_BubbleOffsetContainer
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+
+	.Popup_Bubble
+		$border-radius: 4px
+
+		position: absolute
+		right: -15px
+		left: auto
+		//width: 160px
+		height: auto
+		margin-left: 0
+		text-align: center
+		list-style-type: none
+		line-height: normal
+		@include theme-background-white-else-graydark50
+		border-radius: $border-radius
+		filter: drop-shadow(0 0 7px rgba($gray-dark, .16)) // use a filter instead of box-shadow so the effect is applied to the pseudo element as well
+
+		@include selectors_setAsDefaults()
+			padding: 0
+		@include selectors_ifHostHasModifier('.Popup__Padding')
+			padding: 20px
+
+		// the tail
+		&::after
+			content: ""
+			position: absolute
+			z-index: -1
+			right: 11px
+			left: auto
+			display: block
+			width: 20px
+			height: 20px
+			margin-left: -10px
+			transform: rotate(45deg)
+			@include theme-background-white-else-graydark50
+			transition: all .05s $ease-in 0s
+			pointer-events: none
+
+		@include selectors_ifHostHasModifier('.Popup__PositionBottom')
+			top: 10px
+
+			// the tail
+			&::after
+				top: -6px
+
+		@include selectors_ifHostHasModifier('.Popup__PositionRight')
+			$vertOffset: 40px // 50%
+
+			margin-left: 0
+			transform: scale(1) translateX(100%) translateY(-$vertOffset) translateZ(0)
+
+			// the tail
+			&::after
+				top: $vertOffset
+				right: auto
+				left: 4px
+				transform: translateY(-50%) rotate(45deg)
+
+		@include selectors_ifHostHasModifier('.Popup__PositionTop')
+			top: -10px
+			transform: scale(1) translateY(-100%) translateZ(0)
+
+			// the tail
+			&::after
+				bottom: -6px
+
+		&.Popup_Bubble__TipItemHover::before
+			background: $green-dark50
+
+	.Popup_BubbleContent
+		transition: opacity $transiton-duration $ease-in $transiton-duration
+		@include selectors_setAsDefaults()
+			opacity: 0
+		@include selectors_ifHostHasModifier('.Popup__Open')
+			opacity: 1

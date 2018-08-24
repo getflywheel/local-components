@@ -1,0 +1,211 @@
+@import './_partials/index';
+
+:global {
+	.button {
+		display: inline-block;
+	}
+
+	button {
+		@include defaultFontSettings;
+	}
+
+	button, .button {
+		background: transparent;
+		text-transform: uppercase;
+		@include tracking(40);
+		font-weight: 700;
+		border: 0;
+		transition: transform .1s ease 0s, padding .1s ease 0s, background-color .1s ease 0s, color .1s ease 0s;
+		text-decoration: none;
+		align-self: center;
+		color: $gray25;
+		cursor: pointer;
+		flex-shrink: 0;
+
+		svg {
+			width: 14px;
+			height: 14px;
+			vertical-align: middle;
+			margin: 0 10px 0 0;
+
+			path {
+				transition: fill .1s ease 0s, stroke .1s ease 0s;
+			}
+		}
+
+		&:hover {
+			color: $gray75;
+		}
+
+		&:active {
+			transform: scale(.98);
+		}
+
+		&[disabled] {
+			pointer-events: none;
+
+			&:not(.__NoOpacityChange) {
+				opacity: .5;
+			}
+		}
+
+		&.__GrayOutline,
+		&.#{deprecated(--GrayOutline, '2.5', '2.0', 'Needed for distributed Environments')} {
+			border-radius: 500px;
+			border: 2px solid $gray25;
+			color: $gray25;
+			padding: 5px 20px;
+
+			svg path {
+				fill: $gray25;
+			}
+
+			&:hover {
+				color: $white;
+				background: $gray25;
+
+				@include if-theme-dark {
+					background: none;
+					border-color: $white;
+				}
+
+				svg path {
+					fill: $white;
+				}
+
+			}
+
+			&.__Vert_Padding__10 {
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+		}
+
+		&.__Green,
+		&.#{deprecated(--Green, '2.5', '2.0', 'Needed for distributed Environments')} {
+			color: $green;
+
+			&:hover {
+				color: $green-dark;
+			}
+		}
+
+		&.__Red {
+			color: $red;
+
+			&:hover {
+				color: $red-dark;
+			}
+		}
+
+		&.__Orange {
+			color: $orange;
+
+			&:hover {
+				color: $orange-dark;
+			}
+
+			&.__Notice {
+				svg {
+					width: 18px;
+					height: 18px;
+					margin: -1px 5px 0 0;
+					fill: $orange;
+					transform: rotate(180deg);
+
+					&:hover svg {
+						fill: $orange-dark;
+					}
+				}
+			}
+		}
+
+		&.__Pill {
+			@include pillButton;
+			color: $white !important;
+			padding: 15px 30px;
+
+			svg path {
+				fill: $white;
+			}
+
+			&[disabled] {
+				opacity: 1;
+				@include theme-button-pill-disabled;
+			}
+
+			&.__Green,
+			&.#{deprecated(--Green, '2.5', '2.0', 'Needed for distributed Environments')} {
+				background: $green;
+
+				&:hover {
+					background: $green-dark50;
+				}
+			}
+
+			&.__Red {
+				background: $red;
+
+				&:hover {
+					background: $red-dark50;
+				}
+			}
+
+			&.__White {
+				background: $white;
+				color: $green-dark50 !important;
+
+				&:hover {
+					background: $green-dark;
+					color: $white !important;
+				}
+			}
+
+			&.__Vert_Padding__20 {
+				padding-top: 20px;
+				padding-bottom: 20px;
+			}
+
+			&.__Inline,
+			&.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')} {
+				padding: 8px 15px;
+				vertical-align: middle;
+			}
+		}
+
+		&.__Small {
+			padding: 3px 17px;
+		}
+
+		&.__Medium {
+			padding: 10px 20px;
+		}
+	}
+
+	#NoSitesAddSiteButton {
+		height: 57px;
+		line-height: 57px;
+		padding: 0 30px;
+		@include tracking(20);
+
+		svg {
+			margin: -1px 10px 0 0;
+		}
+
+		path {
+			stroke-width: 1px;
+			stroke: $white;
+		}
+	}
+}
+
+button, .button {
+	//.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')}
+	&:global(.__Inline), &:global(.--Inline) {
+		font-size: 12px;
+
+		&:not(:first-child) {
+			margin-left: 10px;
+		}
+	}
+}

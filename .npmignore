@@ -1,0 +1,6 @@
+/styleguide/index.html
+/styleguide/build
+/styleguide/style.*
+/styleguide/svg
+.idea
+*.tgz

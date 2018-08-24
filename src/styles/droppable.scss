@@ -1,0 +1,34 @@
+@import './_partials/index';
+
+:global {
+	#root.drag::before {
+		z-index: 9999;
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		@include theme-background-blur-backdrop;
+	}
+
+	#root.drag::after {
+		$height: 40px;
+		z-index: 10000;
+		@include theme-color-gray25-else-gray25;
+		background: url(../svg/drop-to-import.svg) no-repeat 50% top;
+		background-size: 125px 91px;
+		content: 'Drop to import site!';
+		position: fixed;
+		height: $height;
+		padding-top: 110px;
+		margin: (-150px/2) 0 0;
+		top: 50%;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		text-align: center;
+		font-size: 30px;
+		font-weight: 500;
+	}
+}

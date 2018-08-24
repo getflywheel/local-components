@@ -1,0 +1,103 @@
+@import './_partials/index';
+
+:global {
+	* {
+		box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		user-select: none;
+		cursor: default;
+		outline: none;
+		-webkit-user-drag: none;
+	}
+
+	a,
+	a *,
+	button {
+		cursor: pointer;
+	}
+
+	html {
+		width: 100%;
+		height: 100%;
+		font-size: 62.5%; // set rems to have a base of 10
+	}
+
+	html.local-by-flywheel {
+		overflow: hidden;
+	}
+
+	body,
+	div#styleguide-container {
+		margin: 0;
+		@include defaultFontSettings;
+		@include fullWidthHeight;
+		@include theme-background-white-else-graydark;
+		@include theme-color-graydark-else-white;
+	}
+
+	div#styleguide-container {
+		border: 1px dashed $gray25;
+	}
+
+	#root main {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		overflow-y: auto;
+	}
+
+	p {
+		line-height: 1.5;
+
+		a {
+			font-weight: 500
+		}
+	}
+
+	input,
+	select {
+		@include defaultFontSettings;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-weight: 500
+	}
+
+	h1 {
+		font-size: $font-size-header-xl
+	}
+
+	h2 {
+		font-size: $font-size-header-l
+	}
+
+	h3 {
+		font-size: $font-size-header-m
+	}
+
+	h4 {
+		font-size: $font-size-header-s
+	}
+
+	h5 {
+		font-size: $font-size-header-xs
+	}
+
+	[disabled] {
+		pointer-events: none !important;
+	}
+
+	a {
+		color: $green;
+		text-decoration: none;
+
+		&:hover {
+			color: $green-dark;
+		}
+	}
+}

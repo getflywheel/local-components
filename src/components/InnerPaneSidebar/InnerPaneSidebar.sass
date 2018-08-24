@@ -1,0 +1,222 @@
+@import '../../styles/_partials/index'
+
+.InnerPaneSidebar
+	width: 280px
+	height: 100%
+	@include theme-border-left
+	display: flex
+	flex-direction: column
+
+.InnerPaneSidebarHeader
+	height: 45px
+	@include theme-border-bottom
+	@include theme-background-white-else-graydark
+	padding: 15px 20px
+	display: flex
+
+	h3
+		margin: 0
+		@include theme-color-graydark-else-white
+		font-size: 14px
+
+.InnerPaneSidebarHeaderButtons
+	margin-left: auto
+	display: flex
+	align-items: center
+
+	span
+		display: flex
+		margin: 0 0 0 17px
+		@include cursorPointer
+
+		&:hover svg
+			@include if-theme-dark()
+				stroke: $white
+
+			@include if-theme-light()
+				stroke: $gray75
+
+	svg
+		width: 15px
+		height: 15px
+		transition: transform .2s ease
+
+		@include if-theme-dark()
+			stroke: $gray-dark50
+			fill: $gray-dark50
+
+		@include if-theme-light()
+			stroke: $gray15
+			fill: $gray15
+
+
+	\:global(.InnerPaneSidebarHeaderButtons_Add)
+		svg
+			stroke-width: 2px
+
+			@include if-theme-dark()
+				stroke: $gray25
+
+			@include if-theme-light()
+				stroke: $gray25
+
+		@at-root :global(.__AddNewOpen) & // todo crum - Notes is trying to access this
+			svg
+				transform: rotate(45deg)
+
+				@include if-theme-dark()
+					stroke: $white
+
+				@include if-theme-light()
+					stroke: $gray-dark
+
+.InnerPaneSidebarContent
+	flex: 1
+	overflow-y: auto
+	@include theme-background-gray2-else-gray2row
+
+	@at-root .InnerPaneSidebarContent :global(.EmptyArea), // don't scope as this class is outside of this scope
+	.EmptyArea
+		height: 100%
+		margin: 0
+
+.InnerPaneSidebarAddNew
+	@include theme-background-gray2-else-gray2row
+	padding: 10px
+	color: $gray75
+	@include theme-border-bottom
+	position: relative
+	z-index: 2
+	display: none
+
+	@at-root :global(.__AddNewOpen) &
+		display: block
+
+	&::before
+		content: ""
+		@include __theme-background($gray2, #292A2A)
+		@include theme-border-top
+		@include theme-border-left
+		width: 14px
+		height: 14px
+		transform: rotate(45deg)
+		display: block
+		position: absolute
+		top: -8px
+		right: 19px
+		z-index: 0
+
+	textarea
+		z-index: 1
+		position: relative
+		@include theme-background-white-else-graydark
+		transition: box-shadow .1s ease
+		border: 0
+		resize: none
+		width: 100%
+		height: 100px
+		border-radius: 4px
+		font-size: 14px
+		padding: 10px
+		@include defaultFontSettings
+		@include selectable
+
+		&::placeholder
+			color: $gray75
+
+		@include if-theme-dark
+			box-shadow: inset 0 0 0 1px $theme-border-dark
+
+		@include if-theme-light
+			box-shadow: inset 0 0 0 1px $theme-border-light
+
+		&:focus
+			box-shadow: 0 0 0 2px $green
+
+	p:global(.FormattingHelp)
+		margin: 5px 0 0 10px
+		font-size: 12px
+		font-weight: 300
+
+	+ .InnerPaneSidebarContentItem
+		border-top: 0
+
+		&::before
+			display: none
+
+.InnerPaneSidebarContentItem
+	padding: 20px 0
+	@include theme-border-top
+	border-bottom: 1px solid transparent
+	margin: 0 20px
+	overflow: hidden
+	@include theme-color-gray-else-gray15
+
+	&:first-of-type
+		border-top-color: transparent
+
+	&:last-of-type:not(:global(.__Pinned))
+		@include theme-border-bottom
+
+	&:global(.__Pinned)
+		margin: 0
+		padding: 20px
+		@include __theme-background(#FDFAF1, $gray-dark50)
+		border-color: transparent
+		position: relative
+
+		@include if-theme-dark()
+			h5
+				color: $yellow
+
+			pre
+				background: $gray-dark
+				color: $yellow25
+
+		@include if-theme-light()
+			pre
+				background: $yellow25
+				color: $yellow-dark
+
+		+ .InnerPaneSidebarContentItem
+			border-top-color: transparent
+
+		+ .InnerPaneSidebarContentItem:global(.__Pinned)::before
+			content: ""
+			display: block
+			height: 0
+			position: absolute
+			top: 0
+			left: 20px
+			right: 20px
+
+			@include if-theme-light()
+				border-top: 1px solid $yellow25
+
+			@include if-theme-dark()
+				border-top: 1px solid $gray
+
+	*
+		@include selectable
+
+		&:last-child
+			margin-bottom: 0
+
+	h5
+		@include theme-color-graydark-else-white
+		margin: 0 0 10px
+
+	h1, h2, h3, h4
+		font-size: 16px
+
+	p
+		font-weight: 300
+		margin: 10px 0
+
+	pre
+		@include __theme-background($gray5, $gray-dark50)
+		@include theme-color-gray-else-gray15
+		font-size: 13px
+		padding: 10px
+		border-radius: 4px
+		overflow: auto

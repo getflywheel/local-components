@@ -1,0 +1,40 @@
+@import '../_partials/index';
+
+:global {
+	.TabNav {
+		padding: 0 20px 0 30px;
+		display: flex;
+		width: 100%;
+		flex-shrink: 0;
+		@include theme-border-bottom;
+	}
+
+	.TabNav_Items {
+		flex-shrink: 0;
+		align-self: flex-start;
+
+		> * {
+			display: inline-block;
+		}
+
+		a {
+			@include tracking(40);
+			font-weight: 700;
+			color: $gray25;
+			text-decoration: none;
+			text-transform: uppercase;
+			padding: 6px 10px 14px;
+			transition: .1s color ease 0s, .1s border-bottom-color ease 0s;
+			border-bottom: 4px solid transparent;
+
+			&:hover {
+				@include theme-color-graydark-else-white;
+			}
+
+			&.active {
+				@include theme-color-graydark-else-white;
+				@include theme-tab-border-active;
+			}
+		}
+	}
+}

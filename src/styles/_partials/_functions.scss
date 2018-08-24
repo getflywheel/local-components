@@ -1,0 +1,3 @@
+@function deprecated($selector, $sinceLocalVersion: '', $sinceComponentsVersion: '', $notes: '') {
+	@return $selector
+}

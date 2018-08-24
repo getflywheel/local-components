@@ -1,0 +1,62 @@
+@mixin selectors_appendToHostSelector($simpleSelectorModifier) {
+	$finalSelectors: ();
+
+	// loop over each compound selector (.foo .bar, .baz .bar = 2 compound selectors)
+	@for $i from 1 through length(&) {
+		// get the compounded selector
+		$compoundSelector: nth(&, $i);
+		// append the modifier and add the newly generated compound selector to the final list of selectors
+
+		$replace: 1;
+
+		@if nth($compoundSelector, 1) == ':global' {
+			$replace: 2;
+		}
+
+		$finalSelectors: append($finalSelectors, set_nth($compoundSelector, $replace, nth($compoundSelector, 1) + $simpleSelectorModifier), comma);
+	}
+
+	// output css
+	@at-root #{selector_parse($finalSelectors)} {
+		@content;
+	}
+}
+
+@mixin selectors_appendToNthParentSelector($simpleSelectorModifier, $appendToParentN: 1) {
+	$finalSelectors: ();
+
+	// loop over each compound selector (.foo .bar, .baz .bar = 2 compound selectors)
+	@for $i from 1 through length(&) {
+		// get the compounded selector
+		$compoundSelector: nth(&, $i);
+		// determine the simple selector (within the compound selector) to append the modifier to
+		$appendToIndex: length($compoundSelector) - $appendToParentN;
+		// append the modifier and add the newly generated compound selector to the final list of selectors
+		$finalSelectors: append($finalSelectors, set_nth($compoundSelector, $appendToIndex, nth($compoundSelector, $appendToIndex) + $simpleSelectorModifier), comma);
+	}
+	// output css
+	@at-root #{selector_parse($finalSelectors)} {
+		@content;
+	}
+}
+
+// does nothing more set the properties exactly as is but is helpful for consistent and easily readable definitions (especially indentation-based)
+@mixin selectors_setAsDefaults() {
+	@content;
+}
+
+// styles that only apply when the host has the given modifier selector
+// note: this is the same as the 'selectors_ifHostStateIs' mixin but helps readability
+@mixin selectors_ifHostHasModifier($hostStateSelector) {
+	@include selectors_appendToHostSelector($hostStateSelector) {
+		@content;
+	}
+}
+
+// styles that only apply when the host has the given state selector
+// note: this is the same as the 'selectors_ifHostHasModifier' mixin but helps readability
+@mixin selectors_ifHostStateIs($hostStateSelector) {
+	@include selectors_appendToHostSelector($hostStateSelector) {
+		@content;
+	}
+}

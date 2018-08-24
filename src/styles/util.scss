@@ -1,0 +1,132 @@
+@import './_partials/index';
+
+:global {
+	strong.__Weight_500 {
+		font-weight: 500;
+	}
+
+	.__MarginTop_10 {
+		margin-top: 10px;
+	}
+
+	.__MarginTop_20 {
+		margin-top: 20px;
+	}
+
+	.__MarginBottom_10 {
+		margin-bottom: 10px;
+	}
+
+	.__MarginBottom_20 {
+		margin-bottom: 20px;
+	}
+
+	.__MarginHoriz_5 {
+		margin-right: 5px;
+		margin-left: 5px;
+	}
+
+	.__MarginHoriz_30 {
+		margin-right: 30px;
+		margin-left: 30px;
+	}
+
+	.__MarginRight_5 {
+		margin-right: 5px;
+	}
+
+	.__MarginRight_10 {
+		margin-right: 10px;
+	}
+
+	.__MarginLeft_5 {
+		margin-left: 5px;
+	}
+
+	.__MarginLeft_10 {
+		margin-left: 10px;
+	}
+
+	.__Margin_0 {
+		margin: 0;
+	}
+
+	.__MarginBottom_0 {
+		margin-bottom: 0 !important;
+	}
+
+	.__Selectable {
+		@include selectable;
+	}
+
+	.__Cursor__Pointer {
+		cursor: pointer;
+	}
+
+	.__Color__Black {
+		color: $black;
+	}
+
+	.__Color__Green,
+	.#{deprecated(--Color--Green, '2.5', '2.0', 'Needed for distributed Environments')} {
+		color: $green;
+	}
+
+	.__Color__Red {
+		color: $red;
+	}
+
+	.__Color__Gray75 {
+		color: $gray75;
+	}
+
+	.__Color__Gray25 {
+		color: $gray25;
+	}
+
+	.__NoAnimation {
+		animation: none !important;
+	}
+
+	.__NoBorder {
+		border: 0 !important;
+	}
+
+	.__FadeIn {
+		animation: fadeIn .5s !important;
+	}
+
+	.__FadeOut {
+		pointer-events: none;
+		animation: fadeOut .2s ease 0s !important;
+		animation-fill-mode: forwards !important;
+
+		* {
+			pointer-events: none;
+		}
+	}
+
+	.__Disabled {
+		pointer-events: none;
+		opacity: .5;
+	}
+
+	.__GrayDark_50 {
+		color: $gray-dark50;
+	}
+
+	.__FlexColumn {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.__FlexCenter {
+		justify-content: center;
+		align-items: center;
+	}
+
+	.__Panel {
+		flex: 1;
+		overflow-y: auto;
+	}
+}

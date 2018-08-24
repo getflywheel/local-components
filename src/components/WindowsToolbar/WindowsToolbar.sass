@@ -1,0 +1,101 @@
+@import '../../styles/_partials/index'
+
+\:global(.WindowsToolbar),
+.WindowsToolbar
+	-webkit-user-select: none
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	height: 32px
+	line-height: 32px
+	width: 100%
+	@include theme-background-gray15-else-graydark50
+	display: flex
+	font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif
+	font-size: 12px
+	z-index: 999
+
+	@at-root :global(.WindowsToolbar .DragRegion),
+	.DragRegion
+		flex-grow: 1
+		-webkit-app-region: drag
+		padding-left: 5px
+		margin-left: 15px
+
+	.RightButtons
+		width: auto
+		margin-left: auto
+		flex-shrink: 0
+
+	\:global(.Menu),
+	.Menu
+		svg
+			width: 12px
+			height: 9px
+
+		@at-root :global(.WindowsToolbar .Menu + .DragRegion),
+		+ .DragRegion
+			margin-left: 0
+
+	\:global(.Back),
+	.Back
+		background-color: $green
+
+		@at-root :global(.WindowsToolbar .Back + .DragRegion),
+		+ .DragRegion
+			margin-left: 10px
+
+		&:hover
+			background-color: $green-dark50
+
+		svg
+			width: 10px
+			height: 9px
+
+			path
+				fill: $white
+
+	\:global(.Minimize),
+	.Minimize
+		svg
+			width: 10px
+			height: 1px
+			vertical-align: middle
+
+	\:global(.Maximize),
+	.Maximize
+		svg
+			width: 10px
+			height: 10px
+
+	\:global(.Quit),
+	.Quit
+		svg
+			width: 9.8px
+			height: 9.8px
+
+	span
+		width: 44px
+		height: 32px
+		display: inline-block
+		text-align: center
+		transition: background-color .1s ease 0s
+
+		&:hover
+			@include theme-background-gray25-else-gray
+
+		@include if-theme-light()
+			&:active
+				background-color: darken($gray25, 10%)
+
+		@include if-theme-dark()
+			&:active
+				background-color: darken($gray, 20%)
+
+		svg
+			vertical-align: baseline
+
+	svg path
+		@include theme-fill-graydark-else-gray25
+		stroke: none

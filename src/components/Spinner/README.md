@@ -1,0 +1,4 @@
+Basic spinner.
+```js
+<Spinner />
+```

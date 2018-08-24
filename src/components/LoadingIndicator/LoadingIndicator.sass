@@ -1,0 +1,53 @@
+@import '../../styles/_partials/index'
+
+.LoadingIndicator
+	$size: 9px
+	$sizeBig: 18px
+
+	width: auto
+	height: 16px
+	margin: 0 auto
+	text-align: center
+	display: inline-block
+	vertical-align: middle
+
+	@keyframes big-loader-bounce-delay
+		0%, 80%, 100%
+			transform: scale(0)
+		40%
+			transform: scale(1.0)
+
+	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
+	&.LoadingIndicator__Gray
+	&.LoadingIndicator__Big
+		display: block
+		height: $sizeBig
+
+	> div
+		display: inline-block
+		@include selectors_setAsDefaults()
+			width: $size
+			height: $size
+			margin: 0 4px
+
+		@include selectors_ifHostHasModifier('.LoadingIndicator__Big')
+			width: $sizeBig
+			height: $sizeBig
+			margin: 0 5px
+
+		@include selectors_setAsDefaults()
+			background-color: $green
+
+		@include selectors_ifHostHasModifier('.LoadingIndicator__Gray')
+			background-color: $gray25
+
+		border-radius: 100%
+
+		\:local
+			animation: big-loader-bounce-delay 1.4s infinite ease-in-out both
+
+	> div:first-child
+		animation-delay: -0.32s
+
+	> div:nth-child(2)
+		animation-delay: -0.16s

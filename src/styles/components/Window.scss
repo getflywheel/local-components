@@ -1,0 +1,28 @@
+@import '../_partials/index';
+
+:global {
+	.Window {
+		display: flex;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		&.__OsWindows {
+			top: 32px;
+
+			.Window.__OsWindows {
+				top: 0;
+			}
+		}
+
+		&.__Draggable {
+			-webkit-app-region: drag;
+		}
+
+		&.__BackdropBlur {
+			@include theme-background-blur-backdrop;
+		}
+	}
+}

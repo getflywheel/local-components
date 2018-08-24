@@ -1,0 +1,40 @@
+@import '../../styles/_partials/index'
+
+.EmptyArea
+	border: 2px dashed $gray25
+	border-radius: 4px
+	padding: 40px 30px
+	text-align: center
+	display: flex
+	flex-direction: column
+	justify-content: center
+	margin: 50px
+	flex-grow: 1
+	@include theme-color-gray25-else-white
+
+	@at-root .VerticalNav + .EmptyArea
+		margin: 0
+
+		@include if-theme-dark()
+			background: $gray-dark-alt
+			@include theme-color-gray25-else-gray75
+
+	h3
+		line-height: 140%
+
+	*:first-child
+		margin-top: 0
+
+	*:last-child
+		margin-bottom: 0
+
+	> svg
+		width: 50px
+		fill: $gray25
+		margin: 0 auto -20px
+
+		&:global(.MultipleSitesSelected)
+			fill: $green
+			width: 128px
+			height: 97px
+			margin: 0 auto 0
