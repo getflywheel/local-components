@@ -1,0 +1,58 @@
+.LoadingIndicator
+	$size: 9px
+
+	@-webkit-keyframes big-loader-bounce-delay
+		0%, 80%, 100%
+			-webkit-transform: scale(0)
+		40%
+			-webkit-transform: scale(1.0)
+
+	@keyframes big-loader-bounce-delay
+		0%, 80%, 100%
+			-webkit-transform: scale(0)
+			transform: scale(0)
+
+		40%
+			-webkit-transform: scale(1.0)
+			transform: scale(1.0)
+
+	width: auto
+	height: 17px
+	margin: 0 auto
+	text-align: center
+	display: inline-block
+	vertical-align: middle
+
+	> div
+		width: $size
+		height: $size
+		background-color: $green
+		margin: 0 4px
+		border-radius: 100%
+		display: inline-block
+		-webkit-animation: big-loader-bounce-delay 1.4s infinite ease-in-out both
+		animation: big-loader-bounce-delay 1.4s infinite ease-in-out both
+
+	&.--Big
+		$size: 18px
+
+		display: block
+		height: $size
+
+		> div
+			width: $size
+			height: $size
+			margin: 0 5px
+
+	&.--Gray
+		> div
+			background-color: $gray25
+
+	.LoadingIndicator_Bounce1
+		-webkit-animation-delay: -0.32s
+		animation-delay: -0.32s
+
+
+	.LoadingIndicator_Bounce2
+		-webkit-animation-delay: -0.16s
+		animation-delay: -0.16s

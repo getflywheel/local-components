@@ -1,0 +1,177 @@
+.InnerPaneSidebar
+	width: 280px
+	height: 100%
+	border-left: 1px solid $gray15
+	display: flex
+	flex-direction: column
+
+.InnerPaneSidebarHeader
+	height: 45px
+	border-bottom: 1px solid $gray15
+	padding: 15px 20px
+	display: flex
+
+	h3
+		margin: 0
+		color: $gray-dark
+		font-size: 14px
+
+.InnerPaneSidebarHeaderButtons
+	margin-left: auto
+	display: flex
+	align-items: center
+
+	span
+		display: flex
+		margin: 0 0 0 17px
+		@include cursorPointer
+
+		&:hover svg
+			stroke: $gray25
+
+	svg
+		width: 15px
+		height: 15px
+		transition: transform .2s ease
+		stroke: $gray15
+		fill: $gray15
+
+	.Add
+		svg
+			stroke-width: 2px
+			stroke: $gray25
+
+		&:hover svg
+			stroke: $gray75
+
+		@at-root .--AddNewOpen &
+			svg
+				transform: rotate(45deg)
+				stroke: $gray-dark
+
+.InnerPaneSidebarContent
+	flex: 1
+	overflow-y: auto
+
+	.EmptyArea
+		height: 100%
+		margin: 0
+
+.InnerPaneSidebarAddNew
+	background: $gray2
+	padding: 10px
+	color: $gray75
+	border-bottom: 1px solid $gray15
+	position: relative
+	z-index: 2
+	display: none
+
+	@at-root .--AddNewOpen &
+		display: block
+
+	&::before
+		content: ""
+		background: $gray2
+		border-top: 1px solid $gray15
+		border-left: 1px solid $gray15
+		width: 14px
+		height: 14px
+		transform: rotate(45deg)
+		display: block
+		position: absolute
+		top: -8px
+		right: 19px
+		z-index: 0
+
+	textarea
+		z-index: 1
+		position: relative
+		background: $white
+		transition: box-shadow .1s ease
+		box-shadow: inset 0 0 0 1px $gray15
+		border: 0
+		resize: none
+		width: 100%
+		height: 100px
+		border-radius: 4px
+		font-size: 14px
+		padding: 10px
+		@include defaultFontSettings
+		@include selectable
+
+		&:focus
+			box-shadow: 0 0 0 2px $green
+
+	p.FormattingHelp
+		margin: 5px 0 0 10px
+		font-size: 12px
+		font-weight: 300
+
+	+ .InnerPaneSidebarContentItem
+		border-top: 0
+
+		&::before
+			display: none
+
+.InnerPaneSidebarContentItem
+	padding: 20px 0
+	border-top: 1px solid $gray15
+	border-bottom: 1px solid transparent
+	margin: 0 20px
+	overflow: hidden
+	color: $gray
+
+	&:first-of-type
+		border-top-color: transparent
+
+	&:last-of-type:not(.--Pinned)
+		border-bottom-color: $gray15
+
+	&.--Pinned
+		margin: 0
+		padding: 20px
+		background: #FDFAF1
+		border-color: transparent
+		position: relative
+
+		pre
+			background: $yellow25
+			color: $yellow-dark
+
+		+ .InnerPaneSidebarContentItem
+			border-top-color: transparent
+
+		+ .InnerPaneSidebarContentItem.--Pinned::before
+			content: ""
+			display: block
+			height: 0
+			border-top: 1px solid $yellow25
+			position: absolute
+			top: 0
+			left: 20px
+			right: 20px
+
+	*
+		@include selectable
+
+		&:last-child
+			margin-bottom: 0
+
+	h5
+		color: $gray-dark
+		margin: 0 0 10px
+
+	h1, h2, h3, h4
+		font-size: 16px
+
+	p
+		font-weight: 300
+		margin: 10px 0
+
+	pre
+		background: $gray5
+		color: $gray
+		font-size: 13px
+		padding: 10px
+		border-radius: 4px
+		overflow: auto

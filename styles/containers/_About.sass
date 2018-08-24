@@ -1,0 +1,131 @@
+.About
+	padding: 60px 60px 0
+	text-align: center
+	font-size: 14px
+	line-height: 20px
+	@include theme-color-gray-else-gray15
+	font-weight: 300
+	display: flex
+	align-items: center
+	flex-direction: column
+
+	h3
+		margin: 25px 0 13px
+		@include theme-color-graydark-else-white
+
+	strong.About__Version
+		font-weight: 500
+		@include theme-color-graydark-else-white
+
+	button
+		padding: 0
+		margin: 8px 0 0
+
+	.LocalMark
+		width: 60px
+		height: 60px
+
+	a
+		font-weight: 500
+		display: block
+		margin: 30px 0 0
+
+	span.About__Copyright
+		margin: 6px 0 0
+
+	.About__UpdateChecker
+		$svg-margin: 0 7px 0 0
+
+		height: 27px
+
+		> span
+			display: flex
+			flex-direction: row
+			align-items: center
+			justify-content: center
+			margin: 7px 0 0
+
+		.About__UpdaterUpToDate
+			span
+				display: flex
+				width: 18px
+				height: 18px
+				background: $green
+				border-radius: 100%
+				justify-content: center
+				margin: $svg-margin
+
+				svg
+					width: 10px
+					fill: $white
+
+		.About__UpdaterUpdateAvailable
+			svg
+				width: 18px
+				height: 18px
+				fill: $green
+				transform: rotate(180deg)
+				margin: $svg-margin
+
+		.Spinner
+			vertical-align: middle
+			width: 16px
+			height: auto
+			animation: rotateSpinner 1s linear infinite
+			fill: $gray25
+			margin: $svg-margin
+
+.About__Acknowledgements
+	display: flex
+	flex-direction: column
+
+	@at-root .--OsWindows
+		.About__Header
+			display: none
+
+		div.About__Acknowledgements
+			padding-top: 35px
+
+	.About__Header, div.About__Copyright
+		height: 34px
+		line-height: 34px
+		flex: 0 0
+		text-align: center
+
+	.About__Header
+		@include theme-border-bottom
+
+		strong
+			font-weight: 500
+			@include theme-color-graydark-else-white
+
+		span.Close
+			top: 5px
+			right: 10px
+
+	.About__Credits
+		flex: 1
+		padding: 0 20px
+		overflow-x: auto
+		overflow-y: auto
+
+		h1:first-of-type
+			font-size: 14px
+			margin: 20px 0 0
+			border-bottom: 1px solid #e7e7e7
+			padding: 0 0 10px
+
+		ul, ol
+			padding: 0 20px
+
+			li
+				margin: 3px 0
+
+		h3, h4, h5
+			margin: 10px 0
+
+	div.About__Copyright
+		border-top: 1px solid $gray15
+		font-weight: 300
+		color: $gray
+		box-shadow: 0 0 20px $gray5

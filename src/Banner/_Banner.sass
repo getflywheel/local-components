@@ -1,0 +1,154 @@
+.Banner
+	padding: 10px 10px 10px 30px
+	color: $white
+	position: relative
+	display: flex
+	align-items: center
+	min-height: 48px
+
+	.BannerContent
+		line-height: 18px
+
+	@at-root .SettingsPane_Content
+		&
+			margin-top: -11px
+
+	@include selectable
+
+	&__Right
+		margin-left: auto
+
+	> svg
+		width: 18px
+		height: 18px
+		vertical-align: middle
+		margin: -2px 10px 0 0
+
+		path, circle, rect
+			fill: $white
+
+	strong
+		font-weight: 700
+		@include selectable
+		margin-right: 5px
+
+	@include stripes(#f58f30, #f48720)
+
+	button.CTA
+		color: $orange
+
+		&:hover
+			background: $orange-dark50
+
+	&.--Error
+		@include stripes(#f05b6f, #ef4e65)
+
+		button.CTA
+			color: $red
+
+			&:hover
+				background: $red-dark50
+
+	&.--Success
+		@include stripes($green, mix($black, $green, 5%))
+
+		button.CTA
+			color: $green
+
+			&:hover
+				background: $green-dark50
+
+	&.--Neutral
+		@include stripes($white, $gray2)
+		border-bottom: 1px solid $gray15
+		color: $gray-dark
+
+		strong
+			font-weight: 700
+
+		svg path
+			fill: $yellow
+
+		button.CTA
+			background: $green
+			color: $white
+
+			&:hover
+				background: $green-dark50
+
+		.Dismiss
+			svg path
+				fill: $gray
+
+			&:hover
+				svg path
+					fill: $gray-dark
+
+	button.CTA
+		margin-left: auto
+		right: 10px
+		top: 10px
+		background: $white
+		@include pillButton
+		padding: 0 20px
+		font-size: 12px
+		height: 28px
+		line-height: 28px
+		transition: background .1s ease 0s, color .1s ease 0s
+
+		&:hover
+			color: $white
+
+	.Dismiss
+		display: inline-block
+		padding: 5px
+		width: 18px
+		height: 18px
+		line-height: 8px
+		margin: 0 10px 0 15px
+		cursor: pointer
+
+		> *
+			cursor: pointer
+
+		svg
+			margin: 0
+			width: 8px
+			height: 8px
+
+			path
+				fill: $white
+
+	.Carousel
+		float: left
+		height: 28px
+		padding: 0 12px 0 0
+		margin: 0 20px 0 -10px
+		border-right: 1px solid $white
+		display: flex
+		align-items: center
+
+		@at-root .Banner.--Neutral .Carousel
+			border-right-color: $gray15
+
+			.CarouselItem
+				border-color: $gray75
+
+				&.--Active
+					background-color: $gray-dark
+					border-color: $gray-dark
+
+		.CarouselItem
+			display: block
+			width: 8px
+			height: 8px
+			border: 2px solid $white
+			border-radius: 100%
+			cursor: pointer
+			margin: 0 8px 0 0
+
+			&.--Active
+				width: 12px
+				height: 12px
+				background-color: $white
+

@@ -1,0 +1,48 @@
+{
+  "name": "local-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "jsnext:main": "src/index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react-modal": "^3.5.1"
+  },
+  "scripts": {
+    "styleguide": "styleguidist server",
+    "js:build": "babel src --source-maps --out-dir dist",
+    "sass:build": "node-sass --source-map true ./styles/main.sass ./style.css",
+    "sass:watch": "run-p 'sass:build --watch' 'sass:livereload'",
+    "sass:livereload": "livereload style.css",
+    "postinstall": "npm run js:build && npm run sass:build",
+    "gh-pages:build": "styleguidist build",
+    "gh-pages:deploy": "yarn sass:build && shx cp style.* styleguide && shx cp -R svg styleguide && gh-pages -d styleguide"
+  },
+  "peerDependencies": {
+    "react": ">= 16.4.0",
+    "react-dom": ">= 16.4.0",
+    "react-router": ">= 3.2.0 < 4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-inline-react-svg": "^0.5.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "gh-pages": "^1.2.0",
+    "livereload": "^0.7.0",
+    "node-sass": "^4.9.3",
+    "npm-run-all": "^4.1.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-router": "^3.2.0",
+    "react-shadow": "^16.3.0",
+    "react-styleguidist": "7.3.0",
+    "shx": "^0.3.2",
+    "webpack": "^4.17.1"
+  }
+}
