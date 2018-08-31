@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
     "react-modal": "^3.5.1"
