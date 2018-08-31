@@ -18,7 +18,7 @@
     "sass:livereload": "livereload style.css",
     "postinstall": "npm run js:build && npm run sass:build",
     "gh-pages:build": "styleguidist build",
-    "gh-pages:deploy": "yarn sass:build && shx cp style.* styleguide && shx cp -R svg styleguide && gh-pages -d styleguide"
+    "gh-pages:deploy": "yarn sass:build && shx cp style.* styleguide && shx cp -R svg styleguide && styleguidist build && gh-pages -d styleguide"
   },
   "peerDependencies": {
     "react": ">= 16.4.0",
