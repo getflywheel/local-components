@@ -11,6 +11,7 @@ export default class FlyDropdown extends Component {
 	};
 
 	static defaultProps = {
+		items: [],
 		caret: true,
 		position: 'bottom',
 	};
