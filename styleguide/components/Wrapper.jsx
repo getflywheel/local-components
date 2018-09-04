@@ -15,7 +15,7 @@ export default class Wrapper extends Component {
     render() {
         return <ShadowDOM include={['style.css']}>
             <div>
-                <div id="root" style={{ position: 'relative' }}>
+                <div id="styleguide-container" style={{ position: 'relative' }}>
                     {this.props.children}
                 </div>
             </div>
