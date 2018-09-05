@@ -163,7 +163,7 @@ export default class FlySelect extends Component {
 			}
 		}
 
-		output.push(<span className="FlySelect_Option_Label">{option.label}</span>);
+		output.push(<span key="label" className="FlySelect_Option_Label">{option.label}</span>);
 		output.push(this.renderItemRight(option, showCheck));
 
 		return output;
