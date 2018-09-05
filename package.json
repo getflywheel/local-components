@@ -14,9 +14,11 @@
 		"react-modal": "^3.5.1"
 	},
 	"scripts": {
+		"start": "run-p 'sass:watch' 'js:watch' 'styleguide'",
 		"test": "jest",
 		"styleguide": "styleguidist server",
 		"js:build": "babel src --source-maps --ignore setupTests.js,test.js --out-dir dist",
+		"js:watch": "yarn js:build --watch",
 		"sass:build": "node-sass --source-map true ./styles/main.sass ./style.css",
 		"sass:watch": "run-p 'sass:build --watch' 'sass:livereload'",
 		"sass:livereload": "livereload style.css",
