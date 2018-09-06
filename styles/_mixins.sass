@@ -139,14 +139,20 @@
 @mixin theme-border-left($lightmodeLighten: 0%, $darkmodeLighten: 0%)
 	@include __theme-border("border-left", $lightmodeLighten, $darkmodeLighten)
 
+@mixin theme-border-right($lightmodeLighten: 0%, $darkmodeLighten: 0%)
+	@include __theme-border("border-right", $lightmodeLighten, $darkmodeLighten)
+
 @mixin theme-border-top($lightmodeLighten: 0%, $darkmodeLighten: 0%)
 	@include __theme-border("border-top", $lightmodeLighten, $darkmodeLighten)
 
-@mixin theme-border-color
+@mixin __theme-border-color($property: "border-color")
 	@include if-theme-light()
-		border-color: $theme-border-light
+		#{$property}: $theme-border-light
 	@include if-theme-dark()
-		border-color: $theme-border-dark
+		#{$property}: $theme-border-dark
+
+@mixin theme-border-color
+	@include __theme-border-color
 
 @mixin __theme-color($colorLight, $colorDark)
 	@include if-theme-light()
@@ -201,6 +207,9 @@
 		fill: $fillLight
 	@include if-theme-dark()
 		fill: $fillDark
+
+@mixin theme-fill-gray-else-white
+	@include __theme-fill($gray, $white)
 
 @mixin theme-fill-gray15-else-gray
 	@include __theme-fill($gray15, $gray)

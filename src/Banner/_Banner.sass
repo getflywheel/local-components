@@ -59,9 +59,9 @@
 				background: $green-dark50
 
 	&.--Neutral
-		@include stripes($white, $gray2)
-		border-bottom: 1px solid $gray15
-		color: $gray-dark
+		@include theme-stripes-white-else-graydark
+		@include theme-border
+		@include theme-color-graydark-else-white
 
 		strong
 			font-weight: 700
@@ -78,11 +78,11 @@
 
 		.Dismiss
 			svg path
-				fill: $gray
+				@include theme-fill-gray-else-white
 
 			&:hover
 				svg path
-					fill: $gray-dark
+					@include theme-fill-graydark-else-gray25
 
 	button.CTA
 		margin-left: auto
@@ -129,14 +129,18 @@
 		align-items: center
 
 		@at-root .Banner.--Neutral .Carousel
-			border-right-color: $gray15
+			@include theme-border-right
 
 			.CarouselItem
 				border-color: $gray75
 
 				&.--Active
-					background-color: $gray-dark
-					border-color: $gray-dark
+					@include if-theme-light()
+						background-color: $gray-dark
+						border-color: $gray-dark
+					@include if-theme-dark()
+						background-color: $white
+						border-color: $white
 
 		.CarouselItem
 			display: block
