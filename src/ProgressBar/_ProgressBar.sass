@@ -1,7 +1,7 @@
 .ProgressBar
 	position: relative
 	border-radius: 10px
-	background: $gray15
+	@include theme-background-gray15-else-graydark50
 	width: 100%
 	height: 4px
 	flex-grow: 0
@@ -30,7 +30,7 @@
 		to
 			transform: translateX(0)
 
-	@include stripes($gray15, $gray5)
+	@include theme-stripes-gray15-else-graydark
 	transform: translateX(-50%)
 	width: 72.5rem
 	animation: ProgressBarStripesScroll 6s infinite linear

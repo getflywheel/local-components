@@ -239,3 +239,9 @@
 		@include stripes($white, $gray1)
 	@include if-theme-dark()
 		@include stripes(#2a2b2b, $gray-dark)
+
+@mixin theme-stripes-gray15-else-graydark
+	@include if-theme-light()
+		@include stripes($gray15, $gray5)
+	@include if-theme-dark()
+		@include stripes($gray-dark, $gray-dark50)
