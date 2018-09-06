@@ -85,10 +85,10 @@
 					fill: $green
 
 		&.--Disabled
-			background: $gray1
-			color: $gray15
+			@include theme-background-gray1-else-gray-disabled
+			@include theme-color-gray15-else-gray-dark50-disabled
 			opacity: 1
 
 			span
-				border-color: $gray15
-				color: $gray15
+				@include theme-border-color
+				@include theme-color-gray15-else-gray-dark50-disabled

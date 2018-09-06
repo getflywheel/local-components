@@ -76,6 +76,9 @@
 		pointer-events: none
 		backdrop-filter: blur(0)
 
+@mixin theme-background-gray1-else-gray-disabled
+	@include __theme-background($gray1, $gray)
+
 @mixin theme-background-gray2-else-gray2row
 	@include __theme-background($gray2, #292A2A) // 35% of $gray-dark50
 
@@ -139,6 +142,12 @@
 @mixin theme-border-top($lightmodeLighten: 0%, $darkmodeLighten: 0%)
 	@include __theme-border("border-top", $lightmodeLighten, $darkmodeLighten)
 
+@mixin theme-border-color
+	@include if-theme-light()
+		border-color: $theme-border-light
+	@include if-theme-dark()
+		border-color: $theme-border-dark
+
 @mixin __theme-color($colorLight, $colorDark)
 	@include if-theme-light()
 		color: $colorLight
@@ -159,6 +168,9 @@
 
 @mixin theme-color-gray-else-white
 	@include __theme-color($gray, $white)
+
+@mixin theme-color-gray15-else-gray-dark50-disabled
+	@include __theme-color($gray15, $gray-dark50)
 
 @mixin theme-color-gray25-else-gray25
 	@include __theme-color($gray25, $gray25)
