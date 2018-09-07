@@ -51,7 +51,7 @@
 	@include if-theme-dark()
 		background: $darkmodeBackground
 
-@mixin theme-background-blur-backdrop($lightmodeColor: $white, $lightmodeAlpha: 0.65, $darkmodeColor: $gray-dark50, $darkmodeAlpha: 0.35)
+@mixin theme-background-blur-backdrop($lightmodeColor: $white, $lightmodeAlpha: 0.65, $darkmodeColor: $gray-dark50, $darkmodeAlpha: 0.15)
 	@include __theme-background(rgba($lightmodeColor, $lightmodeAlpha), rgba($darkmodeColor, $darkmodeAlpha))
 	@include if-theme-light()
 		backdrop-filter: blur(50px) brightness(1.1)
