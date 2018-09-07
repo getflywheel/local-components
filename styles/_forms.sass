@@ -84,10 +84,10 @@
 			width: auto
 
 		img
-			height: 21px
-			@include theme-background-white-else-graydark50
-			@include theme-border
+			height: 22px
 			border-radius: 1px
+			@include if-theme-dark()
+				filter: brightness(0.44)
 
 		svg.FlySelect__ItemIcon
 			height: 27px
