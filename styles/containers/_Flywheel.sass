@@ -61,7 +61,7 @@
 		margin-top: 35px
 		padding-top: 30px
 		width: 100%
-		border-top: $gray15 1px solid
+		@include theme-border-top
 		text-align: center
 		display: flex
 		flex-direction: column
@@ -79,7 +79,7 @@
 .AccountInfo
 	display: flex
 	align-items: center
-	color: $gray75
+	@include theme-color-gray75-else-gray25
 
 	.Avatar
 		width: 32px
@@ -161,6 +161,8 @@ header.FlywheelHeader
 		height: 88px
 		margin: 0 26px 0 0
 		cursor: pointer
+		@include if-theme-dark()
+			filter: brightness(0.34)
 
 	button
 		margin: 0 20px 0 0

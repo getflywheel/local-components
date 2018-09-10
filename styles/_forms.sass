@@ -84,10 +84,10 @@
 			width: auto
 
 		img
-			height: 21px
-			background: $white
-			border: 1px solid $white
+			height: 22px
 			border-radius: 1px
+			@include if-theme-dark()
+				filter: brightness(0.44)
 
 		svg.FlySelect__ItemIcon
 			height: 27px
@@ -110,11 +110,11 @@
 				fill: $white
 
 	.FlySelect_OptionGroup
-		background: $gray5
+		@include theme-background-gray5-else-graydarkalt
 		height: 37px
 		line-height: 37px
 		text-align: left
-		color: $gray
+		@include theme-color-gray-else-gray25
 		text-transform: uppercase
 		@include tracking(5)
 		font-weight: 700
@@ -123,7 +123,7 @@
 
 		a
 			margin-left: auto
-			color: $gray75
+			@include theme-color-gray75-else-gray25
 			display: flex
 			align-items: center
 
@@ -136,10 +136,10 @@
 					fill: $gray75
 
 			&:hover
-				color: $gray
+				@include theme-color-gray-else-white
 
 				svg path
-					fill: $gray
+					@include theme-fill-gray-else-white
 
 
 .FlySelect

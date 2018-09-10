@@ -62,7 +62,7 @@
 			flex: 0 0 calc(100% + 40px)
 			clip-path: polygon(20px 50%,0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%)
 			box-shadow: 0 0 3rem 0 $white
-			background: $gray15
+			@include theme-background-gray15-else-graydark50
 			width: 21px
 			height: 100%
 
@@ -85,10 +85,10 @@
 					fill: $green
 
 		&.--Disabled
-			background: $gray1
-			color: $gray15
+			@include theme-background-gray1-else-gray-disabled
+			@include theme-color-gray15-else-gray-dark50-disabled
 			opacity: 1
 
 			span
-				border-color: $gray15
-				color: $gray15
+				@include theme-border-color
+				@include theme-color-gray15-else-gray-dark50-disabled

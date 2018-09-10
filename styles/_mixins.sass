@@ -51,7 +51,7 @@
 	@include if-theme-dark()
 		background: $darkmodeBackground
 
-@mixin theme-background-blur-backdrop($lightmodeColor: $white, $lightmodeAlpha: 0.65, $darkmodeColor: $gray-dark50, $darkmodeAlpha: 0.35)
+@mixin theme-background-blur-backdrop($lightmodeColor: $white, $lightmodeAlpha: 0.65, $darkmodeColor: $gray-dark50, $darkmodeAlpha: 0.15)
 	@include __theme-background(rgba($lightmodeColor, $lightmodeAlpha), rgba($darkmodeColor, $darkmodeAlpha))
 	@include if-theme-light()
 		backdrop-filter: blur(50px) brightness(1.1)
@@ -75,6 +75,9 @@
 		opacity: 0
 		pointer-events: none
 		backdrop-filter: blur(0)
+
+@mixin theme-background-gray1-else-gray-disabled
+	@include __theme-background($gray1, $gray)
 
 @mixin theme-background-gray2-else-gray2row
 	@include __theme-background($gray2, #292A2A) // 35% of $gray-dark50
@@ -136,8 +139,20 @@
 @mixin theme-border-left($lightmodeLighten: 0%, $darkmodeLighten: 0%)
 	@include __theme-border("border-left", $lightmodeLighten, $darkmodeLighten)
 
+@mixin theme-border-right($lightmodeLighten: 0%, $darkmodeLighten: 0%)
+	@include __theme-border("border-right", $lightmodeLighten, $darkmodeLighten)
+
 @mixin theme-border-top($lightmodeLighten: 0%, $darkmodeLighten: 0%)
 	@include __theme-border("border-top", $lightmodeLighten, $darkmodeLighten)
+
+@mixin __theme-border-color($property: "border-color")
+	@include if-theme-light()
+		#{$property}: $theme-border-light
+	@include if-theme-dark()
+		#{$property}: $theme-border-dark
+
+@mixin theme-border-color
+	@include __theme-border-color
 
 @mixin __theme-color($colorLight, $colorDark)
 	@include if-theme-light()
@@ -159,6 +174,9 @@
 
 @mixin theme-color-gray-else-white
 	@include __theme-color($gray, $white)
+
+@mixin theme-color-gray15-else-gray-dark50-disabled
+	@include __theme-color($gray15, $gray-dark50)
 
 @mixin theme-color-gray25-else-gray25
 	@include __theme-color($gray25, $gray25)
@@ -189,6 +207,9 @@
 		fill: $fillLight
 	@include if-theme-dark()
 		fill: $fillDark
+
+@mixin theme-fill-gray-else-white
+	@include __theme-fill($gray, $white)
 
 @mixin theme-fill-gray15-else-gray
 	@include __theme-fill($gray15, $gray)
@@ -239,3 +260,9 @@
 		@include stripes($white, $gray1)
 	@include if-theme-dark()
 		@include stripes(#2a2b2b, $gray-dark)
+
+@mixin theme-stripes-gray15-else-graydark
+	@include if-theme-light()
+		@include stripes($gray15, $gray5)
+	@include if-theme-dark()
+		@include stripes($gray-dark, $gray-dark50)
