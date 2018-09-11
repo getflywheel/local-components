@@ -10,8 +10,15 @@
 		"setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
 	},
 	"dependencies": {
+		"babel-plugin-react-css-modules": "^3.4.2",
 		"classnames": "^2.2.6",
-		"react-modal": "^3.5.1"
+		"css-loader": "^1.0.0",
+		"mini-css-extract-plugin": "^0.4.2",
+		"postcss-loader": "^3.0.0",
+		"postcss-sass": "^0.3.3",
+		"postcss-scss": "^2.0.0",
+		"react-modal": "^3.5.1",
+		"sass-loader": "^7.1.0"
 	},
 	"scripts": {
 		"start": "run-p 'sass:watch' 'js:watch' 'styleguide'",

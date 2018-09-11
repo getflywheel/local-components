@@ -13,7 +13,7 @@ export default class Wrapper extends Component {
     }
 
     render() {
-        return <ShadowDOM include={['style.css']}>
+        return <ShadowDOM include={['style.css', 'dist/boom.css']}>
             <div>
                 <div id="styleguide-container" style={{ position: 'relative' }}>
                     {this.props.children}

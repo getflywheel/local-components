@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import CompleteSVG from '../../svg/complete.svg';
 import PropTypes from 'prop-types';
+import styles from './zStepper.scss';
 
 export class Stepper extends Component {
 	render () {
 		return (
-			<div className={classnames('Stepper', `--Steps__${this.props.children.length}`)}>
+			<div styleName='hello' className={classnames('Stepper', `--Steps__${this.props.children.length}`)}>
 				{this.props.children}
 			</div>
 		);
@@ -35,3 +36,4 @@ export class Step extends Component {
 		);
 	}
 }
+``
