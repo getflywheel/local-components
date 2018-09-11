@@ -10,6 +10,13 @@
 	flex-grow: 1
 	@include theme-color-gray25-else-white
 
+	@at-root .VerticalNav + .EmptyArea
+		margin: 0
+
+		@include if-theme-dark()
+			background: $gray-dark-alt
+			@include theme-color-gray25-else-gray75
+
 	h3
 		line-height: 140%
 
