@@ -56,7 +56,6 @@
 		"react": "^16.4.2",
 		"react-dom": "^16.4.2",
 		"react-router": "^3.2.0",
-		"react-shadow": "^16.3.0",
 		"react-styleguidist": "7.3.0",
 		"shx": "^0.3.2",
 		"webpack": "^4.17.1"
