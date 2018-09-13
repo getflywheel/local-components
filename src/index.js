@@ -1,34 +1,36 @@
-export {default as AdvancedToggle} from './AdvancedToggle';
-export {default as Banner} from './Banner';
-export {default as BannerCarousel} from './BannerCarousel';
-export {default as BigLoader} from './BigLoader';
-export {default as BrowseInput} from './BrowseInput';
-export {default as Button} from './Button';
-export {default as Close} from './Close';
-export {default as DownloaderItem} from './DownloaderItem';
-export {default as DragBar} from './DragBar';
-export {default as EmptyArea} from './EmptyArea';
-export {default as FlyDropdown} from './FlyDropdown';
-export {default as FlyLargeConfirm} from './FlyLargeConfirm';
-export {default as FlyModal} from './FlyModal';
-export {default as FlySelect} from './FlySelect';
-export {default as FlyTooltip} from './FlyTooltip';
-export {
-    InnerPaneSidebar,
-    InnerPaneSidebarHeader,
-    InnerPaneSidebarAddNew,
-    InnerPaneSidebarContent,
-    InnerPaneSidebarContentItem
-} from './InnerPaneSidebar';
-export {default as InputPasswordToggle} from './InputPasswordToggle';
-export {default as InstallerStepStatus} from './InstallerStepStatus';
-export {default as LoadingIndicator} from './LoadingIndicator';
-export {default as ProgressBar} from './ProgressBar';
-export {default as RadioBlock} from './RadioBlock';
-export {default as SiteInfoInnerPane} from './SiteInfoInnerPane';
-export {Stepper, Step} from './Stepper';
-export {default as Switch} from './Switch';
-export {TableList, TableListRow} from './TableList';
-export {default as TableListRepeater} from './TableListRepeater';
-export {default as VerticalNav} from './VerticalNav';
-export {default as WindowsToolbar} from './WindowsToolbar';
+import { hot } from 'react-hot-loader';
+
+export const AdvancedToggle = hot(module)(require('./AdvancedToggle').default);
+export const Banner = hot(module)(require('./Banner').default);
+export const BannerCarousel = hot(module)(require('./BannerCarousel').default);
+export const BigLoader = hot(module)(require('./BigLoader').default);
+export const BrowseInput = hot(module)(require('./BrowseInput').default);
+export const Button = hot(module)(require('./Button').default);
+export const Close = hot(module)(require('./Close').default);
+export const DownloaderItem = hot(module)(require('./DownloaderItem').default);
+export const DragBar = hot(module)(require('./DragBar').default);
+export const EmptyArea = hot(module)(require('./EmptyArea').default);
+export const FlyDropdown = hot(module)(require('./FlyDropdown').default);
+export const FlyLargeConfirm = hot(module)(require('./FlyLargeConfirm').default);
+export const FlyModal = hot(module)(require('./FlyModal').default);
+export const FlySelect = hot(module)(require('./FlySelect').default);
+export const FlyTooltip = hot(module)(require('./FlyTooltip').default);
+export const InnerPaneSidebar = hot(module)(require('./InnerPaneSidebar').InnerPaneSidebar);
+export const InnerPaneSidebarHeader = hot(module)(require('./InnerPaneSidebar').InnerPaneSidebarHeader);
+export const InnerPaneSidebarAddNew = hot(module)(require('./InnerPaneSidebar').InnerPaneSidebarAddNew);
+export const InnerPaneSidebarContent = hot(module)(require('./InnerPaneSidebar').InnerPaneSidebarContent);
+export const InnerPaneSidebarContentItem = hot(module)(require('./InnerPaneSidebar').InnerPaneSidebarContentItem);
+export const InputPasswordToggle = hot(module)(require('./InputPasswordToggle').default);
+export const InstallerStepStatus = hot(module)(require('./InstallerStepStatus').default);
+export const LoadingIndicator = hot(module)(require('./LoadingIndicator').default);
+export const ProgressBar = hot(module)(require('./ProgressBar').default);
+export const RadioBlock = hot(module)(require('./RadioBlock').default);
+export const SiteInfoInnerPane = hot(module)(require('./SiteInfoInnerPane').default);
+export const Stepper = hot(module)(require('./Stepper').Stepper);
+export const Step = hot(module)(require('./Stepper').Step);
+export const Switch = hot(module)(require('./Switch').default);
+export const TableList = hot(module)(require('./TableList').TableList);
+export const TableListRow = hot(module)(require('./TableList').TableListRow);
+export const TableListRepeater = hot(module)(require('./TableListRepeater').default);
+export const VerticalNav = hot(module)(require('./VerticalNav').default);
+export const WindowsToolbar = hot(module)(require('./WindowsToolbar').default);

@@ -11,19 +11,6 @@
   ],
   "plugins": [
     "inline-react-svg",
-    [
-      "react-css-modules",
-      {
-        "generateScopedName": "[local]_[hash:base64:5]",
-        "filetypes": {
-          ".scss": {
-            "syntax": "postcss-scss"
-          },
-          ".sass": {
-            "syntax": "postcss-sass"
-          }
-        }
-      }
-    ]
+	  "react-hot-loader/babel"
   ]
 }
