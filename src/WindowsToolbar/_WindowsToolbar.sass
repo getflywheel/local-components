@@ -27,10 +27,15 @@ header.WindowsToolbar
 		transition: background-color .1s ease 0s
 
 		&:hover
-			background-color: $gray25
+			@include theme-background-gray25-else-gray
 
-		&:active
-			background-color: darken($gray25, 10%)
+		@include if-theme-light()
+			&:active
+				background-color: darken($gray25, 10%)
+
+		@include if-theme-dark()
+			&:active
+				background-color: darken($gray, 20%)
 
 		svg
 			vertical-align: baseline

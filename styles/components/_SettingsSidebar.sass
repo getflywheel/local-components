@@ -21,10 +21,12 @@
 		@include tracking(40)
 		display: flex
 		position: relative
+		border-radius: 4px
 
 		&.Active
 			@include theme-background-white-else-graydark
 			@include theme-color-graydark-else-white
-			border-radius: 4px
-		&:hover
+
+		&:hover:not(.Active)
 			@include theme-background-gray15-else-graydark50
+			@include theme-color-graydark50-else-white
