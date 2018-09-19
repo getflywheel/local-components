@@ -11,20 +11,18 @@
 	},
 	"dependencies": {
 		"classnames": "^2.2.6",
-		"react-modal": "^3.5.1"
+		"react-hot-loader": "^4.3.6",
+		"react-modal": "^3.5.1",
+		"react-router": "^3.2.0"
 	},
 	"scripts": {
-		"start": "run-p 'sass:watch' 'js:watch' 'styleguide'",
-		"test": "jest",
+		"start": "run-p 'watch' 'styleguide'",
 		"styleguide": "styleguidist server",
-		"js:build": "babel src --source-maps --ignore setupTests.js,test.js --out-dir dist",
-		"js:watch": "yarn js:build --watch",
-		"sass:build": "node-sass --source-map true ./styles/main.sass ./style.css",
-		"sass:watch": "run-p 'sass:build --watch' 'sass:livereload'",
-		"sass:livereload": "livereload style.css",
-		"postinstall": "npm run js:build && npm run sass:build",
+		"build": "webpack --config webpack.prod.js",
+		"watch": "webpack-dev-server --config webpack.dev.js",
+		"test": "jest",
 		"gh-pages:build": "styleguidist build",
-		"gh-pages:deploy": "yarn sass:build && shx cp style.* styleguide && shx cp -R svg styleguide && styleguidist build && gh-pages -d styleguide"
+		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide"
 	},
 	"peerDependencies": {
 		"react": ">= 16.4.0",
@@ -39,19 +37,23 @@
 		"babel-preset-env": "^1.7.0",
 		"babel-preset-react": "^6.24.1",
 		"babel-preset-stage-2": "^6.24.1",
+		"css-loader": "^1.0.0",
 		"enzyme": "^3.5.0",
 		"enzyme-adapter-react-16": "^1.3.1",
 		"gh-pages": "^1.2.0",
 		"jest": "^23.5.0",
-		"livereload": "^0.7.0",
 		"node-sass": "^4.9.3",
 		"npm-run-all": "^4.1.3",
 		"react": "^16.4.2",
 		"react-dom": "^16.4.2",
-		"react-router": "^3.2.0",
-		"react-shadow": "^16.3.0",
 		"react-styleguidist": "7.3.0",
-		"shx": "^0.3.2",
-		"webpack": "^4.17.1"
+		"sass-loader": "^7.1.0",
+		"style-loader": "^0.23.0",
+		"url-loader": "^1.1.1",
+		"webpack": "^4.17.1",
+		"webpack-cli": "^3.1.0",
+		"webpack-dev-server": "^3.1.8",
+		"webpack-merge": "^4.1.4",
+		"write-file-webpack-plugin": "^4.4.0"
 	}
 }
