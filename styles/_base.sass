@@ -1,3 +1,5 @@
+@import '_variables.sass'
+
 *
 	box-sizing: border-box
 	-webkit-font-smoothing: antialiased
@@ -22,6 +24,7 @@ div#styleguide-container
 	@include fullWidthHeight
 	@include theme-background-white-else-graydark
 	@include theme-color-graydark-else-white
+	border: 1px dashed $gray25
 
 p
 	line-height: 1.5
