@@ -16,7 +16,7 @@ export default class Wrapper extends Component {
     render() {
         return <ShadowDOM include={['style.css']}>
             <div>
-                <div id="styleguide-container" style={{ position: 'relative' }}>
+                <div id="styleguide-container" className="theme--light" style={{ position: 'relative' }}>
                     {/*wrap every component with router, even if not needed, so it doesn't have to be included in individual component examples*/}
                     <MemoryRouter>
                         {this.props.children}
