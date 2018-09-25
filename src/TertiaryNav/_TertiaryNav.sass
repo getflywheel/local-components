@@ -4,6 +4,8 @@
 .TertiaryNavContainer
 	display: flex
 	flex-direction: row
+	height: 100%
+	@include theme-background-white-else-graydark
 
 	// reset unordered lists
 	ul,
@@ -37,8 +39,7 @@
 			@include tracking(40)
 
 		a.active
-			color: $gray-dark
-
+			@include theme-color-graydark-else-white
 			@include if-theme-light()
 				background: $gray5
 			@include if-theme-dark()
