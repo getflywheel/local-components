@@ -1,7 +1,10 @@
-```js
-const { Drawer } = require('./Drawer');
+The Drawer component, which is hidden by default, contains content that can be programmatically shown or hidden as needed.
+This content slides up and down from below the container its used within.
 
-class Example extends React.Component{
+```js
+const Drawer = require('./Drawer').default;
+
+class DrawerExample extends React.Component{
     constructor (props, context) { 
        super(props, context);
     
@@ -23,6 +26,6 @@ class Example extends React.Component{
 }
 
 <div style={{height: '200px'}}>
-    <Example />
+    <DrawerExample />
 </div>
 ```
