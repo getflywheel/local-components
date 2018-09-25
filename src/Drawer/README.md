@@ -10,7 +10,7 @@ class Example extends React.Component{
        };
     };
 
-    render() {
+    render () {
         return (
             <div>
                 <Button onClick={() => this.setState({showDrawer: !this.state.showDrawer})} className="Continue --Pill --Green">{this.state.showDrawer ? 'Hide Drawer' : 'Show Drawer'}</Button>

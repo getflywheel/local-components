@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export class Drawer extends Component {
+export default class Drawer extends Component {
     static propTypes = {
         align: PropTypes.oneOf(['left','center', 'right']),
         children: PropTypes.node.isRequired,

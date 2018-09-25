@@ -20,6 +20,7 @@ Advanced pattern combining the TertiaryNav with the Drawer component.
 ```js
 const { TertiaryNav } = require('./TertiaryNav');
 const { TertiaryNavItem } = require('./TertiaryNav');
+const { Drawer } = require('../Drawer').default;
 const { Fragment } = require('react');
 const { PropTypes } = require('prop-types');
 
@@ -46,7 +47,7 @@ class Item1 extends React.Component{
         return (
             <input type="text" value={this.state.value} onChange={this.handleChange} />
         );
-    };
+    }
 }
 
 Item1.propTypes = {
@@ -62,13 +63,13 @@ class Example extends React.Component{
        };
        
        this.onChange = this.onChange.bind(this);
-    };
+    }
     
     onChange () {
         this.setState({
             showDrawer: true
         });
-    };
+    }
 
     render () {
         return (
@@ -83,7 +84,7 @@ class Example extends React.Component{
                 </Drawer>
             </Fragment>
         );
-    };
+    }
 }
 
 <div style={{height: '200px'}}>

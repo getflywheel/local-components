@@ -1,1 +1,1 @@
-export {default} from './TertiaryNav';
+export {TertiaryNav, TertiaryNavItem} from './TertiaryNav';
