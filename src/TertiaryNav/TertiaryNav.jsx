@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Switch, Route, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-export class TertiaryNav extends Component {
+class TertiaryNavBase extends Component {
     static propTypes = {
         children: (props, propName, componentName) => {
             const prop = props[propName];
@@ -32,7 +33,7 @@ export class TertiaryNav extends Component {
                             delete propsWithoutChildren.children;
 
                             return (
-                                <Route {...propsWithoutChildren} />
+                                <Route {...propsWithoutChildren} path={`${this.props.match.url}${propsWithoutChildren.path}`}/>
                             )
                         })}
                     </Switch>
@@ -40,10 +41,9 @@ export class TertiaryNav extends Component {
             </div>
         );
     }
-
 }
 
-export class TertiaryNavItem extends Component {
+class TertiaryNavItemBase extends Component {
     static propTypes = {
         path: PropTypes.string.isRequired,
         component: (props, propName, componentName) => {
@@ -61,7 +61,7 @@ export class TertiaryNavItem extends Component {
     render () {
         return (
             <li className={classnames({ 'TertiaryNavItem': true }, this.props.className)}>
-                <NavLink to={this.props.path} exact activeClassName="active">
+                <NavLink to={`${this.props.match.url}${this.props.path}`} exact activeClassName="active">
                     {this.props.children}
                 </NavLink>
             </li>
@@ -71,3 +71,5 @@ export class TertiaryNavItem extends Component {
 }
 
 
+export const TertiaryNav = withRouter(TertiaryNavBase);
+export const TertiaryNavItem = withRouter(TertiaryNavItemBase);

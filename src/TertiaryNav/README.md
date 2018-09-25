@@ -1,3 +1,6 @@
+The TertiaryNav component follows a two-column master/detail pattern with a nav menu in the left column and content associated the active menu item displayed in the right column. 
+React Router 4 is used for routing and the props used for TertiaryNavItem mirror that API.
+
 Simple example where the TertiaryNav Items in the left column change the content (via the __component__ prop) in the right column.
 
 ```js
@@ -8,9 +11,9 @@ const Item2 = () => (<h1>Item 2 Content</h1>);
 const Item3 = () => (<h1>Item 3 Content</h1>);
 
 <TertiaryNav>
-    <TertiaryNavItem exact path='/' component={Item1}>Item 1 Nav</TertiaryNavItem>
-    <TertiaryNavItem path='/item2' component={Item2}>Item 2 Nav</TertiaryNavItem>
-    <TertiaryNavItem path='/item3' component={Item3}>Item 3 Nav</TertiaryNavItem>
+    <TertiaryNavItem exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
+    <TertiaryNavItem path='/item2' component={Item2}>Menu Item 2</TertiaryNavItem>
+    <TertiaryNavItem path='/item3' component={Item3}>Menu Item 3</TertiaryNavItem>
 </TertiaryNav>
 ```
 
@@ -20,7 +23,7 @@ Advanced pattern combining the TertiaryNav with the Drawer component.
 const { TertiaryNav, TertiaryNavItem } = require('./TertiaryNav');
 const Drawer = require('../Drawer').default;
 const { Fragment } = require('react');
-const PropTypes = require('prop-types').default;
+const PropTypes = require('prop-types');
 
 const Item2 = () => (<h1>Item 2 Content</h1>);
 const Item3 = () => (<h1>Item 3 Content</h1>);
@@ -52,7 +55,7 @@ Item1.propTypes = {
   onChange: PropTypes.func,
 };
 
-class Example extends React.Component{
+class TertiaryNavExample extends React.Component{
     constructor (props, context) { 
        super(props, context);
     
@@ -61,31 +64,38 @@ class Example extends React.Component{
        };
        
        this.onChange = this.onChange.bind(this);
+       this.onSave = this.onSave.bind(this);
     }
     
     onChange () {
         this.setState({
-            showDrawer: true
+            showDrawer: true,
+        });
+    }
+    
+    onSave () {
+        this.setState({
+            showDrawer: false,
         });
     }
 
     render () {
         return (
-            <Fragment>
+            <div style={{position: 'relative', display: 'flex', height: '100%'}}>
                 <TertiaryNav>
-                    <TertiaryNavItem exact path='/' render={(props) => <Item1 {...props} onChange={this.onChange} />}>Item 1 Nav</TertiaryNavItem>
-                    <TertiaryNavItem path='/item2' component={Item2}>Item 2 Nav</TertiaryNavItem>
-                    <TertiaryNavItem path='/item3' component={Item3}>Item 3 Nav</TertiaryNavItem>
+                    <TertiaryNavItem exact path='/' render={(props) => <Item1 {...props} onChange={this.onChange} />}>Item 1</TertiaryNavItem>
+                    <TertiaryNavItem path='/item2' component={Item2}>Item 2</TertiaryNavItem>
+                    <TertiaryNavItem path='/item3' component={Item3}>Item 3</TertiaryNavItem>
                 </TertiaryNav>
                 <Drawer show={this.state.showDrawer}>
-                    <Button onClick={() => console.log('onClick')} className="--Pill --Green --Small">Save</Button>
+                    <Button onClick={this.onSave} className="--Pill --Green --Small">Save</Button>
                 </Drawer>
-            </Fragment>
+            </div>
         );
     }
 }
 
 <div style={{height: '200px'}}>
-    <Example />
+    <TertiaryNavExample />
 </div>
 ```
