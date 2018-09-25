@@ -1,8 +1,7 @@
 Simple example where the TertiaryNav Items in the left column change the content (via the __component__ prop) in the right column.
 
 ```js
-const { TertiaryNav } = require('./TertiaryNav');
-const { TertiaryNavItem } = require('./TertiaryNav');
+const { TertiaryNav, TertiaryNavItem } = require('./TertiaryNav');
 
 const Item1 = () => (<h1>Item 1 Content</h1>);
 const Item2 = () => (<h1>Item 2 Content</h1>);
@@ -18,11 +17,10 @@ const Item3 = () => (<h1>Item 3 Content</h1>);
 Advanced pattern combining the TertiaryNav with the Drawer component.
 
 ```js
-const { TertiaryNav } = require('./TertiaryNav');
-const { TertiaryNavItem } = require('./TertiaryNav');
-const { Drawer } = require('../Drawer').default;
+const { TertiaryNav, TertiaryNavItem } = require('./TertiaryNav');
+const Drawer = require('../Drawer').default;
 const { Fragment } = require('react');
-const { PropTypes } = require('prop-types');
+const PropTypes = require('prop-types').default;
 
 const Item2 = () => (<h1>Item 2 Content</h1>);
 const Item3 = () => (<h1>Item 3 Content</h1>);
