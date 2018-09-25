@@ -4,14 +4,30 @@ React Router 4 is used for routing and the props used for TertiaryNavItem mirror
 Simple example where the TertiaryNav Items in the left column change the content (via the __component__ prop) in the right column.
 
 ```js
+   const { TertiaryNav, TertiaryNavItem } = require('./TertiaryNav');
+   
+   const Item1 = () => (<h1>Item 1 Content</h1>);
+   const Item2 = () => (<h1>Item 2 Content</h1>);
+   const Item3 = () => (<h1>Item 3 Content</h1>);
+   
+   <TertiaryNav>
+       <TertiaryNavItem exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
+       <TertiaryNavItem path='/item2' component={Item2}>Menu Item 2</TertiaryNavItem>
+       <TertiaryNavItem path='/item3' component={Item3}>Menu Item 3</TertiaryNavItem>
+   </TertiaryNav>
+```
+
+An example showing error state.
+
+```js
 const { TertiaryNav, TertiaryNavItem } = require('./TertiaryNav');
 
-const Item1 = () => (<h1>Item 1 Content</h1>);
+const Item1 = () => (<div><h1>Item 1 Content</h1><div className='--error'>bad value</div></div>);
 const Item2 = () => (<h1>Item 2 Content</h1>);
 const Item3 = () => (<h1>Item 3 Content</h1>);
 
 <TertiaryNav>
-    <TertiaryNavItem exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
+    <TertiaryNavItem className='--error' exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
     <TertiaryNavItem path='/item2' component={Item2}>Menu Item 2</TertiaryNavItem>
     <TertiaryNavItem path='/item3' component={Item3}>Menu Item 3</TertiaryNavItem>
 </TertiaryNav>
