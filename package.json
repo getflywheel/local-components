@@ -11,9 +11,9 @@
 	},
 	"dependencies": {
 		"classnames": "^2.2.6",
+		"prop-types": "^15.6.2",
 		"react-hot-loader": "^4.3.6",
-		"react-modal": "^3.5.1",
-		"react-router": "^3.2.0"
+		"react-modal": "^3.5.1"
 	},
 	"scripts": {
 		"start": "run-p 'watch' 'styleguide'",
@@ -27,7 +27,7 @@
 	"peerDependencies": {
 		"react": ">= 16.4.0",
 		"react-dom": ">= 16.4.0",
-		"react-router": ">= 3.2.0 < 4"
+		"react-router-dom": "^4.3.1"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
