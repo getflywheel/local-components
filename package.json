@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"classnames": "^2.2.6",
+		"prop-types": "^15.6.2",
 		"react-modal": "^3.5.1"
 	},
 	"scripts": {
