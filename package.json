@@ -12,7 +12,8 @@
 	"dependencies": {
 		"classnames": "^2.2.6",
 		"prop-types": "^15.6.2",
-		"react-modal": "^3.5.1"
+		"react-modal": "^3.5.1",
+		"react-router-dom": "^4.3.1"
 	},
 	"scripts": {
 		"start": "run-p 'sass:watch' 'js:watch' 'styleguide'",
@@ -29,8 +30,7 @@
 	},
 	"peerDependencies": {
 		"react": ">= 16.4.0",
-		"react-dom": ">= 16.4.0",
-		"react-router-dom": "^4.3.1"
+		"react-dom": ">= 16.4.0"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
@@ -49,7 +49,6 @@
 		"npm-run-all": "^4.1.3",
 		"react": "^16.4.2",
 		"react-dom": "^16.4.2",
-		"react-router-dom": "^4.3.1",
 		"react-shadow": "^16.3.0",
 		"react-styleguidist": "7.3.0",
 		"shx": "^0.3.2",
