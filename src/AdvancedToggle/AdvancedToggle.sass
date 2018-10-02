@@ -3,11 +3,11 @@
 @import '../../styles/_variables.sass'
 
 .AdvancedToggle
-	// states (if no direct styles, this still needs to be here to set the class in React)
-	&.__isOpen
-
 	width: 100%
 	margin-top: 20px
+
+	// states (if no direct styles, this still needs to be here to set the class in React)
+	&.__isOpen
 
 	// the reveal/hide content that's being toggled
 	.Content
@@ -26,20 +26,20 @@
 	.Toggle
 		display: flex
 		align-items: center
-		line-height: 34px
 		height: 34px
+		line-height: 34px
 		font-size: 14px
-		text-transform: uppercase
 		font-weight: 700
+		text-transform: uppercase
 		@include tracking(20)
 		color: $gray25
 
 		&:before,
 		&:after
 			content: ''
-			@include theme-border-top
-			margin: 0 20px 0 0
 			flex: 1 0 20px
+			margin: 0 20px 0 0
+			@include theme-border-top
 
 		&:after
 			margin: 0 0 0 20px
@@ -51,9 +51,9 @@
 			display: inline
 			width: 14px
 			height: 6px
-			vertical-align: middle
 			margin-left: 5px
 			margin-bottom: 4px
+			vertical-align: middle
 			@include ifHostStateIsDefault()
 				transform: rotate(0deg)
 			@include ifHostStateIs('.__isOpen')
