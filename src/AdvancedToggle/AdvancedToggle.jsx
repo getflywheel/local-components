@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import CaretSVG from '../../svg/caret.svg';
 import PropTypes from 'prop-types';
+import styles from './AdvancedToggle.sass';
 
 export default class AdvancedToggle extends Component {
 
@@ -31,12 +32,21 @@ export default class AdvancedToggle extends Component {
 
 	render () {
 		return (
-			<div className={classnames({ 'Advanced': true, '--Open': this.state.advancedOpen })}>
-				<span className="SplitHeading Toggle" onClick={this.toggleAdvanced}>
-					<span>{this.props.headingText} <CaretSVG /></span>
+			<div className={classnames(
+				styles.AdvancedToggle,
+				{[styles.__open]: this.state.advancedOpen }
+			)}>
+				<span
+					className={styles.Toggle}
+					onClick={this.toggleAdvanced}
+				>
+					<span>
+						{this.props.headingText}
+						<CaretSVG />
+					</span>
 				</span>
 
-				<div className="Content">
+				<div className={styles.Content}>
 					{this.props.children}
 				</div>
 			</div>

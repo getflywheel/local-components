@@ -1,0 +1,63 @@
+@import '../../styles/_mixins.sass'
+@import '../../styles/_base.sass'
+@import '../../styles/_variables.sass'
+
+.AdvancedToggle
+	// states (if no direct styles, this still needs to be here for setting the style in React)
+	&.__open
+
+	width: 100%
+	margin-top: 20px
+
+	// the reveal/hide content that's being toggled
+	.Content
+		@include ifHostStateIsDefault()
+			max-height: 0
+			opacity: 0
+		@include ifHostStateIs('.__open')
+			max-height: 235px
+			opacity: 1
+		transition: max-height .2s ease 0ms, opacity .2s ease 0ms
+
+		> :first-child
+			margin-top: 20px
+
+	// the reveal/hide toggle button
+	.Toggle
+		display: flex
+		align-items: center
+		line-height: 34px
+		height: 34px
+		font-size: 14px
+		text-transform: uppercase
+		font-weight: 700
+		@include tracking(20)
+		color: $gray25
+
+		&:before,
+		&:after
+			content: ''
+			@include theme-border-top
+			margin: 0 20px 0 0
+			flex: 1 0 20px
+
+		&:after
+			margin: 0 0 0 20px
+
+		&, *
+		 cursor: pointer
+
+		svg
+			display: inline
+			width: 14px
+			height: 6px
+			vertical-align: middle
+			margin-left: 5px
+			margin-bottom: 4px
+			@include ifHostStateIsDefault()
+				transform: rotate(0deg)
+			@include ifHostStateIs('.__open')
+				transform: rotate(180deg)
+
+			path
+				fill: $gray25
