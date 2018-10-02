@@ -3,8 +3,8 @@
 @import '../../styles/_variables.sass'
 
 .AdvancedToggle
-	// states (if no direct styles, this still needs to be here for setting the style in React)
-	&.__open
+	// states (if no direct styles, this still needs to be here to set the class in React)
+	&.__isOpen
 
 	width: 100%
 	margin-top: 20px
@@ -14,7 +14,7 @@
 		@include ifHostStateIsDefault()
 			max-height: 0
 			opacity: 0
-		@include ifHostStateIs('.__open')
+		@include ifHostStateIs('.__isOpen')
 			max-height: 235px
 			opacity: 1
 		transition: max-height .2s ease 0ms, opacity .2s ease 0ms
@@ -56,7 +56,7 @@
 			margin-bottom: 4px
 			@include ifHostStateIsDefault()
 				transform: rotate(0deg)
-			@include ifHostStateIs('.__open')
+			@include ifHostStateIs('.__isOpen')
 				transform: rotate(180deg)
 
 			path
