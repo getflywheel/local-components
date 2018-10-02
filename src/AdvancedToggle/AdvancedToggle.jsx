@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import CaretSVG from '../../svg/caret.svg';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import styles from './AdvancedToggle.sass';
 
 export default class AdvancedToggle extends Component {
