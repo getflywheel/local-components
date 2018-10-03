@@ -1,17 +1,16 @@
 @import '../../styles/_mixins.sass'
-@import '../../styles/_base.sass'
 @import '../../styles/_variables.sass'
 
 .AdvancedToggle
 	width: 100%
 	margin-top: 20px
 
-	// states (if no direct styles, this still needs to be here to set the class in React)
+	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
 	&.__isOpen
 
 	// the reveal/hide content that's being toggled
 	.Content
-		@include ifHostStateIsDefault()
+		@include setAsDefaults()
 			max-height: 0
 			opacity: 0
 		@include ifHostStateIs('.__isOpen')
@@ -54,7 +53,7 @@
 			margin-left: 5px
 			margin-bottom: 4px
 			vertical-align: middle
-			@include ifHostStateIsDefault()
+			@include setAsDefaults()
 				transform: rotate(0deg)
 			@include ifHostStateIs('.__isOpen')
 				transform: rotate(180deg)
