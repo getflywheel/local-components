@@ -1,0 +1,150 @@
+@import '../../styles/_mixins.sass'
+@import '../../styles/_variables.sass'
+
+.Banner
+	padding: 10px 10px 10px 30px
+	color: $white
+	position: relative
+	display: flex
+	align-items: center
+	min-height: 48px
+	@include stripes(#f58f30, #f48720)
+	@include selectable
+
+	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
+	&.__Neutral
+		@include theme-color-graydark-else-white
+		@include theme-border
+		@include theme-stripes-white-else-graydark
+
+	&.__Error
+		@include stripes(#f05b6f, #ef4e65)
+
+	&.__Success
+		@include stripes($green, mix($black, $green, 5%))
+
+	.Content
+		line-height: 18px
+
+	// todo - crum (this is a problem)
+	@at-root .SettingsPane_Content &
+		margin: -34px 0 20px
+
+	> svg
+		width: 18px
+		height: 18px
+		margin: -2px 10px 0 0
+		vertical-align: middle
+
+		path, circle, rect
+			fill: $white
+
+		@include ifHostHasModifier('.__Neutral')
+			path
+				fill: $yellow
+
+	strong
+		margin-right: 5px
+		font-weight: 700
+		@include selectable
+
+	.CTA_Container
+		margin-left: auto
+
+	.CTA
+		right: 10px
+		top: 10px
+		height: 28px
+		line-height: 28px
+		margin-left: auto
+		padding: 0 20px
+		font-size: 12px
+		background: $white
+		@include pillButton
+		transition: background .1s ease 0s, color .1s ease 0s
+		@include setAsDefaults()
+			color: $orange
+
+			&:hover
+				color: $white
+				background: $orange-dark50
+		@include ifHostHasModifier('.__Neutral')
+			color: $white
+			background: $green
+
+			&:hover
+				background: $green-dark50
+		@include ifHostHasModifier('.__Error')
+			color: $red
+
+			&:hover
+				color: $white
+				background: $red-dark50
+		@include ifHostHasModifier('.__Success')
+			color: $green
+
+			&:hover
+				color: $white
+				background: $green-dark50
+
+	.Dismiss
+		display: inline-block
+		width: 18px
+		height: 18px
+		line-height: 8px
+		margin: 0 10px 0 15px
+		padding: 5px
+
+		&, > *
+			cursor: pointer
+
+		svg
+			width: 8px
+			height: 8px
+			margin: 0
+
+			path
+				@include setAsDefaults()
+					fill: $white
+				@include ifHostHasModifier('.__Neutral')
+					@include theme-fill-gray-else-white
+
+		&:hover
+			svg path
+				@include theme-fill-graydark-else-gray25
+
+	.Carousel
+		float: left
+		display: flex
+		align-items: center
+		height: 28px
+		margin: 0 20px 0 -10px
+		padding: 0 12px 0 0
+		@include setAsDefaults()
+			border-right: 1px solid $white
+		@include ifHostHasModifier('.__Neutral')
+			@include theme-border-right
+
+	.Carousel_Item
+		display: block
+		width: 8px
+		height: 8px
+		margin: 0 8px 0 0
+		border: 2px solid $white
+		border-radius: 100%
+		cursor: pointer
+		@include ifHostHasModifier('.__Neutral')
+			border-color: $gray75
+
+		&.__Active
+			width: 12px
+			height: 12px
+			background-color: $white
+			@include ifHostHasModifier('.__Neutral')
+				@include if-theme-light()
+					background-color: $gray-dark
+					border-color: $gray-dark
+					@include if-theme-dark()
+						background-color: $white
+						border-color: $white
+

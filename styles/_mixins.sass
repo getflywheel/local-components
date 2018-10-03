@@ -67,8 +67,18 @@
 	@at-root #{selector_parse($finalSelectors)}
 		@content
 
-@mixin ifHostStateIsDefault()
+// does nothing more set the properties exactly as is but is helpful for consistent and easily readable definitions (especially indentation-based)
+@mixin setAsDefaults()
 	@content
+
+// styles that only apply when the host has the given modifier selector
+// note: this is the same as the 'ifHostStateIs' mixin but helps readability
+@mixin ifHostHasModifier($hostStateSelector)
+	@include appendToHostSelector($hostStateSelector)
+		@content
+
+// styles that only apply when the host has the given state selector
+// note: this is the same as the 'ifHostHasModifier' mixin but helps readability
 @mixin ifHostStateIs($hostStateSelector)
 	@include appendToHostSelector($hostStateSelector)
 		@content

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import WarningSVG from '../../svg/warning.svg';
 import CloseSVG from '../../svg/close--small.svg';
+import classnames from 'classnames';
+import styles from './Banner.sass';
 
 export default class Banner extends Component {
 	static propTypes = {
@@ -49,7 +50,12 @@ export default class Banner extends Component {
 			return null;
 		}
 
-		return <button onClick={this.props.buttonOnClick} className="CTA">{this.props.buttonText}</button>;
+		return <button
+			onClick={this.props.buttonOnClick}
+			className={styles.CTA}
+		>
+			{this.props.buttonText}
+		</button>;
 	}
 
 	renderCarousel () {
@@ -60,11 +66,18 @@ export default class Banner extends Component {
 		const items = [];
 
 		for (let index = 0; index < this.props.numBanners; index++) {
-			items.push(<span key={index} className={classnames('CarouselItem', { '--Active': index === this.props.currentIndex })}
-			                 onClick={() => this.props.onIndexChange(index)}/>);
+			items.push(
+				<span
+					key={index}
+					className={classnames(
+						styles.Carousel_Item,
+						{[styles.__Active]: index === this.props.currentIndex }
+					)}
+					onClick={() => this.props.onIndexChange(index)}/>
+			);
 		}
 
-		return <div className="Carousel">
+		return <div className={styles.Carousel}>
 			{items}
 		</div>;
 
@@ -75,24 +88,26 @@ export default class Banner extends Component {
 			return null;
 		}
 
-		return <span className="Dismiss" onClick={this.props.onDismiss}>
+		return <span className={styles.Dismiss} onClick={this.props.onDismiss}>
 			<CloseSVG />
 		</span>;
 	}
 
 	render () {
-		return <div className={classnames('Banner', {
-			'--Neutral': this.props.variant === 'neutral',
-			'--Error': this.props.variant === 'error',
-			'--Warning': this.props.variant === 'warning',
-			'--Success': this.props.variant === 'success',
-		})}>
+		return <div className={classnames(
+			styles.Banner, {
+				[styles.__Neutral]: this.props.variant === 'neutral',
+                [styles.__Error]: this.props.variant === 'error',
+				// '--Warning': this.props.variant === 'warning',
+                [styles.__Success]: this.props.variant === 'success',
+			}
+		)}>
 			{this.renderCarousel()}
 			{this.renderIcon()}
 
-			<span className="BannerContents">{this.props.children}</span>
+			<span className={styles.Content}>{this.props.children}</span>
 
-			<div className="Banner__Right">
+			<div className={styles.CTA_Container}>
 				{this.renderButton()}
 				{this.renderDismiss()}
 			</div>
