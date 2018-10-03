@@ -8,7 +8,7 @@ module.exports = {
         return `import { ${path.basename(componentPath, '.jsx')} } from 'local-components';`
     },
     require: [
-        path.join(__dirname, './main.sass')
+        path.join(__dirname, './src/main.sass'),
     ],
     skipComponentsWithoutExample: true,
 	styleguideComponents: {
