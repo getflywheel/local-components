@@ -4,12 +4,26 @@ import PropTypes from 'prop-types';
 import styles from  './Switch.sass';
 
 export default class Switch extends Component {
+	static propTypes = {
+		label: PropTypes.string,
+		tiny: PropTypes.bool,
+		flat: PropTypes.bool,
+		disabled: PropTypes.bool,
+		name: PropTypes.string,
+		noValue: PropTypes.bool,
+		checked: PropTypes.bool,
+		onChange: PropTypes.func,
+	};
+
+	static defaultProps = {
+		checked: false,
+	};
+
 	constructor (props) {
 		super(props);
 
 		this.state = {
-			checked: false,
-			onChange: null,
+			checked: this.props.checked,
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -55,12 +69,3 @@ export default class Switch extends Component {
 		);
 	}
 }
-
-Switch.propTypes = {
-	label: PropTypes.string,
-	tiny: PropTypes.bool,
-	flat: PropTypes.bool,
-	disabled: PropTypes.bool,
-	name: PropTypes.string,
-	noValue: PropTypes.bool,
-};
