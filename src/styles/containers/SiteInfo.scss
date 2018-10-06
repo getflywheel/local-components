@@ -1,0 +1,337 @@
+@import '../_forms';
+@import '../_misc';
+@import '../_mixins';
+@import '../_selectors';
+@import '../_theme';
+@import '../_variables';
+
+:global {
+	.SiteInfo {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.DownloaderOverlay {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		@include theme-background-blur-backdrop;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		&.--AllowSiteInfoBottom {
+			bottom: 55px;
+
+			@at-root .AddingSite & {
+				bottom: 0;
+			}
+		}
+
+		.Downloader {
+			width: 50%;
+		}
+	}
+
+	.SiteInfo_Top {
+		padding: 30px;
+		position: relative;
+
+		a {
+			h1 {
+				margin: 0;
+				max-width: calc(100% - 200px);
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				display: inline-block;
+				@include theme-color-black-else-white;
+				transition: transform .1s ease 0s, color .2s ease 0s;
+			}
+
+			&:hover h1 {
+				color: $green;
+			}
+
+			&:active h1 {
+				transform: scale(.99);
+			}
+		}
+
+		p {
+			@include theme-color-gray75-else-gray25;
+			margin: 5px 0 0;
+			line-height: 1.25;
+
+			span {
+				margin: 0 0 0 5px;
+			}
+		}
+
+		.RevealInFinder {
+			padding: 3px;
+			width: 20px;
+			height: 20px;
+			margin: 0 2px;
+			cursor: pointer;
+
+			svg {
+				cursor: pointer;
+				vertical-align: middle;
+				width: 14px;
+				height: 14px;
+
+				circle,
+				path {
+					fill: none;
+					stroke: $gray25;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+					stroke-miterlimit: 10;
+					stroke-width: 2px;
+				}
+			}
+
+			svg,
+			svg * {
+				cursor: pointer;
+			}
+
+			&:hover {
+				svg {
+					circle,
+					path {
+						stroke: $gray75;
+					}
+				}
+			}
+		}
+	}
+
+	.SiteInfo_TopRight {
+		position: absolute;
+		top: 18px;
+		right: 10px;
+		height: 26px;
+		line-height: 26px;
+
+		.Switch {
+			display: inline-block;
+		}
+
+		.Site_StartStop {
+			display: inline-block;
+			height: 20px;
+			line-height: 20px;
+			margin-left: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 11px;
+			margin-top: 1px;
+			min-width: 100px;
+			text-align: right;
+			padding-left: 11px;
+
+			span {
+				cursor: pointer;
+				transition: color .1s ease 0ms;
+
+				svg rect,
+				svg path {
+					transition: fill .1s ease 0ms;
+				}
+			}
+
+			&.--BorderLeft {
+				@include theme-border-left;
+				padding-left: 10px;
+			}
+
+			svg {
+				width: 12px;
+				height: 12px;
+				vertical-align: text-top;
+				margin: 0 10px;
+			}
+
+			.Start {
+				color: $green;
+
+				svg path {
+					fill: $green;
+				}
+
+				&:hover {
+					color: $green-dark50;
+
+					svg path {
+						fill: $green-dark50;
+					}
+				}
+			}
+
+			.Stop {
+				color: $red;
+
+				svg rect {
+					fill: $red;
+				}
+
+				&:hover {
+					color: $red-dark50;
+
+					svg rect {
+						fill: $red-dark50;
+					}
+				}
+			}
+
+			.Processing {
+				color: $gray25;
+				pointer-events: none;
+
+				svg {
+					animation: rotateSpinner 1s linear infinite;
+
+					path {
+						fill: $gray25;
+					}
+				}
+			}
+		}
+	}
+
+	.SiteInfo_Nav_Right {
+		margin-left: auto;
+
+		button {
+			margin-left: 10px;
+		}
+	}
+
+	.SiteInfo_Bottom {
+		margin-top: auto;
+		width: 100%;
+		height: 55px;
+		line-height: 55px;
+		@include theme-border-top;
+		padding: 0 0 0 20px;
+		font-weight: 500;
+		display: flex;
+
+		.LiveLink a {
+			user-select: text;
+		}
+
+		strong {
+			font-weight: 500;
+		}
+
+		.Connect {
+			display: flex;
+			margin: 0 0 0 auto;
+
+			.ConnectedTo {
+				margin-right: 20px;
+
+				strong {
+					color: $green;
+					font-weight: 500;
+				}
+			}
+
+			.ConnectButtons {
+				@include theme-border-left;
+				padding: 0 20px;
+
+				&--NotConnected {
+					padding: 0;
+				}
+			}
+
+			.ConnectButton {
+				@include cursorPointer;
+
+				&:hover svg {
+					fill: $green-dark50;
+				}
+
+				svg {
+					vertical-align: middle;
+					width: 24px;
+					fill: $green;
+					transition: .1s fill 0ms ease;
+				}
+
+				&.ConnectButton--Disabled {
+					pointer-events: none;
+
+					svg {
+						fill: $gray25;
+					}
+				}
+
+				&.ConnectButton--Spinner {
+					pointer-events: none;
+
+					svg {
+						width: 18px;
+						height: 22px;
+						animation: rotateSpinner 1s linear infinite;
+
+						path {
+							fill: $gray25;
+						}
+					}
+				}
+
+				&--NotConnected {
+					text-transform: uppercase;
+					color: $green;
+					font-weight: 700;
+					@include tracking(40);
+					padding: 0 20px;
+
+					svg {
+						margin-right: 10px;
+						fill: $green;
+					}
+				}
+			}
+
+			.FlyTooltip--Container:last-of-type,
+			.ConnectButton--Incompatible .ConnectButton--Push {
+				margin-left: 20px;
+			}
+		}
+	}
+
+	.PHPInfo {
+		margin: 0 2px 0 7px;
+
+		svg {
+			width: 16px;
+			height: 16px;
+			vertical-align: middle;
+
+			path {
+				fill: $gray25;
+			}
+		}
+
+		svg,
+		svg * {
+			cursor: pointer;
+		}
+
+		&:hover svg path {
+			fill: $gray75;
+		}
+	}
+}

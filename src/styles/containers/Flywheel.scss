@@ -1,0 +1,271 @@
+@import '../_forms';
+@import '../_misc';
+@import '../_mixins';
+@import '../_selectors';
+@import '../_theme';
+@import '../_variables';
+
+:global {
+	.Flywheel {
+		@include theme-background-gray5-else-graydarkalt;
+		flex-grow: 1;
+		padding: 30px;
+		@extend .__FlexColumn;
+		overflow-y: auto;
+
+		h5 {
+			@include tracking(20);
+			text-transform: uppercase;
+			@include theme-color-gray-else-gray15;
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.EmptyArea {
+			margin: 0;
+			padding: 80px;
+
+			h1 {
+				@include theme-color-graydark-else-white;
+			}
+		}
+	}
+
+	.SitesOnFlywheel,
+	.AccountInfo {
+		opacity: 0;
+
+		&.--FadeIn {
+			opacity: 1;
+		}
+	}
+
+	.FlywheelConnect {
+		@extend .__FlexColumn;
+		justify-content: center;
+		flex-grow: 1;
+		height: 100%;
+
+		.Inner {
+			width: 644px;
+			align-self: center;
+			text-align: center;
+		}
+
+		h1 {
+			@include theme-color-black-else-white;
+			margin-top: 25px;
+			margin-bottom: 35px;
+		}
+
+		.Middle {
+			display: flex;
+
+			h3 {
+				margin: 0 0 10px;
+				line-height: 28px;
+			}
+
+			p {
+				font-weight: 300;
+				@include theme-color-gray-else-gray25;
+				line-height: 20px;
+			}
+
+			.Text {
+				margin: 10px 0 0 40px;
+				text-align: left;
+			}
+		}
+
+		.Bottom {
+			margin-top: 35px;
+			padding-top: 30px;
+			width: 100%;
+			@include theme-border-top;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+
+			h4 {
+				margin: 0 0 20px;
+			}
+
+			.button {
+				display: inline-block;
+
+				&:first-child {
+					margin-bottom: 17px;
+				}
+			}
+		}
+	}
+
+	.AccountInfo {
+		display: flex;
+		align-items: center;
+		@include theme-color-gray75-else-gray25;
+
+		.Avatar {
+			width: 32px;
+			height: 32px;
+			border-radius: 100%;
+			overflow: hidden;
+			margin: 0 10px 0 0;
+
+			.AvatarFallback {
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				color: $white;
+				font-weight: 700;
+				justify-content: center;
+				text-transform: uppercase;
+				display: flex;
+				font-size: 16px;
+				align-items: center;
+				background-color: $blue;
+
+				&[color="green"] {
+					background-color: $green;
+				}
+
+				&[color="yellow"] {
+					background-color: $yellow;
+				}
+
+				&[color="orange"] {
+					background-color: $orange;
+				}
+
+				&[color="red"] {
+					background-color: $red;
+				}
+
+				&[color="pink"] {
+					background-color: $pink;
+				}
+
+				&[color="purple"] {
+					background-color: $purple;
+				}
+			}
+		}
+
+		img {
+			width: 32px;
+			height: 32px;
+		}
+	}
+
+	header.FlywheelHeader {
+		margin: 0 0 30px;
+		display: flex;
+
+		h3 {
+			margin: 0;
+		}
+
+		div {
+			margin: 0 0 0 auto;
+		}
+	}
+
+	.FlySite {
+		display: flex;
+		align-items: center;
+		padding: 10px;
+		@include theme-background-white-else-graydark;
+		border-radius: 4px;
+		margin: 0 0 10px;
+
+		&.--Incompatible {
+			border: 2px dashed $gray15;
+			border-radius: 4px;
+			background: transparent;
+		}
+
+		h3 {
+			@include theme-color-black-else-white;
+			cursor: pointer;
+			transition: color 200ms ease 0ms;
+			margin-right: auto;
+
+			&:hover {
+				color: $green;
+			}
+		}
+
+		img {
+			width: 146px;
+			height: 88px;
+			margin: 0 26px 0 0;
+			cursor: pointer;
+			@include if-theme-dark() {
+				filter: brightness(0.34);
+			}
+		}
+
+		button {
+			margin: 0 20px 0 0;
+		}
+
+		.SiteIncompatibility {
+			margin: 0 20px 0 auto;
+			color: $gray;
+			font-weight: 300;
+
+			svg {
+				width: 14px;
+				height: 14px;
+				vertical-align: middle;
+				margin-right: 10px;
+
+				path {
+					fill: $yellow;
+				}
+			}
+		}
+
+		.SiteConnections {
+			margin: 0 20px 0 auto;
+
+			strong {
+				font-weight: 500;
+			}
+		}
+
+		.SiteStatus {
+			margin: 0 20px 0 auto;
+			line-height: 22px;
+			color: $gray25;
+			font-weight: 300;
+
+			.Spinner {
+				vertical-align: middle;
+				width: 18px;
+				height: 22px;
+				animation: rotateSpinner 1s linear infinite;
+				margin: 0 0 0 10px;
+
+				path {
+					fill: $gray25;
+				}
+			}
+		}
+	}
+
+	.PullSiteExisting {
+		> div.Inner {
+			padding-bottom: 100px;
+		}
+
+		.FormRow {
+			text-align: center;
+
+			p {
+				margin-top: 20px;
+			}
+		}
+	}
+}
