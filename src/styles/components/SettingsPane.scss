@@ -1,0 +1,90 @@
+@import '../_forms';
+@import '../_misc';
+@import '../_mixins';
+@import '../_selectors';
+@import '../_theme';
+@import '../_variables';
+
+:global {
+	.SettingsPane {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+
+		.TableListRow > strong {
+			// min/max width used since setting width breaks the entire table from expanding to full width
+			// unless you use display: table on the parent. Doing that breaks flex.
+			min-width: 210px;
+			max-width: 210px;
+
+			&.product-name {
+				@include theme-color-graydark50-else-gray25;
+			}
+		}
+
+		.TableList.--FluidLabels {
+			strong {
+				min-width: 0;
+				max-width: none;
+			}
+		}
+
+		h4 {
+			padding: 12px 30px;
+			font-size: 18px;
+			@include theme-color-graydark50-else-white;
+			@include theme-background-none-else-graydark50;
+			@include theme-border-top;
+		}
+	}
+
+	.SettingsPane_Content {
+		padding: 34px 0 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		flex-grow: 1;
+
+		.Notice:first-of-type {
+			margin-top: -10px;
+		}
+
+		.no-blueprints {
+			@include theme-color-graydark50-else-gray25;
+		}
+	}
+
+	.SettingsPane_Footer {
+		margin-top: auto;
+		height: 108px;
+		display: flex;
+		padding: 30px;
+		@include theme-border-top;
+
+		button.--Pill {
+			margin-left: auto;
+		}
+	}
+
+	.SettingsPane_Header {
+		@include theme-border-bottom;
+		padding: 0 30px;
+		position: relative;
+		height: 90px;
+		flex-shrink: 0;
+
+		h3 {
+			line-height: 90px;
+			margin: 0;
+		}
+
+		.Close {
+			right: 30px;
+			top: 38px;
+		}
+	}
+
+	.Settings_RevealAddonsFolder {
+		margin-top: 30px;
+		text-align: center;
+	}
+}

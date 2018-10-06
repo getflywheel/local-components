@@ -1,0 +1,29 @@
+@import '../_forms';
+@import '../_misc';
+@import '../_mixins';
+@import '../_selectors';
+@import '../_theme';
+@import '../_variables';
+
+:global {
+	div.Window {
+		display: flex;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		@at-root div#root > div > div.Window.--OsWindows {
+			top: 32px;
+		}
+
+		&.--Draggable {
+			-webkit-app-region: drag;
+		}
+
+		&.--BackdropBlur {
+			@include theme-background-blur-backdrop;
+		}
+	}
+}
