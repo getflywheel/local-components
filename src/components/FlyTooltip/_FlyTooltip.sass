@@ -1,4 +1,4 @@
-.FlyTooltip--Container
+.FlyTooltip_Container
 	display: inline-block
 	position: relative
 
@@ -6,7 +6,7 @@
 		.FlyTooltip
 			transform: scale(1) translateY(0) translateZ(0)
 
-	&--HoverIntent:hover
+	&.FlyTooltip_Container__HoverIntent:hover
 		.FlyTooltip
 			transition-delay: .65s
 
@@ -83,7 +83,7 @@
 	&--top
 		transform: scale(0) translateY(-100%) translateZ(0)
 
-		@at-root .FlyTooltip--Container:hover &
+		@at-root .FlyTooltip_Container:hover &
 			transform: scale(1) translateY(-100%) translateZ(0)
 
 	&--bottom
@@ -92,7 +92,7 @@
 		bottom: -12px
 		transform: scale(0) translateY(100%) translateZ(0)
 
-		@at-root .FlyTooltip--Container:hover &
+		@at-root .FlyTooltip_Container:hover &
 			transform: scale(1) translateY(100%) translateZ(0)
 
 		&::before
@@ -126,7 +126,7 @@
 			left: 0
 			border-radius: 4px
 
-		@at-root .FlyTooltip--Container:hover &
+		@at-root .FlyTooltip_Container:hover &
 			transform: scale(1) translateX(100%) translateY(0) translateZ(0)
 
 	.FlyTooltip--Exclamation

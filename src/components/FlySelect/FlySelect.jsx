@@ -248,15 +248,19 @@ export default class FlySelect extends Component {
 		const options = this.state.options;
 
 		return (
-			<div className={classnames('FlySelect', {
-				'--Open': this.state.open,
-				'--Focus': this.state.focus,
-				'--HasFooter': this.props.footerText,
-			})}
-				 style={this.props.style}
-				 data-current-value={this.state.value}
-				 tabIndex="0" onClick={this.onClick} onBlur={this.onBlur} ref={this.containerRef}
-				 disabled={this.props.disabled || !Object.keys(options).length}>
+			<div
+				className={classnames(
+					'FlySelect', {
+                        'FlySelect__Open': this.state.open,
+                        'FlySelect__Focus': this.state.focus,
+                        'FlySelect__HasFooter': this.props.footerText,
+                    }
+				)}
+				style={this.props.style}
+				data-current-value={this.state.value}
+				tabIndex="0" onClick={this.onClick} onBlur={this.onBlur} ref={this.containerRef}
+				disabled={this.props.disabled || !Object.keys(options).length}
+			>
 				<span className="CurrentValue">
 					{this.state.value in options ?
 						this.renderItem(options[this.state.value])

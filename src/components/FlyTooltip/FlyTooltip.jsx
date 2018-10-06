@@ -19,11 +19,30 @@ export default class FlyTooltip extends Component {
 
 	render () {
 		return (
-			<div className={classnames('FlyTooltip--Container', { 'FlyTooltip--Container--HoverIntent': this.props.hoverIntent }, this.props.className)}>
-				<div className={classnames('FlyTooltip', `FlyTooltip--${this.props.position}`, this.props.className)} style={this.props.style}>
+			<div
+				className={classnames(
+					'FlyTooltip_Container', {
+						'FlyTooltip_Container__HoverIntent': this.props.hoverIntent
+					},
+					this.props.className
+				)}
+			>
+				<div
+					className={classnames(
+						'FlyTooltip',
+						`FlyTooltip--${this.props.position}`,
+						this.props.className
+					)}
+					style={this.props.style}
+				>
 					{
 						this.props.exclamation &&
-						<span className="FlyTooltip--Exclamation" key="exclamation"><Exclamation /></span>
+						<span
+							className="FlyTooltip--Exclamation"
+							key="exclamation"
+						>
+							<Exclamation />
+						</span>
 					}
 
 					{this.props.content}

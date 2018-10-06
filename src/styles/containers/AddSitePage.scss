@@ -74,7 +74,7 @@
 			padding: 20px 30px;
 		}
 
-		&.--NoContinue {
+		&.AddSiteContent__NoContinue {
 			> button.GoBack {
 				bottom: 25px;
 			}
@@ -83,7 +83,7 @@
 		.EnvironmentDetails {
 			width: 100%;
 
-			&.--Form {
+			&.EnvironmentDetails__Form {
 				margin-top: 32px;
 				padding-top: 30px;
 				@include theme-border-top;
@@ -147,7 +147,7 @@
 				width: 32px;
 			}
 
-			&.EnvironmentConnectCompatibility--flywheel {
+			&.EnvironmentConnectCompatibility__flywheel {
 				color: $green;
 
 				svg {
@@ -155,7 +155,7 @@
 				}
 			}
 
-			&.EnvironmentConnectCompatibility--custom svg {
+			&.EnvironmentConnectCompatibility__custom svg {
 				fill: $gray25;
 
 				.x {

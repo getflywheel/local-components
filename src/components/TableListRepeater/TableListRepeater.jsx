@@ -117,7 +117,7 @@ export default class TableListRepeater extends Component {
 
 		return (
 			<div className="TableListRepeaterSubmit">
-				<button className="--Pill --Green" onClick={() => this.props.onSubmit(this.state.data)}
+				<button className="__Pill __Green" onClick={() => this.props.onSubmit(this.state.data)}
 					disabled={isEqual(this.props.data, this.state.data)}>{this.props.submitLabel}</button>
 			</div>
 		);
@@ -145,7 +145,7 @@ export default class TableListRepeater extends Component {
 
 				<div className="TableListRepeaterAdd">
 					<div className="Add">
-						<Button className="--Pill --Green --Medium" onClick={this.addItem}>
+						<Button className="__Pill __Green __Medium" onClick={this.addItem}>
 							<AddSVG />
 							Add {this.props.labelSingular}
 						</Button>

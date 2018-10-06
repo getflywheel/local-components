@@ -22,7 +22,7 @@
 			}
 		}
 
-		.TableList.--FluidLabels {
+		.TableList.TableList__FluidLabels {
 			strong {
 				min-width: 0;
 				max-width: none;
@@ -60,7 +60,7 @@
 		padding: 30px;
 		@include theme-border-top;
 
-		button.--Pill {
+		button.__Pill {
 			margin-left: auto;
 		}
 	}

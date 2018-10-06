@@ -24,14 +24,14 @@
 		white-space: nowrap;
 		border-radius: 4px;
 
-		&--NextHasBG {
+		&.SitesSidebarSite__NextHasBG {
 			border-bottom-left-radius: 0;
 			border-bottom-right-radius: 0;
 		}
 
-		&--Selected,
+		&.SitesSidebarSite__Selected,
 		&:hover {
-			+ .SitesSidebarSite--Selected,
+			+ .SitesSidebarSite__Selected,
 			+ .SitesSidebarSite:hover {
 				border-top-left-radius: 0;
 				border-top-right-radius: 0;
@@ -49,10 +49,10 @@
 			text-transform: capitalize;
 		}
 
-		&:not(.SitesSidebarSite--Selected):hover {
+		&:not(.SitesSidebarSite__Selected):hover {
 			@include theme-background-gray15-else-graydark50;
 
-			&.SitesSidebarSite--Gray svg.Circle circle {
+			&.SitesSidebarSite__Gray svg.Circle circle {
 				fill: $gray25;
 			}
 		}
@@ -64,12 +64,12 @@
 			white-space: nowrap;
 		}
 
-		&--Selected {
+		&.SitesSidebarSite__Selected {
 			@include theme-background-white-else-graydark;
 			@include theme-color-graydark-else-white;
 		}
 
-		&--Error {
+		&.SitesSidebarSite__Error {
 			color: $red;
 
 			svg path {
@@ -77,7 +77,7 @@
 			}
 		}
 
-		&--Running {
+		&.SitesSidebarSite__Running {
 			.SitesSidebarSite_Icon_Container {
 				svg.Circle circle {
 					fill: $green !important;
@@ -99,7 +99,7 @@
 			}
 		}
 
-		&--Gray {
+		&.SitesSidebarSite__Gray {
 			.SitesSidebarSite_Icon_Container {
 				svg.Start {
 					display: none;
@@ -117,7 +117,7 @@
 			}
 		}
 
-		&--Processing {
+		&.SitesSidebarSite__Processing {
 			span.SitesSidebarSite_Icon_Container {
 				animation: rotateSpinner 1s linear infinite;
 

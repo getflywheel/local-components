@@ -56,15 +56,26 @@ export default class FlyDropdown extends Component {
 
 	render () {
 		return (
-			<div className={classnames('FlyDropdown', { '--Open': this.state.open }, this.props.className)} tabIndex="0" onClick={this.onClick} onBlur={this.onBlur}>
+			<div
+				className={classnames(
+					'FlyDropdown', {
+						'FlyDropdown__Open': this.state.open
+					},
+					this.props.className)
+				}
+				tabIndex="0"
+				onClick={this.onClick}
+				onBlur={this.onBlur}
+			>
 				{this.props.children}
 
 				{this.props.caret && <CaretSVG className="FlyDropdown_Caret"/>}
 
 				<ul className={classnames([
 					'FlyDropdown_Items',
-					`FlyDropdown_Items--${this.props.position}`,
-					{ '--TipItemHover': this.state.tipItemHover },
+					`FlyDropdown_Items--${this.props.position}`, {
+						'--TipItemHover': this.state.tipItemHover
+					},
 					typeof this.state.tipItemHover === 'string' ? `--TipItemHover--${this.state.tipItemHover}` : null,
 				])}>
 					{

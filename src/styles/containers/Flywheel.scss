@@ -35,7 +35,7 @@
 	.AccountInfo {
 		opacity: 0;
 
-		&.--FadeIn {
+		&.AccountInfo__FadeIn {
 			opacity: 1;
 		}
 	}
@@ -179,7 +179,7 @@
 		border-radius: 4px;
 		margin: 0 0 10px;
 
-		&.--Incompatible {
+		&.FlySite__Incompatible {
 			border: 2px dashed $gray15;
 			border-radius: 4px;
 			background: transparent;

@@ -26,7 +26,7 @@
 		bottom: 0;
 		left: 0;
 
-		&.--AllowSiteInfoBottom {
+		&.__AllowSiteInfoBottom {
 			bottom: 55px;
 
 			@at-root .AddingSite & {
@@ -148,7 +148,7 @@
 				}
 			}
 
-			&.--BorderLeft {
+			&.__BorderLeft {
 				@include theme-border-left;
 				padding-left: 10px;
 			}
@@ -250,7 +250,7 @@
 				@include theme-border-left;
 				padding: 0 20px;
 
-				&--NotConnected {
+				&.ConnectButtons__NotConnected {
 					padding: 0;
 				}
 			}
@@ -269,7 +269,7 @@
 					transition: .1s fill 0ms ease;
 				}
 
-				&.ConnectButton--Disabled {
+				&.ConnectButton__Disabled {
 					pointer-events: none;
 
 					svg {
@@ -277,7 +277,7 @@
 					}
 				}
 
-				&.ConnectButton--Spinner {
+				&.ConnectButton__Spinner {
 					pointer-events: none;
 
 					svg {
@@ -291,7 +291,7 @@
 					}
 				}
 
-				&--NotConnected {
+				&.ConnectButton__NotConnected {
 					text-transform: uppercase;
 					color: $green;
 					font-weight: 700;
@@ -305,8 +305,9 @@
 				}
 			}
 
-			.FlyTooltip--Container:last-of-type,
-			.ConnectButton--Incompatible .ConnectButton--Push {
+			// todo crum - global class
+			.FlyTooltip_Container:last-of-type,
+			.ConnectButtons__Incompatible .ConnectButton__Push {
 				margin-left: 20px;
 			}
 		}

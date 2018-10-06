@@ -30,14 +30,14 @@
 			}
 		}
 
-		&:not(.--Open) {
-			&.--Focus,
+		&:not(.FlySelect__Open) {
+			&.FlySelect__Focus,
 			&:focus {
 				box-shadow: 0 0 0 2px $green;
 			}
 		}
 
-		&.--Open {
+		&.FlySelect__Open {
 			z-index: 5;
 
 			.FlySelect_Options {
@@ -183,7 +183,7 @@
 	}
 
 	.FlySelect {
-		&.--HasFooter {
+		&.FlySelect__HasFooter {
 			.FlySelect_OptionsContainer {
 				padding-bottom: 57px;
 			}
@@ -246,7 +246,7 @@
 		justify-content: space-between;
 		width: 100%;
 
-		&.--Half {
+		&.FormRow__Half {
 			.FormField {
 				flex: 0 0 calc(50% - 15px);
 			}

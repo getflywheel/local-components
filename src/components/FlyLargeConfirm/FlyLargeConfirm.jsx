@@ -34,7 +34,7 @@ export default class FlyLargeConfirm extends Component {
 		return <div className={classnames('FlyLargeConfirm', { '--Confirmed': this.state.confirmed })}>
 			<p>{this.props.bodyText}</p>
 
-			<button className="--Pill" onClick={this.onConfirm} disabled={this.state.confirmed}>
+			<button className="__Pill" onClick={this.onConfirm} disabled={this.state.confirmed}>
 				{this.state.confirmed && <CheckSVG />}
 				{this.state.confirmed ? 'Confirmed' : this.props.buttonText}
 			</button>

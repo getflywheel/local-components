@@ -38,6 +38,6 @@ No Caret (Top Open):
         color: 'red',
     },
 ]}>
-    <Button className="--Pill --Green">Open Dropdown (but up)</Button>
+    <Button className="__Pill __Green">Open Dropdown (but up)</Button>
 </FlyDropdown>
 ```

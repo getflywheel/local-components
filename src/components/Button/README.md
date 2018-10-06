@@ -21,7 +21,7 @@ Red:
 Orange:
 
 ```js
-<Button onClick={() => console.log('onClick')} className="--Orange">Orange Button</Button>
+<Button onClick={() => console.log('onClick')} className="__Orange">Orange Button</Button>
 ```
 
 ### Pill
@@ -29,17 +29,17 @@ Orange:
 Gray Outline:
 
 ```js
-<Button onClick={() => console.log('onClick')} className="--GrayOutline">Gray Outline</Button>
+<Button onClick={() => console.log('onClick')} className="__GrayOutline">Gray Outline</Button>
 ```
 
 Green:
 
 ```js
-<Button onClick={() => console.log('onClick')} className="--Pill --Green">Green Pill</Button>
+<Button onClick={() => console.log('onClick')} className="__Pill __Green">Green Pill</Button>
 ```
 
 Red:
 
 ```js
-<Button onClick={() => console.log('onClick')} className="--Pill --Red">Red Pill</Button>
+<Button onClick={() => console.log('onClick')} className="__Pill __Red">Red Pill</Button>
 ```
