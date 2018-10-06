@@ -14,7 +14,7 @@ export default class Wrapper extends Component {
 
     render() {
         return <div>
-                <div id="styleguide-container" className="theme--light" style={{ position: 'relative' }}>
+                <div id="styleguide-container" className="Theme__Light" style={{ position: 'relative' }}>
                     {/*wrap every component with router, even if not needed, so it doesn't have to be included in individual component examples*/}
                     <MemoryRouter>
                         {this.props.children}

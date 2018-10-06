@@ -1,0 +1,6 @@
+// todo crum - doesn't work when wrapped in global
+ul.TableList {
+	> li {
+		@extend .TableListRow;
+	}
+}

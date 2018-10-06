@@ -1,0 +1,100 @@
+@import '_mixins';
+@import '_variables';
+
+:global {
+	* {
+		box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		user-select: none;
+		cursor: default;
+		outline: none;
+		-webkit-user-drag: none;
+	}
+
+	a,
+	a *,
+	button {
+		cursor: pointer;
+	}
+
+	html {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	body,
+	div#styleguide-container {
+		margin: 0;
+		@include defaultFontSettings;
+		@include fullWidthHeight;
+		@include theme-background-white-else-graydark;
+		@include theme-color-graydark-else-white;
+	}
+
+	div#styleguide-container {
+		border: 1px dashed $gray25;
+	}
+
+	main {
+		position: absolute !important;
+		top: 0 !important;
+		bottom: 0 !important;
+		overflow-y: auto !important;
+	}
+
+	p {
+		line-height: 1.5;
+
+		a {
+			font-weight: 500
+		}
+	}
+
+	input,
+	select {
+		@include defaultFontSettings;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-weight: 500
+	}
+
+	h1 {
+		font-size: 42px;
+	}
+
+	h2 {
+		font-size: 32px;
+	}
+
+	h3 {
+		font-size: 24px;
+	}
+
+	h4 {
+		font-size: 18px;
+	}
+
+	h5 {
+		font-size: 14px;
+	}
+
+	[disabled] {
+		pointer-events: none !important;
+	}
+
+	a {
+		color: $green;
+		text-decoration: none;
+
+		&:hover {
+			color: $green-dark;
+		}
+	}
+}

@@ -1,5 +1,7 @@
-@import '../../styles/_mixins.sass'
-@import '../../styles/_variables.sass'
+@import '../../styles/_mixins'
+@import '../../styles/_selectors'
+@import '../../styles/_theme'
+@import '../../styles/_variables'
 
 .Banner
 	padding: 10px 10px 10px 30px
@@ -39,7 +41,7 @@
 		path, circle, rect
 			fill: $white
 
-		@include ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.__Neutral')
 			path
 				fill: $yellow
 
@@ -62,25 +64,25 @@
 		background: $white
 		@include pillButton
 		transition: background .1s ease 0s, color .1s ease 0s
-		@include setAsDefaults()
+		@include selectors_setAsDefaults()
 			color: $orange
 
 			&:hover
 				color: $white
 				background: $orange-dark50
-		@include ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.__Neutral')
 			color: $white
 			background: $green
 
 			&:hover
 				background: $green-dark50
-		@include ifHostHasModifier('.__Error')
+		@include selectors_ifHostHasModifier('.__Error')
 			color: $red
 
 			&:hover
 				color: $white
 				background: $red-dark50
-		@include ifHostHasModifier('.__Success')
+		@include selectors_ifHostHasModifier('.__Success')
 			color: $green
 
 			&:hover
@@ -104,9 +106,9 @@
 			margin: 0
 
 			path
-				@include setAsDefaults()
+				@include selectors_setAsDefaults()
 					fill: $white
-				@include ifHostHasModifier('.__Neutral')
+				@include selectors_ifHostHasModifier('.__Neutral')
 					@include theme-fill-gray-else-white
 
 		&:hover
@@ -120,9 +122,9 @@
 		height: 28px
 		margin: 0 20px 0 -10px
 		padding: 0 12px 0 0
-		@include setAsDefaults()
+		@include selectors_setAsDefaults()
 			border-right: 1px solid $white
-		@include ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.__Neutral')
 			@include theme-border-right
 
 	.Carousel_Item
@@ -133,14 +135,14 @@
 		border: 2px solid $white
 		border-radius: 100%
 		cursor: pointer
-		@include ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.__Neutral')
 			border-color: $gray75
 
 		&.__Active
 			width: 12px
 			height: 12px
 			background-color: $white
-			@include ifHostHasModifier('.__Neutral')
+			@include selectors_ifHostHasModifier('.__Neutral')
 				@include if-theme-light()
 					background-color: $gray-dark
 					border-color: $gray-dark

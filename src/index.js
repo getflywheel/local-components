@@ -1,4 +1,5 @@
 import { hot } from 'react-hot-loader';
+import './main.sass';
 
 export const AdvancedToggle = hot(module)(require('./components/AdvancedToggle').default);
 export const Banner = hot(module)(require('./components/Banner').default);
