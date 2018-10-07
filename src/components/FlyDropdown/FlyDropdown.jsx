@@ -73,14 +73,14 @@ export default class FlyDropdown extends Component {
 
 				<ul className={classnames([
 					'FlyDropdown_Items',
-					`FlyDropdown_Items--${this.props.position}`, {
-						'--TipItemHover': this.state.tipItemHover
+					`FlyDropdown_Items__${this.props.position}`, {
+						'FlyDropdown_Items__TipItemHover': this.state.tipItemHover
 					},
-					typeof this.state.tipItemHover === 'string' ? `--TipItemHover--${this.state.tipItemHover}` : null,
+					typeof this.state.tipItemHover === 'string' ? `FlyDropdown_Items__TipItemHover__${this.state.tipItemHover}` : null,
 				])}>
 					{
 						this.props.items.map((item, i) => (
-							<li key={i} className={classnames('FlyDropdown_Item', item.color ? `--${item.color}` : null)} onClick={(event) => {
+							<li key={i} className={classnames('FlyDropdown_Item', item.color ? `__${item.color}` : null)} onClick={(event) => {
 								item.onClick.call();
 								this.setState({ open: false });
 

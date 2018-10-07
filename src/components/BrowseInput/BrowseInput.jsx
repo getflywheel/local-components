@@ -58,9 +58,11 @@ export default class BrowseInput extends Component {
 		return (
 			<div className="BrowseInput">
 				<span
-					className={classnames({ '--Placeholder': this.props.placeholder && !this.state.value })}>{this.state.value || this.props.placeholder}</span>
-
-				<button className="--Inline --Green --MarginLeft_5" onClick={this.browseFolder}>Browse</button>
+					className={classnames({ 'BrowseInput_Placeholder': this.props.placeholder && !this.state.value })}
+				>
+					{this.state.value || this.props.placeholder}
+				</span>
+				<button className="__Inline __Green __MarginLeft_5" onClick={this.browseFolder}>Browse</button>
 			</div>
 		);
 	}

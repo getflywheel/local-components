@@ -252,13 +252,13 @@
 			}
 		}
 
-		&.--Third {
+		&.FormRow__Third {
 			.FormField {
 				flex: 0 0 calc(33.333333333333% - 15px);
 			}
 		}
 
-		&.--Center {
+		&.FormRow__Center {
 			justify-content: center;
 		}
 

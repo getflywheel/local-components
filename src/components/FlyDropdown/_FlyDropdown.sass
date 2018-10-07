@@ -76,7 +76,7 @@
 		left: auto
 		transform: rotate(45deg)
 
-	&.--TipItemHover::before
+	&.FlyDropdown_Items__TipItemHover::before
 		background: $green-dark50
 
 	.FlyDropdown.FlyDropdown__Open &
@@ -124,12 +124,13 @@
 	&:last-of-type:first-of-type
 		border-radius: 4px
 
-	&.--red
+	// note: remains a lowercase modifier because it's set via a dynamic js variable
+	&.__red
 		color: $red
 
 		&:hover
 			color: $white
 			background: $red-dark50
 
-		@at-root .FlyDropdown_Items.--TipItemHover--red::before
+		@at-root .FlyDropdown_Items.FlyDropdown_Items__TipItemHover__red::before
 			background: $red-dark50

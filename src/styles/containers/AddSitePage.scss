@@ -147,6 +147,7 @@
 				width: 32px;
 			}
 
+			// note: remains a lowercase modifier because it's set via a dynamic js variable
 			&.EnvironmentConnectCompatibility__flywheel {
 				color: $green;
 
@@ -155,6 +156,7 @@
 				}
 			}
 
+			// note: remains a lowercase modifier because it's set via a dynamic js variable
 			&.EnvironmentConnectCompatibility__custom svg {
 				fill: $gray25;
 

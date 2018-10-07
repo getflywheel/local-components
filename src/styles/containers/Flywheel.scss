@@ -34,10 +34,14 @@
 	.SitesOnFlywheel,
 	.AccountInfo {
 		opacity: 0;
+	}
 
-		&.AccountInfo__FadeIn {
-			opacity: 1;
-		}
+	.SitesOnFlywheel.SitesOnFlywheel__FadeIn {
+		opacity: 1;
+	}
+
+	.AccountInfo.AccountInfo__FadeIn {
+		opacity: 1;
 	}
 
 	.FlywheelConnect {
