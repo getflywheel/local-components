@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import styles from './LoadingIndicator.sass';
 
 export default class LoadingIndicator extends Component {
 	static propTypes = {
@@ -15,14 +16,18 @@ export default class LoadingIndicator extends Component {
 
 	render () {
 		return (
-			<div className={classnames('LoadingIndicator', {
-				'--Gray': this.props.color === 'Gray',
-				'--Big': this.props.big,
-			})}>
-				<div className="LoadingIndicator_Bounce1" />
-				<div className="LoadingIndicator_Bounce2" />
-				{this.props.big && <div className="LoadingIndicator_Bounce3" />}
-			</div>
-		);
+            <div
+				className={classnames(
+					styles.LoadingIndicator, {
+						[styles.__Gray]: this.props.color === 'Gray',
+						[styles.__Big]: this.props.big,
+					}
+				)}
+			>
+                <div />
+                <div />
+                {this.props.big && <div />}
+            </div>
+        );
 	}
 }

@@ -306,6 +306,7 @@
 			padding-right: 40px !important;
 		}
 
+		// note: remains a lowercase modifier because no reference to this style could be found and therefore refactored...dynamically set somehow?
 		&.PasswordToggle--text {
 			.Eye {
 				svg path {
