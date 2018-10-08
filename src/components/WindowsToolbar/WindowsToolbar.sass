@@ -1,4 +1,9 @@
-header.WindowsToolbar
+@import '../../styles/_mixins'
+@import '../../styles/_selectors'
+@import '../../styles/_theme'
+@import '../../styles/_variables'
+
+.WindowsToolbar
 	-webkit-user-select: none
 	position: fixed
 	top: 0
@@ -18,31 +23,6 @@ header.WindowsToolbar
 		-webkit-app-region: drag
 		padding-left: 5px
 		margin-left: 15px
-
-	span
-		width: 44px
-		height: 32px
-		display: inline-block
-		text-align: center
-		transition: background-color .1s ease 0s
-
-		&:hover
-			@include theme-background-gray25-else-gray
-
-		@include if-theme-light()
-			&:active
-				background-color: darken($gray25, 10%)
-
-		@include if-theme-dark()
-			&:active
-				background-color: darken($gray, 20%)
-
-		svg
-			vertical-align: baseline
-
-	svg path
-		@include theme-fill-graydark-else-gray25
-		stroke: none
 
 	.RightButtons
 		width: auto
@@ -88,3 +68,28 @@ header.WindowsToolbar
 		svg
 			width: 9.8px
 			height: 9.8px
+
+	span
+		width: 44px
+		height: 32px
+		display: inline-block
+		text-align: center
+		transition: background-color .1s ease 0s
+
+		&:hover
+			@include theme-background-gray25-else-gray
+
+		@include if-theme-light()
+			&:active
+				background-color: darken($gray25, 10%)
+
+		@include if-theme-dark()
+			&:active
+				background-color: darken($gray, 20%)
+
+		svg
+			vertical-align: baseline
+
+	svg path
+		@include theme-fill-graydark-else-gray25
+		stroke: none
