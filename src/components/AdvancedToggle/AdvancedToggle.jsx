@@ -32,10 +32,13 @@ export default class AdvancedToggle extends Component {
 
 	render () {
 		return (
-			<div className={classnames(
-				styles.AdvancedToggle,
-				{[styles.__isOpen]: this.state.advancedOpen }
-			)}>
+			<div
+				className={classnames(
+					styles.AdvancedToggle, {
+						[styles.__isOpen]: this.state.advancedOpen
+					}
+				)}
+			>
 				<span
 					className={styles.Toggle}
 					onClick={this.toggleAdvanced}

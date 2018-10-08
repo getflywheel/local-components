@@ -94,18 +94,22 @@ export default class Banner extends Component {
 	}
 
 	render () {
-		return <div className={classnames(
-			styles.Banner, {
-				[styles.__Neutral]: this.props.variant === 'neutral',
-                [styles.__Error]: this.props.variant === 'error',
-				// '--Warning': this.props.variant === 'warning',
-                [styles.__Success]: this.props.variant === 'success',
-			}
-		)}>
+		return <div
+			className={classnames(
+				styles.Banner, {
+					[styles.__Neutral]: this.props.variant === 'neutral',
+					[styles.__Error]: this.props.variant === 'error',
+					// '--Warning': this.props.variant === 'warning',
+					[styles.__Success]: this.props.variant === 'success',
+				}
+			)}
+		>
 			{this.renderCarousel()}
 			{this.renderIcon()}
 
-			<span className={styles.Content}>{this.props.children}</span>
+			<span className={styles.Content}>
+				{this.props.children}
+			</span>
 
 			<div className={styles.CTA_Container}>
 				{this.renderButton()}

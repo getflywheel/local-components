@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import styles from './BrowseInput.sass';
 
 const remote = require('electron').remote;
 const dialog = remote.dialog;
@@ -33,7 +34,6 @@ export default class BrowseInput extends Component {
 	}
 
 	browseFolder () {
-
 		dialog.showOpenDialog(remote.getCurrentWindow(), {
 			'title': this.props.dialogTitle,
 			'defaultPath': formatHomePath(this.state.value || this.props.defaultPath),
@@ -51,15 +51,12 @@ export default class BrowseInput extends Component {
 
 			this.setState({ value });
 		});
-
 	}
 
 	render () {
 		return (
-			<div className="BrowseInput">
-				<span
-					className={classnames({ 'BrowseInput_Placeholder': this.props.placeholder && !this.state.value })}
-				>
+			<div className={styles.BrowseInput}>
+				<span className={classnames({[styles.BrowseInput_Placeholder]: this.props.placeholder && !this.state.value })}>
 					{this.state.value || this.props.placeholder}
 				</span>
 				<button className="__Inline __Green __MarginLeft_5" onClick={this.browseFolder}>Browse</button>
