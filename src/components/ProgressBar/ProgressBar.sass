@@ -1,13 +1,18 @@
+@import '../../styles/_mixins'
+@import '../../styles/_selectors'
+@import '../../styles/_theme'
+@import '../../styles/_variables'
+
 .ProgressBar
 	position: relative
-	border-radius: 10px
-	@include theme-background-gray15-else-graydark50
+	flex-grow: 0
 	width: 100%
 	height: 4px
-	flex-grow: 0
 	overflow: hidden
+	@include theme-background-gray15-else-graydark50
+	border-radius: 10px
 
-	&.--ShowNumber
+	&.ProgressBar__ShowNumber
 		width: calc(100% - 60px)
 
 	h2
@@ -15,13 +20,14 @@
 		margin: -15px -60px 0 0
 		text-align: right
 
-.ProgressBarIndicator, .ProgressBarStripes
+.ProgressBarIndicator,
+.ProgressBarStripes
 	height: 4px
 
 .ProgressBarIndicator
-	transition: all .025s ease-in 0s
 	border-radius: 10px
 	background: $green
+	transition: all .025s ease-in 0s
 
 .ProgressBarStripes
 	@keyframes ProgressBarStripesScroll
@@ -30,7 +36,7 @@
 		to
 			transform: translateX(0)
 
+	width: 72.5rem
 	@include theme-stripes-gray15-else-graydark
 	transform: translateX(-50%)
-	width: 72.5rem
 	animation: ProgressBarStripesScroll 6s infinite linear

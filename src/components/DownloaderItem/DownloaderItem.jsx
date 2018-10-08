@@ -51,7 +51,10 @@ export default class DownloaderItem extends Component {
 					{this.props.showEllipsis && '...'}
 				</span>
 
-				<ProgressBar progress={this.props.progress} stripes={this.props.stripes} />
+				<ProgressBar
+					progress={this.props.progress}
+					stripes={this.props.stripes}
+				/>
 
 				<span className="DownloadSizeProgress">
 					{
@@ -67,7 +70,7 @@ export default class DownloaderItem extends Component {
 				</span>
 
 				{
-					this.props.showCancel && <button className="--Green" onClick={this.cancelOnClick}>{this.props.cancelText}</button>
+					this.props.showCancel && <button className="__Green" onClick={this.cancelOnClick}>{this.props.cancelText}</button>
 				}
 			</li>
 		);
