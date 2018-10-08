@@ -9,13 +9,13 @@ Default:
 Green:
 
 ```js
-<Button onClick={() => console.log('onClick')} className="--Green">Green Button</Button>
+<Button onClick={() => console.log('onClick')} className="__Green">Green Button</Button>
 ```
 
 Red:
 
 ```js
-<Button onClick={() => console.log('onClick')} className="--Red">Red Button</Button>
+<Button onClick={() => console.log('onClick')} className="__Red">Red Button</Button>
 ```
 
 Orange:
