@@ -1,0 +1,86 @@
+@import '../../styles/_mixins'
+@import '../../styles/_selectors'
+@import '../../styles/_theme'
+@import '../../styles/_variables'
+
+.VerticalNav
+	display: flex
+	flex-shrink: 0
+	flex-direction: column
+	width: 68px
+	height: 100%
+	padding: 30px 0 0
+	@include theme-background-green-else-graydark
+
+	@at-root .__OsWindows .VerticalNav
+		padding-top: 0
+
+		.DragRegion
+			-webkit-app-region: default
+
+	.DragRegion
+		flex-grow: 1
+		-webkit-app-region: drag
+
+	.VerticalNav_Add
+		width: 48px
+		height: 48px
+		margin: auto 0 10px 10px
+		padding: 11.5px 0
+		@include if-theme-light()
+			background: $white
+		@include if-theme-dark()
+			background: $green
+		border-radius: 100%
+		transition: background-color .1s ease 0s
+
+		svg
+			width: 25px
+			height: 25px
+			transition: fill .1s ease 0s
+
+			path
+				@include theme-fill-green-else-white
+
+		&:hover
+			background: $green-dark
+
+			svg path
+				fill: $white
+
+	// todo crum - global class
+	.FlyTooltip_Container.FlyTooltip_Container__AddSite
+		.FlyTooltip
+			margin-top: -23px
+
+	a
+		display: flex
+		align-items: center
+		justify-content: center
+		height: 62px
+		padding: 15px 0
+		text-align: center
+
+		svg path
+			transition: fill .1s ease 0s
+
+		&.__Active
+			@include if-theme-light()
+				background: $green-dark
+			@include if-theme-dark()
+				background: none
+
+			svg path
+				fill: $white
+
+		&:hover:not(.__Active) svg path
+			@include theme-fill-greendark50-else-white-hover
+
+	svg
+		width: 32px
+
+		path
+			@include if-theme-light()
+				fill: $green-dark
+			@include if-theme-dark()
+				fill: $gray75

@@ -1,6 +1,12 @@
+@import '../../styles/_mixins'
+@import '../../styles/_selectors'
+@import '../../styles/_theme'
+@import '../../styles/_variables'
+@import '../FlyDropdown/FlyDropdown'
+
 .FlyTooltip_Container
-	display: inline-block
 	position: relative
+	display: inline-block
 
 	&:hover
 		.FlyTooltip
@@ -13,19 +19,113 @@
 .FlyTooltip
 	@extend .FlyDropdown_Items
 
-	transform-origin: 95% 0
-	display: inline-block
-	right: 50%
-	margin-right: -20px
 	top: auto
+	z-index: 2
+	right: 50%
+	display: inline-block
 	width: 300px
+	margin-right: -20px
 	padding: 10px 30px
+	transform-origin: 95% 0
 	font-weight: 300
 	@include theme-color-graydark50-else-gray25
 	@include theme-input-background-color
 	@include theme-border
 
-	z-index: 2
+	&::before
+		box-shadow: 0 0 20px 0 rgba($gray-dark, .15)
+		top: auto
+		right: 10px
+		bottom: -6px
+		@include theme-input-background-color
+		@include theme-border
+		z-index: -1
+
+	&::after
+		top: auto
+		right: 0
+		bottom: 0
+		left: auto
+		width: 40px
+		height: 25px
+		border-radius: 4px
+		@include theme-input-background-color
+		margin-left: 0
+		z-index: -1
+
+	.Spinner
+		vertical-align: middle
+		width: 14px
+		height: auto
+		animation: rotateSpinner 1s linear infinite
+		margin: -2px 5px 0 0
+
+		path
+			fill: $gray25
+
+	&.FlyTooltip__positionTop
+		transform: scale(0) translateY(-100%) translateZ(0)
+
+		@at-root .FlyTooltip_Container:hover &
+			transform: scale(1) translateY(-100%) translateZ(0)
+
+	&.FlyTooltip__positionBottom
+		transform-origin: 95% 95%
+		top: auto
+		bottom: -12px
+		transform: scale(0) translateY(100%) translateZ(0)
+
+		@at-root .FlyTooltip_Container:hover &
+			transform: scale(1) translateY(100%) translateZ(0)
+
+		&::before
+			top: -6px
+			bottom: auto
+
+		&::after
+			top: 0
+
+	&.FlyTooltip__positionRight
+		top: 50%
+		right: -5px
+		width: auto
+		margin: -18px 0 0
+		padding: 10px 15px
+		transform-origin: 100% 50%
+		transform: scale(0) translateX(100%) translateY(0) translateZ(0)
+		white-space: nowrap
+
+		&::before
+			top: 50%
+			right: auto
+			bottom: auto
+			left: 5px
+			margin-top: -10px
+
+		&::after
+			left: 0
+			width: 25px
+			height: 100%
+			border-radius: 4px
+
+		@at-root .FlyTooltip_Container:hover &
+			transform: scale(1) translateX(100%) translateY(0) translateZ(0)
+
+	.FlyTooltip_Exclamation
+		$size: 18px
+
+		position: absolute
+		top: -($size / 2)
+		left: -($size / 2)
+		width: $size
+		height: $size
+		background: $red
+		border-radius: 100%
+
+		svg
+			width: 2px
+			height: 8px
+			fill: $white
 
 	> *
 		position: relative
@@ -46,101 +146,5 @@
 		@include theme-color-graydark-else-white
 
 	ul
-		list-style: none
 		padding: 0
-
-	.Spinner
-		vertical-align: middle
-		width: 14px
-		height: auto
-		animation: rotateSpinner 1s linear infinite
-		margin: -2px 5px 0 0
-
-		path
-			fill: $gray25
-
-	&::before
-		box-shadow: 0 0 20px 0 rgba($gray-dark, .15)
-		bottom: -6px
-		top: auto
-		right: 10px
-		@include theme-input-background-color
-		@include theme-border
-		z-index: -1
-
-	&::after
-		bottom: 0
-		right: 0
-		top: auto
-		left: auto
-		width: 40px
-		height: 25px
-		border-radius: 4px
-		@include theme-input-background-color
-		margin-left: 0
-		z-index: -1
-
-	&--top
-		transform: scale(0) translateY(-100%) translateZ(0)
-
-		@at-root .FlyTooltip_Container:hover &
-			transform: scale(1) translateY(-100%) translateZ(0)
-
-	&--bottom
-		transform-origin: 95% 95%
-		top: auto
-		bottom: -12px
-		transform: scale(0) translateY(100%) translateZ(0)
-
-		@at-root .FlyTooltip_Container:hover &
-			transform: scale(1) translateY(100%) translateZ(0)
-
-		&::before
-			top: -6px
-			bottom: auto
-
-		&::after
-			top: 0
-
-	&--right
-		transform-origin: 100% 50%
-		transform: scale(0) translateX(100%) translateY(0) translateZ(0)
-
-		right: -5px
-		top: 50%
-		width: auto
-		white-space: nowrap
-		margin: -18px 0 0
-		padding: 10px 15px
-
-		&::before
-			right: auto
-			left: 5px
-			bottom: auto
-			top: 50%
-			margin-top: -10px
-
-		&::after
-			width: 25px
-			height: 100%
-			left: 0
-			border-radius: 4px
-
-		@at-root .FlyTooltip_Container:hover &
-			transform: scale(1) translateX(100%) translateY(0) translateZ(0)
-
-	.FlyTooltip--Exclamation
-		$size: 18px
-
-		position: absolute
-		left: -($size / 2)
-		top: -($size / 2)
-		background: $red
-		border-radius: 100%
-		width: $size
-		height: $size
-
-		svg
-			fill: $white
-			width: 2px
-			height: 8px
+		list-style: none

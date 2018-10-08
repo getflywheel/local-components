@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Exclamation from '../../svg/exclamation.svg';
+import styles from './FlyTooltip.sass';
 
 export default class FlyTooltip extends Component {
 
@@ -21,16 +22,19 @@ export default class FlyTooltip extends Component {
 		return (
 			<div
 				className={classnames(
-					'FlyTooltip_Container', {
-						'FlyTooltip_Container__HoverIntent': this.props.hoverIntent
+					styles.FlyTooltip_Container, {
+						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent
 					},
 					this.props.className
 				)}
 			>
 				<div
 					className={classnames(
-						'FlyTooltip',
-						`FlyTooltip--${this.props.position}`,
+                        styles.FlyTooltip, {
+                            [styles.FlyTooltip__positionBottom]: this.props.position === 'bottom',
+                            [styles.FlyTooltip__positionRight]: this.props.position === 'right',
+                            [styles.FlyTooltip__positionTop]: this.props.position === 'top',
+                    	},
 						this.props.className
 					)}
 					style={this.props.style}
@@ -38,7 +42,7 @@ export default class FlyTooltip extends Component {
 					{
 						this.props.exclamation &&
 						<span
-							className="FlyTooltip--Exclamation"
+							className={styles.FlyTooltip_Exclamation}
 							key="exclamation"
 						>
 							<Exclamation />
