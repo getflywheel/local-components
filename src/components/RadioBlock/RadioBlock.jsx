@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big.svg';
 import PropTypes from 'prop-types';
+import styles from './RadioBlock.sass';
 
 class RadioBlock extends Component {
 	PropTypes = {
@@ -34,14 +35,18 @@ class RadioBlock extends Component {
 
 	render () {
 		return (
-			<div className="radio_block">
+			<div className={styles.RadioBlock}>
 				{
-					Object.keys(this.props.options).map((optionValue, i) => <RadioBlockItem onClick={this.onClick}
-								   label={this.props.options[optionValue].label}
-								   value={optionValue}
-								   key={i}
-					               svg={this.props.options[optionValue].svg}
-								   selected={this.state.value === optionValue}/>)
+					Object.keys(this.props.options).map((optionValue, i) =>
+						<RadioBlockItem
+							onClick={this.onClick}
+							label={this.props.options[optionValue].label}
+							value={optionValue}
+							key={i}
+							svg={this.props.options[optionValue].svg}
+							selected={this.state.value === optionValue}
+						/>
+					)
 				}
 			</div>
 		);
@@ -71,10 +76,17 @@ class RadioBlockItem extends Component {
 		const svg = this.props.svg ? this.props.svg : <CheckmarkSVG />;
 
 		return (
-			<div onClick={this.onClick} className={classnames({ 'radio-block__option': true, '--selected': this.props.selected })}>
-				<label className="radio-block__label" id="pay-now">
+			<div
+				onClick={this.onClick}
+				className={classnames(
+					styles.RadioBlock_Option, {
+						[styles.RadioBlock_Option__Selected]: this.props.selected
+					}
+				)}
+			>
+				<label className={styles.RadioBLock_Label}>
 					<h4>{this.props.label}</h4>
-					<div className="radio-block__arrow">
+					<div className={styles.RadioBLock_Arrow}>
 						{svg}
 					</div>
 				</label>
