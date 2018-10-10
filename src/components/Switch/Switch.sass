@@ -1,4 +1,50 @@
-div.Switch
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
+
+.Switch
+	&.Switch__Flat
+		input,
+		input::after,
+		input::before
+			box-shadow: none !important
+
+	&.Switch__Tiny
+		label
+			vertical-align: middle
+			display: inline-block
+			font-weight: 700
+			font-size: 11px
+			color: $gray25
+			@include tracking(20)
+			text-transform: uppercase
+			margin: 0 5px 0 0
+
+		input
+			vertical-align: middle
+			display: inline-block
+			height: 20px
+			width: 48px
+
+			&::after
+				line-height: 22px
+				font-size: 11px
+				font-weight: 900
+				left: 20px
+
+			&::before
+				top: -1px
+				width: 12px
+				height: 12px
+
+			&[checked]
+				&::before
+					left: calc(100% - 12px)
+
+				&::after
+					left: 8px
+
 	input
 		box-sizing: border-box
 		font-size: 10px
@@ -79,45 +125,6 @@ div.Switch
 			bottom: 0
 			z-index: 1
 			cursor: pointer
-
-	&.--Flat
-		input, input::after, input::before
-			box-shadow: none !important
-
-	&.--Tiny
-		label
-			vertical-align: middle
-			display: inline-block
-			font-weight: 700
-			font-size: 11px
-			color: $gray25
-			@include tracking(20)
-			text-transform: uppercase
-			margin: 0 5px 0 0
-
-		input
-			vertical-align: middle
-			display: inline-block
-			height: 20px
-			width: 48px
-
-			&::after
-				line-height: 22px
-				font-size: 11px
-				font-weight: 900
-				left: 20px
-
-			&::before
-				top: -1px
-				width: 12px
-				height: 12px
-
-			&[checked]
-				&::before
-					left: calc(100% - 12px)
-
-				&::after
-					left: 8px
 
 	input[data-no-value="true"]
 		&::before

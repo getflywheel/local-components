@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import styles from  './Switch.sass';
 
 export default class Switch extends Component {
 	constructor (props) {
@@ -34,15 +35,22 @@ export default class Switch extends Component {
 
 	render () {
 		return (
-			<div className={classnames({
-				'Switch': true,
-				'--Tiny': this.props.tiny,
-				'--Flat': this.props.flat,
-			})}>
+			<div
+				className={classnames(
+					styles.Switch, {
+						[styles.Switch__Tiny]: this.props.tiny,
+						[styles.Switch__Flat]: this.props.flat,
+					}
+				)}
+			>
 				{this.props.label && <label>{this.props.label}</label>}
-				<input type="checkbox" defaultChecked={this.state.checked}
-				       disabled={this.props.disabled || this.props.noValue} onChange={this.handleChange}
-				       data-no-value={this.props.noValue}/>
+				<input
+					type="checkbox"
+					defaultChecked={this.state.checked}
+					disabled={this.props.disabled || this.props.noValue}
+					onChange={this.handleChange}
+					data-no-value={this.props.noValue}
+				/>
 			</div>
 		);
 	}
