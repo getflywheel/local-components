@@ -28,8 +28,8 @@
 			transform: scale(1.0)
 
 	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
-	&.__Gray
-	&.__Big
+	&.LoadingIndicator__Gray
+	&.LoadingIndicator__Big
 		display: block
 		height: $sizeBig
 
@@ -40,7 +40,7 @@
 			height: $size
 			margin: 0 4px
 
-		@include selectors_ifHostHasModifier('.__Big')
+		@include selectors_ifHostHasModifier('.LoadingIndicator__Big')
 			width: $sizeBig
 			height: $sizeBig
 			margin: 0 5px
@@ -48,7 +48,7 @@
 		@include selectors_setAsDefaults()
 			background-color: $green
 
-		@include selectors_ifHostHasModifier('.__Gray')
+		@include selectors_ifHostHasModifier('.LoadingIndicator__Gray')
 			background-color: $gray25
 
 		border-radius: 100%

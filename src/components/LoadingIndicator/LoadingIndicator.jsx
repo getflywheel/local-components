@@ -19,8 +19,8 @@ export default class LoadingIndicator extends Component {
             <div
 				className={classnames(
 					styles.LoadingIndicator, {
-						[styles.__Gray]: this.props.color === 'Gray',
-						[styles.__Big]: this.props.big,
+						[styles.LoadingIndicator__Gray]: this.props.color === 'Gray',
+						[styles.LoadingIndicator__Big]: this.props.big,
 					}
 				)}
 			>

@@ -8,14 +8,14 @@
 	margin-top: 20px
 
 	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
-	&.__isOpen
+	&.AdvancedToggle__isOpen
 
 	// the reveal/hide content that's being toggled
 	.Content
 		@include selectors_setAsDefaults()
 			max-height: 0
 			opacity: 0
-		@include selectors_ifHostStateIs('.__isOpen')
+		@include selectors_ifHostStateIs('.AdvancedToggle__isOpen')
 			max-height: 235px
 			opacity: 1
 		transition: max-height .2s ease 0ms, opacity .2s ease 0ms
@@ -57,7 +57,7 @@
 			vertical-align: middle
 			@include selectors_setAsDefaults()
 				transform: rotate(0deg)
-			@include selectors_ifHostStateIs('.__isOpen')
+			@include selectors_ifHostStateIs('.AdvancedToggle__isOpen')
 				transform: rotate(180deg)
 
 			path

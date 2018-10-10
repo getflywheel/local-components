@@ -14,15 +14,15 @@
 	@include selectable
 
 	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
-	&.__Neutral
+	&.Banner__Neutral
 		@include theme-color-graydark-else-white
 		@include theme-border
 		@include theme-stripes-white-else-graydark
 
-	&.__Error
+	&.Banner__Error
 		@include stripes(#f05b6f, #ef4e65)
 
-	&.__Success
+	&.Banner__Success
 		@include stripes($green, mix($black, $green, 5%))
 
 	.Content
@@ -41,7 +41,7 @@
 		path, circle, rect
 			fill: $white
 
-		@include selectors_ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.Banner__Neutral')
 			path
 				fill: $yellow
 
@@ -70,19 +70,19 @@
 			&:hover
 				color: $white
 				background: $orange-dark50
-		@include selectors_ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.Banner__Neutral')
 			color: $white
 			background: $green
 
 			&:hover
 				background: $green-dark50
-		@include selectors_ifHostHasModifier('.__Error')
+		@include selectors_ifHostHasModifier('.Banner__Error')
 			color: $red
 
 			&:hover
 				color: $white
 				background: $red-dark50
-		@include selectors_ifHostHasModifier('.__Success')
+		@include selectors_ifHostHasModifier('.Banner__Success')
 			color: $green
 
 			&:hover
@@ -108,7 +108,7 @@
 			path
 				@include selectors_setAsDefaults()
 					fill: $white
-				@include selectors_ifHostHasModifier('.__Neutral')
+				@include selectors_ifHostHasModifier('.Banner__Neutral')
 					@include theme-fill-gray-else-white
 
 		&:hover
@@ -124,7 +124,7 @@
 		padding: 0 12px 0 0
 		@include selectors_setAsDefaults()
 			border-right: 1px solid $white
-		@include selectors_ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.Banner__Neutral')
 			@include theme-border-right
 
 	.Carousel_Item
@@ -135,14 +135,14 @@
 		border: 2px solid $white
 		border-radius: 100%
 		cursor: pointer
-		@include selectors_ifHostHasModifier('.__Neutral')
+		@include selectors_ifHostHasModifier('.Banner__Neutral')
 			border-color: $gray75
 
-		&.__Active
+		&.Carousel_Item__Active
 			width: 12px
 			height: 12px
 			background-color: $white
-			@include selectors_ifHostHasModifier('.__Neutral')
+			@include selectors_ifHostHasModifier('.Banner__Neutral')
 				@include if-theme-light()
 					background-color: $gray-dark
 					border-color: $gray-dark

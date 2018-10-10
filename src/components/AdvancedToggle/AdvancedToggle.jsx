@@ -35,7 +35,7 @@ export default class AdvancedToggle extends Component {
 			<div
 				className={classnames(
 					styles.AdvancedToggle, {
-						[styles.__isOpen]: this.state.advancedOpen
+						[styles.AdvancedToggle__isOpen]: this.state.advancedOpen
 					}
 				)}
 			>
