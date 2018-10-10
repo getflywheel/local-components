@@ -1,6 +1,7 @@
 // todo crum - doesn't work when wrapped in global
 ul.TableList {
 	> li {
+		// todo crum - this is scoped
 		@extend .TableListRow;
 	}
 }

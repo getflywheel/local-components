@@ -22,12 +22,12 @@ An example showing error state.
 ```js
 const { TertiaryNav, TertiaryNavItem } = require('./TertiaryNav');
 
-const Item1 = () => (<div><h1>Item 1 Content</h1><div className='--error'>bad value</div></div>);
+const Item1 = () => (<div><h1>Item 1 Content</h1><div className='TertiaryNavChild__Error'>error message example</div></div>);
 const Item2 = () => (<h1>Item 2 Content</h1>);
 const Item3 = () => (<h1>Item 3 Content</h1>);
 
 <TertiaryNav>
-    <TertiaryNavItem className='--error' exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
+    <TertiaryNavItem variant={'error'} exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
     <TertiaryNavItem path='/item2' component={Item2}>Menu Item 2</TertiaryNavItem>
     <TertiaryNavItem path='/item3' component={Item3}>Menu Item 3</TertiaryNavItem>
 </TertiaryNav>

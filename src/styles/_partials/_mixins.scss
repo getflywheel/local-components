@@ -1,5 +1,5 @@
-@import '_theme';
-@import '_variables';
+@import './theme';
+@import './variables';
 
 @mixin fullWidthHeight {
 	width: 100%;

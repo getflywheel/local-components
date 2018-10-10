@@ -1,6 +1,6 @@
-@import '_forms.scss';
-@import '_mixins';
-@import '_variables';
+@import '_partials/forms';
+@import '_partials/mixins';
+@import '_partials/variables';
 
 :global {
 	.FlySelect,
@@ -13,7 +13,7 @@
 		font-weight: 300;
 		-webkit-appearance: none;
 		padding: 0 35px 0 10px;
-		background: url(./svg/down_arrow_green.svg) no-repeat $white;
+		background: url(../svg/down_arrow_green.svg) no-repeat $white;
 		background-position: right 9px top 12px;
 		background-size: 14px 6px;
 		cursor: pointer;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import styles from './TertiaryNav.sass';
 
 class TertiaryNavBase extends Component {
     static propTypes = {
@@ -22,18 +23,26 @@ class TertiaryNavBase extends Component {
 
     render () {
         return (
-            <div className={classnames({ 'TertiaryNavContainer': true }, this.props.className)}>
-                <ul className={classnames({ 'TertiaryNav': true })}>
+            <div
+				className={classnames(
+					styles.TertiaryNavContainer,
+					this.props.className,
+				)}
+			>
+                <ul className={classnames(styles.TertiaryNav)}>
                     {this.props.children}
                 </ul>
-                <div className={classnames({ 'TertiaryContent': true })}>
+                <div className={classnames(styles.TertiaryContent)}>
                     <Switch>
                         {React.Children.map(this.props.children, (child) => {
                             const propsWithoutChildren = { ...child.props };
                             delete propsWithoutChildren.children;
 
                             return (
-                                <Route {...propsWithoutChildren} path={`${this.props.match.url}${propsWithoutChildren.path}`}/>
+                                <Route
+									{...propsWithoutChildren}
+									path={`${this.props.match.url}${propsWithoutChildren.path}`}
+								/>
                             )
                         })}
                     </Switch>
@@ -56,12 +65,29 @@ class TertiaryNavItemBase extends Component {
                 return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
             }
         },
+		variant: PropTypes.oneOf([
+			// 'warning',
+			// 'neutral',
+			// 'success',
+			'error',
+		]),
     };
 
     render () {
         return (
-            <li className={classnames({ 'TertiaryNavItem': true }, this.props.className)}>
-                <NavLink to={`${this.props.match.url}${this.props.path}`} exact activeClassName="active">
+            <li
+				className={classnames(
+					styles.TertiaryNavItem,
+					this.props.className, {
+						[styles.TertiaryNavItem__Error]: this.props.variant === 'error',
+					}
+				)}
+			>
+                <NavLink
+					exact
+					to={`${this.props.match.url}${this.props.path}`}
+					activeClassName={styles.TertiaryNavItem__Active}
+				>
                     {this.props.children}
                 </NavLink>
             </li>

@@ -1,11 +1,12 @@
-@import '../_forms';
-@import '../_misc';
-@import '../_mixins';
-@import '../_selectors';
-@import '../_theme';
-@import '../_variables';
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
 
 :global {
+	// todo crum - this is scoped
 	.TableList li.SiteInfoEnvironment {
 		display: table;
 		width: 100%;
@@ -16,6 +17,7 @@
 			padding-left: 12px;
 		}
 
+		// todo crum - this is scoped
 		> .TableList {
 			padding: 0 30px 15px;
 
@@ -23,6 +25,7 @@
 				padding-right: 0;
 			}
 
+			// todo crum - this is scoped
 			> .TableListRow {
 				height: 34px;
 

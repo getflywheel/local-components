@@ -1,11 +1,17 @@
-@import '../../styles/_mixins'
-@import '../../styles/_variables'
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
 
 .TertiaryNavContainer
 	display: flex
 	flex-direction: row
 	flex: 1 // this assumes its parent is a flex element
 	@include theme-background-white-else-graydark
+
+	// needs to be global so any element, outside this library, can use it
+	\:global(.TertiaryNavChild__Error)
+		color: $red
 
 	// reset unordered lists
 	ul,
@@ -39,7 +45,7 @@
 			text-transform: uppercase
 			@include tracking(40)
 
-		a.active
+		a.TertiaryNavItem__Active
 			@include theme-color-graydark-else-white
 			@include if-theme-light()
 				background: $gray5
@@ -49,26 +55,23 @@
 			svg path
 				fill: $white
 
-		&.--error a
+		&.TertiaryNavItem__Error a
 			color: $red
 			padding-left: 34px
 
-		&.--error a::before
+		&.TertiaryNavItem__Error a::before
 			content: ''
 			position: absolute
 			top: 0
 			left: 12px
 			width: 16px
 			height: 100%
-			-webkit-mask: url(./svg/warning.svg) no-repeat 50% 50%
-			mask: url(./svg/warning.svg) no-repeat 50% 50%
+			-webkit-mask: url(../../svg/warning.svg) no-repeat 50% 50%
+			mask: url(../../svg/warning.svg) no-repeat 50% 50%
 			background-color: $red
 
 	.TertiaryContent
 		flex: 1
 		overflow-y: auto
-
-	.--error
-		color: $red
 
 

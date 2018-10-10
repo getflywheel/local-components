@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import styles from './Drawer.sass';
 
 export default class Drawer extends Component {
     static propTypes = {
@@ -27,18 +28,19 @@ export default class Drawer extends Component {
 
     render () {
         return (
-            <div className={classnames({ 'DrawerContainer': true })}>
-                <div className={classnames(
-                    {
-                        'Drawer': true,
-                        '--show': this.props.show,
-                        '--disableAnimation':  this.state.disableAnimation,
-                        '--alignLeft': this.props.align === 'left',
-                        '--alignCenter': this.props.align === 'center' || !this.props.align,
-                        '--alignRight': this.props.align === 'right',
-                    },
-                    this.props.className
-                )}>
+            <div className={classnames({ [styles.DrawerContainer]: true })}>
+                <div
+					className={classnames(
+						this.props.className, {
+							[styles.Drawer]: true,
+							[styles.Drawer__Show]: this.props.show,
+							[styles.Drawer__DisableAnimation]:  this.state.disableAnimation,
+							[styles.Drawer__AlignLeft]: this.props.align === 'left',
+							[styles.Drawer__AlignCenter]: this.props.align === 'center' || !this.props.align,
+							[styles.Drawer__AlignRight]: this.props.align === 'right',
+						}
+                	)}
+				>
                     {this.props.children}
                 </div>
             </div>

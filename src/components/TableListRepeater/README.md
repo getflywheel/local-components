@@ -5,7 +5,7 @@ const { Fragment } = require('react');
 
 const header = (
     <Fragment>
-        <strong className="--SeparatorRight" style={{ width: '33%' }}>Column 1</strong>
+        <strong className="TableListRowHeader__SeparatorRight" style={{ width: '33%' }}>Column 1</strong>
         <strong style={{ width: '33%' }}>Column 2</strong>
         <strong style={{ width: '33%' }}>Column 3</strong>
     </Fragment>
@@ -13,14 +13,14 @@ const header = (
 
 const repeatingContent = (item, index, updateItem) => (
     <Fragment>
-        <div className="--SeparatorRight --Input">
+        <div className="TableListRowHeader__SeparatorRight TableListRow__Input">
             <input placeholder="Column 1" value={item.column1} onChange={(e) => {
                 item.column1 = e.target.value;
                 updateItem(item);
             }}/>
         </div>
 
-        <div className="--Input">
+        <div className="TableListRow__Input">
             <input placeholder="I am a dumb input and won't store data."/>
         </div>
 
@@ -50,7 +50,7 @@ const { Fragment } = require('react');
 
 const header = (
     <Fragment>
-        <strong className="--SeparatorRight" style={{ width: '33%' }}>Column 1</strong>
+        <strong className="TableListRowHeader__SeparatorRight" style={{ width: '33%' }}>Column 1</strong>
         <strong style={{ width: '33%' }}>Column 2</strong>
         <strong style={{ width: '33%' }}>Column 3</strong>
     </Fragment>
@@ -58,14 +58,14 @@ const header = (
 
 const repeatingContent = (item, index, updateItem) => (
     <Fragment>
-        <div className="--SeparatorRight --Input">
+        <div className="TableListRowHeader__SeparatorRight TableListRow__Input">
             <input placeholder="Column 1" value={item.column1} onChange={(e) => {
                 item.column1 = e.target.value;
                 updateItem(item);
             }}/>
         </div>
 
-        <div className="--Input">
+        <div className="TableListRow__Input">
             <input placeholder="I am a dumb input and won't store data."/>
         </div>
 
@@ -94,14 +94,14 @@ const { Fragment } = require('react');
 
 const repeatingContent = (item, index, updateItem) => (
     <Fragment>
-        <div className="--SeparatorRight --Input">
+        <div className="TableListRowHeader__SeparatorRight TableListRow__Input">
             <input placeholder="Column 1" value={item.column1} onChange={(e) => {
                 item.column1 = e.target.value;
                 updateItem(item);
             }}/>
         </div>
 
-        <div className="--Input">
+        <div className="TableListRow__Input">
             <input placeholder="I am a dumb input and won't store data."/>
         </div>
 

@@ -1,9 +1,9 @@
-@import '../_forms';
-@import '../_misc';
-@import '../_mixins';
-@import '../_selectors';
-@import '../_theme';
-@import '../_variables';
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
 
 :global {
 	.SettingsPane {
@@ -11,6 +11,7 @@
 		flex-direction: column;
 		flex-grow: 1;
 
+		// todo crum - this is scoped
 		.TableListRow > strong {
 			// min/max width used since setting width breaks the entire table from expanding to full width
 			// unless you use display: table on the parent. Doing that breaks flex.
@@ -22,10 +23,10 @@
 			}
 		}
 
-		.TableList.TableList__FluidLabels {
+		@at-root :global(.TableList.TableList__FluidLabels) {
 			strong {
-				min-width: 0;
-				max-width: none;
+				min-width: 0 !important;
+				max-width: none !important;
 			}
 		}
 

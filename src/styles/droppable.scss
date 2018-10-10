@@ -1,5 +1,5 @@
-@import '_mixins';
-@import '_variables';
+@import '_partials/mixins';
+@import '_partials/variables';
 
 :global {
 	#root.drag::before {
@@ -17,7 +17,7 @@
 		$height: 40px;
 		z-index: 10000;
 		@include theme-color-gray25-else-gray25;
-		background: url(./svg/drop-to-import.svg) no-repeat 50% top;
+		background: url(../svg/drop-to-import.svg) no-repeat 50% top;
 		background-size: 125px 91px;
 		content: 'Drop to import site!';
 		position: fixed;

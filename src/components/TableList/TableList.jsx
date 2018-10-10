@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import styles from './TableList.sass';
 
 class TableList extends Component {
+	static propTypes = {
+		stripes: PropTypes.bool,
+	};
+
 	render () {
 		return (
-			<ul className={classnames({ 'TableList': true, 'Form': this.props.form }, this.props.className)}>
+			<ul
+				className={classnames(
+					styles.TableList,
+					this.props.className, {
+						[styles.Form]: this.props.form,
+						[styles.TableList__NoStripes]: this.props.stripes === false,
+					}
+				)}
+			>
 				{this.props.children}
 			</ul>
 		);
@@ -15,13 +28,22 @@ class TableList extends Component {
 class TableListRow extends Component {
 	render () {
 		return (
-			<li className={classnames('TableListRow', this.props.className)}>
+			<li
+				className={classnames(
+					styles.TableListRow,
+					this.props.className
+				)}
+			>
 				{this.props.label && <strong>{this.props.label}</strong>}
 
 				<div>
 					{
 						this.props.selectable && typeof this.props.children !== 'object' ?
-							<input type="text" readOnly value={this.props.children} />
+							<input
+								type="text"
+								readOnly
+								value={this.props.children}
+							/>
 							: this.props.children
 					}
 				</div>

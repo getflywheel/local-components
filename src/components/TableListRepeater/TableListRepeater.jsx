@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { TableList } from '../TableList';
 import CloseSmallSVG from '../../svg/close--small.svg';
 import AddSVG from '../../svg/add.svg';
 import Button from '../Button';
 import isEqual from 'lodash/isEqual';
+import styles from "../TableList/TableList.sass";
 
 export default class TableListRepeater extends Component {
 	static propTypes = {
@@ -102,9 +104,19 @@ export default class TableListRepeater extends Component {
 		}
 
 		return (
-			<li className="TableListRow TableListRowHeader">
+			<li
+				className={classnames(
+					styles.TableListRow,
+					styles.TableListRowHeader,
+				)}
+			>
 				{this.props.header}
-				<strong className="--SeparatorLeft RemoveHeading"/>
+				<strong
+					className={classnames(
+						styles.TableListRowHeader__SeparatorLeft,
+						styles.TableListRowHeader__RemoveHeading,
+					)}
+				/>
 			</li>
 		);
 	}
@@ -116,7 +128,7 @@ export default class TableListRepeater extends Component {
 		}
 
 		return (
-			<div className="TableListRepeaterSubmit">
+			<div className={styles.TableListRepeaterSubmit}>
 				<button className="__Pill __Green" onClick={() => this.props.onSubmit(this.state.data)}
 					disabled={isEqual(this.props.data, this.state.data)}>{this.props.submitLabel}</button>
 			</div>
@@ -126,15 +138,20 @@ export default class TableListRepeater extends Component {
 
 	render () {
 		return (
-			<div className="TableListRepeaterContainer">
-				<TableList form={true} className="TableListRepeater">
+			<div>
+				<TableList form={true} className={styles.TableListRepeater}>
 					{this.renderHeader()}
 
 					{this.state.data.map((item, index) => (
-						<li className="TableListRow" key={index}>
+						<li className={styles.TableListRow} key={index}>
 							{this.props.repeatingContent.call(this, Object.assign({}, item), index, this.updateItemFactory(index))}
 
-							<div className="Remove --SeparatorLeft">
+							<div
+								className={classnames(
+									styles.TableList__Remove,
+									styles.TableList__SeparatorLeft,
+								)}
+							>
 								<span onClick={() => this.removeItem(index)}>
 									<CloseSmallSVG />
 								</span>
@@ -143,7 +160,7 @@ export default class TableListRepeater extends Component {
 					))}
 				</TableList>
 
-				<div className="TableListRepeaterAdd">
+				<div className={styles.TableListRepeaterAdd}>
 					<div className="Add">
 						<Button className="__Pill __Green __Medium" onClick={this.addItem}>
 							<AddSVG />

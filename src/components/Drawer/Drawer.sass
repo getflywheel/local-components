@@ -1,5 +1,5 @@
-@import '../../styles/_mixins'
-@import '../../styles/_variables'
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/variables'
 
 .DrawerContainer
 	position: absolute
@@ -24,18 +24,18 @@
 		transition: transform 0.25s cubic-bezier(0.4, -0.40, 0.8, 1.0) 0s // hide/out transition
 		pointer-events: initial
 
-		&.--disableAnimation
+		&.Drawer__DisableAnimation
 			transition: none
 
-		&.--show
+		&.Drawer__Show
 			transform: translateY(0)
 			transition: transform 0.25s cubic-bezier(0.4, 1.4, 0.8, 1.0) 0s // show/in transition
 
-		&.--alignLeft
+		&.Drawer__AlignLeft
 			justify-content: left
 
-		&.--alignCenter
+		&.Drawer__AlignCenter
 			justify-content: center
 
-		&.--alignRight
+		&.Drawer__AlignRight
 			justify-content: right
