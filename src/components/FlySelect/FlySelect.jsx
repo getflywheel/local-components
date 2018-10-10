@@ -152,31 +152,63 @@ export default class FlySelect extends Component {
 		const output = [];
 
 		if (option.download === true) {
-			output.push(<DownloadSmallSVG key="download-svg" className="DownloadSmall"/>);
+			output.push(
+				<DownloadSmallSVG
+					key="download-svg"
+					className="DownloadSmall"
+				/>
+			);
 		}
 
 		if (option.icon) {
 			if (typeof option.icon === 'string') {
-				output.push(<img src={option.icon} key="icon"/>);
+				output.push(
+					<img
+						src={option.icon}
+						key="icon"
+					/>
+				);
 			} else {
 				output.push(React.cloneElement(option.icon, { key: 'icon', className: 'FlySelect__ItemIcon' }));
 			}
 		}
 
-		output.push(<span key="label" className="FlySelect_Option_Label">{option.label}</span>);
+		output.push(
+			<span
+				key="label"
+				className="FlySelect_Option_Label"
+			>
+				{option.label}
+				</span>
+		);
 		output.push(this.renderItemRight(option, showCheck));
 
 		return output;
 	}
 
 	renderItemRight (option, showCheck) {
-		return <span className="FlySelect__Right" key="right">
-			{'secondaryText' in option && option.secondaryText &&
-			<span className="FlySelect__SecondaryText" key="secondary-text">{option.secondaryText}</span>}
-
-			{showCheck && option.value === this.state.value &&
-			<CheckSVG key="checked" className="FlySelect__Check"/>}
-		</span>;
+		return <span
+				className="FlySelect__Right"
+				key="right"
+			>
+				{
+					'secondaryText' in option && option.secondaryText &&
+					<span
+						className="FlySelect__SecondaryText"
+						key="secondary-text"
+					>
+						{option.secondaryText}
+					</span>
+				}
+				{
+					showCheck && option.value === this.state.value &&
+					<CheckSVG
+						key="checked"
+						className="FlySelect__Check"
+					/>
+				}
+			</span>
+		;
 	}
 
 	renderFooter () {
@@ -185,9 +217,11 @@ export default class FlySelect extends Component {
 		}
 
 		return <div className="FlySelect__Footer">
-			<a className="FlySelect__FooterLink" onClick={this.props.footerOnClick}>
+			<a
+				className="FlySelect__FooterLink"
+				onClick={this.props.footerOnClick}
+			>
 				{this.props.footerText}
-
 				<ArrowRightSVG/>
 			</a>
 		</div>;
@@ -202,12 +236,16 @@ export default class FlySelect extends Component {
 			return;
 		}
 
-		return <div key={i} data-value={option.value}
-			className={classnames('FlySelect_Option', {
-				'--Disabled': disabled,
-				'--Checked': option.value === this.state.value,
-			})}
-			onClick={(e) => this.selectOption(e, optionValue)}>
+		return <div
+			key={i}
+			data-value={option.value}
+			className={classnames(
+				'FlySelect_Option', {
+					'__Disabled': disabled,
+				}
+			)}
+			onClick={(e) => this.selectOption(e, optionValue)}
+		>
 			{this.renderItem(option, true)}
 		</div>;
 	}
@@ -230,13 +268,24 @@ export default class FlySelect extends Component {
 				return;
 			}
 
-			output.push(<div key={optionGroupID} className="FlySelect_OptionGroup">
-				<span>{optionGroup.label}</span>
-				{optionGroup.linkText ? <a onClick={optionGroup.linkOnClick}>
-					{optionGroup.linkText}
-					<ArrowRightSVG/>
-				</a> : null}
-			</div>);
+			output.push(
+				<div
+					key={optionGroupID}
+					className="FlySelect_OptionGroup"
+				>
+					<span>{optionGroup.label}</span>
+					{
+						optionGroup.linkText
+						?
+						<a onClick={optionGroup.linkOnClick}>
+							{optionGroup.linkText}
+							<ArrowRightSVG/>
+						</a>
+						:
+						null
+					}
+				</div>
+			);
 
 			output.push(optionNodes);
 		});
@@ -262,7 +311,9 @@ export default class FlySelect extends Component {
 				disabled={this.props.disabled || !Object.keys(options).length}
 			>
 				<span className="CurrentValue">
-					{this.state.value in options ?
+					{
+						this.state.value in options
+						?
 						this.renderItem(options[this.state.value])
 						:
 						<span className="CurrentValue_Placeholder">
@@ -271,10 +322,12 @@ export default class FlySelect extends Component {
 					}
 				</span>
 
-				<div className="FlySelect_Options" style={this.calculateOptionsPosition()}>
+				<div
+					className="FlySelect_Options"
+					style={this.calculateOptionsPosition()}
+				>
 					<div className="FlySelect_OptionsContainer">
 						{Object.keys(options).map((optionValue, i) => this.renderOption(optionValue, i, null))}
-
 						{this.renderOptionGroups()}
 					</div>
 					{this.renderFooter()}
