@@ -1,7 +1,8 @@
-// todo crum - doesn't work when wrapped in global
+@import '../components/TableList/TableList.sass';
+
+// .TableList is both locally and globally scoped
 ul.TableList {
 	> li {
-		// todo crum - this is scoped
 		@extend .TableListRow;
 	}
 }

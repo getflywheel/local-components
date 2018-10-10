@@ -11,7 +11,7 @@
 		flex-direction: column;
 		flex-grow: 1;
 
-		// todo crum - this is scoped
+		// .TableListRow is both locally and globally scoped
 		.TableListRow > strong {
 			// min/max width used since setting width breaks the entire table from expanding to full width
 			// unless you use display: table on the parent. Doing that breaks flex.
@@ -23,6 +23,7 @@
 			}
 		}
 
+		// .TableList is both locally and globally scoped
 		@at-root :global(.TableList.TableList__FluidLabels) {
 			strong {
 				min-width: 0 !important;

@@ -6,7 +6,7 @@
 @import '../_partials/variables';
 
 :global {
-	// todo crum - this is scoped
+	// .TableList is both locally and globally scoped
 	.TableList li.SiteInfoEnvironment {
 		display: table;
 		width: 100%;
@@ -17,7 +17,7 @@
 			padding-left: 12px;
 		}
 
-		// todo crum - this is scoped
+		// .TableList is both locally and globally scoped
 		> .TableList {
 			padding: 0 30px 15px;
 
@@ -25,7 +25,7 @@
 				padding-right: 0;
 			}
 
-			// todo crum - this is scoped
+			// .TableListRow is both locally and globally scoped
 			> .TableListRow {
 				height: 34px;
 

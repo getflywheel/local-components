@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './SiteInfoInnerPane.sass';
 
 export default class SiteInfoInnerPane extends Component {
 	render () {
@@ -6,7 +7,10 @@ export default class SiteInfoInnerPane extends Component {
 		delete propsWithoutChildren.children;
 
 		return (
-			<div className="SiteInfoInnerPane" {...propsWithoutChildren}>
+			<div
+				className={styles.SiteInfoInnerPane}
+				{...propsWithoutChildren}
+			>
 				{this.props.children}
 			</div>
 		);

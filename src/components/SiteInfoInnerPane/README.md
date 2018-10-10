@@ -6,7 +6,7 @@ const { TableList, TableListRow } = require('../TableList');
 <SiteInfoInnerPane>
     <TableList>
         <li className="SiteInfoEnvironment">
-            <TableList className="--NoStripes">
+            <TableList stripes={false}>
                 <TableListRow label="Local Environment" className="LocalEnvironment">
                     Testing&nbsp;<span className="--Color--Gray75">5.0.0</span>
                 </TableListRow>
@@ -32,7 +32,7 @@ const { InnerPaneSidebar, InnerPaneSidebarHeader, InnerPaneSidebarContent } = re
 <SiteInfoInnerPane>
     <TableList>
         <li className="SiteInfoEnvironment">
-            <TableList className="--NoStripes">
+            <TableList stripes={false}>
                 <TableListRow label="Local Environment" className="LocalEnvironment">
                     Testing&nbsp;
                     <span className="--Color--Gray75">5.0.0</span>
@@ -55,7 +55,7 @@ const { InnerPaneSidebar, InnerPaneSidebarHeader, InnerPaneSidebarContent } = re
             <EmptyArea border={false}>
                 No notes added<br />
                 to this site<br /><br />
-                <Button className="--GrayOutline">+ Add Site</Button>
+                <Button className="__GrayOutline">+ Add Site</Button>
             </EmptyArea>
         </InnerPaneSidebarContent>
     </InnerPaneSidebar>
