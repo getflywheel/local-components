@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import styles from './EmptyArea.sass';
 
 export default class EmptyArea extends Component {
 	static propTypes = {
@@ -10,11 +11,16 @@ export default class EmptyArea extends Component {
 
 	render () {
 		return (
-			<div className={classnames({
-				'EmptyArea': true,
-				'--NoBorder': this.props.border === false,
-				'--FadeIn': this.props.FadeIn,
-			})}>
+			<div
+				className={classnames(
+					styles.EmptyArea,
+					'EmptyArea', // this also needs to be globally accessible so other component styles can reference it
+					{
+						'__NoBorder': this.props.border === false,
+						'__FadeIn': this.props.FadeIn,
+					}
+				)}
+			>
 				{this.props.children}
 			</div>
 		);

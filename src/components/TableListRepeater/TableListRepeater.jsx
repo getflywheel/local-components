@@ -161,7 +161,7 @@ export default class TableListRepeater extends Component {
 				</TableList>
 
 				<div className={styles.TableListRepeaterAdd}>
-					<div className="Add">
+					<div className="InnerPaneSidebarHeaderButtons_Add">
 						<Button className="__Pill __Green __Medium" onClick={this.addItem}>
 							<AddSVG />
 							Add {this.props.labelSingular}

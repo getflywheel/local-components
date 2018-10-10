@@ -13,23 +13,23 @@ export default class InputPasswordToggle extends Component {
 	}
 
 	toggleType () {
-
 		this.setState({
 			inputType: this.state.inputType === 'password' ? 'text' : 'password',
 		});
-
 	}
 
 	render () {
 		const { className, ...props } = this.props;
 
 		return (
-			<div className={`PasswordToggle PasswordToggle--${this.state.inputType}`}>
-				<input type={this.state.inputType}
-					   className={className ? `PasswordToggleInput ${className}` : 'PasswordToggleInput'}
-					{...props} />
+			<div className={`PasswordToggle PasswordToggle__${this.state.inputType}`}>
+				<input
+					type={this.state.inputType}
+					className={className ? `PasswordToggleInput ${className}` : 'PasswordToggleInput'}
+					{...props}
+				/>
 				<span className="Eye" onClick={this.toggleType}>
-					<EyeSVG />
+					<EyeSVG />`
 				</span>
 			</div>
 		);

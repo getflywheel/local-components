@@ -306,8 +306,8 @@
 			padding-right: 40px !important;
 		}
 
-		// note: remains a lowercase modifier because no reference to this style could be found and therefore refactored...dynamically set somehow?
-		&.PasswordToggle--text {
+		// note: remains a lowercase modifier name because this is set via a dynamic JS variable (e.g. this.state.inputType)
+		&.PasswordToggle__text {
 			.Eye {
 				svg path {
 					fill: $green;

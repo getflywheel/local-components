@@ -1,3 +1,8 @@
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
+
 .InnerPaneSidebar
 	width: 280px
 	height: 100%
@@ -36,8 +41,7 @@
 		stroke: $gray15
 		fill: $gray15
 
-	// todo crum - TableListRepeater is trying to access this
-	.Add
+	@at-root :global(.InnerPaneSidebarHeaderButtons_Add)
 		svg
 			stroke-width: 2px
 			stroke: $gray25
@@ -45,7 +49,7 @@
 		&:hover svg
 			stroke: $gray75
 
-		@at-root .--AddNewOpen &
+		@at-root .__AddNewOpen & // todo crum - Notes is trying to access this
 			svg
 				transform: rotate(45deg)
 				stroke: $gray-dark
@@ -54,6 +58,7 @@
 	flex: 1
 	overflow-y: auto
 
+	@at-root :global(.EmptyArea), // don't scope as this class is outside of this scope
 	.EmptyArea
 		height: 100%
 		margin: 0
@@ -67,7 +72,7 @@
 	z-index: 2
 	display: none
 
-	@at-root .--AddNewOpen &
+	@at-root .__AddNewOpen & // todo crum - Notes is trying to access this
 		display: block
 
 	&::before
@@ -125,10 +130,10 @@
 	&:first-of-type
 		border-top-color: transparent
 
-	&:last-of-type:not(.--Pinned)
+	&:last-of-type:not(.InnerPaneSidebarContentItem__Pinned) // todo crum - Notes is trying to access this
 		border-bottom-color: $gray15
 
-	&.--Pinned
+	&.InnerPaneSidebarContentItem__Pinned // todo crum - Notes is trying to access this
 		margin: 0
 		padding: 20px
 		background: #FDFAF1
@@ -142,7 +147,7 @@
 		+ .InnerPaneSidebarContentItem
 			border-top-color: transparent
 
-		+ .InnerPaneSidebarContentItem.--Pinned::before
+		+ .InnerPaneSidebarContentItem.InnerPaneSidebarContentItem__Pinned::before // todo crum - Notes is trying to access this
 			content: ""
 			display: block
 			height: 0

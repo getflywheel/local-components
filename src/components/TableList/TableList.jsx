@@ -13,7 +13,7 @@ class TableList extends Component {
 			<ul
 				className={classnames(
 					styles.TableList,
-					'TableList', // there also needs to be a globally accessible class here for other components to reference
+					'TableList', // this also needs to be globally accessible so other component styles can reference it
 					this.props.className, {
 						[styles.Form]: this.props.form,
 						[styles.TableList__NoStripes]: this.props.stripes === false,
@@ -32,7 +32,7 @@ class TableListRow extends Component {
 			<li
 				className={classnames(
 					styles.TableListRow,
-					'TableListRow', // there also needs to be a globally accessible class here for other components to reference
+					'TableListRow', // this also needs to be globally accessible so other component styles can reference it
 					this.props.className
 				)}
 			>
