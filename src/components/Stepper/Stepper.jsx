@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import CompleteSVG from '../../svg/complete.svg';
 import PropTypes from 'prop-types';
+import styles from './Stepper.sass';
 
 export class Stepper extends Component {
 	render () {
 		return (
-			<div className={classnames('Stepper', `--Steps__${this.props.children.length}`)}>
+			<div
+				className={classnames(
+					styles.Stepper, {
+						[styles.__Steps__2]: this.props.children.length === 2,
+						[styles.__Steps__3]: this.props.children.length === 3,
+					}
+				)}>
 				{this.props.children}
 			</div>
 		);
@@ -22,11 +29,15 @@ export class Step extends Component {
 
 	render () {
 		return (
-			<div className={classnames('Step', {
-				'--Done': this.props.done,
-				'--Active': this.props.active,
-				'--Disabled': this.props.disabled,
-			})}>
+			<div
+				className={classnames(
+					styles.Step, {
+						[styles.Step__Done]: this.props.done,
+						[styles.Step__Active]: this.props.active,
+						[styles.Step__Disabled]: this.props.disabled,
+					}
+				)}
+			>
 				{
 					!this.props.done ? <span>{this.props.number}</span> : <CompleteSVG />
 				}

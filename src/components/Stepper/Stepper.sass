@@ -1,3 +1,8 @@
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
+
 .Stepper
 	position: relative
 	margin-top: auto
@@ -17,11 +22,11 @@
 		height: 100%
 		@include theme-stripes-white-else-graydark
 
-	&.--Steps__3 .Step
-		width: calc(20px + 33.333333%)
-
-	&.--Steps__2 .Step
+	&.__Steps__2 .Step
 		width: calc(20px + 50%)
+
+	&.__Steps__3 .Step
+		width: calc(20px + 33.333333%)
 
 	.Step
 		position: relative
@@ -66,7 +71,7 @@
 			width: 21px
 			height: 100%
 
-		&.--Active
+		&.Step__Active
 			@include theme-background-white-else-graydark
 			@include theme-color-graydark-else-white
 
@@ -74,7 +79,7 @@
 				color: $green
 				border-color: $green
 
-		&.--Done
+		&.Step__Done
 			color: $green
 
 			svg
@@ -84,7 +89,7 @@
 				path
 					fill: $green
 
-		&.--Disabled
+		&.Step__Disabled
 			@include theme-background-gray1-else-gray-disabled
 			@include theme-color-gray15-else-gray-dark50-disabled
 			opacity: 1
