@@ -1,3 +1,8 @@
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
+
 .FlyDropdown
 	position: relative
 	display: inline-block
@@ -82,7 +87,7 @@
 	.FlyDropdown.FlyDropdown__Open &
 		transform: scale(1) translateY(0) translateZ(0)
 
-	&--top
+	&.FlyDropdown_Items__PositionTop
 		top: -10px
 
 		&::after
@@ -124,13 +129,15 @@
 	&:last-of-type:first-of-type
 		border-radius: 4px
 
+	&.FlyDropdown_Items__TipItemHover__ColorRed
+
 	// note: remains a lowercase modifier because it's set via a dynamic js variable
-	&.__red
+	&.FlyDropdown_Item__ColorRed
 		color: $red
 
 		&:hover
 			color: $white
 			background: $red-dark50
 
-		@at-root .FlyDropdown_Items.FlyDropdown_Items__TipItemHover__red::before
+		@at-root .FlyDropdown_Items.FlyDropdown_Items__TipItemHover__ColorRed::before
 			background: $red-dark50

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import styles from './DragBar.sass';
 
 export default class Toolbar extends Component {
 	render () {
 		return (
-			<header className="DragBar">
-			</header>
+			<header className={styles.DragBar} />
 		);
 	}
 }

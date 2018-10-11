@@ -31,9 +31,9 @@ export default class FlyTooltip extends Component {
 				<div
 					className={classnames(
                         styles.FlyTooltip, {
-                            [styles.FlyTooltip__positionBottom]: this.props.position === 'bottom',
-                            [styles.FlyTooltip__positionRight]: this.props.position === 'right',
-                            [styles.FlyTooltip__positionTop]: this.props.position === 'top',
+                            [styles.FlyTooltip__PositionBottom]: this.props.position === 'bottom',
+                            [styles.FlyTooltip__PositionRight]: this.props.position === 'right',
+                            [styles.FlyTooltip__PositionTop]: this.props.position === 'top',
                     	},
 						this.props.className
 					)}

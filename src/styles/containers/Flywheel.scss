@@ -21,7 +21,6 @@
 			font-weight: 700;
 		}
 
-		@at-root :global(.EmptyArea), // don't scope as this class is outside of this scope
 		.EmptyArea {
 			margin: 0;
 			padding: 80px;

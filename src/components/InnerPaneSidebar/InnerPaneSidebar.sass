@@ -58,7 +58,7 @@
 	flex: 1
 	overflow-y: auto
 
-	@at-root :global(.EmptyArea), // don't scope as this class is outside of this scope
+	@at-root .InnerPaneSidebarContent :global(.EmptyArea), // don't scope as this class is outside of this scope
 	.EmptyArea
 		height: 100%
 		margin: 0
