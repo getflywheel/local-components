@@ -38,7 +38,7 @@
 	&.FlyModal__HasIcon
 		overflow: visible
 
-	.TopIcon
+	@at-root :global(.TopIcon)
 		$size: 116px
 
 		position: absolute
@@ -53,10 +53,10 @@
 		justify-content: center
 		align-items: center
 
-		&.TopIcon--Red
+		@at-root :global(&.TopIcon__Red)
 			background: $red
 
-		&.TopIcon--Orange
+		@at-root :global(&.TopIcon__Orange)
 			background: $orange-alt
 
 		svg
@@ -75,7 +75,7 @@
 		margin: 0
 		line-height: 140%
 
-	.TopIcon + h3
+	@at-root :global(.TopIcon) + h3
 		margin-top: 20px
 
 	hr

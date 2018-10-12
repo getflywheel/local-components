@@ -26,7 +26,7 @@ class FlywheelModalExample extends React.Component{
         		
         		ReactDOM.render(<FlyModal 
         			contentLabel={args.title.toString()}
-        			hasTopIcon={true}
+        			hasIcon={true}
 				>
         			<h3>Does your lorem ipsum text long for something a little meatier?</h3>
         			<p>Bacon ipsum dolor amet kevin meatloaf chicken pork shoulder alcatra filet mignon kielbasa tri-tip beef ribs.</p>

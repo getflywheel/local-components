@@ -67,7 +67,7 @@ export default class VerticalNav extends Component {
 					content="Add Local Site"
 					position="right"
 					hoverIntent={true}
-					className="--AddSite"
+					className="FlyTooltip__AddSite"
 				>
 					<NavLink
 						to="/main/add-site"

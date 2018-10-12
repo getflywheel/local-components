@@ -26,7 +26,7 @@ else {
 export default class FlyModal extends Component {
 
 	static defaultProps = {
-		hasTopIcon: false,
+		hasIcon: false,
 		isOpen: true,
 		portalClassName: 'ReactModalPortal',
 		overlayClassName: styles.FlyModalOverlay,
@@ -52,7 +52,7 @@ export default class FlyModal extends Component {
 		>
 			<Close
 				className={classnames({
-					[styles.FlyModal__HasIcon]: this.props.hasTopIcon
+					[styles.FlyModal__HasIcon]: this.props.hasIcon
 				})}
 				onClick={FlyModal.onRequestClose}
 			/>
