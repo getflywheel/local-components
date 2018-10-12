@@ -12,8 +12,8 @@ class TertiaryNavBase extends Component {
             let error = null;
 
             React.Children.forEach(prop, (child) => {
-                if (child.type !== TertiaryNavItem) {
-                    error = new Error(`${componentName} children need to be of type 'TertiaryNavItem'.`);
+                if (child.type.WrappedComponent && child.type.WrappedComponent.name !== 'TertiaryNavItemBase') {
+                    error = new Error(`${componentName} children need to be of type 'TertiaryNavItem' but instead received type '${child.type}'.`);
                 }
             });
 
