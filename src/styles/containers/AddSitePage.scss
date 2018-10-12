@@ -80,10 +80,11 @@
 			}
 		}
 
-		.EnvironmentDetails {
+		.EnvironmentDetails { // needed for distributed Environments
 			width: 100%;
 
-			&.EnvironmentDetails__Form {
+			&.EnvironmentDetails__Form,
+			&.#{deprecated(--Form, '2.5', '2.0', 'Needed for distributed Environments')} {
 				margin-top: 32px;
 				padding-top: 30px;
 				@include theme-border-top;
@@ -93,14 +94,14 @@
 				}
 			}
 
-			.EnvironmentSpaceRequired {
+			.EnvironmentSpaceRequired { // needed for distributed Environments
 				margin: 30px 0 0;
 				color: $gray75;
 				font-weight: 300;
 				text-align: center;
 			}
 
-			ul.EnvironmentSpecs {
+			ul.EnvironmentSpecs { // needed for distributed Environments
 				list-style: none;
 				padding: 0;
 				margin: 30px 0 0;

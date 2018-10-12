@@ -247,13 +247,14 @@
 		width: 100%;
 
 		&.FormRow__Half {
-			.FormField {
+			.FormField { // needed for distributed Environments
 				flex: 0 0 calc(50% - 15px);
 			}
 		}
 
-		&.FormRow__Third {
-			.FormField {
+		&.FormRow__Third,
+		&.#{deprecated(--Third, '2.5', '2.0', 'Needed for distributed Environments')} {
+			.FormField { // needed for distributed Environments
 				flex: 0 0 calc(33.333333333333% - 15px);
 			}
 		}
@@ -262,7 +263,7 @@
 			justify-content: center;
 		}
 
-		.FormField {
+		.FormField { // needed for distributed Environments
 			width: 100%;
 			min-width: 0; // Flex box text overflow workaround: http://stackoverflow.com/questions/12022288/how-to-keep-a-flex-item-from-overflowing-due-to-its-text
 

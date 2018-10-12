@@ -47,7 +47,8 @@
 			}
 		}
 
-		&.__GrayOutline {
+		&.__GrayOutline,
+		&.#{deprecated(--GrayOutline, '2.5', '2.0', 'Needed for distributed Environments')} {
 			border-radius: 500px;
 			border: 2px solid $gray25;
 			color: $gray25;
@@ -59,8 +60,8 @@
 			}
 		}
 
-		&.#{deprecated(--Green)},
-		&.__Green {
+		&.__Green,
+		&.#{deprecated(--Green, '2.5', '2.0', 'Needed for distributed Environments')} {
 			color: $green;
 
 			&:hover {
@@ -113,7 +114,7 @@
 			}
 
 			&.__Green,
-			&.#{deprecated(--Green, '2.5', 'Needed for distributed Environments')} {
+			&.#{deprecated(--Green, '2.5', '2.0', 'Needed for distributed Environments')} {
 				background: $green;
 
 				&:hover {
@@ -144,13 +145,15 @@
 				padding-bottom: 20px;
 			}
 
-			&.__Inline {
+			&.__Inline,
+			&.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')} {
 				padding: 8px 15px;
 				vertical-align: middle;
 			}
 		}
 
-		&.__Inline {
+		&.__Inline,
+		&.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')} {
 			font-size: 12px;
 
 			// todo crum - how to make work???

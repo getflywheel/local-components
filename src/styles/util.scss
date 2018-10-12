@@ -68,7 +68,8 @@
 		color: $black;
 	}
 
-	.__Color__Green {
+	.__Color__Green,
+	.#{deprecated(--Color--Green, '2.5', '2.0', 'Needed for distributed Environments')} {
 		color: $green;
 	}
 
