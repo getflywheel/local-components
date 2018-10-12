@@ -1,3 +1,4 @@
+@import '_partials/functions';
 @import '_partials/mixins';
 @import '_partials/variables';
 
@@ -58,6 +59,7 @@
 			}
 		}
 
+		&.#{deprecated(--Green)},
 		&.__Green {
 			color: $green;
 
@@ -110,7 +112,8 @@
 				@include theme-button-pill-disabled;
 			}
 
-			&.__Green {
+			&.__Green,
+			&.#{deprecated(--Green, '2.5', 'Needed for distributed Environments')} {
 				background: $green;
 
 				&:hover {
