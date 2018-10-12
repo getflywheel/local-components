@@ -1,4 +1,8 @@
 @import '../../styles/_partials/forms'
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
 
 .FlyModalOverlay
 	position: fixed
@@ -31,7 +35,7 @@
 		max-height: 90vh
 		padding: 60px
 
-	&.FlyModal--HasIcon
+	&.FlyModal__HasIcon
 		overflow: visible
 
 	.TopIcon
@@ -60,7 +64,7 @@
 			height: 58px
 			fill: $white
 
-	.Close
+	\:global(.Close) // access the Close component's globally accessible class to modify it
 		svg path
 			fill: $gray25
 
