@@ -26,7 +26,12 @@ export default class ProgressBar extends Component {
 
 	render () {
 		return (
-			<div className={styles.ProgressBar}>
+			<div
+				className={classnames(
+					styles.ProgressBar,
+					'ProgressBar', // this also needs to be globally accessible so other component styles can reference it
+				)}
+			>
 				{
 					!this.props.stripes ? this.renderRegularBar() : this.renderStripes()
 				}

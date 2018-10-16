@@ -157,8 +157,7 @@
 			font-size: 14px;
 		}
 
-		// todo crum - global ref
-		.button.__Pill {
+		.button.__Pill { // targets classes that need to be globally accessible
 			margin-left: auto;
 			color: #F48720 !important;
 			white-space: nowrap;

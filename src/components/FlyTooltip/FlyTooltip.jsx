@@ -22,7 +22,8 @@ export default class FlyTooltip extends Component {
 		return (
 			<div
 				className={classnames(
-					styles.FlyTooltip_Container, {
+					styles.FlyTooltip_Container,
+					'FlyTooltip_Container', { // this also needs to be globally accessible so other component styles can reference it
 						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent
 					},
 					this.props.className

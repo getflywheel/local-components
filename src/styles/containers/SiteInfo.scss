@@ -305,8 +305,7 @@
 				}
 			}
 
-			// todo crum - global class
-			.FlyTooltip_Container:last-of-type,
+			.FlyTooltip_Container:last-of-type, // targets classes that need to be globally accessible
 			.ConnectButtons__Incompatible .ConnectButton__Push {
 				margin-left: 20px;
 			}
