@@ -16,7 +16,7 @@ try {
 	ReactDOM = require('react-dom');
 }
 
-if(document.getElementById('root')) {
+if(typeof document !== 'undefined' && document.getElementById('root')) {
 	ReactModal.setAppElement('#root');
 }
 else {
