@@ -299,11 +299,13 @@ export default class FlySelect extends Component {
 		return (
 			<div
 				className={classnames(
-					'FlySelect', {
+					'FlySelect',
+					this.props.className,
+					{
                         'FlySelect__Open': this.state.open,
                         'FlySelect__Focus': this.state.focus,
                         'FlySelect__HasFooter': this.props.footerText,
-                    }
+                    },
 				)}
 				style={this.props.style}
 				data-current-value={this.state.value}

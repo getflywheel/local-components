@@ -152,16 +152,6 @@
 			}
 		}
 
-		//&.__Inline,
-		//&.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')} {
-		//	font-size: 12px;
-		//
-		//	// todo crum - how to make work???
-		//	@at-root & + & {
-		//		margin-left: 10px;
-		//	}
-		//}
-
 		&.__Small {
 			padding: 3px 17px;
 		}

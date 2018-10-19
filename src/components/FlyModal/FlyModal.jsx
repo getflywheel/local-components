@@ -48,7 +48,10 @@ export default class FlyModal extends Component {
 	render () {
 		return <ReactModal
 			{...this.props}
-			className={classnames(styles.FlyModal)} // warning: this must be set after {...this.props} to work
+			className={classnames(
+				styles.FlyModal,
+				'FlyModal' // in here for tests
+			)} // warning: this must be set after {...this.props} to work
 		>
 			<Close
 				className={classnames({

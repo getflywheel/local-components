@@ -19,7 +19,12 @@ export default class InstallerStepStatus extends Component {
 		}
 
 		if (this.props.ready) {
-			return <CompleteSVG className="Complete" />;
+			return <CompleteSVG
+				className="
+					TID_InstallerStepStatus_Icon_Complete
+					Complete
+				"
+			/>;
 		}
 
 		if (this.props.requiresAttention) {

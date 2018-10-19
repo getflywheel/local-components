@@ -40,6 +40,7 @@ class RadioBlock extends Component {
 					Object.keys(this.props.options).map((optionValue, i) =>
 						<RadioBlockItem
 							onClick={this.onClick}
+							className={this.props.options[optionValue].className}
 							label={this.props.options[optionValue].label}
 							value={optionValue}
 							key={i}
@@ -79,7 +80,8 @@ class RadioBlockItem extends Component {
 			<div
 				onClick={this.onClick}
 				className={classnames(
-					styles.RadioBlock_Option, {
+					styles.RadioBlock_Option,
+					this.props.className, {
 						[styles.RadioBlock_Option__Selected]: this.props.selected
 					}
 				)}

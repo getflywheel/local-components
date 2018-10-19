@@ -14,7 +14,8 @@ export default class BigLoader extends Component {
             <div
 				className={classnames(
                 	styles.BigLoader,
-                	'MainPanel'
+                	'MainPanel',
+					this.props.className,
 				)}
                 style={this.props.style}
 			>

@@ -72,7 +72,8 @@ export default class VerticalNav extends Component {
 					<NavLink
 						to="/main/add-site"
 						className={classnames(
-							styles.VerticalNav_Add, {
+							styles.VerticalNav_Add,
+							'TID_VerticalNav_NavLink_Add', {
 								'__FadeIn': this.props.fadeIn
 							}
 						)}
