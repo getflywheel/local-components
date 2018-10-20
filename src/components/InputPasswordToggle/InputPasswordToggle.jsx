@@ -36,7 +36,7 @@ export default class InputPasswordToggle extends Component {
 					{...props}
 				/>
 				<span className="Eye" onClick={this.toggleType}>
-					<EyeSVG />`
+					<EyeSVG />
 				</span>
 			</div>
 		);
