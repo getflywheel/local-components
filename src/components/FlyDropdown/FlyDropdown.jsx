@@ -64,8 +64,8 @@ export default class FlyDropdown extends Component {
 						[styles.FlyDropdown__Open]: this.state.open,
 						'FlyDropdown__Open': this.state.open, // this also needs to be globally accessible so other component styles can reference it
 					},
-					this.props.className)
-				}
+					this.props.className,
+				)}
 				tabIndex="0"
 				onClick={this.onClick}
 				onBlur={this.onBlur}

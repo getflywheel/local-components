@@ -27,7 +27,7 @@ export default class FlyTooltip extends Component {
 					{
 						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent,
 					},
-					this.props.className
+					this.props.className,
 				)}
 			>
 				<div
@@ -38,7 +38,7 @@ export default class FlyTooltip extends Component {
                             [styles.FlyTooltip__PositionRight]: this.props.position === 'right',
                             [styles.FlyTooltip__PositionTop]: this.props.position === 'top',
                     	},
-						this.props.className
+						this.props.className,
 					)}
 					style={this.props.style}
 				>
