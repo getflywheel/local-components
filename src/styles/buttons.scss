@@ -178,10 +178,6 @@
 	}
 }
 
-.hello {
-	color: yellow;
-}
-
 button, .button {
 	:global(&.__Inline, &.--Inline) { //.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')},
 		font-size: 12px;
