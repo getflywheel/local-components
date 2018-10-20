@@ -51,7 +51,8 @@ export default class Switch extends Component {
 		return (
 			<div
 				className={classnames(
-					styles.Switch, {
+					styles.Switch,
+					{
 						[styles.Switch__Tiny]: this.props.tiny,
 						[styles.Switch__Flat]: this.props.flat,
 					}

@@ -24,7 +24,8 @@ export default class VerticalNav extends Component {
 			<NavLink
 				to={linkLocation}
 				className={classnames(
-					'VerticalNav_Local', {
+					'VerticalNav_Local',
+					{
 						'__FadeIn': this.props.fadeIn,
 						'__Active': localSitesActive,
 					}
@@ -44,8 +45,9 @@ export default class VerticalNav extends Component {
 			<NavLink
 				to="/main/flywheel"
 				 className={classnames(
-				 	'VerticalNav_Flywheel', {
-				 		'__FadeIn': this.props.fadeIn
+				 	'VerticalNav_Flywheel',
+					 {
+				 		'__FadeIn': this.props.fadeIn,
 				 	}
 				)}
 				activeClassName="__Active"
@@ -73,8 +75,9 @@ export default class VerticalNav extends Component {
 						to="/main/add-site"
 						className={classnames(
 							styles.VerticalNav_Add,
-							'TID_VerticalNav_NavLink_Add', {
-								'__FadeIn': this.props.fadeIn
+							'TID_VerticalNav_NavLink_Add',
+							{
+								'__FadeIn': this.props.fadeIn,
 							}
 						)}
 					>

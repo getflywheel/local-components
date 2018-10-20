@@ -9,7 +9,8 @@ export class Stepper extends Component {
 		return (
 			<div
 				className={classnames(
-					styles.Stepper, {
+					styles.Stepper,
+					{
 						[styles.__Steps__2]: this.props.children.length === 2,
 						[styles.__Steps__3]: this.props.children.length === 3,
 					}
@@ -31,7 +32,8 @@ export class Step extends Component {
 		return (
 			<div
 				className={classnames(
-					styles.Step, {
+					styles.Step,
+					{
 						[styles.Step__Done]: this.props.done,
 						[styles.Step__Active]: this.props.active,
 						[styles.Step__Disabled]: this.props.disabled,

@@ -14,7 +14,8 @@ class TableList extends Component {
 				className={classnames(
 					styles.TableList,
 					'TableList', // this also needs to be globally accessible so other component styles can reference it
-					this.props.className, {
+					this.props.className,
+					{
 						[styles.Form]: this.props.form,
 						[styles.TableList__NoStripes]: this.props.stripes === false,
 					}
@@ -33,7 +34,7 @@ class TableListRow extends Component {
 				className={classnames(
 					styles.TableListRow,
 					'TableListRow', // this also needs to be globally accessible so other component styles can reference it
-					this.props.className
+					this.props.className,
 				)}
 			>
 				{this.props.label && <strong>{this.props.label}</strong>}

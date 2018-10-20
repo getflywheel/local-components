@@ -81,8 +81,9 @@ class RadioBlockItem extends Component {
 				onClick={this.onClick}
 				className={classnames(
 					styles.RadioBlock_Option,
-					this.props.className, {
-						[styles.RadioBlock_Option__Selected]: this.props.selected
+					this.props.className,
+					{
+						[styles.RadioBlock_Option__Selected]: this.props.selected,
 					}
 				)}
 			>

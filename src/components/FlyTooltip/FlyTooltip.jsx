@@ -23,15 +23,17 @@ export default class FlyTooltip extends Component {
 			<div
 				className={classnames(
 					styles.FlyTooltip_Container,
-					'FlyTooltip_Container', { // this also needs to be globally accessible so other component styles can reference it
-						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent
+					'FlyTooltip_Container', // this also needs to be globally accessible so other component styles can reference it
+					{
+						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent,
 					},
 					this.props.className
 				)}
 			>
 				<div
 					className={classnames(
-                        styles.FlyTooltip, {
+                        styles.FlyTooltip,
+						{
                             [styles.FlyTooltip__PositionBottom]: this.props.position === 'bottom',
                             [styles.FlyTooltip__PositionRight]: this.props.position === 'right',
                             [styles.FlyTooltip__PositionTop]: this.props.position === 'top',

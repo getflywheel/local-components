@@ -78,7 +78,8 @@ class TertiaryNavItemBase extends Component {
             <li
 				className={classnames(
 					styles.TertiaryNavItem,
-					this.props.className, {
+					this.props.className,
+					{
 						[styles.TertiaryNavItem__Error]: this.props.variant === 'error',
 					}
 				)}

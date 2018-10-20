@@ -16,10 +16,11 @@ export default class ProgressBar extends Component {
 	renderRegularBar () {
 		return <div
 			className={classnames(
-                styles.ProgressBarIndicator, {
-					[styles.ProgressBar__ShowNumber]: this.props.showNumber }
-				)
-			}
+                styles.ProgressBarIndicator,
+				{
+					[styles.ProgressBar__ShowNumber]: this.props.showNumber
+				}
+			)}
 			style={{ width: `${this.props.progress}%` }}
 		/>;
 	}

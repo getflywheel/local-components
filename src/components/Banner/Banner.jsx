@@ -71,7 +71,9 @@ export default class Banner extends Component {
 					key={index}
 					className={classnames(
 						styles.Carousel_Item,
-						{[styles.Carousel_Item__Active]: index === this.props.currentIndex }
+						{
+							[styles.Carousel_Item__Active]: index === this.props.currentIndex,
+						}
 					)}
 					onClick={() => this.props.onIndexChange(index)}/>
 			);
@@ -96,7 +98,8 @@ export default class Banner extends Component {
 	render () {
 		return <div
 			className={classnames(
-				styles.Banner, {
+				styles.Banner,
+				{
 					[styles.Banner__Neutral]: this.props.variant === 'neutral',
 					[styles.Banner__Error]: this.props.variant === 'error',
 					// '--Warning': this.props.variant === 'warning',

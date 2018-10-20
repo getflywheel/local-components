@@ -60,8 +60,9 @@ class WindowsToolbar extends Component {
 
 					<span
 						className={classnames(
-							[styles.Maximize], {
-								'__Disabled': !this.props.resizable
+							[styles.Maximize],
+							{
+								'__Disabled': !this.props.resizable,
 							}
 						)}
 						onClick={this.props.onMaximize}

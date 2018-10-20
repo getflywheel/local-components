@@ -32,7 +32,8 @@ export default class Drawer extends Component {
                 <div
 					className={classnames(
 						styles.Drawer,
-						this.props.className, {
+						this.props.className,
+						{
 							[styles.Drawer__Show]: this.props.show,
 							[styles.Drawer__DisableAnimation]:  this.state.disableAnimation,
 							[styles.Drawer__AlignLeft]: this.props.align === 'left',

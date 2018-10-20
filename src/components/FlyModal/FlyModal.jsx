@@ -50,12 +50,12 @@ export default class FlyModal extends Component {
 			{...this.props}
 			className={classnames(
 				styles.FlyModal,
-				'FlyModal' // in here for tests
+				'FlyModal', // in here for tests
 			)} // warning: this must be set after {...this.props} to work
 		>
 			<Close
 				className={classnames({
-					[styles.FlyModal__HasIcon]: this.props.hasIcon
+					[styles.FlyModal__HasIcon]: this.props.hasIcon,
 				})}
 				onClick={FlyModal.onRequestClose}
 			/>

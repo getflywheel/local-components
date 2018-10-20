@@ -240,7 +240,8 @@ export default class FlySelect extends Component {
 			key={i}
 			data-value={option.value}
 			className={classnames(
-				'FlySelect_Option', {
+				'FlySelect_Option',
+				{
 					'__Disabled': disabled,
 				}
 			)}

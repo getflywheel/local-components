@@ -59,7 +59,8 @@ export default class FlyDropdown extends Component {
 		return (
 			<div
 				className={classnames(
-					styles.FlyDropdown, {
+					styles.FlyDropdown,
+					{
 						[styles.FlyDropdown__Open]: this.state.open,
 						'FlyDropdown__Open': this.state.open, // this also needs to be globally accessible so other component styles can reference it
 					},
@@ -75,9 +76,10 @@ export default class FlyDropdown extends Component {
 
 				<ul
 					className={classnames(
-						styles.FlyDropdown_Items, {
+						styles.FlyDropdown_Items,
+						{
 							[styles.FlyDropdown_Items__PositionTop]: this.props.position === 'top',
-							[styles.FlyDropdown_Items__TipItemHover]: this.state.tipItemHover
+							[styles.FlyDropdown_Items__TipItemHover]: this.state.tipItemHover,
 						},
 						typeof this.state.tipItemHover === 'string' && this.state.tipItemHover === 'red' ? styles.FlyDropdown_Items__TipItemHover__ColorRed : null,
 					)}
@@ -88,7 +90,8 @@ export default class FlyDropdown extends Component {
 								key={i}
 								className={classnames(
 									styles.FlyDropdown_Item,
-									item.color && item.color === 'red' ? styles.FlyDropdown_Item__ColorRed : null)}
+									item.color && item.color === 'red' ? styles.FlyDropdown_Item__ColorRed : null,
+								)}
 								onClick={(event) => {
 									item.onClick.call();
 									this.setState({ open: false });

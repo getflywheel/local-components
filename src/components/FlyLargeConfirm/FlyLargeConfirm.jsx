@@ -34,8 +34,9 @@ export default class FlyLargeConfirm extends Component {
 
 		return <div
 			className={classnames(
-				styles.FlyLargeConfirm, {
-					[styles.FlyLargeConfirm__Confirmed]: this.state.confirmed
+				styles.FlyLargeConfirm,
+				{
+					[styles.FlyLargeConfirm__Confirmed]: this.state.confirmed,
 				}
 			)}
 		>
