@@ -22,6 +22,7 @@ export default class Header extends Component {
 			<HeaderTag
 				className={classnames(
 					styles.Header,
+					this.props.className,
 					{
 						[styles.Header__SizeXL]: this.props.size === 'xl',
 						[styles.Header__SizeL]: this.props.size === 'l',
