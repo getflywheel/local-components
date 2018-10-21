@@ -17,6 +17,7 @@ export const FlyLargeConfirm = hot(module)(require('./components/FlyLargeConfirm
 export const FlyModal = hot(module)(require('./components/FlyModal').default);
 export const FlySelect = hot(module)(require('./components/FlySelect').default);
 export const FlyTooltip = hot(module)(require('./components/FlyTooltip').default);
+export const Header = hot(module)(require('./components/Header').default);
 export const InnerPaneSidebar = hot(module)(require('./components/InnerPaneSidebar').InnerPaneSidebar);
 export const InnerPaneSidebarHeader = hot(module)(require('./components/InnerPaneSidebar').InnerPaneSidebarHeader);
 export const InnerPaneSidebarAddNew = hot(module)(require('./components/InnerPaneSidebar').InnerPaneSidebarAddNew);
