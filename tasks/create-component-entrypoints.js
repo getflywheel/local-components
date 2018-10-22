@@ -59,7 +59,7 @@ async function generateEntrypoints() {
 			content += `\nmodule.exports['${componentExport}'] = mainEntrypoint['${componentExport}'];`;
 		}
 
-		const entrypointPath = path.resolve('./dist', componentName + '.js');
+		const entrypointPath = path.resolve(__dirname, '../dist', componentName + '.js');
 
 		try {
 			await jetpack.writeAsync(entrypointPath, content, { atomic: true });
