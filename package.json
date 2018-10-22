@@ -22,6 +22,7 @@
 		"build": "webpack --config webpack.prod.js && run-p 'create-entrypoints'",
 		"watch": "webpack-dev-server --config webpack.dev.js",
 		"test": "jest",
+		"prepare": "yarn build",
 		"create-entrypoints": "babel-node tasks/create-component-entrypoints.js",
 		"gh-pages:build": "styleguidist build",
 		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide"
