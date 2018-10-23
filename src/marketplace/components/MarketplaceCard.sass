@@ -1,0 +1,73 @@
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
+
+.MarketplaceCard
+	display: flex
+	flex-direction: row
+	flex-grow: 1
+	flex-shrink: 0
+	flex-wrap: wrap
+	min-width: 240px
+	max-width: 280px
+	background: $white
+	box-shadow: 0 3px 5px 0 rgba($gray-dark, 0.15)
+	border-radius: 4px
+	overflow: hidden
+
+	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
+	&.MarketplaceCard__Horizontal
+		flex-wrap: nowrap
+		min-width: 100%
+		max-width: 100%
+
+	&.MarketplaceCard__IsInstalling
+		box-shadow: none
+
+	.MarketplaceCard_Image
+		@include selectors_setAsDefaults()
+			width: 100%
+			height: 120px
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			width: 156px
+			height: auto
+		background: $gray
+
+	.MarketplaceCard_Content
+		margin: 30px
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			flex-grow: 1
+
+	.MarketplaceCard_Name
+		margin-bottom: 5px
+
+	.MarketplaceCard_Developer
+		@include selectors_setAsDefaults()
+			margin-bottom: 10px
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			margin-bottom: 0
+		color: $gray75
+
+	.MarketplaceCard_Description
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			display: none
+		margin-bottom: 30px
+		color: $gray
+
+	.MarketplaceCard_Footer
+		@include selectors_setAsDefaults()
+			display: flex
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			display: none
+		flex-direction: row
+
+	.MarketplaceCard_CTA
+		@include selectors_setAsDefaults()
+			display: none
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			display: flex
+			align-items: center
+
+			& > *
+				margin-right: 30px

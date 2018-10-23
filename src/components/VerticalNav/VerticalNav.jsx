@@ -46,7 +46,7 @@ export default class VerticalNav extends Component {
 				to="/main/flywheel"
 				 className={classnames(
 				 	'VerticalNav_Flywheel',
-					 {
+					{
 				 		'__FadeIn': this.props.fadeIn,
 				 	}
 				)}
@@ -57,11 +57,34 @@ export default class VerticalNav extends Component {
 		</FlyTooltip>;
 	}
 
+	renderMarketplace () {
+		return <FlyTooltip
+			content="Marketplace"
+			position="right"
+			hoverIntent={true}
+		>
+			<NavLink
+				to="/main/flywheel/marketplace"
+				className={classnames(
+					'VerticalNav_Marketplace',
+					{
+						'__FadeIn': this.props.fadeIn,
+					}
+				)}
+				activeClassName="__Active"
+			>
+				<span style={{color: 'black'}}>M</span>
+				{/*<ConnectNavSVG/>*/}
+			</NavLink>
+		</FlyTooltip>;
+	}
+
 	render () {
 		return (
 			<div className={styles.VerticalNav}>
 				{this.renderLocalSitesLink()}
 				{this.renderFlywheelSitesLink()}
+				{this.renderMarketplace()}
 
 				<div className={styles.DragRegion}/>
 

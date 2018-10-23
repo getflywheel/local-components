@@ -1,0 +1,51 @@
+@import '../../../styles/_partials/mixins'
+@import '../../../styles/_partials/selectors'
+@import '../../../styles/_partials/theme'
+@import '../../../styles/_partials/variables'
+
+.MarketplacePageHomeCommunity
+	display: flex
+	flex-direction: row
+
+.MarketplacePageHomeCommunity_Aside
+	position: relative
+	display: flex
+	flex-direction: column
+	width: 25%
+	min-width: 230px
+	max-width: 480px
+	overflow: hidden
+	white-space: nowrap
+
+	.MarketplacePageHomeCommunity_Aside_Header
+		margin-bottom: 18px
+
+	a
+		margin-top: 10px
+
+	// this list only provides styles within its bounds, not above or below (margin)
+	ul
+		margin: 0
+		padding: 0
+
+		li
+			margin: 10px 0 0 0
+			text-indent: 0
+			list-style-type: none
+
+			&:first-child
+				margin-top: 0
+
+.MarketplacePageHomeCommunity_Aside_Group
+	margin-bottom: 30px
+
+.MarketplacePageHomeCommunity_Content
+	flex-grow: 1
+
+.MarketplacePageHomeCommunity_Toolbar
+	display: flex
+	flex-direction: row
+	margin-bottom: 30px
+
+	& > *:last-child
+		margin-left: auto

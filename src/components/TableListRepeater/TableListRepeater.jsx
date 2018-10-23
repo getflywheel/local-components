@@ -6,7 +6,7 @@ import CloseSmallSVG from '../../svg/close--small.svg';
 import AddSVG from '../../svg/add.svg';
 import Button from '../Button';
 import isEqual from 'lodash/isEqual';
-import styles from "../TableList/TableList.sass";
+import styles from '../TableList/TableList.sass';
 
 export default class TableListRepeater extends Component {
 	static propTypes = {
