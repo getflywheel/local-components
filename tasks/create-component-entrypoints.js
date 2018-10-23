@@ -3,7 +3,7 @@ import 'ignore-styles';
 import globby from 'globby';
 import path from 'path';
 import mock from 'mock-require';
-import jetpack from 'fs-jetpack';
+import fs from 'fs';
 
 mock('electron', {
 	remote: {
@@ -62,16 +62,18 @@ async function generateEntrypoints() {
 		const entrypointPath = path.resolve(__dirname, '../dist', componentName + '.js');
 
 		try {
-			await jetpack.writeAsync(entrypointPath, content, { atomic: true });
+			fs.writeFileSync(entrypointPath, content);
 
 			console.info('Wrote', entrypointPath);
 		} catch (e) {
-			console.error(e);
+			console.error('Ran into error', e);
 
 			process.exit(1);
 		}
 
 	}
+
+	process.exit(0);
 
 }
 
