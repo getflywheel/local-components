@@ -7,6 +7,7 @@ export const BannerCarousel = hot(module)(require('./components/BannerCarousel')
 export const BigLoader = hot(module)(require('./components/BigLoader').default);
 export const BrowseInput = hot(module)(require('./components/BrowseInput').default);
 export const Button = hot(module)(require('./components/Button').default);
+export const Card = hot(module)(require('./components/Card').default);
 export const Close = hot(module)(require('./components/Close').default);
 export const DownloaderItem = hot(module)(require('./components/DownloaderItem').default);
 export const DragBar = hot(module)(require('./components/DragBar').default);
