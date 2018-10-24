@@ -1,0 +1,60 @@
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
+
+:global {
+	// .TableList is both locally and globally scoped
+	.TableList li.SiteInfoEnvironment {
+		display: table;
+		width: 100%;
+		border-collapse: collapse;
+
+		button.Cancel {
+			@include theme-border-left;
+			padding-left: 12px;
+		}
+
+		// .TableList is both locally and globally scoped
+		> .TableList {
+			padding: 0 30px 15px;
+
+			@at-root ul.TableList:not(:last-child) .TableList {
+				padding-right: 0;
+			}
+
+			// .TableListRow is both locally and globally scoped
+			> .TableListRow {
+				height: 34px;
+
+				> strong {
+					padding-left: 0;
+					line-height: 1;
+				}
+
+				&:not(.LocalEnvironment) > strong {
+					padding-top: 17px;
+					@include theme-color-gray-else-gray25;
+				}
+
+				> div,
+				> p {
+					padding-right: 0;
+				}
+
+				&.LocalEnvironment {
+					line-height: 44px;
+					@include theme-border-bottom;
+
+					> div {
+						display: flex;
+						height: 44px;
+						align-items: center;
+					}
+				}
+			}
+		}
+	}
+}

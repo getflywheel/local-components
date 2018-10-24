@@ -1,0 +1,29 @@
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
+
+:global {
+	div.Window {
+		display: flex;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		@at-root div#root > div > div.Window.__OsWindows {
+			top: 32px;
+		}
+
+		&.__Draggable {
+			-webkit-app-region: drag;
+		}
+
+		&.__BackdropBlur {
+			@include theme-background-blur-backdrop;
+		}
+	}
+}

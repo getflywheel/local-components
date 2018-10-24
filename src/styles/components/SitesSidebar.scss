@@ -1,0 +1,147 @@
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
+
+:global {
+	.SitesSidebar {
+		width: 25%;
+		min-width: 230px;
+		max-width: 480px;
+		flex-shrink: 0;
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		transition: width .2s ease 0ms, min-width .2s ease 0ms;
+		overflow: hidden;
+		white-space: nowrap;
+
+		&:before {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			@include theme-background-gray5-else-graydarkalt;
+		}
+
+		h3 {
+			margin-bottom: 20px;
+		}
+
+		&.SitesSidebar__Collapsed {
+			width: 34px;
+			min-width: 0;
+			max-width: none;
+
+			.SitesSidebarSites,
+			.SitesSidebar_Overview {
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			.Toggle {
+				transform: none;
+			}
+		}
+
+		.Toggle {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			cursor: pointer;
+			padding: 5px;
+			display: inline-block;
+			width: 23px;
+			height: 24px;
+			transform: rotate(180deg);
+
+			&:hover {
+				svg path {
+					fill: $gray75;
+				}
+			}
+
+			* {
+				cursor: pointer;
+			}
+
+			svg {
+				width: 13px;
+				height: 14px;
+
+				path {
+					transition: fill .1s ease 0ms;
+					fill: $gray25;
+				}
+			}
+		}
+
+		.SitesSidebarSites {
+			padding: 0 30px;
+			overflow-x: hidden;
+			overflow-y: auto;
+			flex-grow: 1;
+			transition: opacity .2s ease 0ms;
+		}
+	}
+
+	.SitesSidebar_Overview {
+		margin-top: auto;
+		width: 100%;
+		height: 55px;
+		line-height: 55px;
+		@include theme-border-top;
+		padding: 0 20px;
+		font-weight: 300;
+		@include theme-color-gray-else-white;
+		transition: opacity .2s ease 0ms;
+
+		strong {
+			color: $green;
+			font-weight: 700;
+		}
+
+		.StopAll {
+			float: right;
+			text-transform: uppercase;
+			color: $red;
+			font-size: 11px;
+			line-height: 55px;
+			cursor: pointer;
+			transition: color .1s ease 0ms;
+			font-weight: 700;
+			@include tracking(20);
+
+			* {
+				cursor: pointer;
+			}
+
+			svg {
+				width: 14px;
+				height: 14px;
+				vertical-align: middle;
+				margin: 0 0 0 8px;
+				position: relative;
+				top: -1px;
+
+				rect {
+					transition: fill .1s ease 0ms;
+					fill: $red;
+				}
+			}
+
+			&:hover {
+				color: $red-dark50;
+
+				svg rect {
+					fill: $red-dark50;
+				}
+			}
+		}
+	}
+}

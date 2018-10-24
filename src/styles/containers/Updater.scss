@@ -1,0 +1,56 @@
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
+
+:global {
+	.Updater {
+		padding: 60px 60px 40px;
+		text-align: center;
+		font-size: 14px;
+		line-height: 20px;
+		@include theme-color-gray-else-gray15;
+		font-weight: 300;
+
+		a {
+			font-weight: 500;
+			white-space: nowrap;
+		}
+
+		h3 {
+			@include theme-color-graydark-else-white;
+			margin-bottom: 30px;
+		}
+
+		p {
+			margin: 10px 0;
+		}
+
+		.LocalMark {
+			width: 60px;
+			height: 60px;
+		}
+
+		.Download_Info {
+			margin-top: 20px;
+			display: flex;
+			justify-content: center;
+
+			.Download_Time {
+				margin-left: auto;
+			}
+		}
+
+		.Buttons {
+			margin-top: 25px;
+			display: flex;
+			flex-direction: column;
+
+			button:first-child {
+				margin: 0 0 16px;
+			}
+		}
+	}
+}

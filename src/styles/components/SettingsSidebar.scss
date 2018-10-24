@@ -1,0 +1,47 @@
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
+
+:global {
+	.SettingsSidebar {
+		@include theme-background-blur-backdrop($gray15, 1.0);
+		width: 280px;
+		flex-shrink: 0;
+		padding: 10px 30px;
+
+		@include if-theme-light() {
+			border-right: none;
+		}
+		@include if-theme-dark() {
+			border-right: 2px solid $gray-dark;
+		}
+
+		a {
+			height: 36px;
+			line-height: 36px;
+			text-decoration: none;
+			margin: 0 -20px;
+			padding: 0 17px;
+			text-transform: uppercase;
+			font-weight: 700;
+			color: $gray75;
+			@include tracking(40);
+			display: flex;
+			position: relative;
+			border-radius: 4px;
+
+			&.Active {
+				@include theme-background-white-else-graydark;
+				@include theme-color-graydark-else-white;
+			}
+
+			&:hover:not(.Active) {
+				@include theme-background-gray15-else-graydark50;
+				@include theme-color-graydark50-else-white;
+			}
+		}
+	}
+}

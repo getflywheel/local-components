@@ -1,0 +1,27 @@
+// note: each keyframe must be individually wrapper in ':global()' as using global blocks do not work here
+@keyframes :global(rotateSpinner) {
+	from {
+		transform: rotate(0deg) scaleX(-1);
+	}
+	to {
+		transform: rotate(360deg) scaleX(-1);
+	}
+}
+
+@keyframes :global(fadeIn) {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes :global(fadeOut) {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

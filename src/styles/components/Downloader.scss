@@ -1,0 +1,35 @@
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
+
+:global {
+	ul.Downloader {
+		list-style: none;
+		padding: 0;
+		width: 500px;
+		margin: 0 auto;
+	}
+
+	li.DownloaderItem {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+
+		span {
+			text-align: center;
+			margin: 0 0 25px;
+			@include theme-color-gray-else-gray25;
+		}
+
+		span.DownloadSizeProgress {
+			margin-top: 25px;
+		}
+
+		.ProgressBar { // targets classes that need to be globally accessible
+			align-self: center;
+		}
+	}
+}

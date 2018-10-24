@@ -3,14 +3,17 @@ const path = require('path');
 const merge = require('webpack-merge');
 
 module.exports = {
-    skipComponentsWithoutExample: true,
+    components: 'src/**/[A-Z]*.jsx',
     getComponentPathLine(componentPath) {
         return `import { ${path.basename(componentPath, '.jsx')} } from 'local-components';`
     },
+    require: [
+        path.join(__dirname, './src/main.sass'),
+    ],
+    skipComponentsWithoutExample: true,
 	styleguideComponents: {
 		Wrapper: path.resolve(__dirname, 'styleguide', 'components', 'Wrapper'),
 	},
-    components: 'src/**/[A-Z]*.jsx',
     webpackConfig: () => {
         return merge(require('./webpack.common'), {
 			target: 'web',

@@ -1,0 +1,64 @@
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
+
+.AdvancedToggle
+	width: 100%
+	margin-top: 20px
+
+	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
+	&.AdvancedToggle__isOpen
+
+	// the reveal/hide content that's being toggled
+	.Content
+		@include selectors_setAsDefaults()
+			max-height: 0
+			opacity: 0
+		@include selectors_ifHostStateIs('.AdvancedToggle__isOpen')
+			max-height: 235px
+			opacity: 1
+		transition: max-height .2s ease 0ms, opacity .2s ease 0ms
+
+		> :first-child
+			margin-top: 20px
+
+	// the reveal/hide toggle button
+	.Toggle
+		display: flex
+		align-items: center
+		height: 34px
+		line-height: 34px
+		font-size: 14px
+		font-weight: 700
+		text-transform: uppercase
+		@include tracking(20)
+		color: $gray25
+
+		&:before,
+		&:after
+			content: ''
+			flex: 1 0 20px
+			margin: 0 20px 0 0
+			@include theme-border-top
+
+		&:after
+			margin: 0 0 0 20px
+
+		&, *
+		 cursor: pointer
+
+		svg
+			display: inline
+			width: 14px
+			height: 6px
+			margin-left: 5px
+			margin-bottom: 4px
+			vertical-align: middle
+			@include selectors_setAsDefaults()
+				transform: rotate(0deg)
+			@include selectors_ifHostStateIs('.AdvancedToggle__isOpen')
+				transform: rotate(180deg)
+
+			path
+				fill: $gray25

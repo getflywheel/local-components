@@ -1,0 +1,25 @@
+@import '../../styles/_partials/mixins'
+@import '../../styles/_partials/selectors'
+@import '../../styles/_partials/theme'
+@import '../../styles/_partials/variables'
+
+.Close
+	position: absolute
+	z-index: 99
+	right: 30px
+	top: 30px
+	cursor: pointer
+
+	*
+		cursor: pointer
+
+	svg
+		width: 18px
+		height: 18px
+
+	svg path
+		@include theme-fill-green-else-gray25
+		transition: fill .1s ease 0ms
+
+	&:hover svg path
+		@include theme-fill-greendark50-else-white-hover

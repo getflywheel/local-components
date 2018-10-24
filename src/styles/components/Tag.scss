@@ -1,0 +1,24 @@
+@import '../_partials/forms';
+@import '../_partials/misc';
+@import '../_partials/mixins';
+@import '../_partials/selectors';
+@import '../_partials/theme';
+@import '../_partials/variables';
+
+:global {
+	.Tag {
+		border-radius: 4px;
+		display: inline-block;
+		padding: 6px 12px;
+		text-transform: uppercase;
+		line-height: 1;
+		white-space: nowrap;
+		color: $white;
+		font-weight: 700;
+		font-size: 12px;
+
+		&.Tag__Warning {
+			background: $orange;
+		}
+	}
+}
