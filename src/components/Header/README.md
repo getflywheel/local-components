@@ -28,6 +28,6 @@ Example of a multi-color `<h2>` header.
 
 ```js
 <Header tag="h2">
-   Clone <span class="__Color__Green">Custom with Apache</span>
+   Clone <span className="__Color__Green">Custom with Apache</span>
 </Header>
 ```
