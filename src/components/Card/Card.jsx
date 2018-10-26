@@ -32,12 +32,14 @@ export default class Card extends Component {
 		headerClassName: PropTypes.string,
 		headerIconPath: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 		headerIconMaxHeight: PropTypes.string,
+		overflow: PropTypes.string,
 		tag: PropTypes.string,
 		truncateDefaultLines: PropTypes.number,
 		truncateDefaultEllipsis: PropTypes.string,
 	};
 
 	static defaultProps = {
+		overflow: 'hidden',
 		tag: 'article',
 		truncateDefaultLines: 1,
 		truncateDefaultEllipsis: '...',
@@ -190,6 +192,9 @@ export default class Card extends Component {
 					styles.Card,
 					this.props.className
 				)}
+				style={{
+					...(this.props.overflow !== 'hidden' && {overflow: this.props.overflow}), // conditionally add style
+				}}
 			>
 				{this.hasHeader() && this.renderHeader()}
 				{this.hasContent() && this.renderContent()}
