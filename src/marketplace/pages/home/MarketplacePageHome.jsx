@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import MarketplacePage from '../../components/MarketplacePage';
-import { Header } from '../../../index';
 import styles from './MarketplacePageHome.sass';
 import AddSVG from '../../../svg/add.svg';
+import Header from '../../../components/Header/Header';
 
 class MarketplacePageHomeBase extends Component {
 

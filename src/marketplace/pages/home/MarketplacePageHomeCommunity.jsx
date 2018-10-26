@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { Header } from '../../../index';
 import MarketplaceCard from '../../components/MarketplaceCard';
 import MarketplaceCardContainer from '../../components/MarketplaceCardContainer';
 import styles from './MarketplacePageHomeCommunity.sass';
 import FlyDropdown from '../../../components/FlyDropdown/FlyDropdown';
 import Button from '../../../components/Button/Button';
+import Header from '../../../components/Header/Header';
 
 export default class MarketplacePageHomeCommunity extends Component {
 

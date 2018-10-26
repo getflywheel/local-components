@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import InputPasswordToggle from './InputPasswordToggle';
 
 it('renders without crashing', function() {
