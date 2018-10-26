@@ -1,1 +1,1 @@
-export {default} from './Truncate';
+export {default} from './Spinner';

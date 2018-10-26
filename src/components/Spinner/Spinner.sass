@@ -3,21 +3,14 @@
 @import '../../styles/_partials/theme'
 @import '../../styles/_partials/variables'
 
-.Header
-	margin: 0 // reset base margins for <h1> to <h6> elements
-	font-weight: 500
+.Spinner
+	vertical-align: middle
+	width: 18px
+	height: 22px
+	\:global
+		animation: rotateSpinner 1s linear infinite
+	margin: 0 0 0 10px
 
-.Header__SizeXL
-	font-size: 4.2rem
+	path
+		fill: $gray25
 
-.Header__SizeL
-	font-size: 3.2rem
-
-.Header__SizeM
-	font-size: 2.4rem
-
-.Header__SizeS
-	font-size: 1.8rem
-
-.Header__SizeXS
-	font-size: 1.4rem
