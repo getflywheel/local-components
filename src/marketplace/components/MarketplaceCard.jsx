@@ -57,7 +57,7 @@ export default class MarketplaceCard extends Component {
 				contentSubTruncate={true}
 				contentDescription={this.props.direction === 'vertical' && !this.props.installing && this.props.addonDescription} // render if vertical and not installing
 				contentDescriptionTruncate={true}
-				contentDescriptionTruncateLines={2}
+				contentDescriptionTruncateLines={3}
 				footer={
 					<Fragment>
 						{this.props.direction === 'vertical'

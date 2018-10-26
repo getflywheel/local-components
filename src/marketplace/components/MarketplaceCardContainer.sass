@@ -3,13 +3,26 @@
 @import '../../styles/_partials/theme'
 @import '../../styles/_partials/variables'
 
+@mixin generateGridTemplateColumnsBreakpoints($cardWidthMax, $gap, $maxColumns)
+	$otherScreenWidth: 360px // rough estimate of the non-card-container screen width
+	$columnsConcatAutoValues: ''
+
+	@for $i from 1 through $maxColumns
+		$columnsConcatAutoValues: $columnsConcatAutoValues + auto + " " // each 'auto' represents an additional column
+		@media screen and (min-width: $otherScreenWidth + (($i * $cardWidthMax) + ($i + 1) * $gap))
+			grid-template-columns: unquote($columnsConcatAutoValues)
+
 .MarketplaceCardContainer
+	$cardWidthMax: 240px
+	$gap: 10px
+	$maxColumns: 6
+
 	display: grid
-	grid-template-columns: auto auto auto
-	grid-row-gap: 10px
-	row-gap: 10px
-	grid-column-gap: 10px
-	column-gap: 10px
+	grid-row-gap: $gap
+	row-gap: $gap
+	grid-column-gap: $gap
+	column-gap: $gap
+	@include generateGridTemplateColumnsBreakpoints($cardWidthMax, $gap, $maxColumns)
 
 	&.MarketplaceCardContainer__Horizontal
 		grid-template-columns: 100%
