@@ -31,6 +31,7 @@ export const ProgressBar = hot(module)(require('./components/ProgressBar').defau
 export const RadioBlock = hot(module)(require('./components/RadioBlock').default);
 export const SiteInfoInnerPane = hot(module)(require('./components/SiteInfoInnerPane').default);
 export const Stepper = hot(module)(require('./components/Stepper').Stepper);
+export const Spinner = hot(module)(require('./components/Spinner').default);
 export const Step = hot(module)(require('./components/Stepper').Step);
 export const Switch = hot(module)(require('./components/Switch').default);
 export const TableList = hot(module)(require('./components/TableList').TableList);
