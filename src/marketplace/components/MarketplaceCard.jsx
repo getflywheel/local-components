@@ -44,7 +44,7 @@ export default class MarketplaceCard extends Component {
 						[styles.MarketplaceCard__IsInstalling]: this.props.installing === true,
 					}
 				)}
-				overflow={this.props.direction === 'horizontal' && 'visible'} // if horizontal, allow dropdown contents to flow outside of the bounds
+				overflow={this.props.direction === 'horizontal' ? 'visible' : undefined} // if horizontal, allow dropdown contents to flow outside of the bounds
 				headerIconPath={!this.props.installing && this.props.addonIconPath} // render if not installing
 				headerIconMaxHeight="60px"
 				headerBackgroundColor={this.props.addonBackgroundColor}
