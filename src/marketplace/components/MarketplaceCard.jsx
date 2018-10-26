@@ -74,8 +74,29 @@ export default class MarketplaceCard extends Component {
 								:
 								<Fragment>
 									<Switch onChange={() => console.log('onChange')}/>
-									{/* todo crum - make into component & figure out what all it does and consists of */}
-									<div>•••</div>
+									{/* todo crum - what are its options */}
+									<FlyDropdown
+										className={styles.MarketplaceCard_Footer_Dropdown}
+										position="top"
+										caret={false}
+										items={[
+											{
+												label: 'Option 1',
+												onClick: () => console.log('onClick'),
+											},
+											{
+												label: 'Option 2',
+												onClick: () => console.log('onClick'),
+											},
+											{
+												label: 'Option 3 (Red)',
+												onClick: () => console.log('onClick'),
+												color: 'red',
+											},
+										]}
+									>
+										•••
+									</FlyDropdown>
 								</Fragment>
 						}
 					</Fragment>
