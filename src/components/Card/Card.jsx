@@ -63,7 +63,6 @@ export default class Card extends Component {
 					}}
 				>
 					<img
-						className={classnames(styles.Card_HeaderIcon)}
 						src={this.props.headerIconPath}
 						style={{
 							...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
