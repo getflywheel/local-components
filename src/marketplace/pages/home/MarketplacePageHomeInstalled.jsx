@@ -13,60 +13,76 @@ export default class MarketplacePageHomeInstalled extends Component {
 					{/* todo crum - need to create the 'installing' add-on card ... with outline styles */}
 					<MarketplaceCard
 						direction={direction}
-						imgPath="zzz"
-						name="X-Debug Control"
-						developer="Developer Name"
-						description="The add-on consists of a single page UI found under the More > XDebug Control menu."
-						type="extension"
 						installing={true}
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="X-Debug Control"
+						addonDeveloper="Developer Name"
+						addonDescription="The add-on consists of a single page UI found under the More > XDebug Control menu."
+						addonType="extension"
 					/>
 					<MarketplaceCard
 						direction={direction}
-						imgPath="zzz"
-						name="Chrome Dev Tools"
-						developer="Developer Name"
-						description="Access the Chrome Developer Tools while Local is open."
-						type="extension"
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="X-Debug Control"
+						addonDeveloper="Developer Name"
+						addonDescription="The add-on consists of a single page UI found under the More > XDebug Control menu."
+						addonType="extension"
 					/>
 					<MarketplaceCard
 						direction={direction}
-						imgPath="zzz"
-						name="Logs"
-						developer="Developer Name"
-						description="Makes logs look nature’s logs, which you haven’t seen lately get off the computer."
-						type="extension"
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="Chrome Dev Tools"
+						addonDeveloper="Developer Name"
+						addonDescription="Access the Chrome Developer Tools while Local is open."
+						addonType="extension"
 					/>
 					<MarketplaceCard
 						direction={direction}
-						imgPath="zzz"
-						name="TBot"
-						developer="Developer Name"
-						description="Automate your mundane Local tasks easily with your very own robot."
-						type="extension"
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="Logs"
+						addonDeveloper="Developer Name"
+						addonDescription="Makes logs look nature’s logs, which you haven’t seen lately get off the computer."
+						addonType="extension"
 					/>
 					<MarketplaceCard
 						direction={direction}
-						imgPath="zzz"
-						name="Quick Admin"
-						developer="Developer Name"
-						description="Simplify your admin controls with this add-on."
-						type="extension"
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="TBot"
+						addonDeveloper="Developer Name"
+						addonDescription="Automate your mundane Local tasks easily with your very own robot."
+						addonType="extension"
 					/>
 					<MarketplaceCard
 						direction={direction}
-						imgPath="zzz"
-						name="Statz"
-						developer="Developer Name"
-						description="Get a setailed look at how effective your development is."
-						type="extension"
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="Quick Admin"
+						addonDeveloper="Developer Name"
+						addonDescription="Simplify your admin controls with this add-on."
+						addonType="extension"
 					/>
 					<MarketplaceCard
 						direction={direction}
-						imgPath="zzz"
-						name="Another"
-						developer="Developer Name"
-						description="Something fancy...trust me :)"
-						type="extension"
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="Statz"
+						addonDeveloper="Developer Name"
+						addonDescription="Get a setailed look at how effective your development is."
+						addonType="extension"
+					/>
+					<MarketplaceCard
+						direction={direction}
+						addonIconPath="https://cdn1.iconfinder.com/data/icons/black-white-social-media/32/Trulia_social_media_logo-128.png"
+						addonBackgroundColor="#50c6db"
+						addonName="Another"
+						addonDeveloper="Developer Name"
+						addonDescription="Something fancy...trust me :)"
+						addonType="extension"
 					/>
 				</MarketplaceCardContainer>
 			</main>

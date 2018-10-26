@@ -1,20 +1,23 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './MarketplaceCard.sass';
 import Header from '../../components/Header/Header';
 import Switch from "../../components/Switch/Switch";
+import Card from "../../components/Card/Card";
+import {Spinner} from "../../index";
 
 export default class MarketplaceCard extends Component {
 
 	static propTypes = {
-		description: PropTypes.string.isRequired,
-		developer: PropTypes.string.isRequired,
+		addonDescription: PropTypes.string.isRequired,
+		addonDeveloper: PropTypes.string.isRequired,
 		direction: PropTypes.oneOf(['vertical', 'horizontal']),
-		imgPath: PropTypes.string.isRequired,
+		addonBackgroundColor: PropTypes.string,
+		addonIconPath: PropTypes.string,
 		installing: PropTypes.bool,
-		name: PropTypes.string.isRequired,
-		type: PropTypes.oneOf(['extension']),
+		addonName: PropTypes.string.isRequired,
+		addonType: PropTypes.oneOf(['extension']),
 	};
 
 	static defaultProps = {
@@ -33,45 +36,52 @@ export default class MarketplaceCard extends Component {
 
 	render() {
 		return (
-			<article
+			<Card
 				className={classnames(
 					styles.MarketplaceCard,
-					this.props.className,
 					{
 						[styles.MarketplaceCard__Horizontal]: this.props.direction === 'horizontal',
 						[styles.MarketplaceCard__IsInstalling]: this.props.installing === true,
 					}
 				)}
-			>
-				{/* todo crum - determine whether it's a full image to cover or a centered icon */}
-				<div className={styles.MarketplaceCard_Image} />
-				<div className={styles.MarketplaceCard_Content}>
-					<Header
-						tag="h1"
-						size="s"
-						className={styles.MarketplaceCard_Name}
-					>
-						{/*todo - crum: truncate */}
-						{this.props.name}
-					</Header>
-					<div className={styles.MarketplaceCard_Developer}>
-						{/*todo - crum: truncate */}
-						by {this.props.developer}
-					</div>
-					<div className={styles.MarketplaceCard_Description}>
-						{/*todo - crum: truncate */}
-						{this.props.description}
-					</div>
-					<div className={styles.MarketplaceCard_Footer}>
-						<span>{this.getTypeName(this.props.type)}</span>
-					</div>
-				</div>
-				<div className={styles.MarketplaceCard_CTA}>
-					<Switch onChange={() => console.log('onChange')}/>
-					{/* todo crum - make into component & figure out what all it does and consists of */}
-					<div>•••</div>
-				</div>
-			</article>
+				headerIconPath={!this.props.installing && this.props.addonIconPath} // render if not installing
+				headerIconMaxHeight="60px"
+				headerBackgroundColor={this.props.addonBackgroundColor}
+				headerClassName={styles.MarketplaceCard_Header}
+				contentClassName={styles.MarketplaceCard_Content}
+				contentTitle={this.props.addonName}
+				contentTitleClassName={styles.MarketplaceCard_Name}
+				contentTitleTruncate={true}
+				contentSub={!this.props.installing && `by ${this.props.addonDeveloper}`} // render if not installing
+				contentSubClassName={styles.MarketplaceCard_Developer}
+				contentSubTruncate={true}
+				contentDescription={this.props.direction === 'vertical' && !this.props.installing && this.props.addonDescription} // render if vertical and not installing
+				contentDescriptionClassName={styles.MarketplaceCard_Description}
+				contentDescriptionTruncate={true}
+				contentDescriptionTruncateLines={2}
+				footer={
+					<Fragment>
+						{this.props.direction === 'vertical'
+							?
+							<span>{this.getTypeName(this.props.addonType)}</span>
+							:
+							this.props.installing
+								?
+								<span className={styles.MarketplaceCard_Footer_Installing}>
+									Installing...
+									<Spinner/>
+								</span>
+								:
+								<Fragment>
+									<Switch onChange={() => console.log('onChange')}/>
+									{/* todo crum - make into component & figure out what all it does and consists of */}
+									<div>•••</div>
+								</Fragment>
+						}
+					</Fragment>
+				}
+				footerClassName={styles.MarketplaceCard_Footer}
+			/>
 		);
 	}
 
