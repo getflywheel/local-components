@@ -38,6 +38,7 @@ export const TableListRow = hot(module)(require('./components/TableList').TableL
 export const TableListRepeater = hot(module)(require('./components/TableListRepeater').default);
 export const TertiaryNav = hot(module)(require('./components/TertiaryNav').TertiaryNav);
 export const TertiaryNavItem = hot(module)(require('./components/TertiaryNav').TertiaryNavItem);
+export const Truncate = hot(module)(require('./components/Truncate').default);
 export const VerticalNav = hot(module)(require('./components/VerticalNav').default);
 export const WindowsToolbar = hot(module)(require('./components/WindowsToolbar').default);
 

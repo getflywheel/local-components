@@ -14,7 +14,8 @@
 		"prop-types": "^15.6.2",
 		"react-hot-loader": "^4.3.6",
 		"react-modal": "^3.5.1",
-		"react-router-dom": "^4.3.1"
+		"react-router-dom": "^4.3.1",
+		"react-truncate-markup": "^2.0.1"
 	},
 	"scripts": {
 		"start": "run-p 'watch' 'styleguide'",
