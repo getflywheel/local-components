@@ -43,11 +43,11 @@ export default class Card extends Component {
 		truncateDefaultEllipsis: '...',
 	};
 
-	renderIfHeader () {
-		if (!this.props.header && !this.props.headerIconPath) {
-			return;
-		}
+	hasHeader () {
+		return this.props.header || this.props.headerIconPath;
+	}
 
+	renderHeader () {
 		return (
 			<div
 				className={classnames(
@@ -76,11 +76,11 @@ export default class Card extends Component {
 		)
 	}
 
-	renderIfContent () {
-		if (!this.props.content && !this.props.children && !this.props.contentTitle && !this.props.contentSub && !this.props.contentDescription) {
-			return;
-		}
+	hasContent () {
+		return this.props.content || this.props.children || this.props.contentTitle || this.props.contentSub || this.props.contentDescription;
+	}
 
+	renderContent () {
 		return (
 			<div
 				className={classnames(
@@ -164,11 +164,11 @@ export default class Card extends Component {
 		)
 	}
 
-	renderIfFooter () {
-		if (!this.props.footer) {
-			return;
-		}
+	hasFooter () {
+		return this.props.footer;
+	}
 
+	renderFooter () {
 		return (
 			<div
 				className={classnames(
@@ -191,9 +191,9 @@ export default class Card extends Component {
 					this.props.className
 				)}
 			>
-				{this.renderIfHeader()}
-				{this.renderIfContent()}
-				{this.renderIfFooter()}
+				{this.hasHeader && this.renderHeader()}
+				{this.hasContent && this.renderContent()}
+				{this.hasFooter && this.renderFooter()}
 			</Tag>
 		);
 	}
