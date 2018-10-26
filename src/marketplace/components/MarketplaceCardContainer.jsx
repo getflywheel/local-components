@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import classnames from 'classnames';
 import styles from './MarketplaceCardContainer.sass';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 export default class MarketplaceCardContainer extends Component {
 

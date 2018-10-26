@@ -5,7 +5,6 @@ import MarketplaceCardContainer from '../../components/MarketplaceCardContainer'
 import styles from './MarketplacePageHomeCommunity.sass';
 import FlyDropdown from '../../../components/FlyDropdown/FlyDropdown';
 import Button from '../../../components/Button/Button';
-import Card from "../../../components/Card/Card";
 
 export default class MarketplacePageHomeCommunity extends Component {
 

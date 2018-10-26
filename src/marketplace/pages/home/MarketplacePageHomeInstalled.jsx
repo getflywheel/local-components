@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import MarketplaceCardContainer from "../../components/MarketplaceCardContainer";
-import MarketplaceCard from "../../components/MarketplaceCard";
+import MarketplaceCardContainer from '../../components/MarketplaceCardContainer';
+import MarketplaceCard from '../../components/MarketplaceCard';
 
 export default class MarketplacePageHomeInstalled extends Component {
 

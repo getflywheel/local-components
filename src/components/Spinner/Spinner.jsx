@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SpinnerSVG from "../../svg/spinner.svg";
-import styles from "./Spinner.sass";
+import SpinnerSVG from '../../svg/spinner.svg';
+import styles from './Spinner.sass';
 
 export default class Spinner extends Component {
 	static propTypes = {

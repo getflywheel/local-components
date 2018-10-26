@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from  './Card.sass';
-import Header from "../Header/Header";
-import Truncate from "../Truncate/Truncate";
+import Header from '../Header/Header';
+import Truncate from '../Truncate/Truncate';
 
 export default class Card extends Component {
 

@@ -2,10 +2,10 @@ import React, {Component, Fragment} from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './MarketplaceCard.sass';
-import Header from '../../components/Header/Header';
-import Switch from "../../components/Switch/Switch";
-import Card from "../../components/Card/Card";
-import {Spinner} from "../../index";
+import Switch from '../../components/Switch/Switch';
+import Card from '../../components/Card/Card';
+import Spinner from '../../components/Spinner/Spinner';
+import FlyDropdown from '../../components/FlyDropdown/FlyDropdown';
 
 export default class MarketplaceCard extends Component {
 
