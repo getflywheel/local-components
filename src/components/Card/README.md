@@ -12,6 +12,7 @@ The examples below show these different approaches and how they can be used for 
 
 The most basic use of `Card` simply declares a child element which, by default, will place the child in the content section. 
 This implementation is notably void of styles with the exception of the base `Card` style and built-in content margin, but allows for the ultimate in customization.
+
 ```js
 <Card>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc quam, bibendum quis augue porttitor, scelerisque pretium lorem. Ut quis ex bibendum justo feugiat euismod.
@@ -143,8 +144,15 @@ const onClick = () => {
 ```
 
 
-The `Card` component also allows you to add `className` to the header and content sections through the **headerClassName**, **contentClassName**, and **footerClassName** props.
-You may also notice that each of these sections can accept, not only, elements but also strings, number, or array of these types.
+The `Card` component also allows you to add `className` to the header and content sections through the following props:
+* **headerClassName**
+* **contentClassName**
+* **contentTitleClassName**
+* **contentSubClassName**
+* **contentDescriptionClassName**
+* **footerClassName**
+
+Also note that, in addition to elements, sections can also accept strings, number, or array of these types.
 ```js
 <Card
 	contentClassName="__Color__Green"
