@@ -32,7 +32,7 @@ export default class MarketplaceCard extends Component {
 			default:
 				return 'ADD-ON';
 		}
-	}
+	};
 
 	render() {
 		return (

@@ -191,9 +191,9 @@ export default class Card extends Component {
 					this.props.className
 				)}
 			>
-				{this.hasHeader && this.renderHeader()}
-				{this.hasContent && this.renderContent()}
-				{this.hasFooter && this.renderFooter()}
+				{this.hasHeader() && this.renderHeader()}
+				{this.hasContent() && this.renderContent()}
+				{this.hasFooter() && this.renderFooter()}
 			</Tag>
 		);
 	}
