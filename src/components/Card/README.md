@@ -143,7 +143,6 @@ const onClick = () => {
 />
 ```
 
-
 The `Card` component also allows you to add `className` to the header and content sections through the following props:
 * **headerClassName**
 * **contentClassName**
