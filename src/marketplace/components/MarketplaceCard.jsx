@@ -34,6 +34,51 @@ export default class MarketplaceCard extends Component {
 		}
 	};
 
+	renderFooter() {
+		return (
+			<Fragment>
+				{this.props.direction === 'vertical'
+					?
+					<span>{this.getTypeName(this.props.addonType)}</span>
+					:
+					this.props.installing
+						?
+						<span className={styles.MarketplaceCard_Footer_Installing}>
+									Installing...
+									<Spinner/>
+								</span>
+						:
+						<Fragment>
+							<Switch onChange={() => console.log('onChange')}/>
+							{/* todo crum - what are its options */}
+							<FlyDropdown
+								className={styles.MarketplaceCard_Footer_Dropdown}
+								position="top"
+								caret={false}
+								items={[
+									{
+										label: 'Option 1',
+										onClick: () => console.log('onClick'),
+									},
+									{
+										label: 'Option 2',
+										onClick: () => console.log('onClick'),
+									},
+									{
+										label: 'Option 3 (Red)',
+										onClick: () => console.log('onClick'),
+										color: 'red',
+									},
+								]}
+							>
+								•••
+							</FlyDropdown>
+						</Fragment>
+				}
+			</Fragment>
+		)
+	}
+
 	render() {
 		return (
 			<Card
@@ -59,48 +104,7 @@ export default class MarketplaceCard extends Component {
 				contentDescription={this.props.direction === 'vertical' && !this.props.installing && this.props.addonDescription} // render if vertical and not installing
 				contentDescriptionTruncate={true}
 				contentDescriptionTruncateLines={3}
-				footer={
-					<Fragment>
-						{this.props.direction === 'vertical'
-							?
-							<span>{this.getTypeName(this.props.addonType)}</span>
-							:
-							this.props.installing
-								?
-								<span className={styles.MarketplaceCard_Footer_Installing}>
-									Installing...
-									<Spinner/>
-								</span>
-								:
-								<Fragment>
-									<Switch onChange={() => console.log('onChange')}/>
-									{/* todo crum - what are its options */}
-									<FlyDropdown
-										className={styles.MarketplaceCard_Footer_Dropdown}
-										position="top"
-										caret={false}
-										items={[
-											{
-												label: 'Option 1',
-												onClick: () => console.log('onClick'),
-											},
-											{
-												label: 'Option 2',
-												onClick: () => console.log('onClick'),
-											},
-											{
-												label: 'Option 3 (Red)',
-												onClick: () => console.log('onClick'),
-												color: 'red',
-											},
-										]}
-									>
-										•••
-									</FlyDropdown>
-								</Fragment>
-						}
-					</Fragment>
-				}
+				footer={this.renderFooter()}
 				footerClassName={styles.MarketplaceCard_Footer}
 			/>
 		);
