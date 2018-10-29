@@ -99,13 +99,11 @@ export default class MarketplaceCard extends Component {
 				contentClassName={styles.MarketplaceCard_Content}
 				contentTitle={this.props.addonName}
 				contentTitleClassName={styles.MarketplaceCard_Name}
-				contentTitleTruncate={true}
 				contentSub={!this.props.installing && `by ${this.props.addonDeveloper}`} // render if not installing
 				contentSubClassName={styles.MarketplaceCard_Developer}
-				contentSubTruncate={true}
 				contentDescription={this.props.direction === 'vertical' && !this.props.installing && this.props.addonDescription} // render if vertical and not installing
 				contentDescriptionTruncate={true}
-				contentDescriptionTruncateLines={3}
+				contentDescriptionTruncateLines={4}
 				footer={this.renderFooter()}
 				footerClassName={styles.MarketplaceCard_Footer}
 			/>
