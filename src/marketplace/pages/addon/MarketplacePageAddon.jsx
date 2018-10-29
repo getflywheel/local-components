@@ -10,8 +10,6 @@ class MarketplacePageAddonBase extends Component {
 	removeEndingDirectories = (the_url, removeDirectoriesCount = 1) => {
 		var the_arr = the_url.split('/');
 
-		console.log('ding: ', this.props.match.url);
-
 		for (let i = 0; i < removeDirectoriesCount; i++) {
 			the_arr.pop();
 		}
@@ -26,7 +24,6 @@ class MarketplacePageAddonBase extends Component {
 					<NavLink
 						to={`${this.removeEndingDirectories(this.props.match.url, 2)}/home`}
 						activeClassName="active"
-						className={styles.ding}
 					>
 						ADD-ONS
 					</NavLink>
