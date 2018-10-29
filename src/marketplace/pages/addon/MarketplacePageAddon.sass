@@ -1,0 +1,43 @@
+@import '../../../styles/_partials/index'
+
+.MarketplacePageAddon
+	display: flex
+	flex-direction: column
+
+	.MarketplacePageAddon_Nav
+		padding: 10px
+		@include theme-border-bottom()
+
+	.ding
+		-webkit-app-region: no-drag
+
+	.MarketplacePageAddon_Body
+		display: flex
+		flex-direction: row
+		margin: 60px
+
+	.MarketplacePageAddon_Aside
+		position: relative
+		display: flex
+		flex-direction: column
+		width: 25%
+		min-width: 230px
+		max-width: 480px
+		overflow: hidden
+		white-space: nowrap
+
+	.MarketplacePageAddon_Content
+		flex-grow: 1
+
+	.MarketplacePageAddon_AddonType
+		margin-bottom: 10px
+
+	.MarketplacePageAddon_AddonName
+		margin-bottom: 5px
+
+	.MarketplacePageAddon_AddonDeveloper
+		margin-bottom: 20px - 6px
+		color: $gray75
+
+	.MarketplacePageAddon_AddonNav
+		padding-left: 0

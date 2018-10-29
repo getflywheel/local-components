@@ -28,13 +28,13 @@ class MarketplacePageHomeBase extends Component {
 					<div className="TabNav_Items SiteInfo_Nav_Items">
 						<NavLink
 							exact
-							to={`${this.props.match.path}/`}
+							to={`${this.props.match.url}/`}
 							activeClassName="active"
 						>
 							Community
 						</NavLink>
 						<NavLink
-							to={`${this.props.match.path}/installed`}
+							to={`${this.props.match.url}/installed`}
 							activeClassName="active"
 						>
 							Installed (6)
@@ -46,11 +46,11 @@ class MarketplacePageHomeBase extends Component {
 					<Switch>
 						<Route
 							exact
-							path={`${this.props.match.path}/`}
+							path={`${this.props.match.url}/`}
 							render={(props) => {const Component = require('./MarketplacePageHomeCommunity').default; return <Component />}}
 						/>
 						<Route
-							path={`${this.props.match.path}/installed`}
+							path={`${this.props.match.url}/installed`}
 							render={(props) => {const Component = require('./MarketplacePageHomeInstalled').default; return <Component />}}
 						/>
 					</Switch>

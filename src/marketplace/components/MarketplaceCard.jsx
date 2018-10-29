@@ -39,14 +39,16 @@ export default class MarketplaceCard extends Component {
 			<Fragment>
 				{this.props.direction === 'vertical'
 					?
-					<span>{this.getTypeName(this.props.addonType)}</span>
+					<div>
+						<span>{this.getTypeName(this.props.addonType)}</span>
+					</div>
 					:
 					this.props.installing
 						?
 						<span className={styles.MarketplaceCard_Footer_Installing}>
-									Installing...
-									<Spinner/>
-								</span>
+							Installing...
+							<Spinner/>
+						</span>
 						:
 						<Fragment>
 							<Switch onChange={() => console.log('onChange')}/>
