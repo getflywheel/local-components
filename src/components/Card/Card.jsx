@@ -30,6 +30,8 @@ export default class Card extends Component {
 		header: PropTypes.node,
 		headerBackgroundColor: PropTypes.string,
 		headerClassName: PropTypes.string,
+		headerIconClassName: PropTypes.string,
+		headerIconContainerClassName: PropTypes.string,
 		headerIconPath: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 		headerIconMaxHeight: PropTypes.string,
 		overflow: PropTypes.string,
@@ -59,13 +61,17 @@ export default class Card extends Component {
 			>
 				{this.props.headerIconPath &&
 				<div
-					className={classnames(styles.Card_HeaderIconContainer)}
+					className={classnames(
+						styles.Card_HeaderIconContainer,
+						this.props.headerIconContainerClassName,
+					)}
 					style={{
 						...(this.props.headerBackgroundColor && {backgroundColor: this.props.headerBackgroundColor}), // conditionally add style
 					}}
 				>
 					<img
 						src={this.props.headerIconPath}
+						className={this.props.headerIconClassName}
 						style={{
 							...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
 						}}
