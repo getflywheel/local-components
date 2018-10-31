@@ -5,6 +5,7 @@ import styles from './MarketplacePageHomeCommunity.sass';
 import FlyDropdown from '../../../components/FlyDropdown/FlyDropdown';
 import Button from '../../../components/Button/Button';
 import Header from '../../../components/Header/Header';
+import SearchSVG from '../../../svg/search.svg';
 
 export default class MarketplacePageHomeCommunity extends Component {
 
@@ -70,7 +71,14 @@ export default class MarketplacePageHomeCommunity extends Component {
 				<main className={styles.MarketplacePageHomeCommunity_Content}>
 					<div className={styles.MarketplacePageHomeCommunity_Toolbar}>
 						{/*todo - crum: create search input component w/ icon */}
-						<span>input</span>
+						<div className={styles.MarketplacePageHomeCommunity_ToolbarSearch}>
+							<SearchSVG className={styles.MarketplacePageHomeCommunity_ToolbarSearchIcon} />
+							<input
+								type="text"
+								placeholder="Search for an Add-on..."
+								className={styles.MarketplacePageHomeCommunity_ToolbarSearchInput}
+							/>
+						</div>
 						<div>
 							{/*todo - crum: what options are in here? */}
 							<FlyDropdown
@@ -123,7 +131,7 @@ export default class MarketplacePageHomeCommunity extends Component {
 							addonBackgroundColor="#50c6db"
 							addonName="X-Debug Control"
 							addonDeveloper="Developer Name"
-							addonDescription="The add-on consists of a single page UI found under the More > XDebug Control menu."
+							addonDescription="The Add-on consists of a single page UI found under the More > XDebug Control menu."
 							addonType="extension"
 						/>
 						<MarketplaceCard
@@ -155,7 +163,7 @@ export default class MarketplacePageHomeCommunity extends Component {
 							addonBackgroundColor="#50c6db"
 							addonName="Quick Admin"
 							addonDeveloper="Developer Name"
-							addonDescription="Simplify your admin controls with this add-on."
+							addonDescription="Simplify your admin controls with this Add-on."
 							addonType="extension"
 						/>
 						<MarketplaceCard
