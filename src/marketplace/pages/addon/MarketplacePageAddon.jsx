@@ -20,7 +20,11 @@ class MarketplacePageAddonBase extends Component {
 
 	render() {
 		return (
-			<MarketplacePage className={styles.MarketplacePageAddon}>
+			<MarketplacePage
+				className={styles.MarketplacePageAddon}
+				containerClassName={styles.MarketplacePageAddon_PageContainer}
+				scrollerClassName={styles.MarketplacePageAddon_PageScroller}
+			>
 				<nav className={styles.MarketplacePageAddon_Nav}>
 					<NavLink
 						to={`${this.removeEndingDirectories(this.props.match.url, 2)}/home`}

@@ -1,5 +1,13 @@
 @import '../../../styles/_partials/index'
 
+$navHeight: 38px
+
+.MarketplacePageAddon_PageContainer
+	top: $navHeight
+
+.MarketplacePageAddon_PageScroller
+	top: 100px
+
 .MarketplacePageAddon
 	display: flex
 	flex-direction: column
@@ -11,8 +19,12 @@
 	.MarketplacePageAddon_Nav
 		position: fixed
 		z-index: 1
+		top: 0
+		display: flex
+		align-items: center
 		width: 100%
-		padding: 10px 15px
+		height: $navHeight
+		padding: 0 15px
 		@include theme-background-gray5-else-graydarkalt
 		@include theme-border-bottom
 

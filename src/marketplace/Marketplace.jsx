@@ -25,6 +25,7 @@ class MarketplaceBase extends Component {
 				<NavLink
 					to={`${this.props.match.url}/addon/fake123`}
 					activeClassName="active"
+					style={{position: 'absolute'}}
 				>
 					fake123
 				</NavLink>
