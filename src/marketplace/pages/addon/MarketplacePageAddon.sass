@@ -59,7 +59,6 @@ $navHeight: 38px
 		max-width: 480px
 		overflow: hidden
 		margin-right: 60px
-		white-space: nowrap
 
 	.MarketplacePageAddon_Aside_ImageContainer
 		margin-bottom: 20px
@@ -77,7 +76,7 @@ $navHeight: 38px
 		@include theme-border-bottom
 
 	.MarketplacePageAddon_Aside_DetailsInfo
-		margin-bottom: 20px
+		margin: 0 0 20px 0
 		padding: 0
 		list-style: none
 		list-style-position: inside
@@ -85,16 +84,16 @@ $navHeight: 38px
 		li
 			margin: (10px - 2px) 0
 			color: $gray
-			font-weight: 300
 
 			&:last-child
 				margin-bottom: 0
 
 			> *:last-child
 				float: right
+				font-weight: 300
 
 	.MarketplacePageAddon_Aside_DetailsLinks
-		margin-bottom: 30px
+		margin: 0 0 30px 0
 		padding: 0
 		list-style: none
 		list-style-position: inside
@@ -122,8 +121,70 @@ $navHeight: 38px
 				transform: rotate(-90deg)
 				background-color: $green
 
-	.MarketplacePageAddon_Aside_Developers
+	.MarketplacePageAddon_Aside_DevelopersContainer
 		margin-bottom: 30px
+
+	.MarketplacePageAddon_Aside_DevelopersTitle
+		margin-bottom: 10px
+		font-weight: 700
+
+	.MarketplacePageAddon_Aside_AvatarRow
+		display: flex
+		align-items: center
+
+		& + .MarketplacePageAddon_Aside_AvatarRow
+			margin-top: 10px
+
+	.MarketplacePageAddon_Aside_AvatarImageContainer
+		width: 40px
+		height: 40px
+
+		&.MarketplacePageAddon_Aside_AvatarImageContainer__Small
+			width: 32px
+			height: 32px
+
+	.MarketplacePageAddon_Aside_AvatarImage
+		width: 100%
+		height: 100%
+		object-fit: cover
+		border-radius: 50%
+
+	.MarketplacePageAddon_Aside_AvatarDetails
+		margin-left: 10px
+
+		> *:not(:first-child)
+			margin-top: 5px
+			font-weight: 300
+
+	.MarketplacePageAddon_Aside_CategoriesContainer
+		padding-bottom: 15px
+		@include theme-border-bottom
+
+	.MarketplacePageAddon_Aside_CategoriesHeader
+		@extend .MarketplacePageAddon_Aside_DetailsHeader
+
+	.MarketplacePageAddon_Aside_CategoriesChipContainer
+		display: flex
+		flex-wrap: wrap
+
+	.MarketplacePageAddon_Aside_CategoriesChip
+		margin: 0 10px 10px 0
+		padding: 3px 10px 3px
+		text-transform: uppercase
+		font-weight: 700
+		color: $gray75
+		border: 1px solid $gray25
+		border-radius: 22px
+
+	.MarketplacePageAddon_Aside_ReportBug
+		display: flex
+		flex-direction: column
+		padding: 20px 0
+		color: $gray
+		font-weight: 300
+
+		a
+			font-weight: 500
 
 	.MarketplacePageAddon_Content
 		flex-grow: 1

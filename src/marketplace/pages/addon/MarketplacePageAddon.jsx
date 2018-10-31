@@ -85,13 +85,117 @@ class MarketplacePageAddonBase extends Component {
 							<li><a>Repository</a></li>
 							<li><a>Add-On Help</a></li>
 						</ul>
-						<Header
-							tag="h3"
-							size="xs"
-							className={styles.MarketplacePageAddon_Aside_Developers}
-						>
-							DEVELOPED BY
-						</Header>
+						<div className={styles.MarketplacePageAddon_Aside_DevelopersContainer}>
+							<Header
+								tag="h3"
+								size="xs"
+								className={styles.MarketplacePageAddon_Aside_DevelopersTitle}
+							>
+								DEVELOPED BY
+							</Header>
+							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
+								<div className={styles.MarketplacePageAddon_Aside_AvatarImageContainer}>
+									<img
+										className={styles.MarketplacePageAddon_Aside_AvatarImage}
+										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+									/>
+								</div>
+								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
+									<div>
+										Luke Korth
+									</div>
+									<div>
+										12 Add-Ons
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className={styles.MarketplacePageAddon_Aside_DevelopersContainer}>
+							<Header
+								tag="h3"
+								size="xs"
+								className={styles.MarketplacePageAddon_Aside_DevelopersTitle}
+							>
+								COLLABORATORS
+							</Header>
+							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
+								<div
+									className={classnames(
+										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
+										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
+									)}
+								>
+									<img
+										className={styles.MarketplacePageAddon_Aside_AvatarImage}
+										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+									/>
+								</div>
+								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
+									<div>
+										Kaitlynn Guzman
+									</div>
+								</div>
+							</div>
+							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
+								<div
+									className={classnames(
+										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
+										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
+									)}
+								>
+									<img
+										className={styles.MarketplacePageAddon_Aside_AvatarImage}
+										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+									/>
+								</div>
+								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
+									<div>
+										Kaitlin Grohmann
+									</div>
+								</div>
+							</div>
+							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
+								<div
+									className={classnames(
+										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
+										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
+									)}
+								>
+									<img
+										className={styles.MarketplacePageAddon_Aside_AvatarImage}
+										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+									/>
+								</div>
+								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
+									<div>
+										Trivago Guy
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className={styles.MarketplacePageAddon_Aside_CategoriesContainer}>
+							<Header
+								tag="h2"
+								size="s"
+								className={styles.MarketplacePageAddon_Aside_CategoriesHeader}
+							>
+								Categories
+							</Header>
+							<div className={styles.MarketplacePageAddon_Aside_CategoriesChipContainer}>
+								<span className={styles.MarketplacePageAddon_Aside_CategoriesChip}>
+									CATEGORY
+								</span>
+								<span className={styles.MarketplacePageAddon_Aside_CategoriesChip}>
+									ANOTHER-CAT
+								</span>
+								<span className={styles.MarketplacePageAddon_Aside_CategoriesChip}>
+									CAT-3
+								</span>
+							</div>
+						</div>
+						<div className={styles.MarketplacePageAddon_Aside_ReportBug}>
+							<span>See a bug? No you don’t. But you should <a>report it here, anyways</a>.</span>
+						</div>
 					</aside>
 					<main className={styles.MarketplacePageAddon_Content}>
 						<div className={styles.MarketplacePageAddon_Content_Type}>
