@@ -83,7 +83,7 @@ class MarketplacePageAddonBase extends Component {
 						<ul className={styles.MarketplacePageAddon_Aside_DetailsLinks}>
 							<li><a>Visit Website</a></li>
 							<li><a>Repository</a></li>
-							<li><a>Add-On Help</a></li>
+							<li><a>Add-on Help</a></li>
 						</ul>
 						<div className={styles.MarketplacePageAddon_Aside_DevelopersContainer}>
 							<Header
@@ -105,7 +105,7 @@ class MarketplacePageAddonBase extends Component {
 										Luke Korth
 									</div>
 									<div>
-										12 Add-Ons
+										12 Add-ons
 									</div>
 								</div>
 							</div>

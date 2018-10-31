@@ -10,7 +10,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 		return (
 			<main>
 				<MarketplaceCardContainer direction={direction}>
-					{/* todo crum - need to create the 'installing' add-on card ... with outline styles */}
+					{/* todo crum - need to create the 'installing' Add-on card ... with outline styles */}
 					<MarketplaceCard
 						direction={direction}
 						installing={true}
@@ -18,7 +18,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonBackgroundColor="#50c6db"
 						addonName="X-Debug Control"
 						addonDeveloper="Developer Name"
-						addonDescription="The add-on consists of a single page UI found under the More > XDebug Control menu."
+						addonDescription="The Add-on consists of a single page UI found under the More > XDebug Control menu."
 						addonType="extension"
 					/>
 					<MarketplaceCard
@@ -27,7 +27,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonBackgroundColor="#50c6db"
 						addonName="X-Debug Control"
 						addonDeveloper="Developer Name"
-						addonDescription="The add-on consists of a single page UI found under the More > XDebug Control menu."
+						addonDescription="The Add-on consists of a single page UI found under the More > XDebug Control menu."
 						addonType="extension"
 					/>
 					<MarketplaceCard
@@ -63,7 +63,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonBackgroundColor="#50c6db"
 						addonName="Quick Admin"
 						addonDeveloper="Developer Name"
-						addonDescription="Simplify your admin controls with this add-on."
+						addonDescription="Simplify your admin controls with this Add-on."
 						addonType="extension"
 					/>
 					<MarketplaceCard

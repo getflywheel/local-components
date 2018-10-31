@@ -17,7 +17,7 @@ class MarketplacePageHomeBase extends Component {
 						size="xl"
 						className="MarketplacePage_Header"
 					>
-						Add-Ons
+						Add-ons
 					</Header>
 					<div className={styles.MarketplacePageHome_HeaderContainer_ButtonContainer}>
 						{/*todo - crum: what does this do? link to?'*/}
