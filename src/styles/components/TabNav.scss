@@ -1,9 +1,4 @@
-@import '../_partials/forms';
-@import '../_partials/misc';
-@import '../_partials/mixins';
-@import '../_partials/selectors';
-@import '../_partials/theme';
-@import '../_partials/variables';
+@import '../_partials/index';
 
 :global {
 	.TabNav {
@@ -40,10 +35,6 @@
 				@include theme-color-graydark-else-white;
 				@include theme-tab-border-active;
 			}
-		}
-
-		.FlyDropdown_Caret {
-			margin-left: 6px;
 		}
 	}
 }

@@ -1,5 +1,0 @@
-@import './variables';
-
-@mixin stripes($color1: $white, $color2: $gray2) {
-	background: repeating-linear-gradient(-65deg, $color1, $color1 1.5rem, $color2 1.5rem, $color2 3rem);
-}

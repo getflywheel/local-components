@@ -102,7 +102,6 @@ export default class Banner extends Component {
 				{
 					[styles.Banner__Neutral]: this.props.variant === 'neutral',
 					[styles.Banner__Error]: this.props.variant === 'error',
-					// '--Warning': this.props.variant === 'warning',
 					[styles.Banner__Success]: this.props.variant === 'success',
 				}
 			)}

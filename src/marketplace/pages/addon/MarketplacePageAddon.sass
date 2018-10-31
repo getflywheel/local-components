@@ -1,0 +1,218 @@
+@import '../../../styles/_partials/index'
+
+$navHeight: 38px
+
+.MarketplacePageAddon_PageContainer
+	top: $navHeight
+
+.MarketplacePageAddon_PageScroller
+	top: 100px
+
+.MarketplacePageAddon
+	display: flex
+	flex-direction: column
+
+	\:global(.__Pill)
+		padding-top: 20px
+		padding-bottom: 20px
+
+	.MarketplacePageAddon_Nav
+		position: fixed
+		z-index: 1
+		top: 0
+		display: flex
+		align-items: center
+		width: 100%
+		height: $navHeight
+		padding: 0 15px
+		@include theme-background-gray5-else-graydarkalt
+		@include theme-border-bottom
+
+	.MarketplacePageAddon_Nav_Link
+		font-weight: 700
+
+		&:after
+			content: ""
+			display: inline-block
+			width: 14px
+			height: 6px
+			margin: 0 5px
+			-webkit-mask: url(../../../svg/caret.svg) no-repeat 50% 50%
+			mask: url(../../../svg/caret.svg) no-repeat 50% 50%
+			transform: rotate(-90deg) translateX(2px)
+			background-color: $gray15
+
+	.MarketplacePageAddon_Nav_AddonName
+		font-weight: 300
+
+	.MarketplacePageAddon_Body
+		display: flex
+		flex-direction: row
+		margin: 60px
+
+	.MarketplacePageAddon_Aside
+		position: relative
+		display: flex
+		flex-direction: column
+		width: 25%
+		min-width: 230px
+		max-width: 480px
+		overflow: hidden
+		margin-right: 60px
+
+	.MarketplacePageAddon_Aside_ImageContainer
+		margin-bottom: 20px
+
+	.MarketplacePageAddon_Aside_Image__Square
+		height: 100%
+
+	.MarketplacePageAddon_Aside_InstallButton
+		width: 100%
+		margin-bottom: 30px
+
+	.MarketplacePageAddon_Aside_DetailsHeader
+		margin-bottom: (20px - 4px)
+		padding-bottom: 20px
+		@include theme-border-bottom
+
+	.MarketplacePageAddon_Aside_DetailsInfo
+		margin: 0 0 20px 0
+		padding: 0
+		list-style: none
+		list-style-position: inside
+
+		li
+			margin: (10px - 2px) 0
+			color: $gray
+
+			&:last-child
+				margin-bottom: 0
+
+			> *:last-child
+				float: right
+				font-weight: 300
+
+	.MarketplacePageAddon_Aside_DetailsLinks
+		margin: 0 0 30px 0
+		padding: 0
+		list-style: none
+		list-style-position: inside
+		@include theme-border-top
+
+		li
+			position: relative
+			margin: 10px 0
+			padding-bottom: 10px
+			@include theme-border-bottom
+
+			&:last-child
+				margin-bottom: 0
+
+			&:after
+				content: ""
+				position: absolute
+				top: 5px
+				right: 3px
+				display: block
+				width: 14px
+				height: 6px
+				-webkit-mask: url(../../../svg/caret.svg) no-repeat 50% 50%
+				mask: url(../../../svg/caret.svg) no-repeat 50% 50%
+				transform: rotate(-90deg)
+				background-color: $green
+
+	.MarketplacePageAddon_Aside_DevelopersContainer
+		margin-bottom: 30px
+
+	.MarketplacePageAddon_Aside_DevelopersTitle
+		margin-bottom: 10px
+		font-weight: 700
+
+	.MarketplacePageAddon_Aside_AvatarRow
+		display: flex
+		align-items: center
+
+		& + .MarketplacePageAddon_Aside_AvatarRow
+			margin-top: 10px
+
+	.MarketplacePageAddon_Aside_AvatarImageContainer
+		width: 40px
+		height: 40px
+
+		&.MarketplacePageAddon_Aside_AvatarImageContainer__Small
+			width: 32px
+			height: 32px
+
+	.MarketplacePageAddon_Aside_AvatarImage
+		width: 100%
+		height: 100%
+		object-fit: cover
+		border-radius: 50%
+
+	.MarketplacePageAddon_Aside_AvatarDetails
+		margin-left: 10px
+
+		> *:not(:first-child)
+			margin-top: 5px
+			font-weight: 300
+
+	.MarketplacePageAddon_Aside_CategoriesContainer
+		padding-bottom: 15px
+		@include theme-border-bottom
+
+	.MarketplacePageAddon_Aside_CategoriesHeader
+		@extend .MarketplacePageAddon_Aside_DetailsHeader
+
+	.MarketplacePageAddon_Aside_CategoriesChipContainer
+		display: flex
+		flex-wrap: wrap
+
+	.MarketplacePageAddon_Aside_CategoriesChip
+		margin: 0 10px 10px 0
+		padding: 3px 10px 3px
+		text-transform: uppercase
+		font-weight: 700
+		color: $gray75
+		border: 1px solid $gray25
+		border-radius: 22px
+
+	.MarketplacePageAddon_Aside_ReportBug
+		display: flex
+		flex-direction: column
+		padding: 20px 0
+		color: $gray
+		font-weight: 300
+
+		a
+			font-weight: 500
+
+	.MarketplacePageAddon_Content
+		flex-grow: 1
+
+	.MarketplacePageAddon_Content_Type
+		margin-bottom: 10px
+
+	.MarketplacePageAddon_Content_Name
+		margin-bottom: 5px
+
+	.MarketplacePageAddon_Content_Developer
+		margin-bottom: 20px - 6px
+		color: $gray75
+
+	.MarketplacePageAddon_Content_Nav
+		padding-left: 0
+
+
+.square
+	position: relative
+
+.square:after
+	content: ""
+	display: block
+	padding-bottom: 100%
+
+.content
+	position: absolute
+	//display: flex // to handle card content
+	width: 100%
+	height: 100%

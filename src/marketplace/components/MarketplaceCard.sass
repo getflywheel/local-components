@@ -1,0 +1,47 @@
+@import '../../styles/_partials/index'
+
+.MarketplaceCard
+
+	&.MarketplaceCard__Horizontal
+		flex-direction: row
+		flex-wrap: nowrap
+		min-width: 100%
+		max-width: 100%
+
+	&.MarketplaceCard__IsInstalling
+		background-color: transparent
+		border: 2px dashed $gray15
+		box-shadow: none
+
+	.MarketplaceCard_Header
+		cursor: pointer
+
+		> *
+			cursor: pointer !important
+
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			min-width: 156px
+
+	.MarketplaceCard_Content
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			flex-grow: 1
+			justify-content: center
+			margin-bottom: 30px
+
+	.MarketplaceCard_Developer
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			margin-bottom: 0
+
+	.MarketplaceCard_Footer
+		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
+			align-items: center
+			margin-left: 0
+
+	.MarketplaceCard_Footer_Dropdown
+		margin-left: 30px - 5px
+		margin-bottom: 5px
+		letter-spacing: 1.5px
+		color: $gray25
+
+	.MarketplaceCard_Footer_Installing
+		color: $gray25

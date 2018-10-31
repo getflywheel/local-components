@@ -66,9 +66,6 @@ class TertiaryNavItemBase extends Component {
             }
         },
 		variant: PropTypes.oneOf([
-			// 'warning',
-			// 'neutral',
-			// 'success',
 			'error',
 		]),
     };

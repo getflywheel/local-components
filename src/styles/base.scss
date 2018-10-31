@@ -1,5 +1,4 @@
-@import '_partials/mixins';
-@import '_partials/variables';
+@import './_partials/index';
 
 :global {
 	* {
@@ -21,6 +20,7 @@
 	html {
 		width: 100%;
 		height: 100%;
+		font-size: 62.5%; // set rems to have a base of 10
 		overflow: hidden;
 	}
 

@@ -1,7 +1,4 @@
-@import '../../styles/_partials/mixins'
-@import '../../styles/_partials/selectors'
-@import '../../styles/_partials/theme'
-@import '../../styles/_partials/variables'
+@import '../../styles/_partials/index'
 
 .Banner
 	padding: 10px 10px 10px 30px
@@ -145,7 +142,7 @@
 				@include if-theme-light()
 					background-color: $gray-dark
 					border-color: $gray-dark
-					@include if-theme-dark()
-						background-color: $white
-						border-color: $white
+				@include if-theme-dark()
+					background-color: $white
+					border-color: $white
 
