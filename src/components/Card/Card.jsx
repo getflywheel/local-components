@@ -22,6 +22,7 @@ export default class Card extends Component {
 		contentSubTruncateEllipsis: PropTypes.node,
 		contentTitle: PropTypes.node,
 		contentTitleClassName: PropTypes.string,
+		contentTitleOnClick: PropTypes.func,
 		contentTitleTruncate: PropTypes.bool,
 		contentTitleTruncateLines: PropTypes.number,
 		contentTitleTruncateEllipsis: PropTypes.node,
@@ -34,6 +35,7 @@ export default class Card extends Component {
 		headerIconContainerClassName: PropTypes.string,
 		headerIconPath: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 		headerIconMaxHeight: PropTypes.string,
+		headerOnClick: PropTypes.func,
 		overflow: PropTypes.string,
 		tag: PropTypes.string,
 		truncateDefaultLines: PropTypes.number,
@@ -58,6 +60,7 @@ export default class Card extends Component {
 					styles.Card_Header,
 					this.props.headerClassName,
 				)}
+				onClick={this.props.headerOnClick}
 			>
 				{this.props.headerIconPath &&
 				<div
@@ -104,6 +107,10 @@ export default class Card extends Component {
 							styles.Card_Content_Title,
 							this.props.contentTitleClassName,
 						)}
+						style={{
+							...(this.props.contentTitleOnClick && {cursor: "pointer"}), // conditionally add style
+						}}
+						onClick={this.props.contentTitleOnClick}
 					>
 						{this.props.contentTitleTruncate
 							?
@@ -115,7 +122,11 @@ export default class Card extends Component {
 								{this.props.contentTitle}
 							</Truncate>
 							:
-							this.props.contentTitle
+							this.props.contentTitleOnClick
+								?
+								<a>{this.props.contentTitle}</a>
+								:
+								this.props.contentTitle
 						}
 					</Header>
 				)}

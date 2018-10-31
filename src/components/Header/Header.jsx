@@ -7,6 +7,7 @@ export default class Header extends Component {
 
 	static propTypes = {
 		tag: PropTypes.string,
+		onClick: PropTypes.func,
 		size: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']),
 	};
 
@@ -31,6 +32,7 @@ export default class Header extends Component {
 						[styles.Header__SizeXS]: this.props.size === 'xs',
 					}
 				)}
+				onClick={this.props.onClick}
 			>
 				{this.props.children}
 			</HeaderTag>

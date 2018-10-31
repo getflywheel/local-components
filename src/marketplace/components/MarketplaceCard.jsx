@@ -10,14 +10,15 @@ import FlyDropdown from '../../components/FlyDropdown/FlyDropdown';
 export default class MarketplaceCard extends Component {
 
 	static propTypes = {
+		addonBackgroundColor: PropTypes.string,
 		addonDescription: PropTypes.string.isRequired,
 		addonDeveloper: PropTypes.string.isRequired,
-		direction: PropTypes.oneOf(['vertical', 'horizontal']),
-		addonBackgroundColor: PropTypes.string,
 		addonIconPath: PropTypes.string,
-		installing: PropTypes.bool,
-		addonName: PropTypes.string.isRequired,
 		addonType: PropTypes.oneOf(['extension']),
+		addonName: PropTypes.string.isRequired,
+		direction: PropTypes.oneOf(['vertical', 'horizontal']),
+		installing: PropTypes.bool,
+		onClick: PropTypes.func,
 	};
 
 	static defaultProps = {
@@ -96,9 +97,10 @@ export default class MarketplaceCard extends Component {
 				headerIconMaxHeight="60px"
 				headerBackgroundColor={this.props.addonBackgroundColor}
 				headerClassName={styles.MarketplaceCard_Header}
+				headerOnClick={this.props.onClick}
 				contentClassName={styles.MarketplaceCard_Content}
 				contentTitle={this.props.addonName}
-				contentTitleClassName={styles.MarketplaceCard_Name}
+				contentTitleOnClick={this.props.onClick}
 				contentSub={!this.props.installing && `by ${this.props.addonDeveloper}`} // render if not installing
 				contentSubClassName={styles.MarketplaceCard_Developer}
 				contentDescription={this.props.direction === 'vertical' && !this.props.installing && this.props.addonDescription} // render if vertical and not installing

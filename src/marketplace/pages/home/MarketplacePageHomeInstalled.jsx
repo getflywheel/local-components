@@ -1,8 +1,23 @@
 import React, {Component} from 'react';
 import MarketplaceCardContainer from '../../components/MarketplaceCardContainer';
 import MarketplaceCard from '../../components/MarketplaceCard';
+import { withRouter } from 'react-router-dom';
 
-export default class MarketplacePageHomeInstalled extends Component {
+class MarketplacePageHomeInstalledBase extends Component {
+
+	removeEndingDirectories = (the_url, removeDirectoriesCount = 1) => {
+		let the_arr = the_url.split('/');
+
+		for (let i = 0; i < removeDirectoriesCount; i++) {
+			the_arr.pop();
+		}
+
+		return( the_arr.join('/') );
+	};
+
+	onCardClick = () => {
+		this.props.history.push(`${this.removeEndingDirectories(this.props.match.url, 2)}/addon/fake123`);
+	};
 
 	render() {
 		const direction = 'horizontal';
@@ -20,6 +35,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="The Add-on consists of a single page UI found under the More > XDebug Control menu."
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 					<MarketplaceCard
 						direction={direction}
@@ -29,6 +45,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="The Add-on consists of a single page UI found under the More > XDebug Control menu."
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 					<MarketplaceCard
 						direction={direction}
@@ -38,6 +55,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="Access the Chrome Developer Tools while Local is open."
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 					<MarketplaceCard
 						direction={direction}
@@ -47,6 +65,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="Makes logs look nature’s logs, which you haven’t seen lately get off the computer."
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 					<MarketplaceCard
 						direction={direction}
@@ -56,6 +75,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="Automate your mundane Local tasks easily with your very own robot."
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 					<MarketplaceCard
 						direction={direction}
@@ -65,6 +85,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="Simplify your admin controls with this Add-on."
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 					<MarketplaceCard
 						direction={direction}
@@ -74,6 +95,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="Get a setailed look at how effective your development is."
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 					<MarketplaceCard
 						direction={direction}
@@ -83,6 +105,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 						addonDeveloper="Developer Name"
 						addonDescription="Something fancy...trust me :)"
 						addonType="extension"
+						onClick={this.onCardClick}
 					/>
 				</MarketplaceCardContainer>
 			</main>
@@ -90,3 +113,7 @@ export default class MarketplacePageHomeInstalled extends Component {
 	}
 
 }
+
+
+const MarketplacePageHomeInstalled = withRouter(MarketplacePageHomeInstalledBase);
+export default MarketplacePageHomeInstalled;
