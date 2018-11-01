@@ -6,6 +6,7 @@ import styles from './MarketplacePageAddon.sass';
 import Header from '../../../components/Header/Header';
 import Card from '../../../components/Card/Card';
 import TabNav from '../../../components/TabNav/TabNav';
+import List from '../../../components/List/List';
 
 class MarketplacePageAddonBase extends Component {
 
@@ -58,7 +59,6 @@ class MarketplacePageAddonBase extends Component {
 								/>
 							</div>
 						</div>
-						{/* todo - crum: wire up */}
 						<button
 							className={classnames(
 								styles.MarketplacePageAddon_Aside_InstallButton,
@@ -68,32 +68,31 @@ class MarketplacePageAddonBase extends Component {
 						>
 							INSTALL ADD-ON
 						</button>
-						<Header
-							tag="h2"
-							size="s"
-							className={styles.MarketplacePageAddon_Aside_DetailsHeader}
+						<List
+							bullets={false}
+							listClassName={styles.MarketplacePageAddon_Aside_DetailsInfo}
+							headerHasDivider={true}
+							headerText="Details"
 						>
-							Details
-						</Header>
-						<ul className={styles.MarketplacePageAddon_Aside_DetailsInfo}>
-							<li>Version <span>1.1.1</span></li>
-							<li>Active Installs <span>1,394</span></li>
-							<li>Tested Up To <span>2.1.2</span></li>
-							<li>License <span>MIT</span></li>
-						</ul>
-						<ul className={styles.MarketplacePageAddon_Aside_DetailsLinks}>
-							<li><a>Visit Website</a></li>
-							<li><a>Repository</a></li>
-							<li><a>Add-on Help</a></li>
-						</ul>
-						<div className={styles.MarketplacePageAddon_Aside_DevelopersContainer}>
-							<Header
-								tag="h3"
-								size="xs"
-								className={styles.MarketplacePageAddon_Aside_DevelopersTitle}
-							>
-								DEVELOPED BY
-							</Header>
+							<span>Version <span>1.1.1</span></span>
+							<span>Active Installs <span>1,394</span></span>
+							<span>Tested Up To <span>2.1.2</span></span>
+							<span>License <span>MIT</span></span>
+						</List>
+						<List
+							bullets={false}
+							listClassName={styles.MarketplacePageAddon_Aside_DetailsLinks}
+						>
+							<a>Visit Website</a>
+							<a>Repository</a>
+							<a>Add-on Help</a>
+						</List>
+						<List
+							bullets={false}
+							headerSize="xs"
+							headerText="DEVELOPED BY"
+							headerWeight="700"
+						>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarImageContainer}>
 									<img
@@ -110,15 +109,13 @@ class MarketplacePageAddonBase extends Component {
 									</div>
 								</div>
 							</div>
-						</div>
-						<div className={styles.MarketplacePageAddon_Aside_DevelopersContainer}>
-							<Header
-								tag="h3"
-								size="xs"
-								className={styles.MarketplacePageAddon_Aside_DevelopersTitle}
-							>
-								COLLABORATORS
-							</Header>
+						</List>
+						<List
+							bullets={false}
+							headerSize="xs"
+							headerText="COLLABORATORS"
+							headerWeight="700"
+						>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
 								<div
 									className={classnames(
@@ -173,15 +170,13 @@ class MarketplacePageAddonBase extends Component {
 									</div>
 								</div>
 							</div>
-						</div>
-						<div className={styles.MarketplacePageAddon_Aside_CategoriesContainer}>
-							<Header
-								tag="h2"
-								size="s"
-								className={styles.MarketplacePageAddon_Aside_CategoriesHeader}
-							>
-								Categories
-							</Header>
+						</List>
+						<List
+							bullets={false}
+							listClassName={styles.MarketplacePageAddon_Aside_CategoriesContainer}
+							headerHasDivider={true}
+							headerText="Categories"
+						>
 							<div className={styles.MarketplacePageAddon_Aside_CategoriesChipContainer}>
 								<span className={styles.MarketplacePageAddon_Aside_CategoriesChip}>
 									CATEGORY
@@ -193,7 +188,7 @@ class MarketplacePageAddonBase extends Component {
 									CAT-3
 								</span>
 							</div>
-						</div>
+						</List>
 						<div className={styles.MarketplacePageAddon_Aside_ReportBug}>
 							<span>See a bug? No you don’t. But you should <a>report it here, anyways</a>.</span>
 						</div>
