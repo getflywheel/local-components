@@ -1,0 +1,33 @@
+@import '../../styles/_partials/index'
+
+.List_Container
+	display: block // this is here just to set the class (if no styles, no className set)
+
+	& + &
+		margin-top: 30px
+
+.List_Header
+	margin-bottom: 20px
+
+	&.List_Header__Divider
+		padding-bottom: 20px
+		@include theme-border-bottom
+
+
+.List
+	margin: 0
+	padding: 0
+	list-style-position: inside
+
+	&.List__BulletsHidden
+		list-style: none
+
+	.List_Item
+		position: relative
+		margin: 10px 0
+
+		&:first-child
+			margin-top: 0
+
+		&:last-child
+			margin-bottom: 0
