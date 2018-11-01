@@ -37,6 +37,7 @@ export const Switch = hot(module)(require('./components/Switch').default);
 export const TableList = hot(module)(require('./components/TableList').TableList);
 export const TableListRow = hot(module)(require('./components/TableList').TableListRow);
 export const TableListRepeater = hot(module)(require('./components/TableListRepeater').default);
+export const TabNav = hot(module)(require('./components/TabNav').default);
 export const TertiaryNav = hot(module)(require('./components/TertiaryNav').TertiaryNav);
 export const TertiaryNavItem = hot(module)(require('./components/TertiaryNav').TertiaryNavItem);
 export const Truncate = hot(module)(require('./components/Truncate').default);

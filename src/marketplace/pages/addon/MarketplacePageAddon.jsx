@@ -5,6 +5,7 @@ import MarketplacePage from '../../components/MarketplacePage';
 import styles from './MarketplacePageAddon.sass';
 import Header from '../../../components/Header/Header';
 import Card from '../../../components/Card/Card';
+import TabNav from '../../../components/TabNav/TabNav';
 
 class MarketplacePageAddonBase extends Component {
 
@@ -213,40 +214,33 @@ class MarketplacePageAddonBase extends Component {
 						<div className={styles.MarketplacePageAddon_Content_Developer}>
 							by Luke Korth
 						</div>
-						<nav
-							className={classnames(
-								styles.MarketplacePageAddon_Content_Nav,
-								"TabNav SiteInfo_Nav",
-							)}
-						>
-							<div className="TabNav_Items SiteInfo_Nav_Items">
-								<NavLink
-									exact
-									to={`${this.props.match.url}`}
-									activeClassName="active"
-								>
-									OVERVIEW
-								</NavLink>
-								<NavLink
-									to={`${this.props.match.url}/dependencies`}
-									activeClassName="active"
-								>
-									DEPENDENCIES
-								</NavLink>
-								<NavLink
-									to={`${this.props.match.url}/release-notes`}
-									activeClassName="active"
-								>
-									RELEASE NOTES
-								</NavLink>
-								<NavLink
-									to={`${this.props.match.url}/screenshots`}
-									activeClassName="active"
-								>
-									SCREENSHOTS
-								</NavLink>
-							</div>
-						</nav>
+						<TabNav className={styles.MarketplacePageAddon_Content_Nav}>
+							<NavLink
+								exact
+								to={`${this.props.match.url}`}
+								activeClassName="active"
+							>
+								OVERVIEW
+							</NavLink>
+							<NavLink
+								to={`${this.props.match.url}/dependencies`}
+								activeClassName="active"
+							>
+								DEPENDENCIES
+							</NavLink>
+							<NavLink
+								to={`${this.props.match.url}/release-notes`}
+								activeClassName="active"
+							>
+								RELEASE NOTES
+							</NavLink>
+							<NavLink
+								to={`${this.props.match.url}/screenshots`}
+								activeClassName="active"
+							>
+								SCREENSHOTS
+							</NavLink>
+						</TabNav>
 					</main>
 				</div>
 			</MarketplacePage>
