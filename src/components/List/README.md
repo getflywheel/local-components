@@ -24,6 +24,7 @@ List with header, divider, and no bullets.
 ```js
 <List
 	bullets={false}
+	headerHasDivider={true}
 	headerText="Explore"
 >
 	<a>All</a>
