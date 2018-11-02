@@ -6,6 +6,8 @@ import Switch from '../../components/Switch/Switch';
 import Card from '../../components/Card/Card';
 import Spinner from '../../components/Spinner/Spinner';
 import FlyDropdown from '../../components/FlyDropdown/FlyDropdown';
+import SearchSVG from '../../svg/search.svg';
+import HeartSVG from '../../svg/heart.svg';
 
 export default class MarketplaceCard extends Component {
 
@@ -35,14 +37,34 @@ export default class MarketplaceCard extends Component {
 		}
 	};
 
+	renderHeaderBadge() {
+		if(this.props.direction !== 'vertical') {
+			return;
+		}
+
+		return (
+			<div className={styles.MarketplaceCard_Header_BadgeContainer}>
+				<SearchSVG className={styles.MarketplaceCard_Header_Badge} />
+			</div>
+		);
+	}
+
 	renderFooter() {
 		return (
 			<Fragment>
 				{this.props.direction === 'vertical'
 					?
-					<div>
+					<Fragment>
 						<span>{this.getTypeName(this.props.addonType)}</span>
-					</div>
+						<span className={styles.MarketplaceCard_Footer_LikesContainer}>
+							<span>
+								15
+							</span>
+							<span>
+								<HeartSVG className={styles.MarketplaceCard_Footer_LikesIcon} />
+							</span>
+						</span>
+					</Fragment>
 					:
 					this.props.installing
 						?
@@ -93,6 +115,7 @@ export default class MarketplaceCard extends Component {
 					}
 				)}
 				overflow={this.props.direction === 'horizontal' ? 'visible' : undefined} // if horizontal, allow dropdown contents to flow outside of the bounds
+				header={this.renderHeaderBadge()}
 				headerIconPath={!this.props.installing && this.props.addonIconPath} // render if not installing
 				headerIconMaxHeight="60px"
 				headerBackgroundColor={this.props.addonBackgroundColor}

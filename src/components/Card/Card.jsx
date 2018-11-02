@@ -63,23 +63,23 @@ export default class Card extends Component {
 				onClick={this.props.headerOnClick}
 			>
 				{this.props.headerIconPath &&
-				<div
-					className={classnames(
-						styles.Card_HeaderIconContainer,
-						this.props.headerIconContainerClassName,
-					)}
-					style={{
-						...(this.props.headerBackgroundColor && {backgroundColor: this.props.headerBackgroundColor}), // conditionally add style
-					}}
-				>
-					<img
-						src={this.props.headerIconPath}
-						className={this.props.headerIconClassName}
+					<div
+						className={classnames(
+							styles.Card_HeaderIconContainer,
+							this.props.headerIconContainerClassName,
+						)}
 						style={{
-							...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
+							...(this.props.headerBackgroundColor && {backgroundColor: this.props.headerBackgroundColor}), // conditionally add style
 						}}
-					/>
-				</div>
+					>
+						<img
+							src={this.props.headerIconPath}
+							className={this.props.headerIconClassName}
+							style={{
+								...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
+							}}
+						/>
+					</div>
 				}
 
 				{this.props.header}

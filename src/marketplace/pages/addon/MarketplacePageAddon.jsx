@@ -5,6 +5,9 @@ import MarketplacePage from '../../components/MarketplacePage';
 import styles from './MarketplacePageAddon.sass';
 import Header from '../../../components/Header/Header';
 import Card from '../../../components/Card/Card';
+import TabNav from '../../../components/TabNav/TabNav';
+import List from '../../../components/List/List';
+import ImageCircle from '../../../components/ImageCircle/ImageCircle';
 
 class MarketplacePageAddonBase extends Component {
 
@@ -57,7 +60,6 @@ class MarketplacePageAddonBase extends Component {
 								/>
 							</div>
 						</div>
-						{/* todo - crum: wire up */}
 						<button
 							className={classnames(
 								styles.MarketplacePageAddon_Aside_InstallButton,
@@ -67,39 +69,33 @@ class MarketplacePageAddonBase extends Component {
 						>
 							INSTALL ADD-ON
 						</button>
-						<Header
-							tag="h2"
-							size="s"
-							className={styles.MarketplacePageAddon_Aside_DetailsHeader}
+						<List
+							bullets={false}
+							listClassName={styles.MarketplacePageAddon_Aside_DetailsInfo}
+							headerHasDivider={true}
+							headerText="Details"
 						>
-							Details
-						</Header>
-						<ul className={styles.MarketplacePageAddon_Aside_DetailsInfo}>
-							<li>Version <span>1.1.1</span></li>
-							<li>Active Installs <span>1,394</span></li>
-							<li>Tested Up To <span>2.1.2</span></li>
-							<li>License <span>MIT</span></li>
-						</ul>
-						<ul className={styles.MarketplacePageAddon_Aside_DetailsLinks}>
-							<li><a>Visit Website</a></li>
-							<li><a>Repository</a></li>
-							<li><a>Add-on Help</a></li>
-						</ul>
-						<div className={styles.MarketplacePageAddon_Aside_DevelopersContainer}>
-							<Header
-								tag="h3"
-								size="xs"
-								className={styles.MarketplacePageAddon_Aside_DevelopersTitle}
-							>
-								DEVELOPED BY
-							</Header>
+							<span>Version <span>1.1.1</span></span>
+							<span>Active Installs <span>1,394</span></span>
+							<span>Tested Up To <span>2.1.2</span></span>
+							<span>License <span>MIT</span></span>
+						</List>
+						<List
+							bullets={false}
+							listClassName={styles.MarketplacePageAddon_Aside_DetailsLinks}
+						>
+							<a>Visit Website</a>
+							<a>Repository</a>
+							<a>Add-on Help</a>
+						</List>
+						<List
+							bullets={false}
+							headerSize="xs"
+							headerText="DEVELOPED BY"
+							headerWeight="700"
+						>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div className={styles.MarketplacePageAddon_Aside_AvatarImageContainer}>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Luke Korth
@@ -109,27 +105,18 @@ class MarketplacePageAddonBase extends Component {
 									</div>
 								</div>
 							</div>
-						</div>
-						<div className={styles.MarketplacePageAddon_Aside_DevelopersContainer}>
-							<Header
-								tag="h3"
-								size="xs"
-								className={styles.MarketplacePageAddon_Aside_DevelopersTitle}
-							>
-								COLLABORATORS
-							</Header>
+						</List>
+						<List
+							bullets={false}
+							headerSize="xs"
+							headerText="COLLABORATORS"
+							headerWeight="700"
+						>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div
-									className={classnames(
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
-									)}
-								>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle
+									size="s"
+									src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+								/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Kaitlynn Guzman
@@ -137,17 +124,10 @@ class MarketplacePageAddonBase extends Component {
 								</div>
 							</div>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div
-									className={classnames(
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
-									)}
-								>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle
+									size="s"
+									src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+								/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Kaitlin Grohmann
@@ -155,32 +135,23 @@ class MarketplacePageAddonBase extends Component {
 								</div>
 							</div>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div
-									className={classnames(
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
-									)}
-								>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle
+									size="s"
+									src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+								/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Trivago Guy
 									</div>
 								</div>
 							</div>
-						</div>
-						<div className={styles.MarketplacePageAddon_Aside_CategoriesContainer}>
-							<Header
-								tag="h2"
-								size="s"
-								className={styles.MarketplacePageAddon_Aside_CategoriesHeader}
-							>
-								Categories
-							</Header>
+						</List>
+						<List
+							bullets={false}
+							listClassName={styles.MarketplacePageAddon_Aside_CategoriesContainer}
+							headerHasDivider={true}
+							headerText="Categories"
+						>
 							<div className={styles.MarketplacePageAddon_Aside_CategoriesChipContainer}>
 								<span className={styles.MarketplacePageAddon_Aside_CategoriesChip}>
 									CATEGORY
@@ -192,7 +163,7 @@ class MarketplacePageAddonBase extends Component {
 									CAT-3
 								</span>
 							</div>
-						</div>
+						</List>
 						<div className={styles.MarketplacePageAddon_Aside_ReportBug}>
 							<span>See a bug? No you don’t. But you should <a>report it here, anyways</a>.</span>
 						</div>
@@ -213,40 +184,33 @@ class MarketplacePageAddonBase extends Component {
 						<div className={styles.MarketplacePageAddon_Content_Developer}>
 							by Luke Korth
 						</div>
-						<nav
-							className={classnames(
-								styles.MarketplacePageAddon_Content_Nav,
-								"TabNav SiteInfo_Nav",
-							)}
-						>
-							<div className="TabNav_Items SiteInfo_Nav_Items">
-								<NavLink
-									exact
-									to={`${this.props.match.url}`}
-									activeClassName="active"
-								>
-									OVERVIEW
-								</NavLink>
-								<NavLink
-									to={`${this.props.match.url}/dependencies`}
-									activeClassName="active"
-								>
-									DEPENDENCIES
-								</NavLink>
-								<NavLink
-									to={`${this.props.match.url}/release-notes`}
-									activeClassName="active"
-								>
-									RELEASE NOTES
-								</NavLink>
-								<NavLink
-									to={`${this.props.match.url}/screenshots`}
-									activeClassName="active"
-								>
-									SCREENSHOTS
-								</NavLink>
-							</div>
-						</nav>
+						<TabNav className={styles.MarketplacePageAddon_Content_Nav}>
+							<NavLink
+								exact
+								to={`${this.props.match.url}`}
+								activeClassName="active"
+							>
+								OVERVIEW
+							</NavLink>
+							<NavLink
+								to={`${this.props.match.url}/dependencies`}
+								activeClassName="active"
+							>
+								DEPENDENCIES
+							</NavLink>
+							<NavLink
+								to={`${this.props.match.url}/release-notes`}
+								activeClassName="active"
+							>
+								RELEASE NOTES
+							</NavLink>
+							<NavLink
+								to={`${this.props.match.url}/screenshots`}
+								activeClassName="active"
+							>
+								SCREENSHOTS
+							</NavLink>
+						</TabNav>
 					</main>
 				</div>
 			</MarketplacePage>

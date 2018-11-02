@@ -4,9 +4,10 @@ import MarketplaceCardContainer from '../../components/MarketplaceCardContainer'
 import styles from './MarketplacePageHomeCommunity.sass';
 import FlyDropdown from '../../../components/FlyDropdown/FlyDropdown';
 import Button from '../../../components/Button/Button';
-import Header from '../../../components/Header/Header';
-import SearchSVG from '../../../svg/search.svg';
 import { withRouter } from 'react-router-dom';
+import List from '../../../components/List/List';
+import ImageCircle from '../../../components/ImageCircle/ImageCircle';
+import InputSearch from '../../../components/InputSearch/InputSearch';
 
 class MarketplacePageHomeCommunityBase extends Component {
 
@@ -28,72 +29,69 @@ class MarketplacePageHomeCommunityBase extends Component {
 		return (
 			<div className={styles.MarketplacePageHomeCommunity}>
 				<aside className={styles.MarketplacePageHomeCommunity_Aside}>
-					<div className={styles.MarketplacePageHomeCommunity_Aside_Group}>
-						{/*todo - crum: make this into a component*/}
-						<Header
-							tag="h2"
-							size="s"
-							className={styles.MarketplacePageHomeCommunity_Aside_Header}
-						>
-							Explore
-						</Header>
-						<ul>
-							<li><a>All</a></li>
-							<li><a>Featured</a></li>
-							<li><a>New</a></li>
-							<li><a>Popular</a></li>
-							<li><a>made by Flywheel</a></li>
-						</ul>
-					</div>
-					<div className={styles.MarketplacePageHomeCommunity_Aside_Group}>
-						{/*todo - crum: make this into a component*/}
-						<Header
-							tag="h2"
-							size="s"
-							className={styles.MarketplacePageHomeCommunity_Aside_Header}
-						>
-							Categories
-						</Header>
-						<ul>
-							<li><a>WordPress</a></li>
-							<li><a>Development Tools</a></li>
-							<li><a>React/Vue</a></li>
-							<li><a>Live Reload</a></li>
-							<li><a>Docker</a></li>
-							<li><a>Stats</a></li>
-							<li><a>Log Viewing</a></li>
-						</ul>
-					</div>
-					<div className={styles.MarketplacePageHomeCommunity_Aside_Group}>
-						{/*todo - crum: make this into a component*/}
-						<Header
-							tag="h2"
-							size="s"
-							className={styles.MarketplacePageHomeCommunity_Aside_Header}
-						>
-							Featured Developers
-						</Header>
-						<ul>
-							{/*todo - crum: create avatar component */}
-							{/*todo - crum: truncate */}
-							<li><a>🙂 Kaitlynn Guzman</a></li>
-							<li><a>🙂 Kaitlin Grohmann</a></li>
-							<li><a>🙂 Trivago Guy</a></li>
-							<li><a>🙂 Luke Korth</a></li>
-						</ul>
-					</div>
+					<List
+						bullets={false}
+						headerText="Explore"
+					>
+						<a>All</a>
+						<a>Featured</a>
+						<a>New</a>
+						<a>Popular</a>
+						<a>made by Flywheel</a>
+					</List>
+					<List
+						bullets={false}
+						headerText="Categories"
+					>
+						<a>WordPress</a>
+						<a>Development Tools</a>
+						<a>React/Vue</a>
+						<a>Live Reload</a>
+						<a>Docker</a>
+						<a>Stats</a>
+						<a>Log Viewing</a>
+					</List>
+					<List
+						bullets={false}
+						className={styles.MarketplacePageHomeCommunity_Aside_FeaturedDevelopers}
+						headerText="Featured Developers"
+					>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Kaitlynn Guzman
+						</a>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Kaitlin Grohmann
+						</a>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Trivago Guy
+						</a>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Luke Korth
+						</a>
+					</List>
 				</aside>
 				<main className={styles.MarketplacePageHomeCommunity_Content}>
 					<div className={styles.MarketplacePageHomeCommunity_Toolbar}>
-						{/*todo - crum: create search input component w/ icon */}
-						<div className={styles.MarketplacePageHomeCommunity_ToolbarSearch}>
-							<SearchSVG className={styles.MarketplacePageHomeCommunity_ToolbarSearchIcon} />
-							<input
-								type="text"
-								placeholder="Search for an Add-on..."
-								className={styles.MarketplacePageHomeCommunity_ToolbarSearchInput}
-							/>
-						</div>
+						<InputSearch
+							containerClassName={styles.MarketplacePageHomeCommunity_Toolbar_SearchInputContainer}
+							placeholder="Search for an Add-on..."
+						/>
 						<div>
 							{/*todo - crum: what options are in here? */}
 							<FlyDropdown

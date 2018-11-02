@@ -6,14 +6,16 @@ import styles from './Header.sass';
 export default class Header extends Component {
 
 	static propTypes = {
-		tag: PropTypes.string,
 		onClick: PropTypes.func,
 		size: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']),
+		tag: PropTypes.string,
+		weight: PropTypes.oneOf(['300', '400', '500', '700', '900']),
 	};
 
 	static defaultProps = {
-		tag: 'span',
+		tag: 'div',
 		size: 'm',
+		weight: '500',
 	};
 
 	render() {
@@ -30,6 +32,11 @@ export default class Header extends Component {
 						[styles.Header__SizeM]: this.props.size === 'm',
 						[styles.Header__SizeS]: this.props.size === 's',
 						[styles.Header__SizeXS]: this.props.size === 'xs',
+						[styles.Header__Weight300]: this.props.weight === '300',
+						[styles.Header__Weight400]: this.props.weight === '400',
+						[styles.Header__Weight500]: this.props.weight === '500',
+						[styles.Header__Weight700]: this.props.weight === '700',
+						[styles.Header__Weight900]: this.props.weight === '900',
 					}
 				)}
 				onClick={this.props.onClick}

@@ -1,3 +1,3 @@
 ```js
-<InputPasswordToggle onChange={() => console.log('onChange')} />
+<InputPasswordToggle onChange={(event) => console.log('onChange: ', event)} />
 ```

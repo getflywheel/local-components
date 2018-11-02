@@ -14,27 +14,13 @@
 		overflow: hidden
 		white-space: nowrap
 
-		.MarketplacePageHomeCommunity_Aside_Header
-			margin-bottom: 18px
-
+	.MarketplacePageHomeCommunity_Aside_FeaturedDevelopers
 		a
-			margin-top: 10px
+			display: flex
+			align-items: center
 
-		// this list only provides styles within its bounds, not above or below (margin)
-		ul
-			margin: 0
-			padding: 0
-
-			li
-				margin: 10px 0 0 0
-				text-indent: 0
-				list-style-type: none
-
-				&:first-child
-					margin-top: 0
-
-	.MarketplacePageHomeCommunity_Aside_Group
-		margin-bottom: 30px
+			*
+				margin-right: 10px
 
 	.MarketplacePageHomeCommunity_Content
 		flex-grow: 1
@@ -47,20 +33,6 @@
 		& > *:last-child
 			margin-left: auto
 
-	.MarketplacePageHomeCommunity_ToolbarSearch
-		display: flex
-		align-items: center
+	.MarketplacePageHomeCommunity_Toolbar_SearchInputContainer
+		flex-grow: 1
 
-	.MarketplacePageHomeCommunity_ToolbarSearchIcon
-		width: 18px
-		height: 18px
-
-		path
-			fill: $gray75
-
-	.MarketplacePageHomeCommunity_ToolbarSearchInput
-		margin-left: 10px
-		border: none
-		color: $gray25
-		font-weight: 300
-		background: none

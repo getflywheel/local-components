@@ -76,27 +76,16 @@ $navHeight: 38px
 		@include theme-border-bottom
 
 	.MarketplacePageAddon_Aside_DetailsInfo
-		margin: 0 0 20px 0
-		padding: 0
-		list-style: none
-		list-style-position: inside
-
-		li
-			margin: (10px - 2px) 0
-			color: $gray
-
-			&:last-child
-				margin-bottom: 0
+		li span
+			color: $gray-dark
 
 			> *:last-child
 				float: right
+				color: $gray
 				font-weight: 300
 
 	.MarketplacePageAddon_Aside_DetailsLinks
-		margin: 0 0 30px 0
-		padding: 0
-		list-style: none
-		list-style-position: inside
+		padding-top: 10px
 		@include theme-border-top
 
 		li
@@ -104,9 +93,6 @@ $navHeight: 38px
 			margin: 10px 0
 			padding-bottom: 10px
 			@include theme-border-bottom
-
-			&:last-child
-				margin-bottom: 0
 
 			&:after
 				content: ""
@@ -121,9 +107,6 @@ $navHeight: 38px
 				transform: rotate(-90deg)
 				background-color: $green
 
-	.MarketplacePageAddon_Aside_DevelopersContainer
-		margin-bottom: 30px
-
 	.MarketplacePageAddon_Aside_DevelopersTitle
 		margin-bottom: 10px
 		font-weight: 700
@@ -134,20 +117,6 @@ $navHeight: 38px
 
 		& + .MarketplacePageAddon_Aside_AvatarRow
 			margin-top: 10px
-
-	.MarketplacePageAddon_Aside_AvatarImageContainer
-		width: 40px
-		height: 40px
-
-		&.MarketplacePageAddon_Aside_AvatarImageContainer__Small
-			width: 32px
-			height: 32px
-
-	.MarketplacePageAddon_Aside_AvatarImage
-		width: 100%
-		height: 100%
-		object-fit: cover
-		border-radius: 50%
 
 	.MarketplacePageAddon_Aside_AvatarDetails
 		margin-left: 10px
@@ -182,6 +151,7 @@ $navHeight: 38px
 		padding: 20px 0
 		color: $gray
 		font-weight: 300
+		line-height: 1.5
 
 		a
 			font-weight: 500

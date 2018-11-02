@@ -4,6 +4,7 @@ import MarketplacePage from '../../components/MarketplacePage';
 import styles from './MarketplacePageHome.sass';
 import AddSVG from '../../../svg/add.svg';
 import Header from '../../../components/Header/Header';
+import TabNav from '../../../components/TabNav/TabNav';
 
 class MarketplacePageHomeBase extends Component {
 
@@ -24,23 +25,21 @@ class MarketplacePageHomeBase extends Component {
 						<button className="__Pill __Green"><AddSVG/>CREATE AN ADD-ON</button>
 					</div>
 				</div>
-				<nav className="TabNav SiteInfo_Nav">
-					<div className="TabNav_Items SiteInfo_Nav_Items">
-						<NavLink
-							exact
-							to={`${this.props.match.url}/`}
-							activeClassName="active"
-						>
-							Community
-						</NavLink>
-						<NavLink
-							to={`${this.props.match.url}/installed`}
-							activeClassName="active"
-						>
-							Installed (6)
-						</NavLink>
-					</div>
-				</nav>
+				<TabNav>
+					<NavLink
+						exact
+						to={`${this.props.match.url}/`}
+						activeClassName="active"
+					>
+						Community
+					</NavLink>
+					<NavLink
+						to={`${this.props.match.url}/installed`}
+						activeClassName="active"
+					>
+						Installed (6)
+					</NavLink>
+				</TabNav>
 				{/*todo - crum: make this into a component 'MarketplacePageContent'*/}
 				<div className="MarketplacePage_Content">
 					<Switch>

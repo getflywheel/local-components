@@ -1,0 +1,32 @@
+@import '../../styles/_partials/index'
+
+.TabNav
+	display: flex
+	flex-shrink: 0
+	width: 100%
+	padding: 0 20px 0 30px
+	@include theme-border-bottom
+
+	.TabNav_Items
+		flex-shrink: 0
+		align-self: flex-start
+
+		> *
+			display: inline-block
+
+		a
+			padding: 6px 10px 14px
+			@include tracking(40)
+			font-weight: 700
+			color: $gray25
+			text-decoration: none
+			text-transform: uppercase
+			border-bottom: 4px solid transparent
+			transition: .1s color ease 0s, .1s border-bottom-color ease 0s
+
+			&:hover
+				@include theme-color-graydark-else-white
+
+			&:global(.active)
+				@include theme-color-graydark-else-white
+				@include theme-tab-border-active
