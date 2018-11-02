@@ -26,6 +26,7 @@ export const InnerPaneSidebarAddNew = hot(module)(require('./components/InnerPan
 export const InnerPaneSidebarContent = hot(module)(require('./components/InnerPaneSidebar').InnerPaneSidebarContent);
 export const InnerPaneSidebarContentItem = hot(module)(require('./components/InnerPaneSidebar').InnerPaneSidebarContentItem);
 export const InputPasswordToggle = hot(module)(require('./components/InputPasswordToggle').default);
+export const InputSearch = hot(module)(require('./components/InputSearch').default);
 export const InstallerStepStatus = hot(module)(require('./components/InstallerStepStatus').default);
 export const List = hot(module)(require('./components/List').default);
 export const LoadingIndicator = hot(module)(require('./components/LoadingIndicator').default);
