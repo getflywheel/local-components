@@ -1,4 +1,4 @@
-export default class ObjectUtils{
+export default class ObjectUtils {
 	static omitPropsInObject(obj, omitObj, clone) {
 		// clone if necessary
 		obj = clone ? {...obj} : obj;
