@@ -22,6 +22,17 @@
 		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
 			min-width: 156px
 
+	$MarketplaceCard_Header_Badge_Width: 20px
+	$MarketplaceCard_Header_Badge_Height: 24px
+	.MarketplaceCard_Header_BadgeContainer
+		position: absolute
+		bottom: 0
+		margin-left: 80%
+		margin-bottom: -($MarketplaceCard_Header_Badge_Height / 2)
+
+	.MarketplaceCard_Header_Badge
+		width: $MarketplaceCard_Header_Badge_Width
+
 	.MarketplaceCard_Content
 		@include selectors_ifHostStateIs('.MarketplaceCard__Horizontal')
 			flex-grow: 1

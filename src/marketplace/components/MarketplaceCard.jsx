@@ -6,6 +6,7 @@ import Switch from '../../components/Switch/Switch';
 import Card from '../../components/Card/Card';
 import Spinner from '../../components/Spinner/Spinner';
 import FlyDropdown from '../../components/FlyDropdown/FlyDropdown';
+import SearchSVG from '../../svg/search.svg';
 import HeartSVG from '../../svg/heart.svg';
 
 export default class MarketplaceCard extends Component {
@@ -35,6 +36,18 @@ export default class MarketplaceCard extends Component {
 				return 'ADD-ON';
 		}
 	};
+
+	renderHeaderBadge() {
+		if(this.props.direction !== 'vertical') {
+			return;
+		}
+
+		return (
+			<div className={styles.MarketplaceCard_Header_BadgeContainer}>
+				<SearchSVG className={styles.MarketplaceCard_Header_Badge} />
+			</div>
+		);
+	}
 
 	renderFooter() {
 		return (
@@ -102,6 +115,7 @@ export default class MarketplaceCard extends Component {
 					}
 				)}
 				overflow={this.props.direction === 'horizontal' ? 'visible' : undefined} // if horizontal, allow dropdown contents to flow outside of the bounds
+				header={this.renderHeaderBadge()}
 				headerIconPath={!this.props.installing && this.props.addonIconPath} // render if not installing
 				headerIconMaxHeight="60px"
 				headerBackgroundColor={this.props.addonBackgroundColor}
