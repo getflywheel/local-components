@@ -4,11 +4,10 @@ import MarketplaceCardContainer from '../../components/MarketplaceCardContainer'
 import styles from './MarketplacePageHomeCommunity.sass';
 import FlyDropdown from '../../../components/FlyDropdown/FlyDropdown';
 import Button from '../../../components/Button/Button';
-import Header from '../../../components/Header/Header';
-import SearchSVG from '../../../svg/search.svg';
 import { withRouter } from 'react-router-dom';
 import List from '../../../components/List/List';
 import ImageCircle from '../../../components/ImageCircle/ImageCircle';
+import InputSearch from '../../../components/InputSearch/InputSearch';
 
 class MarketplacePageHomeCommunityBase extends Component {
 
@@ -89,15 +88,10 @@ class MarketplacePageHomeCommunityBase extends Component {
 				</aside>
 				<main className={styles.MarketplacePageHomeCommunity_Content}>
 					<div className={styles.MarketplacePageHomeCommunity_Toolbar}>
-						{/*todo - crum: create search input component */}
-						<div className={styles.MarketplacePageHomeCommunity_ToolbarSearch}>
-							<SearchSVG className={styles.MarketplacePageHomeCommunity_ToolbarSearchIcon} />
-							<input
-								type="text"
-								placeholder="Search for an Add-on..."
-								className={styles.MarketplacePageHomeCommunity_ToolbarSearchInput}
-							/>
-						</div>
+						<InputSearch
+							containerClassName={styles.MarketplacePageHomeCommunity_Toolbar_SearchInputContainer}
+							placeholder="Search for an Add-on..."
+						/>
 						<div>
 							{/*todo - crum: what options are in here? */}
 							<FlyDropdown
