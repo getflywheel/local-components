@@ -1,9 +1,8 @@
 export default class ObjectUtils {
-	static omitPropsInObject(obj, omitObj, clone) {
-		// clone if necessary
+	static omitPropsInObject(obj, omitObj, clone = true) {
 		obj = clone ? {...obj} : obj;
 		// delete omitted keys
-		Object.keys(InputSearch.propTypes).forEach(e => delete obj[e]);
+		Object.keys(omitObj).forEach(e => delete obj[e]);
 		return obj;
 	}
 }
