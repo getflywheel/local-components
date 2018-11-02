@@ -6,6 +6,7 @@ import Switch from '../../components/Switch/Switch';
 import Card from '../../components/Card/Card';
 import Spinner from '../../components/Spinner/Spinner';
 import FlyDropdown from '../../components/FlyDropdown/FlyDropdown';
+import HeartSVG from '../../svg/heart.svg';
 
 export default class MarketplaceCard extends Component {
 
@@ -40,9 +41,17 @@ export default class MarketplaceCard extends Component {
 			<Fragment>
 				{this.props.direction === 'vertical'
 					?
-					<div>
+					<Fragment>
 						<span>{this.getTypeName(this.props.addonType)}</span>
-					</div>
+						<span className={styles.MarketplaceCard_Footer_LikesContainer}>
+							<span>
+								15
+							</span>
+							<span>
+								<HeartSVG className={styles.MarketplaceCard_Footer_LikesIcon} />
+							</span>
+						</span>
+					</Fragment>
 					:
 					this.props.installing
 						?
