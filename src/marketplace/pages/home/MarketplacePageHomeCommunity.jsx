@@ -8,6 +8,7 @@ import Header from '../../../components/Header/Header';
 import SearchSVG from '../../../svg/search.svg';
 import { withRouter } from 'react-router-dom';
 import List from '../../../components/List/List';
+import ImageCircle from '../../../components/ImageCircle/ImageCircle';
 
 class MarketplacePageHomeCommunityBase extends Component {
 
@@ -53,12 +54,37 @@ class MarketplacePageHomeCommunityBase extends Component {
 					</List>
 					<List
 						bullets={false}
+						className={styles.MarketplacePageHomeCommunity_Aside_FeaturedDevelopers}
 						headerText="Featured Developers"
 					>
-						<a>🙂 Kaitlynn Guzman</a>
-						<a>🙂 Kaitlin Grohmann</a>
-						<a>🙂 Trivago Guy</a>
-						<a>🙂 Luke Korth</a>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Kaitlynn Guzman
+						</a>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Kaitlin Grohmann
+						</a>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Trivago Guy
+						</a>
+						<a>
+							<ImageCircle
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+							/>
+							Luke Korth
+						</a>
 					</List>
 				</aside>
 				<main className={styles.MarketplacePageHomeCommunity_Content}>

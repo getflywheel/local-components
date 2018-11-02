@@ -7,6 +7,7 @@ import Header from '../../../components/Header/Header';
 import Card from '../../../components/Card/Card';
 import TabNav from '../../../components/TabNav/TabNav';
 import List from '../../../components/List/List';
+import ImageCircle from '../../../components/ImageCircle/ImageCircle';
 
 class MarketplacePageAddonBase extends Component {
 
@@ -94,12 +95,7 @@ class MarketplacePageAddonBase extends Component {
 							headerWeight="700"
 						>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div className={styles.MarketplacePageAddon_Aside_AvatarImageContainer}>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Luke Korth
@@ -117,17 +113,10 @@ class MarketplacePageAddonBase extends Component {
 							headerWeight="700"
 						>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div
-									className={classnames(
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
-									)}
-								>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle
+									size="s"
+									src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+								/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Kaitlynn Guzman
@@ -135,17 +124,10 @@ class MarketplacePageAddonBase extends Component {
 								</div>
 							</div>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div
-									className={classnames(
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
-									)}
-								>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle
+									size="s"
+									src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+								/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Kaitlin Grohmann
@@ -153,17 +135,10 @@ class MarketplacePageAddonBase extends Component {
 								</div>
 							</div>
 							<div className={styles.MarketplacePageAddon_Aside_AvatarRow}>
-								<div
-									className={classnames(
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer,
-										styles.MarketplacePageAddon_Aside_AvatarImageContainer__Small,
-									)}
-								>
-									<img
-										className={styles.MarketplacePageAddon_Aside_AvatarImage}
-										src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
-									/>
-								</div>
+								<ImageCircle
+									size="s"
+									src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+								/>
 								<div className={styles.MarketplacePageAddon_Aside_AvatarDetails}>
 									<div>
 										Trivago Guy
