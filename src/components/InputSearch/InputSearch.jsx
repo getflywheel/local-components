@@ -45,7 +45,9 @@ export default class InputSearch extends Component {
 		// delete these props to avoid conflicts and errors resulting from directly applying all props via `{...props}`
 		delete props.className;
 		delete props.containerClassName;
+		delete props.onChange;
 		delete props.placeholder;
+		delete props.value;
 
 		return (
 			<div
