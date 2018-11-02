@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './InputSearch.sass';
 import SearchSVG from '../../svg/search.svg';
+import ObjectUtils from '../../utils/object-utils';
 
 export default class InputSearch extends Component {
 
 	static propTypes = {
 		className: PropTypes.string,
 		containerClassName: PropTypes.string,
-		placeholder: PropTypes.string,
 		onChange: PropTypes.func,
+		placeholder: PropTypes.string,
 		value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	};
 
@@ -35,24 +36,12 @@ export default class InputSearch extends Component {
 	};
 
 	render () {
-		const {
-			className,
-			containerClassName,
-			placeholder,
-			...props
-		} = this.props;
-
-		// delete these props to avoid conflicts and errors resulting from directly applying all props via `{...props}`
-		delete props.className;
-		delete props.containerClassName;
-		delete props.onChange;
-		delete props.placeholder;
-		delete props.value;
+		const undeclaredProps = ObjectUtils.omitPropsInObject(this.props, InputSearch.propTypes, true);
 
 		return (
 			<div
 				className={classnames(
-					containerClassName,
+					this.props.containerClassName,
 					styles.InputSearch_Container,
 				)}
 			>
@@ -60,13 +49,13 @@ export default class InputSearch extends Component {
 				<input
 					className={classnames(
 						styles.InputSearch,
-						className,
+						this.props.className,
 					)}
 					onChange={event => this.onChangeInternal(event)}
-					placeholder={placeholder}
+					placeholder={this.props.placeholder}
 					type="text"
 					value={this.state.value}
-					{...props}
+					{...undeclaredProps}
 				/>
 			</div>
 		);
