@@ -37,19 +37,21 @@ export default class InputSearch extends Component {
 	render () {
 		const {
 			className,
+			containerClassName,
 			placeholder,
 			...props
 		} = this.props;
 
-		// delete these props to avoid conflicts resulting from directly applying all props via `{...props}`
+		// delete these props to avoid conflicts and errors resulting from directly applying all props via `{...props}`
 		delete props.className;
+		delete props.containerClassName;
 		delete props.placeholder;
 
 		return (
 			<div
 				className={classnames(
+					containerClassName,
 					styles.InputSearch_Container,
-					this.props.containerClassName,
 				)}
 			>
 				<SearchSVG className={styles.InputSearch_Icon} />
