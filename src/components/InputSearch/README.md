@@ -1,7 +1,7 @@
 Input with `placeholder` and `onChange` props.
 ```js
 <InputSearch 
-	onChange={() => console.log('onChange')} 
+	onChange={(event) => console.log('onChange: ', event)} 
 	placeholder="Type here ..."
 />
 ```
@@ -9,7 +9,7 @@ Input with `placeholder` and `onChange` props.
 Input with initial `value` set.
 ```js
 <InputSearch 
-	onChange={() => console.log('onChange')} 
+	onChange={(event) => console.log('onChange: ', event)} 
 	placeholder="Type here ..."
 	value="John Smith"
 />

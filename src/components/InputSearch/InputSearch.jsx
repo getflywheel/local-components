@@ -31,7 +31,7 @@ export default class InputSearch extends Component {
 			value: event.target.value // update value
 		});
 
-		this.props.onChange && this.props.onChange.apply(this, event);
+		this.props.onChange && this.props.onChange.call(this, event);
 	};
 
 	render () {
