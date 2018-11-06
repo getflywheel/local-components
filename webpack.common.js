@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	entry: [
@@ -13,6 +14,12 @@ module.exports = {
 		extensions: ['.js', '.jsx']
 	},
 	target: 'electron-renderer',
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: 'scoped.css',
+			chunkFilename: '[id].css',
+		})
+	],
 	module: {
 		rules: [
 			{
