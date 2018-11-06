@@ -7,11 +7,24 @@ export default class TabNav extends Component {
 	static propTypes = {
 		tag: PropTypes.string,
 		itemsClassName: PropTypes.string,
+		aux: PropTypes.node, // Used for adding items in the right-hand side of the TabNav such as Site Info buttons
 	};
 
 	static defaultProps = {
 		tag: 'nav',
 	};
+
+	maybeRenderAux () {
+		if (!this.props.aux) {
+			return;
+		}
+
+		return (
+			<div className={styles.TabNav_Aux}>
+				{this.props.aux}
+			</div>
+		);
+	}
 
 	render () {
 		const NavTag = this.props.tag;
@@ -30,6 +43,8 @@ export default class TabNav extends Component {
 			>
 					{this.props.children}
 				</div>
+
+				{this.maybeRenderAux()}
 			</NavTag>
 		);
 	}
