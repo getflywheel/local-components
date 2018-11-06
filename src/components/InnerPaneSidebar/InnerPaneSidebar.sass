@@ -3,19 +3,20 @@
 .InnerPaneSidebar
 	width: 280px
 	height: 100%
-	border-left: 1px solid $gray15
+	@include theme-border-left
 	display: flex
 	flex-direction: column
 
 .InnerPaneSidebarHeader
 	height: 45px
-	border-bottom: 1px solid $gray15
+	@include theme-border-bottom
+	@include theme-background-white-else-graydark
 	padding: 15px 20px
 	display: flex
 
 	h3
 		margin: 0
-		color: $gray-dark
+		@include theme-color-graydark-else-white
 		font-size: 14px
 
 .InnerPaneSidebarHeaderButtons
@@ -29,31 +30,50 @@
 		@include cursorPointer
 
 		&:hover svg
-			stroke: $gray25
+			@include if-theme-dark()
+				stroke: $white
+
+			@include if-theme-light()
+				stroke: $gray75
 
 	svg
 		width: 15px
 		height: 15px
 		transition: transform .2s ease
-		stroke: $gray15
-		fill: $gray15
 
-	@at-root :global(.InnerPaneSidebarHeaderButtons_Add)
+		@include if-theme-dark()
+			stroke: $gray-dark50
+			fill: $gray-dark50
+
+		@include if-theme-light()
+			stroke: $gray15
+			fill: $gray15
+
+
+	\:global(.InnerPaneSidebarHeaderButtons_Add)
 		svg
 			stroke-width: 2px
-			stroke: $gray25
 
-		&:hover svg
-			stroke: $gray75
+			@include if-theme-dark()
+				stroke: $gray25
 
-		@at-root .__AddNewOpen & // todo crum - Notes is trying to access this
+			@include if-theme-light()
+				stroke: $gray25
+
+		@at-root :global(.__AddNewOpen) & // todo crum - Notes is trying to access this
 			svg
 				transform: rotate(45deg)
-				stroke: $gray-dark
+
+				@include if-theme-dark()
+					stroke: $white
+
+				@include if-theme-light()
+					stroke: $gray-dark
 
 .InnerPaneSidebarContent
 	flex: 1
 	overflow-y: auto
+	@include theme-background-gray2-else-gray2row
 
 	@at-root .InnerPaneSidebarContent :global(.EmptyArea), // don't scope as this class is outside of this scope
 	.EmptyArea
@@ -61,22 +81,22 @@
 		margin: 0
 
 .InnerPaneSidebarAddNew
-	background: $gray2
+	@include theme-background-gray2-else-gray2row
 	padding: 10px
 	color: $gray75
-	border-bottom: 1px solid $gray15
+	@include theme-border-bottom
 	position: relative
 	z-index: 2
 	display: none
 
-	@at-root .__AddNewOpen & // todo crum - Notes is trying to access this
+	@at-root :global(.__AddNewOpen) &
 		display: block
 
 	&::before
 		content: ""
-		background: $gray2
-		border-top: 1px solid $gray15
-		border-left: 1px solid $gray15
+		@include __theme-background($gray2, #292A2A)
+		@include theme-border-top
+		@include theme-border-left
 		width: 14px
 		height: 14px
 		transform: rotate(45deg)
@@ -89,9 +109,8 @@
 	textarea
 		z-index: 1
 		position: relative
-		background: $white
+		@include theme-background-white-else-graydark
 		transition: box-shadow .1s ease
-		box-shadow: inset 0 0 0 1px $gray15
 		border: 0
 		resize: none
 		width: 100%
@@ -102,10 +121,19 @@
 		@include defaultFontSettings
 		@include selectable
 
+		&::placeholder
+			color: $gray75
+
+		@include if-theme-dark
+			box-shadow: inset 0 0 0 1px $theme-border-dark
+
+		@include if-theme-light
+			box-shadow: inset 0 0 0 1px $theme-border-light
+
 		&:focus
 			box-shadow: 0 0 0 2px $green
 
-	p.FormattingHelp
+	p:global(.FormattingHelp)
 		margin: 5px 0 0 10px
 		font-size: 12px
 		font-weight: 300
@@ -118,41 +146,55 @@
 
 .InnerPaneSidebarContentItem
 	padding: 20px 0
-	border-top: 1px solid $gray15
+	@include theme-border-top
 	border-bottom: 1px solid transparent
 	margin: 0 20px
 	overflow: hidden
-	color: $gray
+	@include theme-color-gray-else-gray15
 
 	&:first-of-type
 		border-top-color: transparent
 
-	&:last-of-type:not(.InnerPaneSidebarContentItem__Pinned) // todo crum - Notes is trying to access this
-		border-bottom-color: $gray15
+	&:last-of-type:not(:global(.__Pinned))
+		@include theme-border-bottom
 
-	&.InnerPaneSidebarContentItem__Pinned // todo crum - Notes is trying to access this
+	&:global(.__Pinned)
 		margin: 0
 		padding: 20px
-		background: #FDFAF1
+		@include __theme-background(#FDFAF1, $gray-dark50);
 		border-color: transparent
 		position: relative
 
-		pre
-			background: $yellow25
-			color: $yellow-dark
+		@include if-theme-dark()
+			h5
+				color: $yellow
+
+			pre
+				background: $gray-dark
+				color: $yellow25
+
+		@include if-theme-light()
+			pre
+				background: $yellow25
+				color: $yellow-dark
 
 		+ .InnerPaneSidebarContentItem
 			border-top-color: transparent
 
-		+ .InnerPaneSidebarContentItem.InnerPaneSidebarContentItem__Pinned::before // todo crum - Notes is trying to access this
+		+ .InnerPaneSidebarContentItem:global(.__Pinned)::before
 			content: ""
 			display: block
 			height: 0
-			border-top: 1px solid $yellow25
 			position: absolute
 			top: 0
 			left: 20px
 			right: 20px
+
+			@include if-theme-light()
+				border-top: 1px solid $yellow25
+
+			@include if-theme-dark()
+				border-top: 1px solid $gray
 
 	*
 		@include selectable
@@ -161,7 +203,7 @@
 			margin-bottom: 0
 
 	h5
-		color: $gray-dark
+		@include theme-color-graydark-else-white
 		margin: 0 0 10px
 
 	h1, h2, h3, h4
@@ -172,8 +214,8 @@
 		margin: 10px 0
 
 	pre
-		background: $gray5
-		color: $gray
+		@include __theme-background($gray5, $gray-dark50)
+		@include theme-color-gray-else-gray15
 		font-size: 13px
 		padding: 10px
 		border-radius: 4px
