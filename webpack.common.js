@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const package = require('./package.json');
 
 module.exports = {
 	entry: [
@@ -40,7 +41,7 @@ module.exports = {
 							modules: true,
 							sourceMap: true,
 							importLoaders: 1,
-							localIdentName: '[local]_[hash:base64:5]'
+							localIdentName: '[local]_[hash:base64:5]_v' + package.version.replace(/\./g, '-'),
 						}
 					},
 					{
