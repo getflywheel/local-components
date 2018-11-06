@@ -9,12 +9,16 @@ export default class FlyDropdown extends Component {
 		items: PropTypes.array,
 		caret: PropTypes.bool,
 		position: PropTypes.oneOf(['top', 'bottom']),
+		navItem: PropTypes.bool,
+		navItemActive: PropTypes.bool,
 	};
 
 	static defaultProps = {
 		items: [],
 		caret: true,
 		position: 'bottom',
+		navItem: false,
+		navItemActive: false,
 	};
 
 	constructor (props) {
@@ -63,6 +67,8 @@ export default class FlyDropdown extends Component {
 					{
 						[styles.FlyDropdown__Open]: this.state.open,
 						'FlyDropdown__Open': this.state.open, // this also needs to be globally accessible so other component styles can reference it
+						[styles.FlyDropdown__NavItem]: this.props.navItem,
+						[styles.FlyDropdown__NavItemActive]: this.props.navItemActive,
 					},
 					this.props.className,
 				)}

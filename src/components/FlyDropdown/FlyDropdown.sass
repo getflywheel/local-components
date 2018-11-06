@@ -5,6 +5,31 @@
 	display: inline-block
 	@include cursorPointer
 
+	&.FlyDropdown__NavItem
+		border-bottom: 4px solid transparent
+		padding: 6px 4px 11px
+
+		button
+			color: $gray25
+
+		&.FlyDropdown__NavItemActive
+			@include theme-tab-border-active
+
+		&:hover, &.FlyDropdown__Open, &.FlyDropdown__NavItemActive
+			button
+				color: inherit
+
+			@include theme-color-graydark-else-white
+
+			svg path
+				@include theme-fill-graydark-else-white
+
+		&.FlyDropdown__Open
+			.FlyDropdown_Caret
+				@include __theme-background($gray-dark, $white)
+
+	&.FlyDropdown__NavItemActive
+
 .FlyDropdown_Caret
 	$ease-in: cubic-bezier(.2,.3,.25,.9)
 

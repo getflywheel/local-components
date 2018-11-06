@@ -258,6 +258,10 @@
 	@include __theme-fill($gray-dark, $gray25);
 }
 
+@mixin theme-fill-graydark-else-white {
+	@include __theme-fill($gray-dark, $white);
+}
+
 @mixin theme-fill-green-else-white {
 	@include __theme-fill($green, $white);
 }
