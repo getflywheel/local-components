@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import LocalSitesSVG from '../../svg/sites_local.svg';
 import ConnectNavSVG from '../../svg/connect-nav.svg';
 import AddSVG from '../../svg/add.svg';
+import AddonsSVG from '../../svg/addons-nav.svg';
 import FlyTooltip from '../FlyTooltip';
 import styles from './VerticalNav.sass';
 
@@ -14,7 +15,9 @@ export default class VerticalNav extends Component {
 
 	renderLocalSitesLink () {
 		const linkLocation = this.props.selectedSites.length ? `/main/site-info/${this.props.selectedSites[0]}` : '/main';
-		const localSitesActive = this.props.location.pathname.indexOf('/main') === 0 && this.props.location.pathname.indexOf('/main/flywheel') !== 0;
+		const localSitesActive = this.props.location.pathname.indexOf('/main') === 0 &&
+								 this.props.location.pathname.indexOf('/main/flywheel') !== 0 &&
+								 this.props.location.pathname.indexOf('/main/marketplace') !== 0;
 
 		return <FlyTooltip
 			content="Local Sites"
@@ -44,7 +47,7 @@ export default class VerticalNav extends Component {
 		>
 			<NavLink
 				to="/main/flywheel"
-				 className={classnames(
+				className={classnames(
 				 	'VerticalNav_Flywheel',
 					{
 				 		'__FadeIn': this.props.fadeIn,
@@ -57,24 +60,23 @@ export default class VerticalNav extends Component {
 		</FlyTooltip>;
 	}
 
-	renderMarketplace () {
+	renderAddons () {
 		return <FlyTooltip
-			content="Marketplace"
+			content="Add-ons"
 			position="right"
 			hoverIntent={true}
 		>
 			<NavLink
-				to="/main/flywheel/marketplace"
+				to="/main/marketplace"
 				className={classnames(
-					'VerticalNav_Marketplace',
+					styles.VerticalNav_Addons,
 					{
 						'__FadeIn': this.props.fadeIn,
 					}
 				)}
 				activeClassName="__Active"
 			>
-				<span style={{color: 'black'}}>M</span>
-				{/*<ConnectNavSVG/>*/}
+				<AddonsSVG/>
 			</NavLink>
 		</FlyTooltip>;
 	}
@@ -84,7 +86,7 @@ export default class VerticalNav extends Component {
 			<div className={styles.VerticalNav}>
 				{this.renderLocalSitesLink()}
 				{this.renderFlywheelSitesLink()}
-				{this.renderMarketplace()}
+				{this.renderAddons()}
 
 				<div className={styles.DragRegion}/>
 
