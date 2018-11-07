@@ -117,8 +117,7 @@
 				box-shadow: 0 0 0 2px $green
 				border-radius: 3px
 
-		@at-root :global(.TableListRow.FlySelect), // don't scope (this only works because .FlySelect is currently global and not scoped to its component)
-		select
+		select, :global(.FlySelect)
 			width: 100%
 
 		> div
@@ -132,16 +131,10 @@
 
 			&.TableListRow__Input
 				padding: 0
-			@at-root :global(.TableListRow__Input) // don't scope (elements outside of React need to use this class)
-				padding: 0 !important
 
-			@at-root :global(.TableListRow__SeparatorRight) // don't scope (elements outside of React need to use this class)
-				border-right: 1px solid $gray15 !important
 			&.TableListRow__SeparatorRight
 				border-right: 1px solid $gray15
 
-			@at-root :global(.TableList__SeparatorLeft) // don't scope (elements outside of React need to use this class)
-				border-left: 1px solid $gray15 !important
 			&.TableList__SeparatorLeft
 				border-left: 1px solid $gray15
 
@@ -167,15 +160,12 @@
 			padding: 0 15px
 			border-bottom: 0
 
-			@at-root :global(.TableListRowHeader__SeparatorRight), // don't scope (elements outside of React need to use this class)
 			&.TableListRowHeader__SeparatorRight
 				border-right: 1px solid $white
 
-			@at-root :global(.TableListRowHeader__SeparatorLeft), // don't scope (elements outside of React need to use this class)
 			&.TableListRowHeader__SeparatorLeft
 				border-left: 1px solid $white
 
-			@at-root :global(.TableListRowHeader__RemoveHeading), // don't scope (elements outside of React need to use this class)
 			&.TableListRowHeader__RemoveHeading
 				width: 54px
 				min-width: 54px
