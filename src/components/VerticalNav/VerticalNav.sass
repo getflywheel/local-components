@@ -59,14 +59,14 @@
 		svg path
 			transition: fill .1s ease 0s
 
-		&.__Active
+		&:global(.__Active)
 			@include if-theme-light()
 				background: $green-dark
 			@include if-theme-dark()
 				background: none
 
 			svg path
-				fill: $white
+				fill: $white !important
 
 		&:hover:not(.__Active) svg path
 			@include theme-fill-greendark50-else-white-hover
