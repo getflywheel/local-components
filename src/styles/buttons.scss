@@ -177,10 +177,11 @@
 }
 
 button, .button {
-	:global(&.__Inline, &.--Inline) { //.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')},
+	//.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')}
+	&:global(.__Inline), &:global(.--Inline) {
 		font-size: 12px;
 
-		@at-root & + & {
+		&:not(:first-child) {
 			margin-left: 10px;
 		}
 	}
