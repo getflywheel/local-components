@@ -1,5 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const package = require('./package.json');
 
 module.exports = {
@@ -16,9 +16,11 @@ module.exports = {
 	},
 	target: 'electron-renderer',
 	plugins: [
-		new MiniCssExtractPlugin({
+		new ExtractCssChunks({
 			filename: 'scoped.css',
 			chunkFilename: '[id].css',
+			hot: true,
+			cssModules: true,
 		})
 	],
 	module: {
@@ -32,7 +34,7 @@ module.exports = {
 				test: /\.(css|sass|scss)$/,
 				use: [
 					{
-						loader: 'style-loader',
+						loader: ExtractCssChunks.loader,
 						options: {}
 					},
 					{
