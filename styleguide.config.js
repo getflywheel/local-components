@@ -9,7 +9,6 @@ module.exports = {
     },
     require: [
         path.join(__dirname, './src/global.sass'),
-        path.join(__dirname, './src/scoped.sass'),
     ],
     skipComponentsWithoutExample: true,
 	styleguideComponents: {
