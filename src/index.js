@@ -46,6 +46,3 @@ export const TertiaryNavItem = hot(module)(require('./components/TertiaryNav').T
 export const Truncate = hot(module)(require('./components/Truncate').default);
 export const VerticalNav = hot(module)(require('./components/VerticalNav').default);
 export const WindowsToolbar = hot(module)(require('./components/WindowsToolbar').default);
-
-export const Marketplace = hot(module)(require('./marketplace/Marketplace').default);
-
