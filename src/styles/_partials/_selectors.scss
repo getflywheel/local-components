@@ -6,7 +6,14 @@
 		// get the compounded selector
 		$compoundSelector: nth(&, $i);
 		// append the modifier and add the newly generated compound selector to the final list of selectors
-		$finalSelectors: append($finalSelectors, set_nth($compoundSelector, 1, nth($compoundSelector, 1) + $simpleSelectorModifier), comma);
+
+		$replace: 1;
+
+		@if nth($compoundSelector, 1) == ':global' {
+			$replace: 2;
+		}
+
+		$finalSelectors: append($finalSelectors, set_nth($compoundSelector, $replace, nth($compoundSelector, 1) + $simpleSelectorModifier), comma);
 	}
 
 	// output css
