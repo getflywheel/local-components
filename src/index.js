@@ -1,4 +1,7 @@
 import { hot } from 'react-hot-loader';
+import addStyles from './add-styles';
+
+addStyles();
 
 export const AdvancedToggle = hot(module)(require('./components/AdvancedToggle').default);
 export const Banner = hot(module)(require('./components/Banner').default);
