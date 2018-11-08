@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const package = require('./package.json');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
 	entry: [
@@ -15,6 +16,10 @@ module.exports = {
 		extensions: ['.js', '.jsx']
 	},
 	target: 'electron-renderer',
+	externals: [nodeExternals({
+		modulesDir: './node_modules',
+		whitelist: ['react-hot-loader'],
+	})],
 	plugins: [
 		new ExtractCssChunks({
 			filename: 'scoped.css',
