@@ -1,0 +1,119 @@
+@import '../../styles/_partials/index'
+
+.Markdown
+	color: $gray
+	font-weight: 300
+
+	p
+		color: $gray // todo - crum: eventually remove this style from here and make it global
+
+	h1, h2, h3, h4, h5, h6
+		color: $gray-dark
+
+	h1
+		font-size: 24px
+
+		&:first-child
+			margin-top: 0
+
+	h2
+		font-size: 18px
+
+	h1, h2
+		margin: 30px 0 20px 0
+
+	h3, h4, h5, h6
+		margin: 10px 0 10px 0
+		font-size: 14px
+		font-weight: 500
+
+	// bold / italics
+	strong,
+	em
+		font-style: normal
+		font-weight: 500
+
+	ul
+		list-style: none
+		padding: 0
+		margin: 0
+
+		li:before
+			content: ''
+			height: 6px
+			width: 6px
+			display: inline-block
+			margin: 0 10px 2px 3px
+			background-color: $green
+			border-radius: 50%
+
+	ol
+		counter-reset: foo
+		display: table
+		margin: 0
+		padding: 0
+
+		li
+			counter-increment: foo
+			display: table-row
+			list-style: none
+
+			&:before
+				content: counter(foo) "."
+				display: table-cell
+				text-align: right
+				color: $green
+				font-weight: 500
+				padding-right: (10px - 3px)
+
+	table
+		tr
+			height: 48px
+			line-height: 48px
+
+		thead
+			tr
+				text-transform: uppercase
+				font-weight: 700
+				letter-spacing: 0.02em
+				background: $gray15
+
+		tbody
+			tr
+				&:nth-child(even)
+					background: #fafafa
+
+				td
+					padding: 0 30px
+
+	code
+		background: $gray15
+		padding: 4px
+		border-radius: 4px
+
+	blockquote
+		$lineWidth: 4px
+
+		position: relative
+		margin: 10px 0
+		padding-left: 10px + $lineWidth
+
+		> blockquote
+			margin-left: 20px
+
+		&:before
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			bottom: 0
+			width: $lineWidth
+			@include theme-background-gray15-else-gray
+			border-radius: 4px
+
+	hr
+		border: none
+		@include theme-border-bottom
+
+	img
+		max-height: 200px
