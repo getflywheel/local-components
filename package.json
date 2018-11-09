@@ -14,8 +14,11 @@
 	},
 	"dependencies": {
 		"classnames": "^2.2.6",
+		"highlight.js": "^9.13.1",
 		"prop-types": "^15.6.2",
 		"react-hot-loader": "^4.3.6",
+		"react-lowlight": "^2.0.0",
+		"react-markdown": "^4.0.3",
 		"react-modal": "^3.5.1",
 		"react-router-dom": "^4.3.1",
 		"react-truncate-markup": "^2.0.1"
