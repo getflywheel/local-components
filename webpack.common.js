@@ -18,7 +18,7 @@ module.exports = {
 	target: 'electron-renderer',
 	externals: [nodeExternals({
 		modulesDir: './node_modules',
-		whitelist: ['react-hot-loader'],
+		whitelist: ['react-hot-loader', /webpack-dev-server/, /webpack\/hot/],
 	})],
 	plugins: [
 		new ExtractCssChunks({
