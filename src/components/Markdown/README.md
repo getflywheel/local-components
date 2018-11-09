@@ -215,7 +215,7 @@ HTML highlighting
 
 <p>Welcome to my styled page!
 
-<!-- Sign and date the page, it's only polite! -->
+<!-- Sign and date the page, its only polite! -->
 <address>Made 5 April 2004<br>
   by myself.</address>
 

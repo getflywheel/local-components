@@ -73,11 +73,12 @@ class MarkdownCodeBlock extends Component {
 	};
 
 	render () {
+		const lang = this.languagesEnabled[this.props.language] ? this.props.language : 'bash';
 
 		return (
 			<Lowlight
 				className={styles.Lowlight}
-				language={this.props.language}
+				language={lang}
 				value={this.props.value}
 				inline={this.props.inline}
 			/>
