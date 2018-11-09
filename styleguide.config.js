@@ -21,7 +21,11 @@ module.exports = {
 				new webpack.NormalModuleReplacementPlugin(/electron/, function (resource) {
 					resource.request = path.resolve(__dirname, 'styleguide', 'stubs', 'electron.stub.js');
 				}),
-			]
+			],
+			node: {
+				__dirname: true,
+				path: true,
+			}
 		});
     }
 };
