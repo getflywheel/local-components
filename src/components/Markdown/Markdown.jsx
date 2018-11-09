@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Markdown.sass';
 import ReactMarkdown from 'react-markdown';
@@ -14,7 +14,6 @@ import sql from 'highlight.js/lib/languages/sql';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
 import Lowlight from 'react-lowlight';
-import shallowCompare from 'react-addons-shallow-compare';
 
 export default class Markdown extends Component {
 
@@ -38,7 +37,7 @@ export default class Markdown extends Component {
 
 }
 
-class MarkdownCodeBlock extends Component {
+class MarkdownCodeBlock extends PureComponent {
 
 	static propTypes = {
 		value: PropTypes.string,
@@ -67,10 +66,6 @@ class MarkdownCodeBlock extends Component {
 			Lowlight.registerLanguage(langName, this.languagesEnabled[langName]);
 		}
 	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		return shallowCompare(this, nextProps, nextState);
-	};
 
 	render () {
 		const lang = this.languagesEnabled[this.props.language] ? this.props.language : 'bash';
