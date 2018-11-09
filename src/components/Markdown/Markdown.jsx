@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Markdown.sass';
 import ReactMarkdown from 'react-markdown';
+import MarkdownCodeBlock from './MarkdownCodeBlock';
 
 export default class Markdown extends Component {
 
@@ -17,9 +18,7 @@ export default class Markdown extends Component {
 				skipHtml={true}
 				source={this.props.src}
 				renderers={{
-					// link: props => (
-					// 	<aside>this.props.value</aside>
-					// )
+					code: MarkdownCodeBlock
 				}}
 			/>
 		);
