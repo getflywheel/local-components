@@ -33,7 +33,6 @@ export default function () {
 	const stylesheetPath = path.resolve(__dirname, './scoped.css');
 
 	if (isStylesheetLoaded(stylesheetPath)) {
-		console.log(stylesheetPath, 'already loaded');
 		return;
 	}
 
