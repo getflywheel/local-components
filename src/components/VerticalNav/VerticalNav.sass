@@ -12,18 +12,14 @@
 	@at-root :global(.__OsWindows) .VerticalNav
 		padding-top: 0
 
-		\:global(.VerticalNav_DragRegion)
+		.VerticalNavItem_DragRegion
 			-webkit-app-region: default
 
-	@at-root :global(.VerticalNav_DragRegion)
+	.VerticalNavItem_DragRegion
 		flex-grow: 1
 		-webkit-app-region: drag
 
-	@at-root :global(.VerticalNav_Addons)
-		svg
-			width: 34px
-
-	@at-root :global(.VerticalNav_Add)
+	.VerticalNav_Add
 		width: 48px
 		height: 48px !important
 		margin: auto 0 10px 10px
@@ -49,7 +45,7 @@
 			svg path
 				fill: $white
 
-	@at-root :global(.FlyTooltip.FlyTooltip__AddSite)
+	.FlyTooltip.FlyTooltip__AddSite
 		margin-top: -23px
 
 	a
@@ -83,3 +79,12 @@
 				fill: $green-dark
 			@include if-theme-dark()
 				fill: $gray75
+
+	.VerticalNavItem
+		text-align: center
+
+		@at-root :global(.VerticalNavItem_Addons)
+			svg
+				width: 38px
+
+	.VerticalNavItem_DragRegion

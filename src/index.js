@@ -47,5 +47,6 @@ export const TabNav = hot(module)(require('./components/TabNav').default);
 export const TertiaryNav = hot(module)(require('./components/TertiaryNav').TertiaryNav);
 export const TertiaryNavItem = hot(module)(require('./components/TertiaryNav').TertiaryNavItem);
 export const Truncate = hot(module)(require('./components/Truncate').default);
-export const VerticalNav = hot(module)(require('./components/VerticalNav').default);
+export const VerticalNav = hot(module)(require('./components/VerticalNav').VerticalNav);
+export const VerticalNavItem = hot(module)(require('./components/VerticalNav').VerticalNavItem);
 export const WindowsToolbar = hot(module)(require('./components/WindowsToolbar').default);
