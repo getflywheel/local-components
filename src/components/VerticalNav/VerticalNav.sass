@@ -9,21 +9,25 @@
 	padding: 30px 0 0
 	@include theme-background-green-else-graydark
 
-	@at-root .__OsWindows .VerticalNav
+	@at-root :global(.__OsWindows) .VerticalNav
 		padding-top: 0
 
-		.DragRegion
+		\:global(.VerticalNav_DragRegion)
 			-webkit-app-region: default
 
-	.DragRegion
+	@at-root :global(.VerticalNav_DragRegion)
 		flex-grow: 1
 		-webkit-app-region: drag
 
-	.VerticalNav_Add
+	@at-root :global(.VerticalNav_Addons)
+		svg
+			width: 34px
+
+	@at-root :global(.VerticalNav_Add)
 		width: 48px
-		height: 48px
+		height: 48px !important
 		margin: auto 0 10px 10px
-		padding: 11.5px 0
+		padding: 11.5px 0 !important
 		@include if-theme-light()
 			background: $white
 		@include if-theme-dark()
@@ -79,8 +83,3 @@
 				fill: $green-dark
 			@include if-theme-dark()
 				fill: $gray75
-
-	.VerticalNav_Addons
-		svg
-			width: 34px
-
