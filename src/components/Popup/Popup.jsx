@@ -20,8 +20,6 @@ export default class Popup extends Component {
 		offsetX: PropTypes.string,
 		offsetY: PropTypes.string,
 		position: PropTypes.oneOf(['bottom', 'right', 'top']),
-		navItem: PropTypes.bool,
-		navItemActive: PropTypes.bool,
 		triggerContent: PropTypes.node,
 	};
 
@@ -29,8 +27,6 @@ export default class Popup extends Component {
 		items: [],
 		padding: true,
 		position: 'bottom',
-		navItem: false,
-		navItemActive: false,
 	};
 
 	constructor (props) {
