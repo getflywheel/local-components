@@ -30,3 +30,27 @@ On click, an image is displayed in the top popup position.
     <img src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png" style={{width: "100%"}} />
 </Popup>
 ```
+
+Offset the x position of the popup bubble.
+
+```js
+<Popup 
+	offsetX="-8px"
+	position="right"
+	triggerContent={<h2>Open h1 to the right</h2>}
+>
+    <h1>Right!</h1>
+</Popup>
+```
+
+Offset the y position of the popup bubble.
+
+```js
+<Popup 
+	offsetY="-5px"
+	position="bottom"
+	triggerContent={<span>Open h1 to the right</span>}
+>
+    <span>Right!</span>
+</Popup>
+```

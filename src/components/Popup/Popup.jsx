@@ -17,6 +17,8 @@ try {
 export default class Popup extends Component {
 	static propTypes = {
 		items: PropTypes.array,
+		offsetX: PropTypes.string,
+		offsetY: PropTypes.string,
 		position: PropTypes.oneOf(['bottom', 'right', 'top']),
 		navItem: PropTypes.bool,
 		navItemActive: PropTypes.bool,
@@ -25,6 +27,7 @@ export default class Popup extends Component {
 
 	static defaultProps = {
 		items: [],
+		padding: true,
 		position: 'bottom',
 		navItem: false,
 		navItemActive: false,
@@ -42,11 +45,11 @@ export default class Popup extends Component {
 		this.onClickOutside = this.onClickOutside.bind(this);
 	}
 
-	componentDidMount() {
+	componentDidMount () {
 		document.addEventListener('click', this.onClickOutside, true);
 	}
 
-	componentWillUnmount() {
+	componentWillUnmount () {
 		document.removeEventListener('click', this.onClickOutside, true);
 	}
 
@@ -81,12 +84,16 @@ export default class Popup extends Component {
 	}
 
 	render () {
+		let transformValues = this.props.offsetX ? `translateX(${this.props.offsetX})` : '';
+		transformValues += this.props.offsetY ? `translateY(${this.props.offsetY})` : '';
+
 		return (
 			<div
 				className={classnames(
 					styles.Popup,
 					{
 						[styles.Popup__Open]: this.state.open,
+						[styles.Popup__Padding]: this.props.padding,
 						[styles.Popup__PositionBottom]: this.props.position === 'bottom',
 						[styles.Popup__PositionRight]: this.props.position === 'right',
 						[styles.Popup__PositionTop]: this.props.position === 'top',
@@ -96,18 +103,27 @@ export default class Popup extends Component {
 				tabIndex="0"
 				onClick={this.onClick}
 			>
-				<div className={styles.Popup_BubbleWrapper}>
+				<div
+					className={styles.Popup_BubbleWrapper}
+				>
 					<div
-						className={classnames(
-							styles.Popup_Bubble,
-							{
-								[styles.Popup_Bubble__TipItemHover]: this.state.tipItemHover,
-							},
-							typeof this.state.tipItemHover === 'string' && this.state.tipItemHover === 'red' ? styles.Popup_Bubble__TipItemHover : null,
-						)}
+						className={styles.Popup_BubbleOffsetContainer}
+						style={{
+							...((this.props.offsetX || this.props.offsetY) && {transform: transformValues}), // conditionally add style
+						}}
 					>
-						<div className={styles.Popup_BubbleContent}>
-							{this.props.children}
+						<div
+							className={classnames(
+								styles.Popup_Bubble,
+								{
+									[styles.Popup_Bubble__TipItemHover]: this.state.tipItemHover,
+								},
+								typeof this.state.tipItemHover === 'string' && this.state.tipItemHover === 'red' ? styles.Popup_Bubble__TipItemHover : null,
+							)}
+						>
+							<div className={styles.Popup_BubbleContent}>
+								{this.props.children}
+							</div>
 						</div>
 					</div>
 				</div>

@@ -10,6 +10,7 @@
 
 	// states / modifiers
 	&.Popup__Open
+	&.Popup__Padding
 	&.Popup__PositionBottom
 	&.Popup__PositionRight
 	&.Popup__PositionTop
@@ -44,6 +45,13 @@
 		@include selectors_ifHostHasModifier('.Popup__PositionRight.Popup__Open')
 			transform: scale(1) translateY(100%) translateY(-50%) translateZ(0)
 
+	.Popup_BubbleOffsetContainer
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+
 	.Popup_Bubble
 		$border-radius: 4px
 
@@ -53,13 +61,17 @@
 		//width: 160px
 		height: auto
 		margin-left: 0
-		padding: 20px
 		text-align: center
 		list-style-type: none
 		line-height: normal
 		@include theme-background-white-else-graydark50
 		border-radius: $border-radius
 		filter: drop-shadow(0 0 7px rgba($gray-dark, .16)) // use a filter instead of box-shadow so the effect is applied to the pseudo element as well
+
+		@include selectors_setAsDefaults()
+			padding: 0
+		@include selectors_ifHostHasModifier('.Popup__Padding')
+			padding: 20px
 
 		// the tail
 		&::after
@@ -74,7 +86,6 @@
 			margin-left: -10px
 			transform: rotate(45deg)
 			@include theme-background-white-else-graydark50
-			border-radius: $border-radius
 			transition: all .05s $ease-in 0s
 			pointer-events: none
 
@@ -93,7 +104,7 @@
 			&::after
 				top: 50%
 				right: auto
-				left: 3px
+				left: 4px
 				transform: translateY(-50%) rotate(45deg)
 
 		@include selectors_ifHostHasModifier('.Popup__PositionTop')
