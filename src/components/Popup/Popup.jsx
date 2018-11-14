@@ -56,13 +56,16 @@ export default class Popup extends Component {
 	}
 
 	onClickOutside (event) {
-		const domNode = ReactDOM.findDOMNode(this);
+		try {
+			const domNode = ReactDOM.findDOMNode(this);
 
-		if (!domNode || !domNode.contains(event.target)) {
-			this.setState({
-				open: false,
-			});
+			if (!domNode || !domNode.contains(event.target)) {
+				this.setState({
+					open: false,
+				});
+			}
 		}
+		catch (error) {}
 	}
 
 	tipItemHoverFactory (i, value) {
