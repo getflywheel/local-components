@@ -97,12 +97,14 @@
 				top: -6px
 
 		@include selectors_ifHostHasModifier('.Popup__PositionRight')
+			$vertOffset: 40px // 50%
+
 			margin-left: 0
-			transform: scale(1) translateX(100%) translateY(-50%) translateZ(0)
+			transform: scale(1) translateX(100%) translateY(-$vertOffset) translateZ(0)
 
 			// the tail
 			&::after
-				top: 50%
+				top: $vertOffset
 				right: auto
 				left: 4px
 				transform: translateY(-50%) rotate(45deg)
