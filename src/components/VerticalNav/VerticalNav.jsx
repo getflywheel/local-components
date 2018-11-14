@@ -132,6 +132,7 @@ export class WorkspaceSwitcher extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		routeTo: PropTypes.string,
+		tooltip: PropTypes.string,
 		workspaces: PropTypes.array,
 	};
 
@@ -153,14 +154,14 @@ export class WorkspaceSwitcher extends Component {
 	}
 
 	render () {
-		const hasTeams = !!this.props.workspaces.filter(workspaceItem => workspaceItem.isTeam).length;
+		const hasTeams = this.props.workspaces && !!this.props.workspaces.filter(workspaceItem => workspaceItem.isTeam).length;
 
 		return <VerticalNavItem
 			className={classnames(
 				styles.WorkspaceSwitcher,
 				this.props.className,
 			)}
-			tooltip={this.state.activeWorkspaceItem ? null : 'Manage Users'}
+			tooltip={this.state.activeWorkspaceItem ? null : this.props.tooltip}
 			routeTo={this.props.routeTo}
 			type={this.state.activeWorkspaceItem ? 'switcher' : 'navlink'}
 		>

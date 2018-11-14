@@ -10,6 +10,7 @@ const isTeam = false;
     <VerticalNav location={{ pathname: '' }}>
     	<WorkspaceSwitcher
 			routeTo="/main/users"
+			tooltip="Login"
 			workspaces={[
 				{
 					id: 1,
