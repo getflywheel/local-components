@@ -7,12 +7,14 @@ export default class ImageCircle extends Component {
 
 	static propTypes = {
 		size: PropTypes.oneOf(['m', 's']),
+		square: PropTypes.bool,
 		src: PropTypes.string.isRequired,
 		tag: PropTypes.string,
 	};
 
 	static defaultProps = {
 		size: 'm',
+		square: false,
 		tag: 'div',
 	};
 
@@ -30,7 +32,12 @@ export default class ImageCircle extends Component {
 				)}
 			>
 				<img
-					className={styles.ImageCircle}
+					className={classnames(
+						styles.ImageCircle,
+						{
+							[styles.ImageCircleContainer__Square]: this.props.square,
+						}
+					)}
 					src={this.props.src}
 				/>
 			</ContainerTag>
