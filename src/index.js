@@ -11,6 +11,7 @@ export const BrowseInput = hot(module)(require('./components/BrowseInput').defau
 export const Button = hot(module)(require('./components/Button').default);
 export const Card = hot(module)(require('./components/Card').default);
 export const Close = hot(module)(require('./components/Close').default);
+export const Divider = hot(module)(require('./components/Divider').default);
 export const DownloaderItem = hot(module)(require('./components/DownloaderItem').default);
 export const DragBar = hot(module)(require('./components/DragBar').default);
 export const Drawer = hot(module)(require('./components/Drawer').default);
