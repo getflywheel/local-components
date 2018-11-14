@@ -11,7 +11,6 @@ export default class Divider extends Component {
 	};
 
 	render() {
-		const HeaderTag = this.props.tag;
 
 		return (
 			<div
