@@ -168,6 +168,7 @@ export class WorkspaceSwitcher extends Component {
 				?
 				<Popup
 					className={styles.WorkspaceSwitcher_Popup__Width100}
+					offsetX='-19px'
 					padding={false}
 					position="right"
 					triggerContent={
