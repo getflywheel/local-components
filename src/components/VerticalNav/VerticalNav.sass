@@ -48,7 +48,12 @@
 	.FlyTooltip.FlyTooltip__AddSite
 		margin-top: -23px
 
-	.VerticalNav_NonNavItem,
+	.VerticalNav_NonNavLinkItemOuter
+		display: flex
+		align-items: center
+		justify-content: center
+
+	.VerticalNav_NonNavLinkItem,
 	a
 		display: flex
 		align-items: center
@@ -89,6 +94,9 @@
 				width: 38px
 
 .WorkspaceSwitcher
+	.WorkspaceSwitcher_Popup__Width100
+		width: 100%
+
 	.WorkspaceSwitcher_PopupGrid
 		display: grid
 		grid-template-columns: 1fr 1fr 1fr // 3 columns of equal width using 'fr' to ensure 100% when using gaps

@@ -101,7 +101,7 @@ export class VerticalNavItem extends Component {
 		// return this.renderTypeNavLink();
 		return <div
 			className={classnames(
-				styles.VerticalNav_NonNavItem,
+				styles.VerticalNav_NonNavLinkItemOuter,
 				this.props.className,
 			)}
 		>
@@ -167,14 +167,17 @@ export class WorkspaceSwitcher extends Component {
 			{ this.state.activeWorkspaceItem
 				?
 				<Popup
+					className={styles.WorkspaceSwitcher_Popup__Width100}
 					padding={false}
 					position="right"
 					triggerContent={
-						<ImageCircle
-							size="s"
-							square={this.state.activeWorkspaceItem.isTeam}
-							src={this.state.activeWorkspaceItem.src}
-						/>
+						<div className={styles.VerticalNav_NonNavLinkItem}>
+							<ImageCircle
+								size="s"
+								square={this.state.activeWorkspaceItem.isTeam}
+								src={this.state.activeWorkspaceItem.src}
+							/>
+						</div>
 					}
 				>
 					{ hasTeams &&
