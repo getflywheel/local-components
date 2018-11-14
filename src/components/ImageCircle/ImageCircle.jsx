@@ -6,9 +6,11 @@ import styles from './ImageCircle.sass';
 export default class ImageCircle extends Component {
 
 	static propTypes = {
+		className: PropTypes.string,
 		size: PropTypes.oneOf(['m', 's']),
 		square: PropTypes.bool,
 		src: PropTypes.string.isRequired,
+		style: PropTypes.object,
 		tag: PropTypes.string,
 	};
 
@@ -39,6 +41,7 @@ export default class ImageCircle extends Component {
 						}
 					)}
 					src={this.props.src}
+					style={{...this.props.style}}
 				/>
 			</ContainerTag>
 		);
