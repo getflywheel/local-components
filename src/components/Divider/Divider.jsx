@@ -1,26 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './Divider.sass';
 
-export default class Divider extends Component {
+export default function Divider (props) {
 
-	static propTypes = {
-	};
-
-	static defaultProps = {
-	};
-
-	render() {
-
-		return (
-			<div
-				className={classnames(
-					styles.Divider,
-					this.props.className,
-				)}
-				onClick={this.props.onClick}
-			/>
-		);
-	}
+	return <div
+		className={classnames(
+			styles.Divider,
+			props.className,
+		)}
+		onClick={props.onClick}
+	/>;
 
 }
