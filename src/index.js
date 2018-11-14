@@ -33,6 +33,7 @@ export const InstallerStepStatus = hot(module)(require('./components/InstallerSt
 export const List = hot(module)(require('./components/List').default);
 export const LoadingIndicator = hot(module)(require('./components/LoadingIndicator').default);
 export const Markdown = hot(module)(require('./components/Markdown').default);
+export const Popup = hot(module)(require('./components/Popup').default);
 export const ProgressBar = hot(module)(require('./components/ProgressBar').default);
 export const RadioBlock = hot(module)(require('./components/RadioBlock').default);
 export const SiteInfoInnerPane = hot(module)(require('./components/SiteInfoInnerPane').default);
