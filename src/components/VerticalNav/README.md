@@ -3,8 +3,6 @@
 ```js
 const { NavLink } = require('react-router-dom');
 const { VerticalNavItem, WorkspaceSwitcher } = require('./VerticalNav');
-const userData = true;
-const isTeam = false;
 
 <div>
     <VerticalNav location={{ pathname: '' }}>
