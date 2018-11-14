@@ -98,7 +98,6 @@ export class VerticalNavItem extends Component {
 	}
 
 	renderTypeSwitcher () {
-		// return this.renderTypeNavLink();
 		return <div
 			className={classnames(
 				styles.VerticalNav_NonNavLinkItemOuter,
