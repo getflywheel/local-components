@@ -1,1 +1,1 @@
-export {VerticalNav, VerticalNavItem} from './VerticalNav';
+export {VerticalNav, VerticalNavItem, WorkspaceSwitcher} from './VerticalNav';

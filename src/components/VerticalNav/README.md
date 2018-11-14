@@ -2,10 +2,40 @@
 
 ```js
 const { NavLink } = require('react-router-dom');
-const { VerticalNavItem } = require('./VerticalNav');
+const { VerticalNavItem, WorkspaceSwitcher } = require('./VerticalNav');
+const userData = true;
+const isTeam = false;
 
-<div style={{ height: '300px' }}>
+<div>
     <VerticalNav location={{ pathname: '' }}>
+    	<WorkspaceSwitcher
+			routeTo="/main/users"
+			workspaces={[
+				{
+					id: 1,
+					isActive: true,
+					isTeam: false,
+					src: "https://get.pxhere.com/photo/avatar-people-person-business-user-man-character-set-icon-portrait-profile-pictograph-hairstyle-jacket-suit-sunglasses-handsome-head-face-design-concept-symbol-smile-formal-elements-eyewear-vision-care-gentleman-male-shoulder-outerwear-necktie-businessperson-facial-hair-glasses-clip-art-human-behavior-white-collar-worker-neck-1447673.jpg"
+				},
+				{
+					id: 2,
+					isTeam: true,
+					src: "https://upload.wikimedia.org/wikipedia/commons/1/10/Y_Combinator_Logo.png"
+				},
+				{
+					id: 3,
+					isTeam: true,
+					isOwner: true,
+					src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSRpQpaGpT1tDSZFY5KCxnC91NG3FYR56Fg3sjoQFaJfupST6Wbg"
+				},
+				{
+					id: 4,
+					isTeam: true,
+					src: "https://upload.wikimedia.org/wikipedia/commons/d/dd/Windscreen_defrost.png"
+				},
+			]}
+		>
+		</WorkspaceSwitcher>
 		<VerticalNavItem
 			tooltip="Local Sites"
 			routeTo="/main/site-info"

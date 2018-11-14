@@ -51,4 +51,5 @@ export const TertiaryNavItem = hot(module)(require('./components/TertiaryNav').T
 export const Truncate = hot(module)(require('./components/Truncate').default);
 export const VerticalNav = hot(module)(require('./components/VerticalNav').VerticalNav);
 export const VerticalNavItem = hot(module)(require('./components/VerticalNav').VerticalNavItem);
+export const WorkspaceSwitcher = hot(module)(require('./components/VerticalNav').WorkspaceSwitcher);
 export const WindowsToolbar = hot(module)(require('./components/WindowsToolbar').default);
