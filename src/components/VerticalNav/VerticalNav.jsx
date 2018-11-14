@@ -214,7 +214,7 @@ export class WorkspaceSwitcher extends Component {
 							className="__Green"
 							onClick={() => console.log('onClick')}
 						>
-							{ this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'Manage Account' }
+							{ this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'My Account' }
 						</Button>
 						{ !hasTeams &&
 							<Button
