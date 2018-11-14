@@ -1,6 +1,7 @@
 @import '../../styles/_partials/index'
 
 .Popup
+	$transiton-duration: 80ms
 	$ease-in: cubic-bezier(.2,.3,.25,.9)
 
 	position: relative
@@ -20,7 +21,7 @@
 		right: 0
 		bottom: 0
 		left: 0
-		transition: transform 2080ms $ease-in 80ms
+		transition: transform $transiton-duration $ease-in $transiton-duration
 
 		@include selectors_ifHostHasModifier('.Popup__PositionTop')
 			transform: scale(0) translateY(0%) translateZ(0)
@@ -108,7 +109,7 @@
 			background: $green-dark50
 
 	.Popup_BubbleContent
-		transition: opacity
+		transition: opacity $transiton-duration $ease-in $transiton-duration
 		@include selectors_setAsDefaults()
 			opacity: 0
 		@include selectors_ifHostHasModifier('.Popup__Open')
