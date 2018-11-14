@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './Popup.sass';
-import onClickOutside from "react-onclickoutside";
 
-class Popup extends Component {
+/**
+ * Try catch for Local vs. Styleguidist
+ */
+let ReactDOM;
+
+try {
+	ReactDOM = __non_webpack_require__('react-dom');
+} catch (e) {
+	ReactDOM = require('react-dom');
+}
+
+export default class Popup extends Component {
 	static propTypes = {
 		items: PropTypes.array,
 		position: PropTypes.oneOf(['bottom', 'right', 'top']),
@@ -29,6 +39,15 @@ class Popup extends Component {
 		};
 
 		this.onClick = this.onClick.bind(this);
+		this.onClickOutside = this.onClickOutside.bind(this);
+	}
+
+	componentDidMount() {
+		document.addEventListener('click', this.onClickOutside, true);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('click', this.onClickOutside, true);
 	}
 
 	onClick () {
@@ -37,10 +56,14 @@ class Popup extends Component {
 		});
 	}
 
-	handleClickOutside() {
-		this.setState({
-			open: false,
-		});
+	onClickOutside (event) {
+		const domNode = ReactDOM.findDOMNode(this);
+
+		if (!domNode || !domNode.contains(event.target)) {
+			this.setState({
+				open: false,
+			});
+		}
 	}
 
 	tipItemHoverFactory (i, value) {
@@ -93,6 +116,4 @@ class Popup extends Component {
 		);
 	}
 }
-
-export default onClickOutside(Popup);
 
