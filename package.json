@@ -20,6 +20,7 @@
 		"react-lowlight": "^2.0.0",
 		"react-markdown": "^4.0.3",
 		"react-modal": "^3.5.1",
+		"react-onclickoutside": "^6.7.1",
 		"react-router-dom": "^4.3.1",
 		"react-truncate-markup": "^2.0.1",
 		"url-parse": "^1.4.4"

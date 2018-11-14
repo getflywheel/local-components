@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './Popup.sass';
+import onClickOutside from "react-onclickoutside";
 
-export default class Popup extends Component {
+class Popup extends Component {
 	static propTypes = {
 		items: PropTypes.array,
 		position: PropTypes.oneOf(['bottom', 'right', 'top']),
@@ -28,7 +29,6 @@ export default class Popup extends Component {
 		};
 
 		this.onClick = this.onClick.bind(this);
-		// this.onBlur = this.onBlur.bind(this);
 	}
 
 	onClick () {
@@ -37,11 +37,11 @@ export default class Popup extends Component {
 		});
 	}
 
-	// onBlur () {
-	// 	this.setState({
-	// 		open: false,
-	// 	});
-	// }
+	handleClickOutside() {
+		this.setState({
+			open: false,
+		});
+	}
 
 	tipItemHoverFactory (i, value) {
 		if (this.props.position === 'bottom' && i !== 0) {
@@ -58,7 +58,6 @@ export default class Popup extends Component {
 	}
 
 	render () {
-		console.log('open: ', this.state.open);
 		return (
 			<div
 				className={classnames(
@@ -73,7 +72,6 @@ export default class Popup extends Component {
 				)}
 				tabIndex="0"
 				onClick={this.onClick}
-				onBlur={this.onBlur}
 			>
 				<div className={styles.Popup_BubbleWrapper}>
 					<div
@@ -95,3 +93,6 @@ export default class Popup extends Component {
 		);
 	}
 }
+
+export default onClickOutside(Popup);
+
