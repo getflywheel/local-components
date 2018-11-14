@@ -142,7 +142,9 @@ export class WorkspaceSwitcher extends Component {
 		super(props);
 
 		this.state = {
-			activeWorkspaceItem: this.props.workspaces && this.props.workspaces.find(element => element.isActive) || (this.props.workspaces && this.props.workspaces.length && this.props.workspaces[0]),
+			activeWorkspaceItem: this.props.workspaces
+				&& (this.props.workspaces.find(element => element.isActive)
+				|| (this.props.workspaces.length && this.props.workspaces[0]))
 		};
 	}
 
