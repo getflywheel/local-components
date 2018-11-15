@@ -68,23 +68,11 @@ export default class Popup extends Component {
 		catch (error) {}
 	}
 
-	tipItemHoverFactory (i, value) {
-		if (this.props.position === 'bottom' && i !== 0) {
-			return null;
-		}
-
-		if (this.props.position === 'top' && i !== this.props.items.length - 1) {
-			return null;
-		}
-
-		return () => {
-			this.setState({ tipItemHover: value });
-		};
-	}
-
 	render () {
-		let transformValues = this.props.offsetX ? `translateX(${this.props.offsetX})` : '';
-		transformValues += this.props.offsetY ? `translateY(${this.props.offsetY})` : '';
+const transformStyles = [
+	...(this.props.offsetX ? [`translateX(${this.props.offsetX})`] : []),
+	...(this.props.offsetY ? [`translateY(${this.props.offsetY})`] : []),
+];
 
 		return (
 			<div
@@ -108,7 +96,7 @@ export default class Popup extends Component {
 					<div
 						className={styles.Popup_BubbleOffsetContainer}
 						style={{
-							...((this.props.offsetX || this.props.offsetY) && {transform: transformValues}), // conditionally add style
+							...((this.props.offsetX || this.props.offsetY) && {transform: transformStyles.join(' ')}),
 						}}
 					>
 						<div

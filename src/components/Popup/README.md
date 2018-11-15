@@ -31,26 +31,15 @@ On click, an image is displayed in the top popup position.
 </Popup>
 ```
 
-Offset the x position of the popup bubble.
+Offset the x and y position of the popup bubble.
 
 ```js
 <Popup 
-	offsetX="-8px"
+	offsetX="20px"
+	offsetY="20px"
 	position="right"
-	triggerContent={<h2>Open h1 to the right</h2>}
+	triggerContent={<h2>Open and offset</h2>}
 >
-    <h1>Right!</h1>
-</Popup>
-```
-
-Offset the y position of the popup bubble.
-
-```js
-<Popup 
-	offsetY="-5px"
-	position="bottom"
-	triggerContent={<span>Open h1 to the right</span>}
->
-    <span>Right!</span>
+    <h1>Simple.</h1>
 </Popup>
 ```
