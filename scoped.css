@@ -3131,6 +3131,15 @@ header.FlywheelHeader {
 /* Fonts */
 /* Fonts */
 /* Fonts */
+.Divider_3Ntx1_v3-0-0 {
+  border-bottom: 1px solid #e7e7e7; }
+  .Theme__Dark .Divider_3Ntx1_v3-0-0 {
+    border-bottom: 1px solid #434344; }
+
+/* Fonts */
+/* Fonts */
+/* Fonts */
+/* Fonts */
 .ProgressBar_3FJfH_v3-0-0 {
   position: relative;
   flex-grow: 0;
@@ -3900,6 +3909,8 @@ header.FlywheelHeader {
   height: 100%;
   object-fit: cover;
   border-radius: 50%; }
+  .ImageCircle_3GaAM_v3-0-0.ImageCircleContainer__Square_yeafj_v3-0-0 {
+    border-radius: 4px; }
 
 /* Fonts */
 /* Fonts */
@@ -4368,6 +4379,103 @@ header.FlywheelHeader {
     font-weight: bold; }
   .Lowlight_p3Vo9_v3-0-0 .hljs .hljs-emphasis {
     font-style: italic; }
+
+/* Fonts */
+/* Fonts */
+/* Fonts */
+/* Fonts */
+.Popup_3zvmk_v3-0-0 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer; }
+  .Popup_3zvmk_v3-0-0 * {
+    cursor: pointer; }
+  .Popup_3zvmk_v3-0-0 .Popup_BubbleWrapper_1RVPl_v3-0-0 {
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: transform 80ms cubic-bezier(0.2, 0.3, 0.25, 0.9) 80ms; }
+    .Popup_3zvmk_v3-0-0.Popup__PositionTop_Z3Rav_v3-0-0 .Popup_BubbleWrapper_1RVPl_v3-0-0 {
+      transform: scale(0) translateY(0%) translateZ(0);
+      transform-origin: 90% -15px; }
+    .Popup_3zvmk_v3-0-0.Popup__PositionTop_Z3Rav_v3-0-0.Popup__Open_1wGUd_v3-0-0 .Popup_BubbleWrapper_1RVPl_v3-0-0 {
+      transform: scale(1) translateY(0) translateZ(0); }
+    .Popup_3zvmk_v3-0-0.Popup__PositionBottom_3Rowm_v3-0-0 .Popup_BubbleWrapper_1RVPl_v3-0-0 {
+      transform: scale(0) translateY(100%) translateZ(0);
+      transform-origin: 90% calc(100% + 15px); }
+    .Popup_3zvmk_v3-0-0.Popup__PositionBottom_3Rowm_v3-0-0.Popup__Open_1wGUd_v3-0-0 .Popup_BubbleWrapper_1RVPl_v3-0-0 {
+      transform: scale(1) translateY(100%) translateZ(0); }
+    .Popup_3zvmk_v3-0-0.Popup__PositionRight_3ZuSo_v3-0-0 .Popup_BubbleWrapper_1RVPl_v3-0-0 {
+      transform: scale(0) translateY(100%) translateY(-50%) translateZ(0);
+      transform-origin: 100% 50%; }
+    .Popup_3zvmk_v3-0-0.Popup__PositionRight_3ZuSo_v3-0-0.Popup__Open_1wGUd_v3-0-0 .Popup_BubbleWrapper_1RVPl_v3-0-0 {
+      transform: scale(1) translateY(100%) translateY(-50%) translateZ(0); }
+  .Popup_3zvmk_v3-0-0 .Popup_BubbleOffsetContainer_1W1Cx_v3-0-0 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+  .Popup_3zvmk_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0 {
+    position: absolute;
+    right: -15px;
+    left: auto;
+    height: auto;
+    margin-left: 0;
+    text-align: center;
+    list-style-type: none;
+    line-height: normal;
+    background: #fff;
+    border-radius: 4px;
+    filter: drop-shadow(0 0 7px rgba(38, 39, 39, 0.16));
+    padding: 0; }
+    .Theme__Dark .Popup_3zvmk_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0 {
+      background: #434344; }
+    .Popup_3zvmk_v3-0-0.Popup__Padding_3YM8H_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0 {
+      padding: 20px; }
+    .Popup_3zvmk_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      right: 11px;
+      left: auto;
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin-left: -10px;
+      transform: rotate(45deg);
+      background: #fff;
+      transition: all 0.05s cubic-bezier(0.2, 0.3, 0.25, 0.9) 0s;
+      pointer-events: none; }
+      .Theme__Dark .Popup_3zvmk_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0::after {
+        background: #434344; }
+    .Popup_3zvmk_v3-0-0.Popup__PositionBottom_3Rowm_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0 {
+      top: 10px; }
+      .Popup_3zvmk_v3-0-0.Popup__PositionBottom_3Rowm_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0::after {
+        top: -6px; }
+    .Popup_3zvmk_v3-0-0.Popup__PositionRight_3ZuSo_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0 {
+      margin-left: 0;
+      transform: scale(1) translateX(100%) translateY(-40px) translateZ(0); }
+      .Popup_3zvmk_v3-0-0.Popup__PositionRight_3ZuSo_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0::after {
+        top: 40px;
+        right: auto;
+        left: 4px;
+        transform: translateY(-50%) rotate(45deg); }
+    .Popup_3zvmk_v3-0-0.Popup__PositionTop_Z3Rav_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0 {
+      top: -10px;
+      transform: scale(1) translateY(-100%) translateZ(0); }
+      .Popup_3zvmk_v3-0-0.Popup__PositionTop_Z3Rav_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0::after {
+        bottom: -6px; }
+    .Popup_3zvmk_v3-0-0 .Popup_Bubble_3LGS0_v3-0-0.Popup_Bubble__TipItemHover_3ylP0_v3-0-0::before {
+      background: #419564; }
+  .Popup_3zvmk_v3-0-0 .Popup_BubbleContent_1v-IT_v3-0-0 {
+    transition: opacity 80ms cubic-bezier(0.2, 0.3, 0.25, 0.9) 80ms;
+    opacity: 0; }
+    .Popup_3zvmk_v3-0-0.Popup__Open_1wGUd_v3-0-0 .Popup_BubbleContent_1v-IT_v3-0-0 {
+      opacity: 1; }
 
 /* Fonts */
 /* Fonts */
@@ -5039,18 +5147,22 @@ header.FlywheelHeader {
   background: #51bb7b; }
   .Theme__Dark .VerticalNav_1Fd97_v3-0-0 {
     background: #262727; }
-  .__OsWindows_2PkZK_v3-0-0 .VerticalNav_1Fd97_v3-0-0 {
+  .__OsWindows .VerticalNav {
     padding-top: 0; }
-    .__OsWindows_2PkZK_v3-0-0 .VerticalNav_1Fd97_v3-0-0 .DragRegion_3Wbot_v3-0-0 {
+  .__OsWindows .VerticalNav_1Fd97_v3-0-0 {
+    padding-top: 0; }
+    .__OsWindows .VerticalNav .VerticalNavItem_DragRegion,
+    .VerticalNavItem_DragRegion_1WTqK_v3-0-0 {
       -webkit-app-region: default; }
-  .VerticalNav_1Fd97_v3-0-0 .DragRegion_3Wbot_v3-0-0 {
+  .VerticalNav .VerticalNavItem_DragRegion,
+  .VerticalNavItem_DragRegion_1WTqK_v3-0-0 {
     flex-grow: 1;
     -webkit-app-region: drag; }
   .VerticalNav_1Fd97_v3-0-0 .VerticalNav_Add_3H3g0_v3-0-0 {
     width: 48px;
-    height: 48px;
+    height: 48px !important;
     margin: auto 0 10px 10px;
-    padding: 11.5px 0;
+    padding: 11.5px 0 !important;
     background: #fff;
     border-radius: 100%;
     transition: background-color .1s ease 0s; }
@@ -5068,8 +5180,13 @@ header.FlywheelHeader {
       background: #267048; }
       .VerticalNav_1Fd97_v3-0-0 .VerticalNav_Add_3H3g0_v3-0-0:hover svg path {
         fill: #fff; }
-  .FlyTooltip.FlyTooltip__AddSite {
+  .VerticalNav_1Fd97_v3-0-0 .FlyTooltip_1jz12_v3-0-0.FlyTooltip__AddSite_1Ild6_v3-0-0 {
     margin-top: -23px; }
+  .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItemOuter_6dUHL_v3-0-0 {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItem_1DfFG_v3-0-0,
   .VerticalNav_1Fd97_v3-0-0 a {
     display: flex;
     align-items: center;
@@ -5077,16 +5194,24 @@ header.FlywheelHeader {
     height: 62px;
     padding: 15px 0;
     text-align: center; }
+    .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItem_1DfFG_v3-0-0 svg path,
     .VerticalNav_1Fd97_v3-0-0 a svg path {
       transition: fill .1s ease 0s; }
+    .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItem_1DfFG_v3-0-0.__Active,
     .VerticalNav_1Fd97_v3-0-0 a.__Active {
       background: #267048; }
+      .Theme__Dark .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItem_1DfFG_v3-0-0.__Active {
+        background: none; }
       .Theme__Dark .VerticalNav_1Fd97_v3-0-0 a.__Active {
         background: none; }
+      .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItem_1DfFG_v3-0-0.__Active svg path,
       .VerticalNav_1Fd97_v3-0-0 a.__Active svg path {
         fill: #fff !important; }
+    .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItem_1DfFG_v3-0-0:hover:not(.__Active_2m64x_v3-0-0) svg path,
     .VerticalNav_1Fd97_v3-0-0 a:hover:not(.__Active_2m64x_v3-0-0) svg path {
       fill: #419564; }
+      .Theme__Dark .VerticalNav_1Fd97_v3-0-0 .VerticalNav_NonNavLinkItem_1DfFG_v3-0-0:hover:not(.__Active_2m64x_v3-0-0) svg path {
+        fill: #fff; }
       .Theme__Dark .VerticalNav_1Fd97_v3-0-0 a:hover:not(.__Active_2m64x_v3-0-0) svg path {
         fill: #fff; }
   .VerticalNav_1Fd97_v3-0-0 svg {
@@ -5095,8 +5220,49 @@ header.FlywheelHeader {
       fill: #267048; }
       .Theme__Dark .VerticalNav_1Fd97_v3-0-0 svg path {
         fill: #9f9c9c; }
-  .VerticalNav_1Fd97_v3-0-0 .VerticalNav_Addons_3x2yg_v3-0-0 svg {
-    width: 34px; }
+  .VerticalNav_1Fd97_v3-0-0 .VerticalNavItem_1w5Qc_v3-0-0 {
+    text-align: center; }
+    .VerticalNavItem_Addons svg {
+      width: 38px; }
+
+.WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_Popup__Width100_3_9ca_v3-0-0 {
+  width: 100%; }
+
+.WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupGrid_2cSPh_v3-0-0 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 20px;
+  row-gap: 20px;
+  grid-column-gap: 20px;
+  column-gap: 20px;
+  padding: 20px 20px 15px 20px; }
+
+.WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupGridItem_1PukU_v3-0-0 {
+  cursor: pointer; }
+
+.WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupGridItem__Active_1o3q6_v3-0-0 img {
+  border: 4px solid #51bb7b; }
+
+.WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupGridItemAdd_2r86m_v3-0-0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #9f9c9c; }
+  .WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupGridItemAdd_2r86m_v3-0-0 svg {
+    width: 12px;
+    stroke: #9f9c9c;
+    stroke-width: 2px; }
+
+.WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupFooter_2v-FK_v3-0-0 {
+  white-space: nowrap;
+  padding: 15px 20px 15px 20px; }
+
+.WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupFooter_2v-FK_v3-0-0 > button {
+  display: block;
+  padding: 0; }
+  .WorkspaceSwitcher_11o4j_v3-0-0 .WorkspaceSwitcher_PopupFooter_2v-FK_v3-0-0 > button + button {
+    margin-top: 10px; }
 
 /* Fonts */
 /* Fonts */
@@ -5118,7 +5284,8 @@ header.FlywheelHeader {
   z-index: 999; }
   .Theme__Dark .WindowsToolbar_1ugmv_v3-0-0 {
     background: #434344; }
-  .WindowsToolbar_1ugmv_v3-0-0 .DragRegion_2tbiv_v3-0-0 {
+  .WindowsToolbar .DragRegion,
+  .DragRegion_2tbiv_v3-0-0 {
     flex-grow: 1;
     -webkit-app-region: drag;
     padding-left: 5px;
@@ -5130,11 +5297,13 @@ header.FlywheelHeader {
   .WindowsToolbar_1ugmv_v3-0-0 .Menu_2WFAH_v3-0-0 svg {
     width: 12px;
     height: 9px; }
-  .WindowsToolbar_1ugmv_v3-0-0 .Menu_2WFAH_v3-0-0 + .DragRegion_2tbiv_v3-0-0 {
+  .WindowsToolbar .Menu + .DragRegion,
+  + .DragRegion_2tbiv_v3-0-0 {
     margin-left: 0; }
   .WindowsToolbar_1ugmv_v3-0-0 .Back_2jN9c_v3-0-0 {
     background-color: #51bb7b; }
-    .WindowsToolbar_1ugmv_v3-0-0 .Back_2jN9c_v3-0-0 + .DragRegion_2tbiv_v3-0-0 {
+    .WindowsToolbar .Back + .DragRegion,
+    + .DragRegion_2tbiv_v3-0-0 {
       margin-left: 10px; }
     .WindowsToolbar_1ugmv_v3-0-0 .Back_2jN9c_v3-0-0:hover {
       background-color: #419564; }
