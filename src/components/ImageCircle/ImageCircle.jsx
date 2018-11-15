@@ -6,13 +6,17 @@ import styles from './ImageCircle.sass';
 export default class ImageCircle extends Component {
 
 	static propTypes = {
+		className: PropTypes.string,
 		size: PropTypes.oneOf(['m', 's']),
+		square: PropTypes.bool,
 		src: PropTypes.string.isRequired,
+		style: PropTypes.object,
 		tag: PropTypes.string,
 	};
 
 	static defaultProps = {
 		size: 'm',
+		square: false,
 		tag: 'div',
 	};
 
@@ -30,8 +34,14 @@ export default class ImageCircle extends Component {
 				)}
 			>
 				<img
-					className={styles.ImageCircle}
+					className={classnames(
+						styles.ImageCircle,
+						{
+							[styles.ImageCircleContainer__Square]: this.props.square,
+						}
+					)}
 					src={this.props.src}
+					style={{...this.props.style}}
 				/>
 			</ContainerTag>
 		);

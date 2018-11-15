@@ -15,6 +15,7 @@
 	font-size: 12px
 	z-index: 999
 
+	@at-root :global(.WindowsToolbar .DragRegion),
 	.DragRegion
 		flex-grow: 1
 		-webkit-app-region: drag
@@ -31,12 +32,14 @@
 			width: 12px
 			height: 9px
 
+		@at-root :global(.WindowsToolbar .Menu + .DragRegion),
 		+ .DragRegion
 			margin-left: 0
 
 	.Back
 		background-color: $green
 
+		@at-root :global(.WindowsToolbar .Back + .DragRegion),
 		+ .DragRegion
 			margin-left: 10px
 
