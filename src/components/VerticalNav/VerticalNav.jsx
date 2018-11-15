@@ -30,6 +30,10 @@ export class VerticalNavItem extends Component {
 		navLinkActive: PropTypes.bool,
 		navLinkActiveClassName: PropTypes.string,
 		navLinkClass: PropTypes.string,
+		onClickAccount: PropTypes.func,
+		onClickAddTeam: PropTypes.func,
+		onClickLogout: PropTypes.func,
+		onClickWorkspace: PropTypes.func,
 		routeTo: PropTypes.string,
 		tooltip: PropTypes.string,
 		type: PropTypes.oneOf(['addsite', 'filler', 'navlink', 'switcher']),
@@ -152,6 +156,10 @@ export class WorkspaceSwitcher extends Component {
 		this.setState({
 			activeWorkspaceItem: workspaceItem,
 		});
+
+		if(this.props.onClickWorkspace) {
+			this.props.onClickWorkspace.call(this, workspaceItem);
+		}
 	}
 
 	render () {
@@ -213,21 +221,21 @@ export class WorkspaceSwitcher extends Component {
 					<div className={styles.WorkspaceSwitcher_PopupFooter}>
 						<Button
 							className="__Green"
-							onClick={() => console.log('onClick')}
+							onClick={this.props.onClickAccount}
 						>
 							{ this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'My Account' }
 						</Button>
 						{ !hasTeams &&
 							<Button
 								className="__Green"
-								onClick={() => console.log('onClick')}
+								onClick={this.props.onClickAddTeam}
 							>
 								Add a Team
 							</Button>
 						}
 						<Button
 							className="__Green"
-							onClick={() => console.log('onClick')}
+							onClick={this.props.onClickLogout}
 						>
 							Logout
 						</Button>
