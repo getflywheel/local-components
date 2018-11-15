@@ -9,12 +9,17 @@
 	padding: 30px 0 0
 	@include theme-background-green-else-graydark
 
+	@at-root :global(.__OsWindows .VerticalNav)
+		padding-top: 0
+
 	@at-root :global(.__OsWindows) .VerticalNav
 		padding-top: 0
 
+		@at-root :global(.__OsWindows .VerticalNav .VerticalNavItem_DragRegion),
 		.VerticalNavItem_DragRegion
 			-webkit-app-region: default
 
+	@at-root :global(.VerticalNav .VerticalNavItem_DragRegion),
 	.VerticalNavItem_DragRegion
 		flex-grow: 1
 		-webkit-app-region: drag
