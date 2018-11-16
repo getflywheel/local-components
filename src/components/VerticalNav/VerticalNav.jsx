@@ -227,7 +227,7 @@ export class WorkspaceSwitcher extends Component {
 										</div>
 									)
 								})}
-								<div className={styles.WorkspaceSwitcher_PopupGridItemAdd}>
+								<div className={styles.WorkspaceSwitcher_PopupGridItemAdd} onClick={this.props.onClickAddTeam}>
 									<AddSVG />
 								</div>
 							</div>
