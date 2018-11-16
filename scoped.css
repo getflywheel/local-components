@@ -5248,7 +5248,9 @@ header.FlywheelHeader {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 2px solid #9f9c9c; }
+  border: 2px solid #9f9c9c;
+  width: 32px;
+  height: 32px; }
   .WorkspaceSwitcher_11o4j_v4-0-1 .WorkspaceSwitcher_PopupGridItemAdd_2r86m_v4-0-1 svg {
     width: 12px;
     stroke: #9f9c9c;
