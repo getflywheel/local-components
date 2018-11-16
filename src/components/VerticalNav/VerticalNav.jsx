@@ -30,10 +30,6 @@ export class VerticalNavItem extends Component {
 		navLinkActive: PropTypes.bool,
 		navLinkActiveClassName: PropTypes.string,
 		navLinkClass: PropTypes.string,
-		onClickAccount: PropTypes.func,
-		onClickAddTeam: PropTypes.func,
-		onClickLogout: PropTypes.func,
-		onClickWorkspace: PropTypes.func,
 		routeTo: PropTypes.string,
 		tooltip: PropTypes.string,
 		type: PropTypes.oneOf(['addsite', 'filler', 'navlink', 'switcher']),
@@ -134,9 +130,14 @@ export class WorkspaceSwitcher extends Component {
 
 	static propTypes = {
 		className: PropTypes.string,
-		routeTo: PropTypes.string,
-		tooltip: PropTypes.string,
-		workspaces: PropTypes.array,
+		routeTo: PropTypes.string.isRequired,
+		tooltip: PropTypes.string.isRequired,
+		workspaces: PropTypes.array.isRequired,
+		onClickAccount: PropTypes.func.isRequired,
+		onClickManageTeam: PropTypes.func.isRequired,
+		onClickAddTeam: PropTypes.func.isRequired,
+		onClickLogout: PropTypes.func.isRequired,
+		onClickWorkspace: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -237,7 +238,12 @@ export class WorkspaceSwitcher extends Component {
 					<div className={styles.WorkspaceSwitcher_PopupFooter}>
 						<Button
 							className="__Green"
-							onClick={this.props.onClickAccount}
+							onClick={() => (
+								this.state.activeWorkspaceItem.isOwner ?
+									this.props.onClickManageTeam(this.state.activeWorkspaceItem)
+									:
+									this.props.onClickAccount()
+							)}
 						>
 							{ this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'My Account' }
 						</Button>
