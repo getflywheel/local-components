@@ -146,10 +146,26 @@ export class WorkspaceSwitcher extends Component {
 		super(props);
 
 		this.state = {
-			activeWorkspaceItem: this.props.workspaces
-				&& (this.props.workspaces.find(element => element.isActive)
-				|| (this.props.workspaces.length && this.props.workspaces[0]))
+			activeWorkspaceItem: this.getInitialActiveWorkspaceItem(),
 		};
+	}
+
+	getInitialActiveWorkspaceItem () {
+
+		return this.props.workspaces
+			&& (this.props.workspaces.find(element => element.isActive)
+				|| (this.props.workspaces.length && this.props.workspaces[0]));
+
+	}
+
+	componentDidUpdate (prevProps, prevState) {
+
+		if (prevProps.workspaces.length !== this.props.workspaces.length) {
+			this.setState({
+				activeWorkspaceItem: this.getInitialActiveWorkspaceItem()
+			})
+		}
+
 	}
 
 	onSelect (workspaceItem) {
@@ -170,11 +186,11 @@ export class WorkspaceSwitcher extends Component {
 				styles.WorkspaceSwitcher,
 				this.props.className,
 			)}
-			tooltip={this.state.activeWorkspaceItem ? null : this.props.tooltip}
+			tooltip={this.props.workspaces.length ? null : this.props.tooltip}
 			routeTo={this.props.routeTo}
-			type={this.state.activeWorkspaceItem ? 'switcher' : 'navlink'}
+			type={this.props.workspaces.length ? 'switcher' : 'navlink'}
 		>
-			{ this.state.activeWorkspaceItem
+			{ this.props.workspaces.length
 				?
 				<Popup
 					className={styles.WorkspaceSwitcher_Popup__Width100}
