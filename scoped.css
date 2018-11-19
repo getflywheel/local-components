@@ -19,7 +19,9 @@ button {
 html {
   width: 100%;
   height: 100%;
-  font-size: 62.5%;
+  font-size: 62.5%; }
+
+html.local-by-flywheel {
   overflow: hidden; }
 
 body,
@@ -48,7 +50,7 @@ div#styleguide-container {
 div#styleguide-container {
   border: 1px dashed #c7c4c4; }
 
-main {
+#root main {
   position: absolute !important;
   top: 0 !important;
   bottom: 0 !important;
