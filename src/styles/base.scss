@@ -21,6 +21,9 @@
 		width: 100%;
 		height: 100%;
 		font-size: 62.5%; // set rems to have a base of 10
+	}
+
+	html.local-by-flywheel {
 		overflow: hidden;
 	}
 
@@ -37,7 +40,7 @@
 		border: 1px dashed $gray25;
 	}
 
-	main {
+	#root main {
 		position: absolute !important;
 		top: 0 !important;
 		bottom: 0 !important;
