@@ -27,6 +27,10 @@
 			height: 14px;
 			vertical-align: middle;
 			margin: 0 10px 0 0;
+
+			path {
+				transition: fill .1s ease 0s, stroke .1s ease 0s;
+			}
 		}
 
 		&:hover {
@@ -52,9 +56,23 @@
 			color: $gray25;
 			padding: 5px 20px;
 
+			svg path {
+				fill: $gray25;
+			}
+
 			&:hover {
 				color: $white;
 				background: $gray25;
+
+				svg path {
+					fill: $white;
+				}
+
+			}
+
+			&.__Vert_Padding__10 {
+				padding-top: 10px;
+				padding-bottom: 10px;
 			}
 		}
 

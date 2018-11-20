@@ -4,9 +4,21 @@
 	.Flywheel {
 		@include theme-background-gray5-else-graydarkalt;
 		flex-grow: 1;
-		padding: 30px;
 		@extend .__FlexColumn;
 		overflow-y: auto;
+	}
+
+	.FlywheelSites {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+
+	.FlywheelSitesList {
+		padding: 30px;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
 
 		h5 {
 			@include tracking(20);
@@ -14,29 +26,8 @@
 			@include theme-color-gray-else-gray15;
 			font-size: 14px;
 			font-weight: 700;
+			margin-top: 0;
 		}
-
-		.EmptyArea {
-			margin: 0;
-			padding: 80px;
-
-			h1 {
-				@include theme-color-graydark-else-white;
-			}
-		}
-	}
-
-	.SitesOnFlywheel,
-	.AccountInfo {
-		opacity: 0;
-	}
-
-	.SitesOnFlywheel.SitesOnFlywheel__FadeIn {
-		opacity: 1;
-	}
-
-	.AccountInfo.AccountInfo__FadeIn {
-		opacity: 1;
 	}
 
 	.FlywheelConnect {
@@ -100,78 +91,9 @@
 		}
 	}
 
-	.AccountInfo {
-		display: flex;
-		align-items: center;
-		@include theme-color-gray75-else-gray25;
-
-		.Avatar {
-			width: 32px;
-			height: 32px;
-			border-radius: 100%;
-			overflow: hidden;
-			margin: 0 10px 0 0;
-
-			.AvatarFallback {
-				width: 100%;
-				height: 100%;
-				text-align: center;
-				color: $white;
-				font-weight: 700;
-				justify-content: center;
-				text-transform: uppercase;
-				display: flex;
-				font-size: 16px;
-				align-items: center;
-				background-color: $blue;
-
-				&[color="green"] {
-					background-color: $green;
-				}
-
-				&[color="yellow"] {
-					background-color: $yellow;
-				}
-
-				&[color="orange"] {
-					background-color: $orange;
-				}
-
-				&[color="red"] {
-					background-color: $red;
-				}
-
-				&[color="pink"] {
-					background-color: $pink;
-				}
-
-				&[color="purple"] {
-					background-color: $purple;
-				}
-			}
-		}
-
-		.Name {
-			margin-right: 7px;
-		}
-
-		img {
-			width: 32px;
-			height: 32px;
-		}
-	}
-
 	header.FlywheelHeader {
-		margin: 0 0 30px;
+		padding: 30px 30px 25px;
 		display: flex;
-
-		h3 {
-			margin: 0;
-		}
-
-		div {
-			margin: 0 0 0 auto;
-		}
 	}
 
 	.FlySite {
