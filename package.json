@@ -1,6 +1,6 @@
 {
 	"name": "local-components",
-	"version": "5.0.0",
+	"version": "5.1.0",
 	"description": "",
 	"main": "dist/index.js",
 	"jsnext:main": "src/index.js",
