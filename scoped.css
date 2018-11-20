@@ -51,10 +51,10 @@ div#styleguide-container {
   border: 1px dashed #c7c4c4; }
 
 #root main {
-  position: absolute !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  overflow-y: auto !important; }
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto; }
 
 p {
   line-height: 1.5; }
@@ -133,6 +133,8 @@ button, .button {
     height: 14px;
     vertical-align: middle;
     margin: 0 10px 0 0; }
+    button svg path, .button svg path {
+      transition: fill .1s ease 0s, stroke .1s ease 0s; }
   button:hover, .button:hover {
     color: #9f9c9c; }
   button:active, .button:active {
@@ -146,9 +148,16 @@ button, .button {
     border: 2px solid #c7c4c4;
     color: #c7c4c4;
     padding: 5px 20px; }
+    button.__GrayOutline svg path, button.\--GrayOutline svg path, .button.__GrayOutline svg path, .button.\--GrayOutline svg path {
+      fill: #c7c4c4; }
     button.__GrayOutline:hover, button.\--GrayOutline:hover, .button.__GrayOutline:hover, .button.\--GrayOutline:hover {
       color: #fff;
       background: #c7c4c4; }
+      button.__GrayOutline:hover svg path, button.\--GrayOutline:hover svg path, .button.__GrayOutline:hover svg path, .button.\--GrayOutline:hover svg path {
+        fill: #fff; }
+    button.__GrayOutline.__Vert_Padding__10, button.\--GrayOutline.__Vert_Padding__10, .button.__GrayOutline.__Vert_Padding__10, .button.\--GrayOutline.__Vert_Padding__10 {
+      padding-top: 10px;
+      padding-bottom: 10px; }
   button.__Green, button.\--Green, .button.__Green, .button.\--Green {
     color: #51bb7b; }
     button.__Green:hover, button.\--Green:hover, .button.__Green:hover, .button.\--Green:hover {
@@ -2245,35 +2254,29 @@ li.DownloaderItem {
 .Flywheel {
   background: #f7f6f6;
   flex-grow: 1;
-  padding: 30px;
   overflow-y: auto; }
   .Theme__Dark .Flywheel {
     background: #303031; }
-  .Flywheel h5 {
+
+.FlywheelSites {
+  display: flex;
+  flex: 1;
+  flex-direction: column; }
+
+.FlywheelSitesList {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1; }
+  .FlywheelSitesList h5 {
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #5d5e5e;
     font-size: 14px;
-    font-weight: 700; }
-    .Theme__Dark .Flywheel h5 {
+    font-weight: 700;
+    margin-top: 0; }
+    .Theme__Dark .FlywheelSitesList h5 {
       color: #e7e7e7; }
-  .Flywheel .EmptyArea {
-    margin: 0;
-    padding: 80px; }
-    .Flywheel .EmptyArea h1 {
-      color: #262727; }
-      .Theme__Dark .Flywheel .EmptyArea h1 {
-        color: #fff; }
-
-.SitesOnFlywheel,
-.AccountInfo {
-  opacity: 0; }
-
-.SitesOnFlywheel.SitesOnFlywheel__FadeIn {
-  opacity: 1; }
-
-.AccountInfo.AccountInfo__FadeIn {
-  opacity: 1; }
 
 .FlywheelConnect {
   justify-content: center;
@@ -2320,55 +2323,9 @@ li.DownloaderItem {
       .FlywheelConnect .Bottom .button:first-child {
         margin-bottom: 17px; }
 
-.AccountInfo {
-  display: flex;
-  align-items: center;
-  color: #9f9c9c; }
-  .Theme__Dark .AccountInfo {
-    color: #c7c4c4; }
-  .AccountInfo .Avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    overflow: hidden;
-    margin: 0 10px 0 0; }
-    .AccountInfo .Avatar .AvatarFallback {
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      color: #fff;
-      font-weight: 700;
-      justify-content: center;
-      text-transform: uppercase;
-      display: flex;
-      font-size: 16px;
-      align-items: center;
-      background-color: #50c6db; }
-      .AccountInfo .Avatar .AvatarFallback[color="green"] {
-        background-color: #51bb7b; }
-      .AccountInfo .Avatar .AvatarFallback[color="yellow"] {
-        background-color: #f0ce15; }
-      .AccountInfo .Avatar .AvatarFallback[color="orange"] {
-        background-color: #f47820; }
-      .AccountInfo .Avatar .AvatarFallback[color="red"] {
-        background-color: #ef4e65; }
-      .AccountInfo .Avatar .AvatarFallback[color="pink"] {
-        background-color: #e0368c; }
-      .AccountInfo .Avatar .AvatarFallback[color="purple"] {
-        background-color: #8351a0; }
-  .AccountInfo .Name {
-    margin-right: 7px; }
-  .AccountInfo img {
-    width: 32px;
-    height: 32px; }
-
 header.FlywheelHeader {
-  margin: 0 0 30px;
+  padding: 30px 30px 25px;
   display: flex; }
-  header.FlywheelHeader h3 {
-    margin: 0; }
-  header.FlywheelHeader div {
-    margin: 0 0 0 auto; }
 
 .FlySite {
   display: flex;
