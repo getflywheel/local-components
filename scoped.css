@@ -2987,10 +2987,12 @@ header.FlywheelHeader {
   flex-direction: column;
   flex-grow: 1;
   flex-shrink: 0;
-  background-color: #fff;
+  background: #fff;
   box-shadow: 0 3px 5px 0 rgba(38, 39, 39, 0.15);
   border-radius: 4px;
   overflow: hidden; }
+  .Theme__Dark .Card_3E-Oa_v5-1-0 {
+    background: #262727; }
   .Card_3E-Oa_v5-1-0 .Card_Header_3rvT0_v5-1-0 {
     position: relative; }
   .Card_3E-Oa_v5-1-0 .Card_HeaderIconContainer_2Yqy7_v5-1-0 {
@@ -3012,13 +3014,18 @@ header.FlywheelHeader {
       margin-bottom: 0; }
     .Card_3E-Oa_v5-1-0 .Card_Content_Title_3RI9__v5-1-0 a:not(:hover) {
       color: #262727; }
+      .Theme__Dark .Card_3E-Oa_v5-1-0 .Card_Content_Title_3RI9__v5-1-0 a:not(:hover) {
+        color: #fff; }
   .Card_3E-Oa_v5-1-0 .Card_Content_Sub_7vqoh_v5-1-0 {
     margin-bottom: 10px;
     color: #9f9c9c; }
     .Card_3E-Oa_v5-1-0 .Card_Content_Sub_7vqoh_v5-1-0:last-child {
       margin-bottom: 0; }
   .Card_3E-Oa_v5-1-0 .Card_Content_Description_1YAdv_v5-1-0 {
-    color: #5d5e5e; }
+    color: #5d5e5e;
+    font-weight: 300; }
+    .Theme__Dark .Card_3E-Oa_v5-1-0 .Card_Content_Description_1YAdv_v5-1-0 {
+      color: #9f9c9c; }
   .Card_3E-Oa_v5-1-0 .Card_Footer_3ZGXN_v5-1-0 {
     display: flex;
     flex-direction: row;
@@ -3858,9 +3865,11 @@ header.FlywheelHeader {
 /* Fonts */
 .ImageCircleContainer_1CbJL_v5-1-0 {
   width: 40px;
+  min-width: 40px;
   height: 40px; }
   .ImageCircleContainer_1CbJL_v5-1-0.ImageCircleContainer__SizeSmall_E_9RB_v5-1-0 {
     width: 32px;
+    min-width: 32px;
     height: 32px; }
 
 .ImageCircle_3GaAM_v5-1-0 {
