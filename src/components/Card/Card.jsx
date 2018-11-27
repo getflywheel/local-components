@@ -50,7 +50,7 @@ export default class Card extends Component {
 	};
 
 	hasHeader () {
-		return this.props.header || this.props.headerIconPath;
+		return this.props.header || this.props.headerIconPath || this.props.headerBackgroundColor;
 	}
 
 	renderHeader () {
@@ -62,7 +62,7 @@ export default class Card extends Component {
 				)}
 				onClick={this.props.headerOnClick}
 			>
-				{this.props.headerIconPath &&
+				{(this.props.headerIconPath || this.props.headerBackgroundColor) &&
 					<div
 						className={classnames(
 							styles.Card_HeaderIconContainer,
@@ -72,13 +72,13 @@ export default class Card extends Component {
 							...(this.props.headerBackgroundColor && {backgroundColor: this.props.headerBackgroundColor}), // conditionally add style
 						}}
 					>
-						<img
+						{this.props.headerIconPath && <img
 							src={this.props.headerIconPath}
 							className={this.props.headerIconClassName}
 							style={{
 								...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
 							}}
-						/>
+						/>}
 					</div>
 				}
 
