@@ -62,18 +62,22 @@ export default class List extends Component {
 						}
 					)}
 				>
-					{React.Children.map(this.props.children, (child) => (
-						<li
-							className={classnames(
-								styles.List_Item,
-								this.props.listItemClassName,
-							)}
-						>
-							{React.cloneElement(child, {
+					{React.Children.map(this.props.children, (child) => {
+						if (!child) {
+							return;
+						}
 
-							})}
-						</li>
-					))}
+						return (
+							<li
+								className={classnames(
+									styles.List_Item,
+									this.props.listItemClassName,
+								)}
+							>
+								{React.cloneElement(child, {})}
+							</li>
+						);
+					})}
 				</ListTag>
 			</div>
 		);
