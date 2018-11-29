@@ -7,7 +7,7 @@ export default class Header extends Component {
 
 	static propTypes = {
 		onClick: PropTypes.func,
-		size: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']),
+		size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 		tag: PropTypes.string,
 		weight: PropTypes.oneOf(['300', '400', '500', '700', '900']),
 	};
@@ -27,11 +27,11 @@ export default class Header extends Component {
 					styles.Header,
 					this.props.className,
 					{
-						[styles.Header__SizeXL]: this.props.size === 'xl',
-						[styles.Header__SizeL]: this.props.size === 'l',
-						[styles.Header__SizeM]: this.props.size === 'm',
-						[styles.Header__SizeS]: this.props.size === 's',
 						[styles.Header__SizeXS]: this.props.size === 'xs',
+						[styles.Header__SizeS]: this.props.size === 's',
+						[styles.Header__SizeM]: this.props.size === 'm',
+						[styles.Header__SizeL]: this.props.size === 'l',
+						[styles.Header__SizeXL]: this.props.size === 'xl',
 						[styles.Header__Weight300]: this.props.weight === '300',
 						[styles.Header__Weight400]: this.props.weight === '400',
 						[styles.Header__Weight500]: this.props.weight === '500',
