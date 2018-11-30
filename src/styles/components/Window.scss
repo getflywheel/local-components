@@ -1,7 +1,7 @@
 @import '../_partials/index';
 
 :global {
-	div.Window {
+	.Window {
 		display: flex;
 		position: absolute;
 		top: 0;
@@ -9,7 +9,7 @@
 		bottom: 0;
 		left: 0;
 
-		@at-root div#root > div > div.Window.__OsWindows {
+		&.__OsWindows {
 			top: 32px;
 		}
 
