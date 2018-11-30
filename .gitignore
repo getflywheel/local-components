@@ -8,3 +8,4 @@ node_modules
 /styleguide/build
 /styleguide/style.*
 /styleguide/svg
+*.tgz
