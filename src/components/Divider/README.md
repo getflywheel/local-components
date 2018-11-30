@@ -11,6 +11,6 @@ A horizontal divider with extra-large (40px) margin below it.
 ```js
 <div>
 	<div>Some text</div>
-	<Divider marginSizeAfter="xl" />
+	<Divider marginSizeBottom="xl" />
 </div>
 ```
