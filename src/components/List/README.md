@@ -1,4 +1,4 @@
-Basic unordered (default )list. When the list items are not 'li' elements, there are automatically wrapped in 'li' tags.
+Basic unordered (default) list. When the list items are not 'li' elements, they are automatically wrapped in 'li' tags.
 ```js
 <List>
 	<a>All</a>
