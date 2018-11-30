@@ -1,5 +1,5 @@
 {
-	"name": "local-components",
+	"name": "@getflywheel/local-components",
 	"version": "6.0.0",
 	"description": "",
 	"main": "dist/index.js",
