@@ -8,14 +8,16 @@ export default class FlyTooltip extends Component {
 
 	static propTypes = {
 		content: PropTypes.node,
+		exclamation: PropTypes.bool,
+		forceHoverState: PropTypes.bool,
 		hoverIntent: PropTypes.bool,
 		position: PropTypes.oneOf(['top', 'bottom', 'right']),
-		exclamation: PropTypes.bool,
 	};
 
 	static defaultProps = {
-		position: 'top',
 		exclamation: false,
+		forceHoverState: false,
+		position: 'top',
 	};
 
 	render () {
@@ -26,6 +28,7 @@ export default class FlyTooltip extends Component {
 					'FlyTooltip_Container', // this also needs to be globally accessible so other component styles can reference it
 					{
 						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent,
+						[styles.FlyTooltip_Container__ForceHoverState]: this.props.forceHoverState,
 					},
 					this.props.className,
 				)}

@@ -1,7 +1,16 @@
-Basic horizontal divider (the padding is added for the example)
+A horizontal divider with medium (20px) top and bottom margin.
 
 ```js
-<div style={{padding: '20px 0'}}>
-	<Divider />
+<div>
+	<Divider marginSize="m" />
+</div>
+```
+
+A horizontal divider with extra-large (40px) margin below it.
+
+```js
+<div>
+	<div>Some text</div>
+	<Divider marginSizeBottom="xl" />
 </div>
 ```

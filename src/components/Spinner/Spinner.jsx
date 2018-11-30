@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import SpinnerSVG from '../../svg/spinner.svg';
 import styles from './Spinner.sass';
 
 export default class Spinner extends Component {
 	static propTypes = {
-		lines: PropTypes.number,
+		className: PropTypes.string,
 		ellipsis: PropTypes.node,
+		lines: PropTypes.number,
 	};
 
 	static defaultProps = {
@@ -16,7 +18,12 @@ export default class Spinner extends Component {
 
 	render () {
 		return (
-			<SpinnerSVG className={styles.Spinner} />
+			<SpinnerSVG
+				className={classnames(
+					styles.Spinner,
+					this.props.className,
+				)}
+			/>
 		);
 	}
 }

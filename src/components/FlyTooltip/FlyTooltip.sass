@@ -5,7 +5,8 @@
 	position: relative
 	display: inline-block
 
-	&:hover
+	&:hover,
+	&.FlyTooltip_Container__ForceHoverState
 		.FlyTooltip
 			transform: scale(1) translateY(0) translateZ(0)
 
@@ -50,7 +51,7 @@
 		margin-left: 0
 		z-index: -1
 
-	.Spinner
+	\:global(.Spinner)
 		vertical-align: middle
 		width: 14px
 		height: auto

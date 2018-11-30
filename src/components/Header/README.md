@@ -16,10 +16,10 @@ The simplest example of a header uses the defaults which outputs a `<span>` with
 </Header>
 ```
 
-Using the **size** and **tag** props, we can easily create a large `<h1>` header.
+Using the **fontSize**, **fontWeight** and **tag** props, we can easily create a large `<h1>` header.
 
 ```js
-<Header tag="h1" size="l">
+<Header tag="h1" fontSize="l" fontWeight="700">
    Connect to Flywheel
 </Header>
 ```

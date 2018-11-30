@@ -60,8 +60,8 @@
 	}
 }
 
-@mixin theme-background-gray1-else-gray-disabled {
-	@include __theme-background($gray1, $gray);
+@mixin theme-background-gray1-else-none-disabled {
+	@include __theme-background($gray1, none);
 }
 
 @mixin theme-background-gray2-else-gray2row {

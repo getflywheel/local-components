@@ -69,23 +69,23 @@
 	}
 
 	h1 {
-		font-size: 42px;
+		font-size: $font-size-header-xl
 	}
 
 	h2 {
-		font-size: 32px;
+		font-size: $font-size-header-l
 	}
 
 	h3 {
-		font-size: 24px;
+		font-size: $font-size-header-m
 	}
 
 	h4 {
-		font-size: 18px;
+		font-size: $font-size-header-s
 	}
 
 	h5 {
-		font-size: 14px;
+		font-size: $font-size-header-xs
 	}
 
 	[disabled] {

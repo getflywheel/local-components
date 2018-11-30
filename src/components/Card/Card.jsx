@@ -102,7 +102,7 @@ export default class Card extends Component {
 				{this.props.contentTitle && (
 					<Header
 						tag="h1"
-						size="s"
+						fontSize="s"
 						className={classnames(
 							styles.Card_Content_Title,
 							this.props.contentTitleClassName,
