@@ -17,7 +17,7 @@
 		text-transform: uppercase
 		font-weight: 700
 		@include tracking(20)
-		background: $gray15
+		@include theme-background-gray15-else-graydark50
 
 	&:last-of-type
 		padding-bottom: 15px
@@ -107,14 +107,15 @@
 			height: 50px
 			padding: 0 15px
 			transition: box-shadow 0.1s
-			background: transparent
+			background: transparent !important
 			border: 0
+			box-shadow: none !important
 
 			&::placeholder
 				color: $gray25
 
 			&:focus
-				box-shadow: 0 0 0 2px $green
+				box-shadow: 0 0 0 2px $green !important
 				border-radius: 3px
 
 		select, :global(.FlySelect)
@@ -129,17 +130,20 @@
 			width: auto
 			vertical-align: middle
 
-			&.TableListRow__Input
+			&.TableListRow__Input,
+			&:global(.TableListRow__Input)
 				padding: 0
 
-			&.TableListRow__SeparatorRight
-				border-right: 1px solid $gray15
+			&.TableListRow__SeparatorRight,
+			&:global(.TableListRow__SeparatorRight)
+				@include theme-border-right
 
-			&.TableList__SeparatorLeft
-				border-left: 1px solid $gray15
+			&.TableList__SeparatorLeft,
+			&:global(.TableList__SeparatorLeft)
+				@include theme-border-left
 
 		&:last-of-type > *
-			border-bottom: 1px solid $gray15
+			@include theme-border-bottom
 
 		.TableList__Remove
 			width: 54px
@@ -160,13 +164,24 @@
 			padding: 0 15px
 			border-bottom: 0
 
-			&.TableListRowHeader__SeparatorRight
-				border-right: 1px solid $white
+			&.TableListRowHeader__SeparatorRight,
+			&:global(.TableListRowHeader__SeparatorRight)
+				@include if-theme-light()
+					border-right: 1px solid $white
 
-			&.TableListRowHeader__SeparatorLeft
-				border-left: 1px solid $white
+				@include if-theme-dark()
+					border-right: 1px solid $gray
 
-			&.TableListRowHeader__RemoveHeading
+			&.TableListRowHeader__SeparatorLeft,
+			&:global(.TableListRowHeader__SeparatorLeft)
+				@include if-theme-light()
+					border-left: 1px solid $white
+
+				@include if-theme-dark()
+					border-left: 1px solid $gray
+
+			&.TableListRowHeader__RemoveHeading,
+			&:global(.TableListRowHeader__RemoveHeading)
 				width: 54px
 				min-width: 54px
 
@@ -176,7 +191,7 @@
 	margin: 0 0 15px
 	padding-bottom: 15px
 	text-align: center
-	border-bottom: 1px solid $gray15
+	@include theme-border-bottom
 
 	div
 		width: 100% !important
