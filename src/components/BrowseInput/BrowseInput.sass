@@ -5,6 +5,7 @@
 	cursor: default
 
 	span
+		flex: 1
 		white-space: nowrap
 		overflow: hidden
 		text-overflow: ellipsis
@@ -15,3 +16,10 @@
 
 	button
 		margin-left: auto
+
+	&.BrowseInput__FormInput
+		@include flywheelInput
+
+	&.BrowseInput__Inline
+		span
+			flex: initial

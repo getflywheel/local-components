@@ -15,6 +15,8 @@ export default class BrowseInput extends Component {
 		onChange: PropTypes.func,
 		value: PropTypes.string,
 		placeholder: PropTypes.string,
+		isInline: PropTypes.bool,
+		isFormInput: PropTypes.bool,
 	};
 
 	constructor (props) {
@@ -55,8 +57,16 @@ export default class BrowseInput extends Component {
 
 	render () {
 		return (
-			<div className={styles.BrowseInput}>
-				<span className={classnames({[styles.BrowseInput_Placeholder]: this.props.placeholder && !this.state.value })}>
+			<div className={classnames(
+				styles.BrowseInput,
+				{
+					[styles.BrowseInput__Inline]: this.props.isInline,
+					[styles.BrowseInput__FormInput]: this.props.isFormInput,
+				}
+			)}>
+				<span className={classnames({
+					[styles.BrowseInput_Placeholder]: this.props.placeholder && !this.state.value
+				})}>
 					{this.state.value || this.props.placeholder}
 				</span>
 				<button className="__Inline __Green __MarginLeft_5" onClick={this.browseFolder}>Browse</button>

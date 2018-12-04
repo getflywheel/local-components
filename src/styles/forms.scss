@@ -271,8 +271,7 @@
 				@include theme-color-graydark-else-white;
 			}
 
-			input,
-			.BrowseInput {
+			input {
 				@include flywheelInput;
 			}
 
