@@ -543,8 +543,7 @@ select {
       color: #262727; }
       .Theme__Dark .FormRow .FormField label {
         color: #fff; }
-    .FormRow .FormField input,
-    .FormRow .FormField .BrowseInput {
+    .FormRow .FormField input {
       -webkit-appearance: none;
       transition: box-shadow .1s;
       outline: none;
@@ -560,22 +559,13 @@ select {
       cursor: text; }
       .Theme__Dark .FormRow .FormField input {
         background-color: #262727; }
-      .Theme__Dark .FormRow .FormField .BrowseInput {
-        background-color: #262727; }
       .Theme__Dark .FormRow .FormField input {
-        box-shadow: 0 0 0 1px #434344; }
-      .Theme__Dark .FormRow .FormField .BrowseInput {
         box-shadow: 0 0 0 1px #434344; }
       .Theme__Dark .FormRow .FormField input {
         color: #fff; }
-      .Theme__Dark .FormRow .FormField .BrowseInput {
-        color: #fff; }
-      .FormRow .FormField input:focus,
-      .FormRow .FormField .BrowseInput:focus {
+      .FormRow .FormField input:focus {
         box-shadow: inset 0 0 0 2px #51bb7b; }
-      .FormRow .FormField input.__Invalid, .FormRow .FormField input.__Invalid:focus,
-      .FormRow .FormField .BrowseInput.__Invalid,
-      .FormRow .FormField .BrowseInput.__Invalid:focus {
+      .FormRow .FormField input.__Invalid, .FormRow .FormField input.__Invalid:focus {
         box-shadow: inset 0 0 0 2px #ef4e65; }
     .FormRow .FormField .FlySelect {
       width: 100%;
@@ -1422,6 +1412,8 @@ span.SitesSidebarSite_Icon_Container {
       font-weight: 700;
       letter-spacing: 0.02em;
       background: #e7e7e7; }
+      .Theme__Dark .TableList .TableListRowHeader {
+        background: #434344; }
     .TableList:last-of-type {
       padding-bottom: 15px; }
     .TableList .TableListRow, ul.TableList > li, .TableList > li {
@@ -1531,12 +1523,13 @@ span.SitesSidebarSite_Icon_Container {
         height: 50px;
         padding: 0 15px;
         transition: box-shadow 0.1s;
-        background: transparent;
-        border: 0; }
+        background: transparent !important;
+        border: 0;
+        box-shadow: none !important; }
         .TableListRepeater.TableList.Form .TableListRow input::placeholder, .TableListRepeater.TableList.Form ul.TableList > li input::placeholder {
           color: #c7c4c4; }
         .TableListRepeater.TableList.Form .TableListRow input:focus, .TableListRepeater.TableList.Form ul.TableList > li input:focus {
-          box-shadow: 0 0 0 2px #51bb7b;
+          box-shadow: 0 0 0 2px #51bb7b !important;
           border-radius: 3px; }
       .TableListRepeater.TableList.Form .TableListRow select, .TableListRepeater.TableList.Form ul.TableList > li select, .TableListRepeater.TableList.Form .TableListRow .FlySelect, .TableListRepeater.TableList.Form ul.TableList > li .FlySelect {
         width: 100%; }
@@ -1547,14 +1540,24 @@ span.SitesSidebarSite_Icon_Container {
         display: table-cell;
         width: auto;
         vertical-align: middle; }
-        .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__Input, .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__Input {
-          padding: 0; }
-        .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__SeparatorRight, .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__SeparatorRight {
+        .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__Input, .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__Input, .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__Input, .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__Input {
+          padding: 0 2px; }
+        .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__SeparatorRight, .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__SeparatorRight, .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__SeparatorRight, .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__SeparatorRight {
           border-right: 1px solid #e7e7e7; }
-        .TableListRepeater.TableList.Form .TableListRow > *.TableList__SeparatorLeft, .TableListRepeater.TableList.Form ul.TableList > li > *.TableList__SeparatorLeft {
+          .Theme__Dark .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__SeparatorRight, .Theme__Dark .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__SeparatorRight {
+            border-right: 1px solid #434344; }
+          .Theme__Dark .TableListRepeater.TableList.Form .TableListRow > *.TableListRow__SeparatorRight, .Theme__Dark .TableListRepeater.TableList.Form ul.TableList > li > *.TableListRow__SeparatorRight {
+            border-right: 1px solid #434344; }
+        .TableListRepeater.TableList.Form .TableListRow > *.TableList__SeparatorLeft, .TableListRepeater.TableList.Form ul.TableList > li > *.TableList__SeparatorLeft, .TableListRepeater.TableList.Form .TableListRow > *.TableList__SeparatorLeft, .TableListRepeater.TableList.Form ul.TableList > li > *.TableList__SeparatorLeft {
           border-left: 1px solid #e7e7e7; }
+          .Theme__Dark .TableListRepeater.TableList.Form .TableListRow > *.TableList__SeparatorLeft, .Theme__Dark .TableListRepeater.TableList.Form ul.TableList > li > *.TableList__SeparatorLeft {
+            border-left: 1px solid #434344; }
+          .Theme__Dark .TableListRepeater.TableList.Form .TableListRow > *.TableList__SeparatorLeft, .Theme__Dark .TableListRepeater.TableList.Form ul.TableList > li > *.TableList__SeparatorLeft {
+            border-left: 1px solid #434344; }
       .TableListRepeater.TableList.Form .TableListRow:last-of-type > *, .TableListRepeater.TableList.Form ul.TableList > li:last-of-type > * {
         border-bottom: 1px solid #e7e7e7; }
+        .Theme__Dark .TableListRepeater.TableList.Form .TableListRow:last-of-type > *, .Theme__Dark .TableListRepeater.TableList.Form ul.TableList > li:last-of-type > * {
+          border-bottom: 1px solid #434344; }
       .TableListRepeater.TableList.Form .TableListRow .TableList__Remove, .TableListRepeater.TableList.Form ul.TableList > li .TableList__Remove {
         width: 54px;
         min-width: 54px;
@@ -1571,11 +1574,19 @@ span.SitesSidebarSite_Icon_Container {
     .TableListRepeater.TableList.Form .TableListRowHeader strong {
       padding: 0 15px;
       border-bottom: 0; }
-      .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorRight {
+      .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorRight, .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorRight {
         border-right: 1px solid #fff; }
-      .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorLeft {
+        .Theme__Dark .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorRight {
+          border-right: 1px solid #5d5e5e; }
+        .Theme__Dark .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorRight {
+          border-right: 1px solid #5d5e5e; }
+      .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorLeft, .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorLeft {
         border-left: 1px solid #fff; }
-      .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__RemoveHeading {
+        .Theme__Dark .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorLeft {
+          border-left: 1px solid #5d5e5e; }
+        .Theme__Dark .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__SeparatorLeft {
+          border-left: 1px solid #5d5e5e; }
+      .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__RemoveHeading, .TableListRepeater.TableList.Form .TableListRowHeader strong.TableListRowHeader__RemoveHeading {
         width: 54px;
         min-width: 54px; }
   .TableListRepeaterAdd {
@@ -1584,6 +1595,8 @@ span.SitesSidebarSite_Icon_Container {
     padding-bottom: 15px;
     text-align: center;
     border-bottom: 1px solid #e7e7e7; }
+    .Theme__Dark .TableListRepeaterAdd {
+      border-bottom: 1px solid #434344; }
     .TableListRepeaterAdd div {
       width: 100% !important; }
   .TableListRepeaterSubmit {
@@ -2541,6 +2554,8 @@ header.FlywheelHeader {
     font-weight: 700;
     letter-spacing: 0.02em;
     background: #e7e7e7; }
+    .Theme__Dark .TableList_1Nk5H_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 {
+      background: #434344; }
   .TableList_1Nk5H_v6-0-0:last-of-type {
     padding-bottom: 15px; }
   .TableList_1Nk5H_v6-0-0 .TableListRow_3QOL9_v6-0-0, ul.TableList_1Nk5H_v6-0-0 > li, .TableList_1Nk5H_v6-0-0 > li {
@@ -2651,12 +2666,13 @@ header.FlywheelHeader {
       height: 50px;
       padding: 0 15px;
       transition: box-shadow 0.1s;
-      background: transparent;
-      border: 0; }
+      background: transparent !important;
+      border: 0;
+      box-shadow: none !important; }
       .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 input::placeholder, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li input::placeholder {
         color: #c7c4c4; }
       .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 input:focus, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li input:focus {
-        box-shadow: 0 0 0 2px #51bb7b;
+        box-shadow: 0 0 0 2px #51bb7b !important;
         border-radius: 3px; }
     .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 select, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li select, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 .FlySelect, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li .FlySelect {
       width: 100%; }
@@ -2667,14 +2683,24 @@ header.FlywheelHeader {
       display: table-cell;
       width: auto;
       vertical-align: middle; }
-      .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__Input_gKOlS_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__Input_gKOlS_v6-0-0 {
-        padding: 0; }
-      .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__SeparatorRight_12cGS_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__SeparatorRight_12cGS_v6-0-0 {
+      .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__Input_gKOlS_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__Input_gKOlS_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__Input, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__Input {
+        padding: 0 2px; }
+      .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__SeparatorRight_12cGS_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__SeparatorRight_12cGS_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__SeparatorRight, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__SeparatorRight {
         border-right: 1px solid #e7e7e7; }
-      .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableList__SeparatorLeft_2PsJe_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableList__SeparatorLeft_2PsJe_v6-0-0 {
+        .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__SeparatorRight_12cGS_v6-0-0, .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__SeparatorRight_12cGS_v6-0-0 {
+          border-right: 1px solid #434344; }
+        .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableListRow__SeparatorRight, .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableListRow__SeparatorRight {
+          border-right: 1px solid #434344; }
+      .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableList__SeparatorLeft_2PsJe_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableList__SeparatorLeft_2PsJe_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableList__SeparatorLeft, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableList__SeparatorLeft {
         border-left: 1px solid #e7e7e7; }
+        .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableList__SeparatorLeft_2PsJe_v6-0-0, .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableList__SeparatorLeft_2PsJe_v6-0-0 {
+          border-left: 1px solid #434344; }
+        .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 > *.TableList__SeparatorLeft, .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li > *.TableList__SeparatorLeft {
+          border-left: 1px solid #434344; }
     .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0:last-of-type > *, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li:last-of-type > * {
       border-bottom: 1px solid #e7e7e7; }
+      .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0:last-of-type > *, .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li:last-of-type > * {
+        border-bottom: 1px solid #434344; }
     .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRow_3QOL9_v6-0-0 .TableList__Remove_34j_i_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 ul.TableList_1Nk5H_v6-0-0 > li .TableList__Remove_34j_i_v6-0-0 {
       width: 54px;
       min-width: 54px;
@@ -2691,11 +2717,19 @@ header.FlywheelHeader {
   .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong {
     padding: 0 15px;
     border-bottom: 0; }
-    .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorRight_2KmKp_v6-0-0 {
+    .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorRight_2KmKp_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorRight {
       border-right: 1px solid #fff; }
-    .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorLeft_2o0wd_v6-0-0 {
+      .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorRight_2KmKp_v6-0-0 {
+        border-right: 1px solid #5d5e5e; }
+      .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorRight {
+        border-right: 1px solid #5d5e5e; }
+    .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorLeft_2o0wd_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorLeft {
       border-left: 1px solid #fff; }
-    .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__RemoveHeading_4TGtv_v6-0-0 {
+      .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorLeft_2o0wd_v6-0-0 {
+        border-left: 1px solid #5d5e5e; }
+      .Theme__Dark .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__SeparatorLeft {
+        border-left: 1px solid #5d5e5e; }
+    .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__RemoveHeading_4TGtv_v6-0-0, .TableListRepeater_1_1fd_v6-0-0.TableList_1Nk5H_v6-0-0.Form_3BjE-_v6-0-0 .TableListRowHeader_5FHK2_v6-0-0 strong.TableListRowHeader__RemoveHeading {
       width: 54px;
       min-width: 54px; }
 
@@ -2705,6 +2739,8 @@ header.FlywheelHeader {
   padding-bottom: 15px;
   text-align: center;
   border-bottom: 1px solid #e7e7e7; }
+  .Theme__Dark .TableListRepeaterAdd_25lnM_v6-0-0 {
+    border-bottom: 1px solid #434344; }
   .TableListRepeaterAdd_25lnM_v6-0-0 div {
     width: 100% !important; }
 
@@ -2967,6 +3003,7 @@ header.FlywheelHeader {
   display: flex;
   cursor: default; }
   .BrowseInput_2WPMz_v6-0-0 span {
+    flex: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2975,6 +3012,32 @@ header.FlywheelHeader {
       color: #c7c4c4; }
   .BrowseInput_2WPMz_v6-0-0 button {
     margin-left: auto; }
+  .BrowseInput_2WPMz_v6-0-0.BrowseInput__FormInput_3blgH_v6-0-0 {
+    -webkit-appearance: none;
+    transition: box-shadow .1s;
+    outline: none;
+    border: 0;
+    border-radius: 4px;
+    padding: 20px;
+    width: 100%;
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px #e7e7e7;
+    color: #262727;
+    cursor: text; }
+    .Theme__Dark .BrowseInput_2WPMz_v6-0-0.BrowseInput__FormInput_3blgH_v6-0-0 {
+      background-color: #262727; }
+    .Theme__Dark .BrowseInput_2WPMz_v6-0-0.BrowseInput__FormInput_3blgH_v6-0-0 {
+      box-shadow: 0 0 0 1px #434344; }
+    .Theme__Dark .BrowseInput_2WPMz_v6-0-0.BrowseInput__FormInput_3blgH_v6-0-0 {
+      color: #fff; }
+    .BrowseInput_2WPMz_v6-0-0.BrowseInput__FormInput_3blgH_v6-0-0:focus {
+      box-shadow: inset 0 0 0 2px #51bb7b; }
+    .BrowseInput_2WPMz_v6-0-0.BrowseInput__FormInput_3blgH_v6-0-0.__Invalid_1GShD_v6-0-0, .BrowseInput_2WPMz_v6-0-0.BrowseInput__FormInput_3blgH_v6-0-0.__Invalid_1GShD_v6-0-0:focus {
+      box-shadow: inset 0 0 0 2px #ef4e65; }
+  .BrowseInput_2WPMz_v6-0-0.BrowseInput__Inline_2nhX8_v6-0-0 span {
+    flex: initial; }
 
 /* Fonts */
 /* Fonts */
@@ -4646,6 +4709,8 @@ header.FlywheelHeader {
     font-weight: 700;
     letter-spacing: 0.02em;
     background: #e7e7e7; }
+    .Theme__Dark .TableList_3r6rm_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 {
+      background: #434344; }
   .TableList_3r6rm_v6-0-0:last-of-type {
     padding-bottom: 15px; }
   .TableList_3r6rm_v6-0-0 .TableListRow_2Qikm_v6-0-0, .TableList_3r6rm_v6-0-0 > li {
@@ -4751,12 +4816,13 @@ header.FlywheelHeader {
       height: 50px;
       padding: 0 15px;
       transition: box-shadow 0.1s;
-      background: transparent;
-      border: 0; }
+      background: transparent !important;
+      border: 0;
+      box-shadow: none !important; }
       .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 input::placeholder {
         color: #c7c4c4; }
       .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 input:focus {
-        box-shadow: 0 0 0 2px #51bb7b;
+        box-shadow: 0 0 0 2px #51bb7b !important;
         border-radius: 3px; }
     .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 select, .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 .FlySelect {
       width: 100%; }
@@ -4767,14 +4833,24 @@ header.FlywheelHeader {
       display: table-cell;
       width: auto;
       vertical-align: middle; }
-      .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__Input_10hbv_v6-0-0 {
-        padding: 0; }
-      .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__SeparatorRight_2KTC-_v6-0-0 {
+      .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__Input_10hbv_v6-0-0, .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__Input {
+        padding: 0 2px; }
+      .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__SeparatorRight_2KTC-_v6-0-0, .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__SeparatorRight {
         border-right: 1px solid #e7e7e7; }
-      .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableList__SeparatorLeft_3GU7V_v6-0-0 {
+        .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__SeparatorRight_2KTC-_v6-0-0 {
+          border-right: 1px solid #434344; }
+        .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableListRow__SeparatorRight {
+          border-right: 1px solid #434344; }
+      .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableList__SeparatorLeft_3GU7V_v6-0-0, .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableList__SeparatorLeft {
         border-left: 1px solid #e7e7e7; }
+        .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableList__SeparatorLeft_3GU7V_v6-0-0 {
+          border-left: 1px solid #434344; }
+        .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 > *.TableList__SeparatorLeft {
+          border-left: 1px solid #434344; }
     .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0:last-of-type > * {
       border-bottom: 1px solid #e7e7e7; }
+      .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0:last-of-type > * {
+        border-bottom: 1px solid #434344; }
     .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRow_2Qikm_v6-0-0 .TableList__Remove_2ptKb_v6-0-0 {
       width: 54px;
       min-width: 54px;
@@ -4791,11 +4867,19 @@ header.FlywheelHeader {
   .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong {
     padding: 0 15px;
     border-bottom: 0; }
-    .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorRight_-TzJS_v6-0-0 {
+    .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorRight_-TzJS_v6-0-0, .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorRight {
       border-right: 1px solid #fff; }
-    .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorLeft_3unbO_v6-0-0 {
+      .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorRight_-TzJS_v6-0-0 {
+        border-right: 1px solid #5d5e5e; }
+      .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorRight {
+        border-right: 1px solid #5d5e5e; }
+    .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorLeft_3unbO_v6-0-0, .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorLeft {
       border-left: 1px solid #fff; }
-    .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__RemoveHeading_3REYB_v6-0-0 {
+      .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorLeft_3unbO_v6-0-0 {
+        border-left: 1px solid #5d5e5e; }
+      .Theme__Dark .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__SeparatorLeft {
+        border-left: 1px solid #5d5e5e; }
+    .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__RemoveHeading_3REYB_v6-0-0, .TableListRepeater_22KmA_v6-0-0.TableList_3r6rm_v6-0-0.Form_hVqpx_v6-0-0 .TableListRowHeader_3nXF6_v6-0-0 strong.TableListRowHeader__RemoveHeading {
       width: 54px;
       min-width: 54px; }
 
@@ -4805,6 +4889,8 @@ header.FlywheelHeader {
   padding-bottom: 15px;
   text-align: center;
   border-bottom: 1px solid #e7e7e7; }
+  .Theme__Dark .TableListRepeaterAdd_33iE7_v6-0-0 {
+    border-bottom: 1px solid #434344; }
   .TableListRepeaterAdd_33iE7_v6-0-0 div {
     width: 100% !important; }
 
