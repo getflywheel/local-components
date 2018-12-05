@@ -3071,6 +3071,8 @@ header.FlywheelHeader {
   .Card_3E-Oa_v6-0-1 .Card_Content_Title_3RI9__v6-0-1 {
     margin-bottom: 5px;
     color: #262727; }
+    .Theme__Dark .Card_3E-Oa_v6-0-1 .Card_Content_Title_3RI9__v6-0-1 {
+      color: #fff; }
     .Card_3E-Oa_v6-0-1 .Card_Content_Title_3RI9__v6-0-1:last-child {
       margin-bottom: 0; }
     .Card_3E-Oa_v6-0-1 .Card_Content_Title_3RI9__v6-0-1 a:not(:hover) {
@@ -4910,6 +4912,8 @@ header.FlywheelHeader {
   margin: 0 0 0 10px; }
   .Spinner_K5t71_v6-0-1 {
     animation: rotateSpinner 1s linear infinite; }
+  .Spinner_K5t71_v6-0-1.Spinner__ColorGrayDark50_1Kway_v6-0-1 path {
+    fill: #434344; }
   .Spinner_K5t71_v6-0-1 path {
     fill: #c7c4c4; }
 
