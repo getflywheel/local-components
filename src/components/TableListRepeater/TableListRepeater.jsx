@@ -154,7 +154,7 @@ export default class TableListRepeater extends Component {
 		return (
 			<div className={styles.TableListRepeaterSubmit}>
 				<button className="__Pill __Green" onClick={() => this.props.onSubmit(this.state.unsavedData)}
-					disabled={isEqual(this.props.data, this.state.unsavedData)}>{this.props.submitLabel}</button>
+					disabled={isEqual(this.props.data, this.state.unsavedData) || this.props.submitDisabled}>{this.props.submitLabel}</button>
 			</div>
 		);
 
