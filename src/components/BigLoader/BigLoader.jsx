@@ -6,7 +6,12 @@ import styles from './BigLoader.sass';
 
 export default class BigLoader extends Component {
 	static propTypes = {
+		color: PropTypes.oneOf(['Green', 'Gray']),
 		message: PropTypes.string,
+	};
+
+	static defaultProps = {
+		color: 'Green',
 	};
 
 	render () {
@@ -19,7 +24,7 @@ export default class BigLoader extends Component {
 				)}
                 style={this.props.style}
 			>
-				<LoadingIndicator big={true} />
+				<LoadingIndicator big={true} color={this.props.color} />
 				{
 					this.props.message && <h3>{this.props.message}</h3>
 				}
