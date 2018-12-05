@@ -16,7 +16,7 @@
 
 	.FlywheelSitesList {
 		padding: 30px;
-		display: flex;
+		overflow-y: auto;
 		flex-direction: column;
 		flex: 1;
 
