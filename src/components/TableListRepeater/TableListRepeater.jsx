@@ -13,7 +13,7 @@ export default class TableListRepeater extends Component {
 		header: PropTypes.node,
 		repeatingContent: PropTypes.func.isRequired,
 		labelSingular: PropTypes.string,
-		itemTemplate: PropTypes.object.isRequired,
+		itemTemplate: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
 		onSubmit: PropTypes.func,
 		onChange: PropTypes.func,
 		onBeforeRemove: PropTypes.func,
@@ -32,68 +32,92 @@ export default class TableListRepeater extends Component {
 		super(props);
 
 		this.state = {
-			data: this.props.data ? [...this.props.data] : [],
+			unsavedData: this.props.data ? [...this.props.data] : [],
+			initialData: this.props.data ? [...this.props.data] : [],
+			addingItem: false,
 		};
 
 		this.addItem = this.addItem.bind(this);
 	}
 
 	componentWillReceiveProps (nextProps) {
-		if (!nextProps.data) {
+		if (isEqual(nextProps.data, this.state.initialData)) {
 			return;
 		}
 
 		this.setState({
-			data: [...nextProps.data],
+			unsavedData: [...nextProps.data],
+			initialData: [...nextProps.data],
 		});
 	}
 
-	onChange (data) {
+	onChange (unsavedData) {
 		if (typeof this.props.onChange === 'function') {
-			this.props.onChange(data);
+			this.props.onChange(unsavedData);
 		}
 	}
 
-	addItem () {
-		const data = this.state.data.concat([this.props.itemTemplate]);
+	async addItem () {
+		let newItem;
 
-		this.onChange(data);
+		if (typeof this.props.itemTemplate === 'function') {
+			this.setState({
+				addingItem: true,
+			});
+
+			try {
+				newItem = await this.props.itemTemplate();
+			} catch (e) {
+				this.setState({
+					addingItem: false,
+				});
+
+				return;
+			}
+		} else {
+			newItem = this.props.itemTemplate;
+		}
+
+		const unsavedData = this.state.unsavedData.concat([newItem]);
+
+		this.onChange(unsavedData);
 
 		this.setState({
-			data,
+			unsavedData,
+			addingItem: false,
 		});
 	}
 
 	async removeItem (index) {
-		const data = this.state.data.slice();
+		const unsavedData = this.state.unsavedData.slice();
 
 		if (this.props.onBeforeRemove) {
-			const shouldDelete = await this.props.onBeforeRemove(data[index], index);
+			const shouldDelete = await this.props.onBeforeRemove(unsavedData[index], index);
 
 			if (!shouldDelete) {
 				return;
 			}
 		}
 
-		data.splice(index, 1);
+		unsavedData.splice(index, 1);
 
-		this.onChange(data);
+		this.onChange(unsavedData);
 
 		this.setState({
-			data,
+			unsavedData,
 		});
 	}
 
 	updateItemFactory (index) {
 		return (item) => {
-			const data = this.state.data.slice();
+			const unsavedData = this.state.unsavedData.slice();
 
-			data[index] = item;
+			unsavedData[index] = item;
 
-			this.onChange(data);
+			this.onChange(unsavedData);
 
 			this.setState({
-				data,
+				unsavedData,
 			});
 		};
 	}
@@ -129,8 +153,8 @@ export default class TableListRepeater extends Component {
 
 		return (
 			<div className={styles.TableListRepeaterSubmit}>
-				<button className="__Pill __Green" onClick={() => this.props.onSubmit(this.state.data)}
-					disabled={isEqual(this.props.data, this.state.data)}>{this.props.submitLabel}</button>
+				<button className="__Pill __Green" onClick={() => this.props.onSubmit(this.state.unsavedData)}
+					disabled={isEqual(this.props.data, this.state.unsavedData)}>{this.props.submitLabel}</button>
 			</div>
 		);
 
@@ -142,7 +166,7 @@ export default class TableListRepeater extends Component {
 				<TableList form={true} className={styles.TableListRepeater}>
 					{this.renderHeader()}
 
-					{this.state.data.map((item, index) => (
+					{this.state.unsavedData.map((item, index) => (
 						<li className={styles.TableListRow} key={index}>
 							{this.props.repeatingContent.call(this, Object.assign({}, item), index, this.updateItemFactory(index))}
 
@@ -162,9 +186,9 @@ export default class TableListRepeater extends Component {
 
 				<div className={styles.TableListRepeaterAdd}>
 					<div className="InnerPaneSidebarHeaderButtons_Add">
-						<Button className="__Pill __Green __Medium" onClick={this.addItem}>
+						<Button className="__Pill __Green __Medium" onClick={this.addItem} disabled={this.state.addingItem}>
 							<AddSVG />
-							Add {this.props.labelSingular}
+							{!this.state.addingItem ? 'Add ' : 'Adding'} {this.props.labelSingular}
 						</Button>
 					</div>
 				</div>
