@@ -153,6 +153,18 @@ button, .button {
     button.__GrayOutline:hover, button.\--GrayOutline:hover, .button.__GrayOutline:hover, .button.\--GrayOutline:hover {
       color: #fff;
       background: #c7c4c4; }
+      .Theme__Dark button.__GrayOutline:hover {
+        background: none;
+        border-color: #fff; }
+      .Theme__Dark button.\--GrayOutline:hover {
+        background: none;
+        border-color: #fff; }
+      .Theme__Dark .button.__GrayOutline:hover {
+        background: none;
+        border-color: #fff; }
+      .Theme__Dark .button.\--GrayOutline:hover {
+        background: none;
+        border-color: #fff; }
       button.__GrayOutline:hover svg path, button.\--GrayOutline:hover svg path, .button.__GrayOutline:hover svg path, .button.\--GrayOutline:hover svg path {
         fill: #fff; }
     button.__GrayOutline.__Vert_Padding__10, button.\--GrayOutline.__Vert_Padding__10, .button.__GrayOutline.__Vert_Padding__10, .button.\--GrayOutline.__Vert_Padding__10 {
@@ -838,6 +850,8 @@ strong.__Weight_500 {
   left: 0; }
   .Window.__OsWindows {
     top: 32px; }
+    .Window.__OsWindows .Window.__OsWindows {
+      top: 0; }
   .Window.__Draggable {
     -webkit-app-region: drag; }
   .Window.__BackdropBlur {
@@ -1071,9 +1085,12 @@ a.SitesSidebarSite {
     font-size: 14px;
     text-transform: capitalize; }
   a.SitesSidebarSite:not(.SitesSidebarSite__Selected):hover {
-    background: #e7e7e7; }
+    background: #e7e7e7;
+    color: #9f9c9c; }
     .Theme__Dark a.SitesSidebarSite:not(.SitesSidebarSite__Selected):hover {
       background: #434344; }
+    .Theme__Dark a.SitesSidebarSite:not(.SitesSidebarSite__Selected):hover {
+      color: #fff; }
     a.SitesSidebarSite:not(.SitesSidebarSite__Selected):hover.SitesSidebarSite__Gray svg.Circle circle {
       fill: #c7c4c4; }
   a.SitesSidebarSite .SitesSidebarSite_Name {
