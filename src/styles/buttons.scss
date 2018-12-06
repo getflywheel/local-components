@@ -64,6 +64,11 @@
 				color: $white;
 				background: $gray25;
 
+				@include if-theme-dark {
+					background: none;
+					border-color: $white;
+				}
+
 				svg path {
 					fill: $white;
 				}

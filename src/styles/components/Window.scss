@@ -11,6 +11,10 @@
 
 		&.__OsWindows {
 			top: 32px;
+
+			.Window.__OsWindows {
+				top: 0;
+			}
 		}
 
 		&.__Draggable {

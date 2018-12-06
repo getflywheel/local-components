@@ -217,6 +217,10 @@
 	@include __theme-color($gray75, $gray25);
 }
 
+@mixin theme-color-gray75-else-white {
+	@include __theme-color($gray75, $white);
+}
+
 @mixin theme-color-graydark-else-white {
 	@include __theme-color($gray-dark, $white);
 }

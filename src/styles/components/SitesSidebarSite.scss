@@ -46,6 +46,7 @@
 
 		&:not(.SitesSidebarSite__Selected):hover {
 			@include theme-background-gray15-else-graydark50;
+			@include theme-color-gray75-else-white;
 
 			&.SitesSidebarSite__Gray svg.Circle circle {
 				fill: $gray25;
