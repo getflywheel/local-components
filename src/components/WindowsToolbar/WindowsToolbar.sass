@@ -1,5 +1,6 @@
 @import '../../styles/_partials/index'
 
+\:global(.WindowsToolbar),
 .WindowsToolbar
 	-webkit-user-select: none
 	position: fixed
@@ -27,6 +28,7 @@
 		margin-left: auto
 		flex-shrink: 0
 
+	\:global(.Menu),
 	.Menu
 		svg
 			width: 12px
@@ -36,6 +38,7 @@
 		+ .DragRegion
 			margin-left: 0
 
+	\:global(.Back),
 	.Back
 		background-color: $green
 
@@ -53,17 +56,20 @@
 			path
 				fill: $white
 
+	\:global(.Minimize),
 	.Minimize
 		svg
 			width: 10px
 			height: 1px
 			vertical-align: middle
 
+	\:global(.Maximize),
 	.Maximize
 		svg
 			width: 10px
 			height: 10px
 
+	\:global(.Quit),
 	.Quit
 		svg
 			width: 9.8px
