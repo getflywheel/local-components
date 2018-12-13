@@ -7,7 +7,7 @@ import styles from './Spinner.sass';
 export default class Spinner extends Component {
 	static propTypes = {
 		className: PropTypes.string,
-		color: PropTypes.oneOf(['Gray25', 'GrayDark50']),
+		color: PropTypes.oneOf('Gray25', 'GrayDark50'),
 		ellipsis: PropTypes.node,
 		lines: PropTypes.number,
 	};
