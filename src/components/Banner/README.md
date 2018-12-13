@@ -29,3 +29,11 @@ Success:
     <strong>Typewriter!</strong> Poke selvage fam retro pug, offal butcher occupy banh mi artisan tousled.
 </Banner>
 ```
+
+Success with inline link.
+   
+```js
+<Banner variant="success" icon="warning">
+    <strong>Typewriter!</strong> Poke selvage fam retro pug, offal butcher occupy <a>banh mi artisan tousled</a>.
+</Banner>
+```
