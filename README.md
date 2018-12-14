@@ -12,7 +12,7 @@ In additional to a quickly growing set of React components, we also having SVGs,
 ## Quick start
 
 1. Clone and pull down the latest
-1. Install via `yarn` or `npm install`
+1. Install using `yarn`
 1. Start up Styleguidist `yarn start`
 1. Check it out at `http://localhost:6060`
 
