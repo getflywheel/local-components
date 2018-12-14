@@ -2,7 +2,7 @@
 
 :global {
 	.SettingsSidebar {
-		@include theme-background-blur-backdrop($gray15, 1.0);
+		@include theme-background-gray15-else-graydarkalt;
 		width: 280px;
 		flex-shrink: 0;
 		padding: 10px 30px;

@@ -15,7 +15,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		@include theme-background-blur-backdrop;
+		@include __theme-background(rgba($white, .9), rgba($gray-dark, .85));
 		top: 0;
 		right: 0;
 		bottom: 0;

@@ -27,39 +27,6 @@
 	}
 }
 
-@mixin theme-background-blur-backdrop($lightmodeColor: $white, $lightmodeAlpha: 0.9, $darkmodeColor: $gray-dark50, $darkmodeAlpha: 0.15) {
-	@include __theme-background(rgba($lightmodeColor, $lightmodeAlpha), rgba($darkmodeColor, $darkmodeAlpha));
-	@include if-theme-light() {
-		backdrop-filter: blur(50px) brightness(1.1);
-	}
-	@include if-theme-dark() {
-		backdrop-filter: blur(40px);
-	}
-
-	//transition: opacity .5s ease 0ms, backdrop-filter .5s ease 0ms
-	&:global(.__FadeIn) {
-		opacity: 1;
-		animation: fadein .5s ease 0ms;
-
-		@keyframes fadein {
-			from {
-				opacity: 0;
-				backdrop-filter: blur(0);
-			}
-			to {
-				opacity: 1;
-				backdrop-filter: blur(50px);
-			}
-		}
-	}
-
-	&:global(.__FadeOut) {
-		opacity: 0;
-		pointer-events: none;
-		backdrop-filter: blur(0);
-	}
-}
-
 @mixin theme-background-gray1-else-none-disabled {
 	@include __theme-background($gray1, none);
 }
@@ -74,6 +41,10 @@
 
 @mixin theme-background-gray15-else-graydark50 {
 	@include __theme-background($gray15, $gray-dark50);
+}
+
+@mixin theme-background-gray15-else-graydarkalt {
+	@include __theme-background($gray15, $gray-dark-alt);
 }
 
 @mixin theme-background-none-else-graydark50 {

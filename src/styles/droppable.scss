@@ -9,7 +9,7 @@
 		left: 0;
 		bottom: 0;
 		right: 0;
-		@include theme-background-blur-backdrop;
+		@include __theme-background(rgba($white, .9), rgba($gray-dark50, .85));
 	}
 
 	#root.drag::after {

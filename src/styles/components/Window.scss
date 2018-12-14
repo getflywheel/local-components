@@ -22,7 +22,13 @@
 		}
 
 		&.__BackdropBlur {
-			@include theme-background-blur-backdrop;
+			@include if-theme-light() {
+				background: linear-gradient(to right, #e7f5ed, $white 10%);
+			}
+
+			@include if-theme-dark() {
+				background: linear-gradient(to right, $gray-dark-alt, $gray-dark 10%);
+			}
 		}
 	}
 }
