@@ -39,7 +39,7 @@ Try it out for yourself!
 ### Styles
 
 The component library leverages CSS Modules to manage and scope styles. 
-These are considered **local** styles (not to be confused with the Local app...what are you going to do? `¯\_(ツ)_/¯`)
+These are considered **local** styles (not to be confused with the Local app 😉)
 Scoped local styles are a beautiful thing that allow Local to isolate components, run Add-ons with multiple versions of `local-components` and avoid collisions.
 
 As wonderful as local styles are, there are instances where CSS needs to transcend a component.
