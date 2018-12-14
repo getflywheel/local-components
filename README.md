@@ -1,6 +1,6 @@
 # Local by Flywheel component library
 
-Welcome to the official component library for Local by Flywheel!
+Welcome to the official component library for [Local by Flywheel](https://local.getflywheel.com/)!
 
 ## What's included in this component library?
 
