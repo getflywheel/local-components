@@ -25,8 +25,14 @@
 	&.Banner__Error
 		@include stripes(#f05b6f, #ef4e65)
 
+		a:hover
+			color: #8c2738
+
 	&.Banner__Success
 		@include stripes($green, mix($black, $green, 5%))
+
+		a:hover
+			color: #267048
 
 	.Content
 		line-height: 18px
@@ -53,7 +59,7 @@
 		text-decoration: underline
 
 		&:hover
-			color: $gray15
+			color: $orange-dark
 
 	strong
 		margin-right: 5px
