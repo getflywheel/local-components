@@ -2770,10 +2770,18 @@ header.FlywheelHeader {
       box-shadow: 0 0 0 1px #434344; }
     .Theme__Dark .Banner_1XIFO_v6-1-6.Banner__Neutral_2wUTy_v6-1-6 {
       background: repeating-linear-gradient(-65deg, #2a2b2b, #2a2b2b 24px, #262727 24px, #262727 48px); }
+    .Banner_1XIFO_v6-1-6.Banner__Neutral_2wUTy_v6-1-6 a {
+      color: #51bb7b; }
+      .Banner_1XIFO_v6-1-6.Banner__Neutral_2wUTy_v6-1-6 a:hover {
+        color: #267048; }
   .Banner_1XIFO_v6-1-6.Banner__Error_2x4nb_v6-1-6 {
     background: repeating-linear-gradient(-65deg, #f05b6f, #f05b6f 24px, #ef4e65 24px, #ef4e65 48px); }
+    .Banner_1XIFO_v6-1-6.Banner__Error_2x4nb_v6-1-6 a:hover {
+      color: #8c2738; }
   .Banner_1XIFO_v6-1-6.Banner__Success_2Ws99_v6-1-6 {
     background: repeating-linear-gradient(-65deg, #51bb7b, #51bb7b 24px, #4db275 24px, #4db275 48px); }
+    .Banner_1XIFO_v6-1-6.Banner__Success_2Ws99_v6-1-6 a:hover {
+      color: #267048; }
   .Banner_1XIFO_v6-1-6 .Content_3muR8_v6-1-6 {
     line-height: 18px; }
   .SettingsPane_Content .Banner_1XIFO_v6-1-6 {
@@ -2787,6 +2795,12 @@ header.FlywheelHeader {
       fill: #fff; }
     .Banner_1XIFO_v6-1-6.Banner__Neutral_2wUTy_v6-1-6 > svg path {
       fill: #f0ce15; }
+  .Banner_1XIFO_v6-1-6 a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: underline; }
+    .Banner_1XIFO_v6-1-6 a:hover {
+      color: #8e4402; }
   .Banner_1XIFO_v6-1-6 strong {
     margin-right: 5px;
     font-weight: 700;
