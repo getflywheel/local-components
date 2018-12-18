@@ -16,6 +16,12 @@
 		@include theme-border
 		@include theme-stripes-white-else-graydark
 
+		a
+			color: $green
+
+			&:hover
+				color: $green-dark
+
 	&.Banner__Error
 		@include stripes(#f05b6f, #ef4e65)
 
@@ -45,6 +51,9 @@
 		color: $white
 		font-weight: 500
 		text-decoration: underline
+
+		&:hover
+			color: $gray15
 
 	strong
 		margin-right: 5px
