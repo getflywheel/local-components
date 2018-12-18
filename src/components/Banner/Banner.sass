@@ -16,11 +16,23 @@
 		@include theme-border
 		@include theme-stripes-white-else-graydark
 
+		a
+			color: $green
+
+			&:hover
+				color: $green-dark
+
 	&.Banner__Error
 		@include stripes(#f05b6f, #ef4e65)
 
+		a:hover
+			color: $red-dark
+
 	&.Banner__Success
 		@include stripes($green, mix($black, $green, 5%))
+
+		a:hover
+			color: $green-dark
 
 	.Content
 		line-height: 18px
@@ -40,6 +52,14 @@
 		@include selectors_ifHostHasModifier('.Banner__Neutral')
 			path
 				fill: $yellow
+
+	a
+		color: $white
+		font-weight: 500
+		text-decoration: underline
+
+		&:hover
+			color: $orange-dark
 
 	strong
 		margin-right: 5px
