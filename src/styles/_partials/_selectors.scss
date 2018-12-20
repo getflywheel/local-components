@@ -22,6 +22,7 @@
 	}
 }
 
+// this works its way up the dom tree $appendToParentN levels and appends itself
 @mixin selectors_appendToNthParentSelector($simpleSelectorModifier, $appendToParentN: 1) {
 	$finalSelectors: ();
 

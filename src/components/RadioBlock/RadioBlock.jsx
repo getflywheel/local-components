@@ -5,10 +5,22 @@ import PropTypes from 'prop-types';
 import styles from './RadioBlock.sass';
 
 class RadioBlock extends Component {
-	PropTypes = {
+
+	static propTypes = {
+		disabled: PropTypes.bool,
 		options: PropTypes.object,
 		default: PropTypes.any,
 		onChange: PropTypes.func,
+	};
+
+	static defaultProps = {
+		disabled: false,
+		bullets: true,
+		headerFontSize: 's',
+		headerTag: 'div',
+		headerWeight: '500',
+		listItemWrapElement: true,
+		tag: 'ul',
 	};
 
 	constructor (props) {
@@ -41,6 +53,7 @@ class RadioBlock extends Component {
 						<RadioBlockItem
 							onClick={this.onClick}
 							className={this.props.options[optionValue].className}
+							disabled={this.props.disabled || this.props.options[optionValue].disabled}
 							label={this.props.options[optionValue].label}
 							value={optionValue}
 							key={i}
@@ -52,15 +65,22 @@ class RadioBlock extends Component {
 			</div>
 		);
 	}
+
 }
 
 class RadioBlockItem extends Component {
-	PropTypes = {
+
+	static propTypes = {
+		disabled: PropTypes.bool,
 		label: PropTypes.string,
 		value: PropTypes.any,
 		selected: PropTypes.bool,
 		onClick: PropTypes.func,
 		svg: PropTypes.element,
+	};
+
+	static defaultProps = {
+		disabled: false,
 	};
 
 	constructor (props) {
@@ -70,6 +90,10 @@ class RadioBlockItem extends Component {
 	}
 
 	onClick () {
+		if (this.props.disabled) {
+			return;
+		}
+
 		this.props.onClick(this.props.value);
 	}
 
@@ -83,6 +107,7 @@ class RadioBlockItem extends Component {
 					styles.RadioBlock_Option,
 					this.props.className,
 					{
+						[styles.RadioBlock_Option__Disabled]: this.props.disabled,
 						[styles.RadioBlock_Option__Selected]: this.props.selected,
 					}
 				)}
@@ -96,6 +121,7 @@ class RadioBlockItem extends Component {
 			</div>
 		);
 	}
+
 }
 
 export default RadioBlock;
