@@ -4,10 +4,12 @@ import CheckmarkSVG from '../../svg/checkmark--big.svg';
 import PropTypes from 'prop-types';
 import styles from './RadioBlock.sass';
 import Header from '../Header/Header';
+import FlyTooltip from '../FlyTooltip/FlyTooltip';
 
 class RadioBlock extends Component {
 
 	static propTypes = {
+		className: PropTypes.string,
 		disabled: PropTypes.bool,
 		heightSize: PropTypes.oneOf(['m', 'l']),
 		options: PropTypes.object,
@@ -50,7 +52,10 @@ class RadioBlock extends Component {
 
 	render () {
 		return (
-			<div className={styles.RadioBlock}>
+			<div className={classnames(
+				styles.RadioBlock,
+				this.props.className,
+			)}>
 				{
 					Object.keys(this.props.options).map((optionValue, i) =>
 						<RadioBlockItem
@@ -63,6 +68,7 @@ class RadioBlock extends Component {
 							key={i}
 							svg={this.props.options[optionValue].svg}
 							selected={this.state.value === optionValue}
+							tooltipContent={this.props.options[optionValue].tooltipContent}
 						/>
 					)
 				}
@@ -82,6 +88,7 @@ class RadioBlockItem extends Component {
 		selected: PropTypes.bool,
 		onClick: PropTypes.func,
 		svg: PropTypes.element,
+		tooltipContent: PropTypes.node,
 	};
 
 	static defaultProps = {
@@ -103,10 +110,28 @@ class RadioBlockItem extends Component {
 		this.props.onClick(this.props.value);
 	}
 
+	renderOptionalTooltipAndContent (content) {
+		if(this.props.tooltipContent) {
+			return (
+				<FlyTooltip
+					content={this.props.tooltipContent}
+					position="top"
+					hoverIntent={true}
+					className={styles.RadioBlock_Option_TooltipWrapper}
+					widthIsAuto={true}
+				>
+					{ content }
+				</FlyTooltip>
+			)
+		}
+
+		return content;
+	}
+
 	render () {
 		const svg = this.props.svg ? this.props.svg : <CheckmarkSVG />;
 
-		return (
+		return this.renderOptionalTooltipAndContent((
 			<div
 				onClick={this.onClick}
 				className={classnames(
@@ -131,7 +156,7 @@ class RadioBlockItem extends Component {
 					</div>
 				</label>
 			</div>
-		);
+		));
 	}
 
 }

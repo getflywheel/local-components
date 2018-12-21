@@ -50,3 +50,18 @@ Medium size RadioBlock:
     },
 }} />
 ```
+
+Tooltip for the second, disabled option:
+
+```js
+<RadioBlock heightSize="m" onChange={() => console.log('onChange')} default={'test1'} options={{
+    'test1': {
+        label: 'Test 1',
+    },
+    'test2': {
+    	disabled: true,
+        label: 'Test 2',
+        tooltipContent: <p>Hey, this is why this is disabled. It all started when you clicked...</p>,
+    },
+}} />
+```
