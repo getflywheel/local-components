@@ -3,11 +3,13 @@ import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big.svg';
 import PropTypes from 'prop-types';
 import styles from './RadioBlock.sass';
+import Header from '../Header/Header';
 
 class RadioBlock extends Component {
 
 	static propTypes = {
 		disabled: PropTypes.bool,
+		heightSize: PropTypes.oneOf(['m', 'l']),
 		options: PropTypes.object,
 		default: PropTypes.any,
 		onChange: PropTypes.func,
@@ -15,6 +17,7 @@ class RadioBlock extends Component {
 
 	static defaultProps = {
 		disabled: false,
+		heightSize: 'l',
 		bullets: true,
 		headerFontSize: 's',
 		headerTag: 'div',
@@ -54,6 +57,7 @@ class RadioBlock extends Component {
 							onClick={this.onClick}
 							className={this.props.options[optionValue].className}
 							disabled={this.props.disabled || this.props.options[optionValue].disabled}
+							heightSize={this.props.heightSize}
 							label={this.props.options[optionValue].label}
 							value={optionValue}
 							key={i}
@@ -72,6 +76,7 @@ class RadioBlockItem extends Component {
 
 	static propTypes = {
 		disabled: PropTypes.bool,
+		heightSize: PropTypes.oneOf(['m', 'l']),
 		label: PropTypes.string,
 		value: PropTypes.any,
 		selected: PropTypes.bool,
@@ -81,6 +86,7 @@ class RadioBlockItem extends Component {
 
 	static defaultProps = {
 		disabled: false,
+		heightSize: 'l',
 	};
 
 	constructor (props) {
@@ -108,12 +114,18 @@ class RadioBlockItem extends Component {
 					this.props.className,
 					{
 						[styles.RadioBlock_Option__Disabled]: this.props.disabled,
+						[styles.RadioBlock_Option__HeightSizeMedium]: this.props.heightSize === 'm',
 						[styles.RadioBlock_Option__Selected]: this.props.selected,
 					}
 				)}
 			>
 				<label className={styles.RadioBLock_Label}>
-					<h4>{this.props.label}</h4>
+					<Header
+						fontSize={this.props.heightSize === 'l' ? 's' : 'xs'}
+						fontWeight="500"
+					>
+						{this.props.label}
+					</Header>
 					<div className={styles.RadioBLock_Arrow}>
 						{svg}
 					</div>

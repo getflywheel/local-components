@@ -16,6 +16,8 @@
 	font-size: 18px
 	flex: 1
 
+	&.RadioBlock_Option__HeightSizeMedium
+
 	&.RadioBlock_Option__Disabled
 		color: $gray75
 		background: $disabled-background
@@ -50,9 +52,14 @@
 		left: 0
 		transition: all .15s ease 0s
 		@include theme-input-border
-		padding: 29px
 		width: 100%
 		height: 100%
+
+		@include selectors_setAsDefaults
+			padding: 29px
+		@include selectors_appendToNthParentSelector('.RadioBlock_Option__HeightSizeMedium', 1)
+			padding-top: 24px
+			padding-bottom: 24px
 
 		h4
 			margin: 0
