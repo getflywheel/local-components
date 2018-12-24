@@ -271,7 +271,7 @@
 				@include theme-color-graydark-else-white;
 			}
 
-			input {
+			input:not([type="checkbox"]) {
 				@include flywheelInput;
 			}
 
