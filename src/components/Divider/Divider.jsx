@@ -4,11 +4,11 @@ import styles from './Divider.sass';
 import PropTypes from 'prop-types';
 
 const marginsClassMixin = (styles, props) => ({
-	[styles.__MarginTopSizeXS]: props.marginSize === 'xs' || props.marginSizeAfter === 'xs',
-	[styles.__MarginTopSizeS]: props.marginSize === 's' || props.marginSizeAfter === 's',
-	[styles.__MarginTopSizeM]: props.marginSize === 'm' || props.marginSizeAfter === 'm',
-	[styles.__MarginTopSizeL]: props.marginSize === 'l' || props.marginSizeAfter === 'l',
-	[styles.__MarginTopSizeXL]: props.marginSize === 'xl' || props.marginSizeAfter === 'xl',
+	[styles.__MarginTopSizeXS]: props.marginSize === 'xs' || props.marginSizeTop === 'xs',
+	[styles.__MarginTopSizeS]: props.marginSize === 's' || props.marginSizeTop === 's',
+	[styles.__MarginTopSizeM]: props.marginSize === 'm' || props.marginSizeTop === 'm',
+	[styles.__MarginTopSizeL]: props.marginSize === 'l' || props.marginSizeTop === 'l',
+	[styles.__MarginTopSizeXL]: props.marginSize === 'xl' || props.marginSizeTop === 'xl',
 	[styles.__MarginBottomSizeXS]: props.marginSize === 'xs' || props.marginSizeBottom === 'xs',
 	[styles.__MarginBottomSizeS]: props.marginSize === 's' || props.marginSizeBottom === 's',
 	[styles.__MarginBottomSizeM]: props.marginSize === 'm' || props.marginSizeBottom === 'm',
@@ -29,7 +29,7 @@ const Divider = (props) =>
 
 Divider.propTypes = {
 	marginSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	marginSizeAfter: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+	marginSizeTop: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 	marginSizeBottom: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
 };
 
