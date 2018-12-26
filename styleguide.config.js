@@ -3,9 +3,9 @@ const path = require('path');
 const merge = require('webpack-merge');
 
 module.exports = {
-    components: 'src/**/[A-Z]*.jsx',
+    components: 'src/**/[A-Z]*.tsx',
     getComponentPathLine(componentPath) {
-        return `import { ${path.basename(componentPath, '.jsx')} } from 'local-components';`
+        return `import { ${path.basename(componentPath, '.tsx')} } from 'local-components';`
     },
     require: [
         path.join(__dirname, './src/global.sass'),
