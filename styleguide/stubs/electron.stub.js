@@ -1,4 +1,4 @@
-module.exports = {
+export const stub = {
     remote: {
         require: () => {
             return {

@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
 	entry: [
-		'./src/index.js'
+		'./src/index.tsx'
 	],
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -13,7 +13,7 @@ module.exports = {
 		libraryTarget: "commonjs2"
 	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.ts', '.tsx', '.js', '.jsx']
 	},
 	target: 'electron-renderer',
 	externals: [nodeExternals({

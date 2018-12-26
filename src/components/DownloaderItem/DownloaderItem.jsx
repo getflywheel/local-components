@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProgressBar from '../ProgressBar';
 import PropTypes from 'prop-types';
-import { ipcRenderer } from 'electron';
+// import { ipcRenderer } from 'electron';
 
 export default class DownloaderItem extends Component {
 
@@ -38,7 +38,7 @@ export default class DownloaderItem extends Component {
 		}
 
 		if (this.props.onCancelIPCEvent) {
-			return ipcRenderer.send(this.props.onCancelIPCEvent);
+			//return ipcRenderer.send(this.props.onCancelIPCEvent);
 		}
 	}
 

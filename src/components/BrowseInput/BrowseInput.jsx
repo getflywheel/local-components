@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './BrowseInput.sass';
 
-const remote = require('electron').remote;
-const dialog = remote.dialog;
-const formatHomePath = remote.require('./helpers/format-home-path').default;
+// const remote = require('electron').remote;
+// const dialog = remote.dialog;
+// const formatHomePath = remote.require('./helpers/format-home-path').default;
 
 export default class BrowseInput extends Component {
 	static propTypes = {
@@ -36,23 +36,23 @@ export default class BrowseInput extends Component {
 	}
 
 	browseFolder () {
-		dialog.showOpenDialog(remote.getCurrentWindow(), {
-			'title': this.props.dialogTitle,
-			'defaultPath': formatHomePath(this.state.value || this.props.defaultPath),
-			'properties': this.props.dialogProperties,
-		}, (paths) => {
-			if (!paths) {
-				return;
-			}
-
-			const value = paths[0];
-
-			if (this.props.onChange && this.props.onChange.call(this, value) === false) {
-				return false;
-			}
-
-			this.setState({ value });
-		});
+		// dialog.showOpenDialog(remote.getCurrentWindow(), {
+		// 	'title': this.props.dialogTitle,
+		// 	'defaultPath': formatHomePath(this.state.value || this.props.defaultPath),
+		// 	'properties': this.props.dialogProperties,
+		// }, (paths) => {
+		// 	if (!paths) {
+		// 		return;
+		// 	}
+		//
+		// 	const value = paths[0];
+		//
+		// 	if (this.props.onChange && this.props.onChange.call(this, value) === false) {
+		// 		return false;
+		// 	}
+		//
+		// 	this.setState({ value });
+		// });
 	}
 
 	render () {
