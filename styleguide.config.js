@@ -7,6 +7,7 @@ module.exports = {
     getComponentPathLine(componentPath) {
         return `import { ${path.basename(componentPath, '.tsx')} } from 'local-components';`
     },
+	propsParser: require("react-docgen-typescript").parse,
     require: [
         path.join(__dirname, './src/global.sass'),
     ],
