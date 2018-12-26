@@ -4,10 +4,15 @@ const merge = require('webpack-merge');
 
 module.exports = {
     components: 'src/**/[A-Z]*.tsx',
-    getComponentPathLine(componentPath) {
+    getComponentPathLine (componentPath) {
         return `import { ${path.basename(componentPath, '.tsx')} } from 'local-components';`
     },
-	propsParser: require("react-docgen-typescript").parse,
+	propsParser: require('react-docgen-typescript').withDefaultConfig({
+		propFilter: {
+			skipPropsWithoutDoc: false,
+			skipPropsWithName: [],
+		}
+	}).parse,
     require: [
         path.join(__dirname, './src/global.sass'),
     ],

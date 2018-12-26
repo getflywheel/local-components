@@ -1,18 +1,31 @@
 import * as React from "react";
 
-interface ButtonPropsI {
-	text: string;
+interface LocalComponentPropsI {
+	className?: string;
+	style?: object;
 }
 
-export default class Button extends React.Component<ButtonPropsI, {}> {
+interface ButtonPropsI {
+	/** Button contents */
+	children: React.ReactNode;
+	/** Click handler */
+	onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+}
+
+export default class Button extends React.Component<ButtonPropsI & LocalComponentPropsI> {
 
 	static defaultProps: ButtonPropsI = {
-		text: "click click boom"
+		children: null,
 	};
 
 	render () {
 		return (
-			<button {...this.props}>{this.props.text}--{this.props.children}</button>
+			<button
+				style={this.props.style}
+				{...this.props}
+			>
+				{this.props.children}
+			</button>
 		);
 	}
 
