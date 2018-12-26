@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { MemoryRouter } from 'react-router-dom';
 
-export default class Wrapper extends Component {
+export default class Wrapper extends React.Component {
     static propTypes = {
         children: PropTypes.node.isRequired,
         onError: PropTypes.func.isRequired,
