@@ -8,7 +8,7 @@ import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
  */
 
 declare let __non_webpack_require__: any;
-let ReactDOM;
+let ReactDOM: any;
 
 try {
 	ReactDOM = __non_webpack_require__('react-dom');
@@ -71,14 +71,13 @@ export default class Popup extends React.Component<PropsI, StateI> {
 
 	onClickOutside (event: any) {
 		try {
-			// todo - crum: uncomment and fix
-			// const domNode = ReactDOM.findDOMNode(this);
-			//
-			// if (!domNode || !domNode.contains(event.target)) {
-			// 	this.setState({
-			// 		open: false,
-			// 	});
-			// }
+			const domNode = ReactDOM.findDOMNode(this);
+
+			if (!domNode || !domNode.contains(event.target)) {
+				this.setState({
+					open: false,
+				});
+			}
 		}
 		catch (error) {}
 	}
