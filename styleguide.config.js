@@ -7,12 +7,13 @@ module.exports = {
     getComponentPathLine (componentPath) {
         return `import { ${path.basename(componentPath, '.tsx')} } from 'local-components';`
     },
-	propsParser: require('react-docgen-typescript').withDefaultConfig({
-		propFilter: {
+	propsParser: require('react-docgen-typescript').withCustomConfig(
+		'./tsconfig.json', // warning: this is critical for all component examples to be displayed
+		{
 			skipPropsWithoutDoc: false,
-			skipPropsWithName: [],
-		}
-	}).parse,
+				skipPropsWithName: [],
+		},
+	).parse,
     require: [
         path.join(__dirname, './src/global.sass'),
     ],
@@ -31,7 +32,7 @@ module.exports = {
 			node: {
 				__dirname: true,
 				path: true,
-			}
+			},
 		});
     }
 };
