@@ -28,11 +28,11 @@ The `local-compoennts` library can be broken down into 3 main parts:
 
 These are the visual elements that make up both Local and its Add-ons. 
 There are currently 40+ React components in the library. 
-Each component consists of a `.jsx`, `index.js`, `README.md` and optional `.sass` file.
+Each component consists of a `.tsx`, `index.js`, `README.md` and optional `.sass` file.
 
 Try it out for yourself!
 
-1. Make changes to the internals of a component through its `.jsx` and `.sass` files (they should live reload)
+1. Make changes to the internals of a component through its `.tsx` and `.sass` files (they should live reload)
 1. Play around with the examples found in the `README.md` files
 1. Have an idea or bug fix? Submit a [pull request](https://github.com/getflywheel/local-components/pulls).
 
