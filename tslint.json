@@ -1,8 +1,8 @@
-module.exports = {
+{
 	"defaultSeverity": "error",
 	"extends": [
 		"tslint:recommended",
-		"tslint-react",
+		"tslint-react"
 	],
 	"jsRules": true, // true automatically applies any rules that aren't typescript specific
 	"rules": {
@@ -20,14 +20,14 @@ module.exports = {
 			"arrow": "parens",
 			"condition": "ignore",
 			"logical": "ignore",
-			"prop": "ignore",
+			"prop": "ignore"
 		}, // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-wrap-multilines.md,
 		"no-console": {
 			"options": [true, "log"], // throw warning if console.log
 			"severity": "warning"
 		},
 		"quotemark": [true, "single", "jsx-double"], // https://palantir.github.io/tslint/rules/quotemark
-		"space-before-function-paren": "always", // https://eslint.org/docs/rules/space-before-function-paren
+		"space-before-function-paren": "always" // https://eslint.org/docs/rules/space-before-function-paren
 	},
-	"rulesDirectory": [],
-};
+	"rulesDirectory": []
+}
