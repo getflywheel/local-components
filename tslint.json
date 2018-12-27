@@ -1,12 +1,14 @@
 {
 	"defaultSeverity": "error",
 	"extends": [
-		"tslint:recommended",
 		"tslint-react"
 	],
 	"jsRules": {},
 	"rules": {
-
+		"quotemark": [true, "single", "jsx-double"],
+		"jsx-alignment": false,
+		"jsx-no-lambda": false, // todo - crum: look into this more later
+		"jsx-no-multiline-js": false
 	},
 	"rulesDirectory": []
 }
