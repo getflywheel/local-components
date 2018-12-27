@@ -38,7 +38,8 @@
 		"prepare": "yarn run build && shx rm dist/global.css.json",
 		"create-entrypoints": "babel-node tasks/create-component-entrypoints.js",
 		"gh-pages:build": "styleguidist build",
-		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide"
+		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide",
+		"tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json -t stylish"
 	},
 	"peerDependencies": {
 		"react": ">= 16.4.0",
@@ -99,6 +100,10 @@
 		"shx": "^0.3.2",
 		"source-map-loader": "^0.2.4",
 		"style-loader": "^0.23.0",
+		"tslint": "^5.12.0",
+		"tslint-config-airbnb": "^5.11.1",
+		"tslint-loader": "^3.5.4",
+		"tslint-react": "^3.6.0",
 		"typescript": "^3.2.2",
 		"url-loader": "^1.1.1",
 		"webpack": "^4.17.1",
