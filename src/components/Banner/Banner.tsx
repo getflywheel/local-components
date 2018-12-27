@@ -1,11 +1,11 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from './Banner.sass';
 import WarningSVG from '../../svg/warning.svg';
 import CloseSVG from '../../svg/close--small.svg';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	buttonText?: string;
 	currentIndex?: number;

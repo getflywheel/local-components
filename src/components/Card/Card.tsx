@@ -1,11 +1,11 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from  './Card.sass';
 import Header from '../Header/Header';
 import Truncate from '../Truncate/Truncate';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	content?: React.ReactNode;
 	contentClassName?: string;

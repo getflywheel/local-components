@@ -1,5 +1,5 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 interface StateI {
 
@@ -7,9 +7,9 @@ interface StateI {
 
 }
 
-export default class BannerCarousel extends React.Component<LocalComponentPropsI, StateI> {
+export default class BannerCarousel extends React.Component<ReactComponentPropsI, StateI> {
 
-	constructor (props: LocalComponentPropsI) {
+	constructor (props: ReactComponentPropsI) {
 		super(props);
 
 		this.state = {

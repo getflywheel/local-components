@@ -1,5 +1,5 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom';
 import styles from './VerticalNav.sass';
@@ -10,7 +10,7 @@ import Divider from '../Divider/Divider';
 import Button from '../Button/Button';
 import AddSVG from '../../svg/add.svg';
 
-export class VerticalNav extends React.Component<LocalComponentPropsI> {
+export class VerticalNav extends React.Component<ReactComponentPropsI> {
 
 	render () {
 		return (
@@ -22,7 +22,7 @@ export class VerticalNav extends React.Component<LocalComponentPropsI> {
 
 }
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	className?: string;
 	fadeIn?: boolean;
@@ -134,7 +134,7 @@ export class VerticalNavItem extends React.Component<PropsI> {
 
 }
 
-interface WorkspaceSwitcherPropsI extends LocalComponentPropsI {
+interface WorkspaceSwitcherPropsI extends ReactComponentPropsI {
 
 	className?: string;
 	onClickAccount: (...params: any[]) => any;

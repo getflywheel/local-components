@@ -1,10 +1,10 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from './AdvancedToggle.sass';
 import CaretSVG from '../../svg/caret.svg';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	headingText?: string,
 

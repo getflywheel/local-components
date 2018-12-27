@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Popup.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 /**
  * Try catch for Local vs. Styleguidist
@@ -17,7 +17,7 @@ catch (e) {
 	ReactDOM = require('react-dom');
 }
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	items?: any[];
 	offsetX?: string;

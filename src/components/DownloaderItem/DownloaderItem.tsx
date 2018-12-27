@@ -1,9 +1,9 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import ProgressBar from '../ProgressBar';
 // import { ipcRenderer } from 'electron'; // crum - todo: figure this out
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	cancelText?: string;
 	downloaded?: number;

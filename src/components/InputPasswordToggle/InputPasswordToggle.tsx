@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import EyeSVG from '../../svg/eye.svg';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 interface StateI {
 
@@ -9,9 +9,9 @@ interface StateI {
 
 }
 
-export default class InputPasswordToggle extends React.Component<LocalComponentPropsI, StateI> {
+export default class InputPasswordToggle extends React.Component<ReactComponentPropsI, StateI> {
 
-	constructor (props: LocalComponentPropsI) {
+	constructor (props: ReactComponentPropsI) {
 		super(props);
 
 		this.state = {

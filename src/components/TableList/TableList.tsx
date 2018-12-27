@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './TableList.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	form?: boolean;
 	stripes?: boolean;
@@ -31,7 +31,7 @@ export class TableList extends React.Component<PropsI> {
 	}
 }
 
-interface TableListRowPropsI extends LocalComponentPropsI {
+interface TableListRowPropsI extends ReactComponentPropsI {
 
 	form?: boolean;
 	label?: string;

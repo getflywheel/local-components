@@ -1,5 +1,5 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import TruncateMarkup from 'react-truncate-markup';
 
 // todo - crum: this component doesn't currently support 'className' or 'style' because 3rd party 'TruncateMarkup' doesn't support it...use TypeScript 'omit???' Omit<IXProps, "unwantedProp">
@@ -11,7 +11,7 @@ interface PropsI {
 
 }
 
-export default class Truncate extends React.Component<PropsI & LocalComponentPropsI> {
+export default class Truncate extends React.Component<PropsI & ReactComponentPropsI> {
 
 	static defaultProps: Partial<PropsI> = {
 		lines: 1,

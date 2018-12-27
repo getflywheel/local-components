@@ -1,10 +1,10 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from './BigLoader.sass';
 import LoadingIndicator from '../LoadingIndicator';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	color?: 'Green' | 'Gray';
 	message?: string;

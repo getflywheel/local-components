@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import { Switch, Route, NavLink, RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import styles from './TertiaryNav.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
-class TertiaryNavBase extends React.Component<LocalComponentPropsI & RouteComponentProps<{}>> {
+class TertiaryNavBase extends React.Component<ReactComponentPropsI & RouteComponentProps<{}>> {
 
     // static propTypes = {
     //     children: (props, propName, componentName) => {
@@ -54,7 +54,7 @@ class TertiaryNavBase extends React.Component<LocalComponentPropsI & RouteCompon
 
 }
 
-interface TertiaryNavItemBasePropsI extends LocalComponentPropsI {
+interface TertiaryNavItemBasePropsI extends ReactComponentPropsI {
 
 	path: string;
 	// component: (props, propName, componentName) => {

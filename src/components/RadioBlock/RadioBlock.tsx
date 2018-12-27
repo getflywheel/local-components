@@ -1,10 +1,10 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big.svg';
 import styles from './RadioBlock.sass';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	options: {[key: string]: RadioBlockItemPropsI},
 	default: string | null;
@@ -66,7 +66,7 @@ class RadioBlock extends React.Component<PropsI, StateI> {
 
 }
 
-interface RadioBlockItemPropsI extends LocalComponentPropsI {
+interface RadioBlockItemPropsI extends ReactComponentPropsI {
 
 	label: string;
 	value: string | null;

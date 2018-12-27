@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyDropdown.sass';
 import CaretSVG from '../../svg/caret.svg';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 interface ItemsI {
 
@@ -12,7 +12,7 @@ interface ItemsI {
 
 }
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	caret?: boolean;
 	items: ItemsI[];

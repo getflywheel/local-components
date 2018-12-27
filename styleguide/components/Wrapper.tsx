@@ -1,8 +1,8 @@
 import * as React from 'react';
-import LocalComponentPropsI from '../../src/common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../src/common/structures/ReactComponentPropsI';
 import { MemoryRouter } from 'react-router-dom';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	children: any;
 	onError: (error: any) => any;

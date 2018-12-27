@@ -13,9 +13,9 @@ import shell from 'highlight.js/lib/languages/shell';
 import sql from 'highlight.js/lib/languages/sql';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	src?: string,
 
@@ -39,7 +39,7 @@ export default class Markdown extends React.Component<PropsI> {
 
 }
 
-interface MarkdownCodeBlockPropsI extends LocalComponentPropsI {
+interface MarkdownCodeBlockPropsI extends ReactComponentPropsI {
 
 	value: string;
 	language: string;

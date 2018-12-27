@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Divider.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 const marginsClassMixin = (styles: {[key: string]: any}, props: {[key: string]: any}) => ({
 	[styles.__MarginTopSizeXS]: props.marginSize === 'xs' || props.marginSizeAfter === 'xs',
@@ -16,7 +16,7 @@ const marginsClassMixin = (styles: {[key: string]: any}, props: {[key: string]: 
 	[styles.__MarginBottomSizeXL]: props.marginSize === 'xl' || props.marginSizeBottom === 'xl',
 });
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	marginSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	marginSizeAfter?: 'xs' | 's' | 'm' | 'l' | 'xl';

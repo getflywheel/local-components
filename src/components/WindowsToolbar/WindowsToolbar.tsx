@@ -1,5 +1,5 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from './WindowsToolbar.sass';
 import WindowsHamburger from '../../svg/windows_hamburger.svg';
@@ -8,7 +8,7 @@ import WindowsMaximize from '../../svg/windows_maximize.svg';
 import WindowsClose from '../../svg/windows_close.svg';
 import WindowsBack from '../../svg/windows_back.svg';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	title: string;
 	resizable?: boolean;

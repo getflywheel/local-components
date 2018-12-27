@@ -3,9 +3,9 @@ import CircleSVG from '../../svg/circle.svg';
 import ExclamationSVG from '../../svg/exclamation.svg';
 import CompleteSVG from '../../svg/complete.svg';
 import SpinnerSVG from '../../svg/spinner.svg';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	inProgress: boolean;
 	ready: boolean;

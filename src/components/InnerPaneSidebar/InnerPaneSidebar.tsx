@@ -1,15 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './InnerPaneSidebar.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	title: string,
 
 }
 
-export function InnerPaneSidebar (props: LocalComponentPropsI) {
+export function InnerPaneSidebar (props: ReactComponentPropsI) {
     return (
     	<div
 			className={classnames(
@@ -44,7 +44,7 @@ export function InnerPaneSidebarHeader (props: PropsI) {
 	);
 }
 
-export function InnerPaneSidebarAddNew (props: LocalComponentPropsI) {
+export function InnerPaneSidebarAddNew (props: ReactComponentPropsI) {
     return (
     	<div
 			className={classnames(
@@ -57,7 +57,7 @@ export function InnerPaneSidebarAddNew (props: LocalComponentPropsI) {
 	);
 }
 
-export function InnerPaneSidebarContent (props: LocalComponentPropsI) {
+export function InnerPaneSidebarContent (props: ReactComponentPropsI) {
     return (
     	<div
 			className={classnames(
@@ -70,7 +70,7 @@ export function InnerPaneSidebarContent (props: LocalComponentPropsI) {
 	);
 }
 
-export function InnerPaneSidebarContentItem (props: LocalComponentPropsI) {
+export function InnerPaneSidebarContentItem (props: ReactComponentPropsI) {
     return (
     	<div
 			className={classnames(

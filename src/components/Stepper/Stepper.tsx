@@ -1,10 +1,10 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import CompleteSVG from '../../svg/complete.svg';
 import styles from './Stepper.sass';
 
-export class Stepper extends React.Component<LocalComponentPropsI> {
+export class Stepper extends React.Component<ReactComponentPropsI> {
 
 	render () {
 		return (
@@ -23,7 +23,7 @@ export class Stepper extends React.Component<LocalComponentPropsI> {
 
 }
 
-interface StepPropsI extends LocalComponentPropsI {
+interface StepPropsI extends ReactComponentPropsI {
 
 	active: boolean;
 	disabled: boolean;

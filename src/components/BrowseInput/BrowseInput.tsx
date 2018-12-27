@@ -1,13 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './BrowseInput.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 // const remote = require('electron').remote;
 // const dialog = remote.dialog;
 // const formatHomePath = remote.require('./helpers/format-home-path').default;
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	defaultPath?: string;
 	dialogProperties?: string[];

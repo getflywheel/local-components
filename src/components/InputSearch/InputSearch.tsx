@@ -1,5 +1,5 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from './InputSearch.sass';
 import SearchSVG from '../../svg/search.svg';
@@ -13,7 +13,7 @@ const excludeProps = {
 	value: true,
 };
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	className?: string;
 	containerClassName?: string;

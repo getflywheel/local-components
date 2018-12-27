@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './ProgressBar.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 interface PropsI {
 
@@ -11,7 +11,7 @@ interface PropsI {
 
 }
 
-export default class ProgressBar extends React.Component<PropsI & LocalComponentPropsI> {
+export default class ProgressBar extends React.Component<PropsI & ReactComponentPropsI> {
 
 	renderStripes () {
 		return (

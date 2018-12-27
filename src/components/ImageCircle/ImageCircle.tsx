@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './ImageCircle.sass';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	className?: string;
 	size?: 'm' | 's';

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyModal.sass';
 import Close from '../Close';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 const ReactModal = require('react-modal');
 
@@ -27,7 +27,7 @@ else {
 	ReactModal.setAppElement('body');
 }
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	ariaHideApp?: boolean;
 	closeTimeoutMS?: number;

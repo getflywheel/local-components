@@ -1,5 +1,5 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import { TableList } from '../TableList';
 import CloseSmallSVG from '../../svg/close--small.svg';
@@ -8,7 +8,7 @@ import Button from '../Button';
 import isEqual from 'lodash.isequal';
 import styles from '../TableList/TableList.sass';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	data?: any[]
 	header?: React.ReactNode;

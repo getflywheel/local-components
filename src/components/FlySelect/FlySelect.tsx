@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import CheckSVG from '../../svg/checkmark--big.svg';
 import DownloadSmallSVG from '../../svg/download--small.svg';
 import ArrowRightSVG from '../../svg/arrow--right.svg';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	disabled?: boolean;
 	emptyPlaceholder?: string;

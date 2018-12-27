@@ -1,9 +1,9 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from './Header.sass';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	fontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	fontWeight?: '300' | '400' | '500' | '700' | '900';

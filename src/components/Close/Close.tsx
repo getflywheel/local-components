@@ -1,10 +1,10 @@
 import React from 'react';
-import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
+import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import CloseBigSVG from '../../svg/close--big.svg';
 import styles from './Close.sass';
 
-interface PropsI extends LocalComponentPropsI {
+interface PropsI extends ReactComponentPropsI {
 
 	onClick: (...params: any[]) => any;
 
