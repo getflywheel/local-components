@@ -9,21 +9,23 @@ const ReactModal = require('react-modal');
 /**
  * Try catch for Local vs. Styleguidist
  */
-// todo - crum: fix and uncomment
-// let ReactDOM;
-//
-// try {
-// 	ReactDOM = __non_webpack_require__('react-dom');
-// } catch (e) {
-// 	ReactDOM = require('react-dom');
-// }
-//
-// if(typeof document !== 'undefined' && document.getElementById('root')) {
-// 	ReactModal.setAppElement('#root');
-// }
-// else {
-// 	ReactModal.setAppElement('body');
-// }
+
+declare let __non_webpack_require__: any;
+let ReactDOM: any;
+
+try {
+	ReactDOM = __non_webpack_require__('react-dom');
+}
+catch (e) {
+	ReactDOM = require('react-dom');
+}
+
+if(typeof document !== 'undefined' && document.getElementById('root')) {
+	ReactModal.setAppElement('#root');
+}
+else {
+	ReactModal.setAppElement('body');
+}
 
 interface PropsI extends LocalComponentPropsI {
 
@@ -56,8 +58,7 @@ export default class FlyModal extends React.Component<PropsI> {
 	static onRequestClose () {
 		document.getElementsByClassName(styles.FlyModalOverlay)[0].classList.add('__FadeOut');
 
-		// todo - crum: uncomment this line
-		// ReactDOM.unmountComponentAtNode(document.getElementById('popup-container'))
+		ReactDOM.unmountComponentAtNode(document.getElementById('popup-container'))
 		/* setTimeout used to wait for animation and to hack around "React DOM tree root should always have a node reference." warning */
 		//setTimeout(() => ReactDOM.unmountComponentAtNode(document.getElementById('popup-container')), 210);
 	}

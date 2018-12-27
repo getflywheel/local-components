@@ -7,14 +7,15 @@ import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
  * Try catch for Local vs. Styleguidist
  */
 
-// todo - crum uncomment and fix
-// let ReactDOM;
-//
-// try {
-// 	ReactDOM = __non_webpack_require__('react-dom');
-// } catch (e) {
-// 	ReactDOM = require('react-dom');
-// }
+declare let __non_webpack_require__: any;
+let ReactDOM;
+
+try {
+	ReactDOM = __non_webpack_require__('react-dom');
+}
+catch (e) {
+	ReactDOM = require('react-dom');
+}
 
 interface PropsI extends LocalComponentPropsI {
 
