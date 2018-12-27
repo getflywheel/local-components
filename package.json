@@ -39,7 +39,7 @@
 		"create-entrypoints": "babel-node tasks/create-component-entrypoints.js",
 		"gh-pages:build": "styleguidist build",
 		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide",
-		"tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json -t stylish"
+		"tslint": "node_modules/.bin/tslint -c tslint.js -p tsconfig.json -t stylish"
 	},
 	"peerDependencies": {
 		"react": ">= 16.4.0",

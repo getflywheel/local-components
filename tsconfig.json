@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"allowJs": true,
+		"allowJs": true, // parse & lint JavaScript along with TypeScript
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"isolatedModules": true,
