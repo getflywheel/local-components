@@ -1,1 +1,1 @@
-export {default} from './EmptyArea';
+export {EmptyArea} from './EmptyArea';

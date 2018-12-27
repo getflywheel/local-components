@@ -10,7 +10,7 @@ interface PropsI extends LocalComponentPropsI {
 
 }
 
-export default class EmptyArea extends React.Component<PropsI> {
+export class EmptyArea extends React.Component<PropsI> {
 
 	render () {
 		return (
