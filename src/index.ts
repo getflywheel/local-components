@@ -1,16 +1,14 @@
 import { hot } from 'react-hot-loader';
 import addStyles from './add-styles';
-import Button1 from './components/Button/Button';
-import AdvancedToggle1 from './components/AdvancedToggle/AdvancedToggle';
 
 addStyles();
 
-export const AdvancedToggle = hot(AdvancedToggle1);
+export const AdvancedToggle = hot(module)(require('./components/AdvancedToggle').default);
 export const Banner = hot(module)(require('./components/Banner').default);
 export const BannerCarousel = hot(module)(require('./components/BannerCarousel').default);
 export const BigLoader = hot(module)(require('./components/BigLoader').default);
 export const BrowseInput = hot(module)(require('./components/BrowseInput').default);
-export const Button = hot(Button1);
+export const Button = hot(module)(require('./components/Button').default);
 export const Card = hot(module)(require('./components/Card').default);
 export const Close = hot(module)(require('./components/Close').default);
 export const Divider = hot(module)(require('./components/Divider').default);

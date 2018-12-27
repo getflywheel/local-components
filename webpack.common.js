@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
 	entry: [
-		'./src/index.tsx'
+		'./src/index.ts'
 	],
 	output: {
 		path: path.resolve(__dirname, 'dist'),
