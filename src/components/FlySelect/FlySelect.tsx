@@ -40,12 +40,12 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 		super(props);
 
 		this.state = {
-			value: this.props.value,
-			options: this.props.options ? this.formatOptions(this.props.options) : {},
-			open: false,
 			focus: false,
-			willClose: false,
+			open: false,
+			options: this.props.options ? this.formatOptions(this.props.options) : {},
 			optionsLoaded: this.props.optionsLoader ? false : null,
+			value: this.props.value,
+			willClose: false,
 		};
 
 		this.onClick = this.onClick.bind(this);
@@ -97,8 +97,8 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 
 			formattedOptions[value !== null ? value : option] = {
 				label: option,
-				value: value !== null ? value : option,
 				optionGroup: null,
+				value: value !== null ? value : option,
 			};
 		};
 
@@ -114,22 +114,22 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 
 	onClick () {
 		this.setState({
-			open: true,
 			focus: true,
+			open: true,
 		});
 	}
 
 	onBlur () {
 		this.setState({
-			open: false,
 			focus: false,
+			open: false,
 		});
 	}
 
 	selectOption (e: any, value: any) {
 		this.setState({
 			open: false,
-			value: value,
+			value,
 		});
 
 		this.props.onChange.call(this, value);
@@ -146,10 +146,10 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 		const maxBottomBounding = window.innerHeight - 40;
 
 		return {
-			maxHeight: maxBottomBounding - optionsBounding.top,
-			top: optionsBounding.top,
 			left: optionsBounding.left,
+			maxHeight: maxBottomBounding - optionsBounding.top,
 			minWidth: optionsBounding.right - optionsBounding.left,
+			top: optionsBounding.top,
 		};
 	}
 
@@ -175,7 +175,7 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 					className="DownloadSmall"
 				>
 					{DownloadSmallSVG}
-				</svg>
+				</svg>,
 			);
 		}
 
@@ -185,7 +185,7 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 					<img
 						src={option.icon}
 						key="icon"
-					/>
+					/>,
 				);
 			}
 			else {
@@ -199,7 +199,7 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 				className="FlySelect_Option_Label"
 			>
 				{option.label}
-			</span>
+			</span>,
 		);
 		output.push(this.renderItemRight(option, showCheck));
 
@@ -271,7 +271,7 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 					'FlySelect_Option',
 					{
 						'__Disabled': disabled,
-					}
+					},
 				)}
 				onClick={(e) => this.selectOption(e, optionValue)}
 			>
@@ -315,7 +315,7 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 							:
 							null
 					}
-				</div>
+				</div>,
 			);
 
 			output.push(optionNodes);
@@ -334,10 +334,10 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 					'FlySelect',
 					this.props.className,
 					{
-                        'FlySelect__Open': this.state.open,
-                        'FlySelect__Focus': this.state.focus,
-                        'FlySelect__HasFooter': this.props.footerText,
-                    },
+						'FlySelect__Focus': this.state.focus,
+						'FlySelect__HasFooter': this.props.footerText,
+						'FlySelect__Open': this.state.open,
+					},
 				)}
 				style={this.props.style}
 				data-current-value={this.state.value}

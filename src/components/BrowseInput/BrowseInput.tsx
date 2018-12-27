@@ -71,10 +71,10 @@ export default class BrowseInput extends React.Component<PropsI, StateI> {
 				{
 					[styles.BrowseInput__Inline]: this.props.isInline,
 					[styles.BrowseInput__FormInput]: this.props.isFormInput,
-				}
+				},
 			)}>
 				<span className={classnames({
-					[styles.BrowseInput_Placeholder]: this.props.placeholder && !this.state.value
+					[styles.BrowseInput_Placeholder]: this.props.placeholder && !this.state.value,
 				})}>
 					{this.state.value || this.props.placeholder}
 				</span>

@@ -10,7 +10,7 @@ import styles from '../TableList/TableList.sass';
 
 interface PropsI extends ReactComponentPropsI {
 
-	data?: any[]
+	data?: any[];
 	header?: React.ReactNode;
 	itemTemplate: any;
 	labelSingular?: string;
@@ -18,8 +18,8 @@ interface PropsI extends ReactComponentPropsI {
 	onChange?: (...params: any[]) => any;
 	onSubmit?: (...params: any[]) => any;
 	repeatingContent: (...params: any[]) => any;
-	submitLabel?: string;
 	submitDisabled?: boolean;
+	submitLabel?: string;
 
 }
 
@@ -35,17 +35,17 @@ export default class TableListRepeater extends React.Component<PropsI, StateI> {
 
 	static defaultProps: Partial<PropsI> = {
 		labelSingular: 'Item',
-		submitLabel: 'Submit',
 		submitDisabled: false,
+		submitLabel: 'Submit',
 	};
 
 	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
-			unsavedData: this.props.data ? [...this.props.data] : [],
-			initialData: this.props.data ? [...this.props.data] : [],
 			addingItem: false,
+			initialData: this.props.data ? [...this.props.data] : [],
+			unsavedData: this.props.data ? [...this.props.data] : [],
 		};
 
 		this.addItem = this.addItem.bind(this);
@@ -56,10 +56,10 @@ export default class TableListRepeater extends React.Component<PropsI, StateI> {
 			return;
 		}
 
-		if(nextProps.data) {
+		if (nextProps.data) {
 			this.setState({
-				unsavedData: [...nextProps.data],
 				initialData: [...nextProps.data],
+				unsavedData: [...nextProps.data],
 			});
 		}
 	}
@@ -98,8 +98,8 @@ export default class TableListRepeater extends React.Component<PropsI, StateI> {
 		this.onChange(unsavedData);
 
 		this.setState({
-			unsavedData,
 			addingItem: false,
+			unsavedData,
 		});
 	}
 

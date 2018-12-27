@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
-import classnames from 'classnames'
+import classnames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import styles from './VerticalNav.sass';
 import FlyTooltip from '../FlyTooltip/FlyTooltip';
@@ -39,7 +39,7 @@ export class VerticalNavItem extends React.Component<PropsI> {
 
 	static defaultProps: Partial<PropsI> = {
 		fadeIn: true,
-		type: 'navlink'
+		type: 'navlink',
 	};
 
 	renderWrapper (children: any, additionalTooltipClassName?: string | string[]) {
@@ -83,15 +83,15 @@ export class VerticalNavItem extends React.Component<PropsI> {
 						this.props.navLinkClass,
 						additionalNavLinkClass,
 						{
-							'__FadeIn': this.props.fadeIn,
 							'__Active': this.props.navLinkActive,
-						}
+							'__FadeIn': this.props.fadeIn,
+						},
 					)}
 				>
 					{this.props.children}
 				</NavLink>
 			),
-			additionalTooltipClassName
+			additionalTooltipClassName,
 		);
 	}
 
@@ -113,11 +113,11 @@ export class VerticalNavItem extends React.Component<PropsI> {
 			>
 				{this.props.children}
 			</div>
-		)
+		);
 	}
 
 	render () {
-		switch(this.props.type) {
+		switch (this.props.type) {
 			case 'addsite':
 				return this.renderTypeAddSite();
 			case 'filler':
@@ -176,8 +176,8 @@ export class WorkspaceSwitcher extends React.Component<WorkspaceSwitcherPropsI, 
 	componentDidUpdate (prevProps: WorkspaceSwitcherPropsI, prevState: WorkspaceSwitcherStateI) {
 		if (prevProps.workspaces.length !== this.props.workspaces.length) {
 			this.setState({
-				activeWorkspaceItem: this.getInitialActiveWorkspaceItem()
-			})
+				activeWorkspaceItem: this.getInitialActiveWorkspaceItem(),
+			});
 		}
 	}
 
@@ -186,7 +186,7 @@ export class WorkspaceSwitcher extends React.Component<WorkspaceSwitcherPropsI, 
 			activeWorkspaceItem: workspaceItem,
 		});
 
-		if(this.props.onClickWorkspace) {
+		if (this.props.onClickWorkspace) {
 			this.props.onClickWorkspace.call(this, workspaceItem);
 		}
 	}
@@ -233,14 +233,14 @@ export class WorkspaceSwitcher extends React.Component<WorkspaceSwitcherPropsI, 
 															styles.WorkspaceSwitcher_PopupGridItem,
 															{
 																[styles.WorkspaceSwitcher_PopupGridItem__Active]: workspaceItem.id === this.state.activeWorkspaceItem.id,
-															}
+															},
 														)}
 														size="s"
 														square={workspaceItem.isTeam}
 														src={workspaceItem.src}
 													/>
 												</div>
-											)
+											);
 										})}
 										<div className={styles.WorkspaceSwitcher_PopupGridItemAdd} onClick={this.props.onClickAddTeam}>
 											<svg>{AddSVG}</svg>

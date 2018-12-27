@@ -6,16 +6,16 @@ import TruncateMarkup from 'react-truncate-markup';
 
 interface PropsI {
 
-	lines?: number | undefined;
 	ellipsis?: React.ReactNode;
+	lines?: number | undefined;
 
 }
 
 export default class Truncate extends React.Component<PropsI & ReactComponentPropsI> {
 
 	static defaultProps: Partial<PropsI> = {
-		lines: 1,
 		ellipsis: '...',
+		lines: 1,
 	};
 
 	render () {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
-import styles from  './Switch.sass';
+import styles from './Switch.sass';
 
 interface PropsI extends ReactComponentPropsI {
 
@@ -47,7 +47,7 @@ export default class Switch extends React.Component<PropsI, StateI> {
 	handleChange () {
 		const checked = !this.state.checked;
 
-		this.setState({ checked: checked });
+		this.setState({ checked });
 
 		if (this.props.onChange) {
 			this.props.onChange(this.props.name, checked);
@@ -62,7 +62,7 @@ export default class Switch extends React.Component<PropsI, StateI> {
 					{
 						[styles.Switch__Tiny]: this.props.tiny,
 						[styles.Switch__Flat]: this.props.flat,
-					}
+					},
 				)}
 			>
 				{

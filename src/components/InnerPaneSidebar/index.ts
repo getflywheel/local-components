@@ -1,7 +1,7 @@
 export {
-    InnerPaneSidebar,
-    InnerPaneSidebarHeader,
-    InnerPaneSidebarAddNew,
-    InnerPaneSidebarContent,
-    InnerPaneSidebarContentItem
+	InnerPaneSidebar,
+	InnerPaneSidebarHeader,
+	InnerPaneSidebarAddNew,
+	InnerPaneSidebarContent,
+	InnerPaneSidebarContentItem,
 } from './InnerPaneSidebar';

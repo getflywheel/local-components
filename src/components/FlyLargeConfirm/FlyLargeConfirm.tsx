@@ -45,7 +45,7 @@ export default class FlyLargeConfirm extends React.Component<PropsI, StateI> {
 					styles.FlyLargeConfirm,
 					{
 						[styles.FlyLargeConfirm__Confirmed]: this.state.confirmed,
-					}
+					},
 				)}
 			>
 				<p>{this.props.bodyText}</p>

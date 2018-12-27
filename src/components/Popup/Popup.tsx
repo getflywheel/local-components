@@ -134,4 +134,3 @@ export default class Popup extends React.Component<PropsI, StateI> {
 	}
 
 }
-

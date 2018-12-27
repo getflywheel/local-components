@@ -17,7 +17,7 @@ import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 interface PropsI extends ReactComponentPropsI {
 
-	src?: string,
+	src?: string;
 
 }
 
@@ -31,7 +31,7 @@ export default class Markdown extends React.Component<PropsI> {
 				skipHtml={true}
 				source={this.props.src}
 				renderers={{
-					code: MarkdownCodeBlock
+					code: MarkdownCodeBlock,
 				}}
 			/>
 		);
@@ -66,8 +66,10 @@ class MarkdownCodeBlock extends React.PureComponent<MarkdownCodeBlockPropsI> {
 	constructor (props: MarkdownCodeBlockPropsI) {
 		super(props);
 
-		for(const langName in this.__languagesEnabled) {
-			Lowlight.registerLanguage(langName, this.__languagesEnabled[langName]);
+		for (const langName in this.__languagesEnabled) {
+			if (this.__languagesEnabled.hasOwnProperty(langName)) {
+				Lowlight.registerLanguage(langName, this.__languagesEnabled[langName]);
+			}
 		}
 	}
 

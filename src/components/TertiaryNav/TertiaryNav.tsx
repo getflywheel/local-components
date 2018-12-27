@@ -7,50 +7,50 @@ import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 class TertiaryNavBase extends React.Component<ReactComponentPropsI & RouteComponentProps<{}>> {
 
-    // static propTypes = {
-    //     children: (props, propName, componentName) => {
-    //         const prop = props[propName];
-    //         let error = null;
+	// static propTypes = {
+	//	  children: (props, propName, componentName) => {
+	//			const prop = props[propName];
+	//			let error = null;
 	//
-    //         React.Children.forEach(prop, (child) => {
-    //             if (child.type.WrappedComponent && child.type.WrappedComponent.name !== 'TertiaryNavItemBase') {
-    //                 error = new Error(`${componentName} children need to be of type 'TertiaryNavItem' but instead received type '${child.type}'.`);
-    //             }
-    //         });
+	//			React.Children.forEach(prop, (child) => {
+	//				 if (child.type.WrappedComponent && child.type.WrappedComponent.name !== 'TertiaryNavItemBase') {
+	//					  error = new Error(`${componentName} children need to be of type 'TertiaryNavItem' but instead received type '${child.type}'.`);
+	//				 }
+	//			});
 	//
-    //         return error;
-    //     }
-    // };
+	//			return error;
+	//	  }
+	// };
 
-    render () {
-        return (
-            <div
+	render () {
+		return (
+			<div
 				className={classnames(
 					styles.TertiaryNavContainer,
 					this.props.className,
 				)}
 			>
-                <ul className={classnames(styles.TertiaryNav)}>
-                    {this.props.children}
-                </ul>
-                <div className={classnames(styles.TertiaryContent)}>
-                    <Switch>
-                        {React.Children.map(this.props.children, (child: any) => {
-                            const propsWithoutChildren = { ...child.props };
-                            delete propsWithoutChildren.children;
+				<ul className={classnames(styles.TertiaryNav)}>
+					{this.props.children}
+				</ul>
+				<div className={classnames(styles.TertiaryContent)}>
+					<Switch>
+						{React.Children.map(this.props.children, (child: any) => {
+							const propsWithoutChildren = { ...child.props };
+							delete propsWithoutChildren.children;
 
-                            return (
-                                <Route
+							return (
+								<Route
 									{...propsWithoutChildren}
 									path={`${this.props.match.url}${propsWithoutChildren.path}`}
 								/>
-                            )
-                        })}
-                    </Switch>
-                </div>
-            </div>
-        );
-    }
+							);
+						})}
+					</Switch>
+				</div>
+			</div>
+		);
+	}
 
 }
 
@@ -74,30 +74,29 @@ interface TertiaryNavItemBasePropsI extends ReactComponentPropsI {
 
 class TertiaryNavItemBase extends React.Component<TertiaryNavItemBasePropsI & RouteComponentProps<{}>> {
 
-    render () {
-        return (
-            <li
+	render () {
+		return (
+			<li
 				className={classnames(
 					styles.TertiaryNavItem,
 					this.props.className,
 					{
 						[styles.TertiaryNavItem__Error]: this.props.variant === 'error',
-					}
+					},
 				)}
 			>
-                <NavLink
+				<NavLink
 					exact={true}
 					to={`${this.props.match.url}${this.props.path}`}
 					activeClassName={styles.TertiaryNavItem__Active}
 				>
-                    {this.props.children}
-                </NavLink>
-            </li>
-        );
-    }
+				  {this.props.children}
+				</NavLink>
+			</li>
+		);
+	}
 
 }
-
 
 export const TertiaryNav = withRouter(TertiaryNavBase);
 export const TertiaryNavItem = withRouter(TertiaryNavItemBase);

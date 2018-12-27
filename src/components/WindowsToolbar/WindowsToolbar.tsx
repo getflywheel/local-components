@@ -60,7 +60,7 @@ class WindowsToolbar extends React.Component<PropsI> {
 							[styles.Maximize],
 							{
 								'__Disabled': !this.props.resizable,
-							}
+							},
 						)}
 						onClick={this.props.onMaximize}
 					>

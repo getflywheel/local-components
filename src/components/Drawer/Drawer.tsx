@@ -13,32 +13,32 @@ interface PropsI extends ReactComponentPropsI {
 
 interface StateI {
 
-	disableAnimation: boolean
+	disableAnimation: boolean;
 
 }
 
 export default class Drawer extends React.Component<PropsI, StateI> {
 
-    constructor (props: PropsI) {
-        super(props);
+	constructor (props: PropsI) {
+		super(props);
 
-        this.state = {
-            disableAnimation: true
-        };
-    };
+		this.state = {
+			disableAnimation: true,
+		};
+	}
 
-    componentWillReceiveProps (nextProps: PropsI) {
-        if (nextProps.show) {
-            this.setState({
-                disableAnimation: false
-            });
-        }
-    }
+	componentWillReceiveProps (nextProps: PropsI) {
+		if (nextProps.show) {
+			this.setState({
+				disableAnimation: false,
+			});
+		}
+	}
 
-    render () {
-        return (
-            <div className={classnames(styles.DrawerContainer)}>
-                <div
+	render () {
+		return (
+			<div className={classnames(styles.DrawerContainer)}>
+				<div
 					className={classnames(
 						styles.Drawer,
 						this.props.className,
@@ -48,15 +48,13 @@ export default class Drawer extends React.Component<PropsI, StateI> {
 							[styles.Drawer__AlignLeft]: this.props.align === 'left',
 							[styles.Drawer__AlignCenter]: this.props.align === 'center' || !this.props.align,
 							[styles.Drawer__AlignRight]: this.props.align === 'right',
-						}
-                	)}
+						},
+					)}
 				>
-                    {this.props.children}
-                </div>
-            </div>
-        );
-    }
+					{this.props.children}
+				</div>
+			</div>
+		);
+	}
 
 }
-
-

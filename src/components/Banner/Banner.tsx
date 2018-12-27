@@ -71,10 +71,10 @@ export default class Banner extends React.Component<PropsI> {
 						styles.Carousel_Item,
 						{
 							[styles.Carousel_Item__Active]: index === this.props.currentIndex,
-						}
+						},
 					)}
 					onClick={() => this.props.onIndexChange && this.props.onIndexChange(index)}
-				/>
+				/>,
 			);
 		}
 
@@ -109,7 +109,7 @@ export default class Banner extends React.Component<PropsI> {
 						[styles.Banner__Neutral]: this.props.variant === 'neutral',
 						[styles.Banner__Error]: this.props.variant === 'error',
 						[styles.Banner__Success]: this.props.variant === 'success',
-					}
+					},
 				)}
 			>
 				{this.renderCarousel()}

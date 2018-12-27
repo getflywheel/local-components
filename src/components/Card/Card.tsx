@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
-import styles from  './Card.sass';
+import styles from './Card.sass';
 import Header from '../Header/Header';
 import Truncate from '../Truncate/Truncate';
 
@@ -47,8 +47,8 @@ export default class Card extends React.Component<PropsI> {
 	static defaultProps: Partial<PropsI> = {
 		overflow: 'hidden',
 		tag: 'article',
-		truncateDefaultLines: 1,
 		truncateDefaultEllipsis: '...',
+		truncateDefaultLines: 1,
 	};
 
 	hasHeader () {
@@ -88,7 +88,7 @@ export default class Card extends React.Component<PropsI> {
 
 				{this.props.header}
 			</div>
-		)
+		);
 	}
 
 	hasContent () {
@@ -187,7 +187,7 @@ export default class Card extends React.Component<PropsI> {
 					</div>
 				)}
 			</div>
-		)
+		);
 	}
 
 	hasFooter () {
@@ -214,7 +214,7 @@ export default class Card extends React.Component<PropsI> {
 			<Tag
 				className={classnames(
 					styles.Card,
-					this.props.className
+					this.props.className,
 				)}
 				style={{
 					...(this.props.overflow !== 'hidden' && {overflow: this.props.overflow}), // conditionally add style

@@ -20,7 +20,7 @@ export default class Header extends React.Component<PropsI> {
 		tag: 'div',
 	};
 
-	render() {
+	render () {
 		const HeaderTag: any = this.props.tag;
 
 		return (
@@ -39,7 +39,7 @@ export default class Header extends React.Component<PropsI> {
 						[styles.Header__FontWeight500]: this.props.fontWeight === '500',
 						[styles.Header__FontWeight700]: this.props.fontWeight === '700',
 						[styles.Header__FontWeight900]: this.props.fontWeight === '900',
-					}
+					},
 				)}
 				onClick={this.props.onClick}
 			>

@@ -21,7 +21,7 @@ export default class ImageCircle extends React.Component<PropsI> {
 		tag: 'div',
 	};
 
-	render() {
+	render () {
 		const ContainerTag: any = this.props.tag;
 
 		return (
@@ -31,7 +31,7 @@ export default class ImageCircle extends React.Component<PropsI> {
 					this.props.className,
 					{
 						[styles.ImageCircleContainer__SizeSmall]: this.props.size === 's',
-					}
+					},
 				)}
 			>
 				<img
@@ -39,7 +39,7 @@ export default class ImageCircle extends React.Component<PropsI> {
 						styles.ImageCircle,
 						{
 							[styles.ImageCircleContainer__Square]: this.props.square,
-						}
+						},
 					)}
 					src={this.props.src}
 					style={{...this.props.style}}

@@ -45,11 +45,11 @@ export default class InputSearch extends React.Component<PropsI, StateI> {
 
 	onChangeInternal = (event: any) => {
 		this.setState({
-			value: event.target.value // update value
+			value: event.target.value,
 		});
 
 		this.props.onChange && this.props.onChange.call(this, event);
-	};
+	}
 
 	render () {
 		const undeclaredProps = ObjectUtils.omitPropsInObject(this.props, excludeProps, true);

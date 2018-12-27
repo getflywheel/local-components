@@ -14,7 +14,7 @@ export class Stepper extends React.Component<ReactComponentPropsI> {
 					{
 						[styles.__Steps__2]: (this.props.children as React.ReactNode[]).length === 2,
 						[styles.__Steps__3]: (this.props.children as React.ReactNode[]).length === 3,
-					}
+					},
 				)}>
 				{this.props.children}
 			</div>
@@ -43,7 +43,7 @@ export class Step extends React.Component<StepPropsI> {
 						[styles.Step__Done]: this.props.done,
 						[styles.Step__Active]: this.props.active,
 						[styles.Step__Disabled]: this.props.disabled,
-					}
+					},
 				)}
 			>
 				{

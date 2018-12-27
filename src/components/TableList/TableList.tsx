@@ -22,7 +22,7 @@ export class TableList extends React.Component<PropsI> {
 					{
 						[styles.Form]: this.props.form,
 						[styles.TableList__NoStripes]: this.props.stripes === false,
-					}
+					},
 				)}
 			>
 				{this.props.children}

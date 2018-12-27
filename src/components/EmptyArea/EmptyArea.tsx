@@ -19,9 +19,9 @@ export class EmptyArea extends React.Component<PropsI> {
 					styles.EmptyArea,
 					'EmptyArea', // this also needs to be globally accessible so other component styles can reference it
 					{
-						'__NoBorder': this.props.border === false,
 						'__FadeIn': this.props.FadeIn,
-					}
+						'__NoBorder': this.props.border === false,
+					},
 				)}
 			>
 				{this.props.children}

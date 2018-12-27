@@ -18,7 +18,7 @@ interface PropsI extends ReactComponentPropsI {
 	items: ItemsI[];
 	navItem?: boolean;
 	navItemActive?: boolean;
-	position?: 'top' | 'bottom',
+	position?: 'top' | 'bottom';
 
 }
 
@@ -32,11 +32,11 @@ interface StateI {
 export default class FlyDropdown extends React.Component<PropsI, StateI> {
 
 	static defaultProps: Partial<PropsI> = {
-		items: [],
 		caret: true,
-		position: 'bottom',
+		items: [],
 		navItem: false,
 		navItemActive: false,
+		position: 'bottom',
 	};
 
 	constructor (props: PropsI) {

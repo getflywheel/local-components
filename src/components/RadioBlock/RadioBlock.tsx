@@ -6,17 +6,17 @@ import styles from './RadioBlock.sass';
 
 interface PropsI extends ReactComponentPropsI {
 
-	options: {[key: string]: RadioBlockItemPropsI},
 	default: string | null;
 	onChange: (...params: any[]) => any;
+	options: {[key: string]: RadioBlockItemPropsI};
 
 }
 
 interface StateI {
 
-	value: string | null;
 	default: string | null;
 	options: {[key: string]: RadioBlockItemPropsI};
+	value: string | null;
 
 }
 
@@ -26,9 +26,9 @@ class RadioBlock extends React.Component<PropsI, StateI> {
 		super(props);
 
 		this.state = {
-			value: null || props.default,
 			default: null,
 			options: {},
+			value: null || props.default,
 		};
 
 		this.onClick = this.onClick.bind(this);
@@ -36,7 +36,7 @@ class RadioBlock extends React.Component<PropsI, StateI> {
 
 	onClick (value: string | null) {
 		this.setState({
-			value: value,
+			value,
 		});
 
 		if (this.props.onChange) {
@@ -48,7 +48,7 @@ class RadioBlock extends React.Component<PropsI, StateI> {
 		return (
 			<div className={styles.RadioBlock}>
 				{
-					Object.keys(this.props.options).map((optionValue: string, i: number) =>
+					Object.keys(this.props.options).map((optionValue: string, i: number) => (
 						<RadioBlockItem
 							onClick={this.onClick}
 							className={this.props.options[optionValue].className}
@@ -58,7 +58,7 @@ class RadioBlock extends React.Component<PropsI, StateI> {
 							svg={this.props.options[optionValue].svg}
 							selected={this.state.value === optionValue}
 						/>
-					)
+					))
 				}
 			</div>
 		);
@@ -69,10 +69,10 @@ class RadioBlock extends React.Component<PropsI, StateI> {
 interface RadioBlockItemPropsI extends ReactComponentPropsI {
 
 	label: string;
-	value: string | null;
-	selected: boolean;
 	onClick: (...params: any[]) => any;
+	selected: boolean;
 	svg: any;
+	value: string | null;
 
 }
 
@@ -99,7 +99,7 @@ class RadioBlockItem extends React.Component<RadioBlockItemPropsI> {
 					this.props.className,
 					{
 						[styles.RadioBlock_Option__Selected]: this.props.selected,
-					}
+					},
 				)}
 			>
 				<label className={styles.RadioBLock_Label}>

@@ -3,7 +3,7 @@ import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 interface StateI {
 
-	currentIndex?: number,
+	currentIndex?: number;
 
 }
 
@@ -28,7 +28,7 @@ export default class BannerCarousel extends React.Component<ReactComponentPropsI
 					return React.cloneElement(banner as React.ReactElement<any>, {
 						currentIndex: this.state.currentIndex,
 						numBanners: this.props.children && (this.props.children as React.ReactNode[]).length,
-						onIndexChange: (index: number) => this.setState({ currentIndex: index }),
+						onIndexChange: (index2: number) => this.setState({ currentIndex: index2 }),
 					});
 				})}
 			</div>

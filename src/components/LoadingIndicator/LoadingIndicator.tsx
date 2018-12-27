@@ -19,20 +19,20 @@ export default class LoadingIndicator extends React.Component<PropsI> {
 
 	render () {
 		return (
-            <div
+			<div
 				className={classnames(
 					styles.LoadingIndicator,
 					{
 						[styles.LoadingIndicator__Gray]: this.props.color === 'Gray',
 						[styles.LoadingIndicator__Big]: this.props.big,
-					}
+					},
 				)}
 			>
-                <div />
-                <div />
-                {this.props.big && <div />}
-            </div>
-        );
+				 <div />
+				 <div />
+				 {this.props.big && <div />}
+			</div>
+		);
 	}
 
 }

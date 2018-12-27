@@ -5,13 +5,13 @@ import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 
 interface PropsI extends ReactComponentPropsI {
 
-	title: string,
+	title: string;
 
 }
 
 export function InnerPaneSidebar (props: ReactComponentPropsI) {
-    return (
-    	<div
+	return (
+		<div
 			className={classnames(
 				styles.InnerPaneSidebar,
 				props.className,
@@ -23,8 +23,8 @@ export function InnerPaneSidebar (props: ReactComponentPropsI) {
 }
 
 export function InnerPaneSidebarHeader (props: PropsI) {
-    return (
-    	<div
+	return (
+		<div
 			className={classnames(
 				styles.InnerPaneSidebarHeader,
 				props.className,
@@ -45,8 +45,8 @@ export function InnerPaneSidebarHeader (props: PropsI) {
 }
 
 export function InnerPaneSidebarAddNew (props: ReactComponentPropsI) {
-    return (
-    	<div
+	return (
+		<div
 			className={classnames(
 				styles.InnerPaneSidebarAddNew,
 				props.className,
@@ -58,8 +58,8 @@ export function InnerPaneSidebarAddNew (props: ReactComponentPropsI) {
 }
 
 export function InnerPaneSidebarContent (props: ReactComponentPropsI) {
-    return (
-    	<div
+	return (
+		<div
 			className={classnames(
 				styles.InnerPaneSidebarContent,
 				props.className,
@@ -71,8 +71,8 @@ export function InnerPaneSidebarContent (props: ReactComponentPropsI) {
 }
 
 export function InnerPaneSidebarContentItem (props: ReactComponentPropsI) {
-    return (
-    	<div
+	return (
+		<div
 			className={classnames(
 				styles.InnerPaneSidebarContentItem,
 				props.className,

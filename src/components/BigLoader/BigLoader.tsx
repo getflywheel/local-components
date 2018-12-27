@@ -19,9 +19,9 @@ export default class BigLoader extends React.Component<PropsI> {
 
 	render () {
 		return (
-            <div
+			<div
 				className={classnames(styles.BigLoader, 'MainPanel', this.props.className)}
-                style={this.props.style}
+				style={this.props.style}
 			>
 				<LoadingIndicator
 					big={true}

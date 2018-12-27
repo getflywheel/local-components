@@ -6,7 +6,7 @@ import CaretSVG from '../../svg/caret.svg';
 
 interface PropsI extends ReactComponentPropsI {
 
-	headingText?: string,
+	headingText?: string;
 
 }
 
@@ -46,7 +46,7 @@ export default class AdvancedToggle extends React.Component<PropsI, StateI> {
 					this.props.className,
 					{
 						[styles.AdvancedToggle__isOpen]: this.state.advancedOpen,
-					}
+					},
 				)}
 			>
 				<span

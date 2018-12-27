@@ -25,8 +25,8 @@ export default class ProgressBar extends React.Component<PropsI & ReactComponent
 				className={classnames(
 					styles.ProgressBarIndicator,
 					{
-						[styles.ProgressBar__ShowNumber]: this.props.showNumber
-					}
+						[styles.ProgressBar__ShowNumber]: this.props.showNumber,
+					},
 				)}
 				style={{ width: `${this.props.progress}%` }}
 			/>
