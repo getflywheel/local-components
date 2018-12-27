@@ -1,16 +1,25 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './Drawer.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class Drawer extends React.Component {
-    static propTypes = {
-        align: PropTypes.oneOf(['left','center', 'right']),
-        children: PropTypes.node.isRequired,
-        show: PropTypes.bool,
-    };
+interface PropsI extends LocalComponentPropsI {
 
-    constructor(props) {
+	align?: 'left' | 'center' | 'right';
+	children: React.ReactNode;
+	show?: boolean;
+
+}
+
+interface StateI {
+
+	disableAnimation: boolean
+
+}
+
+export default class Drawer extends React.Component<PropsI, StateI> {
+
+    constructor (props: PropsI) {
         super(props);
 
         this.state = {
@@ -18,8 +27,8 @@ export default class Drawer extends React.Component {
         };
     };
 
-    componentWillReceiveProps (nextProps) {
-        if(nextProps.show) {
+    componentWillReceiveProps (nextProps: PropsI) {
+        if (nextProps.show) {
             this.setState({
                 disableAnimation: false
             });

@@ -1,27 +1,40 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './Popup.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
 /**
  * Try catch for Local vs. Styleguidist
  */
-let ReactDOM;
 
-try {
-	ReactDOM = __non_webpack_require__('react-dom');
-} catch (e) {
-	ReactDOM = require('react-dom');
+// todo - crum uncomment and fix
+// let ReactDOM;
+//
+// try {
+// 	ReactDOM = __non_webpack_require__('react-dom');
+// } catch (e) {
+// 	ReactDOM = require('react-dom');
+// }
+
+interface PropsI extends LocalComponentPropsI {
+
+	items?: any[];
+	offsetX?: string;
+	offsetY?: string;
+	padding?: boolean;
+	position?: 'bottom' | 'right' | 'top';
+	triggerContent?: React.ReactNode;
+
 }
 
-export default class Popup extends React.Component {
-	static propTypes = {
-		items: PropTypes.array,
-		offsetX: PropTypes.string,
-		offsetY: PropTypes.string,
-		position: PropTypes.oneOf(['bottom', 'right', 'top']),
-		triggerContent: PropTypes.node,
-	};
+interface StateI {
+
+	open: boolean;
+	tipItemHover: boolean;
+
+}
+
+export default class Popup extends React.Component<PropsI, StateI> {
 
 	static defaultProps = {
 		items: [],
@@ -29,7 +42,7 @@ export default class Popup extends React.Component {
 		position: 'bottom',
 	};
 
-	constructor (props) {
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -55,24 +68,25 @@ export default class Popup extends React.Component {
 		});
 	}
 
-	onClickOutside (event) {
+	onClickOutside (event: any) {
 		try {
-			const domNode = ReactDOM.findDOMNode(this);
-
-			if (!domNode || !domNode.contains(event.target)) {
-				this.setState({
-					open: false,
-				});
-			}
+			// todo - crum: uncomment and fix
+			// const domNode = ReactDOM.findDOMNode(this);
+			//
+			// if (!domNode || !domNode.contains(event.target)) {
+			// 	this.setState({
+			// 		open: false,
+			// 	});
+			// }
 		}
 		catch (error) {}
 	}
 
 	render () {
-const transformStyles = [
-	...(this.props.offsetX ? [`translateX(${this.props.offsetX})`] : []),
-	...(this.props.offsetY ? [`translateY(${this.props.offsetY})`] : []),
-];
+		const transformStyles = [
+			...(this.props.offsetX ? [`translateX(${this.props.offsetX})`] : []),
+			...(this.props.offsetY ? [`translateY(${this.props.offsetY})`] : []),
+		];
 
 		return (
 			<div
@@ -87,7 +101,7 @@ const transformStyles = [
 					},
 					this.props.className,
 				)}
-				tabIndex="0"
+				tabIndex={0}
 				onClick={this.onClick}
 			>
 				<div
@@ -118,5 +132,6 @@ const transformStyles = [
 			</div>
 		);
 	}
+
 }
 

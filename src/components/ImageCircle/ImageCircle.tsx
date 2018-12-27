@@ -1,27 +1,28 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './ImageCircle.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class ImageCircle extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		className: PropTypes.string,
-		size: PropTypes.oneOf(['m', 's']),
-		square: PropTypes.bool,
-		src: PropTypes.string.isRequired,
-		style: PropTypes.object,
-		tag: PropTypes.string,
-	};
+	className?: string;
+	size?: 'm' | 's';
+	square?: boolean;
+	src: string;
+	tag?: string;
 
-	static defaultProps = {
+}
+
+export default class ImageCircle extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		size: 'm',
 		square: false,
 		tag: 'div',
 	};
 
 	render() {
-		const ContainerTag = this.props.tag;
+		const ContainerTag: any = this.props.tag;
 
 		return (
 			<ContainerTag

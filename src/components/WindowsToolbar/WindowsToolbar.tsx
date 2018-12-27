@@ -1,63 +1,60 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
+import styles from './WindowsToolbar.sass';
 import WindowsHamburger from '../../svg/windows_hamburger.svg';
 import WindowsMinimize from '../../svg/windows_minimize.svg';
 import WindowsMaximize from '../../svg/windows_maximize.svg';
 import WindowsClose from '../../svg/windows_close.svg';
 import WindowsBack from '../../svg/windows_back.svg';
-import styles from './WindowsToolbar.sass';
 
-class WindowsToolbar extends React.Component {
-	static propTypes = {
-		title: PropTypes.string.isRequired,
-		resizable: PropTypes.bool,
-		onBack: PropTypes.func,
-		onMinimize: PropTypes.func.isRequired,
-		onMaximize: PropTypes.func,
-		onQuit: PropTypes.func.isRequired,
-		onShowMenu: PropTypes.func,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	constructor (props) {
-		super(props);
-	}
+	title: string;
+	resizable?: boolean;
+	onBack?: (...params: any[]) => any;
+	onMinimize: (...params: any[]) => any;
+	onMaximize?: (...params: any[]) => any;
+	onQuit: (...params: any[]) => any;
+	onShowMenu?: (...params: any[]) => any;
+
+}
+
+class WindowsToolbar extends React.Component<PropsI> {
 
 	render () {
 		return (
 			<header className={styles.WindowsToolbar}>
 				{
-					this.props.onBack &&
-					<span
-						className={styles.Back}
-						onClick={this.props.onBack}
-					>
-						<WindowsBack/>
-					</span>
+					this.props.onBack && (
+						<span
+							className={styles.Back}
+							onClick={this.props.onBack}
+						>
+							<svg>{WindowsBack}</svg>
+						</span>
+					)
 				}
-
 				{
-					this.props.onShowMenu &&
-					<span
-						className={styles.Menu}
-						onClick={this.props.onShowMenu}
-					>
-						<WindowsHamburger/>
-					</span>
+					this.props.onShowMenu && (
+						<span
+							className={styles.Menu}
+							onClick={this.props.onShowMenu}
+						>
+							<svg>{WindowsHamburger}</svg>
+						</span>
+					)
 				}
-
 				<div className={styles.DragRegion}>
 					{this.props.title}
 				</div>
-
 				<div className={styles.RightButtons}>
 					<span
 						className={styles.Minimize}
 						onClick={this.props.onMinimize}
 					>
-						<WindowsMinimize/>
+						<svg>{WindowsMinimize}</svg>
 					</span>
-
 					<span
 						className={classnames(
 							[styles.Maximize],
@@ -67,19 +64,19 @@ class WindowsToolbar extends React.Component {
 						)}
 						onClick={this.props.onMaximize}
 					>
-						<WindowsMaximize/>
+						<svg>{WindowsMaximize}</svg>
 					</span>
-
 					<span
 						className={styles.Quit}
 						onClick={this.props.onQuit}
 					>
-						<WindowsClose/>
+						<svg>{WindowsClose}</svg>
 					</span>
 				</div>
 			</header>
 		);
 	}
+
 }
 
 export default WindowsToolbar;

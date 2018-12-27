@@ -1,39 +1,46 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import styles from  './Switch.sass';
 
-export default class Switch extends React.Component {
-	static propTypes = {
-		label: PropTypes.string,
-		tiny: PropTypes.bool,
-		flat: PropTypes.bool,
-		disabled: PropTypes.bool,
-		name: PropTypes.string,
-		noValue: PropTypes.bool,
-		checked: PropTypes.bool,
-		onChange: PropTypes.func,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	static defaultProps = {
+	checked?: boolean;
+	disabled?: boolean;
+	flat?: boolean;
+	label?: string;
+	name?: string;
+	noValue?: boolean;
+	onChange?: (...params: any[]) => any;
+	tiny?: boolean;
+
+}
+
+interface StateI {
+
+	checked: boolean;
+
+}
+
+export default class Switch extends React.Component<PropsI, StateI> {
+
+	static defaultProps: Partial<PropsI> = {
 		checked: false,
 	};
 
-	constructor (props) {
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
-			checked: this.props.checked,
+			checked: !!this.props.checked,
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps) {
-		this.props = nextProps;
-
+	componentWillReceiveProps (nextProps: PropsI) {
 		if ('checked' in nextProps) {
-			this.setState({ checked: nextProps.checked });
+			this.setState({ checked: !!nextProps.checked });
 		}
 	}
 
@@ -58,7 +65,11 @@ export default class Switch extends React.Component {
 					}
 				)}
 			>
-				{this.props.label && <label>{this.props.label}</label>}
+				{
+					this.props.label && (
+						<label>{this.props.label}</label>
+					)
+				}
 				<input
 					type="checkbox"
 					defaultChecked={this.state.checked}
@@ -69,4 +80,5 @@ export default class Switch extends React.Component {
 			</div>
 		);
 	}
+
 }

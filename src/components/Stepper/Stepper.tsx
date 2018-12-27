@@ -1,32 +1,38 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import CompleteSVG from '../../svg/complete.svg';
-import PropTypes from 'prop-types';
 import styles from './Stepper.sass';
 
-export class Stepper extends React.Component {
+export class Stepper extends React.Component<LocalComponentPropsI> {
+
 	render () {
 		return (
 			<div
 				className={classnames(
 					styles.Stepper,
 					{
-						[styles.__Steps__2]: this.props.children.length === 2,
-						[styles.__Steps__3]: this.props.children.length === 3,
+						[styles.__Steps__2]: (this.props.children as React.ReactNode[]).length === 2,
+						[styles.__Steps__3]: (this.props.children as React.ReactNode[]).length === 3,
 					}
 				)}>
 				{this.props.children}
 			</div>
 		);
 	}
+
 }
 
-export class Step extends React.Component {
-	static propTypes = {
-		number: PropTypes.number,
-		done: PropTypes.bool,
-		active: PropTypes.bool,
-	};
+interface StepPropsI extends LocalComponentPropsI {
+
+	active: boolean;
+	disabled: boolean;
+	done: boolean;
+	number: number;
+
+}
+
+export class Step extends React.Component<StepPropsI> {
 
 	render () {
 		return (
@@ -41,7 +47,11 @@ export class Step extends React.Component {
 				)}
 			>
 				{
-					!this.props.done ? <span>{this.props.number}</span> : <CompleteSVG />
+					!this.props.done
+						?
+						<span>{this.props.number}</span>
+						:
+						<svg>{CompleteSVG}</svg>
 				}
 				{this.props.children}
 			</div>

@@ -1,20 +1,22 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
-import Exclamation from '../../svg/exclamation.svg';
 import styles from './FlyTooltip.sass';
+import Exclamation from '../../svg/exclamation.svg';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class FlyTooltip extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		content: PropTypes.node,
-		exclamation: PropTypes.bool,
-		forceHoverState: PropTypes.bool,
-		hoverIntent: PropTypes.bool,
-		position: PropTypes.oneOf(['top', 'bottom', 'right']),
-	};
+	content?: React.ReactNode;
+	exclamation?: boolean;
+	forceHoverState?: boolean;
+	hoverIntent?: boolean;
+	position?: 'top' | 'bottom' | 'right';
 
-	static defaultProps = {
+}
+
+export default class FlyTooltip extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		exclamation: false,
 		forceHoverState: false,
 		position: 'top',
@@ -46,12 +48,13 @@ export default class FlyTooltip extends React.Component {
 					style={this.props.style}
 				>
 					{
-						this.props.exclamation &&
+						this.props.exclamation
+						&&
 						<span
 							className={styles.FlyTooltip_Exclamation}
 							key="exclamation"
 						>
-							<Exclamation />
+							<svg>{Exclamation}</svg>
 						</span>
 					}
 

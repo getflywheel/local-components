@@ -1,25 +1,26 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route, NavLink, RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import styles from './TertiaryNav.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-class TertiaryNavBase extends React.Component {
-    static propTypes = {
-        children: (props, propName, componentName) => {
-            const prop = props[propName];
-            let error = null;
+class TertiaryNavBase extends React.Component<LocalComponentPropsI & RouteComponentProps<{}>> {
 
-            React.Children.forEach(prop, (child) => {
-                if (child.type.WrappedComponent && child.type.WrappedComponent.name !== 'TertiaryNavItemBase') {
-                    error = new Error(`${componentName} children need to be of type 'TertiaryNavItem' but instead received type '${child.type}'.`);
-                }
-            });
-
-            return error;
-        }
-    };
+    // static propTypes = {
+    //     children: (props, propName, componentName) => {
+    //         const prop = props[propName];
+    //         let error = null;
+	//
+    //         React.Children.forEach(prop, (child) => {
+    //             if (child.type.WrappedComponent && child.type.WrappedComponent.name !== 'TertiaryNavItemBase') {
+    //                 error = new Error(`${componentName} children need to be of type 'TertiaryNavItem' but instead received type '${child.type}'.`);
+    //             }
+    //         });
+	//
+    //         return error;
+    //     }
+    // };
 
     render () {
         return (
@@ -34,7 +35,7 @@ class TertiaryNavBase extends React.Component {
                 </ul>
                 <div className={classnames(styles.TertiaryContent)}>
                     <Switch>
-                        {React.Children.map(this.props.children, (child) => {
+                        {React.Children.map(this.props.children, (child: any) => {
                             const propsWithoutChildren = { ...child.props };
                             delete propsWithoutChildren.children;
 
@@ -50,25 +51,28 @@ class TertiaryNavBase extends React.Component {
             </div>
         );
     }
+
 }
 
-class TertiaryNavItemBase extends React.Component {
-    static propTypes = {
-        path: PropTypes.string.isRequired,
-        component: (props, propName, componentName) => {
-            if(!props.component && !props.render) {
-                return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
-            }
-        },
-        render: (props, propName, componentName) => {
-            if(!props.component && !props.render) {
-                return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
-            }
-        },
-		variant: PropTypes.oneOf([
-			'error',
-		]),
-    };
+interface TertiaryNavItemBasePropsI extends LocalComponentPropsI {
+
+	path: string;
+	// component: (props, propName, componentName) => {
+	// 	if(!props.component && !props.render) {
+	// 		return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
+	// 	}
+	// },
+	// render: (props, propName, componentName) => {
+	// 	if(!props.component && !props.render) {
+	// 		return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
+	// 	}
+	// },
+	render?: (...params: any[]) => any;
+	variant?: 'error';
+
+}
+
+class TertiaryNavItemBase extends React.Component<TertiaryNavItemBasePropsI & RouteComponentProps<{}>> {
 
     render () {
         return (

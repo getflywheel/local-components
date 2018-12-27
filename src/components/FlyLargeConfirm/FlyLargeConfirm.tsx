@@ -1,18 +1,26 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
-import CheckSVG from '../../svg/checkmark--big.svg';
 import styles from './FlyLargeConfirm.sass';
+import CheckSVG from '../../svg/checkmark--big.svg';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class FlyLargeConfirm extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		bodyText: PropTypes.any,
-		buttonText: PropTypes.string,
-		onConfirm: PropTypes.func,
-	};
+	bodyText?: any;
+	buttonText?: string;
+	onConfirm?: (...params: any[]) => any;
 
-	constructor (props) {
+}
+
+interface StateI {
+
+	confirmed: boolean;
+
+}
+
+export default class FlyLargeConfirm extends React.Component<PropsI, StateI> {
+
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -31,7 +39,6 @@ export default class FlyLargeConfirm extends React.Component {
 	}
 
 	render () {
-
 		return <div
 			className={classnames(
 				styles.FlyLargeConfirm,
@@ -47,11 +54,12 @@ export default class FlyLargeConfirm extends React.Component {
 				onClick={this.onConfirm}
 				disabled={this.state.confirmed}
 			>
-				{this.state.confirmed && <CheckSVG />}
+				{this.state.confirmed && (
+					<svg>{CheckSVG}</svg>
+				)}
 				{this.state.confirmed ? 'Confirmed' : this.props.buttonText}
 			</button>
 		</div>;
-
 	}
 
 }

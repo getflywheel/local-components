@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './Divider.sass';
-import PropTypes from 'prop-types';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-const marginsClassMixin = (styles, props) => ({
+const marginsClassMixin = (styles: {[key: string]: any}, props: {[key: string]: any}) => ({
 	[styles.__MarginTopSizeXS]: props.marginSize === 'xs' || props.marginSizeAfter === 'xs',
 	[styles.__MarginTopSizeS]: props.marginSize === 's' || props.marginSizeAfter === 's',
 	[styles.__MarginTopSizeM]: props.marginSize === 'm' || props.marginSizeAfter === 'm',
@@ -16,7 +16,15 @@ const marginsClassMixin = (styles, props) => ({
 	[styles.__MarginBottomSizeXL]: props.marginSize === 'xl' || props.marginSizeBottom === 'xl',
 });
 
-const Divider = (props) =>
+interface PropsI extends LocalComponentPropsI {
+
+	marginSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
+	marginSizeAfter?: 'xs' | 's' | 'm' | 'l' | 'xl';
+	marginSizeBottom?: 'xs' | 's' | 'm' | 'l' | 'xl';
+
+}
+
+const Divider = (props: PropsI) =>
 	<div
 		className={classnames(
 			styles.Divider,
@@ -26,11 +34,5 @@ const Divider = (props) =>
 		onClick={props.onClick}
 	/>
 ;
-
-Divider.propTypes = {
-	marginSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	marginSizeAfter: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-	marginSizeBottom: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-};
 
 export default Divider;

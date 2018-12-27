@@ -1,48 +1,50 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import styles from  './Card.sass';
 import Header from '../Header/Header';
 import Truncate from '../Truncate/Truncate';
 
-export default class Card extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		content: PropTypes.node,
-		contentClassName: PropTypes.string,
-		contentDescription: PropTypes.node,
-		contentDescriptionClassName: PropTypes.string,
-		contentDescriptionTruncate: PropTypes.bool,
-		contentDescriptionTruncateLines: PropTypes.number,
-		contentDescriptionTruncateEllipsis: PropTypes.node,
-		contentSub: PropTypes.node,
-		contentSubClassName: PropTypes.string,
-		contentSubTruncate: PropTypes.bool,
-		contentSubTruncateLines: PropTypes.number,
-		contentSubTruncateEllipsis: PropTypes.node,
-		contentTitle: PropTypes.node,
-		contentTitleClassName: PropTypes.string,
-		contentTitleOnClick: PropTypes.func,
-		contentTitleTruncate: PropTypes.bool,
-		contentTitleTruncateLines: PropTypes.number,
-		contentTitleTruncateEllipsis: PropTypes.node,
-		footer: PropTypes.node,
-		footerClassName: PropTypes.node,
-		header: PropTypes.node,
-		headerBackgroundColor: PropTypes.string,
-		headerClassName: PropTypes.string,
-		headerIconClassName: PropTypes.string,
-		headerIconContainerClassName: PropTypes.string,
-		headerIconPath: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-		headerIconMaxHeight: PropTypes.string,
-		headerOnClick: PropTypes.func,
-		overflow: PropTypes.string,
-		tag: PropTypes.string,
-		truncateDefaultLines: PropTypes.number,
-		truncateDefaultEllipsis: PropTypes.string,
-	};
+	content?: React.ReactNode;
+	contentClassName?: string;
+	contentDescription?: React.ReactNode;
+	contentDescriptionClassName?: string;
+	contentDescriptionTruncate?: boolean;
+	contentDescriptionTruncateLines?: number;
+	contentDescriptionTruncateEllipsis?: React.ReactNode;
+	contentSub?: React.ReactNode;
+	contentSubClassName?: string;
+	contentSubTruncate?: boolean;
+	contentSubTruncateLines?: number;
+	contentSubTruncateEllipsis?: React.ReactNode;
+	contentTitle?: React.ReactNode;
+	contentTitleClassName?: string;
+	contentTitleOnClick?: (...params: any[]) => any;
+	contentTitleTruncate?: boolean;
+	contentTitleTruncateLines?: number;
+	contentTitleTruncateEllipsis?: React.ReactNode;
+	footer?: React.ReactNode;
+	footerClassName?: React.ReactNode;
+	header?: React.ReactNode;
+	headerBackgroundColor?: string;
+	headerClassName?: string;
+	headerIconClassName?: string;
+	headerIconContainerClassName?: string;
+	headerIconPath?: string;
+	headerIconMaxHeight?: string;
+	headerOnClick?: (...params: any[]) => any;
+	overflow?: string;
+	tag?: string;
+	truncateDefaultLines?: number;
+	truncateDefaultEllipsis?: string;
 
-	static defaultProps = {
+}
+
+export default class Card extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		overflow: 'hidden',
 		tag: 'article',
 		truncateDefaultLines: 1,
@@ -62,7 +64,7 @@ export default class Card extends React.Component {
 				)}
 				onClick={this.props.headerOnClick}
 			>
-				{(this.props.headerIconPath || this.props.headerBackgroundColor) &&
+				{(this.props.headerIconPath || this.props.headerBackgroundColor) && (
 					<div
 						className={classnames(
 							styles.Card_HeaderIconContainer,
@@ -72,15 +74,17 @@ export default class Card extends React.Component {
 							...(this.props.headerBackgroundColor && {backgroundColor: this.props.headerBackgroundColor}), // conditionally add style
 						}}
 					>
-						{this.props.headerIconPath && <img
-							src={this.props.headerIconPath}
-							className={this.props.headerIconClassName}
-							style={{
-								...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
-							}}
-						/>}
+						{this.props.headerIconPath && (
+							<img
+								src={this.props.headerIconPath}
+								className={this.props.headerIconClassName}
+								style={{
+									...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
+								}}
+							/>
+						)}
 					</div>
-				}
+				)}
 
 				{this.props.header}
 			</div>
@@ -112,21 +116,22 @@ export default class Card extends React.Component {
 						}}
 						onClick={this.props.contentTitleOnClick}
 					>
-						{this.props.contentTitleTruncate
-							?
-							// this adds a bunch of nested spans, so only use if this feature is enabled
-							<Truncate
-								lines={this.props.contentTitleTruncateLines || this.props.truncateDefaultLines}
-								ellipsis={this.props.contentTitleTruncateEllipsis || this.props.truncateDefaultEllipsis}
-							>
-								{this.props.contentTitle}
-							</Truncate>
-							:
-							this.props.contentTitleOnClick
+						{
+							this.props.contentTitleTruncate
 								?
-								<a>{this.props.contentTitle}</a>
+								// this adds a bunch of nested spans, so only use if this feature is enabled
+								<Truncate
+									lines={this.props.contentTitleTruncateLines || this.props.truncateDefaultLines}
+									ellipsis={this.props.contentTitleTruncateEllipsis || this.props.truncateDefaultEllipsis}
+								>
+									{this.props.contentTitle}
+								</Truncate>
 								:
-								this.props.contentTitle
+								this.props.contentTitleOnClick
+									?
+									<a>{this.props.contentTitle}</a>
+									:
+									this.props.contentTitle
 						}
 					</Header>
 				)}
@@ -137,17 +142,18 @@ export default class Card extends React.Component {
 							this.props.contentSubClassName,
 						)}
 					>
-						{this.props.contentSubTruncate
-							?
-							// this adds a bunch of nested spans, so only use if this feature is enabled
-							<Truncate
-								lines={this.props.contentSubTruncateLines || this.props.truncateDefaultLines}
-								ellipsis={this.props.contentSubTruncateEllipsis || this.props.truncateDefaultEllipsis}
-							>
-								{this.props.contentSub}
-							</Truncate>
-							:
-							this.props.contentSub
+						{
+							this.props.contentSubTruncate
+								?
+								// this adds a bunch of nested spans, so only use if this feature is enabled
+								<Truncate
+									lines={this.props.contentSubTruncateLines || this.props.truncateDefaultLines}
+									ellipsis={this.props.contentSubTruncateEllipsis || this.props.truncateDefaultEllipsis}
+								>
+									{this.props.contentSub}
+								</Truncate>
+								:
+								this.props.contentSub
 						}
 					</div>
 				)}
@@ -158,17 +164,18 @@ export default class Card extends React.Component {
 							this.props.contentDescriptionClassName,
 						)}
 					>
-						{this.props.contentDescriptionTruncate
-							?
-							// this adds a bunch of nested spans, so only use if this feature is enabled
-							<Truncate
-								lines={this.props.contentDescriptionTruncateLines || this.props.truncateDefaultLines}
-								ellipsis={this.props.contentDescriptionTruncateEllipsis || this.props.truncateDefaultEllipsis}
-							>
-								{this.props.contentDescription}
-							</Truncate>
-							:
-							this.props.contentDescription
+						{
+							this.props.contentDescriptionTruncate
+								?
+								// this adds a bunch of nested spans, so only use if this feature is enabled
+								<Truncate
+									lines={this.props.contentDescriptionTruncateLines || this.props.truncateDefaultLines}
+									ellipsis={this.props.contentDescriptionTruncateEllipsis || this.props.truncateDefaultEllipsis}
+								>
+									{this.props.contentDescription}
+								</Truncate>
+								:
+								this.props.contentDescription
 						}
 					</div>
 				)}
@@ -201,7 +208,7 @@ export default class Card extends React.Component {
 	}
 
 	render () {
-		const Tag = this.props.tag;
+		const Tag: any = this.props.tag;
 
 		return (
 			<Tag

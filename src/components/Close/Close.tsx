@@ -1,14 +1,16 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import CloseBigSVG from '../../svg/close--big.svg';
 import styles from './Close.sass';
 
-export default class Close extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		onClick: PropTypes.func.isRequired,
-	};
+	onClick: (...params: any[]) => any;
+
+}
+
+export default class Close extends React.Component<PropsI> {
 
 	render () {
 		return (
@@ -19,7 +21,7 @@ export default class Close extends React.Component {
 				)}
 				onClick={this.props.onClick}
 			>
-				<CloseBigSVG />
+				<svg>{CloseBigSVG}</svg>
 			</span>
 		);
 	}

@@ -1,4 +1,7 @@
-export default interface LocalComponentPropsI {
-	className?: string;
-	style?: object;
+import ReactComponentPropsI from './ReactComponentPropsI';
+
+export default interface LocalComponentPropsI extends ReactComponentPropsI {
+
+
+
 }

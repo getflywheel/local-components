@@ -1,25 +1,34 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './BrowseInput.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
 // const remote = require('electron').remote;
 // const dialog = remote.dialog;
 // const formatHomePath = remote.require('./helpers/format-home-path').default;
 
-export default class BrowseInput extends React.Component {
-	static propTypes = {
-		dialogTitle: PropTypes.string,
-		dialogProperties: PropTypes.array,
-		defaultPath: PropTypes.string,
-		onChange: PropTypes.func,
-		value: PropTypes.string,
-		placeholder: PropTypes.string,
-		isInline: PropTypes.bool,
-		isFormInput: PropTypes.bool,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	constructor (props) {
+	defaultPath?: string;
+	dialogProperties?: string[];
+	dialogTitle?: string;
+	isFormInput?: boolean;
+	isInline?: boolean;
+	onChange?: (...params: any[]) => any;
+	placeholder?: string;
+	value?: string;
+
+}
+
+interface StateI {
+
+	value: string | undefined;
+
+}
+
+export default class BrowseInput extends React.Component<PropsI, StateI> {
+
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -29,7 +38,7 @@ export default class BrowseInput extends React.Component {
 		this.browseFolder = this.browseFolder.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps (nextProps: PropsI) {
 		if ('value' in nextProps) {
 			this.setState({ value: nextProps.value });
 		}
@@ -73,4 +82,5 @@ export default class BrowseInput extends React.Component {
 			</div>
 		);
 	}
+
 }

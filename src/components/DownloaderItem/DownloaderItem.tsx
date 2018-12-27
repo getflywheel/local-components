@@ -1,38 +1,40 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import ProgressBar from '../ProgressBar';
-import PropTypes from 'prop-types';
-// import { ipcRenderer } from 'electron';
+// import { ipcRenderer } from 'electron'; // crum - todo: figure this out
 
-export default class DownloaderItem extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		label: PropTypes.string,
-		showEllipsis: PropTypes.bool,
-		showCancel: PropTypes.bool,
-		onCancel: PropTypes.func,
-		queueLength: PropTypes.number,
-		queueIndex: PropTypes.number,
-		progress: PropTypes.number,
-		progressText: PropTypes.any,
-		itemSize: PropTypes.number,
-		downloaded: PropTypes.number,
-		stripes: PropTypes.bool,
-		cancelText: PropTypes.string,
-		onCancelIPCEvent: PropTypes.string,
-	};
+	cancelText?: string;
+	downloaded?: number;
+	itemSize?: number;
+	label?: string;
+	onCancel?: (...params: any[]) => any;
+	onCancelIPCEvent?: string;
+	progress?: number;
+	progressText?: string | number | boolean;
+	queueIndex?: number;
+	queueLength?: number;
+	showCancel?: boolean;
+	showEllipsis?: boolean;
+	stripes?: boolean;
 
-	static defaultProps = {
-		showEllipsis: true,
+}
+
+export default class DownloaderItem extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		cancelText: 'Cancel Download',
+		showEllipsis: true,
 	};
 
-	constructor (props) {
+	constructor (props: PropsI) {
 		super(props);
 
 		this.cancelOnClick = this.cancelOnClick.bind(this);
 	}
 
-	cancelOnClick (...args) {
+	cancelOnClick (...args: any[]) {
 		if (this.props.onCancel) {
 			return this.props.onCancel(...args);
 		}
@@ -47,30 +49,35 @@ export default class DownloaderItem extends React.Component {
 			<li className="DownloaderItem">
 				<span>
 					{this.props.label}
-					{this.props.queueLength > 1 && ` (${this.props.queueIndex + 1} of ${this.props.queueLength})`}
+					{this.props.queueLength && this.props.queueLength > 1 && ` (${(this.props.queueIndex || 0) + 1} of ${this.props.queueLength})`}
 					{this.props.showEllipsis && '...'}
 				</span>
-
 				<ProgressBar
 					progress={this.props.progress}
 					stripes={this.props.stripes}
 				/>
-
 				<span className="DownloadSizeProgress">
 					{
-						this.props.progressText ?
+						this.props.progressText
+							?
 							this.props.progressText
 							:
-							!isNaN(this.props.itemSize)
+							!isNaN(this.props.itemSize || NaN)
 								?
-								`${!isNaN(this.props.downloaded) ? this.props.downloaded : 0}/${this.props.itemSize} MB`
+								`${!isNaN(this.props.downloaded || NaN) ? this.props.downloaded : 0}/${this.props.itemSize} MB`
 								:
 								<span>&nbsp;</span>
 					}
 				</span>
-
 				{
-					this.props.showCancel && <button className="__Green" onClick={this.cancelOnClick}>{this.props.cancelText}</button>
+					this.props.showCancel && (
+						<button
+							className="__Green"
+							onClick={this.cancelOnClick}
+						>
+							{this.props.cancelText}
+						</button>
+					)
 				}
 			</li>
 		);

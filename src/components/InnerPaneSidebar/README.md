@@ -1,4 +1,5 @@
 ```js
+const { EmptyArea } = require('../EmptyArea');
 const { InnerPaneSidebarHeader, InnerPaneSidebarContent } = require('../InnerPaneSidebar');
 
 <InnerPaneSidebar>

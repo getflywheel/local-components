@@ -1,16 +1,19 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import styles from './TabNav.sass';
 
-export default class TabNav extends React.Component {
-	static propTypes = {
-		tag: PropTypes.string,
-		itemsClassName: PropTypes.string,
-		aux: PropTypes.node, // Used for adding items in the right-hand side of the TabNav such as Site Info buttons
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	static defaultProps = {
+	tag?: string;
+	itemsClassName?: string;
+	aux?: React.ReactNode; // Used for adding items in the right-hand side of the TabNav such as Site Info buttons
+
+}
+
+export default class TabNav extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		tag: 'nav',
 	};
 
@@ -27,7 +30,7 @@ export default class TabNav extends React.Component {
 	}
 
 	render () {
-		const NavTag = this.props.tag;
+		const NavTag: any = this.props.tag;
 
 		return (
 			<NavTag
@@ -48,4 +51,5 @@ export default class TabNav extends React.Component {
 			</NavTag>
 		);
 	}
+
 }

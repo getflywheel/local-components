@@ -1,24 +1,42 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import CheckSVG from '../../svg/checkmark--big.svg';
 import DownloadSmallSVG from '../../svg/download--small.svg';
 import ArrowRightSVG from '../../svg/arrow--right.svg';
-import PropTypes from 'prop-types';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class FlySelect extends React.Component {
-	PropTypes = {
-		options: PropTypes.object,
-		optionGroups: PropTypes.object,
-		value: PropTypes.any,
-		onChange: PropTypes.func.isRequired,
-		placeholder: PropTypes.string,
-		emptyPlaceholder: PropTypes.string,
-		disabled: PropTypes.bool,
-		footerText: PropTypes.string,
-		footerOnClick: PropTypes.func,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	constructor (props) {
+	disabled?: boolean;
+	emptyPlaceholder?: string;
+	footerText?: string;
+	footerOnClick?: (...params: any[]) => any;
+	loadingOptionsPlaceholder?: any;
+	onChange: (...params: any[]) => any;
+	options?: any;
+	optionsLoader?: any;
+	optionGroups?: any;
+	placeholder?: string;
+	value?: any;
+
+}
+
+interface StateI {
+
+	focus: boolean;
+	options: any;
+	open: boolean;
+	optionsLoaded: boolean | null;
+	value: any;
+	willClose: boolean;
+
+}
+
+export default class FlySelect extends React.Component<PropsI, StateI> {
+
+	private readonly __containerRef: React.RefObject<any>;
+
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -35,19 +53,19 @@ export default class FlySelect extends React.Component {
 		this.selectOption = this.selectOption.bind(this);
 		this.renderOption = this.renderOption.bind(this);
 		this.calculateOptionsPosition = this.calculateOptionsPosition.bind(this);
-		this.containerRef = React.createRef();
+		this.__containerRef = React.createRef();
 	}
 
 	componentDidMount () {
 		if (typeof this.props.optionsLoader === 'function') {
-			this.props.optionsLoader().then((options) => this.setState({
+			this.props.optionsLoader().then((options: any) => this.setState({
 				options: this.formatOptions(options),
 				optionsLoaded: true,
 			}));
 		}
 	}
 
-	componentDidUpdate (previousProps) {
+	componentDidUpdate (previousProps: PropsI) {
 		if (previousProps.value !== this.props.value) {
 			this.setState({
 				value: this.props.value,
@@ -61,10 +79,9 @@ export default class FlySelect extends React.Component {
 		}
 	}
 
-	formatOptions (options) {
-
-		const formattedOptions = {};
-		const formatOption = (option, value = null) => {
+	formatOptions (options: any) {
+		const formattedOptions: {[key: string]: any} = {};
+		const formatOption = (option: any, value: any = null) => {
 			if (typeof option === 'object') {
 				if (typeof option.value === 'undefined' && value !== null) {
 					option.value = value;
@@ -87,12 +104,12 @@ export default class FlySelect extends React.Component {
 
 		if (Array.isArray(options)) {
 			options.forEach((option) => formatOption(option));
-		} else {
+		}
+		else {
 			Object.keys(options).forEach((optionValue) => formatOption(options[optionValue], optionValue));
 		}
 
 		return formattedOptions;
-
 	}
 
 	onClick () {
@@ -109,7 +126,7 @@ export default class FlySelect extends React.Component {
 		});
 	}
 
-	selectOption (e, value) {
+	selectOption (e: any, value: any) {
 		this.setState({
 			open: false,
 			value: value,
@@ -125,7 +142,7 @@ export default class FlySelect extends React.Component {
 			return;
 		}
 
-		const optionsBounding = this.containerRef.current.getBoundingClientRect();
+		const optionsBounding = this.__containerRef.current.getBoundingClientRect();
 		const maxBottomBounding = window.innerHeight - 40;
 
 		return {
@@ -148,7 +165,7 @@ export default class FlySelect extends React.Component {
 		return this.props.emptyPlaceholder;
 	}
 
-	renderItem (option, showCheck = false) {
+	renderItem (option: any, showCheck: boolean = false) {
 		const output = [];
 
 		if (option.download === true) {
@@ -168,7 +185,8 @@ export default class FlySelect extends React.Component {
 						key="icon"
 					/>
 				);
-			} else {
+			}
+			else {
 				output.push(React.cloneElement(option.icon, { key: 'icon', className: 'FlySelect__ItemIcon' }));
 			}
 		}
@@ -179,20 +197,22 @@ export default class FlySelect extends React.Component {
 				className="FlySelect_Option_Label"
 			>
 				{option.label}
-				</span>
+			</span>
 		);
 		output.push(this.renderItemRight(option, showCheck));
 
 		return output;
 	}
 
-	renderItemRight (option, showCheck) {
-		return <span
+	renderItemRight (option: any, showCheck: boolean) {
+		return (
+			<span
 				className="FlySelect__Right"
 				key="right"
 			>
 				{
-					'secondaryText' in option && option.secondaryText &&
+					'secondaryText' in option && option.secondaryText
+					&&
 					<span
 						className="FlySelect__SecondaryText"
 						key="secondary-text"
@@ -201,14 +221,15 @@ export default class FlySelect extends React.Component {
 					</span>
 				}
 				{
-					showCheck && option.value === this.state.value &&
+					showCheck && option.value === this.state.value
+					&&
 					<CheckSVG
 						key="checked"
 						className="FlySelect__Check"
 					/>
 				}
 			</span>
-		;
+		);
 	}
 
 	renderFooter () {
@@ -216,18 +237,20 @@ export default class FlySelect extends React.Component {
 			return '';
 		}
 
-		return <div className="FlySelect__Footer">
-			<a
-				className="FlySelect__FooterLink"
-				onClick={this.props.footerOnClick}
-			>
-				{this.props.footerText}
-				<ArrowRightSVG/>
-			</a>
-		</div>;
+		return (
+			<div className="FlySelect__Footer">
+				<a
+					className="FlySelect__FooterLink"
+					onClick={this.props.footerOnClick}
+				>
+					{this.props.footerText}
+					<ArrowRightSVG/>
+				</a>
+			</div>
+		);
 	}
 
-	renderOption (optionValue, i, group) {
+	renderOption (optionValue: any, i: number, group: any) {
 		const options = this.state.options;
 		const option = options[optionValue];
 		const disabled = typeof options[optionValue] === 'object' ? options[optionValue].disabled : false;
@@ -236,19 +259,21 @@ export default class FlySelect extends React.Component {
 			return;
 		}
 
-		return <div
-			key={i}
-			data-value={option.value}
-			className={classnames(
-				'FlySelect_Option',
-				{
-					'__Disabled': disabled,
-				}
-			)}
-			onClick={(e) => this.selectOption(e, optionValue)}
-		>
-			{this.renderItem(option, true)}
-		</div>;
+		return (
+			<div
+				key={i}
+				data-value={option.value}
+				className={classnames(
+					'FlySelect_Option',
+					{
+						'__Disabled': disabled,
+					}
+				)}
+				onClick={(e) => this.selectOption(e, optionValue)}
+			>
+				{this.renderItem(option, true)}
+			</div>
+		);
 	}
 
 	renderOptionGroups () {
@@ -256,14 +281,15 @@ export default class FlySelect extends React.Component {
 			return;
 		}
 
-		const output = [];
+		const output: any[] = [];
 		const options = this.state.options;
 
 		Object.keys(this.props.optionGroups).forEach((optionGroupID) => {
 			const optionGroup = this.props.optionGroups[optionGroupID];
 			const optionNodes = Object.keys(options)
-				.map((optionValue, i) => this.renderOption(optionValue, i, optionGroupID))
-				.filter((n) => n);
+				.map((optionValue: any, i: number) => this.renderOption(optionValue, i, optionGroupID))
+				.filter((n) => n)
+			;
 
 			if (!optionNodes.length) {
 				return;
@@ -277,13 +303,13 @@ export default class FlySelect extends React.Component {
 					<span>{optionGroup.label}</span>
 					{
 						optionGroup.linkText
-						?
-						<a onClick={optionGroup.linkOnClick}>
-							{optionGroup.linkText}
-							<ArrowRightSVG/>
-						</a>
-						:
-						null
+							?
+							<a onClick={optionGroup.linkOnClick}>
+								{optionGroup.linkText}
+								<ArrowRightSVG/>
+							</a>
+							:
+							null
 					}
 				</div>
 			);
@@ -296,9 +322,10 @@ export default class FlySelect extends React.Component {
 
 	render () {
 		const options = this.state.options;
+		const Tag: any = 'div';
 
 		return (
-			<div
+			<Tag
 				className={classnames(
 					'FlySelect',
 					this.props.className,
@@ -310,18 +337,21 @@ export default class FlySelect extends React.Component {
 				)}
 				style={this.props.style}
 				data-current-value={this.state.value}
-				tabIndex="0" onClick={this.onClick} onBlur={this.onBlur} ref={this.containerRef}
+				tabIndex={0}
+				onClick={this.onClick}
+				onBlur={this.onBlur}
+				ref={this.__containerRef}
 				disabled={this.props.disabled || !Object.keys(options).length}
 			>
 				<span className="CurrentValue">
 					{
 						this.state.value in options
-						?
-						this.renderItem(options[this.state.value])
-						:
-						<span className="CurrentValue_Placeholder">
-							{this.renderPlaceholder()}
-						</span>
+							?
+							this.renderItem(options[this.state.value])
+							:
+							<span className="CurrentValue_Placeholder">
+								{this.renderPlaceholder()}
+							</span>
 					}
 				</span>
 
@@ -335,7 +365,7 @@ export default class FlySelect extends React.Component {
 					</div>
 					{this.renderFooter()}
 				</div>
-			</div>
+			</Tag>
 		);
 	}
 }

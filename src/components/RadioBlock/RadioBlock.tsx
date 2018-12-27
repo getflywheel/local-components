@@ -1,17 +1,28 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big.svg';
-import PropTypes from 'prop-types';
 import styles from './RadioBlock.sass';
 
-class RadioBlock extends React.Component {
-	PropTypes = {
-		options: PropTypes.object,
-		default: PropTypes.any,
-		onChange: PropTypes.func,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	constructor (props) {
+	options: {[key: string]: RadioBlockItemPropsI},
+	default: string | null;
+	onChange: (...params: any[]) => any;
+
+}
+
+interface StateI {
+
+	value: string | null;
+	default: string | null;
+	options: {[key: string]: RadioBlockItemPropsI};
+
+}
+
+class RadioBlock extends React.Component<PropsI, StateI> {
+
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -23,7 +34,7 @@ class RadioBlock extends React.Component {
 		this.onClick = this.onClick.bind(this);
 	}
 
-	onClick (value) {
+	onClick (value: string | null) {
 		this.setState({
 			value: value,
 		});
@@ -37,7 +48,7 @@ class RadioBlock extends React.Component {
 		return (
 			<div className={styles.RadioBlock}>
 				{
-					Object.keys(this.props.options).map((optionValue, i) =>
+					Object.keys(this.props.options).map((optionValue: string, i: number) =>
 						<RadioBlockItem
 							onClick={this.onClick}
 							className={this.props.options[optionValue].className}
@@ -52,18 +63,22 @@ class RadioBlock extends React.Component {
 			</div>
 		);
 	}
+
 }
 
-class RadioBlockItem extends React.Component {
-	PropTypes = {
-		label: PropTypes.string,
-		value: PropTypes.any,
-		selected: PropTypes.bool,
-		onClick: PropTypes.func,
-		svg: PropTypes.element,
-	};
+interface RadioBlockItemPropsI extends LocalComponentPropsI {
 
-	constructor (props) {
+	label: string;
+	value: string | null;
+	selected: boolean;
+	onClick: (...params: any[]) => any;
+	svg: any;
+
+}
+
+class RadioBlockItem extends React.Component<RadioBlockItemPropsI> {
+
+	constructor (props: RadioBlockItemPropsI) {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);
@@ -74,7 +89,7 @@ class RadioBlockItem extends React.Component {
 	}
 
 	render () {
-		const svg = this.props.svg ? this.props.svg : <CheckmarkSVG />;
+		const svg = this.props.svg ? this.props.svg : <svg>{CheckmarkSVG}</svg>;
 
 		return (
 			<div
@@ -96,6 +111,7 @@ class RadioBlockItem extends React.Component {
 			</div>
 		);
 	}
+
 }
 
 export default RadioBlock;

@@ -1,21 +1,18 @@
 import * as React from "react";
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-interface ButtonPropsI {
-	/** Button contents */
-	children?: React.ReactNode;
-	/** Click handler */
-	onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+interface PropsI extends LocalComponentPropsI {
+
+	disabled?: boolean;
+
 }
 
-export default class Button extends React.Component {
-
-	static defaultProps: ButtonPropsI = {
-		children: null,
-	};
+export default class Button extends React.Component<PropsI> {
 
 	render () {
 		return (
 			<button
+				disabled={this.props.disabled}
 				{...this.props}
 			>
 				{this.props.children}

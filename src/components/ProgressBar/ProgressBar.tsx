@@ -1,28 +1,36 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import styles from './ProgressBar.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class ProgressBar extends React.Component {
-	static propTypes = {
-		progress: PropTypes.number,
-		stripes: PropTypes.bool,
-	};
+interface PropsI {
+
+	progress?: number;
+	showNumber?: number;
+	stripes?: boolean;
+
+}
+
+export default class ProgressBar extends React.Component<PropsI & LocalComponentPropsI> {
 
 	renderStripes () {
-		return <div className={classnames(styles.ProgressBarStripes)} />;
+		return (
+			<div className={classnames(styles.ProgressBarStripes)} />
+		);
 	}
 
 	renderRegularBar () {
-		return <div
-			className={classnames(
-                styles.ProgressBarIndicator,
-				{
-					[styles.ProgressBar__ShowNumber]: this.props.showNumber
-				}
-			)}
-			style={{ width: `${this.props.progress}%` }}
-		/>;
+		return (
+			<div
+				className={classnames(
+					styles.ProgressBarIndicator,
+					{
+						[styles.ProgressBar__ShowNumber]: this.props.showNumber
+					}
+				)}
+				style={{ width: `${this.props.progress}%` }}
+			/>
+		);
 	}
 
 	render () {
@@ -33,10 +41,9 @@ export default class ProgressBar extends React.Component {
 					'ProgressBar', // this also needs to be globally accessible so other component styles can reference it
 				)}
 			>
-				{
-					!this.props.stripes ? this.renderRegularBar() : this.renderStripes()
-				}
+				{!this.props.stripes ? this.renderRegularBar() : this.renderStripes()}
 			</div>
 		);
 	}
+
 }

@@ -1,25 +1,41 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import styles from './InputSearch.sass';
 import SearchSVG from '../../svg/search.svg';
 import ObjectUtils from '../../utils/object-utils';
 
-export default class InputSearch extends React.Component {
+const excludeProps = {
+	className: true,
+	containerClassName: true,
+	onChange: true,
+	placeholder: true,
+	value: true,
+};
 
-	static propTypes = {
-		className: PropTypes.string,
-		containerClassName: PropTypes.string,
-		onChange: PropTypes.func,
-		placeholder: PropTypes.string,
-		value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	static defaultProps = {
+	className?: string;
+	containerClassName?: string;
+	onChange?: (...params: any[]) => any;
+	placeholder?: string;
+	value?: string | number;
+
+}
+
+interface StateI {
+
+	value: string | number | undefined;
+
+}
+
+export default class InputSearch extends React.Component<PropsI, StateI> {
+
+	static defaultProps: Partial<PropsI> = {
 		value: '',
 	};
 
-	constructor (props) {
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -27,7 +43,7 @@ export default class InputSearch extends React.Component {
 		};
 	}
 
-	onChangeInternal = (event) => {
+	onChangeInternal = (event: any) => {
 		this.setState({
 			value: event.target.value // update value
 		});
@@ -36,7 +52,7 @@ export default class InputSearch extends React.Component {
 	};
 
 	render () {
-		const undeclaredProps = ObjectUtils.omitPropsInObject(this.props, InputSearch.propTypes, true);
+		const undeclaredProps = ObjectUtils.omitPropsInObject(this.props, excludeProps, true);
 
 		return (
 			<div
@@ -45,7 +61,7 @@ export default class InputSearch extends React.Component {
 					styles.InputSearch_Container,
 				)}
 			>
-				<SearchSVG className={styles.InputSearch_Icon} />
+				<svg className={styles.InputSearch_Icon}>{SearchSVG}</svg>
 				<input
 					className={classnames(
 						styles.InputSearch,

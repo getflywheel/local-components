@@ -1,16 +1,19 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
-import LoadingIndicator from '../LoadingIndicator';
 import styles from './BigLoader.sass';
+import LoadingIndicator from '../LoadingIndicator';
 
-export default class BigLoader extends React.Component {
-	static propTypes = {
-		color: PropTypes.oneOf(['Green', 'Gray']),
-		message: PropTypes.string,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	static defaultProps = {
+	color?: 'Green' | 'Gray';
+	message?: string;
+
+}
+
+export default class BigLoader extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		color: 'Green',
 	};
 
@@ -24,11 +27,17 @@ export default class BigLoader extends React.Component {
 				)}
                 style={this.props.style}
 			>
-				<LoadingIndicator big={true} color={this.props.color} />
+				<LoadingIndicator
+					big={true}
+					color={this.props.color}
+				/>
 				{
-					this.props.message && <h3>{this.props.message}</h3>
+					this.props.message
+					&&
+					<h3>{this.props.message}</h3>
 				}
 			</div>
 		);
 	}
+
 }

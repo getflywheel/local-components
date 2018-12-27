@@ -1,5 +1,5 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import { TableList } from '../TableList';
 import CloseSmallSVG from '../../svg/close--small.svg';
@@ -8,27 +8,38 @@ import Button from '../Button';
 import isEqual from 'lodash.isequal';
 import styles from '../TableList/TableList.sass';
 
-export default class TableListRepeater extends React.Component {
-	static propTypes = {
-		header: PropTypes.node,
-		repeatingContent: PropTypes.func.isRequired,
-		labelSingular: PropTypes.string,
-		itemTemplate: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
-		onSubmit: PropTypes.func,
-		onChange: PropTypes.func,
-		onBeforeRemove: PropTypes.func,
-		submitLabel: PropTypes.string,
-		submitDisabled: PropTypes.bool,
-		data: PropTypes.array,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	static defaultProps = {
+	data?: any[]
+	header?: React.ReactNode;
+	itemTemplate: any;
+	labelSingular?: string;
+	onBeforeRemove?: (...params: any[]) => any;
+	onChange?: (...params: any[]) => any;
+	onSubmit?: (...params: any[]) => any;
+	repeatingContent: (...params: any[]) => any;
+	submitLabel?: string;
+	submitDisabled?: boolean;
+
+}
+
+interface StateI {
+
+	addingItem: boolean;
+	initialData: any;
+	unsavedData: any;
+
+}
+
+export default class TableListRepeater extends React.Component<PropsI, StateI> {
+
+	static defaultProps: Partial<PropsI> = {
 		labelSingular: 'Item',
 		submitLabel: 'Submit',
 		submitDisabled: false,
 	};
 
-	constructor (props) {
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -40,18 +51,20 @@ export default class TableListRepeater extends React.Component {
 		this.addItem = this.addItem.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps (nextProps: PropsI) {
 		if (isEqual(nextProps.data, this.state.initialData)) {
 			return;
 		}
 
-		this.setState({
-			unsavedData: [...nextProps.data],
-			initialData: [...nextProps.data],
-		});
+		if(nextProps.data) {
+			this.setState({
+				unsavedData: [...nextProps.data],
+				initialData: [...nextProps.data],
+			});
+		}
 	}
 
-	onChange (unsavedData) {
+	onChange (unsavedData: any) {
 		if (typeof this.props.onChange === 'function') {
 			this.props.onChange(unsavedData);
 		}
@@ -67,14 +80,16 @@ export default class TableListRepeater extends React.Component {
 
 			try {
 				newItem = await this.props.itemTemplate();
-			} catch (e) {
+			}
+			catch (e) {
 				this.setState({
 					addingItem: false,
 				});
 
 				return;
 			}
-		} else {
+		}
+		else {
 			newItem = this.props.itemTemplate;
 		}
 
@@ -88,7 +103,7 @@ export default class TableListRepeater extends React.Component {
 		});
 	}
 
-	async removeItem (index) {
+	async removeItem (index: number) {
 		const unsavedData = this.state.unsavedData.slice();
 
 		if (this.props.onBeforeRemove) {
@@ -108,8 +123,8 @@ export default class TableListRepeater extends React.Component {
 		});
 	}
 
-	updateItemFactory (index) {
-		return (item) => {
+	updateItemFactory (index: number) {
+		return (item: any) => {
 			const unsavedData = this.state.unsavedData.slice();
 
 			unsavedData[index] = item;
@@ -153,8 +168,13 @@ export default class TableListRepeater extends React.Component {
 
 		return (
 			<div className={styles.TableListRepeaterSubmit}>
-				<button className="__Pill __Green" onClick={() => this.props.onSubmit(this.state.unsavedData)}
-					disabled={isEqual(this.props.data, this.state.unsavedData) || this.props.submitDisabled}>{this.props.submitLabel}</button>
+				<button
+					className="__Pill __Green"
+					onClick={() => this.props.onSubmit && this.props.onSubmit(this.state.unsavedData)}
+					disabled={isEqual(this.props.data, this.state.unsavedData) || this.props.submitDisabled}
+				>
+					{this.props.submitLabel}
+				</button>
 			</div>
 		);
 
@@ -163,13 +183,14 @@ export default class TableListRepeater extends React.Component {
 	render () {
 		return (
 			<div>
-				<TableList form={true} className={styles.TableListRepeater}>
+				<TableList
+					form={true}
+					className={styles.TableListRepeater}
+				>
 					{this.renderHeader()}
-
-					{this.state.unsavedData.map((item, index) => (
+					{this.state.unsavedData.map((item: any, index: number) => (
 						<li className={styles.TableListRow} key={index}>
 							{this.props.repeatingContent.call(this, Object.assign({}, item), index, this.updateItemFactory(index))}
-
 							<div
 								className={classnames(
 									styles.TableList__Remove,
@@ -177,7 +198,7 @@ export default class TableListRepeater extends React.Component {
 								)}
 							>
 								<span onClick={() => this.removeItem(index)}>
-									<CloseSmallSVG />
+									<svg>{CloseSmallSVG}</svg>
 								</span>
 							</div>
 						</li>
@@ -186,8 +207,12 @@ export default class TableListRepeater extends React.Component {
 
 				<div className={styles.TableListRepeaterAdd}>
 					<div className="InnerPaneSidebarHeaderButtons_Add">
-						<Button className="__Pill __Green __Medium" onClick={this.addItem} disabled={this.state.addingItem}>
-							<AddSVG />
+						<Button
+							className="__Pill __Green __Medium"
+							onClick={this.addItem}
+							disabled={this.state.addingItem}
+						>
+							<svg>{AddSVG}</svg>
 							{!this.state.addingItem ? 'Add ' : 'Adding'} {this.props.labelSingular}
 						</Button>
 					</div>
@@ -197,4 +222,5 @@ export default class TableListRepeater extends React.Component {
 			</div>
 		);
 	}
+
 }

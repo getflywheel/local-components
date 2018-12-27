@@ -1,19 +1,37 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import CaretSVG from '../../svg/caret.svg';
-import PropTypes from 'prop-types';
 import styles from './FlyDropdown.sass';
+import CaretSVG from '../../svg/caret.svg';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class FlyDropdown extends React.Component {
-	static propTypes = {
-		items: PropTypes.array,
-		caret: PropTypes.bool,
-		position: PropTypes.oneOf(['top', 'bottom']),
-		navItem: PropTypes.bool,
-		navItemActive: PropTypes.bool,
-	};
+interface ItemsI {
 
-	static defaultProps = {
+	color: 'red';
+	label: string;
+	onClick: (...params: any[]) => any;
+
+}
+
+interface PropsI extends LocalComponentPropsI {
+
+	caret?: boolean;
+	items: ItemsI[];
+	navItem?: boolean;
+	navItemActive?: boolean;
+	position?: 'top' | 'bottom',
+
+}
+
+interface StateI {
+
+	open: boolean;
+	tipItemHover: boolean | string;
+
+}
+
+export default class FlyDropdown extends React.Component<PropsI, StateI> {
+
+	static defaultProps: Partial<PropsI> = {
 		items: [],
 		caret: true,
 		position: 'bottom',
@@ -21,7 +39,7 @@ export default class FlyDropdown extends React.Component {
 		navItemActive: false,
 	};
 
-	constructor (props) {
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -45,7 +63,7 @@ export default class FlyDropdown extends React.Component {
 		});
 	}
 
-	tipItemHoverFactory (i, value) {
+	tipItemHoverFactory (i: number, value: string | boolean) {
 		if (this.props.position === 'bottom' && i !== 0) {
 			return null;
 		}
@@ -72,7 +90,7 @@ export default class FlyDropdown extends React.Component {
 					},
 					this.props.className,
 				)}
-				tabIndex="0"
+				tabIndex={0}
 				onClick={this.onClick}
 				onBlur={this.onBlur}
 			>
@@ -91,7 +109,7 @@ export default class FlyDropdown extends React.Component {
 					)}
 				>
 					{
-						this.props.items.map((item, i) => (
+						this.props.items.map((item: ItemsI, i: number) => (
 							<li
 								key={i}
 								className={classnames(
@@ -99,13 +117,13 @@ export default class FlyDropdown extends React.Component {
 									item.color && item.color === 'red' ? styles.FlyDropdown_Item__ColorRed : null,
 								)}
 								onClick={(event) => {
-									item.onClick.call();
+									item.onClick.call(null);
 									this.setState({ open: false });
 									event.stopPropagation();
 								}}
 								onMouseDown={(event) => event.preventDefault()}
-								onMouseOver={this.tipItemHoverFactory(i, item.color ? item.color : true)}
-								onMouseOut={this.tipItemHoverFactory(i, false)}
+								onMouseOver={(event) => this.tipItemHoverFactory(i, item.color ? item.color : true)}
+								onMouseOut={(event) => this.tipItemHoverFactory(i, false)}
 							>
 								{item.label}
 							</li>
@@ -115,4 +133,5 @@ export default class FlyDropdown extends React.Component {
 			</div>
 		);
 	}
+
 }

@@ -1,12 +1,16 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import styles from './TableList.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-class TableList extends React.Component {
-	static propTypes = {
-		stripes: PropTypes.bool,
-	};
+interface PropsI extends LocalComponentPropsI {
+
+	form?: boolean;
+	stripes?: boolean;
+
+}
+
+export class TableList extends React.Component<PropsI> {
 
 	render () {
 		return (
@@ -27,7 +31,16 @@ class TableList extends React.Component {
 	}
 }
 
-class TableListRow extends React.Component {
+interface TableListRowPropsI extends LocalComponentPropsI {
+
+	form?: boolean;
+	label?: string;
+	selectable?: boolean;
+
+}
+
+export class TableListRow extends React.Component<TableListRowPropsI> {
+
 	render () {
 		return (
 			<li
@@ -41,11 +54,12 @@ class TableListRow extends React.Component {
 
 				<div>
 					{
-						this.props.selectable && typeof this.props.children !== 'object' ?
+						this.props.selectable && typeof this.props.children !== 'object'
+							?
 							<input
 								type="text"
 								readOnly
-								value={this.props.children}
+								value={this.props.children as string | string[] | number}
 							/>
 							: this.props.children
 					}
@@ -53,11 +67,5 @@ class TableListRow extends React.Component {
 			</li>
 		);
 	}
+
 }
-
-TableListRow.propTypes = {
-	selectable: PropTypes.bool,
-	form: PropTypes.bool,
-};
-
-export { TableList, TableListRow };

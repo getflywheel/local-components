@@ -1,8 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './InnerPaneSidebar.sass';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export function InnerPaneSidebar (props) {
+interface PropsI extends LocalComponentPropsI {
+
+	title: string,
+
+}
+
+export function InnerPaneSidebar (props: LocalComponentPropsI) {
     return <div
 		className={classnames(
 			styles.InnerPaneSidebar,
@@ -13,7 +20,7 @@ export function InnerPaneSidebar (props) {
     </div>;
 }
 
-export function InnerPaneSidebarHeader (props) {
+export function InnerPaneSidebarHeader (props: PropsI) {
     return <div
 		className={classnames(
 			styles.InnerPaneSidebarHeader,
@@ -22,11 +29,18 @@ export function InnerPaneSidebarHeader (props) {
 	>
         <h3>{props.title}</h3>
 
-        {props.children ? <div className={classnames(styles.InnerPaneSidebarHeaderButtons)}>{props.children}</div> : ''}
+        {
+        	props.children
+				?
+				<div className={classnames(styles.InnerPaneSidebarHeaderButtons)}>
+					{props.children}
+				</div>
+				: ''
+        }
     </div>;
 }
 
-export function InnerPaneSidebarAddNew (props) {
+export function InnerPaneSidebarAddNew (props: LocalComponentPropsI) {
     return <div
 		className={classnames(
 			styles.InnerPaneSidebarAddNew,
@@ -37,7 +51,7 @@ export function InnerPaneSidebarAddNew (props) {
     </div>;
 }
 
-export function InnerPaneSidebarContent (props) {
+export function InnerPaneSidebarContent (props: LocalComponentPropsI) {
     return <div
 		className={classnames(
 			styles.InnerPaneSidebarContent,
@@ -48,7 +62,7 @@ export function InnerPaneSidebarContent (props) {
     </div>;
 }
 
-export function InnerPaneSidebarContentItem (props) {
+export function InnerPaneSidebarContentItem (props: LocalComponentPropsI) {
     return <div
 		className={classnames(
 			styles.InnerPaneSidebarContentItem,

@@ -1,15 +1,18 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import styles from './LoadingIndicator.sass';
 
-export default class LoadingIndicator extends React.Component {
-	static propTypes = {
-		big: PropTypes.bool,
-		color: PropTypes.oneOf(['Green', 'Gray']),
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	static defaultProps = {
+	big?: boolean;
+	color?: 'Green' | 'Gray';
+
+}
+
+export default class LoadingIndicator extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		big: false,
 		color: 'Green',
 	};
@@ -31,4 +34,5 @@ export default class LoadingIndicator extends React.Component {
             </div>
         );
 	}
+
 }

@@ -1,9 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import EyeSVG from '../../svg/eye.svg';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class InputPasswordToggle extends React.Component {
-	constructor (props) {
+interface StateI {
+
+	inputType: 'password' | 'text';
+
+}
+
+export default class InputPasswordToggle extends React.Component<LocalComponentPropsI, StateI> {
+
+	constructor (props: LocalComponentPropsI) {
 		super(props);
 
 		this.state = {
@@ -35,10 +43,14 @@ export default class InputPasswordToggle extends React.Component {
 					className={className ? `PasswordToggleInput ${className}` : 'PasswordToggleInput'}
 					{...props}
 				/>
-				<span className="Eye" onClick={this.toggleType}>
-					<EyeSVG />
+				<span
+					className="Eye"
+					onClick={this.toggleType}
+				>
+					<svg>{EyeSVG}</svg>
 				</span>
 			</div>
 		);
 	}
+
 }

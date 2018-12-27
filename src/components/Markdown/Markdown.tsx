@@ -1,7 +1,7 @@
-import React, { Component, PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styles from './Markdown.sass';
 import ReactMarkdown from 'react-markdown';
+import Lowlight from 'react-lowlight';
 import apache from 'highlight.js/lib/languages/apache';
 import bash from 'highlight.js/lib/languages/bash';
 import css from 'highlight.js/lib/languages/css';
@@ -13,13 +13,15 @@ import shell from 'highlight.js/lib/languages/shell';
 import sql from 'highlight.js/lib/languages/sql';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import Lowlight from 'react-lowlight';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class Markdown extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		src: PropTypes.string,
-	};
+	src?: string,
+
+}
+
+export default class Markdown extends React.Component<PropsI> {
 
 	render () {
 		return (
@@ -37,15 +39,17 @@ export default class Markdown extends React.Component {
 
 }
 
-class MarkdownCodeBlock extends PureComponent {
+interface MarkdownCodeBlockPropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		value: PropTypes.string,
-		language: PropTypes.string,
-		inline: PropTypes.bool,
-	};
+	value: string;
+	language: string;
+	inline: boolean;
 
-	languagesEnabled = {
+}
+
+class MarkdownCodeBlock extends React.PureComponent<MarkdownCodeBlockPropsI> {
+
+	private readonly __languagesEnabled: {[key: string]: any} = {
 		'apache': apache,
 		'bash': bash,
 		'css': css,
@@ -59,16 +63,16 @@ class MarkdownCodeBlock extends PureComponent {
 		'xml': xml,
 	};
 
-	constructor (props) {
+	constructor (props: MarkdownCodeBlockPropsI) {
 		super(props);
 
-		for(const langName in this.languagesEnabled) {
-			Lowlight.registerLanguage(langName, this.languagesEnabled[langName]);
+		for(const langName in this.__languagesEnabled) {
+			Lowlight.registerLanguage(langName, this.__languagesEnabled[langName]);
 		}
 	}
 
 	render () {
-		const lang = this.languagesEnabled[this.props.language] ? this.props.language : 'bash';
+		const lang = this.__languagesEnabled[this.props.language] ? this.props.language : 'bash';
 
 		return (
 			<Lowlight

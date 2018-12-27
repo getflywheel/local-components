@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import styles from './DragBar.sass';
 
 export default class Toolbar extends React.Component {

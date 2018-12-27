@@ -1,39 +1,33 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import WarningSVG from '../../svg/warning.svg';
-import CloseSVG from '../../svg/close--small.svg';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import styles from './Banner.sass';
+import WarningSVG from '../../svg/warning.svg';
+import CloseSVG from '../../svg/close--small.svg';
 
-export default class Banner extends React.Component {
-	static propTypes = {
-		variant: PropTypes.oneOf([
-			'warning',
-			'neutral',
-			'success',
-			'error',
-		]),
-		icon: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.bool,
-		]),
-		buttonText: PropTypes.string,
-		buttonOnClick: PropTypes.func,
-		onIndexChange: PropTypes.func,
-		numBanners: PropTypes.number,
-		currentIndex: PropTypes.number,
-		onDismiss: PropTypes.func,
-	};
+interface PropsI extends LocalComponentPropsI {
 
-	static defaultProps = {
-		variant: 'neutral',
+	buttonText?: string;
+	currentIndex?: number;
+	buttonOnClick?: (...params: any[]) => any;
+	icon?: string | boolean;
+	numBanners?: number;
+	onDismiss?: (...params: any[]) => any;
+	onIndexChange?: (...params: any[]) => any;
+	variant?: 'warning' | 'neutral' | 'success' | 'error';
+
+}
+
+export default class Banner extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
+		currentIndex: 0,
 		icon: 'warning',
 		numBanners: 1,
-		currentIndex: 0,
-		onDismiss: null,
+		variant: 'neutral',
 	};
 
-	constructor (props) {
+	constructor (props: PropsI) {
 		super(props);
 	}
 
@@ -42,7 +36,9 @@ export default class Banner extends React.Component {
 			return null;
 		}
 
-		return <WarningSVG/>;
+		return (
+			<svg>{WarningSVG}</svg>
+		);
 	}
 
 	renderButton () {
@@ -50,16 +46,18 @@ export default class Banner extends React.Component {
 			return null;
 		}
 
-		return <button
-			onClick={this.props.buttonOnClick}
-			className={styles.CTA}
-		>
-			{this.props.buttonText}
-		</button>;
+		return (
+			<button
+				onClick={this.props.buttonOnClick}
+				className={styles.CTA}
+			>
+				{this.props.buttonText}
+			</button>
+		);
 	}
 
 	renderCarousel () {
-		if (this.props.numBanners <= 1) {
+		if (!this.props.numBanners || this.props.numBanners <= 1) {
 			return null;
 		}
 
@@ -75,14 +73,16 @@ export default class Banner extends React.Component {
 							[styles.Carousel_Item__Active]: index === this.props.currentIndex,
 						}
 					)}
-					onClick={() => this.props.onIndexChange(index)}/>
+					onClick={() => this.props.onIndexChange && this.props.onIndexChange(index)}
+				/>
 			);
 		}
 
-		return <div className={styles.Carousel}>
-			{items}
-		</div>;
-
+		return (
+			<div className={styles.Carousel}>
+				{items}
+			</div>
+		);
 	}
 
 	renderDismiss () {
@@ -90,33 +90,40 @@ export default class Banner extends React.Component {
 			return null;
 		}
 
-		return <span className={styles.Dismiss} onClick={this.props.onDismiss}>
-			<CloseSVG />
-		</span>;
+		return (
+			<span
+				className={styles.Dismiss}
+				onClick={this.props.onDismiss}
+			>
+				<svg>{CloseSVG}</svg>
+			</span>
+		);
 	}
 
 	render () {
-		return <div
-			className={classnames(
-				styles.Banner,
-				{
-					[styles.Banner__Neutral]: this.props.variant === 'neutral',
-					[styles.Banner__Error]: this.props.variant === 'error',
-					[styles.Banner__Success]: this.props.variant === 'success',
-				}
-			)}
-		>
-			{this.renderCarousel()}
-			{this.renderIcon()}
+		return (
+			<div
+				className={classnames(
+					styles.Banner,
+					{
+						[styles.Banner__Neutral]: this.props.variant === 'neutral',
+						[styles.Banner__Error]: this.props.variant === 'error',
+						[styles.Banner__Success]: this.props.variant === 'success',
+					}
+				)}
+			>
+				{this.renderCarousel()}
+				{this.renderIcon()}
 
-			<span className={styles.Content}>
-				{this.props.children}
-			</span>
+				<span className={styles.Content}>
+					{this.props.children}
+				</span>
 
-			<div className={styles.CTA_Container}>
-				{this.renderButton()}
-				{this.renderDismiss()}
+				<div className={styles.CTA_Container}>
+					{this.renderButton()}
+					{this.renderDismiss()}
+				</div>
 			</div>
-		</div>;
+		);
 	}
 }

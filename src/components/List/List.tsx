@@ -1,10 +1,10 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './List.sass';
 import Header from '../Header/Header';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-const fontSizeContentClassMixin = (styles, props) => ({
+const fontSizeContentClassMixin = (styles: {[key: string]: any}, props: {[key: string]: any}) => ({
 	[styles.__FontSizeXS_Content]: props.listItemFontSize === 'xs',
 	[styles.__FontSizeS_Content]: props.listItemFontSize === 's',
 	[styles.__FontSizeM_Content]: props.listItemFontSize === 'm',
@@ -12,7 +12,7 @@ const fontSizeContentClassMixin = (styles, props) => ({
 	[styles.__FontSizeXL_Content]: props.listItemFontSize === 'xl',
 });
 
-const fontWeightClassMixin = (styles, props) => ({
+const fontWeightClassMixin = (styles: {[key: string]: any}, props: {[key: string]: any}) => ({
 	[styles.__FontWeight300Light]: props.listItemFontWeight === '300',
 	[styles.__FontWeight400Normal]: props.listItemFontWeight === '400',
 	[styles.__FontWeight500Medium]: props.listItemFontWeight === '500',
@@ -20,25 +20,27 @@ const fontWeightClassMixin = (styles, props) => ({
 	[styles.__FontWeight900Heavy]: props.listItemFontWeight === '900',
 });
 
-export default class List extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		bullets: PropTypes.bool,
-		listClassName: PropTypes.string,
-		listItemClassName: PropTypes.string,
-		listItemWrapElement: PropTypes.bool,
-		listItemFontSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-		listItemFontWeight: PropTypes.oneOf(['300', '400', '500', '700', '900']),
-		headerClass: PropTypes.string,
-		headerHasDivider: PropTypes.bool,
-		headerFontSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-		headerTag: PropTypes.string,
-		headerText: PropTypes.string,
-		headerWeight: PropTypes.oneOf(['300', '400', '500', '700', '900']),
-		tag: PropTypes.string,
-	};
+	bullets?: boolean;
+	headerClass?: string;
+	headerFontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
+	headerHasDivider?: boolean;
+	headerTag?: string;
+	headerText?: string;
+	headerWeight?: '300' | '400' | '500' | '700' | '900';
+	listClassName?: string;
+	listItemClassName?: string;
+	listItemFontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
+	listItemFontWeight?: '300' | '400' | '500' | '700' | '900';
+	listItemWrapElement?: boolean;
+	tag?: string;
 
-	static defaultProps = {
+}
+
+export default class List extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		bullets: true,
 		headerFontSize: 's',
 		headerTag: 'div',
@@ -47,7 +49,7 @@ export default class List extends React.Component {
 		tag: 'ul',
 	};
 
-	generateListItemClassNames (child) {
+	generateListItemClassNames (child?: React.ReactElement<any>) {
 		return classnames(
 			child && child.props.className,
 			styles.List_Item,
@@ -58,7 +60,7 @@ export default class List extends React.Component {
 	}
 
 	render () {
-		const ListTag = this.props.tag;
+		const ListTag: any = this.props.tag;
 
 		return (
 			<div
@@ -92,7 +94,7 @@ export default class List extends React.Component {
 						}
 					)}
 				>
-					{React.Children.map(this.props.children, (child) => {
+					{React.Children.map(this.props.children, (child: any) => {
 						if (!child) {
 							return;
 						}
@@ -102,9 +104,7 @@ export default class List extends React.Component {
 						}
 
 						return (
-							<li
-								className={this.generateListItemClassNames()}
-							>
+							<li className={this.generateListItemClassNames()}>
 								{React.cloneElement(child, {})}
 							</li>
 						);

@@ -39,7 +39,6 @@ Advanced pattern combining the TertiaryNav with the Drawer component.
 const { TertiaryNav, TertiaryNavItem } = require('./TertiaryNav');
 const Drawer = require('../Drawer').default;
 const { Fragment } = require('react');
-const PropTypes = require('prop-types');
 
 const Item2 = () => (<h1>Item 2 Content</h1>);
 const Item3 = () => (<h1>Item 3 Content</h1>);
@@ -68,7 +67,7 @@ class Item1 extends React.Component{
 }
 
 Item1.propTypes = {
-  onChange: PropTypes.func,
+  onChange: (...params: any[]) => any;
 };
 
 class TertiaryNavExample extends React.Component{

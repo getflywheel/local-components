@@ -1,13 +1,16 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 import styles from './EmptyArea.sass';
 
-export default class EmptyArea extends React.Component {
-	static propTypes = {
-		border: PropTypes.bool,
-		FadeIn: PropTypes.bool,
-	};
+interface PropsI extends LocalComponentPropsI {
+
+	border?: boolean;
+	FadeIn?: boolean;
+
+}
+
+export default class EmptyArea extends React.Component<PropsI> {
 
 	render () {
 		return (
@@ -25,4 +28,5 @@ export default class EmptyArea extends React.Component {
 			</div>
 		);
 	}
+
 }

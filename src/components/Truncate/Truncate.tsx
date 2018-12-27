@@ -1,15 +1,19 @@
-import * as React from 'react';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import TruncateMarkup from 'react-truncate-markup';
 
-export default class Truncate extends React.Component {
-	static propTypes = {
-		lines: PropTypes.number,
-		ellipsis: PropTypes.node,
-	};
+// todo - crum: this component doesn't currently support 'className' or 'style' because 3rd party 'TruncateMarkup' doesn't support it...use TypeScript 'omit???' Omit<IXProps, "unwantedProp">
 
-	static defaultProps = {
+interface PropsI {
+
+	lines?: number | undefined;
+	ellipsis?: React.ReactNode;
+
+}
+
+export default class Truncate extends React.Component<PropsI & LocalComponentPropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		lines: 1,
 		ellipsis: '...',
 	};
@@ -17,7 +21,6 @@ export default class Truncate extends React.Component {
 	render () {
 		return (
 			<TruncateMarkup
-				className={classnames(this.props.className)}
 				lines={this.props.lines}
 				ellipsis={this.props.ellipsis}
 			>
@@ -27,4 +30,5 @@ export default class Truncate extends React.Component {
 			</TruncateMarkup>
 		);
 	}
+
 }

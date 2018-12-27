@@ -1,41 +1,53 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-
+import React from 'react';
 import CircleSVG from '../../svg/circle.svg';
 import ExclamationSVG from '../../svg/exclamation.svg';
 import CompleteSVG from '../../svg/complete.svg';
 import SpinnerSVG from '../../svg/spinner.svg';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
-export default class InstallerStepStatus extends React.Component {
-	static propTypes = {
-		ready: PropTypes.bool,
-		inProgress: PropTypes.bool,
-        requiresAttention: PropTypes.bool,
-	};
+interface PropsI extends LocalComponentPropsI {
+
+	inProgress: boolean;
+	ready: boolean;
+	requiresAttention: boolean;
+
+}
+
+export default class InstallerStepStatus extends React.Component<PropsI> {
 
 	renderIcon () {
 		if (!this.props.ready && !this.props.inProgress) {
-			return <CircleSVG className="Circle" />;
+			return (
+				<svg className="Circle" >{CircleSVG}</svg>
+			);
 		}
 
 		if (this.props.ready) {
-			return <CompleteSVG
-				className="
-					TID_InstallerStepStatus_Icon_Complete
-					Complete
-				"
-			/>;
+			return (
+				<svg
+					className="
+						TID_InstallerStepStatus_Icon_Complete
+						Complete
+					"
+				>
+					{CompleteSVG}
+				</svg>
+			);
 		}
 
 		if (this.props.requiresAttention) {
-			return <span className="SpinnerNotice">
-				<ExclamationSVG className="Exclamation" />
-				<SpinnerSVG className="Spinner" />
-			</span>;
+			return (
+				<span className="SpinnerNotice">
+					<svg className="Exclamation">{ExclamationSVG}</svg>
+					<svg className="Spinner">{SpinnerSVG}</svg>
+				</span>
+			);
 		}
 
 		if (this.props.inProgress) {
-			return <SpinnerSVG className="Spinner" />;
+			return (
+				<svg className="Spinner">{SpinnerSVG}</svg>
+			);
 		}
 	}
 
@@ -46,4 +58,5 @@ export default class InstallerStepStatus extends React.Component {
 			</span>
 		);
 	}
+
 }

@@ -1,24 +1,28 @@
-import * as React from 'react';
-import CaretSVG from '../../svg/caret.svg';
+import React from 'react';
 import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
-import * as styles from './AdvancedToggle.sass';
+import styles from './AdvancedToggle.sass';
+import CaretSVG from '../../svg/caret.svg';
 
-interface AdvancedToggleProps {
-	headingText: string,
+interface PropsI extends LocalComponentPropsI {
+
+	headingText?: string,
+
 }
 
-interface AdvancedToggleState {
+interface StateI {
+
 	advancedOpen: boolean;
+
 }
 
-export default class AdvancedToggle extends React.Component<AdvancedToggleProps & LocalComponentPropsI, AdvancedToggleState> {
+export default class AdvancedToggle extends React.Component<PropsI, StateI> {
 
-	static defaultProps = {
+	static defaultProps: Partial<PropsI> = {
 		headingText: 'Advanced Options',
 	};
 
-	constructor (props: AdvancedToggleProps) {
+	constructor (props: PropsI) {
 		super(props);
 
 		this.state = {
@@ -51,7 +55,7 @@ export default class AdvancedToggle extends React.Component<AdvancedToggleProps 
 				>
 					<span>
 						{this.props.headingText}
-						<CaretSVG />
+						<svg>{CaretSVG}</svg>
 					</span>
 				</span>
 

@@ -1,7 +1,8 @@
-import * as React from 'react';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import styles from './SiteInfoInnerPane.sass';
 
-export default class SiteInfoInnerPane extends React.Component {
+export default class SiteInfoInnerPane extends React.Component<LocalComponentPropsI> {
 	render () {
 		const propsWithoutChildren = { ...this.props };
 		delete propsWithoutChildren.children;

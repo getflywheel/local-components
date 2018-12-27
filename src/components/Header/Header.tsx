@@ -1,25 +1,27 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 import classnames from 'classnames';
 import styles from './Header.sass';
 
-export default class Header extends React.Component {
+interface PropsI extends LocalComponentPropsI {
 
-	static propTypes = {
-		fontSize: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
-		fontWeight: PropTypes.oneOf(['300', '400', '500', '700', '900']),
-		onClick: PropTypes.func,
-		tag: PropTypes.string,
-	};
+	fontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
+	fontWeight?: '300' | '400' | '500' | '700' | '900';
+	onClick?: (...params: any[]) => any;
+	tag?: string;
 
-	static defaultProps = {
+}
+
+export default class Header extends React.Component<PropsI> {
+
+	static defaultProps: Partial<PropsI> = {
 		fontSize: 'm',
 		fontWeight: '500',
 		tag: 'div',
 	};
 
 	render() {
-		const HeaderTag = this.props.tag;
+		const HeaderTag: any = this.props.tag;
 
 		return (
 			<HeaderTag
