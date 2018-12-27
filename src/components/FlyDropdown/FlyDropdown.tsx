@@ -95,9 +95,7 @@ export default class FlyDropdown extends React.Component<PropsI, StateI> {
 				onBlur={this.onBlur}
 			>
 				{this.props.children}
-
-				{this.props.caret && <CaretSVG className={styles.FlyDropdown_Caret}/>}
-
+				{this.props.caret && <svg className={styles.FlyDropdown_Caret}>{CaretSVG}</svg>}
 				<ul
 					className={classnames(
 						styles.FlyDropdown_Items,

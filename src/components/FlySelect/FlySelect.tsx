@@ -170,10 +170,12 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 
 		if (option.download === true) {
 			output.push(
-				<DownloadSmallSVG
+				<svg
 					key="download-svg"
 					className="DownloadSmall"
-				/>
+				>
+					{DownloadSmallSVG}
+				</svg>
 			);
 		}
 
@@ -223,10 +225,12 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 				{
 					showCheck && option.value === this.state.value
 					&&
-					<CheckSVG
+					<svg
 						key="checked"
 						className="FlySelect__Check"
-					/>
+					>
+						{CheckSVG}
+					</svg>
 				}
 			</span>
 		);
@@ -244,7 +248,7 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 					onClick={this.props.footerOnClick}
 				>
 					{this.props.footerText}
-					<ArrowRightSVG/>
+					<svg>{ArrowRightSVG}</svg>
 				</a>
 			</div>
 		);
