@@ -12,37 +12,37 @@ mock('electron', {
 	}
 });
 
+// enable the loading of TypeScript files
+require("@babel/register")({
+	extensions: ['.tsx', '.ts'],
+});
+
 async function getComponentFiles() {
-	return await globby(['src/**/*.jsx', '!src/**/*test.jsx']);
+	return await globby(['src/**/*.tsx', '!src/**/*test.tsx']);
 }
 
 async function getExportedComponents() {
-
 	const componentFiles = await getComponentFiles();
 	const exportedComponents = {};
 
-	for ( const componentFile of componentFiles ) {
+	for (const componentFile of componentFiles) {
 		const tmpRequire = require(path.resolve(componentFile));
-
 		exportedComponents[componentFile] = Object.keys(tmpRequire);
 	}
 
 	return exportedComponents;
-
 }
 
 async function generateEntrypoints() {
-
 	const exportedComponents = await getExportedComponents();
 
-	for ( const [componentPath, componentExports] of Object.entries(exportedComponents) ) {
-
-		const componentName = path.basename(componentPath, '.jsx');
+	for (const [componentPath, componentExports] of Object.entries(exportedComponents)) {
+		const componentName = path.basename(componentPath, '.tsx');
 
 		let content = `const mainEntrypoint = require('./index');`;
 		let addedInitialObject = false;
 
-		for ( const componentExport of componentExports ) {
+		for (const componentExport of componentExports) {
 			if (componentExport === 'default') {
 				content += `\nmodule.exports = mainEntrypoint['${componentName}'];`;
 				addedInitialObject = true;
@@ -65,7 +65,8 @@ async function generateEntrypoints() {
 			fs.writeFileSync(entrypointPath, content);
 
 			console.info('Wrote', entrypointPath);
-		} catch (e) {
+		}
+		catch (e) {
 			console.error('Ran into error', e);
 
 			process.exit(1);
@@ -74,7 +75,6 @@ async function generateEntrypoints() {
 	}
 
 	process.exit(0);
-
 }
 
 (async () => {
