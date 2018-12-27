@@ -112,7 +112,7 @@ export default class Card extends React.Component<PropsI> {
 							this.props.contentTitleClassName,
 						)}
 						style={{
-							...(this.props.contentTitleOnClick && {cursor: "pointer"}), // conditionally add style
+							...(this.props.contentTitleOnClick && {cursor: 'pointer'}), // conditionally add style
 						}}
 						onClick={this.props.contentTitleOnClick}
 					>

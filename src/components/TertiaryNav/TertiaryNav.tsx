@@ -86,7 +86,7 @@ class TertiaryNavItemBase extends React.Component<TertiaryNavItemBasePropsI & Ro
 				)}
 			>
                 <NavLink
-					exact
+					exact={true}
 					to={`${this.props.match.url}${this.props.path}`}
 					activeClassName={styles.TertiaryNavItem__Active}
 				>

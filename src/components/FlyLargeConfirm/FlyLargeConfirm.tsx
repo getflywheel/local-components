@@ -39,27 +39,29 @@ export default class FlyLargeConfirm extends React.Component<PropsI, StateI> {
 	}
 
 	render () {
-		return <div
-			className={classnames(
-				styles.FlyLargeConfirm,
-				{
-					[styles.FlyLargeConfirm__Confirmed]: this.state.confirmed,
-				}
-			)}
-		>
-			<p>{this.props.bodyText}</p>
-
-			<button
-				className="__Pill"
-				onClick={this.onConfirm}
-				disabled={this.state.confirmed}
-			>
-				{this.state.confirmed && (
-					<svg>{CheckSVG}</svg>
+		return (
+			<div
+				className={classnames(
+					styles.FlyLargeConfirm,
+					{
+						[styles.FlyLargeConfirm__Confirmed]: this.state.confirmed,
+					}
 				)}
-				{this.state.confirmed ? 'Confirmed' : this.props.buttonText}
-			</button>
-		</div>;
+			>
+				<p>{this.props.bodyText}</p>
+
+				<button
+					className="__Pill"
+					onClick={this.onConfirm}
+					disabled={this.state.confirmed}
+				>
+					{this.state.confirmed && (
+						<svg>{CheckSVG}</svg>
+					)}
+					{this.state.confirmed ? 'Confirmed' : this.props.buttonText}
+				</button>
+			</div>
+		);
 	}
 
 }

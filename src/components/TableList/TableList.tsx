@@ -58,7 +58,7 @@ export class TableListRow extends React.Component<TableListRowPropsI> {
 							?
 							<input
 								type="text"
-								readOnly
+								readOnly={true}
 								value={this.props.children as string | string[] | number}
 							/>
 							: this.props.children

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import LocalComponentPropsI from '../../common/structures/LocalComponentPropsI';
 
 interface PropsI extends LocalComponentPropsI {

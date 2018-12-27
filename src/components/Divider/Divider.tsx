@@ -24,7 +24,7 @@ interface PropsI extends LocalComponentPropsI {
 
 }
 
-const Divider = (props: PropsI) =>
+const Divider = (props: PropsI) => (
 	<div
 		className={classnames(
 			styles.Divider,
@@ -33,6 +33,6 @@ const Divider = (props: PropsI) =>
 		)}
 		onClick={props.onClick}
 	/>
-;
+);
 
 export default Divider;
