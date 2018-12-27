@@ -1,10 +1,11 @@
 import { hot } from 'react-hot-loader';
 import addStyles from './add-styles';
 import Button1 from './components/Button/Button';
+import AdvancedToggle1 from './components/AdvancedToggle/AdvancedToggle';
 
 addStyles();
 
-export const AdvancedToggle = hot(module)(require('./components/AdvancedToggle').default);
+export const AdvancedToggle = hot(AdvancedToggle1);
 export const Banner = hot(module)(require('./components/Banner').default);
 export const BannerCarousel = hot(module)(require('./components/BannerCarousel').default);
 export const BigLoader = hot(module)(require('./components/BigLoader').default);
@@ -16,7 +17,7 @@ export const Divider = hot(module)(require('./components/Divider').default);
 export const DownloaderItem = hot(module)(require('./components/DownloaderItem').default);
 export const DragBar = hot(module)(require('./components/DragBar').default);
 export const Drawer = hot(module)(require('./components/Drawer').default);
-export const EmptyArea = hot(module)(require('./components/EmptyArea').default);
+export const EmptyArea = hot(module)(require('./components/EmptyArea'));
 export const FlyDropdown = hot(module)(require('./components/FlyDropdown').default);
 export const FlyLargeConfirm = hot(module)(require('./components/FlyLargeConfirm').default);
 export const FlyModal = hot(module)(require('./components/FlyModal').default);
