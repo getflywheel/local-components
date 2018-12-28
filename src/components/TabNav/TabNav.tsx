@@ -39,11 +39,12 @@ export default class TabNav extends React.Component<PropsI> {
 					this.props.className,
 				)}
 			>
-				<div className={classnames(
-					styles.TabNav_Items,
-					this.props.itemsClassName,
-				)}
-			>
+				<div
+					className={classnames(
+						styles.TabNav_Items,
+						this.props.itemsClassName,
+					)}
+				>
 					{this.props.children}
 				</div>
 

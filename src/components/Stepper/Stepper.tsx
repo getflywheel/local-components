@@ -15,7 +15,8 @@ export class Stepper extends React.Component<ReactComponentPropsI> {
 						[styles.__Steps__2]: (this.props.children as React.ReactNode[]).length === 2,
 						[styles.__Steps__3]: (this.props.children as React.ReactNode[]).length === 3,
 					},
-				)}>
+				)}
+			>
 				{this.props.children}
 			</div>
 		);

@@ -76,7 +76,8 @@ export function InnerPaneSidebarContentItem (props: ReactComponentPropsI) {
 			className={classnames(
 				styles.InnerPaneSidebarContentItem,
 				props.className,
-			)}>
+			)}
+		>
 			{props.children}
 		</div>
 	);

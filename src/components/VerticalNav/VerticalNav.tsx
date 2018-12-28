@@ -62,10 +62,12 @@ export class VerticalNavItem extends React.Component<PropsI> {
 				)
 				:
 				(
-					<div className={classnames(
-						styles.VerticalNavItem,
-						this.props.className,
-					)}>
+					<div
+						className={classnames(
+							styles.VerticalNavItem,
+							this.props.className,
+						)}
+					>
 						{children}
 					</div>
 				)

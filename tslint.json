@@ -10,7 +10,7 @@
 		"comment-format": false,
 		"indent": [true, "tabs", 4],
 		"interface-name": [true, "never-prefix"], // https://palantir.github.io/tslint/rules/interface-name
-		"jsx-alignment": false,
+		"jsx-alignment": true,
 		"jsx-boolean-value": true,
 		"jsx-no-lambda": false, // todo - crum: look into this more later
 		"jsx-no-multiline-js": false,
@@ -46,6 +46,5 @@
 		"space-before-function-paren": "always", // https://eslint.org/docs/rules/space-before-function-paren
 		"trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
 		"variable-name": [true, "ban-keywords", "allow-leading-underscore"] // https://palantir.github.io/tslint/rules/variable-name/
-	},
-	"rulesDirectory": []
+	}
 }
