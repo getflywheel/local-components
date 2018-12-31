@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
 import styles from './Header.sass';
+import withMargin from '../../common/hocs/margin/withMargin';
 
 interface PropsI extends ReactComponentPropsI {
 
@@ -12,7 +13,7 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class Header extends React.Component<PropsI> {
+class Header extends React.Component<PropsI> {
 
 	static defaultProps: Partial<PropsI> = {
 		fontSize: 'm',
@@ -49,3 +50,9 @@ export default class Header extends React.Component<PropsI> {
 	}
 
 }
+
+export default withMargin(
+	'xl none',
+	null,
+	'*', // give selector extra specificity weight to ensure precendence over the component's host margin style (if set)
+)(Header);
