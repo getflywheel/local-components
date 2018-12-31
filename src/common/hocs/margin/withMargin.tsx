@@ -18,7 +18,7 @@ interface PropsI extends ReactComponentPropsI {
 const withMargin = (marginOptions: any, offsetMarginOptions: any, selectorPrefix: string) =>
 	(WrappedComponent: ComponentType<ReactComponentPropsI>) =>
 {
-	class Margin extends React.PureComponent<PropsI> {
+	class Margin extends React.PureComponent<PropsI | any> {
 
 		render () {
 			return (
