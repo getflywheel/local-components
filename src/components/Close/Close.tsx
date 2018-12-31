@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
 import classnames from 'classnames';
-import CloseBigSVG from '../../svg/close--big.svg';
+import CloseBigSVG from '../../svg/close--big';
 import styles from './Close.sass';
 
 interface PropsI extends ReactComponentPropsI {
@@ -21,7 +21,7 @@ export default class Close extends React.Component<PropsI> {
 				)}
 				onClick={this.props.onClick}
 			>
-				<svg>{CloseBigSVG}</svg>
+				<CloseBigSVG />
 			</span>
 		);
 	}
