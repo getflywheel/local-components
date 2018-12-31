@@ -32,6 +32,8 @@
 			"severity": "warning"
 		},
 		"no-empty": false,
+		"no-string-literal": false,
+		"no-trailing-whitespace": false,
 		"no-unused-expression": [true, "allow-fast-null-checks"], // https://palantir.github.io/tslint/rules/no-unused-expression/
 		"no-var-requires": false,
 		"object-literal-key-quotes": [true, "consistent"],
@@ -45,6 +47,20 @@
 		"quotemark": [true, "single", "jsx-double"], // https://palantir.github.io/tslint/rules/quotemark
 		"space-before-function-paren": "always", // https://eslint.org/docs/rules/space-before-function-paren
 		"trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+		"typedef-whitespace": [true,
+			{
+				"call-signature": "nospace",
+				"index-signature": "nospace",
+				"property-declaration": "nospace",
+				"variable-declaration": "nospace"
+			},
+			{
+				"call-signature": "onespace",
+				"index-signature": "onespace",
+				"property-declaration": "onespace",
+				"variable-declaration": "onespace"
+			}
+		],
 		"variable-name": [true, "ban-keywords", "allow-leading-underscore"] // https://palantir.github.io/tslint/rules/variable-name/
 	}
 }
