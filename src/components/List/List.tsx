@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './List.sass';
 import Header from '../Header/Header';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 const fontSizeContentClassMixin = (styles2: {[key: string]: any}, props: {[key: string]: any}) => ({
 	[styles2.__FontSizeXS_Content]: props.listItemFontSize === 'xs',
@@ -20,7 +20,7 @@ const fontWeightClassMixin = (styles2: {[key: string]: any}, props: {[key: strin
 	[styles2.__FontWeight900Heavy]: props.listItemFontWeight === '900',
 });
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	bullets?: boolean;
 	headerClass?: string;
@@ -38,9 +38,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class List extends React.Component<PropsI> {
+export default class List extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		bullets: true,
 		headerFontSize: 's',
 		headerTag: 'div',

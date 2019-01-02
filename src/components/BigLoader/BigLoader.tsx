@@ -1,19 +1,19 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './BigLoader.sass';
 import LoadingIndicator from '../LoadingIndicator';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	color?: 'Green' | 'Gray';
 	message?: string;
 
 }
 
-export default class BigLoader extends React.Component<PropsI> {
+export default class BigLoader extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		color: 'Green',
 	};
 

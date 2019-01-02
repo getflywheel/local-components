@@ -1,16 +1,16 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './EmptyArea.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	border?: boolean;
 	FadeIn?: boolean;
 
 }
 
-export class EmptyArea extends React.Component<PropsI> {
+export class EmptyArea extends React.Component<IProps> {
 
 	render () {
 		return (

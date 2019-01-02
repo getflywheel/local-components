@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import styles from './SiteInfoInnerPane.sass';
 
-export default class SiteInfoInnerPane extends React.Component<ReactComponentPropsI> {
+export default class SiteInfoInnerPane extends React.Component<IReactComponentProps> {
 	render () {
 		const propsWithoutChildren = { ...this.props };
 		delete propsWithoutChildren.children;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './WindowsToolbar.sass';
 import WindowsHamburger from '../../svg/windows_hamburger.svg';
@@ -8,7 +8,7 @@ import WindowsMaximize from '../../svg/windows_maximize.svg';
 import WindowsClose from '../../svg/windows_close.svg';
 import WindowsBack from '../../svg/windows_back.svg';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	title: string;
 	resizable?: boolean;
@@ -20,7 +20,7 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-class WindowsToolbar extends React.Component<PropsI> {
+class WindowsToolbar extends React.Component<IProps> {
 
 	render () {
 		return (

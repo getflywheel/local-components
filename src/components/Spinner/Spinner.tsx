@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import SpinnerSVG from '../../svg/spinner.svg';
 import styles from './Spinner.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	className?: string;
 	color?: 'Gray25' | 'GrayDark50';
@@ -13,9 +13,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class Spinner extends React.Component<PropsI> {
+export default class Spinner extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		color: 'Gray25',
 		ellipsis: '...',
 		lines: 1,

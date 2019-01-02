@@ -1,28 +1,28 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './AdvancedToggle.sass';
 import CaretSVG from '../../svg/caret.svg';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	headingText?: string;
 
 }
 
-interface StateI {
+interface IState {
 
 	advancedOpen: boolean;
 
 }
 
-export default class AdvancedToggle extends React.Component<PropsI, StateI> {
+export default class AdvancedToggle extends React.Component<IProps, IState> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		headingText: 'Advanced Options',
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {

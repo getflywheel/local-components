@@ -1,15 +1,15 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface StateI {
+interface IState {
 
 	currentIndex?: number;
 
 }
 
-export default class BannerCarousel extends React.Component<ReactComponentPropsI, StateI> {
+export default class BannerCarousel extends React.Component<IReactComponentProps, IState> {
 
-	constructor (props: ReactComponentPropsI) {
+	constructor (props: IReactComponentProps) {
 		super(props);
 
 		this.state = {

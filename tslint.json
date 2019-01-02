@@ -9,7 +9,7 @@
 		"arrow-parens": false,
 		"comment-format": false,
 		"indent": [true, "tabs", 4],
-		"interface-name": [true, "never-prefix"], // https://palantir.github.io/tslint/rules/interface-name
+		"interface-name": [true, "always-prefix"], // https://palantir.github.io/tslint/rules/interface-name
 		"jsx-alignment": true,
 		"jsx-boolean-value": true,
 		"jsx-no-lambda": false, // todo - crum: look into this more later

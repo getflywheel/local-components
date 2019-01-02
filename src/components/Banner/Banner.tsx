@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './Banner.sass';
 import WarningSVG from '../../svg/warning.svg';
 import CloseSVG from '../../svg/close--small.svg';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	buttonText?: string;
 	currentIndex?: number;
@@ -18,16 +18,16 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class Banner extends React.Component<PropsI> {
+export default class Banner extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		currentIndex: 0,
 		icon: 'warning',
 		numBanners: 1,
 		variant: 'neutral',
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 	}
 

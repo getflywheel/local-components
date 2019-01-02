@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyLargeConfirm.sass';
 import CheckSVG from '../../svg/checkmark--big.svg';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	bodyText?: any;
 	buttonText?: string;
@@ -12,15 +12,15 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	confirmed: boolean;
 
 }
 
-export default class FlyLargeConfirm extends React.Component<PropsI, StateI> {
+export default class FlyLargeConfirm extends React.Component<IProps, IState> {
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {

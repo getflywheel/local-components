@@ -1,28 +1,28 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big.svg';
 import styles from './RadioBlock.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	default: string | null;
 	onChange: (...params: any[]) => any;
-	options: {[key: string]: RadioBlockItemPropsI};
+	options: {[key: string]: IRadioBlockItemProps};
 
 }
 
-interface StateI {
+interface IState {
 
 	default: string | null;
-	options: {[key: string]: RadioBlockItemPropsI};
+	options: {[key: string]: IRadioBlockItemProps};
 	value: string | null;
 
 }
 
-class RadioBlock extends React.Component<PropsI, StateI> {
+class RadioBlock extends React.Component<IProps, IState> {
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
@@ -66,7 +66,7 @@ class RadioBlock extends React.Component<PropsI, StateI> {
 
 }
 
-interface RadioBlockItemPropsI extends ReactComponentPropsI {
+interface IRadioBlockItemProps extends IReactComponentProps {
 
 	label: string;
 	onClick: (...params: any[]) => any;
@@ -76,9 +76,9 @@ interface RadioBlockItemPropsI extends ReactComponentPropsI {
 
 }
 
-class RadioBlockItem extends React.Component<RadioBlockItemPropsI> {
+class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 
-	constructor (props: RadioBlockItemPropsI) {
+	constructor (props: IRadioBlockItemProps) {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);

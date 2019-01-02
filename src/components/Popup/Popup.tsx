@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Popup.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 /**
  * Try catch for Local vs. Styleguidist
@@ -17,7 +17,7 @@ catch (e) {
 	ReactDOM = require('react-dom');
 }
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	items?: any[];
 	offsetX?: string;
@@ -28,14 +28,14 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	open: boolean;
 	tipItemHover: boolean;
 
 }
 
-export default class Popup extends React.Component<PropsI, StateI> {
+export default class Popup extends React.Component<IProps, IState> {
 
 	static defaultProps = {
 		items: [],
@@ -43,7 +43,7 @@ export default class Popup extends React.Component<PropsI, StateI> {
 		position: 'bottom',
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {

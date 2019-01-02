@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyModal.sass';
 import Close from '../Close';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 const ReactModal = require('react-modal');
 
@@ -27,7 +27,7 @@ else {
 	ReactModal.setAppElement('body');
 }
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	ariaHideApp?: boolean;
 	closeTimeoutMS?: number;
@@ -41,9 +41,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class FlyModal extends React.Component<PropsI> {
+export default class FlyModal extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		ariaHideApp: true,
 		closeTimeoutMS: 0,
 		hasIcon: false,

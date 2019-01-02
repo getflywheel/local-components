@@ -1,18 +1,18 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './LoadingIndicator.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	big?: boolean;
 	color?: 'Green' | 'Gray';
 
 }
 
-export default class LoadingIndicator extends React.Component<PropsI> {
+export default class LoadingIndicator extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		big: false,
 		color: 'Green',
 	};

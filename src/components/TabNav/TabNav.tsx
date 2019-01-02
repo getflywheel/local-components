@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './TabNav.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	tag?: string;
 	itemsClassName?: string;
@@ -11,9 +11,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class TabNav extends React.Component<PropsI> {
+export default class TabNav extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		tag: 'nav',
 	};
 

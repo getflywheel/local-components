@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './Switch.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	checked?: boolean;
 	disabled?: boolean;
@@ -16,19 +16,19 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	checked: boolean;
 
 }
 
-export default class Switch extends React.Component<PropsI, StateI> {
+export default class Switch extends React.Component<IProps, IState> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		checked: false,
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
@@ -38,7 +38,7 @@ export default class Switch extends React.Component<PropsI, StateI> {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: PropsI) {
+	componentWillReceiveProps (nextProps: IProps) {
 		if ('checked' in nextProps) {
 			this.setState({ checked: !!nextProps.checked });
 		}

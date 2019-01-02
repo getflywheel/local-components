@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyDropdown.sass';
 import CaretSVG from '../../svg/caret.svg';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface ItemsI {
+interface IItems {
 
 	color: 'red';
 	label: string;
@@ -12,26 +12,26 @@ interface ItemsI {
 
 }
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	caret?: boolean;
-	items: ItemsI[];
+	items: IItems[];
 	navItem?: boolean;
 	navItemActive?: boolean;
 	position?: 'top' | 'bottom';
 
 }
 
-interface StateI {
+interface IState {
 
 	open: boolean;
 	tipItemHover: boolean | string;
 
 }
 
-export default class FlyDropdown extends React.Component<PropsI, StateI> {
+export default class FlyDropdown extends React.Component<IProps, IState> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		caret: true,
 		items: [],
 		navItem: false,
@@ -39,7 +39,7 @@ export default class FlyDropdown extends React.Component<PropsI, StateI> {
 		position: 'bottom',
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
@@ -107,7 +107,7 @@ export default class FlyDropdown extends React.Component<PropsI, StateI> {
 					)}
 				>
 					{
-						this.props.items.map((item: ItemsI, i: number) => (
+						this.props.items.map((item: IItems, i: number) => (
 							<li
 								key={i}
 								className={classnames(

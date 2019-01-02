@@ -1,17 +1,17 @@
 import React from 'react';
 import classnames from 'classnames';
 import EyeSVG from '../../svg/eye.svg';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface StateI {
+interface IState {
 
 	inputType: 'password' | 'text';
 
 }
 
-export default class InputPasswordToggle extends React.Component<ReactComponentPropsI, StateI> {
+export default class InputPasswordToggle extends React.Component<IReactComponentProps, IState> {
 
-	constructor (props: ReactComponentPropsI) {
+	constructor (props: IReactComponentProps) {
 		super(props);
 
 		this.state = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './InputSearch.sass';
 import SearchSVG from '../../svg/search.svg';
@@ -13,7 +13,7 @@ const excludeProps = {
 	value: true,
 };
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	className?: string;
 	containerClassName?: string;
@@ -23,19 +23,19 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	value: string | number | undefined;
 
 }
 
-export default class InputSearch extends React.Component<PropsI, StateI> {
+export default class InputSearch extends React.Component<IProps, IState> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		value: '',
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {

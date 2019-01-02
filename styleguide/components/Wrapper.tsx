@@ -1,15 +1,15 @@
 import * as React from 'react';
-import ReactComponentPropsI from '../../src/common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../src/common/structures/IReactComponentProps';
 import { MemoryRouter } from 'react-router-dom';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	children: any;
 	onError: (error: any) => any;
 
 }
 
-export default class Wrapper extends React.Component<PropsI> {
+export default class Wrapper extends React.Component<IProps> {
 
 	componentDidCatch (error: any) {
 		this.props.onError(error);

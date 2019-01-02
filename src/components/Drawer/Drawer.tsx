@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Drawer.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	align?: 'left' | 'center' | 'right';
 	children: React.ReactNode;
@@ -11,15 +11,15 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	disableAnimation: boolean;
 
 }
 
-export default class Drawer extends React.Component<PropsI, StateI> {
+export default class Drawer extends React.Component<IProps, IState> {
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
@@ -27,7 +27,7 @@ export default class Drawer extends React.Component<PropsI, StateI> {
 		};
 	}
 
-	componentWillReceiveProps (nextProps: PropsI) {
+	componentWillReceiveProps (nextProps: IProps) {
 		if (nextProps.show) {
 			this.setState({
 				disableAnimation: false,

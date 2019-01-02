@@ -3,9 +3,9 @@ import CircleSVG from '../../svg/circle.svg';
 import ExclamationSVG from '../../svg/exclamation.svg';
 import CompleteSVG from '../../svg/complete.svg';
 import SpinnerSVG from '../../svg/spinner.svg';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	inProgress: boolean;
 	ready: boolean;
@@ -13,7 +13,7 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class InstallerStepStatus extends React.Component<PropsI> {
+export default class InstallerStepStatus extends React.Component<IProps> {
 
 	renderIcon () {
 		if (!this.props.ready && !this.props.inProgress) {

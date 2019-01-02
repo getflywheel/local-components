@@ -1,16 +1,16 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './TableList.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	form?: boolean;
 	stripes?: boolean;
 
 }
 
-export class TableList extends React.Component<PropsI> {
+export class TableList extends React.Component<IProps> {
 
 	render () {
 		return (
@@ -31,7 +31,7 @@ export class TableList extends React.Component<PropsI> {
 	}
 }
 
-interface TableListRowPropsI extends ReactComponentPropsI {
+interface ITableListRowProps extends IReactComponentProps {
 
 	form?: boolean;
 	label?: string;
@@ -39,7 +39,7 @@ interface TableListRowPropsI extends ReactComponentPropsI {
 
 }
 
-export class TableListRow extends React.Component<TableListRowPropsI> {
+export class TableListRow extends React.Component<ITableListRowProps> {
 
 	render () {
 		return (

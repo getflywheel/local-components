@@ -13,15 +13,15 @@ import shell from 'highlight.js/lib/languages/shell';
 import sql from 'highlight.js/lib/languages/sql';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	src?: string;
 
 }
 
-export default class Markdown extends React.Component<PropsI> {
+export default class Markdown extends React.Component<IProps> {
 
 	render () {
 		return (
@@ -39,7 +39,7 @@ export default class Markdown extends React.Component<PropsI> {
 
 }
 
-interface MarkdownCodeBlockPropsI extends ReactComponentPropsI {
+interface IMarkdownCodeBlockProps extends IReactComponentProps {
 
 	value: string;
 	language: string;
@@ -47,7 +47,7 @@ interface MarkdownCodeBlockPropsI extends ReactComponentPropsI {
 
 }
 
-class MarkdownCodeBlock extends React.PureComponent<MarkdownCodeBlockPropsI> {
+class MarkdownCodeBlock extends React.PureComponent<IMarkdownCodeBlockProps> {
 
 	private readonly __languagesEnabled: {[key: string]: any} = {
 		'apache': apache,
@@ -63,7 +63,7 @@ class MarkdownCodeBlock extends React.PureComponent<MarkdownCodeBlockPropsI> {
 		'xml': xml,
 	};
 
-	constructor (props: MarkdownCodeBlockPropsI) {
+	constructor (props: IMarkdownCodeBlockProps) {
 		super(props);
 
 		for (const langName in this.__languagesEnabled) {

@@ -1,15 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './InnerPaneSidebar.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	title: string;
 
 }
 
-export function InnerPaneSidebar (props: ReactComponentPropsI) {
+export function InnerPaneSidebar (props: IReactComponentProps) {
 	return (
 		<div
 			className={classnames(
@@ -22,7 +22,7 @@ export function InnerPaneSidebar (props: ReactComponentPropsI) {
 	);
 }
 
-export function InnerPaneSidebarHeader (props: PropsI) {
+export function InnerPaneSidebarHeader (props: IProps) {
 	return (
 		<div
 			className={classnames(
@@ -44,7 +44,7 @@ export function InnerPaneSidebarHeader (props: PropsI) {
 	);
 }
 
-export function InnerPaneSidebarAddNew (props: ReactComponentPropsI) {
+export function InnerPaneSidebarAddNew (props: IReactComponentProps) {
 	return (
 		<div
 			className={classnames(
@@ -57,7 +57,7 @@ export function InnerPaneSidebarAddNew (props: ReactComponentPropsI) {
 	);
 }
 
-export function InnerPaneSidebarContent (props: ReactComponentPropsI) {
+export function InnerPaneSidebarContent (props: IReactComponentProps) {
 	return (
 		<div
 			className={classnames(
@@ -70,7 +70,7 @@ export function InnerPaneSidebarContent (props: ReactComponentPropsI) {
 	);
 }
 
-export function InnerPaneSidebarContentItem (props: ReactComponentPropsI) {
+export function InnerPaneSidebarContentItem (props: IReactComponentProps) {
 	return (
 		<div
 			className={classnames(

@@ -1,19 +1,19 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import TruncateMarkup from 'react-truncate-markup';
 
 // todo - crum: this component doesn't currently support 'className' or 'style' because 3rd party 'TruncateMarkup' doesn't support it...use TypeScript 'omit???' Omit<IXProps, "unwantedProp">
 
-interface PropsI {
+interface IProps {
 
 	ellipsis?: React.ReactNode;
 	lines?: number | undefined;
 
 }
 
-export default class Truncate extends React.Component<PropsI & ReactComponentPropsI> {
+export default class Truncate extends React.Component<IProps & IReactComponentProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		ellipsis: '...',
 		lines: 1,
 	};

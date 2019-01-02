@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar';
 // import { ipcRenderer } from 'electron'; // crum - todo: figure this out
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	cancelText?: string;
 	downloaded?: number;
@@ -21,14 +21,14 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class DownloaderItem extends React.Component<PropsI> {
+export default class DownloaderItem extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		cancelText: 'Cancel Download',
 		showEllipsis: true,
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.cancelOnClick = this.cancelOnClick.bind(this);

@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './ProgressBar.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI {
+interface IProps {
 
 	progress?: number;
 	showNumber?: number;
@@ -11,7 +11,7 @@ interface PropsI {
 
 }
 
-export default class ProgressBar extends React.Component<PropsI & ReactComponentPropsI> {
+export default class ProgressBar extends React.Component<IProps & IReactComponentProps> {
 
 	renderStripes () {
 		return (

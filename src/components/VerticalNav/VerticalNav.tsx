@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import styles from './VerticalNav.sass';
@@ -10,7 +10,7 @@ import Divider from '../Divider/Divider';
 import Button from '../Button/Button';
 import AddSVG from '../../svg/add.svg';
 
-export class VerticalNav extends React.Component<ReactComponentPropsI> {
+export class VerticalNav extends React.Component<IReactComponentProps> {
 
 	render () {
 		return (
@@ -22,7 +22,7 @@ export class VerticalNav extends React.Component<ReactComponentPropsI> {
 
 }
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	className?: string;
 	fadeIn?: boolean;
@@ -35,9 +35,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export class VerticalNavItem extends React.Component<PropsI> {
+export class VerticalNavItem extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		fadeIn: true,
 		type: 'navlink',
 	};
@@ -136,7 +136,7 @@ export class VerticalNavItem extends React.Component<PropsI> {
 
 }
 
-interface WorkspaceSwitcherPropsI extends ReactComponentPropsI {
+interface IWorkspaceSwitcherProps extends IReactComponentProps {
 
 	className?: string;
 	onClickAccount: (...params: any[]) => any;
@@ -150,15 +150,15 @@ interface WorkspaceSwitcherPropsI extends ReactComponentPropsI {
 
 }
 
-interface WorkspaceSwitcherStateI {
+interface IWorkspaceSwitcherState {
 
 	activeWorkspaceItem: any;
 
 }
 
-export class WorkspaceSwitcher extends React.Component<WorkspaceSwitcherPropsI, WorkspaceSwitcherStateI> {
+export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, IWorkspaceSwitcherState> {
 
-	constructor (props: WorkspaceSwitcherPropsI) {
+	constructor (props: IWorkspaceSwitcherProps) {
 		super(props);
 
 		this.state = {
@@ -175,7 +175,7 @@ export class WorkspaceSwitcher extends React.Component<WorkspaceSwitcherPropsI, 
 		;
 	}
 
-	componentDidUpdate (prevProps: WorkspaceSwitcherPropsI, prevState: WorkspaceSwitcherStateI) {
+	componentDidUpdate (prevProps: IWorkspaceSwitcherProps, prevState: IWorkspaceSwitcherState) {
 		if (prevProps.workspaces.length !== this.props.workspaces.length) {
 			this.setState({
 				activeWorkspaceItem: this.getInitialActiveWorkspaceItem(),

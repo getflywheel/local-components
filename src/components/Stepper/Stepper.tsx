@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CompleteSVG from '../../svg/complete.svg';
 import styles from './Stepper.sass';
 
-export class Stepper extends React.Component<ReactComponentPropsI> {
+export class Stepper extends React.Component<IReactComponentProps> {
 
 	render () {
 		return (
@@ -24,7 +24,7 @@ export class Stepper extends React.Component<ReactComponentPropsI> {
 
 }
 
-interface StepPropsI extends ReactComponentPropsI {
+interface IStepProps extends IReactComponentProps {
 
 	active: boolean;
 	disabled: boolean;
@@ -33,7 +33,7 @@ interface StepPropsI extends ReactComponentPropsI {
 
 }
 
-export class Step extends React.Component<StepPropsI> {
+export class Step extends React.Component<IStepProps> {
 
 	render () {
 		return (

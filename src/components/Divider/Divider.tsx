@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Divider.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 const marginsClassMixin = (stylesRef: {[key: string]: any}, props: {[key: string]: any}) => ({
 	[stylesRef.__MarginTopSizeXS]: props.marginSize === 'xs' || props.marginSizeAfter === 'xs',
@@ -16,7 +16,7 @@ const marginsClassMixin = (stylesRef: {[key: string]: any}, props: {[key: string
 	[stylesRef.__MarginBottomSizeXL]: props.marginSize === 'xl' || props.marginSizeBottom === 'xl',
 });
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	marginSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	marginSizeAfter?: 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -24,7 +24,7 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-const Divider = (props: PropsI) => (
+const Divider = (props: IProps) => (
 	<div
 		className={classnames(
 			styles.Divider,

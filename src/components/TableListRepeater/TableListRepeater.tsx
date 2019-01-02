@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import { TableList } from '../TableList';
 import CloseSmallSVG from '../../svg/close--small.svg';
@@ -8,7 +8,7 @@ import Button from '../Button';
 import isEqual from 'lodash.isequal';
 import styles from '../TableList/TableList.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	data?: any[];
 	header?: React.ReactNode;
@@ -23,7 +23,7 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	addingItem: boolean;
 	initialData: any;
@@ -31,15 +31,15 @@ interface StateI {
 
 }
 
-export default class TableListRepeater extends React.Component<PropsI, StateI> {
+export default class TableListRepeater extends React.Component<IProps, IState> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		labelSingular: 'Item',
 		submitDisabled: false,
 		submitLabel: 'Submit',
 	};
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
@@ -51,7 +51,7 @@ export default class TableListRepeater extends React.Component<PropsI, StateI> {
 		this.addItem = this.addItem.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: PropsI) {
+	componentWillReceiveProps (nextProps: IProps) {
 		if (isEqual(nextProps.data, this.state.initialData)) {
 			return;
 		}

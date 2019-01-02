@@ -1,16 +1,16 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CloseBigSVG from '../../svg/close--big';
 import styles from './Close.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	onClick: (...params: any[]) => any;
 
 }
 
-export default class Close extends React.Component<PropsI> {
+export default class Close extends React.Component<IProps> {
 
 	render () {
 		return (

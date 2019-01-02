@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import CheckSVG from '../../svg/checkmark--big.svg';
 import DownloadSmallSVG from '../../svg/download--small.svg';
 import ArrowRightSVG from '../../svg/arrow--right.svg';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	disabled?: boolean;
 	emptyPlaceholder?: string;
@@ -21,7 +21,7 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	focus: boolean;
 	options: any;
@@ -32,11 +32,11 @@ interface StateI {
 
 }
 
-export default class FlySelect extends React.Component<PropsI, StateI> {
+export default class FlySelect extends React.Component<IProps, IState> {
 
 	private readonly __containerRef: React.RefObject<any>;
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
@@ -65,7 +65,7 @@ export default class FlySelect extends React.Component<PropsI, StateI> {
 		}
 	}
 
-	componentDidUpdate (previousProps: PropsI) {
+	componentDidUpdate (previousProps: IProps) {
 		if (previousProps.value !== this.props.value) {
 			this.setState({
 				value: this.props.value,

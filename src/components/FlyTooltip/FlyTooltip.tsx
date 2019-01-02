@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyTooltip.sass';
 import Exclamation from '../../svg/exclamation.svg';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	content?: React.ReactNode;
 	exclamation?: boolean;
@@ -14,9 +14,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class FlyTooltip extends React.Component<PropsI> {
+export default class FlyTooltip extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		exclamation: false,
 		forceHoverState: false,
 		position: 'top',

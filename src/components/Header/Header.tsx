@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './Header.sass';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	fontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	fontWeight?: '300' | '400' | '500' | '700' | '900';
@@ -12,9 +12,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class Header extends React.Component<PropsI> {
+export default class Header extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		fontSize: 'm',
 		fontWeight: '500',
 		tag: 'div',

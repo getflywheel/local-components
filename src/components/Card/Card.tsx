@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './Card.sass';
 import Header from '../Header/Header';
 import Truncate from '../Truncate/Truncate';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	content?: React.ReactNode;
 	contentClassName?: string;
@@ -42,9 +42,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class Card extends React.Component<PropsI> {
+export default class Card extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		overflow: 'hidden',
 		tag: 'article',
 		truncateDefaultEllipsis: '...',

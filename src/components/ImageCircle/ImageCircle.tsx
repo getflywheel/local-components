@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './ImageCircle.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	className?: string;
 	size?: 'm' | 's';
@@ -13,9 +13,9 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-export default class ImageCircle extends React.Component<PropsI> {
+export default class ImageCircle extends React.Component<IProps> {
 
-	static defaultProps: Partial<PropsI> = {
+	static defaultProps: Partial<IProps> = {
 		size: 'm',
 		square: false,
 		tag: 'div',

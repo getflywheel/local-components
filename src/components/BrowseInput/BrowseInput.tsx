@@ -1,13 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './BrowseInput.sass';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 // const remote = require('electron').remote;
 // const dialog = remote.dialog;
 // const formatHomePath = remote.require('./helpers/format-home-path').default;
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	defaultPath?: string;
 	dialogProperties?: string[];
@@ -20,15 +20,15 @@ interface PropsI extends ReactComponentPropsI {
 
 }
 
-interface StateI {
+interface IState {
 
 	value: string | undefined;
 
 }
 
-export default class BrowseInput extends React.Component<PropsI, StateI> {
+export default class BrowseInput extends React.Component<IProps, IState> {
 
-	constructor (props: PropsI) {
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
@@ -38,7 +38,7 @@ export default class BrowseInput extends React.Component<PropsI, StateI> {
 		this.browseFolder = this.browseFolder.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: PropsI) {
+	componentWillReceiveProps (nextProps: IProps) {
 		if ('value' in nextProps) {
 			this.setState({ value: nextProps.value });
 		}

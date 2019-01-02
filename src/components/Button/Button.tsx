@@ -1,13 +1,13 @@
 import React from 'react';
-import ReactComponentPropsI from '../../common/structures/ReactComponentPropsI';
+import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
-interface PropsI extends ReactComponentPropsI {
+interface IProps extends IReactComponentProps {
 
 	disabled?: boolean;
 
 }
 
-export default class Button extends React.Component<PropsI> {
+export default class Button extends React.Component<IProps> {
 
 	render () {
 		return (
