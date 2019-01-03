@@ -18,7 +18,7 @@
 	@extend .FlyDropdown_Items
 
 	top: auto
-	z-index: 2
+	z-index: 5
 	right: 50%
 	display: inline-block
 	width: 300px
@@ -29,6 +29,9 @@
 	@include theme-color-graydark50-else-gray25
 	@include theme-input-background-color
 	@include theme-border
+
+	&.FlyTooltip__WidthIsFluid
+		width: auto
 
 	&::before
 		box-shadow: 0 0 20px 0 rgba($gray-dark, .15)
