@@ -12,14 +12,14 @@ export default class FlyTooltip extends Component {
 		forceHoverState: PropTypes.bool,
 		hoverIntent: PropTypes.bool,
 		position: PropTypes.oneOf(['top', 'bottom', 'right']),
-		widthIsAuto: PropTypes.bool,
+		widthIsFluid: PropTypes.bool,
 	};
 
 	static defaultProps = {
 		exclamation: false,
 		forceHoverState: false,
 		position: 'top',
-		widthIsAuto: false,
+		widthIsFluid: false,
 	};
 
 	render () {
@@ -42,7 +42,7 @@ export default class FlyTooltip extends Component {
                             [styles.FlyTooltip__PositionBottom]: this.props.position === 'bottom',
                             [styles.FlyTooltip__PositionRight]: this.props.position === 'right',
                             [styles.FlyTooltip__PositionTop]: this.props.position === 'top',
-							[styles.FlyTooltip__WidthIsAuto]: this.props.widthIsAuto,
+							[styles.FlyTooltip__WidthIsFluid]: this.props.widthIsFluid,
                     	},
 						this.props.className,
 					)}

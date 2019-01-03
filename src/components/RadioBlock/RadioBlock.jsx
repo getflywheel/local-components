@@ -118,9 +118,9 @@ class RadioBlockItem extends Component {
 					position="top"
 					hoverIntent={true}
 					className={styles.RadioBlock_Option_TooltipWrapper}
-					widthIsAuto={true}
+					widthIsFluid={true}
 				>
-					{ content }
+					{content}
 				</FlyTooltip>
 			)
 		}
