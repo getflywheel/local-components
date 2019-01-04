@@ -1,3 +1,4 @@
+/// <reference path="../src/custom.d.ts" />
 import 'ignore-styles';
 
 import globby from 'globby';
@@ -12,18 +13,13 @@ mock('electron', {
 	}
 });
 
-// enable the loading of TypeScript files
-require("@babel/register")({
-	extensions: ['.tsx', '.ts'],
-});
-
 async function getComponentFiles() {
 	return await globby(['src/**/*.tsx', '!src/**/*test.tsx']);
 }
 
 async function getExportedComponents() {
 	const componentFiles = await getComponentFiles();
-	const exportedComponents = {};
+	const exportedComponents: { [s: string]: string[]; } = {};
 
 	for (const componentFile of componentFiles) {
 		const tmpRequire = require(path.resolve(componentFile));
