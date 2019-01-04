@@ -5,6 +5,11 @@
 		"tslint-react"
 	],
 	"jsRules": true, // true automatically applies any rules that aren't typescript specific
+	"linterOptions": {
+		"exclude": [
+			"src/svg/**"
+		]
+	},
 	"rules": {
 		"arrow-parens": false,
 		"comment-format": false,
