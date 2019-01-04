@@ -1,6 +1,7 @@
 dist
 node_modules
 .idea
+*.log
 .DS_Store
 /style.css
 /style.css.map
@@ -9,4 +10,4 @@ node_modules
 /styleguide/style.*
 /styleguide/svg
 *.tgz
-*.svg.tsx
+/src/svg/*.tsx
