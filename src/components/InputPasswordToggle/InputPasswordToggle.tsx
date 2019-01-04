@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import EyeSVG from '../../svg/eye.svg';
+import EyeSVG from '../../svg/eye';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IState {
@@ -47,7 +47,7 @@ export default class InputPasswordToggle extends React.Component<IReactComponent
 					className="Eye"
 					onClick={this.toggleType}
 				>
-					<svg>{EyeSVG}</svg>
+					<EyeSVG />
 				</span>
 			</div>
 		);

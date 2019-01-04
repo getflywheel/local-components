@@ -1,8 +1,8 @@
 import React from 'react';
-import CircleSVG from '../../svg/circle.svg';
-import ExclamationSVG from '../../svg/exclamation.svg';
-import CompleteSVG from '../../svg/complete.svg';
-import SpinnerSVG from '../../svg/spinner.svg';
+import CircleSVG from '../../svg/circle';
+import ExclamationSVG from '../../svg/exclamation';
+import CompleteSVG from '../../svg/complete';
+import SpinnerSVG from '../../svg/spinner';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
@@ -38,8 +38,8 @@ export default class InstallerStepStatus extends React.Component<IProps> {
 		if (this.props.requiresAttention) {
 			return (
 				<span className="SpinnerNotice">
-					<svg className="Exclamation">{ExclamationSVG}</svg>
-					<svg className="Spinner">{SpinnerSVG}</svg>
+					<ExclamationSVG className="Exclamation" />
+					<SpinnerSVG className="Spinner" />
 				</span>
 			);
 		}

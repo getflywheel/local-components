@@ -2,11 +2,11 @@ import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './WindowsToolbar.sass';
-import WindowsHamburger from '../../svg/windows_hamburger.svg';
-import WindowsMinimize from '../../svg/windows_minimize.svg';
-import WindowsMaximize from '../../svg/windows_maximize.svg';
-import WindowsClose from '../../svg/windows_close.svg';
-import WindowsBack from '../../svg/windows_back.svg';
+import WindowsHamburger from '../../svg/windows_hamburger';
+import WindowsMinimize from '../../svg/windows_minimize';
+import WindowsMaximize from '../../svg/windows_maximize';
+import WindowsClose from '../../svg/windows_close';
+import WindowsBack from '../../svg/windows_back';
 
 interface IProps extends IReactComponentProps {
 
@@ -31,7 +31,7 @@ class WindowsToolbar extends React.Component<IProps> {
 							className={styles.Back}
 							onClick={this.props.onBack}
 						>
-							<svg>{WindowsBack}</svg>
+							<WindowsBack />
 						</span>
 					)
 				}
@@ -41,7 +41,7 @@ class WindowsToolbar extends React.Component<IProps> {
 							className={styles.Menu}
 							onClick={this.props.onShowMenu}
 						>
-							<svg>{WindowsHamburger}</svg>
+							<WindowsHamburger />
 						</span>
 					)
 				}
@@ -53,7 +53,7 @@ class WindowsToolbar extends React.Component<IProps> {
 						className={styles.Minimize}
 						onClick={this.props.onMinimize}
 					>
-						<svg>{WindowsMinimize}</svg>
+						<WindowsMinimize />
 					</span>
 					<span
 						className={classnames(
@@ -64,13 +64,13 @@ class WindowsToolbar extends React.Component<IProps> {
 						)}
 						onClick={this.props.onMaximize}
 					>
-						<svg>{WindowsMaximize}</svg>
+						<WindowsMaximize />
 					</span>
 					<span
 						className={styles.Quit}
 						onClick={this.props.onQuit}
 					>
-						<svg>{WindowsClose}</svg>
+						<WindowsClose />
 					</span>
 				</div>
 			</header>

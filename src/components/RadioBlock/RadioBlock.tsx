@@ -1,7 +1,7 @@
 import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import CheckmarkSVG from '../../svg/checkmark--big.svg';
+import CheckmarkSVG from '../../svg/checkmark--big';
 import styles from './RadioBlock.sass';
 
 interface IProps extends IReactComponentProps {
@@ -89,7 +89,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 	}
 
 	render () {
-		const svg = this.props.svg ? this.props.svg : <svg>{CheckmarkSVG}</svg>;
+		const svg = this.props.svg ? this.props.svg : <CheckmarkSVG />;
 
 		return (
 			<div

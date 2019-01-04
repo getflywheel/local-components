@@ -2,7 +2,7 @@ import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './InputSearch.sass';
-import SearchSVG from '../../svg/search.svg';
+import SearchSVG from '../../svg/search';
 import ObjectUtils from '../../utils/object-utils';
 
 const excludeProps = {
@@ -61,7 +61,7 @@ export default class InputSearch extends React.Component<IProps, IState> {
 					styles.InputSearch_Container,
 				)}
 			>
-				<svg className={styles.InputSearch_Icon}>{SearchSVG}</svg>
+				<SearchSVG className={styles.InputSearch_Icon} />
 				<input
 					className={classnames(
 						styles.InputSearch,

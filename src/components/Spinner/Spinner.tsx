@@ -1,7 +1,7 @@
 import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import SpinnerSVG from '../../svg/spinner.svg';
+import SpinnerSVG from '../../svg/spinner';
 import styles from './Spinner.sass';
 
 interface IProps extends IReactComponentProps {
@@ -32,7 +32,7 @@ export default class Spinner extends React.Component<IProps> {
 					},
 				)}
 			>
-				{SpinnerSVG}
+				<SpinnerSVG />
 			</svg>
 		);
 	}

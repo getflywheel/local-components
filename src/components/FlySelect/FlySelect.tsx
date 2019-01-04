@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
-import CheckSVG from '../../svg/checkmark--big.svg';
-import DownloadSmallSVG from '../../svg/download--small.svg';
-import ArrowRightSVG from '../../svg/arrow--right.svg';
+import CheckSVG from '../../svg/checkmark--big';
+import DownloadSmallSVG from '../../svg/download--small';
+import ArrowRightSVG from '../../svg/arrow--right';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
@@ -248,7 +248,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 					onClick={this.props.footerOnClick}
 				>
 					{this.props.footerText}
-					<svg>{ArrowRightSVG}</svg>
+					<ArrowRightSVG />
 				</a>
 			</div>
 		);

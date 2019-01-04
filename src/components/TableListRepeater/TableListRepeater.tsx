@@ -2,8 +2,8 @@ import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import { TableList } from '../TableList';
-import CloseSmallSVG from '../../svg/close--small.svg';
-import AddSVG from '../../svg/add.svg';
+import CloseSmallSVG from '../../svg/close--small';
+import AddSVG from '../../svg/add';
 import Button from '../Button';
 import isEqual from 'lodash.isequal';
 import styles from '../TableList/TableList.sass';
@@ -198,7 +198,7 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 								)}
 							>
 								<span onClick={() => this.removeItem(index)}>
-									<svg>{CloseSmallSVG}</svg>
+									<CloseSmallSVG />
 								</span>
 							</div>
 						</li>
@@ -212,7 +212,7 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 							onClick={this.addItem}
 							disabled={this.state.addingItem}
 						>
-							<svg>{AddSVG}</svg>
+							<AddSVG />
 							{!this.state.addingItem ? 'Add ' : 'Adding'} {this.props.labelSingular}
 						</Button>
 					</div>

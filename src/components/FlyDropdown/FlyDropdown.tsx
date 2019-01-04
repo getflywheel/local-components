@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyDropdown.sass';
-import CaretSVG from '../../svg/caret.svg';
+import CaretSVG from '../../svg/caret';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IItems {

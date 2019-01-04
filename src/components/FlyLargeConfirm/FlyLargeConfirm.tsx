@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyLargeConfirm.sass';
-import CheckSVG from '../../svg/checkmark--big.svg';
+import CheckSVG from '../../svg/checkmark--big';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
@@ -56,7 +56,7 @@ export default class FlyLargeConfirm extends React.Component<IProps, IState> {
 					disabled={this.state.confirmed}
 				>
 					{this.state.confirmed && (
-						<svg>{CheckSVG}</svg>
+						<CheckSVG />
 					)}
 					{this.state.confirmed ? 'Confirmed' : this.props.buttonText}
 				</button>

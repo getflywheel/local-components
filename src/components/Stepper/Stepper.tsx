@@ -1,7 +1,7 @@
 import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import CompleteSVG from '../../svg/complete.svg';
+import CompleteSVG from '../../svg/complete';
 import styles from './Stepper.sass';
 
 export class Stepper extends React.Component<IReactComponentProps> {
@@ -52,7 +52,7 @@ export class Step extends React.Component<IStepProps> {
 						?
 						<span>{this.props.number}</span>
 						:
-						<svg>{CompleteSVG}</svg>
+						<CompleteSVG />
 				}
 				{this.props.children}
 			</div>

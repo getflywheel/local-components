@@ -2,8 +2,8 @@ import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './Banner.sass';
-import WarningSVG from '../../svg/warning.svg';
-import CloseSVG from '../../svg/close--small.svg';
+import WarningSVG from '../../svg/warning';
+import CloseSVG from '../../svg/close--small';
 
 interface IProps extends IReactComponentProps {
 
@@ -37,7 +37,7 @@ export default class Banner extends React.Component<IProps> {
 		}
 
 		return (
-			<svg>{WarningSVG}</svg>
+			<WarningSVG />
 		);
 	}
 
@@ -95,7 +95,7 @@ export default class Banner extends React.Component<IProps> {
 				className={styles.Dismiss}
 				onClick={this.props.onDismiss}
 			>
-				<svg>{CloseSVG}</svg>
+				<CloseSVG />
 			</span>
 		);
 	}

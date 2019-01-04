@@ -2,7 +2,7 @@ import React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import styles from './AdvancedToggle.sass';
-import CaretSVG from '../../svg/caret.svg';
+import CaretSVG from '../../svg/caret';
 
 interface IProps extends IReactComponentProps {
 
@@ -55,7 +55,7 @@ export default class AdvancedToggle extends React.Component<IProps, IState> {
 				>
 					<span>
 						{this.props.headingText}
-						<svg>{CaretSVG}</svg>
+						<CaretSVG />
 					</span>
 				</span>
 

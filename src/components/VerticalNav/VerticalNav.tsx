@@ -8,7 +8,7 @@ import Popup from '../Popup/Popup';
 import ImageCircle from '../ImageCircle/ImageCircle';
 import Divider from '../Divider/Divider';
 import Button from '../Button/Button';
-import AddSVG from '../../svg/add.svg';
+import AddSVG from '../../svg/add';
 
 export class VerticalNav extends React.Component<IReactComponentProps> {
 
@@ -245,7 +245,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 											);
 										})}
 										<div className={styles.WorkspaceSwitcher_PopupGridItemAdd} onClick={this.props.onClickAddTeam}>
-											<svg>{AddSVG}</svg>
+											<AddSVG />
 										</div>
 									</div>
 									<Divider />

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './FlyTooltip.sass';
-import Exclamation from '../../svg/exclamation.svg';
+import ExclamationSVG from '../../svg/exclamation';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
@@ -54,7 +54,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 							className={styles.FlyTooltip_Exclamation}
 							key="exclamation"
 						>
-							<svg>{Exclamation}</svg>
+							<ExclamationSVG />
 						</span>
 					}
 
