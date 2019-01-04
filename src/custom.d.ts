@@ -15,3 +15,5 @@ declare module '*.scss' {
 
 declare module 'react-lowlight';
 declare module 'highlight.js/lib/languages/*';
+
+declare module 'svgo';

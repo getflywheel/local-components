@@ -9,3 +9,4 @@ node_modules
 /styleguide/style.*
 /styleguide/svg
 *.tgz
+*.svg.tsx
