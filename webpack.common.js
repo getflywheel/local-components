@@ -32,30 +32,8 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			},
-			{
 				test: /\.tsx?$/,
-				loader: "awesome-typescript-loader"
-			},
-			{
-				test: /\.tsx?$/,
-				enforce: 'pre',
-				use: [
-					{
-						options: {
-							formatter: 'stylish',
-						},
-						loader: require.resolve('tslint-loader'),
-					}
-				]
-			},
-			{
-				test: /\.js$/,
-				enforce: "pre",
-				loader: "source-map-loader"
+				loader: 'awesome-typescript-loader'
 			},
 			{
 				test: /\.(css|sass|scss)$/,
