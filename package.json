@@ -30,7 +30,7 @@
 		"watch:sass": "chokidar 'src/**/*.sass' 'src/**/*.scss' -c 'yarn build:sass'",
 		"test": "jest",
 		"prepare": "yarn run build && shx rm dist/global.css.json",
-		"create-entrypoints": "ts-node tasks/create-component-entrypoints.ts",
+		"create-entrypoints": "ts-node --transpileOnly tasks/create-component-entrypoints.ts",
 		"create-ts-svgs": "ts-node tasks/create-typescript-svgs.ts",
 		"gh-pages:build": "styleguidist build",
 		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide",
