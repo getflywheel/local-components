@@ -173,7 +173,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				<DownloadSmallSVG
 					key="download-svg"
 					className="DownloadSmall"
-				/>
+				/>,
 			);
 		}
 
