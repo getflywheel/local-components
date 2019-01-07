@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
 import CheckSVG from '../../svg/checkmark--big';
 import DownloadSmallSVG from '../../svg/download--small';

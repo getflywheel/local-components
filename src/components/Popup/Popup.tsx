@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import styles from './Popup.sass';
+import * as styles from './Popup.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 /**

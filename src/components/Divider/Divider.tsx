@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import styles from './Divider.sass';
+import * as styles from './Divider.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 const marginsClassMixin = (stylesRef: {[key: string]: any}, props: {[key: string]: any}) => ({

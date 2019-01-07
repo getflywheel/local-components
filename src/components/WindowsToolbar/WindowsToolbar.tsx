@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import styles from './WindowsToolbar.sass';
+import * as styles from './WindowsToolbar.sass';
 import WindowsHamburger from '../../svg/windows_hamburger';
 import WindowsMinimize from '../../svg/windows_minimize';
 import WindowsMaximize from '../../svg/windows_maximize';

@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import styles from './VerticalNav.sass';
+import * as styles from './VerticalNav.sass';
 import FlyTooltip from '../FlyTooltip/FlyTooltip';
 import Popup from '../Popup/Popup';
 import ImageCircle from '../ImageCircle/ImageCircle';

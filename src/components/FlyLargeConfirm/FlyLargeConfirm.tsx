@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import styles from './FlyLargeConfirm.sass';
+import * as styles from './FlyLargeConfirm.sass';
 import CheckSVG from '../../svg/checkmark--big';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 

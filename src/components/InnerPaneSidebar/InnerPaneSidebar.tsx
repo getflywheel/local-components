@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import styles from './InnerPaneSidebar.sass';
+import * as styles from './InnerPaneSidebar.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {

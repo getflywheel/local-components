@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import styles from './SiteInfoInnerPane.sass';
+import * as styles from './SiteInfoInnerPane.sass';
 
 export default class SiteInfoInnerPane extends React.Component<IReactComponentProps> {
 	render () {

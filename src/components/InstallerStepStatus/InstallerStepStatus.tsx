@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import CircleSVG from '../../svg/circle';
 import ExclamationSVG from '../../svg/exclamation';
 import CompleteSVG from '../../svg/complete';

@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import styles from './Banner.sass';
+import * as styles from './Banner.sass';
 import WarningSVG from '../../svg/warning';
 import CloseSVG from '../../svg/close--small';
 

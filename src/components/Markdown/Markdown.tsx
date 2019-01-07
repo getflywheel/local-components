@@ -1,18 +1,20 @@
-import React from 'react';
-import styles from './Markdown.sass';
-import ReactMarkdown from 'react-markdown';
-import Lowlight from 'react-lowlight';
-import apache from 'highlight.js/lib/languages/apache';
-import bash from 'highlight.js/lib/languages/bash';
-import css from 'highlight.js/lib/languages/css';
-import js from 'highlight.js/lib/languages/javascript';
-import json from 'highlight.js/lib/languages/json';
-import nginx from 'highlight.js/lib/languages/nginx';
-import php from 'highlight.js/lib/languages/php';
-import shell from 'highlight.js/lib/languages/shell';
-import sql from 'highlight.js/lib/languages/sql';
-import typescript from 'highlight.js/lib/languages/typescript';
-import xml from 'highlight.js/lib/languages/xml';
+/// <reference path="../../custom.d.ts" />
+
+import * as React from 'react';
+import * as styles from './Markdown.sass';
+import * as ReactMarkdown from 'react-markdown';
+import * as Lowlight from 'react-lowlight';
+import * as apache from 'highlight.js/lib/languages/apache';
+import * as bash from 'highlight.js/lib/languages/bash';
+import * as css from 'highlight.js/lib/languages/css';
+import * as js from 'highlight.js/lib/languages/javascript';
+import * as json from 'highlight.js/lib/languages/json';
+import * as nginx from 'highlight.js/lib/languages/nginx';
+import * as php from 'highlight.js/lib/languages/php';
+import * as shell from 'highlight.js/lib/languages/shell';
+import * as sql from 'highlight.js/lib/languages/sql';
+import * as typescript from 'highlight.js/lib/languages/typescript';
+import * as xml from 'highlight.js/lib/languages/xml';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {

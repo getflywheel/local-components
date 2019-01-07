@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import styles from './Card.sass';
+import * as styles from './Card.sass';
 import Header from '../Header/Header';
 import Truncate from '../Truncate/Truncate';
 

@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
 import { Switch, Route, NavLink, RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import styles from './TertiaryNav.sass';
+import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 class TertiaryNavBase extends React.Component<IReactComponentProps & RouteComponentProps<{}>> {

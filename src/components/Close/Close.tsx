@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CloseBigSVG from '../../svg/close--big';
-import styles from './Close.sass';
+import * as styles from './Close.sass';
 
 interface IProps extends IReactComponentProps {
 

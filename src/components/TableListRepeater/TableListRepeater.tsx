@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import { TableList } from '../TableList';
 import CloseSmallSVG from '../../svg/close--small';
 import AddSVG from '../../svg/add';
 import Button from '../Button';
-import isEqual from 'lodash.isequal';
-import styles from '../TableList/TableList.sass';
+import isEqual = require('lodash.isequal');
+import * as styles from '../TableList/TableList.sass';
 
 interface IProps extends IReactComponentProps {
 

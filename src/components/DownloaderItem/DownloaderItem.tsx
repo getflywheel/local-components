@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar';
 // import { ipcRenderer } from 'electron'; // crum - todo: figure this out

@@ -1,10 +1,14 @@
-import path from 'path';
-import fs from 'fs';
-import urlParse from 'url-parse';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as urlParse from 'url-parse';
 
-const isStylesheetLoaded = (href) => {
+const isStylesheetLoaded = (href: string) => {
 
 	for ( const stylesheet of document.styleSheets ) {
+		if (!stylesheet.href) {
+			continue;
+		}
+
 		const parsedURL = urlParse(stylesheet.href);
 
 		try {
@@ -41,7 +45,6 @@ export default function () {
 	link.href = stylesheetPath;
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
-	link.async = true;
 
 	document.getElementsByTagName( 'head' )[0].appendChild( link );
 

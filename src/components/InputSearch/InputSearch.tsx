@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import styles from './InputSearch.sass';
+import * as styles from './InputSearch.sass';
 import SearchSVG from '../../svg/search';
 import ObjectUtils from '../../utils/object-utils';
 

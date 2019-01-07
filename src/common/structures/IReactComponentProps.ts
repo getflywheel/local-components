@@ -1,8 +1,8 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 export default interface IReactComponentProps {
 
-	children?: React.ReactNode;
+	children?: ReactNode;
 	className?: string;
 	key?: string | number;
 	onClick?: (...params: any[]) => any;

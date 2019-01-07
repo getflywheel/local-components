@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import SpinnerSVG from '../../svg/spinner';
-import styles from './Spinner.sass';
+import * as styles from './Spinner.sass';
 
 interface IProps extends IReactComponentProps {
 

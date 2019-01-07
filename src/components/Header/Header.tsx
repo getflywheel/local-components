@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import styles from './Header.sass';
+import * as styles from './Header.sass';
 
 interface IProps extends IReactComponentProps {
 

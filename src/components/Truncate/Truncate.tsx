@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import TruncateMarkup from 'react-truncate-markup';
 
