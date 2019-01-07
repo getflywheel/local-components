@@ -1,4 +1,4 @@
-/// <reference path="../src/custom.d.ts" />
+/// <reference path="../src/global.d.ts" />
 import * as globby from 'globby';
 import * as SVGO from 'svgo';
 import * as path from 'path';

@@ -1,4 +1,4 @@
-/// <reference path="../src/custom.d.ts" />
+/// <reference path="../src/global.d.ts" />
 import 'ignore-styles';
 
 import * as globby from 'globby';

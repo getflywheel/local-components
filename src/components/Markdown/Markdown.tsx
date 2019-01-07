@@ -1,5 +1,3 @@
-/// <reference path="../../custom.d.ts" />
-
 import * as React from 'react';
 import * as styles from './Markdown.sass';
 import * as ReactMarkdown from 'react-markdown';
