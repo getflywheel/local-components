@@ -16,7 +16,22 @@ async function getSvgs():Promise<string[]> {
 	return await globby(['src/**/*.svg']);
 }
 
+async function deleteSVGStubs():Promise<void> {
+	const svgStubs = await globby(['src/svg/*.tsx']);
+
+	for (const svgStub of svgStubs) {
+		try {
+			fs.unlinkSync(svgStub);
+		} catch (e) {
+			console.error(e);
+			process.exit(1);
+		}
+	}
+}
+
 async function generateSvgStubs () {
+	await deleteSVGStubs();
+
 	const svgs = await getSvgs();
 
 	for (const svgPath of svgs) {
