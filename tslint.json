@@ -37,6 +37,7 @@
 			"severity": "warning"
 		},
 		"no-empty": false,
+		"no-reference": false,
 		"no-unused-expression": [true, "allow-fast-null-checks"], // https://palantir.github.io/tslint/rules/no-unused-expression/
 		"no-var-requires": false,
 		"object-literal-key-quotes": [true, "consistent"],
