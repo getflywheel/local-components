@@ -11,16 +11,20 @@ Basic (Options = Object):
 }} onChange={() => console.log('onChange')} value="b" />
 ```
 
-Has Secondary Text:
+Has secondary text and various option icons:
 ```js
 <div>
     <FlySelect style={{width: '350px'}} options={{
         'a': {
             label: 'Example A',
             secondaryText: 'This is a test',
+            download: true,
         },
-        'b': 'Example B',
-    }} onChange={() => console.log('onChange')} value="b" />
+        'c': {
+        	label: 'Example B',
+			icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 13h10a1 1 0 1 0 0-2H13V1a1 1 0 0 0-2 0v10H1a1 1 0 1 0 0 2h10v10a1 1 0 1 0 2 0z"></path></svg>,
+		},
+    }} onChange={() => console.log('onChange')} value="a" />
 </div>
 ```
 
