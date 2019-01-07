@@ -7,9 +7,9 @@ import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
 
-	inProgress: boolean;
-	ready: boolean;
-	requiresAttention: boolean;
+	inProgress?: boolean;
+	ready?: boolean;
+	requiresAttention?: boolean;
 
 }
 
@@ -18,20 +18,18 @@ export default class InstallerStepStatus extends React.Component<IProps> {
 	renderIcon () {
 		if (!this.props.ready && !this.props.inProgress) {
 			return (
-				<svg className="Circle" >{CircleSVG}</svg>
+				<CircleSVG className="Circle" />
 			);
 		}
 
 		if (this.props.ready) {
 			return (
-				<svg
+				<CompleteSVG
 					className="
 						TID_InstallerStepStatus_Icon_Complete
 						Complete
 					"
-				>
-					{CompleteSVG}
-				</svg>
+				/>
 			);
 		}
 
@@ -46,7 +44,7 @@ export default class InstallerStepStatus extends React.Component<IProps> {
 
 		if (this.props.inProgress) {
 			return (
-				<svg className="Spinner">{SpinnerSVG}</svg>
+				<SpinnerSVG className="Spinner" />
 			);
 		}
 	}
