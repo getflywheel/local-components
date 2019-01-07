@@ -14,7 +14,7 @@ mock('electron', {
 });
 
 async function getComponentFiles() {
-	return await globby(['src/**/*.tsx', '!src/**/*test.tsx']);
+	return await globby(['src/**/*.tsx', '!src/**/*test.tsx', '!src/svg/*.tsx']);
 }
 
 async function getExportedComponents() {
