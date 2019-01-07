@@ -11,6 +11,7 @@ interface IProps extends IReactComponentProps {
 	forceHoverState?: boolean;
 	hoverIntent?: boolean;
 	position?: 'top' | 'bottom' | 'right';
+	widthIsFluid: boolean;
 
 }
 
@@ -20,6 +21,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 		exclamation: false,
 		forceHoverState: false,
 		position: 'top',
+		widthIsFluid: false,
 	};
 
 	render () {
@@ -31,6 +33,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 					{
 						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent,
 						[styles.FlyTooltip_Container__ForceHoverState]: this.props.forceHoverState,
+						[styles.FlyTooltip__WidthIsFluid]: this.props.widthIsFluid,
 					},
 					this.props.className,
 				)}

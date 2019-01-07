@@ -67,6 +67,10 @@ class Item1 extends React.Component{
     }
 }
 
+Item1.propTypes = {
+  onChange: PropTypes.func,
+};
+
 class TertiaryNavExample extends React.Component{
     constructor (props, context) { 
        super(props, context);

@@ -27,7 +27,6 @@ With `<InnerPaneSidebar />`:
 
 ```js
 const { TableList, TableListRow } = require('../TableList');
-const { EmptyArea } = require('../EmptyArea');
 const { InnerPaneSidebar, InnerPaneSidebarHeader, InnerPaneSidebarContent } = require('../InnerPaneSidebar');
 
 <SiteInfoInnerPane>
