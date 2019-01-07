@@ -22,6 +22,7 @@ async function getExportedComponents() {
 	const exportedComponents: { [s: string]: string[]; } = {};
 
 	for (const componentFile of componentFiles) {
+		// @ts-ignore
 		const tmpRequire = require(path.resolve(componentFile)) as any;
 		exportedComponents[componentFile] = Object.keys(tmpRequire);
 	}
