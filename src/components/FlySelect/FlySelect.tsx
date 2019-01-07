@@ -170,12 +170,10 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 		if (option.download === true) {
 			output.push(
-				<svg
+				<DownloadSmallSVG
 					key="download-svg"
 					className="DownloadSmall"
-				>
-					{DownloadSmallSVG}
-				</svg>,
+				/>
 			);
 		}
 
@@ -225,12 +223,10 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				{
 					showCheck && option.value === this.state.value
 					&&
-					<svg
+					<CheckSVG
 						key="checked"
 						className="FlySelect__Check"
-					>
-						{CheckSVG}
-					</svg>
+					/>
 				}
 			</span>
 		);

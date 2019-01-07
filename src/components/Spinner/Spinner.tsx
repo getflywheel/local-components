@@ -23,7 +23,7 @@ export default class Spinner extends React.Component<IProps> {
 
 	render () {
 		return (
-			<svg
+			<SpinnerSVG
 				className={classnames(
 					styles.Spinner,
 					this.props.className,
@@ -31,9 +31,7 @@ export default class Spinner extends React.Component<IProps> {
 						[styles.Spinner__ColorGrayDark50]: this.props.color === 'GrayDark50',
 					},
 				)}
-			>
-				<SpinnerSVG />
-			</svg>
+			/>
 		);
 	}
 
