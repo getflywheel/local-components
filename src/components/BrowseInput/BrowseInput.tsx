@@ -56,9 +56,9 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 
 	browseFolder () {
 		dialog.showOpenDialog(remote.getCurrentWindow(), {
-			'title': this.props.dialogTitle,
 			'defaultPath': formatHomePath(this.state.value || this.props.defaultPath),
 			'properties': this.props.dialogProperties,
+			'title': this.props.dialogTitle,
 		}, (paths: any[]) => {
 			if (!paths) {
 				return;

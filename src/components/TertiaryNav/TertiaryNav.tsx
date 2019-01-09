@@ -6,22 +6,13 @@ import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import Handler from '../../common/structures/Handler';
 
-class TertiaryNavBase extends React.Component<IReactComponentProps & RouteComponentProps<{}>> {
+interface IProps extends IReactComponentProps {
 
-	// static propTypes = {
-	//	  children: (props, propName, componentName) => {
-	//			const prop = props[propName];
-	//			let error = null;
-	//
-	//			React.Children.forEach(prop, (child) => {
-	//				 if (child.type.WrappedComponent && child.type.WrappedComponent.name !== 'TertiaryNavItemBase') {
-	//					  error = new Error(`${componentName} children need to be of type 'TertiaryNavItem' but instead received type '${child.type}'.`);
-	//				 }
-	//			});
-	//
-	//			return error;
-	//	  }
-	// };
+	children?: Array<React.ReactElement<TertiaryNavItemBase>> | React.ReactElement<TertiaryNavItemBase>;
+
+}
+
+class TertiaryNavBase extends React.Component<IProps & IReactComponentProps & RouteComponentProps<{}>> {
 
 	render () {
 		return (
