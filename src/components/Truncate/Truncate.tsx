@@ -10,7 +10,7 @@ interface IProps {
 
 }
 
-type ReactComponentPropsModified = Omit<IReactComponentProps, 'className' | 'style' >;
+type ReactComponentPropsModified = Omit<IReactComponentProps, 'className' | 'style'>;
 
 export default class Truncate extends React.Component<IProps & ReactComponentPropsModified> {
 
