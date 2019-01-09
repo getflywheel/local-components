@@ -57,10 +57,7 @@ export default class FlyModal extends React.Component<IProps> {
 
 	static onRequestClose () {
 		document.getElementsByClassName(styles.FlyModalOverlay)[0].classList.add('__FadeOut');
-
 		ReactDOM.unmountComponentAtNode(document.getElementById('popup-container'));
-		/* setTimeout used to wait for animation and to hack around "React DOM tree root should always have a node reference." warning */
-		//setTimeout(() => ReactDOM.unmountComponentAtNode(document.getElementById('popup-container')), 210);
 	}
 
 	render () {

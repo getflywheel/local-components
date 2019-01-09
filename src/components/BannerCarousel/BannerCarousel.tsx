@@ -28,7 +28,7 @@ export default class BannerCarousel extends React.Component<IReactComponentProps
 					return React.cloneElement(banner as React.ReactElement<any>, {
 						currentIndex: this.state.currentIndex,
 						numBanners: this.props.children && (this.props.children as React.ReactNode[]).length,
-						onIndexChange: (index2: number) => this.setState({ currentIndex: index2 }),
+						onIndexChange: (bannerIndex: number) => this.setState({ currentIndex: bannerIndex }),
 					});
 				})}
 			</div>
