@@ -17,7 +17,7 @@
 		"interface-name": [true, "always-prefix"], // https://palantir.github.io/tslint/rules/interface-name
 		"jsx-alignment": true,
 		"jsx-boolean-value": true,
-		"jsx-no-lambda": false, // todo - crum: look into this more later
+		"jsx-no-lambda": false,
 		"jsx-no-multiline-js": false,
 		"jsx-space-before-trailing-slash": false,
 		"jsx-wrap-multiline": {

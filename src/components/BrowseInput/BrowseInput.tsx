@@ -4,9 +4,18 @@ import * as styles from './BrowseInput.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import Handler from '../../common/structures/Handler';
 
-// const remote = require('electron').remote;
-// const dialog = remote.dialog;
-// const formatHomePath = remote.require('./helpers/format-home-path').default;
+let remote: any;
+let dialog: any;
+let formatHomePath: any;
+
+try {
+	remote = require('electron').remote;
+	dialog = remote.dialog;
+	formatHomePath = remote.require('./helpers/format-home-path').default;
+}
+catch (e) {
+	console.warn(`Electron wasn't detected and BrowseInput won't function normally.`);
+}
 
 interface IProps extends IReactComponentProps {
 
@@ -46,23 +55,23 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 	}
 
 	browseFolder () {
-		// dialog.showOpenDialog(remote.getCurrentWindow(), {
-		// 	'title': this.props.dialogTitle,
-		// 	'defaultPath': formatHomePath(this.state.value || this.props.defaultPath),
-		// 	'properties': this.props.dialogProperties,
-		// }, (paths) => {
-		// 	if (!paths) {
-		// 		return;
-		// 	}
-		//
-		// 	const value = paths[0];
-		//
-		// 	if (this.props.onChange && this.props.onChange.call(this, value) === false) {
-		// 		return false;
-		// 	}
-		//
-		// 	this.setState({ value });
-		// });
+		dialog.showOpenDialog(remote.getCurrentWindow(), {
+			'title': this.props.dialogTitle,
+			'defaultPath': formatHomePath(this.state.value || this.props.defaultPath),
+			'properties': this.props.dialogProperties,
+		}, (paths: any[]) => {
+			if (!paths) {
+				return;
+			}
+
+			const value = paths[0];
+
+			if (this.props.onChange && this.props.onChange.call(this, value) === false) {
+				return false;
+			}
+
+			this.setState({ value });
+		});
 	}
 
 	render () {

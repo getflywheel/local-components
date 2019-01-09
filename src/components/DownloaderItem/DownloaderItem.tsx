@@ -2,7 +2,8 @@ import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar';
 import Handler from '../../common/structures/Handler';
-// import { ipcRenderer } from 'electron'; // crum - todo: figure this out
+
+const { ipcRenderer } = require('electron');
 
 interface IProps extends IReactComponentProps {
 
@@ -41,7 +42,7 @@ export default class DownloaderItem extends React.Component<IProps> {
 		}
 
 		if (this.props.onCancelIPCEvent) {
-			//return ipcRenderer.send(this.props.onCancelIPCEvent);
+			return ipcRenderer.send(this.props.onCancelIPCEvent);
 		}
 	}
 
