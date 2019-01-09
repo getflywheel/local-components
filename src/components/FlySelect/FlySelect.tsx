@@ -4,15 +4,16 @@ import CheckSVG from '../../svg/checkmark--big';
 import DownloadSmallSVG from '../../svg/download--small';
 import ArrowRightSVG from '../../svg/arrow--right';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
 	disabled?: boolean;
 	emptyPlaceholder?: string;
 	footerText?: string;
-	footerOnClick?: (...params: any[]) => any;
+	footerOnClick?: Handler;
 	loadingOptionsPlaceholder?: any;
-	onChange: (...params: any[]) => any;
+	onChange: Handler;
 	options?: any;
 	optionsLoader?: any;
 	optionGroups?: any;

@@ -3,12 +3,13 @@ import classnames from 'classnames';
 import * as styles from './FlyDropdown.sass';
 import CaretSVG from '../../svg/caret';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import Handler from '../../common/structures/Handler';
 
 interface IItems {
 
 	color: 'red';
 	label: string;
-	onClick: (...params: any[]) => any;
+	onClick: Handler;
 
 }
 

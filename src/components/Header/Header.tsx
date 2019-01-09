@@ -2,12 +2,13 @@ import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import * as styles from './Header.sass';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
 	fontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	fontWeight?: '300' | '400' | '500' | '700' | '900';
-	onClick?: (...params: any[]) => any;
+	onClick?: Handler;
 	tag?: string;
 
 }

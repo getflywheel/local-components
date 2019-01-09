@@ -4,6 +4,7 @@ import { Switch, Route, NavLink, RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import Handler from '../../common/structures/Handler';
 
 class TertiaryNavBase extends React.Component<IReactComponentProps & RouteComponentProps<{}>> {
 
@@ -67,7 +68,7 @@ interface ITertiaryNavItemBaseProps extends IReactComponentProps {
 	// 		return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
 	// 	}
 	// },
-	render?: (...params: any[]) => any;
+	render?: Handler;
 	variant?: 'error';
 
 }

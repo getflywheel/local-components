@@ -7,6 +7,7 @@ import AddSVG from '../../svg/add';
 import Button from '../Button';
 import isEqual = require('lodash.isequal');
 import * as styles from '../TableList/TableList.sass';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
@@ -14,10 +15,10 @@ interface IProps extends IReactComponentProps {
 	header?: React.ReactNode;
 	itemTemplate: any;
 	labelSingular?: string;
-	onBeforeRemove?: (...params: any[]) => any;
-	onChange?: (...params: any[]) => any;
-	onSubmit?: (...params: any[]) => any;
-	repeatingContent: (...params: any[]) => any;
+	onBeforeRemove?: Handler;
+	onChange?: Handler;
+	onSubmit?: Handler;
+	repeatingContent: Handler;
 	submitDisabled?: boolean;
 	submitLabel?: string;
 

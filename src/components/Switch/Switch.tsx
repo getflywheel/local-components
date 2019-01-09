@@ -2,6 +2,7 @@ import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import * as styles from './Switch.sass';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
@@ -11,7 +12,7 @@ interface IProps extends IReactComponentProps {
 	label?: string;
 	name?: string;
 	noValue?: boolean;
-	onChange?: (...params: any[]) => any;
+	onChange?: Handler;
 	tiny?: boolean;
 
 }

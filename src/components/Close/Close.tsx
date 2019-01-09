@@ -3,10 +3,11 @@ import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CloseBigSVG from '../../svg/close--big';
 import * as styles from './Close.sass';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
-	onClick: (...params: any[]) => any;
+	onClick: Handler;
 
 }
 

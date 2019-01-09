@@ -7,16 +7,17 @@ import WindowsMinimize from '../../svg/windows_minimize';
 import WindowsMaximize from '../../svg/windows_maximize';
 import WindowsClose from '../../svg/windows_close';
 import WindowsBack from '../../svg/windows_back';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
 	title: string;
 	resizable?: boolean;
-	onBack?: (...params: any[]) => any;
-	onMinimize: (...params: any[]) => any;
-	onMaximize?: (...params: any[]) => any;
-	onQuit: (...params: any[]) => any;
-	onShowMenu?: (...params: any[]) => any;
+	onBack?: Handler;
+	onMinimize: Handler;
+	onMaximize?: Handler;
+	onQuit: Handler;
+	onShowMenu?: Handler;
 
 }
 

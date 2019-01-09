@@ -2,6 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './BrowseInput.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import Handler from '../../common/structures/Handler';
 
 // const remote = require('electron').remote;
 // const dialog = remote.dialog;
@@ -14,7 +15,7 @@ interface IProps extends IReactComponentProps {
 	dialogTitle?: string;
 	isFormInput?: boolean;
 	isInline?: boolean;
-	onChange?: (...params: any[]) => any;
+	onChange?: Handler;
 	placeholder?: string;
 	value?: string;
 

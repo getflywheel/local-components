@@ -3,12 +3,13 @@ import classnames from 'classnames';
 import * as styles from './FlyLargeConfirm.sass';
 import CheckSVG from '../../svg/checkmark--big';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
 	bodyText?: any;
 	buttonText?: string;
-	onConfirm?: (...params: any[]) => any;
+	onConfirm?: Handler;
 
 }
 

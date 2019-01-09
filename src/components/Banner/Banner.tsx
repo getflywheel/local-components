@@ -4,16 +4,17 @@ import classnames from 'classnames';
 import * as styles from './Banner.sass';
 import WarningSVG from '../../svg/warning';
 import CloseSVG from '../../svg/close--small';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
 	buttonText?: string;
 	currentIndex?: number;
-	buttonOnClick?: (...params: any[]) => any;
+	buttonOnClick?: Handler;
 	icon?: string | boolean;
 	numBanners?: number;
-	onDismiss?: (...params: any[]) => any;
-	onIndexChange?: (...params: any[]) => any;
+	onDismiss?: Handler;
+	onIndexChange?: Handler;
 	variant?: 'warning' | 'neutral' | 'success' | 'error';
 
 }

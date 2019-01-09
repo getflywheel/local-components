@@ -1,6 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar';
+import Handler from '../../common/structures/Handler';
 // import { ipcRenderer } from 'electron'; // crum - todo: figure this out
 
 interface IProps extends IReactComponentProps {
@@ -9,7 +10,7 @@ interface IProps extends IReactComponentProps {
 	downloaded?: number;
 	itemSize?: number;
 	label?: string;
-	onCancel?: (...params: any[]) => any;
+	onCancel?: Handler;
 	onCancelIPCEvent?: string;
 	progress?: number;
 	progressText?: string | number | boolean;

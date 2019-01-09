@@ -5,13 +5,14 @@ import CheckmarkSVG from '../../svg/checkmark--big';
 import * as styles from './RadioBlock.sass';
 import Header from '../Header/Header';
 import FlyTooltip from '../FlyTooltip/FlyTooltip';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
 	default: string | null;
 	disabled?: boolean;
 	heightSize?: 'm' | 'l';
-	onChange: (...params: any[]) => any;
+	onChange: Handler;
 	options: {[key: string]: IRadioBlockItemProps};
 
 }
@@ -88,7 +89,7 @@ interface IRadioBlockItemProps extends IReactComponentProps {
 	disabled: boolean;
 	heightSize: 'm' | 'l';
 	label: string;
-	onClick: (...params: any[]) => any;
+	onClick: Handler;
 	selected: boolean;
 	svg: any;
 	tooltipContent: React.ReactNode;

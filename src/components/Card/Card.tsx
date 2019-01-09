@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import * as styles from './Card.sass';
 import Header from '../Header/Header';
 import Truncate from '../Truncate/Truncate';
+import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
@@ -21,7 +22,7 @@ interface IProps extends IReactComponentProps {
 	contentSubTruncateEllipsis?: React.ReactNode;
 	contentTitle?: React.ReactNode;
 	contentTitleClassName?: string;
-	contentTitleOnClick?: (...params: any[]) => any;
+	contentTitleOnClick?: Handler;
 	contentTitleTruncate?: boolean;
 	contentTitleTruncateLines?: number;
 	contentTitleTruncateEllipsis?: React.ReactNode;
@@ -34,7 +35,7 @@ interface IProps extends IReactComponentProps {
 	headerIconContainerClassName?: string;
 	headerIconPath?: string;
 	headerIconMaxHeight?: string;
-	headerOnClick?: (...params: any[]) => any;
+	headerOnClick?: Handler;
 	overflow?: string;
 	tag?: string;
 	truncateDefaultLines?: number;

@@ -9,6 +9,7 @@ import ImageCircle from '../ImageCircle/ImageCircle';
 import Divider from '../Divider/Divider';
 import Button from '../Button/Button';
 import AddSVG from '../../svg/add';
+import Handler from '../../common/structures/Handler';
 
 export class VerticalNav extends React.Component<IReactComponentProps> {
 
@@ -139,11 +140,11 @@ export class VerticalNavItem extends React.Component<IProps> {
 interface IWorkspaceSwitcherProps extends IReactComponentProps {
 
 	className?: string;
-	onClickAccount: (...params: any[]) => any;
-	onClickManageTeam: (...params: any[]) => any;
-	onClickAddTeam: (...params: any[]) => any;
-	onClickLogout: (...params: any[]) => any;
-	onClickWorkspace: (...params: any[]) => any;
+	onClickAccount: Handler;
+	onClickManageTeam: Handler;
+	onClickAddTeam: Handler;
+	onClickLogout: Handler;
+	onClickWorkspace: Handler;
 	routeTo: string;
 	tooltip: string;
 	workspaces: any[];
