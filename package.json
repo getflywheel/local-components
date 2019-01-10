@@ -3,7 +3,7 @@
 	"version": "7.0.0-beta.2",
 	"description": "",
 	"main": "dist/index.js",
-	"jsnext:main": "src/index.js",
+	"jsnext:main": "src/index.ts",
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
