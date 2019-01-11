@@ -3,10 +3,17 @@ const path = require('path');
 const merge = require('webpack-merge');
 
 module.exports = {
-    components: 'src/**/[A-Z]*.jsx',
-    getComponentPathLine(componentPath) {
-        return `import { ${path.basename(componentPath, '.jsx')} } from 'local-components';`
+    components: 'src/**/[A-Z]*.tsx',
+    getComponentPathLine (componentPath) {
+        return `import { ${path.basename(componentPath, '.tsx')} } from 'local-components';`
     },
+	propsParser: require('react-docgen-typescript').withCustomConfig(
+		'./tsconfig.json', // warning: this is critical for all component examples to be displayed
+		{
+			skipPropsWithoutDoc: false,
+				skipPropsWithName: [],
+		},
+	).parse,
     require: [
         path.join(__dirname, './src/global.sass'),
     ],
@@ -25,7 +32,7 @@ module.exports = {
 			node: {
 				__dirname: true,
 				path: true,
-			}
+			},
 		});
     }
 };

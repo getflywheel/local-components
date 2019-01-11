@@ -5,15 +5,16 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
 	entry: [
-		'./src/index.js'
+		'./src/index.ts'
 	],
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'index.js',
 		libraryTarget: "commonjs2"
 	},
+	devtool: "source-map",
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.ts', '.tsx', '.js', '.jsx']
 	},
 	target: 'electron-renderer',
 	externals: [nodeExternals({
@@ -31,9 +32,9 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
+				test: /\.tsx?$/,
+				loader: 'ts-loader',
+				exclude: /node_modules/
 			},
 			{
 				test: /\.(css|sass|scss)$/,

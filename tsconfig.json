@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"jsx": "react",
+		"module": "commonjs",
+		"lib": ["es2017", "dom", "dom.iterable"],
+		"sourceMap": true,
+		"strict": true,
+		"target": "es2015"
+	},
+	"include": [
+		"./src/**/*"
+	]
+}
