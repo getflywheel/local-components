@@ -1,7 +1,9 @@
 import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import TruncateMarkup from 'react-truncate-markup';
 import Omit from '../../common/structures/Omit';
+
+/* TruncateMarkup's types and exports are all jacked up. This makes it play nicely in Local. */
+const TruncateMarkup = require('react-truncate-markup');
 
 interface IProps {
 
