@@ -15,7 +15,7 @@
 		"react-markdown": "^4.0.3",
 		"react-modal": "^3.5.1",
 		"react-router-dom": "^4.3.1",
-		"react-truncate-markup": "^2.0.1",
+		"react-truncate-markup": "^3.0.0",
 		"url-parse": "^1.4.4"
 	},
 	"scripts": {
