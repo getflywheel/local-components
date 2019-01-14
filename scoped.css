@@ -4571,8 +4571,8 @@ header.FlywheelHeader {
         left: -5px;
         z-index: 2;
         border-radius: 4px;
-        width: calc(100% + 5px);
-        height: calc(100% + 5px); }
+        width: calc(100% + 4px);
+        height: calc(100% + 4px); }
       .RadioBlock_Option_2GEWP_v7-0-0.RadioBlock_Option__Selected_1UyKc_v7-0-0 .RadioBLock_Label_3Mi1E_v7-0-0 .RadioBLock_Arrow_1Biex_v7-0-0 {
         transform: scale(1);
         transition: all .2s ease 0s !important;
@@ -4594,8 +4594,8 @@ header.FlywheelHeader {
     .Theme__Dark .RadioBlock_Option_2GEWP_v7-0-0 .RadioBLock_Label_3Mi1E_v7-0-0 {
       box-shadow: 0 0 0 1px #434344; }
     .RadioBlock_Option_2GEWP_v7-0-0.RadioBlock_Option__HeightSizeMedium_23QQ-_v7-0-0 .RadioBLock_Label_3Mi1E_v7-0-0 {
-      padding-top: 24px;
-      padding-bottom: 24px; }
+      padding-top: 20px;
+      padding-bottom: 20px; }
     .RadioBlock_Option_2GEWP_v7-0-0 .RadioBLock_Label_3Mi1E_v7-0-0 h4 {
       margin: 0;
       cursor: pointer; }
