@@ -145,6 +145,7 @@ interface IWorkspaceSwitcherProps extends IReactComponentProps {
 	onClickAddTeam: Handler;
 	onClickLogout: Handler;
 	onClickWorkspace: Handler;
+	onClickWorkspaceNav: Handler;
 	routeTo: string;
 	tooltip: string;
 	workspaces: any[];
@@ -216,7 +217,10 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 							padding={false}
 							position="right"
 							triggerContent={(
-								<div className={styles.VerticalNav_NonNavLinkItem}>
+								<div
+									className={styles.VerticalNav_NonNavLinkItem}
+									onClick={this.props.onClickWorkspaceNav}
+								>
 									<ImageCircle
 										size="s"
 										square={this.state.activeWorkspaceItem.isTeam}
