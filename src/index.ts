@@ -4,6 +4,7 @@ import addStyles from './add-styles';
 addStyles();
 
 export const AdvancedToggle = hot(module)(require('./components/AdvancedToggle').default);
+export const Avatar = hot(module)(require('./components/Avatar').default);
 export const Banner = hot(module)(require('./components/Banner').default);
 export const BannerCarousel = hot(module)(require('./components/BannerCarousel').default);
 export const BigLoader = hot(module)(require('./components/BigLoader').default);
@@ -11,6 +12,7 @@ export const BrowseInput = hot(module)(require('./components/BrowseInput').defau
 export const Button = hot(module)(require('./components/Button').default);
 export const Card = hot(module)(require('./components/Card').default);
 export const Close = hot(module)(require('./components/Close').default);
+export const ClippedContent = hot(module)(require('./components/ClippedContent').default);
 export const Divider = hot(module)(require('./components/Divider').default);
 export const DownloaderItem = hot(module)(require('./components/DownloaderItem').default);
 export const DragBar = hot(module)(require('./components/DragBar').default);

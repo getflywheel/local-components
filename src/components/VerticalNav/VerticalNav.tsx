@@ -10,6 +10,7 @@ import Divider from '../Divider/Divider';
 import Button from '../Button/Button';
 import AddSVG from '../../svg/add';
 import Handler from '../../common/structures/Handler';
+import Avatar from '../Avatar';
 
 export class VerticalNav extends React.Component<IReactComponentProps> {
 
@@ -221,9 +222,10 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 									className={styles.VerticalNav_NonNavLinkItem}
 									onClick={this.props.onClickWorkspaceNav}
 								>
-									<ImageCircle
+									<Avatar
+										initials={this.state.activeWorkspaceItem.initials}
 										size="s"
-										square={this.state.activeWorkspaceItem.isTeam}
+										type={this.state.activeWorkspaceItem.isTeam ? 'team' : 'user'}
 										src={this.state.activeWorkspaceItem.src}
 									/>
 								</div>
@@ -235,15 +237,17 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 										{this.props.workspaces.map((workspaceItem) => {
 											return (
 												<div key={workspaceItem.id} onClick={() => this.onSelect(workspaceItem)}>
-													<ImageCircle
+													<Avatar
 														className={classnames(
 															styles.WorkspaceSwitcher_PopupGridItem,
 															{
 																[styles.WorkspaceSwitcher_PopupGridItem__Active]: workspaceItem.id === this.state.activeWorkspaceItem.id,
+																[styles.WorkspaceSwitcher_PopupGridItem__Team]: !workspaceItem.isTeam,
 															},
 														)}
+														initials={workspaceItem.initials}
 														size="s"
-														square={workspaceItem.isTeam}
+														type={workspaceItem.isTeam ? 'team' : 'user'}
 														src={workspaceItem.src}
 													/>
 												</div>
