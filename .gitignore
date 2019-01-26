@@ -11,3 +11,5 @@ node_modules
 /styleguide/svg
 *.tgz
 /src/svg/*.tsx
+/src/**/*.d.ts
+!/src/global.d.ts

@@ -6,13 +6,18 @@ import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import Handler from '../../common/structures/Handler';
 
-interface IProps extends IReactComponentProps {
+interface ITertiaryNavProps extends IReactComponentProps {
 
-	children?: Array<React.ReactElement<TertiaryNavItemBase>> | React.ReactElement<TertiaryNavItemBase>;
+	children?: Array<React.ReactElement<TertiaryNavItem>> | React.ReactElement<TertiaryNavItem>;
 
 }
 
-class TertiaryNavBase extends React.Component<IProps & IReactComponentProps & RouteComponentProps<{}>> {
+// There is a known issue in TypeScript, which doesn't allow decorators to change the signature of the classes
+// they are decorating. Due to this, if you are using @withRouter decorator in your code,
+// you will see a bunch of errors from TypeScript.
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
+@(withRouter as any)
+export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactComponentProps & RouteComponentProps> {
 
 	render () {
 		return (
@@ -46,25 +51,20 @@ class TertiaryNavBase extends React.Component<IProps & IReactComponentProps & Ro
 
 }
 
-interface ITertiaryNavItemBaseProps extends IReactComponentProps {
+interface ITertiaryNavItemProps extends IReactComponentProps {
 
 	path: string;
-	// component: (props, propName, componentName) => {
-	// 	if(!props.component && !props.render) {
-	// 		return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
-	// 	}
-	// },
-	// render: (props, propName, componentName) => {
-	// 	if(!props.component && !props.render) {
-	// 		return new Error(`Each TertiaryNavItem renders a 'Route' element and requires a 'component' or 'render' prop.`);
-	// 	}
-	// },
 	render?: Handler;
 	variant?: 'error';
 
 }
 
-class TertiaryNavItemBase extends React.Component<ITertiaryNavItemBaseProps & RouteComponentProps<{}>> {
+// There is a known issue in TypeScript, which doesn't allow decorators to change the signature of the classes
+// they are decorating. Due to this, if you are using @withRouter decorator in your code,
+// you will see a bunch of errors from TypeScript.
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
+@(withRouter as any)
+export class TertiaryNavItem extends React.Component<ITertiaryNavItemProps & RouteComponentProps> {
 
 	render () {
 		return (
@@ -89,6 +89,3 @@ class TertiaryNavItemBase extends React.Component<ITertiaryNavItemBaseProps & Ro
 	}
 
 }
-
-export const TertiaryNav = withRouter(TertiaryNavBase);
-export const TertiaryNavItem = withRouter(TertiaryNavItemBase);

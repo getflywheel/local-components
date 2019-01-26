@@ -4,7 +4,9 @@
 		"module": "commonjs",
 		"lib": ["es2017", "dom", "dom.iterable"],
 		"sourceMap": true,
+		"declaration": true,
 		"strict": true,
+		"experimentalDecorators": true,
 		"target": "es2015"
 	},
 	"include": [
