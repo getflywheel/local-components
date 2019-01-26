@@ -2,6 +2,7 @@ const path = require('path');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const package = require('./package.json');
 const nodeExternals = require('webpack-node-externals');
+const DtsBundleWebpack = require('dts-bundle-webpack');
 
 module.exports = {
 	entry: [
@@ -22,6 +23,11 @@ module.exports = {
 		whitelist: ['react-hot-loader', /webpack-dev-server/, /webpack\/hot/],
 	})],
 	plugins: [
+		new DtsBundleWebpack({
+			name: '@getflywheel/local-components',
+			main: './src/index.d.ts',
+			out: '../dist/typings.d.ts'
+		}),
 		new ExtractCssChunks({
 			filename: 'scoped.css',
 			chunkFilename: '[id].css',

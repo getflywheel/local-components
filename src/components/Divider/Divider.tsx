@@ -16,7 +16,7 @@ const marginsClassMixin = (stylesRef: {[key: string]: any}, props: {[key: string
 	[stylesRef.__MarginTopSizeXL]: props.marginSize === 'xl' || props.marginSizeTop === 'xl',
 });
 
-interface IProps extends IReactComponentProps {
+export interface IDividerProps extends IReactComponentProps {
 
 	marginSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	marginSizeBottom?: 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -24,7 +24,7 @@ interface IProps extends IReactComponentProps {
 
 }
 
-const Divider = (props: IProps) => (
+const Divider = (props: IDividerProps) => (
 	<div
 		className={classnames(
 			styles.Divider,
