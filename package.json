@@ -77,7 +77,7 @@
 		"react": "^16.4.2",
 		"react-docgen-typescript": "^1.12.2",
 		"react-dom": "^16.4.2",
-		"react-styleguidist": "8.0.5",
+		"react-styleguidist": "^8.0.6",
 		"resolve-url-loader": "^3.0.0",
 		"sass-loader": "^7.1.0",
 		"shx": "^0.3.2",

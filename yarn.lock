@@ -7153,10 +7153,10 @@ react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-styleguidist@8.0.5:
-  version "8.0.5"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-8.0.5.tgz#8327c4d63f22ed7ae947109e4b1974b488c7807c"
-  integrity sha512-bsvywkNv4Sgi4ZZFwW8uTN0r9KX+DndOGF5BHVvvIDBgVnv8CbaXTRSlh1QMd8P1fUoEd+0I4R3WEw31Kw4vuA==
+react-styleguidist@^8.0.6:
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-8.0.6.tgz#367f3f9f05c7eac7ea18f17f55ff8f4252b77c45"
+  integrity sha512-hhbU0dP14boD7j09p9d1pjhB/KWptX8WmsYHFwEhuLVUj10Frkd8FeClS+4JmCiPWe6DoFKxK/iJSzel7pOWUw==
   dependencies:
     "@vxna/mini-html-webpack-template" "^0.1.7"
     acorn "^5.7.1"
