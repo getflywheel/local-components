@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader';
 import addStyles from './add-styles';
 
 addStyles();
