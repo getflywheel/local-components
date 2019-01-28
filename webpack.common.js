@@ -20,7 +20,7 @@ module.exports = {
 	target: 'electron-renderer',
 	externals: [nodeExternals({
 		modulesDir: './node_modules',
-		whitelist: ['react-hot-loader', /webpack-dev-server/, /webpack\/hot/],
+		whitelist: [/webpack-dev-server/, /webpack\/hot/],
 	})],
 	plugins: [
 		new DtsBundleWebpack({
