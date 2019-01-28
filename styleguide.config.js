@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
+const package = require('./package.json');
 
 module.exports = {
     components: 'src/**/[A-Z]*.tsx',
@@ -22,7 +23,10 @@ module.exports = {
 		Wrapper: path.resolve(__dirname, 'styleguide', 'components', 'Wrapper'),
 	},
     webpackConfig: () => {
-        return merge(require('./webpack.common'), {
+        return merge.strategy({
+			plugins: 'replace',
+			module: 'replace',
+		})(require('./webpack.common'), {
 			target: 'web',
 			plugins: [
 				new webpack.NormalModuleReplacementPlugin(/electron/, function (resource) {
@@ -32,6 +36,55 @@ module.exports = {
 			node: {
 				__dirname: true,
 				path: true,
+			},
+			module: {
+				rules: [
+					{
+						test: /\.tsx?$/,
+						loader: 'ts-loader',
+						options: {
+							transpileOnly: true
+						},
+						exclude: /node_modules/
+					},
+					{
+						test: /\.(css|sass|scss)$/,
+						use: [
+							{
+								loader: 'style-loader'
+							},
+							{
+								loader: 'css-loader',
+								options: {
+									modules: true,
+									sourceMap: true,
+									importLoaders: 1,
+									localIdentName: '[local]_[hash:base64:5]_v' + package.version.replace(/\./g, '-'),
+								}
+							},
+							{
+								loader: 'resolve-url-loader',
+							},
+							{
+								loader: 'sass-loader',
+								options: {
+									sourceMap: true,
+								}
+							},
+						]
+					},
+					{
+						test: /\.(png|jpg|gif|svg)$/i,
+						use: [
+							{
+								loader: 'url-loader',
+								options: {
+									limit: 16384
+								}
+							}
+						]
+					}
+				],
 			},
 		});
     }
