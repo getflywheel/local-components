@@ -2,7 +2,7 @@ Default image clipped to circle shape.
 The contained image uses 'object-fit: cover' to ensure that the entire circle area has pixel data within it regardless of the aspect ratio of the original source.
 
 ```js
-<ImageCircle src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"/>
+<ImageCircle src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png" />
 ```
 
 Small circle.

@@ -11,6 +11,8 @@ interface IProps extends IReactComponentProps {
 	shape?: 'circle' | 'rect-rounded';
 	tag?: string;
 	width?: string | 'fit-content';
+	useFullHeight?: boolean;
+	useFullWidth?: boolean;
 
 }
 
@@ -21,6 +23,8 @@ export default class ClippedContent extends React.Component<IProps> {
 		alignY: 'none',
 		shape: 'rect-rounded',
 		tag: 'div',
+		useFullHeight: true,
+		useFullWidth: true,
 	};
 
 	render () {
@@ -34,6 +38,8 @@ export default class ClippedContent extends React.Component<IProps> {
 					{
 						[styles.ClippedContent__AlignX]: this.props.alignX === 'center',
 						[styles.ClippedContent__AlignY]: this.props.alignY === 'center',
+						[styles.ClippedContent__FullHeight]: this.props.useFullHeight,
+						[styles.ClippedContent__FullWidth]: this.props.useFullWidth,
 						[styles.ClippedContent__ShapeCircle]: this.props.shape === 'circle',
 					},
 				)}

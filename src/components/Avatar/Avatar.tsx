@@ -118,7 +118,7 @@ export default class Avatar extends React.Component<IProps, IState> {
 				{
 					this.props.src && (
 						<ImageCircle
-							className={classnames(
+							containerClassName={classnames(
 								{
 									[styles.Avatar_Image__Hidden]: !this.state.isImageLoaded || (this.props.initials && this.state.isImageError),
 								},

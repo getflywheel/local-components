@@ -8,6 +8,7 @@ import Handler from '../../common/structures/Handler';
 interface IProps extends IReactComponentProps {
 
 	className?: string;
+	containerClassName?: string;
 	onError?: Handler;
 	onLoad?: Handler;
 	size?: 'm' | 's' | string;
@@ -30,7 +31,7 @@ export default class ImageCircle extends React.Component<IProps> {
 			<ClippedContent
 				className={classnames(
 					styles.ImageCircleContainer,
-					this.props.className,
+					this.props.containerClassName,
 					{
 						[styles.ImageCircleContainer__SizeSmall]: this.props.size === 's',
 					},
@@ -40,10 +41,13 @@ export default class ImageCircle extends React.Component<IProps> {
 					...(this.props.size !== 's' && this.props.size !== 'm' && {width: this.props.size, minWidth: this.props.size, height: this.props.size}),
 				}}
 				tag={this.props.tag}
+				useFullHeight={false}
+				useFullWidth={false}
 			>
 				<img
 					className={classnames(
 						styles.ImageCircle,
+						this.props.className,
 						{
 							[styles.ImageCircleContainer__Square]: this.props.square,
 						},
