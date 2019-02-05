@@ -224,6 +224,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								>
 									<Avatar
 										className={styles.WorkspaceSwitcher_Avatar}
+										color={this.state.activeWorkspaceItem.color}
 										initials={this.state.activeWorkspaceItem.initials}
 										placeholderSrc={this.state.activeWorkspaceItem.srcCache}
 										size="s"
@@ -248,6 +249,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 																[styles.WorkspaceSwitcher_PopupGridItem__Team]: !workspaceItem.isTeam,
 															},
 														)}
+														color={workspaceItem.color}
 														initials={workspaceItem.initials}
 														placeholderSrc={workspaceItem.srcCache}
 														size="s"
