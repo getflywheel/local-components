@@ -9,6 +9,7 @@ interface IProps extends IReactComponentProps {
 
 	color?: 'blue' | 'green' | 'yellow' | 'orange' | 'red' | 'pink' | 'purple';
 	initials?: string;
+	placeholderSrc?: string;
 	size?: 's' | 'm' | string;
 	src?: string;
 	type: 'user' | 'team';
@@ -88,7 +89,7 @@ export default class Avatar extends React.Component<IProps, IState> {
 				)}
 			>
 				{
-					this.props.initials && (!this.state.isImageLoaded || this.state.isImageError) && (
+					this.props.initials && (
 						<ClippedContent
 							shape={this.props.type === 'team' ? 'rect-rounded' : 'circle'}
 							style={{
@@ -116,10 +117,27 @@ export default class Avatar extends React.Component<IProps, IState> {
 					)
 				}
 				{
+					this.props.placeholderSrc && !this.state.isImageLoaded && (
+						<ImageCircle
+							containerClassName={classnames(
+								styles.Avatar_Image,
+								{
+									[styles.Avatar_Image__PositionAbsolute]: this.props.initials,
+								},
+							)}
+							size={this.getSize()}
+							square={this.props.type === 'team'}
+							src={this.props.placeholderSrc}
+						/>
+					)
+				}
+				{
 					this.props.src && (
 						<ImageCircle
 							containerClassName={classnames(
+								styles.Avatar_Image,
 								{
+									[styles.Avatar_Image__PositionAbsolute]: this.props.initials || (this.props.placeholderSrc && !this.state.isImageLoaded),
 									[styles.Avatar_Image__Hidden]: !this.state.isImageLoaded || (this.props.initials && this.state.isImageError),
 								},
 							)}

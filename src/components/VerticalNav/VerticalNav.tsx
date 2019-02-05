@@ -223,10 +223,13 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 									onClick={this.props.onClickWorkspaceNav}
 								>
 									<Avatar
+										className={styles.WorkspaceSwitcher_Avatar}
+										color={this.state.activeWorkspaceItem.color}
 										initials={this.state.activeWorkspaceItem.initials}
+										placeholderSrc={this.state.activeWorkspaceItem.srcCache}
 										size="s"
-										type={this.state.activeWorkspaceItem.isTeam ? 'team' : 'user'}
 										src={this.state.activeWorkspaceItem.src}
+										type={this.state.activeWorkspaceItem.isTeam ? 'team' : 'user'}
 									/>
 								</div>
 							)}
@@ -240,12 +243,15 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 													<Avatar
 														className={classnames(
 															styles.WorkspaceSwitcher_PopupGridItem,
+															styles.WorkspaceSwitcher_Avatar,
 															{
 																[styles.WorkspaceSwitcher_PopupGridItem__Active]: workspaceItem.id === this.state.activeWorkspaceItem.id,
 																[styles.WorkspaceSwitcher_PopupGridItem__Team]: !workspaceItem.isTeam,
 															},
 														)}
+														color={workspaceItem.color}
 														initials={workspaceItem.initials}
+														placeholderSrc={workspaceItem.srcCache}
 														size="s"
 														type={workspaceItem.isTeam ? 'team' : 'user'}
 														src={workspaceItem.src}

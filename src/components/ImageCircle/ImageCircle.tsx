@@ -48,9 +48,6 @@ export default class ImageCircle extends React.Component<IProps> {
 					className={classnames(
 						styles.ImageCircle,
 						this.props.className,
-						{
-							[styles.ImageCircleContainer__Square]: this.props.square,
-						},
 					)}
 					onError={this.props.onError}
 					onLoad={this.props.onLoad}
