@@ -5,10 +5,8 @@ import SpinnerSVG from '../../svg/spinner';
 import * as styles from './Spinner.sass';
 
 interface IProps extends IReactComponentProps {
-
-	className?: string;
-	color?: 'Gray25' | 'GrayDark50';
-
+	className?: string
+	color?: 'Gray25' | 'GrayDark50'
 }
 
 export default class Spinner extends React.Component<IProps> {
@@ -17,7 +15,7 @@ export default class Spinner extends React.Component<IProps> {
 		color: 'Gray25',
 	};
 
-	render () {
+	renderSVG () {
 		return (
 			<SpinnerSVG
 				className={classnames(
@@ -28,6 +26,19 @@ export default class Spinner extends React.Component<IProps> {
 					},
 				)}
 			/>
+		);
+	}
+
+	render () {
+		if (!this.props.children) {
+			return this.renderSVG();
+		}
+
+		return (
+			<div className={styles.SpinnerContainer}>
+				{this.renderSVG()}
+				{this.props.children}
+			</div>
 		);
 	}
 

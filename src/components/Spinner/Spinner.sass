@@ -1,12 +1,22 @@
 @import '../../styles/_partials/index'
 
-.Spinner
+.SpinnerContainer
+	font-weight: 300
+	color: $gray75
+	letter-spacing: 0
+	text-transform: none
+
+	.Spinner
+		margin-right: 10px
+
+svg.Spinner
 	vertical-align: middle
 	width: 18px
 	height: 22px
+	margin: 0 0 0 10px
+
 	\:global
 		animation: rotateSpinner 1s linear infinite
-	margin: 0 0 0 10px
 
 	&.Spinner__ColorGrayDark50
 		path
@@ -14,4 +24,3 @@
 
 	path
 		fill: $gray25
-
