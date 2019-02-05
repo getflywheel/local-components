@@ -48,7 +48,6 @@ export default class FlyModal extends React.Component<IProps> {
 		closeTimeoutMS: 0,
 		hasIcon: false,
 		isOpen: true,
-		onRequestClose: FlyModal.onRequestClose,
 		overlayClassName: styles.FlyModalOverlay,
 		parentSelector: () => document.body,
 		portalClassName: 'ReactModalPortal',
@@ -60,10 +59,19 @@ export default class FlyModal extends React.Component<IProps> {
 		ReactDOM.unmountComponentAtNode(document.getElementById('popup-container'));
 	}
 
+	onRequestClose = () => {
+		if (typeof this.props.onRequestClose === 'function') {
+			this.props.onRequestClose();
+		}
+
+		FlyModal.onRequestClose();
+	};
+
 	render () {
 		return (
 			<ReactModal
 				{...this.props}
+				onRequestClose={this.onRequestClose}
 				className={classnames(
 					styles.FlyModal,
 					'FlyModal', // in here for tests
@@ -73,7 +81,7 @@ export default class FlyModal extends React.Component<IProps> {
 					className={classnames({
 						[styles.FlyModal__HasIcon]: this.props.hasIcon,
 					})}
-					onClick={FlyModal.onRequestClose}
+					onClick={this.onRequestClose}
 				/>
 				{this.props.children}
 			</ReactModal>
