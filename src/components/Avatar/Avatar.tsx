@@ -125,8 +125,6 @@ export default class Avatar extends React.Component<IProps, IState> {
 									[styles.Avatar_Image__PositionAbsolute]: this.props.initials,
 								},
 							)}
-							// onError={this.onError}
-							// onLoad={this.onLoad}
 							size={this.getSize()}
 							square={this.props.type === 'team'}
 							src={this.props.placeholderSrc}
