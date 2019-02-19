@@ -42,3 +42,15 @@
 @mixin stripes($color1: $white, $color2: $gray2) {
 	background: repeating-linear-gradient(-65deg, $color1, $color1 24px, $color2 24px, $color2 48px);
 }
+
+@mixin dragbar {
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 23px;
+	width: 100%;
+}

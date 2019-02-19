@@ -31,4 +31,8 @@
 			}
 		}
 	}
+
+	.os-mac .Window.__Before-React-Loaded::before {
+		@include dragbar;
+	}
 }
