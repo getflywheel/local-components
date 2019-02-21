@@ -2,6 +2,7 @@ import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big';
+import ExclamationSVG from '../../svg/exclamation';
 import * as styles from './RadioBlock.sass';
 import Header from '../Header/Header';
 import FlyTooltip from '../FlyTooltip/FlyTooltip';
@@ -11,6 +12,7 @@ interface IProps extends IReactComponentProps {
 
 	default: string | null;
 	disabled?: boolean;
+	warn?: boolean;
 	heightSize?: 'm' | 'l';
 	onChange: Handler;
 	options: {[key: string]: IRadioBlockItemProps};
@@ -68,6 +70,7 @@ class RadioBlock extends React.Component<IProps, IState> {
 							onClick={this.onClick}
 							className={this.props.options[optionValue].className}
 							disabled={this.props.disabled || this.props.options[optionValue].disabled}
+							warn={this.props.warn || this.props.options[optionValue].warn}
 							heightSize={this.props.heightSize}
 							label={this.props.options[optionValue].label}
 							value={optionValue}
@@ -87,6 +90,7 @@ class RadioBlock extends React.Component<IProps, IState> {
 interface IRadioBlockItemProps extends IReactComponentProps {
 
 	disabled: boolean;
+	warn: boolean;
 	heightSize: 'm' | 'l';
 	label: string;
 	onClick: Handler;
@@ -137,7 +141,14 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 	}
 
 	render () {
-		const svg = this.props.svg ? this.props.svg : <CheckmarkSVG />;
+		const svg = this.props.warn ?
+			<ExclamationSVG />
+			:
+			this.props.svg ?
+				this.props.svg
+				:
+				<CheckmarkSVG />
+		;
 
 		return this.renderOptionalTooltipAndContent((
 			<div
@@ -147,6 +158,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 					this.props.className,
 					{
 						[styles.RadioBlock_Option__Disabled]: this.props.disabled,
+						[styles.RadioBlock_Option__Warn]: this.props.warn,
 						[styles.RadioBlock_Option__HeightSizeMedium]: this.props.heightSize === 'm',
 						[styles.RadioBlock_Option__Selected]: this.props.selected,
 					},

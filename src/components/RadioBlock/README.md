@@ -38,6 +38,20 @@ Disable a single option and select the other:
 }} />
 ```
 
+Warning set on the component:
+
+```js
+<RadioBlock warn={true} onChange={() => console.log('onChange')} default={'test1'} options={{
+    'test1': {
+        label: 'Test 1',
+    },
+    'test2': {
+        label: 'Test 2',
+    	disabled: true,
+    },
+}} />
+```
+
 Medium size RadioBlock:
 
 ```js
