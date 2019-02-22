@@ -36,12 +36,65 @@
 		small {
 			position: absolute;
 			right: 10px;
+			padding-left: 10px;
 			color: $gray75;
 			font-weight: 300;
 			@include tracking(20);
-			padding-left: 25px;
 			font-size: 14px;
 			text-transform: capitalize;
+
+			@include selectors_setAsDefaults {
+				background: $gray5;
+
+				@include if-theme-dark() {
+					background: $gray-dark-alt;
+				}
+			}
+			@include selectors_appendToNthParentSelector('.SitesSidebarSite__Selected') {
+				background: $white;
+
+				@include if-theme-dark() {
+					background: $gray-dark
+				}
+			}
+			@include selectors_appendToNthParentSelector(':not(.SitesSidebarSite__Selected):hover') {
+				background: $gray15;
+
+				@include if-theme-dark() {
+					background: $gray-dark50;
+				}
+			}
+		}
+
+		small::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -20px;
+			width: 20px;
+
+			@include selectors_setAsDefaults {
+				background: linear-gradient(to right, rgba($gray5, 0), $gray5);
+
+				@include if-theme-dark() {
+					background: linear-gradient(to right, rgba($gray-dark-alt, 0), $gray-dark-alt);
+				}
+			}
+			@include selectors_appendToNthParentSelector('.SitesSidebarSite__Selected') {
+				background: linear-gradient(to right, rgba($white, 0), $white);
+
+				@include if-theme-dark() {
+					background: linear-gradient(to right, rgba($gray-dark, 0), $gray-dark);
+				}
+			}
+			@include selectors_appendToNthParentSelector(':not(.SitesSidebarSite__Selected):hover') {
+				background: linear-gradient(to right, rgba($gray15, 0), $gray15);
+
+				@include if-theme-dark() {
+					background: linear-gradient(to right, rgba($gray-dark50, 0), $gray-dark50);
+				}
+			}
 		}
 
 		&:not(.SitesSidebarSite__Selected):hover {
