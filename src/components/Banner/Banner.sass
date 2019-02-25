@@ -129,7 +129,14 @@
 
 		&:hover
 			svg path
-				@include theme-fill-graydark-else-gray25
+				@include selectors_setAsDefaults()
+					fill: $orange-dark50
+				@include selectors_ifHostHasModifier('.Banner__Neutral')
+					fill: $green-dark50
+				@include selectors_ifHostHasModifier('.Banner__Error')
+					fill: $red-dark50
+				@include selectors_ifHostHasModifier('.Banner__Success')
+					fill: $green-dark50
 
 	.Carousel
 		float: left
