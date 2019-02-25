@@ -20,6 +20,7 @@
 	flex: 1
 
 	&.RadioBlock_Option__HeightSizeMedium
+	&.RadioBlock_Option__Warn
 
 	&.RadioBlock_Option__Disabled
 		color: $gray75
@@ -31,6 +32,9 @@
 		.RadioBLock_Label
 			z-index: 2
 			border-color: $green
+
+			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
+				border-color: $orange
 
 			&::before
 				opacity: 1
@@ -82,6 +86,9 @@
 			border: 2px solid $green
 			border-radius: inherit
 
+			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
+				border-color: $orange
+
 			width: 100%
 			height: 100%
 
@@ -125,6 +132,9 @@
 			border-color: transparent $green transparent transparent
 			width: 0
 			height: 0
+
+			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
+				border-color: transparent $orange transparent transparent
 
 		top: -3px
 		right: -3px
