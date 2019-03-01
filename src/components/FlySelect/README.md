@@ -45,3 +45,41 @@ Constrained Width:
     ]} onChange={() => console.log('onChange')} placeholder="Select Something!" />
 </div>
 ```
+
+Using an Avatar within a form FlySelect:
+```js
+<div>
+	<div className="FormRow">
+		<div className="FormField">			
+			<FlySelect 
+				style={{width: '350px'}} 
+				options={{
+					'a': {
+						label: 'Me',
+						icon: (
+							<Avatar
+								size="s"
+								src="https://getflywheel.com/wp-content/uploads/2015/02/flyheadshots-4-copy.jpg"
+								type="user"
+							/>
+						),
+					},
+					'c': {
+						label: 'Flywheel',
+						icon: (
+							<Avatar
+								size="s"
+								src="https://avatars2.githubusercontent.com/u/2371558?s=400&v=4"
+								type="team"
+							/>
+						),
+					},
+				}} 
+				onChange={() => console.log('onChange')} 
+				value="a" 
+			/>
+		</div>
+	</div>
+</div>
+
+
