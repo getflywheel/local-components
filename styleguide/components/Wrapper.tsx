@@ -9,7 +9,13 @@ interface IProps extends IReactComponentProps {
 
 }
 
+type ThemeMode = 'Theme__Light' | 'Theme__Dark';
+
 export default class Wrapper extends React.Component<IProps> {
+
+	protected _showDashBorder: boolean = false;
+	protected _extraPadding: boolean  = false;
+	protected _themeMode: ThemeMode  = 'Theme__Light';
 
 	componentDidCatch (error: any) {
 		this.props.onError(error);
@@ -17,11 +23,14 @@ export default class Wrapper extends React.Component<IProps> {
 
 	render () {
 		return (
-			<div>
+			<div className={this._themeMode}>
 				<div
 					id="styleguide-container"
-					className="Theme__Light"
-					style={{ position: 'relative' }}
+					style={{
+						position: 'relative',
+						...(this._showDashBorder && {border: '1px dashed #c7c4c4'}),
+						...(this._extraPadding && {padding: '20px'}),
+					}}
 				>
 					{/*wrap every component with router, even if not needed, so it doesn't have to be included in individual component examples*/}
 					<MemoryRouter>
