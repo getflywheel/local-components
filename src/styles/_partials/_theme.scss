@@ -39,6 +39,10 @@
 	@include __theme-background($gray5, $gray-dark-alt);
 }
 
+@mixin theme-background-gray5-else-gray-dark50 {
+	@include __theme-background($gray5, $gray-dark50);
+}
+
 @mixin theme-background-gray15-else-graydark50 {
 	@include __theme-background($gray15, $gray-dark50);
 }
@@ -87,21 +91,21 @@
 	@include __theme-background(rgba($white, .85), $gray-dark);
 }
 
-@mixin __theme-border($property: "", $lightmodeLighten: 0%, $darkmodeLighten: 0%) {
+@mixin __theme-border($property: "", $lightmodeLighten: 0%, $darkmodeLighten: 0%, $border-light: $theme-border-light, $border-dark: $theme-border-light) {
 	@if $property == "" or $property == "box-shadow" {
 		@include if-theme-light() {
-			box-shadow: 0 0 0 1px $theme-border-light;
+			box-shadow: 0 0 0 1px $border-light;
 		}
 		@include if-theme-dark() {
-			box-shadow: 0 0 0 1px lighten($theme-border-dark, $darkmodeLighten);
+			box-shadow: 0 0 0 1px lighten($border-dark, $darkmodeLighten);
 		}
 	}
 	@else {
 		@include if-theme-light() {
-			#{$property}: 1px solid $theme-border-light;
+			#{$property}: 1px solid $border-light;
 		}
 		@include if-theme-dark() {
-			#{$property}: 1px solid lighten($theme-border-dark, $darkmodeLighten);
+			#{$property}: 1px solid lighten($border-dark, $darkmodeLighten);
 		}
 	}
 }
@@ -283,7 +287,7 @@
 @mixin theme-input-border {
 	border: none;
 	border-radius: 4px;
-	@include theme-border;
+	@include __theme-border("", 0%, 0%, $theme-border-light, $theme-input-border-dark);
 }
 
 // Theme Patterns
