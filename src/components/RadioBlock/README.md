@@ -88,9 +88,7 @@ Vertical layout:
         label: 'Test 1',
     },
     'test2': {
-    	disabled: true,
         label: 'Test 2',
-        tooltipContent: <p>Hey, this is why this is disabled. It all started when you clicked...</p>,
     },
 }} />
 ```
