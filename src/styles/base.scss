@@ -36,10 +36,6 @@
 		@include theme-color-graydark-else-white;
 	}
 
-	div#styleguide-container {
-		border: 1px dashed $gray25;
-	}
-
 	#root main {
 		position: absolute;
 		top: 0;

@@ -10,6 +10,7 @@ export {default as BigLoader} from './components/BigLoader';
 export {default as BrowseInput} from './components/BrowseInput';
 export {default as Button} from './components/Button';
 export {default as Card} from './components/Card';
+export {default as Checkbox} from './components/Checkbox';
 export {default as Close} from './components/Close';
 export {default as ClippedContent} from './components/ClippedContent';
 export {default as Divider} from './components/Divider';
