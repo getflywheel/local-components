@@ -13,8 +13,8 @@ type ThemeMode = 'Theme__Light' | 'Theme__Dark';
 
 export default class Wrapper extends React.Component<IProps> {
 
-	protected _showDashBorder: boolean = false;
-	protected _extraPadding: boolean  = false;
+	protected _showDashBorder: boolean = true;
+	protected _extraPadding: boolean  = true;
 	protected _themeMode: ThemeMode  = 'Theme__Light';
 
 	componentDidCatch (error: any) {
