@@ -11,6 +11,7 @@ import Handler from '../../common/structures/Handler';
 interface IProps extends IReactComponentProps {
 
 	default: string | null;
+	direction: 'horiz' | 'vert';
 	disabled?: boolean;
 	warn?: boolean;
 	heightSize?: 'm' | 'l';
@@ -30,6 +31,7 @@ interface IState {
 class RadioBlock extends React.Component<IProps, IState> {
 
 	static defaultProps: Partial<IProps> = {
+		direction: 'horiz',
 		disabled: false,
 		heightSize: 'l',
 	};
@@ -62,6 +64,9 @@ class RadioBlock extends React.Component<IProps, IState> {
 				className={classnames(
 					styles.RadioBlock,
 					this.props.className,
+					{
+						[styles.RadioBlock__DirectionVert]: this.props.direction === 'vert',
+					},
 				)}
 			>
 				{

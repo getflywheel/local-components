@@ -79,3 +79,16 @@ Tooltip for the second, disabled option:
     },
 }} />
 ```
+
+Vertical layout:
+
+```js
+<RadioBlock direction="vert" heightSize="m" default={'test1'} options={{
+    'test1': {
+        label: 'Test 1',
+    },
+    'test2': {
+        label: 'Test 2',
+    },
+}} />
+```
