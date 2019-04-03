@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ResizeObserver, { DOMRect } from 'react-resize-observer';
-import { VirtualListHelper, IVirtualListHelperCalculations } from './VirtualListHelper';
+import { VirtualListHelper, IVirtualListHelperCalculations } from './helpers/VirtualListHelper';
 import classnames from 'classnames';
 import * as styles from './VirtualList.scss';
 import { ReactElement } from 'react';

@@ -5,7 +5,7 @@ import Button from '../../Button';
 import Divider from '../../Divider';
 import Checkbox from '../../Checkbox';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import { IVirtualListHelperCalculations } from '../VirtualListHelper';
+import { IVirtualListHelperCalculations } from '../helpers/VirtualListHelper';
 
 interface IDataItem {
 	id: number;
