@@ -34,4 +34,12 @@
 	.MagicSyncViewerMenu_BottomDivider {
 		width: 100%;
 	}
+
+	.MagicSyncViewerMenu_MagicSyncLogo {
+		width: 151px;
+
+		path {
+			fill: $gray25;
+		}
+	}
 }

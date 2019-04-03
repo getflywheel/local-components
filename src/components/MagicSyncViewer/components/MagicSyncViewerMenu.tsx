@@ -98,6 +98,6 @@ export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
 				Pull From Flywheel
 			</button>
 		</div>
-		<PoweredByMsSVG />
+		<PoweredByMsSVG className={styles.MagicSyncViewerMenu_MagicSyncLogo} />
 	</div>
 );
