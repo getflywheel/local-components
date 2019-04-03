@@ -11,7 +11,7 @@ export interface IVirtualListProps extends IReactComponentProps {
 	 * note: children must be renderered manaually
 	 * note: customRendererStyles should only be set if the ReactNode returned by the renderer is a React.Fragment
 	 */
-	containerRenderer? (children: React.ReactNode, customRendererStyles: {minHeight: number}): ReactElement<any>;
+	containerRenderer? (children: React.ReactNode, customRendererStyles: {minHeight: number}): ReactElement<any> | null;
 	/** list data passed to the list item renderer */
 	data: any[];
 	/** whether to disable the resize listener used to adjust calculated height (if true, it's highly recommended to set 'wrapperSizePx') */
@@ -165,7 +165,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 
 	protected _renderContainer () {
 		const containerStyle = {minHeight: this.state.containerSizePx};
-		const containerRenderer: ReactElement<any> | undefined = this.props.containerRenderer && this.props.containerRenderer(this.state.itemsRenderedList, containerStyle);
+		const containerRenderer: ReactElement<any> | undefined | null = this.props.containerRenderer && this.props.containerRenderer(this.state.itemsRenderedList, containerStyle);
 		const containerClassName: string = classnames(
 			styles.VirtualList,
 			{
