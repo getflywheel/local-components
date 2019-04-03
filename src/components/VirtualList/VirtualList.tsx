@@ -18,7 +18,7 @@ export interface IVirtualListProps extends IReactComponentProps {
 	disableResizeObserver?: boolean;
 	/** whether to disable virtualized renderersFactory and draw all list items or not (if true) */
 	disableVirtualization?: boolean;
-	/** the height of an individual list item (must be exact) */
+	/** the height of an individual list item (must be predictble, exact, and consistent) */
 	itemHeight: number;
 	/**
 	 * item render function
@@ -35,7 +35,7 @@ export interface IVirtualListProps extends IReactComponentProps {
 	overscan?: number | 'auto';
 	/** Whether to show alternating row stripes. */
 	striped?: boolean;
-	/** manually set wrapper size in pixels (note: this will be overridden if disableResizeObserver is 'false', but should be used if set to 'true') */
+	/** manually set wrapper size in pixels (note: this will be overridden if disableResizeObserver is 'false', but should be used if 'disableResizeObserver' is set to 'true') */
 	wrapperSizePx?: number;
 	/** wrapper render function used to generate the scrolling element */
 	wrapperRenderer? (children: React.ReactNode): ReactElement<any>;

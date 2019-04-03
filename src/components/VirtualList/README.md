@@ -26,8 +26,6 @@ class Example extends React.Component {
 		this._onClickAdd = this._onClickAdd.bind(this);
 		this._onClickRemove = this._onClickRemove.bind(this);
 		this._onChangeIsCustomContainerRenderer = this._onChangeIsCustomContainerRenderer.bind(this);
-		
-		
     };
     
     _onCalculate (calculations) {
