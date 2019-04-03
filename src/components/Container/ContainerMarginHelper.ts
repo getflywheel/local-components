@@ -1,32 +1,69 @@
 import { IContainerProps } from './Container';
 
-export type ContainerMarginType = 'xs' | 's' | 'm' | 'l' | 'xl' | 0 | 'none' | string;
-type ReturnValue =  {margin?: string | number} | undefined;
+enum ContainerMarginLookupEnum {
+	none = 'none',
+	xs = 'xs',
+	s = 's',
+	m = 'm',
+	l = 'l',
+	xl = 'xl',
+}
 
+export type ContainerMarginLookupType = ContainerMarginLookupEnum.none
+	| ContainerMarginLookupEnum.s
+	| ContainerMarginLookupEnum.m
+	| ContainerMarginLookupEnum.l
+	| ContainerMarginLookupEnum.xl
+	| 0
+	| string
+;
+
+enum ContainerMarginPropNameEnum {
+	margin = 'margin',
+	marginBottom = 'marginBottom',
+	marginLeft = 'marginLeft',
+	marginRight = 'marginRight',
+	marginTop = 'marginTop',
+}
+
+type ContainerMarginPropNameType = ContainerMarginPropNameEnum.margin
+	| ContainerMarginPropNameEnum.marginBottom
+	| ContainerMarginPropNameEnum.marginLeft
+	| ContainerMarginPropNameEnum.marginRight
+	| ContainerMarginPropNameEnum.marginTop
+;
+
+type ReturnValue =  {
+	[ContainerMarginPropNameEnum.margin]?: string | number,
+	[ContainerMarginPropNameEnum.marginBottom]?: string | number,
+	[ContainerMarginPropNameEnum.marginLeft]?: string | number,
+	[ContainerMarginPropNameEnum.marginRight]?: string | number,
+	[ContainerMarginPropNameEnum.marginTop]?: string | number,
+} | undefined;
 
 export class ContainerMarginHelper {
 
-	public static sizeLookups = new Map<string | number, number>(Object.entries({
+	public static sizeLookups = new Map<ContainerMarginLookupType, number>(Object.entries({
 		0: 0,
-		none: 0,
-		xs: 5,
-		s: 10,
-		m: 20,
-		l: 30,
-		xl: 40,
+		[ContainerMarginLookupEnum.none]: 0,
+		[ContainerMarginLookupEnum.xs]: 5,
+		[ContainerMarginLookupEnum.s]: 10,
+		[ContainerMarginLookupEnum.m]: 20,
+		[ContainerMarginLookupEnum.l]: 30,
+		[ContainerMarginLookupEnum.xl]: 40,
 	}));
 
 	public static getContainerMarginStyle (props: IContainerProps): ReturnValue | undefined {
 		return {
-			...this.processMarginType(props.margin, 'margin'),
-			...this.processMarginType(props.marginTop, 'marginTop'),
-			...this.processMarginType(props.marginRight, 'marginRight'),
-			...this.processMarginType(props.marginBottom, 'marginBottom'),
-			...this.processMarginType(props.marginLeft, 'marginLeft'),
+			...this.processMarginType(props.margin, ContainerMarginPropNameEnum.margin),
+			...this.processMarginType(props.marginTop, ContainerMarginPropNameEnum.marginTop),
+			...this.processMarginType(props.marginRight, ContainerMarginPropNameEnum.marginRight),
+			...this.processMarginType(props.marginBottom, ContainerMarginPropNameEnum.marginBottom),
+			...this.processMarginType(props.marginLeft, ContainerMarginPropNameEnum.marginLeft),
 		};
 	}
 
-	public static processMarginType (marginValue: string | number | undefined, propName: string) {
+	public static processMarginType (marginValue: string | number | undefined, propName: ContainerMarginPropNameType) {
 		if (marginValue === undefined) {
 			return undefined;
 		}
@@ -53,7 +90,7 @@ export class ContainerMarginHelper {
 		return typeof(value) === 'number' && value !== 0 ? `${value}px` : value;
 	}
 
-	public static lookupValue (value: string | number | undefined): number | undefined {
+	public static lookupValue (value: ContainerMarginLookupType | undefined): number | undefined {
 		if (value === undefined) {
 			return value;
 		}
@@ -61,7 +98,7 @@ export class ContainerMarginHelper {
 		return this.sizeLookups.get(value);
 	}
 
-	public static wrapReturnValue (value: string | number | undefined, propName: string): ReturnValue {
+	public static wrapReturnValue (value: string | number | undefined, propName: ContainerMarginPropNameType): ReturnValue {
 		if (value === undefined) {
 			return undefined;
 		}

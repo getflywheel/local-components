@@ -1,18 +1,17 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './Container.scss';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import { ContainerMarginHelper, ContainerMarginType } from './ContainerMarginHelper';
+import { ContainerMarginHelper, ContainerMarginLookupType } from './ContainerMarginHelper';
 
 export interface IContainerProps extends IReactComponentProps {
 	/** whether to include the container (false) or exclude it (true) */
 	disabled?: boolean;
 	/** margin values to be set to 'style' prop */
-	margin?: ContainerMarginType;
-	marginBottom?: ContainerMarginType;
-	marginLeft?: ContainerMarginType;
-	marginRight?: ContainerMarginType;
-	marginTop?: ContainerMarginType;
+	margin?: ContainerMarginLookupType;
+	marginBottom?: ContainerMarginLookupType;
+	marginLeft?: ContainerMarginLookupType;
+	marginRight?: ContainerMarginLookupType;
+	marginTop?: ContainerMarginLookupType;
 	/** the element name to used for the container */
 	tag?: string;
 }
@@ -38,7 +37,6 @@ export const Container = (props: IContainerProps) => {
 			:
 			<Tag
 				className={classnames(
-					styles.Container,
 					props.className,
 				)}
 				style={{
