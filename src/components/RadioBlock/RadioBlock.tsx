@@ -9,7 +9,6 @@ import FlyTooltip from '../FlyTooltip/FlyTooltip';
 import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
-
 	default: string | null;
 	direction: 'horiz' | 'vert';
 	disabled?: boolean;
@@ -17,15 +16,13 @@ interface IProps extends IReactComponentProps {
 	heightSize?: 'm' | 'l';
 	onChange: Handler;
 	options: {[key: string]: IRadioBlockItemProps};
-
+	readonly: boolean;
 }
 
 interface IState {
-
 	default: string | null;
 	options: {[key: string]: IRadioBlockItemProps};
 	value: string | null;
-
 }
 
 class RadioBlock extends React.Component<IProps, IState> {
@@ -34,6 +31,7 @@ class RadioBlock extends React.Component<IProps, IState> {
 		direction: 'horiz',
 		disabled: false,
 		heightSize: 'l',
+		readonly: false,
 	};
 
 	constructor (props: IProps) {
@@ -66,6 +64,7 @@ class RadioBlock extends React.Component<IProps, IState> {
 					this.props.className,
 					{
 						[styles.RadioBlock__DirectionVert]: this.props.direction === 'vert',
+						[styles.RadioBlock__Readonly]: this.props.readonly === true,
 					},
 				)}
 			>
@@ -80,6 +79,7 @@ class RadioBlock extends React.Component<IProps, IState> {
 							label={this.props.options[optionValue].label}
 							value={optionValue}
 							key={i}
+							readonly={this.props.readonly || this.props.options[optionValue].readonly}
 							svg={this.props.options[optionValue].svg}
 							selected={this.state.value === optionValue}
 							tooltipContent={this.props.options[optionValue].tooltipContent}
@@ -94,15 +94,16 @@ class RadioBlock extends React.Component<IProps, IState> {
 
 interface IRadioBlockItemProps extends IReactComponentProps {
 
-	disabled: boolean;
-	warn: boolean;
-	heightSize: 'm' | 'l';
-	label: string;
-	onClick: Handler;
-	selected: boolean;
-	svg: any;
-	tooltipContent: React.ReactNode;
-	value: string | null;
+	disabled?: boolean;
+	warn?: boolean;
+	heightSize?: 'm' | 'l';
+	label?: string;
+	onClick?: Handler;
+	readonly?: boolean;
+	selected?: boolean;
+	svg?: any;
+	tooltipContent?: React.ReactNode;
+	value?: string | null;
 
 }
 
@@ -124,7 +125,9 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 			return;
 		}
 
-		this.props.onClick(this.props.value);
+		if (this.props.onClick) {
+			this.props.onClick(this.props.value);
+		}
 	}
 
 	renderOptionalTooltipAndContent (content: React.ReactNode) {
@@ -165,6 +168,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 						[styles.RadioBlock_Option__Disabled]: this.props.disabled,
 						[styles.RadioBlock_Option__Warn]: this.props.warn,
 						[styles.RadioBlock_Option__HeightSizeMedium]: this.props.heightSize === 'm',
+						[styles.RadioBlock_Option__Readonly]: this.props.readonly,
 						[styles.RadioBlock_Option__Selected]: this.props.selected,
 					},
 				)}

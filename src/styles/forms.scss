@@ -65,7 +65,7 @@
 			display: none;
 			width: auto;
 			@include theme-input-background-color;
-			@include theme-input-border;
+			@include theme-input-border-box-shadow;
 		}
 
 		.CurrentValue * {

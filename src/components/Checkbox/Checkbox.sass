@@ -1,13 +1,13 @@
 @import '../../styles/_partials/index'
 
-$checkboxSize: 14px
+$checkboxSize: 16px
 
 .Checkbox
 	&.Checkbox__Checked
 
 	&.Checkbox__Disabled
 		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
-			color: $gray75
+			@include theme-color-gray25-else-gray-dark50
 
 	.Checkbox_Label
 		display: flex
@@ -24,6 +24,7 @@ $checkboxSize: 14px
 		flex-shrink: 0
 		width: $checkboxSize
 		height: $checkboxSize
+		background: $white
 		@include theme-input-border
 		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
 			@include theme-background-gray5-else-gray-dark50

@@ -61,3 +61,35 @@
 		@content;
 	}
 }
+
+@mixin selectors_parent {
+	$parents: ();
+	$parent: '';
+
+	@each $selector in & {
+		$length: length($selector);
+		$index: 0;
+		$last-selector: nth($selector, $length);
+
+		@if ($length == 1) {
+			@error "Used parent mixin on a top-level selector";
+		}
+		@else {
+			$index: str-index($last-selector, '::');
+
+			@if ($index) {
+				$last-selector: str-slice($last-selector, 1, $index - 1);
+			}
+			@else {
+				$last-selector: null;
+			}
+			// Inspect allows us to combine two selectors in one block.
+			$parent: inspect(set-nth($selector, $length, #{$last-selector}));
+			$parents: join($parents, $parent, comma);
+		}
+	}
+	//@debug "selectors_parent: `#{$parents}`.";
+	@at-root #{$parents} {
+		@content;
+	}
+}

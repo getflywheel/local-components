@@ -7,7 +7,7 @@
 	padding: 20px;
 	width: 100%;
 	@include theme-input-background-color;
-	@include theme-input-border;
+	@include theme-input-border-box-shadow;
 	@include theme-color-graydark-else-white;
 	cursor: text;
 

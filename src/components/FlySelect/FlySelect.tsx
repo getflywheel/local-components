@@ -5,6 +5,7 @@ import DownloadSmallSVG from '../../svg/download--small';
 import ArrowRightSVG from '../../svg/arrow--right';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import Handler from '../../common/structures/Handler';
+import * as styles from './FlySelect.scss';
 
 interface IProps extends IReactComponentProps {
 
@@ -18,6 +19,7 @@ interface IProps extends IReactComponentProps {
 	optionsLoader?: any;
 	optionGroups?: any;
 	placeholder?: string;
+	readonly?: boolean;
 	value?: any;
 
 }
@@ -329,11 +331,13 @@ export default class FlySelect extends React.Component<IProps, IState> {
 			<Tag
 				className={classnames(
 					'FlySelect',
+					styles.FlySelect,
 					this.props.className,
 					{
 						'FlySelect__Focus': this.state.focus,
 						'FlySelect__HasFooter': this.props.footerText,
 						'FlySelect__Open': this.state.open,
+						[styles.FlySelect__Readonly]: this.props.readonly,
 					},
 				)}
 				style={this.props.style}

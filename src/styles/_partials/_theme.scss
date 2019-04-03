@@ -35,6 +35,10 @@
 	@include __theme-background($gray2, #292A2A); // 35% of $gray-dark50
 }
 
+@mixin theme-background-gray2-else-graydark50 {
+	@include __theme-background($gray2, $gray-dark50);
+}
+
 @mixin theme-background-gray5-else-graydarkalt {
 	@include __theme-background($gray5, $gray-dark-alt);
 }
@@ -57,10 +61,6 @@
 
 @mixin theme-background-gray15-else-gray {
 	@include __theme-background($gray15, $gray);
-}
-
-@mixin theme-background-gray25-else-graydark50 {
-	@include __theme-background($gray25, $gray-dark50);
 }
 
 @mixin theme-background-gray25-else-gray {
@@ -87,11 +87,15 @@
 	@include __theme-background($white, $gray-dark50);
 }
 
+@mixin theme-background-white-else-gray3row {
+	@include __theme-background($white, #373737);
+}
+
 @mixin theme-background-white85-else-graydark {
 	@include __theme-background(rgba($white, .85), $gray-dark);
 }
 
-@mixin __theme-border($property: "", $lightmodeLighten: 0%, $darkmodeLighten: 0%, $border-light: $theme-border-light, $border-dark: $theme-border-light) {
+@mixin __theme-border($property: "", $lightmodeLighten: 0%, $darkmodeLighten: 0%, $border-light: $theme-border-light, $border-dark: $theme-border-dark) {
 	@if $property == "" or $property == "box-shadow" {
 		@include if-theme-light() {
 			box-shadow: 0 0 0 1px $border-light;
@@ -176,6 +180,14 @@
 	@include __theme-color($gray15, $gray-dark50);
 }
 
+@mixin theme-color-gray25-else-gray {
+	@include __theme-color($gray25, $gray);
+}
+
+@mixin theme-color-gray25-else-gray-dark50 {
+	@include __theme-color($gray25, $gray-dark50);
+}
+
 @mixin theme-color-gray25-else-gray25 {
 	@include __theme-color($gray25, $gray25);
 }
@@ -257,7 +269,7 @@
 
 @mixin theme-button-pill-disabled {
 	@include if-theme-light() {
-		background: $gray25 !important;
+		background: $gray15 !important;
 		color: $gray75 !important;
 	}
 	@include if-theme-dark() {
@@ -284,10 +296,16 @@
 	}
 }
 
+@mixin theme-input-border-box-shadow {
+	border: none;
+	border-radius: 4px;
+	@include __theme-border("", 0%, 0%, $theme-border-light, $theme-input-border-box-shadow-dark);
+}
+
 @mixin theme-input-border {
 	border: none;
 	border-radius: 4px;
-	@include __theme-border("", 0%, 0%, $theme-border-light, $theme-input-border-dark);
+	@include __theme-border("border", 0%, 0%, $theme-border-light, $theme-input-border-box-shadow-dark);
 }
 
 // Theme Patterns
