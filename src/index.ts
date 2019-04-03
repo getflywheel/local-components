@@ -51,4 +51,6 @@ export {default as TabNav} from './components/TabNav';
 export {TertiaryNav as TertiaryNav, TertiaryNavItem as TertiaryNavItem} from './components/TertiaryNav';
 export {default as Truncate} from './components/Truncate';
 export {VerticalNav as VerticalNav, VerticalNavItem as VerticalNavItem, WorkspaceSwitcher as WorkspaceSwitcher} from './components/VerticalNav';
+export {VirtualList} from './components/VirtualList';
+export {VirtualTable} from './components/VirtualTable';
 export {default as WindowsToolbar} from './components/WindowsToolbar';
