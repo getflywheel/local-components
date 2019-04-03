@@ -37,6 +37,7 @@ export {default as InputSearch} from './components/InputSearch';
 export {default as InstallerStepStatus} from './components/InstallerStepStatus';
 export {default as List} from './components/List';
 export {default as LoadingIndicator} from './components/LoadingIndicator';
+export {MagicSyncViewer} from './components/MagicSyncViewer';
 export {default as Markdown} from './components/Markdown';
 export {default as Popup} from './components/Popup';
 export {default as ProgressBar} from './components/ProgressBar';
