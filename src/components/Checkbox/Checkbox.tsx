@@ -6,9 +6,9 @@ import Handler from '../../common/structures/Handler';
 import CheckmarkSVG from '../../svg/checkmark--sm';
 
 interface IProps extends IReactComponentProps {
-	checked: boolean;
-	disabled: boolean;
-	label: string;
+	checked?: boolean;
+	disabled?: boolean;
+	label?: string;
 	onChange: Handler;
 }
 
@@ -28,8 +28,8 @@ export default class Checkbox extends React.Component<IProps, IState> {
 		super(props);
 
 		this.state = {
-			checked: props.checked,
-			disabled: props.disabled,
+			checked: !!props.checked,
+			disabled: !!props.disabled,
 		};
 	};
 
@@ -77,9 +77,11 @@ export default class Checkbox extends React.Component<IProps, IState> {
 					>
 						<CheckmarkSVG className={styles.Checkbox_Checkmark} />
 					</div>
-					<div className={styles.Checkbox_LabelContents}>
-						{this.props.label}
-					</div>
+					{this.props.label !== undefined && (
+						<div className={styles.Checkbox_LabelContents}>
+							{this.props.label}
+						</div>
+					)}
 				</label>
 			</div>
 		);

@@ -8,13 +8,12 @@
 
 	&.RadioBlock__DirectionVert
 		flex-direction: column
+	&.RadioBlock__Readonly
 
 .RadioBlock_Option_TooltipWrapper
 	flex: 1
 
 .RadioBlock_Option
-	$disabled-background: $gray15
-
 	position: relative
 	z-index: 1
 	@include theme-background-white-else-graydark
@@ -24,10 +23,12 @@
 
 	&.RadioBlock_Option__HeightSizeMedium
 	&.RadioBlock_Option__Warn
+	&.RadioBlock_Option__Readonly
+		margin-top: 3px
 
 	&.RadioBlock_Option__Disabled
-		color: $gray75
-		background: $disabled-background
+		@include theme-color-gray25-else-gray-dark50
+		@include theme-background-gray15-else-gray
 
 	&.RadioBlock_Option__Selected
 		z-index: 4
@@ -61,15 +62,22 @@
 		bottom: 0
 		left: 0
 		transition: all .15s ease 0s
-		@include theme-input-border
+		@include theme-input-border-box-shadow
 		width: 100%
 		height: 100%
+		border-radius: 0
 
 		@include selectors_setAsDefaults
 			padding: 29px
 		@include selectors_appendToNthParentSelector('.RadioBlock_Option__HeightSizeMedium', 1)
 			padding-top: 20px
 			padding-bottom: 20px
+		@include selectors_appendToNthParentSelector(':first-child:not(:last-child)', 1)
+			border-top-left-radius: 4px
+			border-top-right-radius: 4px
+		@include selectors_appendToNthParentSelector(':last-child:not(:first-child)', 1)
+			border-bottom-right-radius: 4px
+			border-bottom-left-radius: 4px
 
 		h4
 			margin: 0
@@ -89,6 +97,9 @@
 			border: 2px solid $green
 			border-radius: inherit
 
+			@include selectors_appendToNthParentSelector('.RadioBlock_Option__HeightSizeMedium', 1)
+
+
 			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
 				border-color: $orange
 
@@ -98,7 +109,7 @@
 			@include selectors_setAsDefaults
 				@include theme-background-white-else-graydark
 			@include selectors_appendToNthParentSelector('.RadioBlock_Option__Disabled', 1)
-				background: $disabled-background
+				@include theme-background-gray15-else-gray
 
 		*
 			position: relative
