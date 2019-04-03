@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as styles from './VirtualTable.scss';
+import * as styles from '../VirtualTable.scss';
 import classnames from 'classnames';
-import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { VirtualTableCell } from './VirtualTableCell';
-import { VirtualTableContext, IVirtualTableContext } from './VirtualTableContext';
-import { IVirtualTableProps, IVirtualTableRowRendererDataArgs, VirtualTableDataType } from './VirtualTable';
+import { VirtualTableContext, IVirtualTableContext } from '../helpers/VirtualTableContext';
+import { IVirtualTableProps, IVirtualTableRowRendererDataArgs, VirtualTableDataType } from '../VirtualTable';
 
 export interface IVirtualTableRowProps extends IReactComponentProps {
 	/** whether this is a header row or not */

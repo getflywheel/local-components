@@ -4,7 +4,7 @@ import {
 	VirtualTableCellRenderer,
 	VirtualTableHeaderObjectType,
 	VirtualTableRowRenderer
-} from './VirtualTable';
+} from '../VirtualTable';
 import { VirtualTableHelperCalculations } from './VirtualTableHelper';
 
 export interface IVirtualTableContext {

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as styles from './VirtualTable.scss';
+import * as styles from '../VirtualTable.scss';
 import {
 	IVirtualTableProps,
 	VirtualTableDataType, VirtualTableHeaderObjectType,
-} from './VirtualTable';
-import { IVirtualTableRowProps } from './VirtualTableRow';
+} from '../VirtualTable';
+import { IVirtualTableRowProps } from '../components/VirtualTableRow';
 import { memoizeOne } from '@getflywheel/memoize-one-ts';
 
 export interface VirtualTableHelperCalculations {

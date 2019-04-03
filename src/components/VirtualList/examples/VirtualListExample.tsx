@@ -12,7 +12,7 @@ interface IDataItem {
 	value: string;
 }
 
-interface IVirtualListReadmeState {
+interface IVirtualListExampleState {
 	calculations: IVirtualListHelperCalculations | null;
 	data: IDataItem[];
 	formAddNewItemsCount: number | string;
@@ -20,7 +20,7 @@ interface IVirtualListReadmeState {
 	formRemoveItemsCount: number | string;
 }
 
-export class VirtualListExample extends React.Component<IReactComponentProps, IVirtualListReadmeState> {
+export class VirtualListExample extends React.Component<IReactComponentProps, IVirtualListExampleState> {
 
 	protected _idCount: number;
 

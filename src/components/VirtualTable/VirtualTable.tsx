@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { VirtualList } from '../VirtualList';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import { VirtualTableRow } from './VirtualTableRow';
+import { VirtualTableRow } from './components/VirtualTableRow';
 import classnames from 'classnames';
 import * as styles from './VirtualTable.scss';
-import { VirtualTableHelper } from './VirtualTableHelper';
-import { IVirtualTableContext, VirtualTableContext } from './VirtualTableContext';
+import { VirtualTableHelper } from './helpers/VirtualTableHelper';
+import { IVirtualTableContext, VirtualTableContext } from './helpers/VirtualTableContext';
 
 export interface IVirtualTableCellRendererDataArgs {
 	cellData: any;
