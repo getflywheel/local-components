@@ -7,12 +7,14 @@
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
+		"@getflywheel/memoize-one-ts": "^0.0.2",
 		"classnames": "^2.2.6",
 		"highlight.js": "^9.13.1",
 		"lodash.isequal": "^4.5.0",
 		"react-lowlight": "^2.0.0",
 		"react-markdown": "^4.0.3",
 		"react-modal": "^3.5.1",
+		"react-resize-observer": "^1.1.1",
 		"react-router-dom": "^4.3.1",
 		"react-truncate-markup": "^3.0.0",
 		"url-parse": "^1.4.4"

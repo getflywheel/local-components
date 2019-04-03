@@ -49,6 +49,11 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
+"@getflywheel/memoize-one-ts@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@getflywheel/memoize-one-ts/-/memoize-one-ts-0.0.2.tgz#6578948abf140f568736a92ec0940b7a81d8f773"
+  integrity sha512-/GoWclh5ImAx0DJ0CXoASxiEXAP/iL+ZRzKrrQmnjlfWPdJE/t2F4FxagBLccgPZvxX9Ror1M4zHBILllpV7AQ==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -7127,6 +7132,11 @@ react-modal@^3.5.1:
     prop-types "^15.5.10"
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
+
+react-resize-observer@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-resize-observer/-/react-resize-observer-1.1.1.tgz#641dfa2e0f4bd2549a8ab4bbbaf43b68f3dcaf76"
+  integrity sha512-3R+90Hou90Mr3wJYc+unsySC8Pn91V4nmjO32NKvUvjphRUbq9HisyLg7bDyGBE7xlMrrM6Fax7iNQaFdc/FYA==
 
 react-router-dom@^4.3.1:
   version "4.3.1"

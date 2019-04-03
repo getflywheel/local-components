@@ -1,0 +1,104 @@
+@import '../../styles/_partials/index';
+
+$transition-duration-num: 300;
+
+// export variables for JavaScript
+:export {
+	VirtualTable___TransitionDuration: $transition-duration-num;
+	CSSVARNAME_ROWHEIGHT: --VirtualTable_RowHeight;
+}
+
+$transition-duration: #{$transition-duration-num}ms;
+$row-height-size-s: 27px;
+$row-height-size-m: 37px;
+$row-height-size-l: 48px;
+
+.VirtualTable_Container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow-y: auto;
+}
+
+.VirtualTable {
+	--VirtualTable_RowHeight: #{$row-height-size-l};
+	--VirtualTable_RowHeaderHeight: var(--VirtualTable_RowHeight);
+
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	font-weight: 300;
+	@include theme-color-graydark-else-white;
+
+	// host modifiers
+	&.VirtualTable__RowHeaderCapitalize {}
+	&.VirtualTable__RowHeaderCapitalizeLower {}
+	&.VirtualTable__RowHeaderCapitalizeUpper {}
+	&.VirtualTable__RowHeaderWeight300 {
+		--VirtualTable_RowHeaderWeight: 300;
+	}
+	&.VirtualTable__RowHeaderWeight400 {
+		--VirtualTable_RowHeaderWeight: 400;
+	}
+	&.VirtualTable__RowHeaderWeight500 {
+		--VirtualTable_RowHeaderWeight: 500;
+	}
+	&.VirtualTable__RowHeaderWeight700 {
+		--VirtualTable_RowHeaderWeight: 700;
+	}
+	&.VirtualTable__RowHeaderWeight900 {
+		--VirtualTable_RowHeaderWeight: 900;
+	}
+	&.VirtualTable__RowHeightS {
+		--VirtualTable_RowHeight: #{$row-height-size-s};
+	}
+	&.VirtualTable__RowHeightM {
+		--VirtualTable_RowHeight: #{$row-height-size-m};
+	}
+	&.VirtualTable__RowHeaderHeightS {
+		--VirtualTable_RowHeaderHeight: #{$row-height-size-s};
+	}
+	&.VirtualTable__RowHeaderHeightM {
+		--VirtualTable_RowHeaderHeight: #{$row-height-size-m};
+	}
+	&.VirtualTable__RowHeaderHeightL {
+		--VirtualTable_RowHeaderHeight: #{$row-height-size-l};
+	}
+
+	.VirtualTable_Header {}
+
+	.VirtualTable_Row {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		height: var(--VirtualTable_RowHeight);
+
+		@include selectors_ifHostHasModifier(' .VirtualTable_Header') {
+			height: var(--VirtualTable_RowHeaderHeight);
+			font-weight: var(--VirtualTable_RowHeaderWeight);
+			@include tracking(20);
+			@include theme-background-gray15-else-graydark50;
+
+			@include selectors_ifHostHasModifier('.VirtualTable__RowHeaderCapitalize') {
+				text-transform: capitalize;
+			}
+
+			@include selectors_ifHostHasModifier('.VirtualTable__RowHeaderCapitalizeLower') {
+				text-transform: lowercase;
+			}
+
+			@include selectors_ifHostHasModifier('.VirtualTable__RowHeaderCapitalizeUpper') {
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+// for specificity purposes and being able to set 'className' on headers, this can't be nested
+.VirtualTable_Cell {
+	position: relative;
+	flex: 1 1 0;
+}
