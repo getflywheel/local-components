@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as styles from './MagicSyncViewerCellRenderers.scss';
 import classnames from 'classnames';
 import { IDataItem, IMagicSyncViewerState } from '../MagicSyncViewer';
-import FolderOpened from '../../../svg/folder-opened';
-import FolderClosed from '../../../svg/folder-closed';
+import FolderOpened from '../../../svg/magic-sync-folder-opened';
+import FolderClosed from '../../../svg/magic-sync-folder-closed';
 import {
 	IVirtualTableCellRendererDataArgs,
 	VirtualTableCellRenderer,

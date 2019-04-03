@@ -7,7 +7,7 @@ import FlySelect from '../../FlySelect';
 import RadioBlock from '../../RadioBlock';
 import Checkbox from '../../Checkbox';
 import Divider from '../../Divider';
-import PoweredByMsSVG from '../../../svg/powered-by-ms';
+import PoweredByMsSVG from '../../../svg/magic-sync-logo';
 import { ConnectDirectionType } from '../helpers/magicSyncViewMock';
 
 interface IMagicSyncViewerHeaderProps extends IReactComponentProps {

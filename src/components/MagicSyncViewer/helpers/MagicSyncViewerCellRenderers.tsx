@@ -1,15 +1,15 @@
 import * as React from 'react';
 import * as styles from './MagicSyncViewerCellRenderers.scss';
 import classnames from 'classnames';
-import { IDataItem, IMagicSyncViewerState } from '../MagicSyncViewer';
+import { IMagicSyncViewerState } from '../MagicSyncViewer';
 import Checkbox from '../../Checkbox';
 import { MagicSyncViewerCellRendererFilename } from './MagicSyncViewerCellRendererFilename';
-import FileGtSVG from '../../../svg/file-status-gt';
-import FileLtSVG from '../../../svg/file-status-lt';
-import FileAddedSVG from '../../../svg/file-status-added';
-import FileRemovedSVG from '../../../svg/file-status-removed';
-import LockLockedSVG from '../../../svg/lock-locked';
-import LockUnlockedSVG from '../../../svg/lock-unlocked';
+import FileGtSVG from '../../../svg/magic-sync-file-gt';
+import FileLtSVG from '../../../svg/magic-sync-file-lt';
+import FileAddedSVG from '../../../svg/magic-sync-file-added';
+import FileRemovedSVG from '../../../svg/magic-sync-file-removed';
+import LockLockedSVG from '../../../svg/magic-sync-lock-locked';
+import LockUnlockedSVG from '../../../svg/magic-sync-lock-unlocked';
 import { IVirtualTableCellRendererDataArgs, VirtualTableCellRenderer } from '../../VirtualTable/VirtualTable';
 
 export class MagicSyncViewerCellRenderers {
