@@ -110,17 +110,19 @@ export class VirtualListHelper {
 		let renderedItem: React.ReactElement<any>;
 		let className: string;
 
-		for (let index = calculations.virtualStartIndexInt ; index < calculations.virtualEndIndexInt ; index++) {
-			renderedItem = itemRenderer(data[index], index, customRendererStyles, itemRendererExtraData) as React.ReactElement<any>;
-			className = !striped ? '' : (index + 1) % 2 === 0 ? styles.VirtualList_Item__StripedEven : styles.VirtualList_Item__StripedOdd;
+		if (data) {
+			for (let index = calculations.virtualStartIndexInt; index < calculations.virtualEndIndexInt; index++) {
+				renderedItem = itemRenderer(data[index], index, customRendererStyles, itemRendererExtraData) as React.ReactElement<any>;
+				className = !striped ? '' : (index + 1) % 2 === 0 ? styles.VirtualList_Item__StripedEven : styles.VirtualList_Item__StripedOdd;
 
-			renderedListItems.push(React.cloneElement(
-				renderedItem,
-				{
-					className: classnames(renderedItem.props.className || '', className),
-					style: {...(renderedItem.props.style || {}), ...customRendererStyles},
-				},
-			));
+				renderedListItems.push(React.cloneElement(
+					renderedItem,
+					{
+						className: classnames(renderedItem.props.className || '', className),
+						style: {...(renderedItem.props.style || {}), ...customRendererStyles},
+					},
+				));
+			}
 		}
 
 		return renderedListItems;

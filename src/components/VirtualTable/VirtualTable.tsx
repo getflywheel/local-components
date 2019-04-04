@@ -55,7 +55,7 @@ export interface IVirtualTableProps extends IReactComponentProps {
 	 * e.g. data={[[1, 'one', true], [2, 'two', true]]} // array-based
 	 * e.g. data={[{index: 1, name: 'one', selected: true}, {index: 2, name: 'two', selected: true}]} // object-based
 	 */
-	data: VirtualTableDataType[];
+	data: VirtualTableDataType[] | null | undefined;
 	/**
 	 * header data is the order in which is will be displayed
 	 * the header data much match the same type as the data (either array or object-based)
