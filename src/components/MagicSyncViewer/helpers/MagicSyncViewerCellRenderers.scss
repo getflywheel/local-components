@@ -1,0 +1,108 @@
+@import '../../../styles/_partials/index';
+
+$filenameTreeDepthWidthPer: 22px;
+$filenameTreeDepthLineWidth: 2px;
+$filenameTreeFolderWidth: 16px;
+$filenameTreeDepthLineMarginL: (($filenameTreeFolderWidth - $filenameTreeDepthLineWidth) / 2);
+$filenameTreeDepthLineMarginR: $filenameTreeDepthWidthPer - $filenameTreeDepthLineMarginL - $filenameTreeDepthLineWidth;
+
+.MagicSyncViewerCellRenderer_CellInner {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	overflow: hidden;
+
+	> * {
+		position: relative;
+		margin: auto 0; // use margin instead of align-rows and justify-content because Chrome 'safe center' isn't supported yet
+	}
+}
+
+.MagicSyncViewerCellRenderer_Lock {
+	margin-top: 3px;
+}
+
+.MagicSyncViewerCellRenderer_Lock_Locked {
+	@include if-theme-dark() {
+		path {
+			fill: $white;
+		}
+	}
+}
+
+.MagicSyncViewerCellRenderer_Lock_Unlocked {
+	@include if-theme-dark() {
+		path {
+			fill: $gray25;
+		}
+	}
+}
+
+.MagicSyncViewerCellRenderer_FilenameContainer {
+	display: flex;
+	font-weight: $font-weight-500-medium;
+
+	> * {
+		margin: auto 0;
+		white-space: nowrap;
+	}
+}
+
+.MagicSyncViewerCellRenderer_FilenameContainer__Unselected {
+	font-weight: $font-weight-300-light;
+}
+
+.MagicSyncViewerCellRenderer_Filename_VlineContainer {
+	position: relative;
+	display: inline-block;
+	height: 27px;
+}
+
+.MagicSyncViewerCellRenderer_Filename_Vline {
+	position: relative;
+	display: inline-block;
+	width: $filenameTreeDepthWidthPer;
+	height: 100%;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: $filenameTreeDepthLineMarginL;
+		bottom: 0;
+		width: $filenameTreeDepthLineWidth;
+		@include theme-background-gray25-else-gray;
+		//border-radius: $filenameTreeDepthLineWidth / 2;
+	}
+}
+
+.MagicSyncViewerCellRenderer_Filename_Folder {
+	//display: inline-block;
+	margin-right: 6px;
+}
+
+.MagicSyncViewerCellRenderer_Filestatus__Unselected {
+	path {
+		fill: $gray25;
+	}
+}
+
+.MagicSyncViewerCellRenderer_Filestatus__Locked {
+	path {
+		@include if-theme-light() {
+			fill: $gray15;
+		}
+		@include if-theme-dark() {
+			fill: $gray;
+		}
+	}
+}
+
+.MagicSyncViewerCellRenderer_Filestatus_Lt {
+	//path {
+	//	fill: $blue;
+	//}
+}

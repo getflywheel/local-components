@@ -22,6 +22,13 @@ module.exports = {
 	styleguideComponents: {
 		Wrapper: path.resolve(__dirname, 'styleguide', 'components', 'Wrapper'),
 	},
+	styles: {
+		StyleGuide: {
+			content: {
+				maxWidth: 1100,
+			},
+		},
+	},
     webpackConfig: () => {
         return merge.strategy({
 			plugins: 'replace',

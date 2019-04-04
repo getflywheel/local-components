@@ -13,7 +13,7 @@ export interface IVirtualListProps extends IReactComponentProps {
 	 */
 	containerRenderer? (children: React.ReactNode, customRendererStyles: {minHeight: number}): ReactElement<any> | null;
 	/** list data passed to the list item renderer */
-	data: any[];
+	data: any[] | undefined | null;
 	/** whether to disable the resize listener used to adjust calculated height (if true, it's highly recommended to set 'wrapperSizePx') */
 	disableResizeObserver?: boolean;
 	/** whether to disable virtualized renderersFactory and draw all list items or not (if true) */

@@ -1,0 +1,45 @@
+@import '../../../styles/_partials/index';
+
+.MagicSyncViewerMenu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 335px;
+	padding: 30px;
+	overflow-y: auto;
+	@include theme-border-right;
+
+	.MagicSyncViewerMenu_Main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center; // vertically center
+		flex: 1 1 auto;
+		width: 100%;
+		padding-bottom: 30px;
+	}
+
+	.MagicSyncViewerMenu_Direction {
+		text-transform: capitalize;
+	}
+
+	.MagicSyncViewerMenu_FlySelectContainer {
+		margin-bottom: 30px;
+	}
+
+	.MagicSyncViewerMenu_EnvironmentRadios {
+		margin-bottom: 20px;
+	}
+
+	.MagicSyncViewerMenu_BottomDivider {
+		width: 100%;
+	}
+
+	.MagicSyncViewerMenu_MagicSyncLogo {
+		width: 151px;
+
+		path {
+			fill: $gray25;
+		}
+	}
+}

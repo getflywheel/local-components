@@ -1,0 +1,74 @@
+@import '../../../styles/_partials/index';
+
+@function randomNum ($min, $max) {
+	$rand: random();
+	$randomNum: $min + floor($rand * (($max - $min) + 1));
+
+	@return $randomNum;
+}
+
+.MagicSyncViewerExample {
+	display: flex;
+	flex-direction: column;
+	height: 620px;
+}
+
+.MagicSyncViewerExample_SiteInnerPane {
+	display: flex;
+	flex-direction: column;
+	padding: 0 30px;
+
+	.MagicSyncViewerExample_SiteInfo_SkeletonText {
+		height: 20px;
+		margin: 6px 0;
+		@include theme-background-gray15-else-graydark50;
+
+		@for $i from 1 through 20 {
+			&:nth-child(#{$i}) {
+				width: #{randomNum(400, 500)}px;
+			}
+		}
+
+		&.MagicSyncViewerExample_SiteInfo_SkeletonText__Blank {
+			background: transparent;
+		}
+	}
+}
+
+.MagicSyncViewerExample_SiteInfo {
+	display: flex;
+	align-items: center;
+
+	.MagicSyncViewerExample_SiteInfo_Cont1 {
+		margin-left: auto;
+		padding: 0 20px;
+		@include theme-border-right;
+
+		.MagicSyncViewerExample_SiteInfo_SiteName {
+			color: $green;
+		}
+	}
+
+	.MagicSyncViewerExample_SiteInfo_Cont2 {
+		display: flex;
+		align-items: center;
+		padding: 0 20px;
+
+		.MagicSyncViewerExample_SiteInfo_PushPullButton {
+			margin-top: 14px;
+			cursor: pointer;
+
+			&:first-child {
+				margin-right: 20px;
+			}
+
+			* {
+				cursor: pointer;
+			}
+
+			path {
+				fill: $green;
+			}
+		}
+	}
+}
