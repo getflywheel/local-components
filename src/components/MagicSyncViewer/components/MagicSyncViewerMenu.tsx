@@ -97,7 +97,7 @@ export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
 				className="__Green __Pill __Vert_Padding__20"
 				disabled={!props.flywheelSiteId}
 			>
-				Pull From Flywheel
+				{props.connectDirection} From Flywheel
 			</button>
 		</div>
 		<PoweredByMsSVG className={styles.MagicSyncViewerMenu_MagicSyncLogo} />
