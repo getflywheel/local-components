@@ -109,11 +109,17 @@ export class MagicSyncViewerExample extends React.Component<IReactComponentProps
 							)}
 						</div>
 						<div className={styles.MagicSyncViewerExample_SiteInfo_Cont2}>
-							<span onClick={this._onClickPush}>
-								<PushSVG />
-							</span>
-							<span onClick={this._onClickPull}>
+							<span
+								className={styles.MagicSyncViewerExample_SiteInfo_PushPullButton}
+								onClick={this._onClickPull}
+							>
 								<PullSVG />
+							</span>
+							<span
+								className={styles.MagicSyncViewerExample_SiteInfo_PushPullButton}
+								onClick={this._onClickPush}
+							>
+								<PushSVG />
 							</span>
 						</div>
 					</div>

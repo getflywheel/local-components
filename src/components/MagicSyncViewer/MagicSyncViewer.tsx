@@ -10,6 +10,10 @@ import { ConnectDirectionType, mockDataFiles, parseMockFiles } from './helpers/m
 import { MagicSyncViewerCellRenderers } from './helpers/MagicSyncViewerCellRenderers';
 import { MagicSyncViewerRowRenderer } from './helpers/MagicSyncViewerRowRenderer';
 import { IVirtualTableOnChangeRowDataArgs } from '../VirtualTable/VirtualTable';
+import PushSVG from '../../svg/connect-push';
+import PullSVG from '../../svg/connect-pull';
+import { Container } from '../Container/Container';
+import LoadingIndicator from '../LoadingIndicator';
 
 export interface IDataItem {
 	children?: IDataItem[];
@@ -31,8 +35,10 @@ interface IMagicSyncViewerProps extends IReactComponentProps {
 
 export interface IMagicSyncViewerState {
 	data: IDataItem[] | null;
+	environment: 'staging' | 'production' | null;
 	flywheelSiteId: string | null;
 	flywheelSiteName: string | null;
+	isLoading: boolean;
 }
 
 export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMagicSyncViewerState> {
@@ -54,8 +60,10 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 
 		this.state ={
 			data: !!props.flywheelSiteId ? this._generateMockData() : null,
+			environment: 'staging',
 			flywheelSiteId: props.flywheelSiteId,
 			flywheelSiteName: props.flywheelSiteName,
+			isLoading: false,
 		};
 
 		this._cellRenderers = new MagicSyncViewerCellRenderers(
@@ -68,10 +76,22 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 
 	componentWillReceiveProps (nextProps: IMagicSyncViewerProps) {
 		this.setState({
-			data: !!nextProps.flywheelSiteId ? this._generateMockData() : null,
+			data: null,
+			environment: !!nextProps.flywheelSiteId ? this.state.environment : null,
 			flywheelSiteId: nextProps.flywheelSiteId,
 			flywheelSiteName: nextProps.flywheelSiteName,
+			isLoading: true,
 		});
+
+		setTimeout (
+			() => {
+				this.setState({
+					data: !!nextProps.flywheelSiteId ? this._generateMockData() : null,
+					isLoading: false,
+				});
+			},
+			1000,
+		)
 	}
 
 	protected _generateMockData () {
@@ -85,18 +105,42 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 		});
 	};
 
-	protected _onChangeEnvironment = (environment: string) => {
+	protected _onChangeEnvironment = (environment: 'staging' | 'production') => {
 		this.setState({
-			data: this._generateMockData(),
+			data: null,
+			environment,
+			isLoading: true,
 		});
+
+		setTimeout (
+			() => {
+				this.setState({
+					data: this._generateMockData(),
+					isLoading: false,
+				});
+			},
+			1000,
+		)
 	};
 
 	protected _onChangeSite = (flywheelSiteId: string) => {
 		this.setState({
-			data: !!flywheelSiteId ? this._generateMockData() : null,
+			data: null,
+			environment: 'staging',
 			flywheelSiteId,
 			flywheelSiteName: 'Fuzzy Letter Live',
+			isLoading: true,
 		});
+
+		setTimeout (
+			() => {
+				this.setState({
+					data: !!flywheelSiteId ? this._generateMockData() : null,
+					isLoading: false,
+				});
+			},
+			1000,
+		)
 	};
 
 	render () {
@@ -116,28 +160,45 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 				<div className={styles.MagicSyncViewer_Body}>
 					<MagicSyncViewerMenu
 						connectDirection={this.props.connectDirection}
+						environment={this.state.environment}
 						flywheelSiteId={this.state.flywheelSiteId}
 						flywheelSiteName={this.state.flywheelSiteName}
 						onChangeEnvironment={this._onChangeEnvironment}
 						onChangeSite={this._onChangeSite}
 					/>
 					<div className={styles.MagicSyncViewer_Content}>
-						<MagicSyncViewerStactionbar
-							connectDirection={this.props.connectDirection}
-						/>
-						<VirtualTable
-							cellClassName={styles.MagicSyncViewer_ColumnCell}
-							cellRenderer={this._cellRenderers.renderersFactory}
-							data={this.state.data}
-							headers={this._headers}
-							headersCapitalize="none"
-							headersWeight={500}
-							onChangeRowData={this._onChangeRowData}
-							rowClassName={styles.MagicSyncViewer_TableRow}
-							rowHeightSize={"s"}
-							rowHeaderHeightSize={"m"}
-							rowRenderer={this._rowRenderer.renderer}
-						/>
+						{this.state.flywheelSiteId && this.state.data && (
+							<>
+								<MagicSyncViewerStactionbar
+									connectDirection={this.props.connectDirection}
+								/>
+								<VirtualTable
+									cellClassName={styles.MagicSyncViewer_ColumnCell}
+									cellRenderer={this._cellRenderers.renderersFactory}
+									data={this.state.data}
+									headers={this._headers}
+									headersCapitalize="none"
+									headersWeight={500}
+									onChangeRowData={this._onChangeRowData}
+									rowClassName={styles.MagicSyncViewer_TableRow}
+									rowHeightSize={"s"}
+									rowHeaderHeightSize={"m"}
+									rowRenderer={this._rowRenderer.renderer}
+								/>
+							</>
+						)}
+						{this.state.flywheelSiteId && this.state.isLoading && (
+							<div className={styles.MagicSyncViewer_Content_ContainerMiddle}>
+								<LoadingIndicator color="Gray" />
+							</div>
+						)}
+						{!this.state.flywheelSiteId && (
+							<div className={styles.MagicSyncViewer_Content_ContainerMiddle}>
+								{this.props.connectDirection === 'pull' ? <PullSVG /> : <PushSVG />}
+								<Container marginTop="s">Select a destination</Container>
+								<div>to {this.props.connectDirection} your site</div>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

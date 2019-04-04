@@ -12,9 +12,10 @@ import { ConnectDirectionType } from '../helpers/magicSyncViewMock';
 
 interface IMagicSyncViewerHeaderProps extends IReactComponentProps {
 	connectDirection: ConnectDirectionType;
+	environment: 'staging' | 'production' | null;
 	flywheelSiteId: string | null;
 	flywheelSiteName: string | null;
-	onChangeEnvironment: (environment: string) => void;
+	onChangeEnvironment: (environment: 'staging' | 'production') => void;
 	onChangeSite: (flywheelSiteId: string) => void;
 }
 
@@ -68,7 +69,7 @@ export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
 			</Header>
 			<RadioBlock
 				className={styles.MagicSyncViewerMenu_EnvironmentRadios}
-				default={!!props.flywheelSiteId ? 'staging' : null}
+				default={props.environment}
 				direction="vert"
 				disabled={!props.flywheelSiteId}
 				heightSize="m"
