@@ -1,21 +1,21 @@
 @import '../../../styles/_partials/index';
 
-.MagicSyncViewerStactionbar {
+.MagicSyncViewerStatusbar {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	flex: 0 0 60px;
 	padding: 0 30px;
 
-	.MagicSyncViewerStactionbar_ModeContainer {
+	.MagicSyncViewerStatusbar_ModeContainer {
 		flex: 1 1 auto;
 	}
 
-	.MagicSyncViewerStactionbar_Direction {
+	.MagicSyncViewerStatusbar_Direction {
 		text-transform: capitalize;
 	}
 
-	.MagicSyncViewerStactionbar_FlySelect {
+	.MagicSyncViewerStatusbar_FlySelect {
 		color: $green;
 		font-weight: 500;
 		background-color: transparent;
@@ -23,16 +23,16 @@
 		padding-left: 5px;
 	}
 
-	.MagicSyncViewerStactionbar_FilesCount {
+	.MagicSyncViewerStatusbar_FilesCount {
 		font-weight: 500;
 	}
 
-	.MagicSyncViewerStactionbar_FilesDivider {
+	.MagicSyncViewerStatusbar_FilesDivider {
 		margin: 0 10px;
 		@include theme-border-left;
 	}
 
-	.MagicSyncViewerStactionbar_FilesSize {
+	.MagicSyncViewerStatusbar_FilesSize {
 		@include theme-color-gray-else-gray15;
 		font-weight: 300;
 	}

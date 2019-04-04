@@ -5,7 +5,7 @@ import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import { VirtualTable } from '../VirtualTable';
 import { MagicSyncViewerHeader } from './components/MagicSyncViewerHeader';
 import { MagicSyncViewerMenu } from './components/MagicSyncViewerMenu';
-import { MagicSyncViewerStactionbar } from './components/MagicSyncViewerStactionbar';
+import { MagicSyncViewerStatusbar } from './components/MagicSyncViewerStatusbar';
 import { ConnectDirectionType, mockDataFiles, parseMockFiles } from './helpers/magicSyncViewMock';
 import { MagicSyncViewerCellRenderers } from './helpers/MagicSyncViewerCellRenderers';
 import { MagicSyncViewerRowRenderer } from './helpers/MagicSyncViewerRowRenderer';
@@ -169,7 +169,7 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 					<div className={styles.MagicSyncViewer_Content}>
 						{this.state.flywheelSiteId && this.state.data && (
 							<>
-								<MagicSyncViewerStactionbar
+								<MagicSyncViewerStatusbar
 									connectDirection={this.props.connectDirection}
 								/>
 								<VirtualTable
