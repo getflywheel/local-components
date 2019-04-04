@@ -87,7 +87,7 @@ export class MagicSyncViewerCellRendererFilename {
 					// update viewer state
 					this._setStateCallback({
 						data: [...dataArgs.data],
-					});
+					} as any);
 				}}
 			>
 				{this._renderRow(dataArgs, rowTreeDepth, true)}

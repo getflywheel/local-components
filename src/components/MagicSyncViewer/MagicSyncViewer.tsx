@@ -23,10 +23,16 @@ export interface IDataItem {
 
 interface IMagicSyncViewerProps extends IReactComponentProps {
 	connectDirection: ConnectDirectionType;
+	flywheelSiteId: string | null;
+	flywheelSiteName: string | null;
+	localSiteName: string;
+	onClose: () => void;
 }
 
 export interface IMagicSyncViewerState {
-	data: IDataItem[];
+	data: IDataItem[] | null;
+	flywheelSiteId: string | null;
+	flywheelSiteName: string | null;
 }
 
 export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMagicSyncViewerState> {
@@ -46,10 +52,10 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 	constructor (props: IMagicSyncViewerProps) {
 		super(props);
 
-		const data = parseMockFiles(mockDataFiles);
-
 		this.state ={
-			data,
+			data: !!props.flywheelSiteId ? this._generateMockData() : null,
+			flywheelSiteId: props.flywheelSiteId,
+			flywheelSiteName: props.flywheelSiteName,
 		};
 
 		this._cellRenderers = new MagicSyncViewerCellRenderers(
@@ -60,10 +66,36 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 		this._rowRenderer = new MagicSyncViewerRowRenderer();
 	}
 
+	componentWillReceiveProps (nextProps: IMagicSyncViewerProps) {
+		this.setState({
+			data: !!nextProps.flywheelSiteId ? this._generateMockData() : null,
+			flywheelSiteId: nextProps.flywheelSiteId,
+			flywheelSiteName: nextProps.flywheelSiteName,
+		});
+	}
+
+	protected _generateMockData () {
+		return parseMockFiles(mockDataFiles);
+	}
+
 	protected _onChangeRowData = (dataArgs: IVirtualTableOnChangeRowDataArgs) => {
 		// update viewer state to force row re-renderering
 		this.setState({
-			data: [...this.state.data],
+			data: [...(this.state.data || [])],
+		});
+	};
+
+	protected _onChangeEnvironment = (environment: string) => {
+		this.setState({
+			data: this._generateMockData(),
+		});
+	};
+
+	protected _onChangeSite = (flywheelSiteId: string) => {
+		this.setState({
+			data: !!flywheelSiteId ? this._generateMockData() : null,
+			flywheelSiteId,
+			flywheelSiteName: 'Fuzzy Letter Live',
 		});
 	};
 
@@ -74,18 +106,24 @@ export class MagicSyncViewer extends React.Component<IMagicSyncViewerProps, IMag
 					styles.MagicSyncViewer,
 					this.props.className,
 				)}
+				style={this.props.style}
 			>
 				<MagicSyncViewerHeader
-					connectDirection={'pull'}
-					siteName={'Fuzzy Letter Eye Care'}
+					connectDirection={this.props.connectDirection}
+					onClose={this.props.onClose}
+					siteName={this.props.localSiteName}
 				/>
 				<div className={styles.MagicSyncViewer_Body}>
 					<MagicSyncViewerMenu
-						connectDirection={'pull'}
+						connectDirection={this.props.connectDirection}
+						flywheelSiteId={this.state.flywheelSiteId}
+						flywheelSiteName={this.state.flywheelSiteName}
+						onChangeEnvironment={this._onChangeEnvironment}
+						onChangeSite={this._onChangeSite}
 					/>
 					<div className={styles.MagicSyncViewer_Content}>
 						<MagicSyncViewerStactionbar
-							connectDirection={'pull'}
+							connectDirection={this.props.connectDirection}
 						/>
 						<VirtualTable
 							cellClassName={styles.MagicSyncViewer_ColumnCell}

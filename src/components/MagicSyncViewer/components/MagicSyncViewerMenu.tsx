@@ -12,6 +12,10 @@ import { ConnectDirectionType } from '../helpers/magicSyncViewMock';
 
 interface IMagicSyncViewerHeaderProps extends IReactComponentProps {
 	connectDirection: ConnectDirectionType;
+	flywheelSiteId: string | null;
+	flywheelSiteName: string | null;
+	onChangeEnvironment: (environment: string) => void;
+	onChangeSite: (flywheelSiteId: string) => void;
 }
 
 export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
@@ -40,24 +44,19 @@ export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
 			>
 				<div className="FormField">
 					<FlySelect
-						disabled={true}
-						onChange={() => console.log('onChange')}
+						disabled={!!props.flywheelSiteId}
+						onChange={props.onChangeSite}
 						options={{
-							'a': {
-								label: 'Site 1',
-								icon: (
-									<div>😁</div>
-								),
-							},
-							'c': {
-								label: 'Site 2',
+							'abc123': {
+								label: 'Fuzzy Letter Live',
 								icon: (
 									<div>😁</div>
 								),
 							},
 						}}
 						placeholder="Select a site on Flywheel…"
-						readonly={true}
+						readonly={!!props.flywheelSiteId}
+						value={props.flywheelSiteId}
 					/>
 				</div>
 			</div>
@@ -69,9 +68,11 @@ export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
 			</Header>
 			<RadioBlock
 				className={styles.MagicSyncViewerMenu_EnvironmentRadios}
+				default={!!props.flywheelSiteId ? 'staging' : null}
 				direction="vert"
-				disabled={true}
+				disabled={!props.flywheelSiteId}
 				heightSize="m"
+				onChange={props.onChangeEnvironment}
 				options={{
 					'staging': {
 						label: 'Staging',
@@ -80,11 +81,11 @@ export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
 						label: 'Production',
 					},
 				}}
-				readonly={true}
+				readonly={!props.flywheelSiteId}
 			/>
 			<Checkbox
 				checked={true}
-				disabled={true}
+				disabled={!props.flywheelSiteId}
 				label="Include database"
 			/>
 			<Divider
@@ -93,7 +94,7 @@ export const MagicSyncViewerMenu = (props: IMagicSyncViewerHeaderProps) => (
 			/>
 			<button
 				className="__Green __Pill __Vert_Padding__20"
-				disabled={true}
+				disabled={!props.flywheelSiteId}
 			>
 				Pull From Flywheel
 			</button>

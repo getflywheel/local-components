@@ -6,11 +6,16 @@
 }
 
 .MagicSyncViewer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	display: flex;
 	flex-direction: column;
 	@include theme-color-black-else-white;
 	@include setChildHeightToParent;
-	@include theme-background-white85-else-graydark;
+	@include theme-background-white-else-graydark;
 
 	.MagicSyncViewer_Body {
 		display: flex;

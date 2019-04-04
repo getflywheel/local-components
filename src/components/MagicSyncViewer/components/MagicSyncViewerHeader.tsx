@@ -9,6 +9,7 @@ import { ConnectDirectionType } from '../helpers/magicSyncViewMock';
 
 interface IMagicSyncViewerHeaderProps extends IReactComponentProps {
 	connectDirection: ConnectDirectionType;
+	onClose: () => void;
 	siteName: string;
 }
 
@@ -43,7 +44,7 @@ export const MagicSyncViewerHeader = (props: IMagicSyncViewerHeaderProps) => (
 		</div>
 		<Close
 			className={styles.MagicSyncViewerHeader_Close}
-			onClick={() => console.log('onClick')}
+			onClick={props.onClose}
 			position="static"
 		/>
 	</div>
