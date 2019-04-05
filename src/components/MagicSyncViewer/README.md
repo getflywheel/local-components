@@ -1,4 +1,4 @@
-Interactive Magic Sync Viewer Example:
+Interactive Magic Sync Viewer:
 
 ```js
 const { MagicSyncViewerExample } = require('./examples/MagicSyncViewerExample');
