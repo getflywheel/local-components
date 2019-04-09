@@ -80,8 +80,21 @@ $filenameTreeDepthLineMarginR: $filenameTreeDepthWidthPer - $filenameTreeDepthLi
 }
 
 .MagicSyncViewerCellRenderer_Filename_Folder {
-	//display: inline-block;
 	margin-right: 6px;
+
+	@include if-theme-dark {
+		path:nth-child(1) {
+			fill: $gray25;
+		}
+	}
+
+	&.MagicSyncViewerCellRenderer_Filename_Folder_Closed {
+		@include if-theme-dark {
+			path:nth-child(2) {
+				fill: $gray;
+			}
+		}
+	}
 }
 
 .MagicSyncViewerCellRenderer_Filestatus__Unselected {
