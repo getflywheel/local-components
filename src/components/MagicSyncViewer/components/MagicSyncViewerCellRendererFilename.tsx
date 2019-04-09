@@ -118,7 +118,7 @@ export class MagicSyncViewerCellRendererFilename {
 				<span>
 					{isFolder == true && (this._rowIsClosed(dataArgs.rowData)
 						?
-						<FolderClosed className={styles.MagicSyncViewerCellRenderer_Filename_Folder} />
+						<FolderClosed className={classnames(styles.MagicSyncViewerCellRenderer_Filename_Folder, styles.MagicSyncViewerCellRenderer_Filename_Folder_Closed)} />
 						:
 						<FolderOpened className={styles.MagicSyncViewerCellRenderer_Filename_Folder} />
 					)}
