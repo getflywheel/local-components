@@ -4,7 +4,7 @@
 		"tslint:recommended",
 		"tslint-react"
 	],
-	"jsRules": true, // true automatically applies any rules that aren't typescript specific
+	"jsRules": true,
 	"linterOptions": {
 		"exclude": [
 			"src/svg/**"
@@ -14,7 +14,7 @@
 		"arrow-parens": false,
 		"comment-format": false,
 		"indent": [true, "tabs", 4],
-		"interface-name": [true, "always-prefix"], // https://palantir.github.io/tslint/rules/interface-name
+		"interface-name": [true, "always-prefix"],
 		"jsx-alignment": true,
 		"jsx-boolean-value": true,
 		"jsx-no-lambda": false,
@@ -28,17 +28,17 @@
 			"condition": "ignore",
 			"logical": "ignore",
 			"prop": "ignore"
-		}, // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-wrap-multilines.md,
+		},
 		"max-classes-per-file": [true, 5, "exclude-class-expressions"],
 		"max-line-length": false,
 		"member-access": false,
 		"no-console": {
-			"options": [true, "log"], // throw warning if console.log
+			"options": [true, "log"],
 			"severity": "warning"
 		},
 		"no-empty": false,
 		"no-reference": false,
-		"no-unused-expression": [true, "allow-fast-null-checks"], // https://palantir.github.io/tslint/rules/no-unused-expression/
+		"no-unused-expression": [true, "allow-fast-null-checks"],
 		"no-var-requires": false,
 		"object-literal-key-quotes": [true, "consistent"],
 		"one-line": [
@@ -48,9 +48,9 @@
 			"check-else"
 		],
 		"ordered-imports": false,
-		"quotemark": [true, "single", "jsx-double"], // https://palantir.github.io/tslint/rules/quotemark
-		"space-before-function-paren": "always", // https://eslint.org/docs/rules/space-before-function-paren
+		"quotemark": [true, "single", "jsx-double"],
+		"space-before-function-paren": "always",
 		"trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
-		"variable-name": [true, "ban-keywords", "allow-leading-underscore"] // https://palantir.github.io/tslint/rules/variable-name/
+		"variable-name": [true, "ban-keywords", "allow-leading-underscore"]
 	}
 }
