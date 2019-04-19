@@ -20,7 +20,7 @@ export default class BannerCarousel extends React.Component<IReactComponentProps
 	render () {
 		return (
 			<div>
-				{React.Children.map(this.props.children, (banner: React.ReactChild, index: number) => {
+				{React.Children.map(this.props.children as React.ReactElement, (banner: React.ReactChild, index: number) => {
 					if (this.state.currentIndex !== index) {
 						return null;
 					}
