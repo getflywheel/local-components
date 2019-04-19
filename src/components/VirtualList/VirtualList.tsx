@@ -44,6 +44,7 @@ export interface IVirtualListProps extends IReactComponentProps {
 export interface IVirtualListState {
 	containerSizePx: number;
 	itemsRenderedList: ReturnType<IVirtualListProps['itemRenderer']>[];
+	lastDataLen: number;
 }
 
 export class VirtualList extends React.Component<IVirtualListProps, IVirtualListState> {
@@ -68,6 +69,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 		this.state = {
 			containerSizePx: 0,
 			itemsRenderedList: [],
+			lastDataLen: 0,
 		};
 	}
 
@@ -96,6 +98,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 
 	componentWillReceiveProps (nextProps: IVirtualListProps) {
 		if (nextProps.data !== this.props.data
+			|| (nextProps.data && nextProps.data.length !== this.state.lastDataLen)
 			|| nextProps.itemHeight !== this.props.itemHeight
 			|| nextProps.itemRenderer !== this.props.itemRenderer
 			|| nextProps.overscan !== this.props.overscan
@@ -119,6 +122,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 			this.setState(() => ({
 				containerSizePx: 0,
 				itemsRenderedList: [], // clear out all list items
+				lastDataLen: 0,
 			}));
 		}
 		else if (forceReRender
@@ -128,11 +132,12 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 			|| calculations.containerSizePx !== prevCalcs.containerSizePx
 			|| calculations.viewportItemsCount !== prevCalcs.viewportItemsCount
 		) {
-			const data = this._helper.generateAndGetRenderedItems(props.data, props.itemRenderer, calculations, props.itemRendererExtraData, !!props.striped);
+			const itemsRenderedList = this._helper.generateAndGetRenderedItems(props.data, props.itemRenderer, calculations, props.itemRendererExtraData, !!props.striped);
 
 			this.setState(() => ({
 				containerSizePx: calculations.containerSizePx,
-				itemsRenderedList: data,
+				itemsRenderedList: itemsRenderedList,
+				lastDataLen: props.data!.length,
 			}));
 		}
 
