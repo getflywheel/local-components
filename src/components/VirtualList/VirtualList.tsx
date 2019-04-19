@@ -73,7 +73,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 
 	componentDidMount (): void {
 		if (this._wrapperRef.current) {
-			this._wrapperRef.current.addEventListener('scroll', this._onScroll, {
+			this._wrapperRef.current.addEventListener('scroll', this._onScroll as any, {
 				passive: true,
 			});
 		}
@@ -86,7 +86,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 
 	componentWillUnmount () {
 		if (this._wrapperRef.current) {
-			this._wrapperRef.current.removeEventListener('scroll', this._onScroll);
+			this._wrapperRef.current.removeEventListener('scroll', this._onScroll as any);
 		}
 	}
 
