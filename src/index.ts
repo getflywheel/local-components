@@ -13,6 +13,7 @@ export {default as Card} from './components/Card';
 export {default as Checkbox} from './components/Checkbox';
 export {default as Close} from './components/Close';
 export {default as ClippedContent} from './components/ClippedContent';
+export {Container} from './components/Container';
 export {default as Divider} from './components/Divider';
 export {default as DownloaderItem} from './components/DownloaderItem';
 export {default as DragBar} from './components/DragBar';
