@@ -38,3 +38,11 @@ Disabled and checked
     <Checkbox disabled={true} checked={true} label="Option" />
 </div>
 ```
+
+Mixed check state
+
+```js
+<div>
+    <Checkbox checked="mixed" />
+</div>
+```
