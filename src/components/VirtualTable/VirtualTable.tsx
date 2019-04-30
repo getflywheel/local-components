@@ -67,6 +67,8 @@ export interface IVirtualTableProps extends IReactComponentProps {
 	/** header's font weight */
 	headersWeight?: 300 | 400 | 500 | 700 | 900;
 	/** */
+	rowKeyPropName: string;
+	/** */
 	onChangeRowData: (dataArgs: IVirtualTableOnChangeRowDataArgs) => void;
 	/** class to be applied to every row */
 	rowClassName: string;
@@ -127,11 +129,13 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 	}
 
 	protected _rowRenderer = (rowData: any, rowIndex: number, customRendererStyles: {transform: string}, extraData: {isHeader: boolean}) => {
+		const key: string = this.props.rowKeyPropName ? rowData[this.props.rowKeyPropName] : `${rowIndex}.${JSON.stringify(rowData)}`;
+
 		return (
 			<VirtualTableRow
 				className={this.props.rowClassName}
 				isHeader={extraData ? extraData.isHeader : false}
-				key={`${rowIndex}.${JSON.stringify(rowData)}`}
+				key={key}
 				onChangeRowData={this.props.onChangeRowData}
 				rowData={rowData}
 				rowDataOrdered={this._helper.getOrderedData(rowData, this.props.headers, this._helper.getDataCalculationsMemoized(this.props).dataKeyToColIndexLookup)}
