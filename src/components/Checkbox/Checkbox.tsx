@@ -4,16 +4,17 @@ import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import * as styles from './Checkbox.sass';
 import Handler from '../../common/structures/Handler';
 import CheckmarkSVG from '../../svg/checkmark--sm';
+import CheckMixedSVG from '../../svg/checkmark--mixed';
 
 interface IProps extends IReactComponentProps {
-	checked?: boolean;
+	checked?: boolean | 'mixed';
 	disabled?: boolean;
 	label?: string;
 	onChange: Handler;
 }
 
 interface IState {
-	checked: boolean;
+	checked: boolean | 'mixed';
 	disabled: boolean;
 }
 
@@ -28,7 +29,7 @@ export default class Checkbox extends React.Component<IProps, IState> {
 		super(props);
 
 		this.state = {
-			checked: !!props.checked,
+			checked: props.checked === undefined ? false : props.checked,
 			disabled: !!props.disabled,
 		};
 	};
@@ -42,7 +43,7 @@ export default class Checkbox extends React.Component<IProps, IState> {
 	}
 
 	protected _handleChange = () => {
-		const checked: boolean = !this.state.checked;
+		const checked: boolean = this.state.checked === 'mixed' ? true : !this.state.checked;
 
 		this.setState({
 			checked,
@@ -59,7 +60,8 @@ export default class Checkbox extends React.Component<IProps, IState> {
 				className={classnames(
 					styles.Checkbox,
 					{
-						[styles.Checkbox__Checked]: this.state.checked,
+						[styles.Checkbox__Checked]: this.state.checked === true,
+						[styles.Checkbox__CheckMixed]: this.state.checked === 'mixed',
 						[styles.Checkbox__Disabled]: this.state.disabled,
 					},
 				)}
@@ -68,14 +70,19 @@ export default class Checkbox extends React.Component<IProps, IState> {
 					<input
 						type="checkbox"
 						className={styles.Checkbox_InputHidden}
-						checked={this.state.checked}
+						checked={this.state.checked === true}
 						disabled={this.props.disabled}
 						onChange={this._handleChange}
 					/>
 					<div
 						className={styles.Checkbox_GraphicsCont}
 					>
-						<CheckmarkSVG className={styles.Checkbox_Checkmark} />
+						{this.state.checked === true && (
+							<CheckmarkSVG className={styles.Checkbox_Checkmark} />
+						)}
+						{this.state.checked === 'mixed' && (
+							<CheckMixedSVG className={styles.Checkbox_CheckmarkMixed} />
+						)}
 					</div>
 					{this.props.label !== undefined && (
 						<div className={styles.Checkbox_LabelContents}>

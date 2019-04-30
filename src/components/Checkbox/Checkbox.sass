@@ -4,6 +4,7 @@ $checkboxSize: 16px
 
 .Checkbox
 	&.Checkbox__Checked
+	&.Checkbox__CheckMixed
 
 	&:not(.Checkbox__Checked)
 		@include if-theme-dark
@@ -43,5 +44,6 @@ $checkboxSize: 16px
 		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
 			path
 				fill: $gray75
-		@include selectors_ifHostHasModifier(':not(.Checkbox__Checked)')
-			display: none
+
+	.Checkbox_CheckmarkMixed
+		margin: 5px 3px
