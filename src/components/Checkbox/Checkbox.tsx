@@ -15,7 +15,6 @@ interface IProps extends IReactComponentProps {
 
 interface IState {
 	checked: boolean | 'mixed';
-	disabled: boolean;
 }
 
 export default class Checkbox extends React.Component<IProps, IState> {
@@ -30,7 +29,6 @@ export default class Checkbox extends React.Component<IProps, IState> {
 
 		this.state = {
 			checked: props.checked === undefined ? false : props.checked,
-			disabled: !!props.disabled,
 		};
 	};
 
@@ -62,7 +60,7 @@ export default class Checkbox extends React.Component<IProps, IState> {
 					{
 						[styles.Checkbox__Checked]: this.state.checked === true,
 						[styles.Checkbox__CheckMixed]: this.state.checked === 'mixed',
-						[styles.Checkbox__Disabled]: this.state.disabled,
+						[styles.Checkbox__Disabled]: this.props.disabled,
 					},
 				)}
 			>
