@@ -1,8 +1,8 @@
 ### macOS:
 
 ```js
-const { NavLink } = require('react-router-dom');
-const { VerticalNavItem, WorkspaceSwitcher } = require('./VerticalNav');
+const { VerticalNavItem } = require('./VerticalNav');
+const { WorkspaceSwitcher } = require('./components/WorkspaceSwitcher');
 
 <div>
     <VerticalNav location={{ pathname: '' }}>
