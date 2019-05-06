@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import * as styles from './VirtualTable.scss';
 import { VirtualTableHelper } from './helpers/VirtualTableHelper';
 import { IVirtualTableContext, VirtualTableContext } from './helpers/VirtualTableContext';
+import {IVirtualListProps} from "../VirtualList/VirtualList";
 
 export interface IVirtualTableCellRendererDataArgs {
 	cellData: any;
@@ -83,6 +84,8 @@ export interface IVirtualTableProps extends IReactComponentProps {
 	rowRenderer?: VirtualTableRowRenderer;
 	/** Whether to show alternating row stripes. */
 	striped?: boolean;
+	/** Overscan value to be passed into VirtualList */
+	overscan?: IVirtualListProps['overscan'];
 }
 
 export interface IVirtualTableState {
@@ -198,7 +201,7 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 						disableVirtualization={false}
 						itemHeight={this.state.rowHeight}
 						itemRenderer={this._rowRenderer}
-						overscan={2000}
+						overscan={this.props.overscan}
 						striped={this.props.striped}
 						wrapperRenderer={this._tableBodyRenderer}
 					/>
