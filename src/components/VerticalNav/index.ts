@@ -1,1 +1,2 @@
-export {VerticalNav, VerticalNavItem, WorkspaceSwitcher} from './VerticalNav';
+export { VerticalNav, VerticalNavItem } from './VerticalNav';
+export { WorkspaceSwitcher } from './components/WorkspaceSwitcher';
