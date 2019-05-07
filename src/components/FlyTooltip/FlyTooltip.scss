@@ -34,7 +34,7 @@
 	font-weight: 300;
 	@include theme-color-graydark50-else-gray25;
 	@include theme-input-background-color;
-	@include theme-border;
+	@include theme-input-border;
 
 	&.FlyTooltip__WidthAuto {
 		width: auto;
@@ -50,7 +50,7 @@
 		right: 10px;
 		bottom: -6px;
 		@include theme-input-background-color;
-		@include theme-border;
+		@include theme-input-border;
 		z-index: -1;
 	}
 
