@@ -13,7 +13,7 @@ const isStylesheetLoaded = (href: string) => {
 
 		try {
 			const a = fs.realpathSync(path.resolve(href));
-			const b = fs.realpathSync(path.resolve(parsedURL.pathname));
+			const b = fs.realpathSync(path.resolve(decodeURI(parsedURL.pathname)));
 
 			if (a === b) {
 				return true;
