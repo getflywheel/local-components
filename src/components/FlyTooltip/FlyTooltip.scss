@@ -36,8 +36,12 @@
 	@include theme-input-background-color;
 	@include theme-border;
 
-	&.FlyTooltip__WidthIsFluid {
+	&.FlyTooltip__WidthAuto {
 		width: auto;
+	}
+
+	&.FlyTooltip__WidthMaxContent {
+		width: max-content;
 	}
 
 	&::before {
@@ -60,6 +64,7 @@
 		border-radius: 4px;
 		@include theme-input-background-color;
 		margin-left: 0;
+		margin-right: 1px;
 		z-index: -1;
 	}
 
