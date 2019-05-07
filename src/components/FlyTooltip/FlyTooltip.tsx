@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './FlyTooltip.sass';
+import * as styles from './FlyTooltip.scss';
 import ExclamationSVG from '../../svg/exclamation';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
