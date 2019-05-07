@@ -19,7 +19,7 @@ With exclamation icon and auto width:
 </FlyTooltip>
 ```
 
-Position center horizonta position with max-content width:
+Position center horizontal position with max-content width:
 
 ```js
 <FlyTooltip 
