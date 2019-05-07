@@ -23,24 +23,40 @@
 		vertical-align: middle;
 
 		path, circle, rect {
-			fill: $white;
+			fill: $white !important;
 		}
 	}
 
 	.WorkspaceSwitcher_Popup_CloseSvg {
-		width: 8px;
-		height: 8px;
+		$padding: 4px;
+
+		width: 8px + ($padding * 2);
+		height: 8px + ($padding * 2);
 		margin-top: -2px;
+		padding: $padding; // increase hit area since button is so small
 		vertical-align: middle;
 
 		path, circle, rect {
-			fill: $white;
+			fill: $white !important;
+		}
+
+		&:hover {
+			path, circle, rect {
+				fill: $green-dark !important;
+			}
 		}
 	}
 
 	.WorkspaceSwitcher_Popup_Text {
 		flex-grow: 1;
+		height: initial;
+		padding: initial;
+		color: $white;
 		text-decoration: underline;
+
+		&:hover {
+			color: $green-dark;
+		}
 	}
 
 	.WorkspaceSwitcher_PopupGrid {
@@ -51,6 +67,10 @@
 		grid-column-gap: 20px;
 		column-gap: 20px;
 		padding: 0 20px 15px 20px;
+	}
+
+	.WorkspaceSwitcher_PopupGrid__WithTopPadding {
+		padding-top: 15px;
 	}
 
 	.WorkspaceSwitcher_PopupGridItem {

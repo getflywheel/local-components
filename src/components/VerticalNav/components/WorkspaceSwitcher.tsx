@@ -15,19 +15,23 @@ import WarningSVG from '../../../svg/warning';
 
 interface IWorkspaceSwitcherProps extends IReactComponentProps {
 	className?: string;
+	infoBannerUrl?: string;
 	onClickAccount: Handler;
-	onClickManageTeam: Handler;
 	onClickAddTeam: Handler;
+	onCloseInfoBanner?: Handler;
+	onClickManageTeam: Handler;
 	onClickLogout: Handler;
 	onClickWorkspace: Handler;
 	onClickWorkspaceNav: Handler;
 	routeTo: string;
+	showInfoBanner?: boolean;
 	tooltip: string;
 	workspaces: any[];
 }
 
 interface IWorkspaceSwitcherState {
 	activeWorkspaceItem: any;
+	isInfoBannerClosed: boolean;
 }
 
 export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, IWorkspaceSwitcherState> {
@@ -37,6 +41,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 
 		this.state = {
 			activeWorkspaceItem: this.getInitialActiveWorkspaceItem(),
+			isInfoBannerClosed: false,
 		};
 	}
 
@@ -56,6 +61,24 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 			});
 		}
 	}
+
+	onCloseInfoBannerContainer = (event: React.MouseEvent) => {
+		event.stopPropagation();
+		event.nativeEvent.stopImmediatePropagation();
+	};
+
+	onCloseInfoBanner = (event: React.MouseEvent) => {
+		event.stopPropagation();
+		event.nativeEvent.stopImmediatePropagation();
+
+		this.setState({
+			isInfoBannerClosed: true,
+		});
+
+		if (this.props.onCloseInfoBanner) {
+			this.props.onCloseInfoBanner(event);
+		}
+	};
 
 	onSelect (workspaceItem: any) {
 		this.setState({
@@ -107,12 +130,26 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 						>
 							{ hasTeams &&
 								<>
-									<div className={styles.WorkspaceSwitcher_Popup_InfoContainer}>
-										<WarningSVG className={styles.WorkspaceSwitcher_Popup_WarningSvg} />
-										<div className={styles.WorkspaceSwitcher_Popup_Text} >What’s this?</div>
-										<CloseSmallSVG className={styles.WorkspaceSwitcher_Popup_CloseSvg} />
-									</div>
-									<div className={styles.WorkspaceSwitcher_PopupGrid}>
+									{ this.props.showInfoBanner && !this.state.isInfoBannerClosed &&
+										<div
+											className={styles.WorkspaceSwitcher_Popup_InfoContainer}
+											onClick={this.onCloseInfoBannerContainer}
+										>
+											<WarningSVG className={styles.WorkspaceSwitcher_Popup_WarningSvg}/>
+											<a href={this.props.infoBannerUrl} className={styles.WorkspaceSwitcher_Popup_Text}>What’s this?</a>
+											<span onClick={this.onCloseInfoBanner}>
+												<CloseSmallSVG className={styles.WorkspaceSwitcher_Popup_CloseSvg} />
+											</span>
+										</div>
+									}
+									<div
+										className={classnames(
+											styles.WorkspaceSwitcher_PopupGrid,
+											{
+												[styles.WorkspaceSwitcher_PopupGrid__WithTopPadding]: !this.props.showInfoBanner || this.state.isInfoBannerClosed,
+											},
+										)}
+									>
 										{this.props.workspaces.map((workspaceItem) => {
 											return (
 												<div key={workspaceItem.id} onClick={() => this.onSelect(workspaceItem)}>
