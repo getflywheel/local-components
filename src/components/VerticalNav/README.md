@@ -7,11 +7,13 @@ const { WorkspaceSwitcher } = require('./components/WorkspaceSwitcher');
 <div>
     <VerticalNav location={{ pathname: '' }}>
     	<WorkspaceSwitcher
+	    	infoBannerUrl="#"
     		onClickAccount={() => console.log('onClickAccount')}
     		onClickAddTeam={() => console.log('onClickAddTeam')}
     		onClickLogout={() => console.log('onClickLogout')}
     		onClickWorkspace={(workspace) => console.log('onClickWorkspace: ', workspace)}
 			routeTo="/main/users"
+			showInfoBanner={true}
 			tooltip="Login"
 			workspaces={[
 				{
