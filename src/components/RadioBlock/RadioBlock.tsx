@@ -144,7 +144,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 					position="top"
 					hoverIntent={true}
 					className={styles.RadioBlock_Option_TooltipWrapper}
-					widthIsFluid={true}
+					width="auto"
 				>
 					{content}
 				</FlyTooltip>
