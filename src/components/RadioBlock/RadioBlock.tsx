@@ -181,6 +181,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 			>
 				<label className={styles.RadioBLock_Label}>
 					<Header
+						className={styles.RadioBLock_Label_Text}
 						fontSize={this.props.heightSize === 'l' ? 's' : 'xs'}
 						fontWeight="500"
 					>
