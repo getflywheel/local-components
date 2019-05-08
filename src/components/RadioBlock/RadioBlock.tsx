@@ -141,10 +141,10 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 			return (
 				<FlyTooltip
 					content={this.props.tooltipContent}
-					position="top"
+					position="center"
 					hoverIntent={true}
 					className={styles.RadioBlock_Option_TooltipWrapper}
-					width="auto"
+					width="max-content"
 				>
 					{content}
 				</FlyTooltip>
