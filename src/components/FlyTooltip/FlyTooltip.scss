@@ -141,6 +141,7 @@
 	}
 
 	&.FlyTooltip__PositionCenter {
+		transform-origin: 0 0;
 		right: 50%;
 		left: 50%;
 		margin-right: 0;
