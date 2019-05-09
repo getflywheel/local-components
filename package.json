@@ -1,6 +1,6 @@
 {
 	"name": "@getflywheel/local-components",
-	"version": "8.4.1",
+	"version": "8.5.0",
 	"description": "",
 	"main": "dist/index.js",
 	"jsnext:main": "src/index.ts",
