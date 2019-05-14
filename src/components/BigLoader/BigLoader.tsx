@@ -25,6 +25,7 @@ export default class BigLoader extends React.Component<IProps> {
 			>
 				<LoadingIndicator
 					big={true}
+					dots={3}
 					color={this.props.color}
 				/>
 				{
