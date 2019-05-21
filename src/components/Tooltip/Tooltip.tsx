@@ -22,19 +22,22 @@ export class Tooltip extends React.Component<IProps> {
 			<Manager>
 				<Reference>
 					{({ ref }) => {
-						if(!this.props.content) {
+						if(!this.props.children) {
 							return null;
 						}
-						return React.cloneElement(
-							this.props.content,
-							{
-								ref,
-								className: classnames(
-									this.props.content.props.className,
-									styles.Tooltip_Content,
-								),
-							}
-						);
+
+						return React.Children.map(this.props.children as React.ReactElement, (child: React.ReactElement) => {
+							return React.cloneElement(
+								child,
+								{
+									ref,
+									className: classnames(
+										child.props.className,
+										styles.Tooltip_Content,
+									),
+								}
+							);
+						});
 					}}
 				</Reference>
 				<Popper placement={this.props.position}>
@@ -50,7 +53,7 @@ export class Tooltip extends React.Component<IProps> {
 							style={style}
 							data-placement={placement}
 						>
-							{this.props.children}
+							{this.props.content}
 							<div
 								ref={arrowProps.ref}
 								style={arrowProps.style}

@@ -3,9 +3,9 @@ Default tooltip with `auto` position.
 ```js
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
-    	content={<button className="__Pill __Green __Medium">Hover over me</button>}
+    	content={<div>This is a tooltip</div>}
     >
-    	This is a tooltip
+    	<button className="__Pill __Green __Medium">Hover over me</button>
     </Tooltip>
 </div>
 ```
@@ -15,23 +15,36 @@ Position set to `right`.
 ```js
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
-    	content={<button className="__Pill __Green __Medium">Hover over me</button>}
+    	content={<div>This is a tooltip</div>}
     	position="right"
     >
-    	This is a tooltip
+    	<button className="__Pill __Green __Medium">Hover over me</button>
     </Tooltip>
 </div>
 ```
 
-Set `forceHover` to true
+Position set to `right` but moves to the left because there's no space to the right.
+
+```js
+<div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+    <Tooltip
+    	content={<div>This is a tooltip</div>}
+    	position="right"
+    >
+    	<button className="__Pill __Green __Medium">Hover over me</button>
+    </Tooltip>
+</div>
+```
+
+Set `forceHover` to `true`.
 
 ```js
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
-    	content={<button className="__Pill __Green __Medium">Hover over me</button>}
+    	content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
     	forceHover={true}
     >
-    	This is a tooltip
+    	<button className="__Pill __Green __Medium">I am a button</button>
     </Tooltip>
 </div>
 ```
