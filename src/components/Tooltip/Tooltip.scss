@@ -1,2 +1,17 @@
 @import '../../styles/_partials/index';
 
+.Tooltip_Content {
+	&:hover + .Tooltip_Popper {
+		visibility: visible;
+	}
+}
+
+.Tooltip_Popper {
+	visibility: hidden; // this sets visibility through CSS first, JS second and  allows for use of Chrome Dev Tools :hov
+	background: white;
+	border: 1px solid gray;
+
+	&.Tooltip_Popper__ForceHover {
+		visibility: visible;
+	}
+}
