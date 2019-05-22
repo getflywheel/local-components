@@ -55,8 +55,10 @@ export class Tooltip extends React.Component<IProps> {
 						>
 							{this.props.content}
 							<div
+								className={styles.Tooltip_Arrow}
 								ref={arrowProps.ref}
 								style={arrowProps.style}
+								data-placement={placement}
 							/>
 						</div>
 					)}

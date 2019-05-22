@@ -1,5 +1,16 @@
 @import '../../styles/_partials/index';
 
+@mixin tooltipBoxShadow {
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.14);
+}
+
+$arrowSize: 10px;
+
+@function getRotatedSquaresLength ($originalLength) {
+	// note: 0.785398 radias = 45 degrees
+	@return $originalLength * abs(cos(0.785398)) + $originalLength * abs(sin(0.785398));
+}
+
 .Tooltip_Content {
 	&:hover + .Tooltip_Popper {
 		visibility: visible;
@@ -7,11 +18,80 @@
 }
 
 .Tooltip_Popper {
-	visibility: hidden; // this sets visibility through CSS first, JS second and  allows for use of Chrome Dev Tools :hov
-	background: white;
-	border: 1px solid gray;
+	visibility: hidden; // this sets visibility through CSS first, JS second and allows for use of Chrome Dev Tools :hov
+	position: absolute;
+	padding: 10px 30px;
+	font-weight: 300;
+	@include theme-color-graydark50-else-gray25;
+	@include theme-input-background-color;
+	@include theme-input-border;
+	@include tooltipBoxShadow;
 
 	&.Tooltip_Popper__ForceHover {
 		visibility: visible;
+	}
+	//top: -10px !important;
+
+	&[data-placement*='top'] {
+		top: -(getRotatedSquaresLength($arrowSize) / 2) !important;
+	}
+
+	&[data-placement*='right'] {
+		left: (getRotatedSquaresLength($arrowSize) / 2) !important;
+	}
+
+	&[data-placement*='bottom'] {
+		top: (getRotatedSquaresLength($arrowSize) / 2) !important;
+	}
+
+	&[data-placement*='left'] {
+		left: -(getRotatedSquaresLength($arrowSize) / 2) !important;
+	}
+}
+
+.Tooltip_Arrow {
+	$extraShadowArea: 100%;
+
+	position: absolute;
+	width: $arrowSize;
+	height: $arrowSize;
+	@include theme-input-background-color;
+	@include theme-input-border;
+	border-radius: 0 0 4px 0;
+	@include tooltipBoxShadow;
+	pointer-events: none;
+	transition: all 0.05s cubic-bezier(0.2, 0.3, 0.25, 0.9) 0s;
+	// pre-rotate poly used to clip the content
+	clip-path: polygon(
+		(0% - $extraShadowArea) (100% + $extraShadowArea), // bottom-left (left after rotate)
+		(100% + $extraShadowArea) (0% - $extraShadowArea), // top-right (right after rotate)
+		(100% + $extraShadowArea) (100% + $extraShadowArea) // bottom-right (bottom after rotate)
+	);
+
+	&[data-placement*='top'] {
+		bottom: 0;
+		left: 100%;
+		//margin-left: (-$arrowSize / 2) + (-$arrowSize / 4);
+		margin-left: -$arrowSize / 4;
+		transform-origin: 0 100%;
+		transform: rotate(45deg);
+	}
+
+	&[data-placement*='right'] {
+		left: -$arrowSize / 2;
+		transform-origin: 50% 50%;
+		transform: rotate(135deg);
+	}
+
+	&[data-placement*='bottom'] {
+		top: -$arrowSize / 2;
+		left: 100%;
+		transform-origin: 50% 50%;
+		transform: rotate(225deg);
+	}
+
+	&[data-placement*='left'] {
+		right: -$arrowSize / 2;
+		transform: rotate(-45deg);
 	}
 }
