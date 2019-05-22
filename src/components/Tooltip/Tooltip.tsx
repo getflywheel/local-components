@@ -7,14 +7,14 @@ import { Manager, Reference, Popper } from 'react-popper';
 interface IProps extends IReactComponentProps {
 	content?: React.ReactElement;
 	forceHover?: boolean;
-	position?: 'auto' | 'auto-start' | 'auto-end' | 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
+	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
 }
 
 export class Tooltip extends React.Component<IProps> {
 
 	static defaultProps: Partial<IProps> = {
-		forceHover: false,
-		position: 'auto',
+		forceHover: true,
+		position: 'top',
 	};
 
 	render () {
