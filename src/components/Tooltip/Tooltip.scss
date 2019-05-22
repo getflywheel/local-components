@@ -1,10 +1,20 @@
 @import '../../styles/_partials/index';
 
+$arrowSize: 15px;
+$ease-in: cubic-bezier(.2,.3,.25,.9);
+
 @mixin tooltipBoxShadow {
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.14);
 }
 
-$arrowSize: 10px;
+@mixin showTooltip {
+	visibility: visible;
+
+	& > .Tooltip_Popper_Inner {
+		transform: scale(1.0) translateX(0%) translateY(0%) translateZ(0);
+		transform-origin: 50% 50%;
+	}
+}
 
 @function getRotatedSquaresLength ($originalLength) {
 	// note: 0.785398 radias = 45 degrees
@@ -13,24 +23,16 @@ $arrowSize: 10px;
 
 .Tooltip_Content {
 	&:hover + .Tooltip_Popper {
-		visibility: visible;
+		@include showTooltip;
 	}
 }
 
 .Tooltip_Popper {
-	visibility: hidden; // this sets visibility through CSS first, JS second and allows for use of Chrome Dev Tools :hov
 	position: absolute;
-	padding: 10px 30px;
-	font-weight: 300;
-	@include theme-color-graydark50-else-gray25;
-	@include theme-input-background-color;
-	@include theme-input-border;
-	@include tooltipBoxShadow;
 
 	&.Tooltip_Popper__ForceHover {
-		visibility: visible;
+		@include showTooltip;
 	}
-	//top: -10px !important;
 
 	&[data-placement*='top'] {
 		top: -(getRotatedSquaresLength($arrowSize) / 2) !important;
@@ -49,8 +51,39 @@ $arrowSize: 10px;
 	}
 }
 
-.Tooltip_Arrow {
+.Tooltip_Popper_Inner {
+	transform: scale(0) translateX(0%) translateY(0%) translateZ(0);
+	transition: transform 80ms $ease-in 80ms, transform-origin 1800ms $ease-in 80ms;
+
+	&[data-placement*='top'] {
+		transform-origin: 50% 100%;
+	}
+
+	&[data-placement*='right'] {
+		transform-origin: 0 50%;
+	}
+
+	&[data-placement*='bottom'] {
+		transform-origin: 50% 0;
+	}
+
+	&[data-placement*='left'] {
+		transform-origin: 100% 50%;
+	}
+}
+
+.Tooltip_Popper_Content {
+	padding: 10px 30px;
+	font-weight: 300;
+	@include theme-color-graydark50-else-gray25;
+	@include theme-input-background-color;
+	@include theme-input-border;
+	@include tooltipBoxShadow;
+}
+
+.Tooltip_Popper_Arrow {
 	$extraShadowArea: 100%;
+	$borderThickness: 1px;
 
 	position: absolute;
 	width: $arrowSize;
@@ -60,7 +93,7 @@ $arrowSize: 10px;
 	border-radius: 0 0 4px 0;
 	@include tooltipBoxShadow;
 	pointer-events: none;
-	transition: all 0.05s cubic-bezier(0.2, 0.3, 0.25, 0.9) 0s;
+	//transition: all 0.05s cubic-bezier(0.2, 0.3, 0.25, 0.9) 0s;
 	// pre-rotate poly used to clip the content
 	clip-path: polygon(
 		(0% - $extraShadowArea) (100% + $extraShadowArea), // bottom-left (left after rotate)
@@ -69,29 +102,30 @@ $arrowSize: 10px;
 	);
 
 	&[data-placement*='top'] {
-		bottom: 0;
-		left: 100%;
-		//margin-left: (-$arrowSize / 2) + (-$arrowSize / 4);
-		margin-left: -$arrowSize / 4;
+		bottom: $borderThickness; // overlay border
+		left: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
 		transform-origin: 0 100%;
 		transform: rotate(45deg);
 	}
 
 	&[data-placement*='right'] {
-		left: -$arrowSize / 2;
-		transform-origin: 50% 50%;
+		left: -$arrowSize / 2 + $borderThickness;
+		top: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
+		transform-origin: 49% 57%;
 		transform: rotate(135deg);
 	}
 
 	&[data-placement*='bottom'] {
-		top: -$arrowSize / 2;
-		left: 100%;
-		transform-origin: 50% 50%;
+		top: -$arrowSize / 2 + $borderThickness;
+		left: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
+		transform-origin: 60% 46%;
 		transform: rotate(225deg);
 	}
 
 	&[data-placement*='left'] {
-		right: -$arrowSize / 2;
+		right: -$arrowSize / 2 + $borderThickness;
+		top: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
+		transform-origin: 70% 63%;
 		transform: rotate(-45deg);
 	}
 }

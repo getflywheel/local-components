@@ -13,7 +13,7 @@ interface IProps extends IReactComponentProps {
 export class Tooltip extends React.Component<IProps> {
 
 	static defaultProps: Partial<IProps> = {
-		forceHover: true,
+		forceHover: false,
 		position: 'top',
 	};
 
@@ -34,6 +34,7 @@ export class Tooltip extends React.Component<IProps> {
 									className: classnames(
 										child.props.className,
 										styles.Tooltip_Content,
+										'Tooltip_Content',
 									),
 								}
 							);
@@ -46,6 +47,7 @@ export class Tooltip extends React.Component<IProps> {
 							ref={ref}
 							className={classnames(
 								styles.Tooltip_Popper,
+								'Tooltip_Popper',
 								{
 									[styles.Tooltip_Popper__ForceHover]: this.props.forceHover,
 								}
@@ -53,13 +55,28 @@ export class Tooltip extends React.Component<IProps> {
 							style={style}
 							data-placement={placement}
 						>
-							{this.props.content}
 							<div
-								className={styles.Tooltip_Arrow}
-								ref={arrowProps.ref}
-								style={arrowProps.style}
+								className={styles.Tooltip_Popper_Inner}
 								data-placement={placement}
-							/>
+							>
+								<div
+									className={classnames(
+										styles.Tooltip_Popper_Content,
+										'Tooltip_Popper_Content',
+									)}
+								>
+									{this.props.content}
+								</div>
+								<div
+									className={classnames(
+										styles.Tooltip_Popper_Arrow,
+										'Tooltip_Popper_Arrow',
+									)}
+									ref={arrowProps.ref}
+									// style={arrowProps.style}
+									data-placement={placement}
+								/>
+							</div>
 						</div>
 					)}
 				</Popper>
