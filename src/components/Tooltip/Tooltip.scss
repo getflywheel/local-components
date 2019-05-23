@@ -1,6 +1,7 @@
 @import '../../styles/_partials/index';
 
 $arrowSize: 15px;
+$arrowOffset: 14px;
 $arrowSizeRotated: calculateRotatedSquaresLength($arrowSize, 45deg);
 $transitionEaseIn: cubic-bezier(.2,.3,.25,.9);
 $transitionDuration: 80ms;
@@ -36,19 +37,19 @@ $transitionDuration: 80ms;
 	}
 
 	&[data-placement*='top'] {
-		top: -($arrowSizeRotated / 2) !important;
+		top: (-$arrowSizeRotated / 2 + $arrowOffset) !important;
 	}
 
 	&[data-placement*='right'] {
-		left: ($arrowSizeRotated / 2) !important;
+		left: ($arrowSizeRotated / 2 - $arrowOffset) !important;
 	}
 
 	&[data-placement*='bottom'] {
-		top: ($arrowSizeRotated / 2) !important;
+		top: ($arrowSizeRotated / 2 - $arrowOffset) !important;
 	}
 
 	&[data-placement*='left'] {
-		left: -($arrowSizeRotated / 2) !important;
+		left: (-$arrowSizeRotated / 2 + $arrowOffset) !important;
 	}
 }
 
