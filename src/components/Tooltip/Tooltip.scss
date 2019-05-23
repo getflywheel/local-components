@@ -1,7 +1,9 @@
 @import '../../styles/_partials/index';
 
 $arrowSize: 15px;
-$ease-in: cubic-bezier(.2,.3,.25,.9);
+$arrowSizeRotated: calculateRotatedSquaresLength($arrowSize, 45deg);
+$transitionEaseIn: cubic-bezier(.2,.3,.25,.9);
+$transitionDuration: 80ms;
 
 @mixin tooltipBoxShadow {
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.14);
@@ -16,11 +18,6 @@ $ease-in: cubic-bezier(.2,.3,.25,.9);
 	}
 }
 
-@function getRotatedSquaresLength ($originalLength) {
-	// note: 0.785398 radias = 45 degrees
-	@return $originalLength * abs(cos(0.785398)) + $originalLength * abs(sin(0.785398));
-}
-
 .Tooltip_Content {
 	&:hover + .Tooltip_Popper {
 		@include showTooltip;
@@ -28,32 +25,36 @@ $ease-in: cubic-bezier(.2,.3,.25,.9);
 }
 
 .Tooltip_Popper {
-	position: absolute;
+	visibility: hidden;
+
+	&.Tooltip_Popper__TransitionLeaving {
+		visibility: visible; // stay visible while transitioning out
+	}
 
 	&.Tooltip_Popper__ForceHover {
 		@include showTooltip;
 	}
 
 	&[data-placement*='top'] {
-		top: -(getRotatedSquaresLength($arrowSize) / 2) !important;
+		top: -($arrowSizeRotated / 2) !important;
 	}
 
 	&[data-placement*='right'] {
-		left: (getRotatedSquaresLength($arrowSize) / 2) !important;
+		left: ($arrowSizeRotated / 2) !important;
 	}
 
 	&[data-placement*='bottom'] {
-		top: (getRotatedSquaresLength($arrowSize) / 2) !important;
+		top: ($arrowSizeRotated / 2) !important;
 	}
 
 	&[data-placement*='left'] {
-		left: -(getRotatedSquaresLength($arrowSize) / 2) !important;
+		left: -($arrowSizeRotated / 2) !important;
 	}
 }
 
 .Tooltip_Popper_Inner {
 	transform: scale(0) translateX(0%) translateY(0%) translateZ(0);
-	transition: transform 80ms $ease-in 80ms, transform-origin 1800ms $ease-in 80ms;
+	transition: transform $transitionDuration $transitionEaseIn 80ms, transform-origin 1800ms $transitionEaseIn 80ms;
 
 	&[data-placement*='top'] {
 		transform-origin: 50% 100%;
@@ -103,28 +104,28 @@ $ease-in: cubic-bezier(.2,.3,.25,.9);
 
 	&[data-placement*='top'] {
 		bottom: $borderThickness; // overlay border
-		left: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
+		left: calc(50% - #{$arrowSizeRotated / 2});
 		transform-origin: 0 100%;
 		transform: rotate(45deg);
 	}
 
 	&[data-placement*='right'] {
 		left: -$arrowSize / 2 + $borderThickness;
-		top: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
+		top: calc(50% - #{$arrowSizeRotated / 2});
 		transform-origin: 49% 57%;
 		transform: rotate(135deg);
 	}
 
 	&[data-placement*='bottom'] {
 		top: -$arrowSize / 2 + $borderThickness;
-		left: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
+		left: calc(50% - #{$arrowSizeRotated / 2});
 		transform-origin: 60% 46%;
 		transform: rotate(225deg);
 	}
 
 	&[data-placement*='left'] {
 		right: -$arrowSize / 2 + $borderThickness;
-		top: calc(50% - #{getRotatedSquaresLength($arrowSize) / 2});
+		top: calc(50% - #{$arrowSizeRotated/ 2});
 		transform-origin: 70% 63%;
 		transform: rotate(-45deg);
 	}

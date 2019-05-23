@@ -10,11 +10,31 @@ interface IProps extends IReactComponentProps {
 	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
 }
 
-export class Tooltip extends React.Component<IProps> {
+interface IState {
+	isLeavingTransition: boolean;
+}
+
+export class Tooltip extends React.Component<IProps, IState> {
 
 	static defaultProps: Partial<IProps> = {
 		forceHover: false,
 		position: 'top',
+	};
+
+	constructor (props: IReactComponentProps) {
+		super(props);
+
+		this.state = {
+			isLeavingTransition: false,
+		};
+	}
+
+	protected _onMouseLeavePopperInner = () => {
+		this.setState({ isLeavingTransition: true });
+	};
+
+	protected _onTransitionEndPopperInner = () => {
+		this.setState({ isLeavingTransition: false });
 	};
 
 	render () {
@@ -36,6 +56,7 @@ export class Tooltip extends React.Component<IProps> {
 										styles.Tooltip_Content,
 										'Tooltip_Content',
 									),
+									onMouseLeave: this._onMouseLeavePopperInner,
 								}
 							);
 						});
@@ -50,6 +71,7 @@ export class Tooltip extends React.Component<IProps> {
 								'Tooltip_Popper',
 								{
 									[styles.Tooltip_Popper__ForceHover]: this.props.forceHover,
+									[styles.Tooltip_Popper__TransitionLeaving]: this.state.isLeavingTransition,
 								}
 							)}
 							style={style}
@@ -58,6 +80,7 @@ export class Tooltip extends React.Component<IProps> {
 							<div
 								className={styles.Tooltip_Popper_Inner}
 								data-placement={placement}
+								onTransitionEnd={this._onTransitionEndPopperInner}
 							>
 								<div
 									className={classnames(

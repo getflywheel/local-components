@@ -61,3 +61,7 @@
 	}
 	@return $cos;
 }
+
+@function calculateRotatedSquaresLength($originalLength, $degrees) {
+	@return $originalLength * abs(cos(rad($degrees))) + $originalLength * abs(sin(rad($degrees)));
+}
