@@ -103,31 +103,59 @@ $transitionDuration: 80ms;
 		(100% + $extraShadowArea) (100% + $extraShadowArea) // bottom-right (bottom after rotate)
 	);
 
-	&[data-placement*='top'] {
+	&[data-placement^='top'] {
 		bottom: $borderThickness; // overlay border
 		left: calc(50% - #{$arrowSizeRotated / 2});
 		transform-origin: 0 100%;
 		transform: rotate(45deg);
 	}
 
-	&[data-placement*='right'] {
+	&[data-placement^='right'] {
 		left: -$arrowSize / 2 + $borderThickness;
 		top: calc(50% - #{$arrowSizeRotated / 2});
 		transform-origin: 49% 57%;
 		transform: rotate(135deg);
 	}
 
-	&[data-placement*='bottom'] {
+	&[data-placement^='bottom'] {
 		top: -$arrowSize / 2 + $borderThickness;
 		left: calc(50% - #{$arrowSizeRotated / 2});
 		transform-origin: 60% 46%;
 		transform: rotate(225deg);
+
+		&[data-placement$='start'] {
+			left: 13px;
+		}
+
+		&[data-placement$='end'] {
+			left: calc(100% - #{$arrowSizeRotated} - 13px);
+		}
 	}
 
-	&[data-placement*='left'] {
+	&[data-placement^='left'] {
 		right: -$arrowSize / 2 + $borderThickness;
 		top: calc(50% - #{$arrowSizeRotated/ 2});
 		transform-origin: 70% 63%;
 		transform: rotate(-45deg);
+	}
+
+	&[data-placement^='top'][data-placement$='start'],
+	&[data-placement^='bottom'][data-placement$='start'] {
+		left: 13px;
+	}
+
+	&[data-placement^='top'][data-placement$='end'],
+	&[data-placement^='bottom'][data-placement$='end'] {
+		left: calc(100% - #{$arrowSizeRotated} - 13px);
+	}
+
+	&[data-placement^='right'][data-placement$='start'],
+	&[data-placement^='left'][data-placement$='start'] {
+		top: 13px;
+	}
+
+	&[data-placement^='right'][data-placement$='end'],
+	&[data-placement^='left'][data-placement$='end'] {
+		top: calc(100% - #{$arrowSizeRotated} - 13px);
 	}
 }

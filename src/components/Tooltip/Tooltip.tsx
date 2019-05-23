@@ -7,7 +7,7 @@ import { Manager, Reference, Popper } from 'react-popper';
 interface IProps extends IReactComponentProps {
 	content?: React.ReactElement;
 	forceHover?: boolean;
-	position?: 'top' | 'right' | 'bottom' | 'left';
+	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
 }
 
 interface IState {
