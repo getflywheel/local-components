@@ -26,17 +26,17 @@ export const Container = (props: IContainerProps) => {
 	const propsWithoutDefaults: Partial<IContainerProps> = {...props};
 	delete propsWithoutDefaults.children;
 	delete propsWithoutDefaults.disabled;
-	const doRenderWrapper: boolean = props.disabled === true || Object.keys(propsWithoutDefaults).length === 0;
-	const doUseTag: boolean = typeof props.element === 'string' || props.element === undefined;
+	const doRenderOnlyChildren: boolean = props.disabled === true || Object.keys(propsWithoutDefaults).length === 0;
+	const doRenderContainerWithTagName: boolean = typeof props.element === 'string' || props.element === undefined;
 
 	return (
-		doRenderWrapper
+		doRenderOnlyChildren
 			?
 			<>
 				{props.children}
 			</>
 			:
-				doUseTag
+				doRenderContainerWithTagName
 				?
 				<Tag
 					className={classnames(
