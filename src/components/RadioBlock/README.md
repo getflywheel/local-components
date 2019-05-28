@@ -65,7 +65,7 @@ Medium size RadioBlock:
 }} />
 ```
 
-Tooltip for the second, disabled option:
+Disable the 2nd item and show a tooltip on hover:
 
 ```js
 <RadioBlock heightSize="m" onChange={() => console.log('onChange')} default={'test1'} options={{
@@ -73,9 +73,13 @@ Tooltip for the second, disabled option:
         label: 'Test 1',
     },
     'test2': {
-    	disabled: true,
         label: 'Test 2',
-        tooltipContent: <p>Hey, this is why this is disabled. It all started when you clicked...</p>,
+    	disabled: true,
+        container: {
+			element: (
+				<Tooltip content={<div>Hey, this option's disabled.<br /><a>Here's why</a></div>} />
+			)
+		}
     },
 }} />
 ```
