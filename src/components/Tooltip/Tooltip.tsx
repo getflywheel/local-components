@@ -8,9 +8,11 @@ interface IProps extends IReactComponentProps {
 	content?: React.ReactElement;
 	forceHover?: boolean;
 	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
+	useJsHover?: boolean;
 }
 
 interface IState {
+	isHover: boolean;
 	isLeavingTransition: boolean;
 }
 
@@ -19,22 +21,35 @@ export class Tooltip extends React.Component<IProps, IState> {
 	static defaultProps: Partial<IProps> = {
 		forceHover: false,
 		position: 'top',
+		useJsHover: false,
 	};
 
 	constructor (props: IReactComponentProps) {
 		super(props);
 
 		this.state = {
+			isHover: false,
 			isLeavingTransition: false,
 		};
 	}
 
-	protected _onMouseLeavePopperInner = () => {
-		this.setState({ isLeavingTransition: true });
+	protected _onMouseEnterContentReference = () => {
+		this.setState({
+			isHover: true,
+		});
+	};
+
+	protected _onMouseLeaveContentReference = () => {
+		this.setState({
+			isLeavingTransition: true,
+			isHover: false,
+		});
 	};
 
 	protected _onTransitionEndPopperInner = () => {
-		this.setState({ isLeavingTransition: false });
+		this.setState({
+			isLeavingTransition: false,
+		});
 	};
 
 	render () {
@@ -56,53 +71,56 @@ export class Tooltip extends React.Component<IProps, IState> {
 										styles.Tooltip_Content,
 										'Tooltip_Content',
 									),
-									onMouseLeave: this._onMouseLeavePopperInner,
+									onMouseEnter: this._onMouseEnterContentReference,
+									onMouseLeave: this._onMouseLeaveContentReference,
 								}
 							);
 						});
 					}}
 				</Reference>
-				<Popper placement={this.props.position}>
-					{({ ref, style, placement, arrowProps }) => (
-						<div
-							ref={ref}
-							className={classnames(
-								styles.Tooltip_Popper,
-								'Tooltip_Popper',
-								{
-									[styles.Tooltip_Popper__ForceHover]: this.props.forceHover,
-									[styles.Tooltip_Popper__TransitionLeaving]: this.state.isLeavingTransition,
-								},
-								this.props.className,
-							)}
-							style={{...style, ...(this.props.style || {})}}
-							data-placement={placement}
-						>
+				{(this.props.forceHover || !this.props.useJsHover || this.state.isHover) && (
+					<Popper placement={this.props.position}>
+						{({ ref, style, placement, arrowProps }) => (
 							<div
-								className={styles.Tooltip_Popper_Inner}
+								ref={ref}
+								className={classnames(
+									styles.Tooltip_Popper,
+									'Tooltip_Popper',
+									{
+										[styles.Tooltip_Popper__ForceHover]: this.props.forceHover,
+										[styles.Tooltip_Popper__TransitionLeaving]: this.state.isLeavingTransition,
+									},
+									this.props.className,
+								)}
+								style={{...style, ...(this.props.style || {})}}
 								data-placement={placement}
-								onTransitionEnd={this._onTransitionEndPopperInner}
 							>
 								<div
-									className={classnames(
-										styles.Tooltip_Popper_Content,
-										'Tooltip_Popper_Content',
-									)}
-								>
-									{this.props.content}
-								</div>
-								<div
-									className={classnames(
-										styles.Tooltip_Popper_Arrow,
-										'Tooltip_Popper_Arrow',
-									)}
-									ref={arrowProps.ref}
+									className={styles.Tooltip_Popper_Inner}
 									data-placement={placement}
-								/>
+									onTransitionEnd={this._onTransitionEndPopperInner}
+								>
+									<div
+										className={classnames(
+											styles.Tooltip_Popper_Content,
+											'Tooltip_Popper_Content',
+										)}
+									>
+										{this.props.content}
+									</div>
+									<div
+										className={classnames(
+											styles.Tooltip_Popper_Arrow,
+											'Tooltip_Popper_Arrow',
+										)}
+										ref={arrowProps.ref}
+										data-placement={placement}
+									/>
+								</div>
 							</div>
-						</div>
-					)}
-				</Popper>
+						)}
+					</Popper>
+				)}
 			</Manager>
 		);
 	}
