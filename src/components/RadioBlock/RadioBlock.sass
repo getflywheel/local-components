@@ -1,5 +1,9 @@
 @import '../../styles/_partials/index'
 
+$zIndexOptionNormal: 1
+$zIndexOptionSelected: $zIndexOptionNormal + 3
+$zIndexOptionTooltip: $zIndexOptionSelected + 3
+
 .RadioBlock
 	display: flex
 	flex-wrap: wrap
@@ -10,12 +14,16 @@
 		flex-direction: column
 	&.RadioBlock__Readonly
 
+	// if child is not a radioblock option then the assumption is that it's a popup, tooltip or some other element that needs to appear above the options
+	> *:not(.RadioBlock_Option)
+		z-index: $zIndexOptionTooltip
+
 .RadioBlock_Option_TooltipWrapper
 	flex: 1
 
 .RadioBlock_Option
 	position: relative
-	z-index: 1
+	z-index: $zIndexOptionNormal
 	@include theme-background-white-else-graydark
 	text-align: center
 	font-size: 18px
@@ -34,7 +42,7 @@
 		z-index: 4
 
 		.RadioBLock_Label
-			z-index: 2
+			z-index: $zIndexOptionNormal + 1
 			border-color: $green
 
 			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
@@ -44,7 +52,7 @@
 				opacity: 1
 				top: -4px
 				left: -4px
-				z-index: 2
+				z-index: $zIndexOptionNormal + 1
 				border-radius: 4px
 				width: calc(100% + 4px)
 				height: calc(100% + 4px)
@@ -113,7 +121,7 @@
 
 		*
 			position: relative
-			z-index: 2
+			z-index: $zIndexOptionNormal + 1
 
 	.RadioBLock_Label_Text
 		pointer-events: none
@@ -131,7 +139,7 @@
 			position: absolute
 			top: 6.4px
 			right: 9.6px
-			z-index: 9
+			z-index: $zIndexOptionSelected + 1
 			width: 10px
 			height: 14px
 			color: $white
