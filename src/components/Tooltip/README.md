@@ -5,14 +5,8 @@ Default tooltip with default `top` position.
     <Tooltip
     	content={<div>This is a tooltip</div>}
     >
-    	<button className="__Pill __Green __Medium">e</button>
+    	<button className="__Pill __Green __Medium">Look at me, I'm a button</button>
     </Tooltip>
-    <Tooltip
-        	content={<div>This is a tooltip</div>}
-        	position="bottom"
-        >
-        	<button className="__Pill __Green __Medium">e</button>
-        </Tooltip>
 </div>
 ```
 ```js
