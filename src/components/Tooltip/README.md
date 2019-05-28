@@ -1,29 +1,13 @@
+The `Tooltip` component allows content to display additional information on hover. Tooltips can be set to top, right, bottom, and left positions.
+
+> Note: Tooltips are drawn relative to a component's initial size. As such, any component that transitions to its final, needs to load content first, or has any delay in its rendering of its final size will likely result in being positioned incorrectly. Enable `useJsHover` for these use cases.
+
 Default tooltip with default `top` position.
 
 ```js
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
     	content={<div>This is a tooltip</div>}
-    >
-    	<button className="__Pill __Green __Medium">Look at me, I'm a button</button>
-    </Tooltip>
-</div>
-```
-```js
-<div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <Tooltip
-    	content={<div>This is a tooltip</div>}
-		position="right"
-    >
-    	<button className="__Pill __Green __Medium">Hover over me</button>
-    </Tooltip>
-</div>
-```
-```js
-<div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <Tooltip
-    	content={<div>This is a tooltip</div>}
-		position="left"
     >
     	<button className="__Pill __Green __Medium">Hover over me</button>
     </Tooltip>
@@ -56,7 +40,7 @@ Position set to `right`.
 </div>
 ```
 
-Position set to `right` but moves to the left because there's no space to the right.
+Position set to `right` but is repositioned to the left because there's not enough space to the right.
 
 ```js
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
