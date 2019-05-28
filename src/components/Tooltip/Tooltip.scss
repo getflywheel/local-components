@@ -75,8 +75,9 @@ $transitionDuration: 80ms;
 }
 
 .Tooltip_Popper_Content {
-	padding: 10px 30px;
+	padding: 20px;
 	font-weight: 300;
+	text-align: center;
 	@include theme-color-graydark50-else-gray25;
 	@include theme-input-background-color;
 	@include theme-input-border;

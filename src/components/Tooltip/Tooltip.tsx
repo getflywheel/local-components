@@ -72,9 +72,10 @@ export class Tooltip extends React.Component<IProps, IState> {
 								{
 									[styles.Tooltip_Popper__ForceHover]: this.props.forceHover,
 									[styles.Tooltip_Popper__TransitionLeaving]: this.state.isLeavingTransition,
-								}
+								},
+								this.props.className,
 							)}
-							style={style}
+							style={{...style, ...(this.props.style || {})}}
 							data-placement={placement}
 						>
 							<div
@@ -96,7 +97,6 @@ export class Tooltip extends React.Component<IProps, IState> {
 										'Tooltip_Popper_Arrow',
 									)}
 									ref={arrowProps.ref}
-									// style={arrowProps.style}
 									data-placement={placement}
 								/>
 							</div>
