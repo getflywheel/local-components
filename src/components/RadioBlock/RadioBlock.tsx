@@ -64,35 +64,38 @@ class RadioBlock extends React.Component<IProps, IState> {
 
 	render () {
 		return (
-			<div
-				className={classnames(
-					styles.RadioBlock,
-					this.props.className,
+			// wrap in optional container
+			<Container {...this.props.container}>
+				<div
+					className={classnames(
+						styles.RadioBlock,
+						this.props.className,
+						{
+							[styles.RadioBlock__DirectionVert]: this.props.direction === 'vert',
+							[styles.RadioBlock__Readonly]: this.props.readonly === true,
+						},
+					)}
+				>
 					{
-						[styles.RadioBlock__DirectionVert]: this.props.direction === 'vert',
-						[styles.RadioBlock__Readonly]: this.props.readonly === true,
-					},
-				)}
-			>
-				{
-					Object.keys(this.props.options).map((optionValue: string, i: number) => (
-						<RadioBlockItem
-							onClick={this.onClick}
-							className={this.props.options[optionValue].className}
-							container={this.props.options[optionValue].container}
-							disabled={this.props.disabled || this.props.options[optionValue].disabled}
-							warn={this.props.warn || this.props.options[optionValue].warn}
-							heightSize={this.props.heightSize}
-							label={this.props.options[optionValue].label}
-							value={optionValue}
-							key={i}
-							readonly={this.props.readonly || this.props.options[optionValue].readonly}
-							svg={this.props.options[optionValue].svg}
-							selected={this.state.value === optionValue}
-						/>
-					))
-				}
-			</div>
+						Object.keys(this.props.options).map((optionValue: string, i: number) => (
+							<RadioBlockItem
+								onClick={this.onClick}
+								className={this.props.options[optionValue].className}
+								container={this.props.options[optionValue].container}
+								disabled={this.props.disabled || this.props.options[optionValue].disabled}
+								warn={this.props.warn || this.props.options[optionValue].warn}
+								heightSize={this.props.heightSize}
+								label={this.props.options[optionValue].label}
+								value={optionValue}
+								key={i}
+								readonly={this.props.readonly || this.props.options[optionValue].readonly}
+								svg={this.props.options[optionValue].svg}
+								selected={this.state.value === optionValue}
+							/>
+						))
+					}
+				</div>
+			</Container>
 		);
 	}
 
