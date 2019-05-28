@@ -4,16 +4,16 @@ import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import { ContainerMarginHelper, ContainerMarginLookupType } from './ContainerMarginHelper';
 
 export interface IContainerProps extends IReactComponentProps {
-	/** whether to include the container (false) or exclude it (true) */
+	/** Whether to include the container (false) or exclude it (true) */
 	disabled?: boolean;
-	/** margin values to be set to 'style' prop */
+	/** The container element or tag (if string) to be used as the container. */
+	element?: React.ReactElement | string;
+	/** Margin values to be set to 'style' prop */
 	margin?: ContainerMarginLookupType;
 	marginBottom?: ContainerMarginLookupType;
 	marginLeft?: ContainerMarginLookupType;
 	marginRight?: ContainerMarginLookupType;
 	marginTop?: ContainerMarginLookupType;
-	/** the element name to used for the container */
-	tag?: string;
 }
 
 const defaultProps: Partial<IContainerProps> = {
@@ -21,31 +21,47 @@ const defaultProps: Partial<IContainerProps> = {
 };
 
 export const Container = (props: IContainerProps) => {
-	const Tag: any = props.tag || 'div';
+	const Tag: any = props.element || 'div';
+	const element: React.ReactElement = props.element as React.ReactElement;
 	const propsWithoutDefaults: Partial<IContainerProps> = {...props};
 	delete propsWithoutDefaults.children;
 	delete propsWithoutDefaults.disabled;
-	// disable (don't render) unless explicitly set to 'false' or one of the other settings exists
-	let disabled = props.disabled === true || Object.keys(propsWithoutDefaults).length === 0;
+	const doRenderWrapper: boolean = props.disabled === true || Object.keys(propsWithoutDefaults).length === 0;
+	const doUseTag: boolean = typeof props.element === 'string' || props.element === undefined;
 
 	return (
-		disabled
+		doRenderWrapper
 			?
 			<>
 				{props.children}
 			</>
 			:
-			<Tag
-				className={classnames(
-					props.className,
-				)}
-				style={{
-					...props.style,
-					...ContainerMarginHelper.getContainerMarginStyle(props),
-				}}
-			>
-				{props.children}
-			</Tag>
+				doUseTag
+				?
+				<Tag
+					className={classnames(
+						props.className,
+					)}
+					style={{
+						...props.style,
+						...ContainerMarginHelper.getContainerMarginStyle(props),
+					}}
+				>
+					{props.children}
+				</Tag>
+				:
+				React.cloneElement(
+					element,
+					{
+						children: Array(props.children || []).concat(element.props.children || []),
+						className: classnames(props.className, element.props.className),
+						style: {
+							...props.style,
+							...element.props.style,
+							...ContainerMarginHelper.getContainerMarginStyle(props),
+						}
+					},
+				)
 	);
 };
 
