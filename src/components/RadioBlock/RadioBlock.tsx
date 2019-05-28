@@ -1,14 +1,14 @@
 import * as React from 'react';
-import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big';
 import ExclamationSVG from '../../svg/exclamation';
 import * as styles from './RadioBlock.sass';
 import Header from '../Header/Header';
-import FlyTooltip from '../FlyTooltip/FlyTooltip';
 import Handler from '../../common/structures/Handler';
+import { Container } from '../Container/Container';
+import ILocalContainerProps from '../../common/structures/ILocalContainerProps';
 
-interface IProps extends IReactComponentProps {
+interface IProps extends ILocalContainerProps {
 	default: string | null;
 	direction: 'horiz' | 'vert';
 	disabled?: boolean;
@@ -79,6 +79,7 @@ class RadioBlock extends React.Component<IProps, IState> {
 						<RadioBlockItem
 							onClick={this.onClick}
 							className={this.props.options[optionValue].className}
+							container={this.props.options[optionValue].container}
 							disabled={this.props.disabled || this.props.options[optionValue].disabled}
 							warn={this.props.warn || this.props.options[optionValue].warn}
 							heightSize={this.props.heightSize}
@@ -88,7 +89,6 @@ class RadioBlock extends React.Component<IProps, IState> {
 							readonly={this.props.readonly || this.props.options[optionValue].readonly}
 							svg={this.props.options[optionValue].svg}
 							selected={this.state.value === optionValue}
-							tooltipContent={this.props.options[optionValue].tooltipContent}
 						/>
 					))
 				}
@@ -98,8 +98,7 @@ class RadioBlock extends React.Component<IProps, IState> {
 
 }
 
-interface IRadioBlockItemProps extends IReactComponentProps {
-
+interface IRadioBlockItemProps extends ILocalContainerProps {
 	disabled?: boolean;
 	warn?: boolean;
 	heightSize?: 'm' | 'l';
@@ -108,9 +107,7 @@ interface IRadioBlockItemProps extends IReactComponentProps {
 	readonly?: boolean;
 	selected?: boolean;
 	svg?: any;
-	tooltipContent?: React.ReactNode;
 	value?: string | null;
-
 }
 
 class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
@@ -136,24 +133,6 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 		}
 	}
 
-	renderOptionalTooltipAndContent (content: React.ReactNode) {
-		if (this.props.tooltipContent) {
-			return (
-				<FlyTooltip
-					content={this.props.tooltipContent}
-					position="center"
-					hoverIntent={true}
-					className={styles.RadioBlock_Option_TooltipWrapper}
-					width="max-content"
-				>
-					{content}
-				</FlyTooltip>
-			);
-		}
-
-		return content;
-	}
-
 	render () {
 		const svg = this.props.warn ?
 			<ExclamationSVG />
@@ -164,35 +143,38 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 				<CheckmarkSVG />
 		;
 
-		return this.renderOptionalTooltipAndContent((
-			<div
-				onClick={this.onClick}
-				className={classnames(
-					styles.RadioBlock_Option,
-					this.props.className,
-					{
-						[styles.RadioBlock_Option__Disabled]: this.props.disabled,
-						[styles.RadioBlock_Option__Warn]: this.props.warn,
-						[styles.RadioBlock_Option__HeightSizeMedium]: this.props.heightSize === 'm',
-						[styles.RadioBlock_Option__Readonly]: this.props.readonly,
-						[styles.RadioBlock_Option__Selected]: this.props.selected,
-					},
-				)}
-			>
-				<label className={styles.RadioBLock_Label}>
-					<Header
-						className={styles.RadioBLock_Label_Text}
-						fontSize={this.props.heightSize === 'l' ? 's' : 'xs'}
-						fontWeight="500"
-					>
-						{this.props.label}
-					</Header>
-					<div className={styles.RadioBLock_Arrow}>
-						{svg}
-					</div>
-				</label>
-			</div>
-		));
+		return (
+			// wrap in optional container
+			<Container {...this.props.container}>
+				<div
+					onClick={this.onClick}
+					className={classnames(
+						styles.RadioBlock_Option,
+						this.props.className,
+						{
+							[styles.RadioBlock_Option__Disabled]: this.props.disabled,
+							[styles.RadioBlock_Option__Warn]: this.props.warn,
+							[styles.RadioBlock_Option__HeightSizeMedium]: this.props.heightSize === 'm',
+							[styles.RadioBlock_Option__Readonly]: this.props.readonly,
+							[styles.RadioBlock_Option__Selected]: this.props.selected,
+						},
+					)}
+				>
+					<label className={styles.RadioBLock_Label}>
+						<Header
+							className={styles.RadioBLock_Label_Text}
+							fontSize={this.props.heightSize === 'l' ? 's' : 'xs'}
+							fontWeight="500"
+						>
+							{this.props.label}
+						</Header>
+						<div className={styles.RadioBLock_Arrow}>
+							{svg}
+						</div>
+					</label>
+				</div>
+			</Container>
+		);
 	}
 
 }
