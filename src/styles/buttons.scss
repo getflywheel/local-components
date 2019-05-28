@@ -15,7 +15,7 @@
 		@include tracking(40);
 		font-weight: 700;
 		border: 0;
-		transition: transform .1s ease 0s, padding .1s ease 0s, background-color .1s ease 0s, color .1s ease 0s;
+		transition: transform .1s ease 0s, background-color .1s ease 0s, color .1s ease 0s;
 		text-decoration: none;
 		align-self: center;
 		color: $gray25;
