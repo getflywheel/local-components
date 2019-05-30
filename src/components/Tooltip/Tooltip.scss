@@ -4,37 +4,31 @@ $arrowSize: 15px;
 $arrowOffset: 14px;
 $arrowSizeRotated: calculateRotatedSquaresLength($arrowSize, 45deg);
 $transitionEaseIn: cubic-bezier(.2,.3,.25,.9);
-$transitionDuration: 80ms;
+$transitionDuration: 100ms;
 
 @mixin tooltipBoxShadow {
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.14);
 }
 
-@mixin showTooltip {
-	visibility: visible;
-
-	& > .Tooltip_Popper_Inner {
-		transform: scale(1.0) translateX(0%) translateY(0%) translateZ(0);
-		transform-origin: 50% 50%;
-	}
-}
-
 .Tooltip_Content {
-	&:hover + .Tooltip_Popper {
-		@include showTooltip;
+	&:hover + .Tooltip_Popper,
+	& + .Tooltip_Popper.Tooltip_Popper__DoPreventTransitionOut,
+	& + .Tooltip_Popper.Tooltip_Popper__ForceHover {
+		visibility: visible;
+
+		& > .Tooltip_Popper_Inner {
+			transform: scale(1.0) translateX(0%) translateY(0%) translateZ(0);
+			transform-origin: 50% 50%;
+		}
+	}
+
+	& + .Tooltip_Popper.Tooltip_Popper__IsTransitionLeaving {
+		visibility: visible;
 	}
 }
 
 .Tooltip_Popper {
 	visibility: hidden;
-
-	&.Tooltip_Popper__TransitionLeaving {
-		visibility: visible; // stay visible while transitioning out
-	}
-
-	&.Tooltip_Popper__ForceHover {
-		@include showTooltip;
-	}
 
 	&[data-placement*='top'] {
 		top: (-$arrowSizeRotated / 2 + $arrowOffset) !important;
@@ -54,8 +48,11 @@ $transitionDuration: 80ms;
 }
 
 .Tooltip_Popper_Inner {
-	transform: scale(0) translateX(0%) translateY(0%) translateZ(0);
-	transition: transform $transitionDuration $transitionEaseIn 80ms, transform-origin 1800ms $transitionEaseIn 80ms;
+	transition: transform $transitionDuration $transitionEaseIn, transform-origin $transitionDuration $transitionEaseIn;
+
+	@at-root .Tooltip_Popper:not(.Tooltip_Popper__DoPreventTransitionOut) & {
+		transform: scale(0) translateX(0%) translateY(0%) translateZ(0);
+	}
 
 	&[data-placement*='top'] {
 		transform-origin: 50% 100%;
@@ -96,7 +93,6 @@ $transitionDuration: 80ms;
 	border-radius: 0 0 4px 0;
 	@include tooltipBoxShadow;
 	pointer-events: none;
-	//transition: all 0.05s cubic-bezier(0.2, 0.3, 0.25, 0.9) 0s;
 	// pre-rotate poly used to clip the content
 	clip-path: polygon(
 		(0% - $extraShadowArea) (100% + $extraShadowArea), // bottom-left (left after rotate)
