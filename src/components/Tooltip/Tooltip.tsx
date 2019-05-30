@@ -6,49 +6,101 @@ import { Manager, Reference, Popper } from 'react-popper';
 
 interface IProps extends IReactComponentProps {
 	content?: React.ReactElement;
+	delayHide?: number;
 	forceHover?: boolean;
 	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
 	useJsHover?: boolean;
 }
 
 interface IState {
-	isHover: boolean;
-	isLeavingTransition: boolean;
+	/** this will prevent CSS-driven fading out of the tooltip if the JS-driven events determine it shouldn't fire (e.g. force hover, delayed exit, still hovering over popper element) **/
+	doPreventTransitionOut: boolean;
+	isMouseOverPopper: boolean;
+	isMouseOverReference: boolean;
+	isTransitionLeaving: boolean;
 }
 
 export class Tooltip extends React.Component<IProps, IState> {
 
 	static defaultProps: Partial<IProps> = {
+		delayHide: 500,
 		forceHover: false,
 		position: 'top',
 		useJsHover: false,
 	};
 
+	protected _delayTimeoutIdPopper: number = NaN;
+	protected _delayTimeoutIdReference: number = NaN;
+
 	constructor (props: IReactComponentProps) {
 		super(props);
 
 		this.state = {
-			isHover: false,
-			isLeavingTransition: false,
+			doPreventTransitionOut: false,
+			isMouseOverPopper: false,
+			isMouseOverReference: false,
+			isTransitionLeaving: false,
 		};
 	}
 
-	protected _onMouseEnterContentReference = () => {
+	protected _onMouseEnterContentPopper = () => {
+		// cancel any timeout attempts to hide tooltip
+		clearTimeout(this._delayTimeoutIdPopper);
+		clearTimeout(this._delayTimeoutIdReference);
+
 		this.setState({
-			isHover: true,
+			isMouseOverPopper: true,
 		});
 	};
 
-	protected _onMouseLeaveContentReference = () => {
+	protected _onMouseLeaveContentPopper = () => {
 		this.setState({
-			isLeavingTransition: true,
-			isHover: false,
+			isMouseOverPopper: false,
 		});
+
+		// delay hiding popper/tooltip
+		this._delayTimeoutIdPopper = setTimeout(() => {
+			this.setState({
+				// check reference hover, if now hovering over it then prevent hiding the tooltip
+				doPreventTransitionOut: this.state.isMouseOverReference,
+				isTransitionLeaving: !this.state.isMouseOverReference,
+			});
+		}, this.props.delayHide);
+	};
+
+	protected _onMouseEnterReference = () => {
+		// cancel any timeout attempts to hide tooltip
+		clearTimeout(this._delayTimeoutIdPopper);
+		clearTimeout(this._delayTimeoutIdReference);
+
+		this.setState({
+			isMouseOverReference: true,
+		});
+
+		this.setState({
+			doPreventTransitionOut: true,
+			isMouseOverReference: true,
+		});
+	};
+
+	protected _onMouseOverReference = () => {
+		this.setState({
+			isMouseOverReference: false,
+		});
+
+		// delay hiding popper/tooltip
+		this._delayTimeoutIdReference = setTimeout(() => {
+			this.setState({
+				// check popper hover, if now hovering over it then prevent hiding the tooltip
+				doPreventTransitionOut: this.state.isMouseOverPopper,
+				isTransitionLeaving: !this.state.isMouseOverPopper,
+			});
+		}, this.props.delayHide);
 	};
 
 	protected _onTransitionEndPopperInner = () => {
 		this.setState({
-			isLeavingTransition: false,
+			isTransitionLeaving: false,
 		});
 	};
 
@@ -71,14 +123,14 @@ export class Tooltip extends React.Component<IProps, IState> {
 										styles.Tooltip_Content,
 										'Tooltip_Content',
 									),
-									onMouseEnter: this._onMouseEnterContentReference,
-									onMouseLeave: this._onMouseLeaveContentReference,
+									onMouseEnter: this._onMouseEnterReference,
+									onMouseLeave: this._onMouseOverReference,
 								}
 							);
 						});
 					}}
 				</Reference>
-				{(this.props.forceHover || !this.props.useJsHover || this.state.isHover) && (
+				{(this.props.forceHover || !this.props.useJsHover || this.state.isMouseOverReference) && (
 					<Popper placement={this.props.position}>
 						{({ ref, style, placement, arrowProps }) => (
 							<div
@@ -87,13 +139,16 @@ export class Tooltip extends React.Component<IProps, IState> {
 									styles.Tooltip_Popper,
 									'Tooltip_Popper',
 									{
+										[styles.Tooltip_Popper__DoPreventTransitionOut]: this.state.doPreventTransitionOut,
 										[styles.Tooltip_Popper__ForceHover]: this.props.forceHover,
-										[styles.Tooltip_Popper__TransitionLeaving]: this.state.isLeavingTransition,
+										[styles.Tooltip_Popper__IsTransitionLeaving]: this.state.isTransitionLeaving,
 									},
 									this.props.className,
 								)}
 								style={{...style, ...(this.props.style || {})}}
 								data-placement={placement}
+								onMouseEnter={this._onMouseEnterContentPopper}
+								onMouseLeave={this._onMouseLeaveContentPopper}
 							>
 								<div
 									className={styles.Tooltip_Popper_Inner}
