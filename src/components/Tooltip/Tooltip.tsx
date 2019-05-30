@@ -5,15 +5,20 @@ import * as styles from './Tooltip.scss';
 import { Manager, Reference, Popper } from 'react-popper';
 
 interface IProps extends IReactComponentProps {
+	/** the content that should show the tooltip upon the user's mouse entering it **/
 	content?: React.ReactElement;
-	delayHide?: number;
+	/** whether to force the tooltip to show and ignore mouse events **/
 	forceHover?: boolean;
+	/** the number of milliseconds to delay hiding the tooltip after the user's mouse leaves this component **/
+	hideDelay?: number;
+	/** the position/placement of the tooltip relative to the content **/
 	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
+	/** whether to use just JavaScript to show and hide the tooltip **/
 	useJsHover?: boolean;
 }
 
 interface IState {
-	/** this will prevent CSS-driven fading out of the tooltip if the JS-driven events determine it shouldn't fire (e.g. force hover, delayed exit, still hovering over popper element) **/
+	/** whether to prevent CSS-driven fading out of the tooltip if the JS-driven events determine it shouldn't fire (e.g. force hover, delayed exit, still hovering over popper element) **/
 	doPreventTransitionOut: boolean;
 	isMouseOverPopper: boolean;
 	isMouseOverReference: boolean;
@@ -23,7 +28,7 @@ interface IState {
 export class Tooltip extends React.Component<IProps, IState> {
 
 	static defaultProps: Partial<IProps> = {
-		delayHide: 500,
+		hideDelay: 500,
 		forceHover: false,
 		position: 'top',
 		useJsHover: false,
@@ -65,7 +70,7 @@ export class Tooltip extends React.Component<IProps, IState> {
 				doPreventTransitionOut: this.state.isMouseOverReference,
 				isTransitionLeaving: !this.state.isMouseOverReference,
 			});
-		}, this.props.delayHide);
+		}, this.props.hideDelay);
 	};
 
 	protected _onMouseEnterReference = () => {
@@ -95,7 +100,7 @@ export class Tooltip extends React.Component<IProps, IState> {
 				doPreventTransitionOut: this.state.isMouseOverPopper,
 				isTransitionLeaving: !this.state.isMouseOverPopper,
 			});
-		}, this.props.delayHide);
+		}, this.props.hideDelay);
 	};
 
 	protected _onTransitionEndPopperInner = () => {
