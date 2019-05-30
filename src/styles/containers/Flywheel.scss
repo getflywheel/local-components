@@ -126,9 +126,6 @@
 			height: 88px;
 			margin: 0 26px 0 0;
 			cursor: pointer;
-			@include if-theme-dark() {
-				filter: brightness(0.34);
-			}
 		}
 
 		button {
