@@ -83,6 +83,10 @@
 	@include __theme-background($white, $gray25);
 }
 
+@mixin theme-background-white-else-graydarkalt {
+	@include __theme-background($white, $gray-dark-alt);
+}
+
 @mixin theme-background-white-else-graydark50 {
 	@include __theme-background($white, $gray-dark50);
 }
