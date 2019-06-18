@@ -10,6 +10,7 @@ const { WorkspaceSwitcher } = require('./components/WorkspaceSwitcher');
 	    	infoBannerUrl="#"
     		onClickAccount={() => console.log('onClickAccount')}
     		onClickAddTeam={() => console.log('onClickAddTeam')}
+    		onClickUpgradeToPro={() => console.log('onClickUpgradeToPro')}
     		onClickLogout={() => console.log('onClickLogout')}
     		onClickWorkspace={(workspace) => console.log('onClickWorkspace: ', workspace)}
 			routeTo="/main/users"
@@ -19,22 +20,26 @@ const { WorkspaceSwitcher } = require('./components/WorkspaceSwitcher');
 				{
 					id: 1,
 					isActive: true,
+					isPro: false,
 					isTeam: false,
 					src: "https://get.pxhere.com/photo/avatar-people-person-business-user-man-character-set-icon-portrait-profile-pictograph-hairstyle-jacket-suit-sunglasses-handsome-head-face-design-concept-symbol-smile-formal-elements-eyewear-vision-care-gentleman-male-shoulder-outerwear-necktie-businessperson-facial-hair-glasses-clip-art-human-behavior-white-collar-worker-neck-1447673.jpg"
 				},
 				{
 					id: 2,
+					isPro: false,
 					isTeam: true,
 					src: "https://upload.wikimedia.org/wikipedia/commons/1/10/Y_Combinator_Logo.png"
 				},
 				{
 					id: 3,
+					isPro: false,
 					isTeam: true,
 					isOwner: true,
 					src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSRpQpaGpT1tDSZFY5KCxnC91NG3FYR56Fg3sjoQFaJfupST6Wbg"
 				},
 				{
 					id: 4,
+					isPro: false,
 					isTeam: true,
 					src: "https://upload.wikimedia.org/wikipedia/commons/d/dd/Windscreen_defrost.png"
 				},

@@ -21,6 +21,7 @@ interface IWorkspaceSwitcherProps extends IReactComponentProps {
 	onCloseInfoBanner?: Handler;
 	onClickManageTeam: Handler;
 	onClickLogout: Handler;
+	onClickUpgradeToPro: Handler;
 	onClickWorkspace: Handler;
 	onClickWorkspaceNav: Handler;
 	routeTo: string;
@@ -92,6 +93,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 
 	render () {
 		const hasTeams = this.props.workspaces && !!this.props.workspaces.filter(workspaceItem => workspaceItem.isTeam).length;
+		const hasPro = this.props.workspaces && !!this.props.workspaces.filter(workspaceItem => workspaceItem.isPro).length;
 
 		return (
 			<VerticalNavItem
@@ -128,61 +130,75 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								</div>
 							)}
 						>
-							{ hasTeams &&
+							{ this.props.showInfoBanner && !this.state.isInfoBannerClosed &&
+								<div
+									className={styles.WorkspaceSwitcher_Popup_InfoContainer}
+									onClick={this.onCloseInfoBannerContainer}
+								>
+									<WarningSVG className={styles.WorkspaceSwitcher_Popup_WarningSvg}/>
+									<a href={this.props.infoBannerUrl} className={styles.WorkspaceSwitcher_Popup_Text}>What’s this?</a>
+									<span onClick={this.onCloseInfoBanner}>
+										<CloseSmallSVG className={styles.WorkspaceSwitcher_Popup_CloseSvg} />
+									</span>
+								</div>
+							}
+							<div
+								className={classnames(
+									styles.WorkspaceSwitcher_PopupGrid,
+									{
+										[styles.WorkspaceSwitcher_PopupGrid__WithTopPadding]: !this.props.showInfoBanner || this.state.isInfoBannerClosed,
+									},
+								)}
+							>
+								{this.props.workspaces.map((workspaceItem) => {
+									return (
+										<div key={workspaceItem.id} onClick={() => this.onSelect(workspaceItem)}>
+											<Avatar
+												className={classnames(
+													styles.WorkspaceSwitcher_PopupGridItem,
+													styles.WorkspaceSwitcher_Avatar,
+													{
+														[styles.WorkspaceSwitcher_PopupGridItem__Active]: workspaceItem.id === this.state.activeWorkspaceItem.id,
+														[styles.WorkspaceSwitcher_PopupGridItem__Team]: !workspaceItem.isTeam,
+													},
+												)}
+												color={workspaceItem.color}
+												initials={workspaceItem.initials}
+												placeholderSrc={workspaceItem.srcCache}
+												size="s"
+												type={workspaceItem.isTeam ? 'team' : 'user'}
+												src={workspaceItem.src}
+											/>
+										</div>
+									);
+								})}
+								<div
+									className={styles.WorkspaceSwitcher_PopupGridItemAdd}
+									onClick={this.props.onClickAddTeam}
+								>
+									<AddSVG />
+								</div>
+							</div>
+							<Divider />
+							{ !hasPro && !hasTeams &&
 								<>
-									{ this.props.showInfoBanner && !this.state.isInfoBannerClosed &&
-										<div
-											className={styles.WorkspaceSwitcher_Popup_InfoContainer}
-											onClick={this.onCloseInfoBannerContainer}
+									<div className={styles.WorkspaceSwitcher_Section}>
+										<Button
+											className="__Green"
+											onClick={this.props.onClickUpgradeToPro}
 										>
-											<WarningSVG className={styles.WorkspaceSwitcher_Popup_WarningSvg}/>
-											<a href={this.props.infoBannerUrl} className={styles.WorkspaceSwitcher_Popup_Text}>What’s this?</a>
-											<span onClick={this.onCloseInfoBanner}>
-												<CloseSmallSVG className={styles.WorkspaceSwitcher_Popup_CloseSvg} />
-											</span>
-										</div>
-									}
-									<div
-										className={classnames(
-											styles.WorkspaceSwitcher_PopupGrid,
-											{
-												[styles.WorkspaceSwitcher_PopupGrid__WithTopPadding]: !this.props.showInfoBanner || this.state.isInfoBannerClosed,
-											},
-										)}
-									>
-										{this.props.workspaces.map((workspaceItem) => {
-											return (
-												<div key={workspaceItem.id} onClick={() => this.onSelect(workspaceItem)}>
-													<Avatar
-														className={classnames(
-															styles.WorkspaceSwitcher_PopupGridItem,
-															styles.WorkspaceSwitcher_Avatar,
-															{
-																[styles.WorkspaceSwitcher_PopupGridItem__Active]: workspaceItem.id === this.state.activeWorkspaceItem.id,
-																[styles.WorkspaceSwitcher_PopupGridItem__Team]: !workspaceItem.isTeam,
-															},
-														)}
-														color={workspaceItem.color}
-														initials={workspaceItem.initials}
-														placeholderSrc={workspaceItem.srcCache}
-														size="s"
-														type={workspaceItem.isTeam ? 'team' : 'user'}
-														src={workspaceItem.src}
-													/>
-												</div>
-											);
-										})}
-										<div
-											className={styles.WorkspaceSwitcher_PopupGridItemAdd}
-											onClick={this.props.onClickAddTeam}
-										>
-											<AddSVG />
-										</div>
+											UPGRADE TO PRO
+										</Button>
 									</div>
 									<Divider />
 								</>
 							}
-							<div className={styles.WorkspaceSwitcher_PopupFooter}>
+							<div
+								className={classnames(
+									styles.WorkspaceSwitcher_PopupFooter,
+									styles.WorkspaceSwitcher_Section,
+								)}
+							>
 								<Button
 									className="__Green"
 									onClick={() => (
@@ -195,14 +211,6 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								>
 									{this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'My Account'}
 								</Button>
-								{ !hasTeams &&
-									<Button
-										className="__Green"
-										onClick={this.props.onClickAddTeam}
-									>
-										Add a Team
-									</Button>
-								}
 								<Button
 									className="__Green"
 									onClick={this.props.onClickLogout}
