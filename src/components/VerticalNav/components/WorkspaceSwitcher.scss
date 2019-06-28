@@ -131,6 +131,10 @@
 			width: 12px;
 			stroke: $gray75;
 			stroke-width: 2px;
+
+			path {
+				fill: $gray75;
+			}
 		}
 
 		&:hover {
@@ -138,6 +142,10 @@
 
 			svg {
 				stroke: $white;
+
+				path {
+					fill: $white;
+				}
 			}
 		}
 	}
