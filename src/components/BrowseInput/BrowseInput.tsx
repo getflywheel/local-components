@@ -3,18 +3,16 @@ import classnames from 'classnames';
 import * as styles from './BrowseInput.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import Handler from '../../common/structures/Handler';
+import untildify = require('untildify');
 
 let remote: any;
 let dialog: any;
-let formatHomePath: any;
 
 try {
 	remote = require('electron').remote;
 	dialog = remote.dialog;
-	formatHomePath = remote.require('./helpers/format-home-path').default;
-}
-catch (e) {
-	console.warn(`Electron wasn't detected and BrowseInput won't function normally.`);
+} catch (e) {
+	console.warn(`Electron wasn't detected so BrowseInput won't function normally.`);
 }
 
 interface IProps extends IReactComponentProps {
@@ -56,7 +54,7 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 
 	browseFolder () {
 		dialog.showOpenDialog(remote.getCurrentWindow(), {
-			'defaultPath': formatHomePath(this.state.value || this.props.defaultPath),
+			'defaultPath': untildify(this.state.value! || this.props.defaultPath!),
 			'properties': this.props.dialogProperties,
 			'title': this.props.dialogTitle,
 		}, (paths: any[]) => {
