@@ -6,26 +6,20 @@
 	flex-direction: column;
 	width: 68px;
 	height: 100%;
-	padding: 30px 0 0;
+	padding: 0;
 	@include theme-background-green-else-graydark;
 
-	@at-root :global(.__OsWindows .VerticalNav) {
-		padding-top: 0;
+	@at-root :global(.__OsDarwin) .VerticalNav {
+		padding-top: 30px;
 	}
 
-	@at-root :global(.__OsWindows) .VerticalNav {
-		padding-top: 0;
-
-		@at-root :global(.__OsWindows .VerticalNav .VerticalNavItem_DragRegion),
-		.VerticalNavItem_DragRegion {
-			-webkit-app-region: default;
-		}
-	}
-
-	@at-root :global(.VerticalNav .VerticalNavItem_DragRegion),
 	.VerticalNavItem_DragRegion {
+		-webkit-app-region: default;
 		flex-grow: 1;
-		-webkit-app-region: drag;
+
+		@at-root :global(.__OsDarwin) & {
+			-webkit-app-region: drag;
+		}
 	}
 
 	.VerticalNav_Add {
