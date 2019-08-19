@@ -1,0 +1,20 @@
+import * as React from 'react';
+import ILocalContainerProps from '../../common/structures/ILocalContainerProps';
+import * as styles from './TitleBar.scss';
+import classnames from 'classnames';
+import { Container } from '../Container';
+
+interface IProps extends ILocalContainerProps {}
+
+export const TitleBar = (props: IProps) => (
+	<Container>
+		<div
+			className={classnames(
+				styles.TitleBar,
+				'TitleBar',
+			)}
+		>
+			{props.children}
+		</div>
+	</Container>
+);
