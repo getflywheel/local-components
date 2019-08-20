@@ -4,7 +4,9 @@ import * as styles from './TitleBar.scss';
 import classnames from 'classnames';
 import { Container } from '../Container';
 
-interface IProps extends ILocalContainerProps {}
+interface IProps extends ILocalContainerProps {
+	title?: string;
+}
 
 export const TitleBar = (props: IProps) => (
 	<Container>
@@ -14,7 +16,12 @@ export const TitleBar = (props: IProps) => (
 				'TitleBar',
 			)}
 		>
-			{props.children}
+			{props.title}
+			{ props.children && (
+				<div className={styles.TitleBar_Content}>
+					{props.children}
+				</div>
+			)}
 		</div>
 	</Container>
 );
