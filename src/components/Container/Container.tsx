@@ -59,7 +59,7 @@ export const Container = (props: IContainerProps) => {
 							...props.style,
 							...element.props.style,
 							...ContainerMarginHelper.getContainerMarginStyle(props),
-						}
+						},
 					},
 				)
 	);

@@ -50,6 +50,7 @@ export {TableList as TableList, TableListRow as TableListRow} from './components
 export {default as TableListRepeater} from './components/TableListRepeater';
 export {default as TabNav} from './components/TabNav';
 export {TertiaryNav as TertiaryNav, TertiaryNavItem as TertiaryNavItem} from './components/TertiaryNav';
+export {TitleBar} from './components/Titlebar';
 export {Tooltip} from './components/Tooltip';
 export {default as Truncate} from './components/Truncate';
 export {VerticalNav as VerticalNav, VerticalNavItem as VerticalNavItem} from './components/VerticalNav';

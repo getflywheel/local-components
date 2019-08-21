@@ -1,0 +1,17 @@
+@import '../../styles/_partials/index';
+
+.TitleBar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex: 1; // fill width if within flexbox display (the assumption is that they would only be placing this component within a vertical flex direction)
+	width: 100%;
+	padding: 15px 20px 15px 30px;
+	font-weight: $font-weight-700-bold;
+	@include theme-background-gray15-else-graydark50;
+}
+
+.TitleBar_Content {
+	margin-left: 20px;
+	text-align: right;
+}
