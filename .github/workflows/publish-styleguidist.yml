@@ -1,20 +1,19 @@
 name: Publish Styleguidist to GitHub Pages
 
-on:
-  push:
-    branches:
-    - master
+on: [push]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
 
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js
       uses: actions/setup-node@v1
-    - name: npm install, gh-pages:deploy
+    - name: yarn install, gh-pages:deploy
       run: |
-        npm install
-        npm run gh-pages:deploy
+        yarn install
+        yarn run gh-pages:deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

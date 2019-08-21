@@ -40,8 +40,8 @@
 		"prepare": "yarn run build && shx rm dist/global.css.json",
 		"create-entrypoints": "ts-node --transpile-only tasks/create-component-entrypoints.ts",
 		"create-ts-svgs": "ts-node tasks/create-typescript-svgs.ts",
-		"gh-pages:build": "yarn run build && styleguidist build",
-		"gh-pages:deploy": "yarn gh-pages:build && gh-pages -d styleguide",
+		"gh-pages:build": "styleguidist build",
+		"gh-pages:deploy": "yarn gh-pages:build && gh-pages --repo \"https://$GITHUB_TOKEN@github.com/getflywheel/local-components.git\" -d styleguide --user \"Local Bot <local@getflywheel.com>\"",
 		"tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json -t stylish"
 	},
 	"peerDependencies": {
@@ -69,7 +69,7 @@
 		"enzyme": "^3.8",
 		"enzyme-adapter-react-16": "^1.7.1",
 		"extract-css-chunks-webpack-plugin": "^3.2.1",
-		"gh-pages": "^1.2.0",
+		"gh-pages": "^2.1.1",
 		"globby": "^8.0.1",
 		"identity-obj-proxy": "^3.0.0",
 		"ignore-styles": "^5.0.1",
