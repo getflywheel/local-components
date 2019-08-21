@@ -1,0 +1,39 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'macOS-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.15'
+    
+- script: |
+    git config --local user.name "Local Bot"
+    git config --local user.email "local@getflywheel.com"
+    git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+  displayName: 'Configure Git'
+  
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: local_components_deploy_key
+  displayName: 'Get the deploy key'
+
+- script: |
+    mkdir ~/.ssh && mv $DOWNLOADSECUREFILE_SECUREFILEPATH ~/.ssh/id_rsa
+    chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_rsa
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+  displayName: 'Add Deploy Key'
+
+- script: yarn install
+  displayName: 'Yarn Install'
+
+- script: |
+    yarn gh-pages:deploy
+  displayName: 'Deploy to GitHub Pages'
