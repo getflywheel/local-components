@@ -1,0 +1,20 @@
+name: Publish Styleguidist to GitHub Pages
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+    - name: npm install, gh-pages:deploy
+      run: |
+        npm install
+        npm run gh-pages:deploy
