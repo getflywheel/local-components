@@ -40,8 +40,8 @@
 		"prepare": "yarn run build && shx rm dist/global.css.json",
 		"create-entrypoints": "ts-node --transpile-only tasks/create-component-entrypoints.ts",
 		"create-ts-svgs": "ts-node tasks/create-typescript-svgs.ts",
-		"gh-pages:build": "styleguidist build",
-		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide",
+		"gh-pages:build": "yarn run build && styleguidist build",
+		"gh-pages:deploy": "yarn gh-pages:build && gh-pages -d styleguide",
 		"tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json -t stylish"
 	},
 	"peerDependencies": {
