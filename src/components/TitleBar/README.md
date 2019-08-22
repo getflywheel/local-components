@@ -8,7 +8,13 @@ For more information on the `TitleBar` component and its use, please check out o
 
 ```js
 <TitleBar title="Add-on with title">
-    and right-aligned content
+    optional right content
 </TitleBar>
 ```
 
+```js
+<TitleBar title="Add-on with title">
+    <span>optional right content</span>
+    <a href="#">Action link</a>
+</TitleBar>
+```
