@@ -14,4 +14,13 @@
 .TitleBar_Content {
 	margin-left: 20px;
 	text-align: right;
+	font-weight: $font-weight-300-light;
+
+	> * {
+		margin-right: 10px;
+	}
+
+	> *:last-child {
+		margin-right: 0;
+	}
 }

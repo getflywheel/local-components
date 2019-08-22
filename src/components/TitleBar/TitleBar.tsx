@@ -16,7 +16,9 @@ export const TitleBar = (props: IProps) => (
 				'TitleBar',
 			)}
 		>
-			{props.title}
+			<div>
+				{props.title}
+			</div>
 			{ props.children && (
 				<div className={styles.TitleBar_Content}>
 					{props.children}
