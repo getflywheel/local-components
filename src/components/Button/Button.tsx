@@ -44,7 +44,7 @@ export default class Button extends React.Component<IProps> {
 		disabled: false,
 		emphasis: ButtonPropEmphasis.secondary,
 		intent: ButtonPropIntent.none,
-		// size: ButtonPropSize.m, // don't set default otherwise we can't dynamically switch this for primary and secondary
+		// size: ButtonPropSize.m, // don't set default here because of differences between primary and secondary default size
 		tag: 'button',
 	};
 
