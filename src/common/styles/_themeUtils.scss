@@ -8,7 +8,6 @@
 // setup a light and dark css variable for each css prop name so we can effortlessly toggle between them based on the current theme
 @mixin setupThemeVars($cssVars...) {
 	@each $cssVarPropName in $cssVars {
-		--blahblah: red;
 		@include if-theme-light() {
 			#{$cssVarPropName}: var(#{$cssVarPropName + '_Light'});
 		}
