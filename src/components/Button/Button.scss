@@ -26,7 +26,8 @@ $disabled-text-dark: $gray-dark50;
 		'--Button_MainColor',
 		'--Button_Background',
 		'--Button_BorderColor',
-		'--Button_TextColor'
+		'--Button_TextColor',
+		'--Button_SvgPathFillColor'
 	);
 
 	// css variable-based styles
@@ -59,10 +60,23 @@ $disabled-text-dark: $gray-dark50;
 		display: inline-block;
 	}
 
+	svg {
+		width: 14px;
+		height: 14px;
+		vertical-align: middle;
+		margin: 0 10px 0 0;
+
+		path {
+			transition: fill .1s ease 0s, stroke .1s ease 0s;
+			fill: var(--Button_SvgPathFillColor);
+		}
+	}
+
 	&.Button__Emphasis_Primary {
 		@include setThemeVar('--Button_MainColor', $green);
 		@include setThemeVar('--Button_Background', var(--Button_MainColor));
 		@include setThemeVar('--Button_TextColor', $white);
+		@include setThemeVar('--Button_SvgPathFillColor', $white);
 
 		&:hover {
 			@include setThemeVar('--Button_MainColor', $green-dark50);
@@ -78,11 +92,13 @@ $disabled-text-dark: $gray-dark50;
 		@include setThemeVar('--Button_MainColor', $gray75, $gray25);
 		@include setThemeVar('--Button_BorderColor', var(--Button_MainColor));
 		@include setThemeVar('--Button_TextColor', var(--Button_MainColor));
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_MainColor));
 
 		&:hover {
 			@include setThemeVar('--Button_Background', var(--Button_MainColor), transparent);
 			@include setThemeVar('--Button_BorderColor', var(--Button_MainColor), $white);
 			@include setThemeVar('--Button_TextColor', $white);
+			@include setThemeVar('--Button_SvgPathFillColor', $white);
 		}
 
 		&[disabled] {
@@ -95,6 +111,7 @@ $disabled-text-dark: $gray-dark50;
 	&.Button__Emphasis_Text {
 		@include setThemeVar('--Button_MainColor', $green);
 		@include setThemeVar('--Button_TextColor', var(--Button_MainColor));
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_MainColor));
 
 		&:hover {
 			@include setThemeVar('--Button_MainColor', $green-dark50);
