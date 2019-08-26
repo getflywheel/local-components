@@ -27,6 +27,7 @@ export class ButtonExample extends ComponentExampleBase {
 					type: 'enum',
 				},
 				{
+					defaultValue: 'm', // manually set this here because of differences between primary and secondary default size
 					options: ButtonPropSize,
 					propName: 'size',
 					type: 'enum',

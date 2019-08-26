@@ -138,7 +138,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 				}
 
 				return Object.values(item.options).map((optionValue: any) => {
-					const isDefault: boolean = this._isComponentPropDefault(item.propName, optionValue);
+					const isDefault: boolean = this._isComponentPropDefault(item.propName, optionValue) || item.defaultValue === optionValue;
 
 					return (
 						<div key={optionValue}>
