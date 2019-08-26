@@ -30,7 +30,7 @@
 	body,
 	div#styleguide-container {
 		margin: 0;
-		@include defaultFontSettings;
+		@include defaultFontAndTextSettings;
 		@include fullWidthHeight;
 		@include theme-background-white-else-graydark;
 		@include theme-color-graydark-else-white;
@@ -53,7 +53,7 @@
 
 	input,
 	select {
-		@include defaultFontSettings;
+		@include defaultFontAndTextSettings;
 	}
 
 	h1,
