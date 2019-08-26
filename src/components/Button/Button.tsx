@@ -73,7 +73,6 @@ export default class Button extends React.Component<IProps> {
 					disabled={this.props.disabled}
 					onClick={this.props.onClick}
 					type={this.props.type}
-					{...this.props}
 				>
 					{this.props.children}
 				</Tag>
