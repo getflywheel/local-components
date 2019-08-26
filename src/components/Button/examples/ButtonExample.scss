@@ -1,0 +1,43 @@
+@import '../../../styles/_partials/index';
+
+.ButtonExample_Container {
+	display: flex;
+	flex-direction: row;
+}
+
+.ButtonExample_Content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.ButtonExample_Content_Stage {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ButtonExample_Content_Code {
+	display: flex;
+	flex-direction: row;
+	@include theme-border-top();
+	@include flywheelInput;
+}
+
+.ButtonExample_Content_Code_Markup {
+	flex: 1;
+}
+
+.ButtonExample_Config {
+	padding: 10px;
+	@include theme-border-left();
+}
+
+.ButtonExample_Config_PropBlock {
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
