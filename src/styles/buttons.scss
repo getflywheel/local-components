@@ -1,27 +1,7 @@
 @import './_partials/index';
 
 :global {
-	.button {
-		display: inline-block;
-	}
-
-	button {
-		@include defaultFontSettings;
-	}
-
 	button, .button {
-		background: transparent;
-		text-transform: uppercase;
-		@include tracking(40);
-		font-weight: 700;
-		border: 0;
-		transition: transform .1s ease 0s, background-color .1s ease 0s, color .1s ease 0s;
-		text-decoration: none;
-		align-self: center;
-		color: $gray25;
-		cursor: pointer;
-		flex-shrink: 0;
-
 		svg {
 			width: 14px;
 			height: 14px;
@@ -33,46 +13,15 @@
 			}
 		}
 
-		&:hover {
-			color: $gray75;
-		}
-
-		&:active {
-			transform: scale(.98);
-		}
-
-		&[disabled] {
-			pointer-events: none;
-
-			&:not(.__NoOpacityChange) {
-				opacity: .5;
-			}
-		}
-
-		&.__GrayOutline,
-		&.#{deprecated(--GrayOutline, '2.5', '2.0', 'Needed for distributed Environments')} {
-			border-radius: 500px;
-			border: 2px solid $gray25;
-			color: $gray25;
-			padding: 5px 20px;
-
+		&.__GrayOutline {
 			svg path {
 				fill: $gray25;
 			}
 
 			&:hover {
-				color: $white;
-				background: $gray25;
-
-				@include if-theme-dark {
-					background: none;
-					border-color: $white;
-				}
-
 				svg path {
 					fill: $white;
 				}
-
 			}
 
 			&.__Vert_Padding__10 {
@@ -121,17 +70,8 @@
 		}
 
 		&.__Pill {
-			@include pillButton;
-			color: $white !important;
-			padding: 15px 30px;
-
 			svg path {
 				fill: $white;
-			}
-
-			&[disabled] {
-				opacity: 1;
-				@include theme-button-pill-disabled;
 			}
 
 			&.__Green,
@@ -172,14 +112,6 @@
 				vertical-align: middle;
 			}
 		}
-
-		&.__Small {
-			padding: 3px 17px;
-		}
-
-		&.__Medium {
-			padding: 10px 20px;
-		}
 	}
 
 	#NoSitesAddSiteButton {
@@ -200,7 +132,6 @@
 }
 
 button, .button {
-	//.#{deprecated(--Inline, '2.5', '2.0', 'Needed for distributed Environments')}
 	&:global(.__Inline), &:global(.--Inline) {
 		font-size: 12px;
 

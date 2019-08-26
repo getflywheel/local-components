@@ -19,6 +19,10 @@
 @mixin defaultFontSettings {
 	font-size: 14px;
 	font-family: $museo-sans-rounded;
+}
+
+@mixin defaultFontAndTextSettings {
+	@include defaultFontSettings;
 	@include theme-color-graydark-else-white;
 }
 
