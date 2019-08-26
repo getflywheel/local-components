@@ -37,14 +37,13 @@ interface IProps extends ILocalContainerProps {
 	type?: 'button' | 'submit' | 'reset';
 }
 
-/* todo - crum: stateless function */
 export default class Button extends React.Component<IProps> {
 
 	static defaultProps: Partial<IProps> = {
 		disabled: false,
 		emphasis: ButtonPropEmphasis.secondary,
 		intent: ButtonPropIntent.none,
-		// size: ButtonPropSize.m, // don't set default here because of differences between primary and secondary default size
+		// don't set `size` default here because of differences between primary and secondary default size
 		tag: 'button',
 	};
 
