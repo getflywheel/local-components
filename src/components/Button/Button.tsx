@@ -44,7 +44,7 @@ export default class Button extends React.Component<IProps> {
 		disabled: false,
 		emphasis: ButtonPropEmphasis.secondary,
 		intent: ButtonPropIntent.none,
-		size: ButtonPropSize.m,
+		// size: ButtonPropSize.m, // don't set default otherwise we can't dynamically switch this for primary and secondary
 		tag: 'button',
 	};
 
@@ -63,8 +63,10 @@ export default class Button extends React.Component<IProps> {
 							[styles.Button__Emphasis_Secondary]: this.props.emphasis === ButtonPropEmphasis.secondary,
 							[styles.Button__Emphasis_Text]: this.props.emphasis === ButtonPropEmphasis.text,
 							[styles.Button__Intent_Danger]: this.props.intent === ButtonPropIntent.danger,
-							[styles.Button__Size_Large]: this.props.size === ButtonPropSize.l,
-							[styles.Button__Size_Medium]: this.props.size === ButtonPropSize.m,
+							// set to large if defined as such or, if no size is given, but using primary emphasis button
+							[styles.Button__Size_Large]: this.props.size === ButtonPropSize.l  || (!this.props.size && this.props.emphasis === ButtonPropEmphasis.primary),
+							// set to medium if defined as such or, if no size is given, but using secondary emphasis button
+							[styles.Button__Size_Medium]: this.props.size === ButtonPropSize.m || (!this.props.size && this.props.emphasis === ButtonPropEmphasis.secondary),
 							[styles.Button__Size_Small]: this.props.size === ButtonPropSize.s,
 						},
 					)}
