@@ -1,0 +1,43 @@
+@import '../../styles/_partials/index';
+
+.ComponentExample_Container {
+	display: flex;
+	flex-direction: row;
+}
+
+.ComponentExample_Content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.ComponentExample_Content_Stage {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ComponentExample_Content_Code {
+	display: flex;
+	flex-direction: row;
+	@include theme-border-top();
+	@include flywheelInput;
+}
+
+.ComponentExample_Content_Code_Markup {
+	flex: 1;
+}
+
+.ComponentExample_Config {
+	padding: 10px;
+	@include theme-border-left();
+}
+
+.ComponentExample_Config_PropBlock {
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
