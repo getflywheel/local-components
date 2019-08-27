@@ -5,11 +5,13 @@ The `Tooltip` component allows content to display additional information on hove
 Default tooltip with default `top` position.
 
 ```js
+const Button = require('../Button').default;
+
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
     	content={<div>This is a tooltip</div>}
     >
-    	<button className="__Pill __Green __Medium">Hover over me</button>
+        <div>Hover over me</div>
     </Tooltip>
 </div>
 ```
@@ -17,12 +19,14 @@ Default tooltip with default `top` position.
 Set `forceHover` to `true`.
 
 ```js
+const Button = require('../Button').default;
+
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
     	content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
     	forceHover={true}
     >
-    	<button className="__Pill __Green __Medium">I am a button</button>
+    	<div>I am a button</div>
     </Tooltip>
 </div>
 ```
@@ -30,12 +34,14 @@ Set `forceHover` to `true`.
 Position set to `right`.
 
 ```js
+const Button = require('../Button').default;
+
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
     	content={<div>This is a tooltip</div>}
     	position="right"
     >
-    	<button className="__Pill __Green __Medium">Hover over me</button>
+    	<div>Hover over me</div>
     </Tooltip>
 </div>
 ```
@@ -43,12 +49,14 @@ Position set to `right`.
 Position set to `right` but is repositioned to the left because there's not enough space to the right.
 
 ```js
+const Button = require('../Button').default;
+
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
     <Tooltip
     	content={<div>This is a tooltip</div>}
     	position="right"
     >
-    	<button className="__Pill __Green __Medium">Hover over me</button>
+    	<div>Hover over me</div>
     </Tooltip>
 </div>
 ```

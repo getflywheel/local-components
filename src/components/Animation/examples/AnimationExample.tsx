@@ -67,14 +67,11 @@ export default class AnimationExample extends React.Component<any, IState> {
 
 		return (
 			<div>
-				<Button
-					className="__Green"
-					onClick={this.addOne}
-				>
+				<Button onClick={this.addOne}>
 					Insert First
 				</Button>
 				<Button
-					className="__Red"
+					intent="danger"
 					onClick={() => this.removeItem(0)}
 				>
 					Remove First

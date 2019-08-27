@@ -2,6 +2,7 @@ import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar';
 import Handler from '../../common/structures/Handler';
+import Button from '../Button';
 
 const { ipcRenderer } = require('electron');
 
@@ -73,12 +74,12 @@ export default class DownloaderItem extends React.Component<IProps> {
 				</span>
 				{
 					this.props.showCancel && (
-						<button
-							className="__Green"
+						<Button
+							emphasis="text"
 							onClick={this.cancelOnClick}
 						>
 							{this.props.cancelText}
-						</button>
+						</Button>
 					)
 				}
 			</li>

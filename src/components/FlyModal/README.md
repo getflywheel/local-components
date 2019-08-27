@@ -42,7 +42,7 @@ class FlywheelModalExample extends React.Component{
 
     render () {
         return (
-			<Button onClick={this.onClick} className="__Pill __Green __Small">Show Modal</Button>
+			<Button onClick={this.onClick} emphasis="primary" size="m">Show Modal</Button>
         );
     }
 }

@@ -115,10 +115,18 @@ $disabled-text-dark: $gray-dark50;
 
 		&:hover {
 			@include setThemeVar('--Button_MainColor', $green-dark50);
+
+			&.Button__Color_Gray {
+				@include setThemeVar('--Button_MainColor', $gray25);
+			}
 		}
 
 		&[disabled] {
 			@include setThemeVar('--Button_TextColor', $disabled-background-light, $disabled-background-dark);
+		}
+
+		&.Button__Color_Gray {
+			@include setThemeVar('--Button_MainColor', $gray75);
 		}
 
 		&.Button__Size_XSmall,

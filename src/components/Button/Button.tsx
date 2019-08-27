@@ -19,10 +19,15 @@ export enum ButtonPropSize {
 
 export enum ButtonPropIntent {
 	danger = 'danger',
-	none = 'none',
+	default = 'default',
+}
+
+export enum ButtonPropColor {
+	gray = 'gray',
 }
 
 interface IProps extends ILocalContainerProps {
+	color?: ButtonPropColor | keyof typeof ButtonPropColor;
 	disabled?: boolean;
 	/** The hierarchical importance of the button within the given context (e.g. only one primary button should exist at any given time). */
 	emphasis?: ButtonPropEmphasis | keyof typeof ButtonPropEmphasis; // to allow string literal for enum, the key must match the value and 'keyof typeof' used
@@ -42,7 +47,7 @@ export default class Button extends React.Component<IProps> {
 	static defaultProps: Partial<IProps> = {
 		disabled: false,
 		emphasis: ButtonPropEmphasis.secondary,
-		intent: ButtonPropIntent.none,
+		intent: ButtonPropIntent.default,
 		// don't set `size` default here because of differences between primary and secondary default size
 		tag: 'button',
 	};
@@ -58,6 +63,7 @@ export default class Button extends React.Component<IProps> {
 						'Button',
 						this.props.className,
 						{
+							[styles.Button__Color_Gray]: this.props.color === ButtonPropColor.gray,
 							[styles.Button__Emphasis_Primary]: this.props.emphasis === ButtonPropEmphasis.primary,
 							[styles.Button__Emphasis_Secondary]: this.props.emphasis === ButtonPropEmphasis.secondary,
 							[styles.Button__Emphasis_Text]: this.props.emphasis === ButtonPropEmphasis.text,

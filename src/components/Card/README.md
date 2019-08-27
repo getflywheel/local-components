@@ -38,7 +38,7 @@ The example below shows how to use the **header**, **content**, and **footer** p
 		</div>
 	}
 	footer={
-		<button className="__Pill __Green __Medium">Click here!</button>
+		<Button>Click here!</Button>
 	}
 />
 ```
@@ -79,7 +79,7 @@ const { Fragment } = require('react');
 				<span style={{marginLeft: "5px"}}>10 likes</span>
 			</div>
 			<div style={{marginLeft: "auto"}}>
-				<button className="__GrayOutline">Share</button>
+				<Button>Share</Button>
 			</div>
 		</Fragment>
 	)}
@@ -104,7 +104,7 @@ const { Fragment } = require('react');
 				<span style={{marginLeft: "5px"}}>10 likes</span>
 			</div>
 			<div style={{marginLeft: "auto"}}>
-				<button className="__GrayOutline">Share</button>
+				<Button>Share</Button>
 			</div>
 		</Fragment>
 	)}
@@ -136,7 +136,7 @@ const onClick = () => {
 				<span style={{marginLeft: "5px"}}>10 likes</span>
 			</div>
 			<div style={{marginLeft: "auto"}}>
-				<button className="__GrayOutline">Share</button>
+				<Button className="__GrayOutline">Share</Button>
 			</div>
 		</Fragment>
 	)}
