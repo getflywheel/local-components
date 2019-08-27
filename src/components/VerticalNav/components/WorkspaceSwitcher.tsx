@@ -180,11 +180,10 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								</div>
 							</div>
 							<Divider />
-							{ !hasPro && !hasTeams &&
 								<>
 									<div className={styles.WorkspaceSwitcher_Section}>
 										<Button
-											className="__Green"
+											emphasis="text"
 											onClick={this.props.onClickUpgradeToPro}
 										>
 											UPGRADE TO PRO
@@ -192,7 +191,6 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 									</div>
 									<Divider />
 								</>
-							}
 							<div
 								className={classnames(
 									styles.WorkspaceSwitcher_PopupFooter,
@@ -200,7 +198,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								)}
 							>
 								<Button
-									className="__Green"
+									emphasis="text"
 									onClick={() => (
 										this.state.activeWorkspaceItem.isOwner
 											?
@@ -212,7 +210,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 									{this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'My Account'}
 								</Button>
 								<Button
-									className="__Green"
+									emphasis="text"
 									onClick={this.props.onClickLogout}
 								>
 									Logout

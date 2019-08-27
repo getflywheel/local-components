@@ -2,7 +2,7 @@ Basic:
 
 ```js
 <FlyTooltip content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}>
-    <button className="__Pill __Green __Medium">Hover over me</button><br />
+    <Button>Hover over me</Button><br />
 </FlyTooltip>
 ```
 
@@ -15,7 +15,7 @@ With exclamation icon and auto width:
 	exclamation={true} 
 	content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
 	>
-    <button className="__Pill __Green __Medium">Hover over me</button><br />
+    <Button>Hover over me</Button><br />
 </FlyTooltip>
 ```
 
@@ -27,7 +27,7 @@ Position center horizontal position with max-content width:
 	width="max-content"
 	content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
 	>
-    <button className="__Pill __Green __Medium">Hover over me</button><br />
+    <Button>Hover over me</Button><br />
 </FlyTooltip>
 ```
 
@@ -38,6 +38,6 @@ Position right:
 	position="right" 
 	content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
 	>
-    <button className="__Pill __Green __Medium">Hover over me</button><br />
+    <Button>Hover over me</Button><br />
 </FlyTooltip>
 ```

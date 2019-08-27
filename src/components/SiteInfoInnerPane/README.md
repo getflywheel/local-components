@@ -55,7 +55,7 @@ const { InnerPaneSidebar, InnerPaneSidebarHeader, InnerPaneSidebarContent } = re
             <EmptyArea border={false}>
                 No notes added<br />
                 to this site<br /><br />
-                <Button className="__GrayOutline">+ Add Site</Button>
+                <Button>+ Add Site</Button>
             </EmptyArea>
         </InnerPaneSidebarContent>
     </InnerPaneSidebar>

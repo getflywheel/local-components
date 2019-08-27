@@ -3,7 +3,7 @@ On click, a simple span element is displayed in the default bottom popup positio
 ```js
 <Popup 
 	position="bottom"
-	triggerContent={<Button className="__Pill __Green">Click to open span below</Button>}
+	triggerContent={<Button>Click to open span below</Button>}
 >
     <span>Hello, I should be below this ^ button.</span>
 </Popup>

@@ -52,10 +52,7 @@ export default class AnimationExample2 extends React.Component<any, IState> {
 					Integer vitae justo eget magna fermentum iaculis.
 					Cursus in hac habitasse platea dictumst.
 				</p>
-				<Button
-					className="__Green"
-					onClick={this._showModal}
-				>
+				<Button onClick={this._showModal}>
 					Show Modal
 				</Button>
 				<br />
@@ -89,7 +86,6 @@ export default class AnimationExample2 extends React.Component<any, IState> {
 								</p>
 								<br />
 								<Button
-									className=""
 									onClick={this._hideModal}
 								>
 									Hide Modal

@@ -169,13 +169,13 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 
 		return (
 			<div className={styles.TableListRepeaterSubmit}>
-				<button
-					className="__Pill __Green"
+				<Button
+					emphasis="primary"
 					onClick={() => this.props.onSubmit && this.props.onSubmit(this.state.unsavedData)}
 					disabled={isEqual(this.props.data, this.state.unsavedData) || this.props.submitDisabled}
 				>
 					{this.props.submitLabel}
-				</button>
+				</Button>
 			</div>
 		);
 
@@ -209,7 +209,8 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 				<div className={styles.TableListRepeaterAdd}>
 					<div className="InnerPaneSidebarHeaderButtons_Add">
 						<Button
-							className="__Pill __Green __Medium"
+							emphasis="secondary"
+							size="m"
 							onClick={this.addItem}
 							disabled={this.state.addingItem}
 						>

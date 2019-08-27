@@ -4,6 +4,7 @@ import * as styles from './FlyLargeConfirm.sass';
 import CheckSVG from '../../svg/checkmark--big';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import Handler from '../../common/structures/Handler';
+import Button from '../Button';
 
 interface IProps extends IReactComponentProps {
 
@@ -51,8 +52,8 @@ export default class FlyLargeConfirm extends React.Component<IProps, IState> {
 			>
 				<p>{this.props.bodyText}</p>
 
-				<button
-					className="__Pill"
+				<Button
+					emphasis="primary"
 					onClick={this.onConfirm}
 					disabled={this.state.confirmed}
 				>
@@ -60,7 +61,7 @@ export default class FlyLargeConfirm extends React.Component<IProps, IState> {
 						<CheckSVG />
 					)}
 					{this.state.confirmed ? 'Confirmed' : this.props.buttonText}
-				</button>
+				</Button>
 			</div>
 		);
 	}
