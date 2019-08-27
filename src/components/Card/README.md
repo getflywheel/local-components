@@ -136,7 +136,7 @@ const onClick = () => {
 				<span style={{marginLeft: "5px"}}>10 likes</span>
 			</div>
 			<div style={{marginLeft: "auto"}}>
-				<Button className="__GrayOutline">Share</Button>
+				<Button>Share</Button>
 			</div>
 		</Fragment>
 	)}
