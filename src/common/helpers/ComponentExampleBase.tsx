@@ -38,10 +38,24 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 		};
 	}
 
-	protected _onChangeFormRadio = (event: any) => {
+	protected _onChangeFormEnum = (event: any) => {
 		const name = event.target.name;
 		const value = event.target.value;
-		const configCurrentHtmlProps = {...this.state.configCurrentHtmlProps, [name]: value};
+		const defaultHtmlProps: {[key: string]: any} = {};
+
+		this._componentPropsList.forEach((item) => {
+			if (item.options) {
+				Object.values(item.options).forEach((optionValue) => {
+					const isDefault: boolean = this._isComponentPropDefault(item.propName, optionValue) || item.defaultValue === optionValue;
+
+					if (isDefault) {
+						defaultHtmlProps[item.propName] = optionValue;
+					}
+				});
+			}
+		});
+
+		const configCurrentHtmlProps = {...defaultHtmlProps, ...this.state.configCurrentHtmlProps, [name]: value};
 
 		this.setState(() => ({
 			configCurrentHtmlProps,
@@ -104,6 +118,31 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 		return (this._ComponentClass.defaultProps as {[key: string]: any})[propName];
 	}
 
+	protected _isPropOptionEnabled (item: IComponentExampleBasePropDetails, optionValue: any): boolean {
+		if (this.state.configCurrentHtmlProps['recipe'] === 'text' && item.propName === 'size' && (optionValue !== 's' && optionValue !== 'm')) {
+			return false;
+		}
+
+		return true;
+	}
+
+	protected _isPropGroupEnabled (item: IComponentExampleBasePropDetails): boolean {
+		if (item.propName === 'label' || item.propName === 'disabled' || item.propName === 'tag') {
+			return true;
+		}
+		else if (item.propName === 'recipe') {
+			return true;
+		}
+		else if (this.state.configCurrentHtmlProps['recipe'] === 'none') {
+			return true;
+		}
+		else if (this.state.configCurrentHtmlProps['recipe'] === 'text' && item.propName === 'size') {
+			return true;
+		}
+
+		return false;
+	}
+
 	protected _renderComponentProperty (item: IComponentExampleBasePropDetails) {
 		switch (item.type) {
 			case 'html':
@@ -140,7 +179,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 				return Object.values(item.options).map((optionValue: any) => {
 					const isDefault: boolean = this._isComponentPropDefault(item.propName, optionValue) || item.defaultValue === optionValue;
 
-					return (
+					return this._isPropOptionEnabled(item, optionValue) && (
 						<div key={optionValue}>
 							<label>
 								<input
@@ -148,7 +187,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 									name={item.propName}
 									value={optionValue}
 									defaultChecked={isDefault}
-									onChange={this._onChangeFormRadio}
+									onChange={this._onChangeFormEnum}
 								/>
 								{optionValue} {isDefault ? '(default)' : null}
 							</label>
@@ -184,7 +223,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 					</div>
 				</div>
 				<div className={styles.ComponentExample_Config}>
-					{this._componentPropsList.map((item) =>
+					{this._componentPropsList.map((item) => this._isPropGroupEnabled(item) &&
 						<div
 							key={item.propName}
 							className={styles.ComponentExample_Config_PropBlock}
