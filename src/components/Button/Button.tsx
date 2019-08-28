@@ -57,7 +57,7 @@ export default class Button extends React.Component<IProps> {
 		color: ButtonPropColor.default,
 		disabled: false,
 		recipe: ButtonPropRecipe.secondary,
-		// don't set `size` default here because of differences between primary and secondary default size
+		size: ButtonPropSize.m,
 		tag: 'button',
 		variant: ButtonPropVariant.fill,
 	};
