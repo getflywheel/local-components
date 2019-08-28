@@ -33,15 +33,19 @@ export enum ButtonPropVariant {
 }
 
 interface IProps extends ILocalContainerProps {
+	/** The main color applied to the button. */
 	color?: ButtonPropColor | keyof typeof ButtonPropColor;
+	/** Whether the button is disabled. */
 	disabled?: boolean;
 	/** The hierarchical importance of the button within the given context (e.g. only one primary button should exist at any given time). */
 	recipe?: ButtonPropRecipe | keyof typeof ButtonPropRecipe; // to allow string literal for enum, the key must match the value and 'keyof typeof' used
+	/** The click handler. */
 	onClick?: Handler;
-	/** The size of the button that may result in height, width, and font-size changes. */
+	/** The size of the button that may result in padding and font-size changes. */
 	size?: ButtonPropSize | keyof typeof ButtonPropSize;
 	/** The html element tag used for the button. */
 	tag?: string;
+	/** The main styles applied to the button that determine how colors are applied to styles like background, border, color, etc. */
 	variant?: ButtonPropVariant | keyof typeof ButtonPropVariant;
 	/** The default behavior of the button. */
 	type?: 'button' | 'submit' | 'reset';
@@ -73,6 +77,7 @@ export default class Button extends React.Component<IProps> {
 		return size ? {[size]: true} : {[fallbackStyleName]: true};
 	}
 
+	// generates the classNames applied to the button depending on whether recipes are used and styles are restricted or not
 	protected _generateScopedClassNamesFromPropsAndRecipes () {
 		// list of class names with initial set of defaults that are allowed for all recipes and variants
 		const classList: {[styleName: string]: boolean} = {};
@@ -115,6 +120,20 @@ export default class Button extends React.Component<IProps> {
 
 	render () {
 		const Tag: any = this.props.tag;
+
+		if (this.props.recipe !== 'none') {
+			if (!!this.props.color) {
+				console.warn(`The button prop 'color' can not be used with the recipe '${this.props.recipe}'.`);
+			}
+
+			if (!!this.props.size && this.props.recipe !== 'text') {
+				console.warn(`The button prop 'size' can not be used with the recipe '${this.props.recipe}'.`);
+			}
+
+			if (!!this.props.variant) {
+				console.warn(`The button prop 'variant' can not be used with the recipe '${this.props.recipe}'.`);
+			}
+		}
 
 		return (
 			<Container {...this.props.container}>
