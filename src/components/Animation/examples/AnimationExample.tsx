@@ -71,7 +71,8 @@ export default class AnimationExample extends React.Component<any, IState> {
 					Insert First
 				</Button>
 				<Button
-					intent="danger"
+					recipe="none"
+					color="red"
 					onClick={() => this.removeItem(0)}
 				>
 					Remove First

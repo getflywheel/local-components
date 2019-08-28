@@ -16,9 +16,9 @@ class DrawerExample extends React.Component{
     render () {
         return (
             <div>
-                <Button onClick={() => this.setState({showDrawer: !this.state.showDrawer})} emphasis="primary">{this.state.showDrawer ? 'Hide Drawer' : 'Show Drawer'}</Button>
+                <Button onClick={() => this.setState({showDrawer: !this.state.showDrawer})} recipe="primary">{this.state.showDrawer ? 'Hide Drawer' : 'Show Drawer'}</Button>
                     <Drawer show={this.state.showDrawer}>
-                <Button onClick={() => console.log('onClick')} emphasis="primary" size="m">Save</Button>
+                <Button onClick={() => console.log('onClick')} recipe="primary">Save</Button>
                 </Drawer>
             </div>
         );

@@ -216,7 +216,6 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 						<Button
 							container={{marginLeft: '10px'}}
 							onClick={this._onCopyToClipboard}
-							size="s"
 						>
 							Copy
 						</Button>

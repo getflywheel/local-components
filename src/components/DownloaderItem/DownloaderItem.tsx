@@ -75,7 +75,7 @@ export default class DownloaderItem extends React.Component<IProps> {
 				{
 					this.props.showCancel && (
 						<Button
-							emphasis="text"
+							recipe="text"
 							onClick={this.cancelOnClick}
 						>
 							{this.props.cancelText}

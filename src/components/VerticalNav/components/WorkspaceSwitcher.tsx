@@ -183,7 +183,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								<>
 									<div className={styles.WorkspaceSwitcher_Section}>
 										<Button
-											emphasis="text"
+											recipe="text"
 											onClick={this.props.onClickUpgradeToPro}
 										>
 											UPGRADE TO PRO
@@ -198,7 +198,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								)}
 							>
 								<Button
-									emphasis="text"
+									recipe="text"
 									onClick={() => (
 										this.state.activeWorkspaceItem.isOwner
 											?
@@ -210,7 +210,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 									{this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'My Account'}
 								</Button>
 								<Button
-									emphasis="text"
+									recipe="text"
 									onClick={this.props.onClickLogout}
 								>
 									Logout

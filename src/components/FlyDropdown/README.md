@@ -16,7 +16,7 @@ Basic:
         color: 'red',
     },
 ]}>
-    <Button emphasis="text" color="gray">Open Dropdown</Button>
+    <Button recipe="text">Open Dropdown</Button>
 </FlyDropdown>
 ```
 
@@ -38,6 +38,6 @@ No Caret (Top Open):
         color: 'red',
     },
 ]}>
-    <Button emphasis="text" color="gray">Open Dropdown (but up)</Button>
+    <Button recipe="text">Open Dropdown (but up)</Button>
 </FlyDropdown>
 ```

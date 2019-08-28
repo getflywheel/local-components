@@ -5,6 +5,7 @@ import * as styles from './Banner.sass';
 import WarningSVG from '../../svg/warning';
 import CloseSVG from '../../svg/close--small';
 import Handler from '../../common/structures/Handler';
+import Button from '../Button';
 
 interface IProps extends IReactComponentProps {
 
@@ -48,12 +49,12 @@ export default class Banner extends React.Component<IProps> {
 		}
 
 		return (
-			<button
+			<Button
 				onClick={this.props.buttonOnClick}
 				className={styles.CTA}
 			>
 				{this.props.buttonText}
-			</button>
+			</Button>
 		);
 	}
 

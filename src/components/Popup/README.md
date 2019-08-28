@@ -25,7 +25,7 @@ On click, an image is displayed in the top popup position.
 ```js
 <Popup 
 	position="top"
-	triggerContent={<button>Show image above</button>}
+	triggerContent={<Button>Show image above</Button>}
 >
     <img src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png" style={{width: "100%"}} />
 </Popup>

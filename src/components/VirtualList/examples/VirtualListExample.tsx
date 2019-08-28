@@ -132,12 +132,12 @@ export class VirtualListExample extends React.Component<IReactComponentProps, IV
 				<div className={styles.VirtualListExample_Form}>
 					<Checkbox checked={this.state.formIsCustomContainerRenderer} label="Use custom container renderer" onChange={this._onChangeIsCustomContainerRenderer} />
 					<div style={{display: 'flex', alignItems: 'center'}}>
-						<Button size="s" onClick={this._onClickRemove}>Remove</Button>
+						<Button onClick={this._onClickRemove}>Remove</Button>
 						<input type="number" value={this.state.formRemoveItemsCount} min="1" onChange={this._onChangeformRemoveItemsCount} />
 						item{this.state.formRemoveItemsCount !== 1 && 's'} from beginning
 					</div>
 					<div style={{display: 'flex', alignItems: 'center'}}>
-						<Button size="s" onClick={this._onClickAdd}>Add</Button>
+						<Button onClick={this._onClickAdd}>Add</Button>
 						<input type="number" value={this.state.formAddNewItemsCount} min="1" onChange={this._onChangeformAddNewItemsCount} />
 						item{this.state.formAddNewItemsCount !== 1 && 's'} at end
 					</div>

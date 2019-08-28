@@ -53,7 +53,7 @@ export default class FlyLargeConfirm extends React.Component<IProps, IState> {
 				<p>{this.props.bodyText}</p>
 
 				<Button
-					emphasis="primary"
+					recipe="primary"
 					onClick={this.onConfirm}
 					disabled={this.state.confirmed}
 				>
