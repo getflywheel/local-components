@@ -6,9 +6,10 @@ import ILocalContainerProps from '../../common/structures/ILocalContainerProps';
 import Handler from '../../common/structures/Handler';
 
 export enum ButtonPropColor {
+	default = 'default',
 	gray = 'gray',
 	green = 'green',
-	default = 'default',
+	orange = 'orange',
 	red = 'red',
 }
 
@@ -99,6 +100,7 @@ export default class Button extends React.Component<IProps> {
 				return {
 					[styles.Button__Color_Gray]: this.props.color === ButtonPropColor.gray,
 					[styles.Button__Color_Green]: this.props.color === ButtonPropColor.green,
+					[styles.Button__Color_Orange]: this.props.color === ButtonPropColor.orange,
 					[styles.Button__Color_Red]: this.props.color === ButtonPropColor.default || this.props.color === ButtonPropColor.red,
 					[styles.Button__Padding_Small]: this.props.size === ButtonPropSize.s,
 					[styles.Button__Padding_Medium]: this.props.size === ButtonPropSize.m,

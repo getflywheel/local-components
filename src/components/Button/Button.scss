@@ -138,6 +138,13 @@ $disabled-text-dark: $gray-dark50;
 		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
 	}
 
+	&.Button__Color_Orange {
+		@include setThemeVar('--Button_IfFill__Background', $orange);
+		@include setThemeVar('--Button_IfFill__TextColor', $white);
+		@include setThemeVar('--Button_IfFill__Background_Hover', $orange-dark);
+		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+	}
+
 	&.Button__Color_Red {
 		@include setThemeVar('--Button_IfFill__Background', $red);
 		@include setThemeVar('--Button_IfFill__TextColor', $white);
