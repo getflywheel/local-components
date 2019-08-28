@@ -121,19 +121,19 @@ export default class Button extends React.Component<IProps> {
 	render () {
 		const Tag: any = this.props.tag;
 
-		if (this.props.recipe !== 'none') {
-			if (!!this.props.color) {
-				console.warn(`The button prop 'color' can not be used with the recipe '${this.props.recipe}'.`);
-			}
-
-			if (!!this.props.size && this.props.recipe !== 'text') {
-				console.warn(`The button prop 'size' can not be used with the recipe '${this.props.recipe}'.`);
-			}
-
-			if (!!this.props.variant) {
-				console.warn(`The button prop 'variant' can not be used with the recipe '${this.props.recipe}'.`);
-			}
-		}
+		// if (this.props.recipe !== 'none') {
+		// 	if (!!this.props.color) {
+		// 		console.warn(`The button prop 'color' can not be used with the recipe '${this.props.recipe}'.`);
+		// 	}
+		//
+		// 	if (!!this.props.size && this.props.recipe !== 'text') {
+		// 		console.warn(`The button prop 'size' can not be used with the recipe '${this.props.recipe}'.`);
+		// 	}
+		//
+		// 	if (!!this.props.variant) {
+		// 		console.warn(`The button prop 'variant' can not be used with the recipe '${this.props.recipe}'.`);
+		// 	}
+		// }
 
 		return (
 			<Container {...this.props.container}>
