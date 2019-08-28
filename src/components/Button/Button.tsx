@@ -5,6 +5,13 @@ import { Container } from '../Container';
 import ILocalContainerProps from '../../common/structures/ILocalContainerProps';
 import Handler from '../../common/structures/Handler';
 
+export enum ButtonPropColor {
+	gray = 'gray',
+	green = 'green',
+	default = 'default',
+	red = 'red',
+}
+
 export enum ButtonPropRecipe {
 	none = 'none',
 	primary = 'primary',
@@ -15,13 +22,7 @@ export enum ButtonPropRecipe {
 export enum ButtonPropSize {
 	s = 's',
 	m = 'm',
-}
-
-export enum ButtonPropColor {
-	gray = 'gray',
-	green = 'green',
-	default = 'default',
-	red = 'red',
+	l = 'l',
 }
 
 export enum ButtonPropVariant {
@@ -99,7 +100,9 @@ export default class Button extends React.Component<IProps> {
 					[styles.Button__Color_Gray]: this.props.color === ButtonPropColor.gray,
 					[styles.Button__Color_Green]: this.props.color === ButtonPropColor.green,
 					[styles.Button__Color_Red]: this.props.color === ButtonPropColor.default || this.props.color === ButtonPropColor.red,
-					[styles.Button__Padding_Medium]: true,
+					[styles.Button__Padding_Small]: this.props.size === ButtonPropSize.s,
+					[styles.Button__Padding_Medium]: this.props.size === ButtonPropSize.m,
+					[styles.Button__Padding_Large]: this.props.size === ButtonPropSize.l,
 					[styles.Button__Variant_Fill]: this.props.variant === ButtonPropVariant.fill,
 					[styles.Button__Variant_Outline]: this.props.variant === ButtonPropVariant.outline,
 					[styles.Button__Variant_Text]: this.props.variant === ButtonPropVariant.text,
