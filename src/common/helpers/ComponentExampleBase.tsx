@@ -134,7 +134,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 				);
 			case 'enum':
 				if (!item.options) {
-					throw new Error(`A component prop with type 'enum' must also set 'options'.`);
+					throw new Error(`A component prop '${item.propName}' with type 'enum' must also set 'options'.`);
 				}
 
 				return Object.values(item.options).map((optionValue: any) => {

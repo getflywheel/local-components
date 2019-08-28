@@ -1,6 +1,6 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import Button, { ButtonPropEmphasis, ButtonPropIntent, ButtonPropSize } from '../Button';
+import Button, { ButtonPropRecipe, ButtonPropSize, ButtonPropColor, ButtonPropVariant } from '../Button';
 import { ComponentExampleBase } from '../../../common/helpers/ComponentExampleBase';
 
 export class ButtonExample extends ComponentExampleBase {
@@ -17,19 +17,24 @@ export class ButtonExample extends ComponentExampleBase {
 					type: 'html',
 				},
 				{
-					options: ButtonPropEmphasis,
-					propName: 'emphasis',
-					type: 'enum',
-				},
-				{
-					options: ButtonPropIntent,
-					propName: 'intent',
+					options: ButtonPropRecipe,
+					propName: 'recipe',
 					type: 'enum',
 				},
 				{
 					defaultValue: 'm', // manually set this here because of differences between primary and secondary default size
 					options: ButtonPropSize,
 					propName: 'size',
+					type: 'enum',
+				},
+				{
+					options: ButtonPropColor,
+					propName: 'color',
+					type: 'enum',
+				},
+				{
+					options: ButtonPropVariant,
+					propName: 'variant',
 					type: 'enum',
 				},
 				{
