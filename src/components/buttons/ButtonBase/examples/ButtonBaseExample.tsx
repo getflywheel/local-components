@@ -12,7 +12,7 @@ export class ButtonBaseExample extends ComponentExampleBase {
 			'ButtonBase',
 			[
 				{
-					defaultValue: 'Start',
+					defaultValue: 'ButtonBase',
 					propName: 'children (text)',
 					type: 'html',
 				},
