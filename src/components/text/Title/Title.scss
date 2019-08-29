@@ -1,0 +1,21 @@
+@import '../../../styles/_partials/index';
+
+.TextBase {
+	@include defaultFontAndTextSettings();
+
+	&.TextBase__FontSize_Small {
+		font-size: 1.4rem;
+	}
+
+	&.TextBase__FontSize_Medium {
+		font-size: 1.8rem;
+	}
+
+	&.TextBase__FontSize_Large {
+		font-size: 2.4rem;
+	}
+
+	&.TextBase__FontSize_XLarge {
+		font-size: 4.2rem;
+	}
+}
