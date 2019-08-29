@@ -1,0 +1,132 @@
+@import '../../../styles/_partials/index'
+
+.Switch
+	&.Switch__Flat
+		input,
+		input::after,
+		input::before
+			box-shadow: none !important
+
+	&.Switch__Tiny
+		label
+			vertical-align: middle
+			display: inline-block
+			font-weight: 700
+			font-size: 11px
+			color: $gray25
+			@include tracking(20)
+			text-transform: uppercase
+			margin: 0 5px 0 0
+
+		input
+			vertical-align: middle
+			display: inline-block
+			height: 20px
+			width: 48px
+
+			&::after
+				line-height: 22px
+				font-size: 11px
+				font-weight: 900
+				left: 20px
+
+			&::before
+				top: -1px
+				width: 12px
+				height: 12px
+
+			&[checked]
+				&::before
+					left: calc(100% - 12px)
+
+				&::after
+					left: 8px
+
+	input
+		box-sizing: border-box
+		font-size: 10px
+		cursor: pointer
+		position: relative
+		transition: background 200ms ease 0ms
+		border-radius: 1.6em
+		box-shadow: inset 0 2px 0 $gray75
+		@include theme-background-gray25-else-graydark50
+		padding: .5em
+		width: 7.25em
+		overflow: hidden
+		display: inline-block
+		-webkit-appearance: none
+
+		&::before
+			content: ""
+			display: block
+			position: relative
+			left: 0
+			transition: left 200ms ease 0ms
+			border-radius: 50%
+			box-shadow: 0 2px 0 $gray75
+			@include theme-background-white-else-gray25
+			width: 2.2em
+			height: 2.2em
+
+		&::after
+			content: "OFF"
+			display: block
+			position: absolute
+			top: 0
+			left: 2.6em
+			transition: left 200ms ease 0ms
+			line-height: 2.4
+			@include theme-color-white-else-gray25
+			font-size: 1.4em
+			font-weight: 700
+
+		&[checked]
+			box-shadow: inset 0 2px 0 $green-dark50
+			background: $green
+
+		&[checked]::before
+			left: calc(100% - 2.2em)
+			background: $white
+			box-shadow: 0 2px 0 $green-dark50
+
+		&[checked]::after
+			content: "ON"
+			left: 1em
+			color: $white
+
+		&[disabled]
+			box-shadow: inset 0 2px 0 $gray25
+			@include theme-background-gray25-else-graydark50
+
+		&[disabled] input
+			cursor: not-allowed
+
+		&[disabled]::after,
+		&[disabled]::before
+			color: $gray75
+
+		&[disabled]::before
+			box-shadow: 0 2px 0 $gray25
+			@include theme-background-gray15-else-gray
+
+		input
+			opacity: 0
+			position: absolute
+			width: 100%
+			height: 100%
+			margin: 0
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			z-index: 1
+			cursor: pointer
+
+	input[data-no-value="true"]
+		&::before
+			left: 50% !important
+			margin-left: -6px !important
+
+		&::after
+			display: none

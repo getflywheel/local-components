@@ -1,0 +1,121 @@
+@import '../../../styles/_partials/index';
+
+.VerticalNav {
+	display: flex;
+	flex-shrink: 0;
+	flex-direction: column;
+	width: 68px;
+	height: 100%;
+	padding: 0;
+	@include theme-background-green-else-graydark;
+
+	@at-root :global(.__OsDarwin) .VerticalNav {
+		padding-top: 30px;
+	}
+
+	.VerticalNavItem_DragRegion {
+		-webkit-app-region: default;
+		flex-grow: 1;
+
+		@at-root :global(.__OsDarwin) & {
+			-webkit-app-region: drag;
+		}
+	}
+
+	.VerticalNav_Add {
+		width: 48px;
+		height: 48px !important;
+		margin: auto 0 10px 10px;
+		padding: 11.5px 0 !important;
+		@include if-theme-light() {
+			background: $white;
+		}
+		@include if-theme-dark() {
+			background: $green;
+		}
+		border-radius: 100%;
+		transition: background-color .1s ease 0s;
+
+		svg {
+			width: 25px;
+			height: 25px;
+			transition: fill .1s ease 0s;
+
+			path {
+				@include theme-fill-green-else-white;
+			}
+		}
+
+		&:hover {
+			background: $green-dark;
+
+			svg path {
+				fill: $white;
+			}
+		}
+	}
+
+	.FlyTooltip.FlyTooltip__AddSite {
+		margin-top: -23px;
+	}
+
+	.VerticalNav_NonNavLinkItemOuter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.VerticalNav_NonNavLinkItem,
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 62px;
+		padding: 15px 0;
+		text-align: center;
+
+		svg path {
+			transition: fill .1s ease 0s;
+		}
+
+		&:global(.__Active) {
+			@include if-theme-light() {
+				background: $green-dark;
+			}
+			@include if-theme-dark() {
+				background: none;
+			}
+
+			svg path {
+				fill: $white !important;
+			}
+		}
+
+		&:hover:not(.__Active) svg path {
+			@include theme-fill-greendark50-else-white-hover;
+		}
+	}
+
+	svg {
+		width: 32px;
+
+		path {
+			@include if-theme-light() {
+				fill: $green-dark;
+			}
+			@include if-theme-dark() {
+				fill: $gray75;
+			}
+		}
+	}
+
+	.VerticalNavItem {
+		text-align: center;
+
+		@at-root :global(.VerticalNavItem_Addons) {
+			svg {
+				width: 31px;
+			}
+		}
+	}
+}

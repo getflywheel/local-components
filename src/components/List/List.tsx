@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './List.sass';
-import Header from '../Header/Header';
+import Header from '../text/Header/Header';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 const fontSizeContentClassMixin = (props: {[key: string]: any}) => ({
