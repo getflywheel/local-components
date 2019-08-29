@@ -1,12 +1,12 @@
-@import '../../styles/_partials/index';
-@import '../../common/styles/themeUtils';
+@import '../../../styles/_partials/index';
+@import '../../../common/styles/themeUtils';
 
 $disabled-background-light: $gray25;
 $disabled-background-dark: $gray;
 $disabled-text-light: $gray75;
 $disabled-text-dark: $gray-dark50;
 
-.Button {
+.ButtonBase {
 	// base styles
 	position: relative;
 	background: transparent;
@@ -75,7 +75,7 @@ $disabled-text-dark: $gray-dark50;
 		}
 	}
 
-	&.Button__Variant_Fill {
+	&.ButtonBase__Form_Fill {
 		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background));
 		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor));
 		@include setThemeVar('--Button_SvgPathFillColor', $white);
@@ -91,7 +91,7 @@ $disabled-text-dark: $gray-dark50;
 		}
 	}
 
-	&.Button__Variant_Outline {
+	&.ButtonBase__Form_Outline {
 		@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background));
 		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
 		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
@@ -110,7 +110,7 @@ $disabled-text-dark: $gray-dark50;
 		}
 	}
 
-	&.Button__Variant_Text {
+	&.ButtonBase__Form_Text {
 		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
 		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
 		@include setThemeVar('--Button_TextColor_Hover', $green-dark50);
@@ -124,55 +124,55 @@ $disabled-text-dark: $gray-dark50;
 		}
 	}
 
-	&.Button__Color_Gray {
+	&.ButtonBase__Color_Gray {
 		@include setThemeVar('--Button_IfFill__Background', $gray75, $gray25);
 		@include setThemeVar('--Button_IfFill__TextColor', $white);
 		@include setThemeVar('--Button_IfFill__Background_Hover', $gray25, $gray75);
 		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
 	}
 
-	&.Button__Color_Green {
+	&.ButtonBase__Color_Green {
 		@include setThemeVar('--Button_IfFill__Background', $green);
 		@include setThemeVar('--Button_IfFill__TextColor', $white);
 		@include setThemeVar('--Button_IfFill__Background_Hover', $green-dark50);
 		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
 	}
 
-	&.Button__Color_Orange {
+	&.ButtonBase__Color_Orange {
 		@include setThemeVar('--Button_IfFill__Background', $orange);
 		@include setThemeVar('--Button_IfFill__TextColor', $white);
 		@include setThemeVar('--Button_IfFill__Background_Hover', $orange-dark);
 		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
 	}
 
-	&.Button__Color_Red {
+	&.ButtonBase__Color_Red {
 		@include setThemeVar('--Button_IfFill__Background', $red);
 		@include setThemeVar('--Button_IfFill__TextColor', $white);
 		@include setThemeVar('--Button_IfFill__Background_Hover', $red-dark50);
 		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
 	}
 
-	&.Button__FontSize_XSmall {
+	&.ButtonBase__FontSize_XSmall {
 		font-size: 11px;
 	}
 
-	&.Button__FontSize_Small {
+	&.ButtonBase__FontSize_Small {
 		font-size: 12px;
 	}
 
-	&.Button__FontSize_Medium {
+	&.ButtonBase__FontSize_Medium {
 		font-size: 14px;
 	}
 
-	&.Button__Padding_Small {
+	&.ButtonBase__Padding_Small {
 		padding: 5px 10px;
 	}
 
-	&.Button__Padding_Medium {
+	&.ButtonBase__Padding_Medium {
 		padding: 10px 20px;
 	}
 
-	&.Button__Padding_Large {
+	&.ButtonBase__Padding_Large {
 		padding: 20px 30px;
 	}
 }
