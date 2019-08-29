@@ -1,6 +1,6 @@
 import * as React from 'react';
-import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
-import { ComponentExampleBase } from '../../../../common/helpers/ComponentExampleBase';
+import IReactComponentProps from '../../../../../common/structures/IReactComponentProps';
+import { ComponentExampleBase } from '../../../../../common/helpers/ComponentExampleBase';
 import ButtonBase, { ButtonPropColor, ButtonPropFontSize, ButtonPropForm, ButtonPropPadding } from '../ButtonBase';
 
 export class ButtonBaseExample extends ComponentExampleBase {

@@ -3,6 +3,8 @@ const path = require('path');
 const merge = require('webpack-merge');
 const package = require('./package.json');
 
+const privatePathPattern = '**/_private/**/*.tsx';
+
 module.exports = {
     getComponentPathLine (componentPath) {
         return `import { ${path.basename(componentPath, '.tsx')} } from 'local-components';`
@@ -31,61 +33,61 @@ module.exports = {
 				{
 					name: 'Alerts',
 					components: 'src/components/alerts/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Buttons',
 					components: 'src/components/buttons/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Inputs',
 					components: 'src/components/inputs/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Layout',
 					components: 'src/components/loaders/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Loaders',
 					components: 'src/components/loaders/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Media',
 					components: 'src/components/media/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Menus & Navigation',
 					components: 'src/components/menus/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Modules',
 					components: 'src/components/modules/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Popups, Modals, and Overlays',
 					components: 'src/components/overlays/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Tables',
 					components: 'src/components/tables/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
 					name: 'Text',
 					components: 'src/components/text/**/[A-Z]*.tsx',
-					ignore: '**/*Base*.tsx',
+					ignore: privatePathPattern,
 				},
 				{
-					name: 'Internal (do not use)',
-					components: 'src/components/**/*Base*.tsx',
+					name: 'Private (do not use)',
+					components: 'src/components/**/_private/**/*.tsx',
 				},
 			],
 		},

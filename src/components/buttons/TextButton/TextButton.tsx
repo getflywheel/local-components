@@ -4,7 +4,7 @@ import ButtonBase, {
 	ButtonPropFontSize,
 	ButtonPropForm, IButtonBaseProps,
 	IButtonCommonProps,
-} from '../ButtonBase/ButtonBase';
+} from '../_private/ButtonBase/ButtonBase';
 
 export enum TextButtonPropIntent {
 	default = 'default',

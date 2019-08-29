@@ -4,7 +4,7 @@ import ButtonBase, {
 	ButtonPropForm,
 	ButtonPropPadding, IButtonBaseProps,
 	IButtonCommonProps,
-} from '../ButtonBase/ButtonBase';
+} from '../_private/ButtonBase/ButtonBase';
 
 export enum ButtonPropIntent {
 	alert = 'alert',
