@@ -8,7 +8,6 @@ export {default as Banner} from './components/Banner';
 export {default as BannerCarousel} from './components/BannerCarousel';
 export {default as BigLoader} from './components/BigLoader';
 export {default as BrowseInput} from './components/BrowseInput';
-export {default as Button} from './components/Button';
 export {default as Card} from './components/Card';
 export {default as Checkbox} from './components/Checkbox';
 export {default as Close} from './components/Close';

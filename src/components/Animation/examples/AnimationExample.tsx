@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as styles from './AnimationExample.scss';
 import { NodeGroup } from 'react-move';
-import Button from '../../Button';
+import { Button } from '../../buttons/Button/Button';
 
 interface IState {
 	items: number[];
@@ -70,11 +70,7 @@ export default class AnimationExample extends React.Component<any, IState> {
 				<Button onClick={this.addOne}>
 					Insert First
 				</Button>
-				<Button
-					recipe="none"
-					color="red"
-					onClick={() => this.removeItem(0)}
-				>
+				<Button onClick={() => this.removeItem(0)}>
 					Remove First
 				</Button>
 				<NodeGroup

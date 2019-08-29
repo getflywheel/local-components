@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as styles from './VirtualListExample.scss';
 import { VirtualList } from '../VirtualList';
-import Button from '../../Button';
 import Divider from '../../Divider';
 import Checkbox from '../../Checkbox';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { IVirtualListHelperCalculations } from '../helpers/VirtualListHelper';
+import { Button } from '../../buttons/Button/Button';
 
 interface IDataItem {
 	id: number;

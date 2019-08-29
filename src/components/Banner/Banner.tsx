@@ -5,7 +5,7 @@ import * as styles from './Banner.sass';
 import WarningSVG from '../../svg/warning';
 import CloseSVG from '../../svg/close--small';
 import Handler from '../../common/structures/Handler';
-import Button from '../Button';
+import { Button } from '../buttons/Button/Button';
 
 interface IProps extends IReactComponentProps {
 
