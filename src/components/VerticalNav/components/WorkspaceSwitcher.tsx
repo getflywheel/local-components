@@ -4,26 +4,25 @@ import * as styles from './WorkspaceSwitcher.scss';
 import * as stylesVerticalNav from '../VerticalNav.scss';
 import Popup from '../../Popup/Popup';
 import Divider from '../../Divider/Divider';
-import Button from '../../Button/Button';
 import AddSVG from '../../../svg/add';
 import Avatar from '../../Avatar';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import Handler from '../../../common/structures/Handler';
 import { VerticalNavItem } from '../VerticalNav';
 import CloseSmallSVG from '../../../svg/close--small';
 import WarningSVG from '../../../svg/warning';
+import { TextButton } from '../../buttons/TextButton/TextButton';
 
 interface IWorkspaceSwitcherProps extends IReactComponentProps {
 	className?: string;
 	infoBannerUrl?: string;
-	onClickAccount: Handler;
-	onClickAddTeam: Handler;
-	onCloseInfoBanner?: Handler;
-	onClickManageTeam: Handler;
-	onClickLogout: Handler;
-	onClickUpgradeToPro: Handler;
-	onClickWorkspace: Handler;
-	onClickWorkspaceNav: Handler;
+	onClickAccount: FunctionGeneric;
+	onClickAddTeam: FunctionGeneric;
+	onCloseInfoBanner?: FunctionGeneric;
+	onClickManageTeam: FunctionGeneric;
+	onClickLogout: FunctionGeneric;
+	onClickUpgradeToPro: FunctionGeneric;
+	onClickWorkspace: FunctionGeneric;
+	onClickWorkspaceNav: FunctionGeneric;
 	routeTo: string;
 	showInfoBanner?: boolean;
 	tooltip: string;
@@ -182,12 +181,9 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 							<Divider />
 								<>
 									<div className={styles.WorkspaceSwitcher_Section}>
-										<Button
-											emphasis="text"
-											onClick={this.props.onClickUpgradeToPro}
-										>
+										<TextButton onClick={this.props.onClickUpgradeToPro}>
 											UPGRADE TO PRO
-										</Button>
+										</TextButton>
 									</div>
 									<Divider />
 								</>
@@ -197,8 +193,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 									styles.WorkspaceSwitcher_Section,
 								)}
 							>
-								<Button
-									emphasis="text"
+								<TextButton
 									onClick={() => (
 										this.state.activeWorkspaceItem.isOwner
 											?
@@ -208,13 +203,10 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 									)}
 								>
 									{this.state.activeWorkspaceItem.isOwner ? 'Manage Team' : 'My Account'}
-								</Button>
-								<Button
-									emphasis="text"
-									onClick={this.props.onClickLogout}
-								>
+								</TextButton>
+								<TextButton onClick={this.props.onClickLogout}>
 									Logout
-								</Button>
+								</TextButton>
 							</div>
 						</Popup>
 						:

@@ -51,9 +51,9 @@ If however, you want to use a custom tag, it's as easy as passing a string to th
 
 ```js
 <Container element="span" >
-	<button>
+	<Button>
 		I am a button
-	</button>
+	</Button>
 </Container>
 ```
 
@@ -65,8 +65,8 @@ In this case, you can pass the `element` prop a full React element:
 	element={<span style={{display: 'inline-block'}} />}
 	margin="xl-1"
 >
-	<button>
+	<Button>
 		I am a button
-	</button>
+	</Button>
 </Container>
 ```

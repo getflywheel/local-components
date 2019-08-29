@@ -4,7 +4,6 @@ import CheckmarkSVG from '../../svg/checkmark--big';
 import ExclamationSVG from '../../svg/exclamation';
 import * as styles from './RadioBlock.sass';
 import Header from '../Header/Header';
-import Handler from '../../common/structures/Handler';
 import { Container } from '../Container/Container';
 import ILocalContainerProps from '../../common/structures/ILocalContainerProps';
 
@@ -14,7 +13,7 @@ interface IProps extends ILocalContainerProps {
 	disabled?: boolean;
 	warn?: boolean;
 	heightSize?: 'm' | 'l';
-	onChange: Handler;
+	onChange: FunctionGeneric;
 	options: {[key: string]: IRadioBlockItemProps};
 	readonly: boolean;
 }
@@ -106,7 +105,7 @@ interface IRadioBlockItemProps extends ILocalContainerProps {
 	warn?: boolean;
 	heightSize?: 'm' | 'l';
 	label?: string;
-	onClick?: Handler;
+	onClick?: FunctionGeneric;
 	readonly?: boolean;
 	selected?: boolean;
 	svg?: any;

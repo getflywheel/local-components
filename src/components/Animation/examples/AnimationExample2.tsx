@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as styles from './AnimationExample2.scss';
 import { Animate } from 'react-move';
-import Button from '../../Button';
+import { Button } from '../../buttons/Button/Button';
 
 interface IState {
 	doShowModal: boolean;

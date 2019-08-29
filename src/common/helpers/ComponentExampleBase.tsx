@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as styles from './ComponentExampleBase.scss';
 import IReactComponentProps from '../structures/IReactComponentProps';
 import Header from '../../components/Header';
-import Button from '../../components/Button';
+import { Button } from '../../components/buttons/Button/Button';
 
 export interface IComponentExampleBasePropDetails {
 	defaultValue?: any;
@@ -18,6 +18,8 @@ interface IButtonExampleState {
 
 export class ComponentExampleBase extends React.Component<IReactComponentProps, IButtonExampleState> {
 
+	protected static _ID: number = 0;
+	protected _instanceId: number = ++ComponentExampleBase._ID;
 	protected _ComponentClass: any;
 	protected _componentName: string;
 	protected _componentPropsList: IComponentExampleBasePropDetails[];
@@ -38,10 +40,24 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 		};
 	}
 
-	protected _onChangeFormRadio = (event: any) => {
-		const name = event.target.name;
+	protected _onChangeFormEnum = (event: any) => {
+		const name = event.target.getAttribute('data-name');
 		const value = event.target.value;
-		const configCurrentHtmlProps = {...this.state.configCurrentHtmlProps, [name]: value};
+		const defaultHtmlProps: {[key: string]: any} = {};
+
+		this._componentPropsList.forEach((item) => {
+			if (item.options) {
+				Object.values(item.options).forEach((optionValue) => {
+					const isDefault: boolean = this._isComponentPropDefault(item.propName, optionValue) || item.defaultValue === optionValue;
+
+					if (isDefault) {
+						defaultHtmlProps[item.propName] = optionValue;
+					}
+				});
+			}
+		});
+
+		const configCurrentHtmlProps = {...defaultHtmlProps, ...this.state.configCurrentHtmlProps, [name]: value};
 
 		this.setState(() => ({
 			configCurrentHtmlProps,
@@ -101,7 +117,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 	}
 
 	protected _getDefaultPropValue (propName: string) {
-		return (this._ComponentClass.defaultProps as {[key: string]: any})[propName];
+		return this._ComponentClass.defaultProps && (this._ComponentClass.defaultProps as {[key: string]: any})[propName];
 	}
 
 	protected _renderComponentProperty (item: IComponentExampleBasePropDetails) {
@@ -134,7 +150,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 				);
 			case 'enum':
 				if (!item.options) {
-					throw new Error(`A component prop with type 'enum' must also set 'options'.`);
+					throw new Error(`A component prop '${item.propName}' with type 'enum' must also set 'options'.`);
 				}
 
 				return Object.values(item.options).map((optionValue: any) => {
@@ -145,10 +161,11 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 							<label>
 								<input
 									type="radio"
-									name={item.propName}
+									name={`${item.propName}-id${this._instanceId}`}
+									data-name={item.propName}
 									value={optionValue}
 									defaultChecked={isDefault}
-									onChange={this._onChangeFormRadio}
+									onChange={this._onChangeFormEnum}
 								/>
 								{optionValue} {isDefault ? '(default)' : null}
 							</label>
@@ -177,7 +194,6 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 						<Button
 							container={{marginLeft: '10px'}}
 							onClick={this._onCopyToClipboard}
-							size="s"
 						>
 							Copy
 						</Button>

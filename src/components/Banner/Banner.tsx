@@ -4,17 +4,17 @@ import classnames from 'classnames';
 import * as styles from './Banner.sass';
 import WarningSVG from '../../svg/warning';
 import CloseSVG from '../../svg/close--small';
-import Handler from '../../common/structures/Handler';
+import { Button } from '../buttons/Button/Button';
 
 interface IProps extends IReactComponentProps {
 
 	buttonText?: string;
 	currentIndex?: number;
-	buttonOnClick?: Handler;
+	buttonOnClick?: FunctionGeneric;
 	icon?: string | boolean;
 	numBanners?: number;
-	onDismiss?: Handler;
-	onIndexChange?: Handler;
+	onDismiss?: FunctionGeneric;
+	onIndexChange?: FunctionGeneric;
 	variant?: 'warning' | 'neutral' | 'success' | 'error';
 
 }
@@ -48,12 +48,12 @@ export default class Banner extends React.Component<IProps> {
 		}
 
 		return (
-			<button
+			<Button
 				onClick={this.props.buttonOnClick}
 				className={styles.CTA}
 			>
 				{this.props.buttonText}
-			</button>
+			</Button>
 		);
 	}
 

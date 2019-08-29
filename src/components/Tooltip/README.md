@@ -5,8 +5,6 @@ The `Tooltip` component allows content to display additional information on hove
 Default tooltip with default `top` position.
 
 ```js
-const Button = require('../Button').default;
-
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
     	content={<div>This is a tooltip</div>}
@@ -19,8 +17,6 @@ const Button = require('../Button').default;
 Set `forceHover` to `true`.
 
 ```js
-const Button = require('../Button').default;
-
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
     	content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
@@ -34,8 +30,6 @@ const Button = require('../Button').default;
 Position set to `right`.
 
 ```js
-const Button = require('../Button').default;
-
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <Tooltip
     	content={<div>This is a tooltip</div>}
@@ -49,8 +43,6 @@ const Button = require('../Button').default;
 Position set to `right` but is repositioned to the left because there's not enough space to the right.
 
 ```js
-const Button = require('../Button').default;
-
 <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
     <Tooltip
     	content={<div>This is a tooltip</div>}

@@ -3,14 +3,13 @@ import classnames from 'classnames';
 import * as styles from './ImageCircle.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ClippedContent from '../ClippedContent';
-import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 
 	className?: string;
 	containerClassName?: string;
-	onError?: Handler;
-	onLoad?: Handler;
+	onError?: FunctionGeneric;
+	onLoad?: FunctionGeneric;
 	size?: 'm' | 's' | string;
 	square?: boolean;
 	src: string;

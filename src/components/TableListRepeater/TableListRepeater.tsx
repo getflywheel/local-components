@@ -4,10 +4,10 @@ import classnames from 'classnames';
 import { TableList } from '../TableList';
 import CloseSmallSVG from '../../svg/close--small';
 import AddSVG from '../../svg/add';
-import Button from '../Button';
 import isEqual = require('lodash.isequal');
 import * as styles from '../TableList/TableList.sass';
-import Handler from '../../common/structures/Handler';
+import { PrimaryButton } from '../buttons/PrimaryButton/PrimaryButton';
+import { Button } from '../buttons/Button/Button';
 
 interface IProps extends IReactComponentProps {
 
@@ -15,10 +15,10 @@ interface IProps extends IReactComponentProps {
 	header?: React.ReactNode;
 	itemTemplate: any;
 	labelSingular?: string;
-	onBeforeRemove?: Handler;
-	onChange?: Handler;
-	onSubmit?: Handler;
-	repeatingContent: Handler;
+	onBeforeRemove?: FunctionGeneric;
+	onChange?: FunctionGeneric;
+	onSubmit?: FunctionGeneric;
+	repeatingContent: FunctionGeneric;
 	submitDisabled?: boolean;
 	submitLabel?: string;
 
@@ -169,13 +169,12 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 
 		return (
 			<div className={styles.TableListRepeaterSubmit}>
-				<Button
-					emphasis="primary"
+				<PrimaryButton
 					onClick={() => this.props.onSubmit && this.props.onSubmit(this.state.unsavedData)}
 					disabled={isEqual(this.props.data, this.state.unsavedData) || this.props.submitDisabled}
 				>
 					{this.props.submitLabel}
-				</Button>
+				</PrimaryButton>
 			</div>
 		);
 
@@ -209,8 +208,6 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 				<div className={styles.TableListRepeaterAdd}>
 					<div className="InnerPaneSidebarHeaderButtons_Add">
 						<Button
-							emphasis="secondary"
-							size="m"
 							onClick={this.addItem}
 							disabled={this.state.addingItem}
 						>

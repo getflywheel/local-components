@@ -1,8 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar';
-import Handler from '../../common/structures/Handler';
-import Button from '../Button';
+import { TextButton } from '../buttons/TextButton/TextButton';
 
 const { ipcRenderer } = require('electron');
 
@@ -12,7 +11,7 @@ interface IProps extends IReactComponentProps {
 	downloaded?: number;
 	itemSize?: number;
 	label?: string;
-	onCancel?: Handler;
+	onCancel?: FunctionGeneric;
 	onCancelIPCEvent?: string;
 	progress?: number;
 	progressText?: string | number | boolean;
@@ -74,12 +73,9 @@ export default class DownloaderItem extends React.Component<IProps> {
 				</span>
 				{
 					this.props.showCancel && (
-						<Button
-							emphasis="text"
-							onClick={this.cancelOnClick}
-						>
+						<TextButton onClick={this.cancelOnClick}>
 							{this.props.cancelText}
-						</Button>
+						</TextButton>
 					)
 				}
 			</li>

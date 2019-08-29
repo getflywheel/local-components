@@ -104,7 +104,7 @@ class TertiaryNavExample extends React.Component{
                     <TertiaryNavItem path='/item3' component={Item3}>Item 3</TertiaryNavItem>
                 </TertiaryNav>
                 <Drawer show={this.state.showDrawer}>
-                    <Button onClick={this.onSave} emphasis="primary" size="s">Save</Button>
+                    <PrimaryButton onClick={this.onSave}>Save</PrimaryButton>
                 </Drawer>
             </div>
         );

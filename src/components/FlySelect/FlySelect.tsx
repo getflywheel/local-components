@@ -4,7 +4,6 @@ import CheckSVG from '../../svg/checkmark--big';
 import DownloadSmallSVG from '../../svg/download--small';
 import ArrowRightSVG from '../../svg/arrow--right';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import Handler from '../../common/structures/Handler';
 import * as styles from './FlySelect.scss';
 
 interface IProps extends IReactComponentProps {
@@ -12,9 +11,9 @@ interface IProps extends IReactComponentProps {
 	disabled?: boolean;
 	emptyPlaceholder?: string;
 	footerText?: string;
-	footerOnClick?: Handler;
+	footerOnClick?: FunctionGeneric;
 	loadingOptionsPlaceholder?: any;
-	onChange: Handler;
+	onChange: FunctionGeneric;
 	options?: any;
 	optionsLoader?: any;
 	optionGroups?: any;
