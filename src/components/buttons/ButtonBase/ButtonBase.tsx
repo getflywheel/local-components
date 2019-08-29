@@ -2,7 +2,6 @@ import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './ButtonBase.scss';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
-import Handler from '../../../common/structures/Handler';
 import { Container } from '../../Container';
 
 export enum ButtonPropColor {
@@ -35,7 +34,7 @@ export interface IButtonCommonProps extends ILocalContainerProps {
 	/** Whether the button is disabled. */
 	disabled?: boolean;
 	/** The click handler. */
-	onClick?: Handler;
+	onClick?: FunctionGeneric;
 	/** The html element tag used for the button. */
 	tag?: string;
 	/** The default behavior of the button. */

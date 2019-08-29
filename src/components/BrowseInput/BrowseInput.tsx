@@ -2,7 +2,6 @@ import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './BrowseInput.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import Handler from '../../common/structures/Handler';
 import untildify = require('untildify');
 
 let remote: any;
@@ -22,7 +21,7 @@ interface IProps extends IReactComponentProps {
 	dialogTitle?: string;
 	isFormInput?: boolean;
 	isInline?: boolean;
-	onChange?: Handler;
+	onChange?: FunctionGeneric;
 	placeholder?: string;
 	value?: string;
 

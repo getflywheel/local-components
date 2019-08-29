@@ -2,7 +2,6 @@ import * as React from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import * as styles from './Checkbox.sass';
-import Handler from '../../common/structures/Handler';
 import CheckmarkSVG from '../../svg/checkmark--sm';
 import CheckMixedSVG from '../../svg/checkmark--mixed';
 
@@ -10,7 +9,7 @@ interface IProps extends IReactComponentProps {
 	checked?: boolean | 'mixed';
 	disabled?: boolean;
 	label?: string;
-	onChange: Handler;
+	onChange: FunctionGeneric;
 }
 
 interface IState {

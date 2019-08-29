@@ -6,7 +6,6 @@ import CloseSmallSVG from '../../svg/close--small';
 import AddSVG from '../../svg/add';
 import isEqual = require('lodash.isequal');
 import * as styles from '../TableList/TableList.sass';
-import Handler from '../../common/structures/Handler';
 import { PrimaryButton } from '../buttons/PrimaryButton/PrimaryButton';
 import { Button } from '../buttons/Button/Button';
 
@@ -16,10 +15,10 @@ interface IProps extends IReactComponentProps {
 	header?: React.ReactNode;
 	itemTemplate: any;
 	labelSingular?: string;
-	onBeforeRemove?: Handler;
-	onChange?: Handler;
-	onSubmit?: Handler;
-	repeatingContent: Handler;
+	onBeforeRemove?: FunctionGeneric;
+	onChange?: FunctionGeneric;
+	onSubmit?: FunctionGeneric;
+	repeatingContent: FunctionGeneric;
 	submitDisabled?: boolean;
 	submitLabel?: string;
 

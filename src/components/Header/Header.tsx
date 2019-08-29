@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './Header.sass';
-import Handler from '../../common/structures/Handler';
 import { Container } from '../Container';
 import ILocalContainerProps from '../../common/structures/ILocalContainerProps';
 
@@ -9,7 +8,7 @@ interface IProps extends ILocalContainerProps {
 
 	fontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	fontWeight?: '300' | '400' | '500' | '700' | '900';
-	onClick?: Handler;
+	onClick?: FunctionGeneric;
 	tag?: string;
 
 }

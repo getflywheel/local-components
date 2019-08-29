@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import * as styles from './InputSearch.sass';
 import SearchSVG from '../../svg/search';
 import ObjectUtils from '../../utils/object-utils';
-import Handler from '../../common/structures/Handler';
 
 const excludeProps = {
 	className: true,
@@ -18,7 +17,7 @@ interface IProps extends IReactComponentProps {
 
 	className?: string;
 	containerClassName?: string;
-	onChange?: Handler;
+	onChange?: FunctionGeneric;
 	placeholder?: string;
 	value?: string | number;
 

@@ -3,11 +3,10 @@ import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import CloseBigSVG from '../../svg/close--big';
 import * as styles from './Close.scss';
-import Handler from '../../common/structures/Handler';
 
 interface IProps extends IReactComponentProps {
 	position?: 'absolute' | 'static',
-	onClick: Handler;
+	onClick: FunctionGeneric;
 }
 
 export default class Close extends React.Component<IProps> {

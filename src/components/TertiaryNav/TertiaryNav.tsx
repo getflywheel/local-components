@@ -4,7 +4,6 @@ import { Switch, Route, NavLink, RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import Handler from '../../common/structures/Handler';
 
 interface ITertiaryNavProps extends IReactComponentProps {
 
@@ -54,7 +53,7 @@ export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactCompo
 interface ITertiaryNavItemProps extends IReactComponentProps {
 
 	path: string;
-	render?: Handler;
+	render?: FunctionGeneric;
 	variant?: 'error';
 
 }
