@@ -1,0 +1,28 @@
+@import '../../../../styles/_partials/index';
+
+.VirtualListExample {
+	display: flex;
+	flex-direction: column;
+	max-height: 405px;
+}
+
+.VirtualListExample_Form {
+	display: flex;
+	flex-direction: column;
+}
+
+.VirtualListExample_CustomWrapper {
+	border: 1px solid #e7e7e7;
+}
+
+.VirtualListExample_CustomContainer {
+	color: #51bb7b;
+}
+
+.VirtualListExample_CustomMonospace {
+	font-family: monospace;
+}
+
+.VirtualListExample_ListItem {
+	height: 20px;
+}

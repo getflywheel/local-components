@@ -1,0 +1,32 @@
+@import '../../../styles/_partials/index';
+
+.Close {
+	cursor: pointer;
+
+	// host modifiers
+	&.Close__PositionAbsolute {
+		position: absolute;
+		z-index: 99;
+		right: 30px;
+		top: 30px;
+	}
+
+	* {
+		cursor: pointer;
+	}
+
+	svg {
+		width: 18px;
+		height: 18px;
+		transform: translateY(2px);
+	}
+
+	svg path {
+		@include theme-fill-green-else-gray25;
+		transition: fill .1s ease 0ms;
+	}
+
+	&:hover svg path {
+		@include theme-fill-greendark50-else-white-hover;
+	}
+}

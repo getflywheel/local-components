@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as styles from './ComponentExampleBase.scss';
 import IReactComponentProps from '../structures/IReactComponentProps';
-import Header from '../../components/Header';
+import Header from '../../components/text/Header';
 import { Button } from '../../components/buttons/Button/Button';
 
 export interface IComponentExampleBasePropDetails {

@@ -1,0 +1,15 @@
+@import '../../../../styles/_partials/index';
+
+.List {
+	padding: 20px;
+}
+
+.List_Row {
+	background: $gray15;
+	margin-bottom: 5px;
+}
+
+.List_Row_Content {
+	position: absolute;
+	padding: 10px;
+}

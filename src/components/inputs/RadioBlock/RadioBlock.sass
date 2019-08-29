@@ -1,0 +1,170 @@
+@import '../../../styles/_partials/index'
+
+$zIndexOptionNormal: 1
+$zIndexOptionSelected: $zIndexOptionNormal + 3
+$zIndexOptionTooltip: $zIndexOptionSelected + 3
+
+.RadioBlock
+	display: flex
+	flex-wrap: wrap
+	justify-content: space-between
+	width: 100%
+
+	&.RadioBlock__DirectionVert
+		flex-direction: column
+	&.RadioBlock__Readonly
+
+	// if child is not a radioblock option then the assumption is that it's a popup, tooltip or some other element that needs to appear above the options
+	> *:not(.RadioBlock_Option)
+		z-index: $zIndexOptionTooltip
+
+.RadioBlock_Option_TooltipWrapper
+	flex: 1
+
+.RadioBlock_Option
+	position: relative
+	z-index: $zIndexOptionNormal
+	@include theme-background-white-else-graydark
+	text-align: center
+	font-size: 18px
+	flex: 1
+
+	&.RadioBlock_Option__HeightSizeMedium
+	&.RadioBlock_Option__Warn
+	&.RadioBlock_Option__Readonly
+		margin-top: 3px
+
+	&.RadioBlock_Option__Disabled
+		@include theme-color-gray25-else-gray-dark50
+		@include theme-background-gray15-else-gray
+
+	&.RadioBlock_Option__Selected
+		z-index: 4
+
+		.RadioBLock_Label
+			z-index: $zIndexOptionNormal + 1
+			border-color: $green
+
+			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
+				border-color: $orange
+
+			&::before
+				opacity: 1
+				top: -4px
+				left: -4px
+				z-index: $zIndexOptionNormal + 1
+				border-radius: 4px
+				width: calc(100% + 4px)
+				height: calc(100% + 4px)
+
+			.RadioBLock_Arrow
+				transform: scale(1)
+				transition: all .2s ease 0s !important
+				opacity: 1
+
+	.RadioBLock_Label
+		cursor: pointer
+		display: block
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		transition: all .15s ease 0s
+		@include theme-input-border-box-shadow
+		width: 100%
+		height: 100%
+		border-radius: 0
+
+		@include selectors_setAsDefaults
+			padding: 29px
+		@include selectors_appendToNthParentSelector('.RadioBlock_Option__HeightSizeMedium', 1)
+			padding-top: 20px
+			padding-bottom: 20px
+		@include selectors_appendToNthParentSelector(':first-child:not(:last-child)', 1)
+			border-top-left-radius: 4px
+			border-top-right-radius: 4px
+		@include selectors_appendToNthParentSelector(':last-child:not(:first-child)', 1)
+			border-bottom-right-radius: 4px
+			border-bottom-left-radius: 4px
+
+		h4
+			margin: 0
+			cursor: pointer
+
+		&::before
+			content: ""
+			display: block
+			position: absolute
+			top: 0
+			right: 0
+			bottom: 0
+			left: 0
+			transition: all .15s ease 0s
+			opacity: 0
+			z-index: 0
+			border: 2px solid $green
+			border-radius: inherit
+
+			@include selectors_appendToNthParentSelector('.RadioBlock_Option__HeightSizeMedium', 1)
+
+
+			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
+				border-color: $orange
+
+			width: 100%
+			height: 100%
+
+			@include selectors_setAsDefaults
+				@include theme-background-white-else-graydark
+			@include selectors_appendToNthParentSelector('.RadioBlock_Option__Disabled', 1)
+				@include theme-background-gray15-else-gray
+
+		*
+			position: relative
+			z-index: $zIndexOptionNormal + 1
+
+	.RadioBLock_Label_Text
+		pointer-events: none
+
+	.RadioBLock_Arrow
+		$width: 50px
+
+		position: absolute
+		transform: scale(0)
+		transform-origin: 100% 0
+		transition: all 0s ease 0s
+		opacity: 0
+
+		svg
+			position: absolute
+			top: 6.4px
+			right: 9.6px
+			z-index: $zIndexOptionSelected + 1
+			width: 10px
+			height: 14px
+			color: $white
+
+			path
+				fill: $white
+
+		&::after
+			content: ""
+			display: block
+			position: absolute
+			top: 0
+			border-width: 0 $width $width 0
+			border-style: solid
+			border-color: transparent $green transparent transparent
+			width: 0
+			height: 0
+
+			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
+				border-color: transparent $orange transparent transparent
+
+		top: -3px
+		right: -3px
+		width: $width
+		height: $width
+
+		&::after
+			border-width: 0 $width $width 0
