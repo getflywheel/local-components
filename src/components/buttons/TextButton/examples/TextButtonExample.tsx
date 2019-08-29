@@ -13,7 +13,7 @@ export class TextButtonExample extends ComponentExampleBase {
 			[
 				{
 					defaultValue: 'Text Button',
-					propName: 'children (text)',
+					propName: 'content (children)',
 					type: 'html',
 				},
 				{

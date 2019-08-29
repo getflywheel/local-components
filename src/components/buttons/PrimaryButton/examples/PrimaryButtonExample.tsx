@@ -13,7 +13,7 @@ export class PrimaryButtonExample extends ComponentExampleBase {
 			[
 				{
 					defaultValue: 'Primary Button',
-					propName: 'children (text)',
+					propName: 'content (children)',
 					type: 'html',
 				},
 				{
