@@ -2,7 +2,7 @@ import * as React from 'react';
 import ButtonBase, {
 	ButtonPropColor,
 	ButtonPropForm,
-	ButtonPropPadding,
+	ButtonPropPadding, IButtonBaseProps,
 	IButtonCommonProps,
 } from '../ButtonBase/ButtonBase';
 
@@ -14,10 +14,26 @@ export enum ButtonPropIntent {
 }
 
 interface IProps extends IButtonCommonProps {
-	intent?: ButtonPropIntent;
+	intent?: ButtonPropIntent | keyof typeof ButtonPropIntent;
+	privateOptions?: IButtonBaseProps;
 }
 
-function setIntentColor (intent: ButtonPropIntent | undefined, defaultColor: ButtonPropColor): ButtonPropColor {
+export const Button = (props: IProps) => {
+	const {intent, privateOptions, ...otherProps} = props;
+
+	return (
+		<ButtonBase
+			className="Button"
+			color={setIntentColor(intent, ButtonPropColor.gray)}
+			form={ButtonPropForm.outline}
+			padding={ButtonPropPadding.m}
+			{...privateOptions}
+			{...otherProps}
+		/>
+	);
+};
+
+function setIntentColor (intent: ButtonPropIntent | keyof typeof ButtonPropIntent | undefined, defaultColor: ButtonPropColor): ButtonPropColor {
 	switch (intent) {
 		case ButtonPropIntent.alert:
 			return ButtonPropColor.orange;
@@ -29,20 +45,6 @@ function setIntentColor (intent: ButtonPropIntent | undefined, defaultColor: But
 
 	return defaultColor;
 }
-
-export const Button = (props: IProps) => {
-	const {intent, ...otherProps} = props;
-
-	return (
-		<ButtonBase
-			className="Button"
-			color={setIntentColor(intent, ButtonPropColor.gray)}
-			form={ButtonPropForm.outline}
-			padding={ButtonPropPadding.m}
-			{...otherProps}
-		/>
-	);
-};
 
 Button.defaultProps = {
 	disabled: ButtonBase.defaultProps.disabled,

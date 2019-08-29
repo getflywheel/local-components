@@ -2,7 +2,7 @@ import * as React from 'react';
 import ButtonBase, {
 	ButtonPropColor,
 	ButtonPropForm,
-	ButtonPropPadding,
+	ButtonPropPadding, IButtonBaseProps,
 	IButtonCommonProps,
 } from '../ButtonBase/ButtonBase';
 
@@ -12,18 +12,20 @@ export enum PrimaryButtonPropIntent {
 }
 
 interface IProps extends IButtonCommonProps {
-	intent?: PrimaryButtonPropIntent;
+	intent?: PrimaryButtonPropIntent | keyof typeof PrimaryButtonPropIntent;
+	privateOptions?: IButtonBaseProps;
 }
 
 export const PrimaryButton = (props: IProps) => {
-	const {intent, ...otherProps} = props;
+	const {intent, privateOptions, ...otherProps} = props;
 
 	return (
 		<ButtonBase
 			className="PrimaryButton"
-			color={props.intent === PrimaryButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
+			color={intent === PrimaryButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
 			form={ButtonPropForm.fill}
 			padding={ButtonPropPadding.l}
+			{...privateOptions}
 			{...otherProps}
 		/>
 	);

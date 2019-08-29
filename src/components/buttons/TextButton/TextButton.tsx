@@ -2,7 +2,7 @@ import * as React from 'react';
 import ButtonBase, {
 	ButtonPropColor,
 	ButtonPropFontSize,
-	ButtonPropForm,
+	ButtonPropForm, IButtonBaseProps,
 	IButtonCommonProps,
 } from '../ButtonBase/ButtonBase';
 
@@ -17,12 +17,13 @@ export enum TextButtonPropSize {
 }
 
 interface IProps extends IButtonCommonProps {
-	intent?: TextButtonPropIntent;
-	size?: TextButtonPropSize;
+	intent?: TextButtonPropIntent | keyof typeof TextButtonPropIntent;
+	privateOptions?: IButtonBaseProps;
+	size?: TextButtonPropSize | keyof typeof TextButtonPropSize;
 }
 
 export const TextButton = (props: IProps) => {
-	const {intent, size, ...otherProps} = props;
+	const {intent, privateOptions, size, ...otherProps} = props;
 
 	return (
 		<ButtonBase
@@ -30,6 +31,7 @@ export const TextButton = (props: IProps) => {
 			color={intent === TextButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
 			fontSize={size === TextButtonPropSize.tiny ? ButtonPropFontSize.xs : ButtonPropFontSize.m}
 			form={ButtonPropForm.text}
+			{...privateOptions}
 			{...otherProps}
 		/>
 	);

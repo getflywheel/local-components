@@ -41,7 +41,7 @@ export interface IButtonCommonProps extends ILocalContainerProps {
 	type?: 'button' | 'submit' | 'reset';
 }
 
-interface IProps extends IButtonCommonProps {
+export interface IButtonBaseProps extends IButtonCommonProps {
 	/** The main color applied to the button. */
 	color?: ButtonPropColor | keyof typeof ButtonPropColor;
 	/** The styles applied to the button that forms how colors are applied to styles like background, border, color, etc. */
@@ -52,9 +52,9 @@ interface IProps extends IButtonCommonProps {
 	fontSize?: ButtonPropFontSize | keyof typeof ButtonPropFontSize;
 }
 
-export default class ButtonBase extends React.Component<IProps> {
+export default class ButtonBase extends React.Component<IButtonBaseProps> {
 
-	static defaultProps: Partial<IProps> = {
+	static defaultProps: Partial<IButtonBaseProps> = {
 		color: ButtonPropColor.default,
 		disabled: false,
 		fontSize: ButtonPropFontSize.m,
