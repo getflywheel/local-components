@@ -1,0 +1,49 @@
+@import '../../../styles/_partials/index';
+
+.TextBase {
+	@include defaultFontSettings();
+
+	&.TextBase__Color_Gray {
+		color: $gray;
+	}
+
+	&.TextBase__Color_GrayDark {
+		color: $gray-dark;
+	}
+
+	&.TextBase__FontSize_Small {
+		font-size: 1.4rem;
+	}
+
+	&.TextBase__FontSize_Medium {
+		font-size: 1.8rem;
+	}
+
+	&.TextBase__FontSize_Large {
+		font-size: 2.4rem;
+	}
+
+	&.TextBase__FontSize_XLarge {
+		font-size: 4.2rem;
+	}
+
+	&.TextBase__FontWeight_300Light {
+		font-weight: $font-weight-300-light;
+	}
+
+	&.TextBase__FontWeight_400Normal {
+		font-weight: $font-weight-400-normal;
+	}
+
+	&.TextBase__FontWeight_500Medium {
+		font-weight: $font-weight-500-medium;
+	}
+
+	&.TextBase__FontWeight_700Bold {
+		font-weight: $font-weight-700-bold;
+	}
+
+	&.TextBase__FontWeight_900Heavy {
+		font-weight: $font-weight-900-heavy;
+	}
+}
