@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import TextBase, {
 	ITextBaseProps,
 	ITextCommonProps,
@@ -12,11 +13,14 @@ interface IProps extends ITextCommonProps {
 }
 
 export const Text = (props: IProps) => {
-	const {privateOptions, ...otherProps} = props;
+	const {className, privateOptions, ...otherProps} = props;
 
 	return (
 		<TextBase
-			className="Text"
+			className={classnames(
+				'Text',
+				className,
+			)}
 			color={TextBasePropColor.gray_gray15_text}
 			fontSize={TextBasePropFontSize.m}
 			fontWeight={TextBasePropFontWeight.light}
