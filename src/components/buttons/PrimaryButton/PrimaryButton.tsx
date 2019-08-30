@@ -1,10 +1,12 @@
 import * as React from 'react';
-import ButtonBase, {
+import {
+	ButtonBase,
 	ButtonPropColor,
 	ButtonPropForm,
 	ButtonPropPadding, IButtonBaseProps,
 	IButtonCommonProps,
 } from '../ButtonBase/ButtonBase';
+import classnames from 'classnames';
 
 export enum PrimaryButtonPropIntent {
 	default = 'default',
@@ -17,11 +19,14 @@ interface IProps extends IButtonCommonProps {
 }
 
 export const PrimaryButton = (props: IProps) => {
-	const {intent, privateOptions, ...otherProps} = props;
+	const {className, intent, privateOptions, ...otherProps} = props;
 
 	return (
 		<ButtonBase
-			className="PrimaryButton"
+			className={classnames(
+				className,
+				'PrimaryButton',
+			)}
 			color={intent === PrimaryButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
 			form={ButtonPropForm.fill}
 			padding={ButtonPropPadding.l}
