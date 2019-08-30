@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 import { ComponentExampleBase } from '../../../../common/helpers/ComponentExampleBase';
-import { Button } from '../Button';
+import { Button, ButtonPropIntent } from '../Button';
 
 export class ButtonExample extends ComponentExampleBase {
 
@@ -15,6 +15,11 @@ export class ButtonExample extends ComponentExampleBase {
 					defaultValue: 'Secondary Button',
 					propName: 'content (children)',
 					type: 'html',
+				},
+				{
+					options: ButtonPropIntent,
+					propName: 'intent',
+					type: 'enum',
 				},
 				{
 					propName: 'tag',
