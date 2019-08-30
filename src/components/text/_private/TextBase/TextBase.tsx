@@ -18,8 +18,8 @@ export enum TextBasePropFontSize {
 
 export enum TextBasePropFontWeight {
 	normal = 'normal',
-	medium = 'medium',
 	bold = 'bold',
+	heavy = 'heavy',
 }
 
 export interface ITextCommonProps extends ILocalContainerProps {
@@ -41,7 +41,7 @@ export class TextBase extends React.Component<ITextBaseProps> {
 	static defaultProps: Partial<ITextBaseProps> = {
 		color: TextBasePropColor.graydark_white_caption,
 		fontSize: TextBasePropFontSize.s,
-		fontWeight: TextBasePropFontWeight.medium,
+		fontWeight: TextBasePropFontWeight.normal,
 		tag: 'span',
 	};
 
@@ -65,8 +65,8 @@ export class TextBase extends React.Component<ITextBaseProps> {
 							[styles.TextBase__FontSize_Large]: fontSize === TextBasePropFontSize.l,
 							[styles.TextBase__FontSize_XLarge]: fontSize === TextBasePropFontSize.xl,
 							[styles.TextBase__FontWeight_300]: fontWeight === TextBasePropFontWeight.normal,
-							[styles.TextBase__FontWeight_500]: fontWeight === TextBasePropFontWeight.medium,
-							[styles.TextBase__FontWeight_700]: fontWeight === TextBasePropFontWeight.bold,
+							[styles.TextBase__FontWeight_500]: fontWeight === TextBasePropFontWeight.bold,
+							[styles.TextBase__FontWeight_700]: fontWeight === TextBasePropFontWeight.heavy,
 						},
 					)}
 					{...otherProps}
