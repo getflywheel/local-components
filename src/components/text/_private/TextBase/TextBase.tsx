@@ -38,7 +38,7 @@ export interface ITextBaseProps extends ITextCommonProps {
 	fontWeight?: TextBasePropFontWeight | keyof typeof TextBasePropFontWeight;
 }
 
-export default class TextBase extends React.Component<ITextBaseProps> {
+export class TextBase extends React.Component<ITextBaseProps> {
 
 	static defaultProps: Partial<ITextBaseProps> = {
 		color: TextBasePropColor.graydark_white_caption,
