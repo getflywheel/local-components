@@ -1,9 +1,10 @@
 import * as React from 'react';
 import TextBase, {
+	ITextBaseProps,
 	ITextCommonProps,
 	TextBasePropColor,
 	TextBasePropFontSize,
-	TextBasePropFontWeight
+	TextBasePropFontWeight,
 } from '../_private/TextBase/TextBase';
 
 export enum TitlePropSize {
@@ -15,18 +16,20 @@ export enum TitlePropSize {
 }
 
 interface IProps extends ITextCommonProps {
+	privateOptions?: ITextBaseProps;
 	size?: TitlePropSize;
 }
 
 export const Title = (props: IProps) => {
-	const {size, ...otherProps} = props;
+	const {privateOptions, size, ...otherProps} = props;
 
 	return (
 		<TextBase
 			className="Title"
-			color={setColorProp(size, TextBasePropColor.graydark)}
+			color={setColorProp(size, TextBasePropColor.graydark_white_caption)}
 			fontSize={setSizeProp(size, TextBasePropFontSize.m)}
 			fontWeight={TextBasePropFontWeight.medium}
+			{...privateOptions}
 			{...otherProps}
 		/>
 	);
@@ -56,7 +59,7 @@ function setSizeProp (size: TitlePropSize | undefined, defaultValue: TextBasePro
 function setColorProp (size: TitlePropSize | undefined, defaultColor: TextBasePropColor): TextBasePropColor {
 	switch (size) {
 		case TitlePropSize.caption:
-			return TextBasePropColor.gray;
+			return TextBasePropColor.gray_gray75_title;
 	}
 
 	return defaultColor;

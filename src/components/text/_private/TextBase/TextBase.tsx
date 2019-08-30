@@ -5,8 +5,9 @@ import ILocalContainerProps from '../../../../common/structures/ILocalContainerP
 import { Container } from '../../../Container';
 
 export enum TextBasePropColor {
-	gray = 'gray',
-	graydark = 'graydark',
+	gray_gray15_text = 'gray_gray15_text',
+	gray_gray75_title = 'gray_gray75_title',
+	graydark_white_caption = 'graydark_white_caption',
 }
 export enum TextBasePropFontSize {
 	s = 's',
@@ -28,7 +29,7 @@ export interface ITextCommonProps extends ILocalContainerProps {
 	tag?: string;
 }
 
-interface IProps extends ITextCommonProps {
+export interface ITextBaseProps extends ITextCommonProps {
 	/** The color applied to the component. */
 	color?: TextBasePropColor | keyof typeof TextBasePropColor;
 	/** The font-size applied to the component. */
@@ -37,10 +38,10 @@ interface IProps extends ITextCommonProps {
 	fontWeight?: TextBasePropFontWeight | keyof typeof TextBasePropFontWeight;
 }
 
-export default class TextBase extends React.Component<IProps> {
+export default class TextBase extends React.Component<ITextBaseProps> {
 
-	static defaultProps: Partial<IProps> = {
-		color: TextBasePropColor.graydark,
+	static defaultProps: Partial<ITextBaseProps> = {
+		color: TextBasePropColor.graydark_white_caption,
 		fontSize: TextBasePropFontSize.s,
 		fontWeight: TextBasePropFontWeight.light,
 		tag: 'span',
@@ -58,8 +59,9 @@ export default class TextBase extends React.Component<IProps> {
 						'TextBase',
 						className,
 						{
-							[styles.TextBase__Color_Gray]: color === TextBasePropColor.gray,
-							[styles.TextBase__Color_GrayDark]: color === TextBasePropColor.graydark,
+							[styles.TextBase__Color_Gray_Gray15]: color === TextBasePropColor.gray_gray15_text,
+							[styles.TextBase__Color_Gray_Gray75]: color === TextBasePropColor.gray_gray75_title,
+							[styles.TextBase__Color_GrayDark_White]: color === TextBasePropColor.graydark_white_caption,
 							[styles.TextBase__FontSize_Small]: fontSize === TextBasePropFontSize.s,
 							[styles.TextBase__FontSize_Medium]: fontSize === TextBasePropFontSize.m,
 							[styles.TextBase__FontSize_Large]: fontSize === TextBasePropFontSize.l,
