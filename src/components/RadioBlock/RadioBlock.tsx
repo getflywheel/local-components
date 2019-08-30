@@ -23,7 +23,7 @@ interface IState {
 	value: string | null;
 }
 
-export class RadioBlock extends React.Component<IProps, IState> {
+export default class RadioBlock extends React.Component<IProps, IState> {
 
 	static defaultProps: Partial<IProps> = {
 		direction: 'horiz',
