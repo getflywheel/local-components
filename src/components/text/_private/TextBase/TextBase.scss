@@ -1,14 +1,26 @@
 @import '../../../../styles/_partials/index';
+@import '../../../../common/styles/themeUtils';
 
 .TextBase {
+	// setup a light and dark css variable for each css prop name so we can effortlessly toggle between them based on the current theme
+	@include setupThemeVars(
+		'--TextBase_TextColor'
+	);
 	@include defaultFontSettings();
 
-	&.TextBase__Color_Gray {
-		color: $gray;
+	// css variable-based styles
+	color: var(--TextBase_TextColor);
+
+	&.TextBase__Color_Gray_Gray15 {
+		@include setThemeVar('--TextBase_TextColor', $gray, $gray15);
 	}
 
-	&.TextBase__Color_GrayDark {
-		color: $gray-dark;
+	&.TextBase__Color_Gray_Gray75 {
+		@include setThemeVar('--TextBase_TextColor', $gray, $gray75);
+	}
+
+	&.TextBase__Color_GrayDark_White {
+		@include setThemeVar('--TextBase_TextColor', $gray-dark, $white);
 	}
 
 	&.TextBase__FontSize_Small {

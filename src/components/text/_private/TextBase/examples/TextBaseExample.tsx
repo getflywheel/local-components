@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../../../common/structures/IReactComponentProps';
 import { ComponentExampleBase } from '../../../../../common/helpers/ComponentExampleBase';
-import TextBase, { TextBasePropFontSize, TextBasePropFontWeight } from '../TextBase';
+import TextBase, { TextBasePropColor, TextBasePropFontSize, TextBasePropFontWeight } from '../TextBase';
 
 export class TextBaseExample extends ComponentExampleBase {
 
@@ -15,6 +15,11 @@ export class TextBaseExample extends ComponentExampleBase {
 					defaultValue: 'TextBase',
 					propName: 'content (children)',
 					type: 'html',
+				},
+				{
+					options: TextBasePropColor,
+					propName: 'color',
+					type: 'enum',
 				},
 				{
 					options: TextBasePropFontSize,
