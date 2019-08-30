@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as styles from './ComponentExampleBase.scss';
 import IReactComponentProps from '../structures/IReactComponentProps';
-import Header from '../../components/Header';
 import { Button } from '../../components/buttons/Button/Button';
+import { Title, TitlePropSize } from '../../components/text/Title/Title';
+import { TextBasePropFontWeight } from '../../components/text/_private/TextBase/TextBase';
 
 export interface IComponentExampleBasePropDetails {
 	defaultValue?: any;
@@ -158,7 +159,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 
 					return (
 						<div key={optionValue}>
-							<label>
+							<label style={{fontWeight: 300}}>
 								<input
 									type="radio"
 									name={`${item.propName}-id${this._instanceId}`}
@@ -205,9 +206,9 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 							key={item.propName}
 							className={styles.ComponentExample_Config_PropBlock}
 						>
-							<Header fontSize="xs" fontWeight="700">
+							<Title size={TitlePropSize.s} privateOptions={{fontWeight: TextBasePropFontWeight.bold}}>
 								{item.propName}
-							</Header>
+							</Title>
 							<div>
 								{this._renderComponentProperty(item)}
 							</div>

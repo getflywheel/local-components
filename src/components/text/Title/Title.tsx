@@ -18,7 +18,7 @@ export enum TitlePropSize {
 
 interface IProps extends ITextCommonProps {
 	privateOptions?: ITextBaseProps;
-	size?: TitlePropSize;
+	size?: TitlePropSize | keyof typeof TitlePropSize;
 }
 
 export const Title = (props: IProps) => {
@@ -44,7 +44,7 @@ Title.defaultProps = {
 	tag: 'div',
 } as Partial<IProps>;
 
-function setSizeProp (size: TitlePropSize | undefined, defaultValue: TextBasePropFontSize): TextBasePropFontSize {
+function setSizeProp (size: TitlePropSize | keyof typeof TitlePropSize | undefined, defaultValue: TextBasePropFontSize): TextBasePropFontSize {
 	switch (size) {
 		case TitlePropSize.s:
 			return TextBasePropFontSize.s;
@@ -60,7 +60,7 @@ function setSizeProp (size: TitlePropSize | undefined, defaultValue: TextBasePro
 	return defaultValue;
 }
 
-function setColorProp (size: TitlePropSize | undefined, defaultColor: TextBasePropColor): TextBasePropColor {
+function setColorProp (size: TitlePropSize | keyof typeof TitlePropSize | undefined, defaultColor: TextBasePropColor): TextBasePropColor {
 	switch (size) {
 		case TitlePropSize.caption:
 			return TextBasePropColor.gray_gray75_title;

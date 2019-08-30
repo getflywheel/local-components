@@ -2,8 +2,8 @@ import * as React from 'react';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import * as styles from './Card.sass';
-import Header from '../Header/Header';
 import Truncate from '../Truncate/Truncate';
+import { Title } from '../text/Title/Title';
 
 interface IProps extends IReactComponentProps {
 
@@ -104,9 +104,9 @@ export default class Card extends React.Component<IProps> {
 				)}
 			>
 				{this.props.contentTitle && (
-					<Header
+					<Title
 						tag="h1"
-						fontSize="s"
+						size="s"
 						className={classnames(
 							styles.Card_Content_Title,
 							this.props.contentTitleClassName,
@@ -133,7 +133,7 @@ export default class Card extends React.Component<IProps> {
 									:
 									this.props.contentTitle
 						}
-					</Header>
+					</Title>
 				)}
 				{this.props.contentSub && (
 					<div
