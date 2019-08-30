@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TextBase, { ITextCommonProps, TextBasePropFontSize, TextBasePropFontWeight } from '../TextBase/TextBase';
+import TextBase, { ITextCommonProps, TextBasePropFontSize, TextBasePropFontWeight } from '../_private/TextBase/TextBase';
 
 interface IProps extends ITextCommonProps {}
 

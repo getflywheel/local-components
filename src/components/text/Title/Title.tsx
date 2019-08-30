@@ -4,7 +4,7 @@ import TextBase, {
 	TextBasePropColor,
 	TextBasePropFontSize,
 	TextBasePropFontWeight
-} from '../TextBase/TextBase';
+} from '../_private/TextBase/TextBase';
 
 export enum TitlePropSize {
 	s = 's',
