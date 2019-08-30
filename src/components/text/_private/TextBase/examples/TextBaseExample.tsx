@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../../../common/structures/IReactComponentProps';
 import { ComponentExampleBase } from '../../../../../common/helpers/ComponentExampleBase';
-import TextBase, { TextBasePropColor, TextBasePropFontSize, TextBasePropFontWeight } from '../TextBase';
+import { TextBase, TextBasePropColor, TextBasePropFontSize, TextBasePropFontWeight } from '../TextBase';
 
 export class TextBaseExample extends ComponentExampleBase {
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import TextBase, {
+import {
 	ITextBaseProps,
 	ITextCommonProps,
+	TextBase,
 	TextBasePropColor,
 	TextBasePropFontSize,
 	TextBasePropFontWeight,
