@@ -1,0 +1,46 @@
+@import '_partials/index';
+
+:global {
+	* {
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		user-select: none;
+	}
+
+	html {
+		font-size: 62.5%; // set rems to have a base of 10
+	}
+
+	body,
+	div#styleguide-container {
+		@include defaultFontAndTextSettings;
+		@include theme-color-graydark-else-white;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-size: inherit;
+		font-weight: inherit;
+	}
+
+	p {
+		line-height: 1.5;
+
+		a {
+			font-weight: 500
+		}
+	}
+
+	a,
+	a * {
+		cursor: pointer;
+	}
+
+	a {
+		color: $green;
+		text-decoration: none;
+
+		&:hover {
+			color: $green-dark;
+		}
+	}
+}
