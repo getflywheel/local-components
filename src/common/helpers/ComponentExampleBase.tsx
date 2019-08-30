@@ -206,7 +206,7 @@ export class ComponentExampleBase extends React.Component<IReactComponentProps, 
 							key={item.propName}
 							className={styles.ComponentExample_Config_PropBlock}
 						>
-							<Title size={TitlePropSize.s} privateOptions={{fontWeight: TextBasePropFontWeight.bold}}>
+							<Title size={TitlePropSize.s} privateOptions={{fontWeight: TextBasePropFontWeight.heavy}}>
 								{item.propName}
 							</Title>
 							<div>

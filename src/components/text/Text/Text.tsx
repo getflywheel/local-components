@@ -30,7 +30,7 @@ export const Text = (props: IProps) => {
 			)}
 			color={size === TextPropSize.m ? TextBasePropColor.graydark_gray15_text : TextBasePropColor.gray_gray75_title}
 			fontSize={TextBasePropFontSize.s}
-			fontWeight={TextBasePropFontWeight.medium}
+			fontWeight={TextBasePropFontWeight.normal}
 			{...privateOptions}
 			{...otherProps}
 		/>

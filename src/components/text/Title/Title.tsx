@@ -33,7 +33,7 @@ export const Title = (props: IProps) => {
 			)}
 			color={setColorProp(props, TextBasePropColor.graydark_white_caption)}
 			fontSize={setSizeProp(props, TextBasePropFontSize.m)}
-			fontWeight={TextBasePropFontWeight.medium}
+			fontWeight={TextBasePropFontWeight.bold}
 			{...privateOptions}
 			{...otherProps}
 		/>
