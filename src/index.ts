@@ -27,7 +27,6 @@ export {default as FlyLargeConfirm} from './components/FlyLargeConfirm';
 export {default as FlyModal} from './components/FlyModal';
 export {default as FlySelect} from './components/FlySelect';
 export {default as FlyTooltip} from './components/FlyTooltip';
-export {default as Header} from './components/Header';
 export {default as ImageCircle} from './components/ImageCircle';
 export {
 	InnerPaneSidebar as InnerPaneSidebar,

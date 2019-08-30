@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './List.sass';
-import Header from '../Header/Header';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import { Title } from '../text/Title/Title';
 
 const fontSizeContentClassMixin = (props: {[key: string]: any}) => ({
 	[styles.__FontSizeXS_Content]: props.listItemFontSize === 'xs',
@@ -24,11 +24,9 @@ interface IProps extends IReactComponentProps {
 
 	bullets?: boolean;
 	headerClass?: string;
-	headerFontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	headerHasDivider?: boolean;
 	headerTag?: string;
 	headerText?: string;
-	headerWeight?: '300' | '400' | '500' | '700' | '900';
 	listClassName?: string;
 	listItemClassName?: string;
 	listItemFontSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -42,10 +40,7 @@ export default class List extends React.Component<IProps> {
 
 	static defaultProps: Partial<IProps> = {
 		bullets: true,
-		headerFontSize: 's',
 		headerTag: 'div',
-		headerWeight: '500',
-		listItemWrapElement: true,
 		tag: 'ul',
 	};
 
@@ -70,7 +65,7 @@ export default class List extends React.Component<IProps> {
 				)}
 			>
 				{this.props.headerText && (
-					<Header
+					<Title
 						className={classnames(
 							styles.List_Header,
 							this.props.headerClass,
@@ -78,12 +73,11 @@ export default class List extends React.Component<IProps> {
 								[styles.List_Header__Divider]: this.props.headerHasDivider,
 							},
 						)}
-						fontSize={this.props.headerFontSize}
-						fontWeight={this.props.headerWeight}
+						size="s"
 						tag={this.props.headerTag}
 					>
 						{this.props.headerText}
-					</Header>
+					</Title>
 				)}
 				<ListTag
 					className={classnames(

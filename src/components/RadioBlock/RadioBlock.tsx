@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import CheckmarkSVG from '../../svg/checkmark--big';
 import ExclamationSVG from '../../svg/exclamation';
 import * as styles from './RadioBlock.sass';
-import Header from '../Header/Header';
 import { Container } from '../Container/Container';
 import ILocalContainerProps from '../../common/structures/ILocalContainerProps';
+import { Title } from '../text/Title/Title';
 
 interface IProps extends ILocalContainerProps {
 	default: string | null;
@@ -23,7 +23,7 @@ interface IState {
 	value: string | null;
 }
 
-class RadioBlock extends React.Component<IProps, IState> {
+export class RadioBlock extends React.Component<IProps, IState> {
 
 	static defaultProps: Partial<IProps> = {
 		direction: 'horiz',
@@ -163,13 +163,9 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 					)}
 				>
 					<label className={styles.RadioBLock_Label}>
-						<Header
-							className={styles.RadioBLock_Label_Text}
-							fontSize={this.props.heightSize === 'l' ? 's' : 'xs'}
-							fontWeight="500"
-						>
+						<Title className={styles.RadioBLock_Label_Text}>
 							{this.props.label}
-						</Header>
+						</Title>
 						<div className={styles.RadioBLock_Arrow}>
 							{svg}
 						</div>
@@ -180,5 +176,3 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 	}
 
 }
-
-export default RadioBlock;
