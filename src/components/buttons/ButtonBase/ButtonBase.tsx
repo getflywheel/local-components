@@ -52,7 +52,7 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 	fontSize?: ButtonPropFontSize | keyof typeof ButtonPropFontSize;
 }
 
-export default class ButtonBase extends React.Component<IButtonBaseProps> {
+export class ButtonBase extends React.Component<IButtonBaseProps> {
 
 	static defaultProps: Partial<IButtonBaseProps> = {
 		color: ButtonPropColor.default,
