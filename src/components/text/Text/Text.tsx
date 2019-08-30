@@ -9,12 +9,18 @@ import {
 	TextBasePropFontWeight,
 } from '../_private/TextBase/TextBase';
 
+export enum TextPropSize {
+	caption = 'caption',
+	m = 'm',
+}
+
 interface IProps extends ITextCommonProps {
 	privateOptions?: ITextBaseProps;
+	size?: TextPropSize | keyof typeof TextPropSize;
 }
 
 export const Text = (props: IProps) => {
-	const {className, privateOptions, ...otherProps} = props;
+	const {className, privateOptions, size, ...otherProps} = props;
 
 	return (
 		<TextBase
@@ -22,9 +28,9 @@ export const Text = (props: IProps) => {
 				'Text',
 				className,
 			)}
-			color={TextBasePropColor.gray_gray15_text}
-			fontSize={TextBasePropFontSize.m}
-			fontWeight={TextBasePropFontWeight.light}
+			color={size === TextPropSize.m ? TextBasePropColor.graydark_gray15_text : TextBasePropColor.gray_gray75_title}
+			fontSize={TextBasePropFontSize.s}
+			fontWeight={TextBasePropFontWeight.medium}
 			{...privateOptions}
 			{...otherProps}
 		/>
@@ -32,5 +38,6 @@ export const Text = (props: IProps) => {
 };
 
 Text.defaultProps = {
+	size: 'm',
 	tag: 'span',
 } as Partial<IProps>;

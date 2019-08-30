@@ -1,6 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 import { ComponentExampleBase } from '../../../../common/helpers/ComponentExampleBase';
+import { TextPropSize } from '../Text';
 
 export class TextExample extends ComponentExampleBase {
 
@@ -14,6 +15,11 @@ export class TextExample extends ComponentExampleBase {
 					defaultValue: 'This is text.',
 					propName: 'content (children)',
 					type: 'html',
+				},
+				{
+					options: TextPropSize,
+					propName: 'size',
+					type: 'enum',
 				},
 				{
 					propName: 'tag',

@@ -11,12 +11,12 @@
 	// css variable-based styles
 	color: var(--TextBase_TextColor);
 
-	&.TextBase__Color_Gray_Gray15 {
-		@include setThemeVar('--TextBase_TextColor', $gray, $gray15);
-	}
-
 	&.TextBase__Color_Gray_Gray75 {
 		@include setThemeVar('--TextBase_TextColor', $gray, $gray75);
+	}
+
+	&.TextBase__Color_GrayDark_Gray15 {
+		@include setThemeVar('--TextBase_TextColor', $gray-dark, $gray15);
 	}
 
 	&.TextBase__Color_GrayDark_White {
@@ -39,23 +39,15 @@
 		font-size: 4.2rem;
 	}
 
-	&.TextBase__FontWeight_300Light {
+	&.TextBase__FontWeight_300 {
 		font-weight: $font-weight-300-light;
 	}
 
-	&.TextBase__FontWeight_400Normal {
-		font-weight: $font-weight-400-normal;
-	}
-
-	&.TextBase__FontWeight_500Medium {
+	&.TextBase__FontWeight_500 {
 		font-weight: $font-weight-500-medium;
 	}
 
-	&.TextBase__FontWeight_700Bold {
+	&.TextBase__FontWeight_700 {
 		font-weight: $font-weight-700-bold;
-	}
-
-	&.TextBase__FontWeight_900Heavy {
-		font-weight: $font-weight-900-heavy;
 	}
 }
