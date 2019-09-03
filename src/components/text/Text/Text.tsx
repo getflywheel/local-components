@@ -11,7 +11,7 @@ import {
 
 export enum TextPropSize {
 	caption = 'caption',
-	m = 'm',
+	default = 'default',
 }
 
 interface IProps extends ITextCommonProps {
@@ -28,7 +28,7 @@ export const Text = (props: IProps) => {
 				'Text',
 				className,
 			)}
-			color={size === TextPropSize.m ? TextBasePropColor.graydark_gray15_text : TextBasePropColor.gray_gray75_title}
+			color={size === TextPropSize.default ? TextBasePropColor.graydark_gray15_text : TextBasePropColor.gray_gray75_title}
 			fontSize={TextBasePropFontSize.s}
 			fontWeight={TextBasePropFontWeight.normal}
 			{...privateOptions}
@@ -38,6 +38,6 @@ export const Text = (props: IProps) => {
 };
 
 Text.defaultProps = {
-	size: 'm',
+	size: 'default',
 	tag: 'span',
 } as Partial<IProps>;
