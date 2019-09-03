@@ -9,10 +9,8 @@ import {
 } from '../ButtonBase/ButtonBase';
 
 export enum ButtonPropIntent {
-	alert = 'alert',
 	default = 'default',
 	destructive = 'destructive',
-	success = 'success',
 }
 
 interface IProps extends IButtonCommonProps {
@@ -40,12 +38,8 @@ export const Button = (props: IProps) => {
 
 function setIntentColor (props: IProps, defaultValue: ButtonPropColor): ButtonPropColor {
 	switch (props.intent) {
-		case ButtonPropIntent.alert:
-			return ButtonPropColor.orange;
 		case ButtonPropIntent.destructive:
 			return ButtonPropColor.red;
-		case ButtonPropIntent.success:
-			return ButtonPropColor.green;
 	}
 
 	return defaultValue;
@@ -53,9 +47,7 @@ function setIntentColor (props: IProps, defaultValue: ButtonPropColor): ButtonPr
 
 function setForm (props: IProps, defaultValue: ButtonPropForm): ButtonPropForm {
 	switch (props.intent) {
-		case ButtonPropIntent.alert:
 		case ButtonPropIntent.destructive:
-		case ButtonPropIntent.success:
 			return ButtonPropForm.fill;
 	}
 
