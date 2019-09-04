@@ -45,7 +45,7 @@ module.exports = {
 				},
 				{
 					name: 'Layout',
-					components: 'src/components/loaders/**/[A-Z]*.tsx',
+					components: 'src/components/layout/**/[A-Z]*.tsx',
 					ignore: '**/_private/*.tsx',
 				},
 				{
