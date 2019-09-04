@@ -1,5 +1,5 @@
 ```js
-const { ButtonExample } = require('./examples/ButtonExample');
+import { ButtonExample } from './examples/ButtonExample';
 
 <ButtonExample />
 ```

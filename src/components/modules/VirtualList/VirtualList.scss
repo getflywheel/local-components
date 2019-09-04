@@ -1,0 +1,23 @@
+@import '../../../styles/_partials/index';
+
+.VirtualList_Wrapper {
+	position: relative;
+	overflow-y: auto;
+	will-change: transform;
+}
+
+.VirtualList {
+	// host modifiers
+	&.VirtualList__Striped {}
+
+	.VirtualList_Item__StripedOdd {
+		@include selectors_ifHostHasModifier('.VirtualList__Striped') {
+			@include theme-background-white-else-gray3row;
+		}
+	}
+	.VirtualList_Item__StripedEven {
+		@include selectors_ifHostHasModifier('.VirtualList__Striped') {
+			@include theme-background-gray2-else-gray2row;
+		}
+	}
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './TextBase.scss';
 import ILocalContainerProps from '../../../../common/structures/ILocalContainerProps';
-import { Container } from '../../../Container';
+import { Container } from '../../../modules/Container';
 
 export enum TextBasePropColor {
 	gray_gray75_title = 'gray_gray75_title',

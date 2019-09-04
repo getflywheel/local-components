@@ -1,0 +1,13 @@
+@import '../../../styles/_partials/index';
+
+.FlySelect {
+	// host modifiers
+	&.FlySelect__Readonly {
+		@include if-theme-light() {
+			background-color: $gray2;
+		}
+		@include if-theme-dark() {
+			background-color: $gray-dark-alt;
+		}
+	}
+}

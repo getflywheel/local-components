@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 import { ComponentExampleBase } from '../../../../common/helpers/ComponentExampleBase';
-import { TextPropSize } from '../Text';
+import { Text, TextPropSize } from '../Text';
 
 export class TextExample extends ComponentExampleBase {
 
