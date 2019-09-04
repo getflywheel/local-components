@@ -1,5 +1,5 @@
 import * as React from 'react';
-import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IState {
 

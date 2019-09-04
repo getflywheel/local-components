@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './FlyLargeConfirm.sass';
-import CheckSVG from '../../svg/checkmark--big';
-import IReactComponentProps from '../../common/structures/IReactComponentProps';
-import { PrimaryButton } from '../buttons/PrimaryButton/PrimaryButton';
+import CheckSVG from '../../../svg/checkmark--big';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 
 interface IProps extends IReactComponentProps {
 

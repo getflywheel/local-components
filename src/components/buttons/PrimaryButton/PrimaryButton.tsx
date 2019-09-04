@@ -1,12 +1,12 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import {
 	ButtonBase,
 	ButtonPropColor,
 	ButtonPropForm,
 	ButtonPropPadding, IButtonBaseProps,
 	IButtonCommonProps,
-} from '../ButtonBase/ButtonBase';
-import classnames from 'classnames';
+} from '../_private/ButtonBase/ButtonBase';
 
 export enum PrimaryButtonPropIntent {
 	default = 'default',

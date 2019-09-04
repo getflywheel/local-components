@@ -1,10 +1,10 @@
 import * as React from 'react';
-import IReactComponentProps from '../../common/structures/IReactComponentProps';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import * as styles from './Banner.sass';
-import WarningSVG from '../../svg/warning';
-import CloseSVG from '../../svg/close--small';
-import { Button } from '../buttons/Button/Button';
+import WarningSVG from '../../../svg/warning';
+import CloseSVG from '../../../svg/close--small';
+import { Button } from '../../buttons/Button/Button';
 
 interface IProps extends IReactComponentProps {
 

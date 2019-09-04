@@ -6,7 +6,7 @@ import {
 	ButtonPropForm,
 	ButtonPropPadding, IButtonBaseProps,
 	IButtonCommonProps,
-} from '../ButtonBase/ButtonBase';
+} from '../_private/ButtonBase/ButtonBase';
 
 export enum ButtonPropIntent {
 	default = 'default',
