@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './FlyModal.sass';
-import Close from '../Close';
+import Close from '../buttons/Close';
 import IReactComponentProps from '../../common/structures/IReactComponentProps';
 
 const ReactModal = require('react-modal');

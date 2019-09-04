@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './ButtonBase.scss';
-import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
-import { Container } from '../../Container';
+import ILocalContainerProps from '../../../../common/structures/ILocalContainerProps';
+import { Container } from '../../../Container';
 
 export enum ButtonPropColor {
 	default = 'default',

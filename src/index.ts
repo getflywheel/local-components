@@ -1,29 +1,34 @@
 import addStyles from './add-styles';
-
 addStyles();
+
+// Alerts
+export {default as Banner} from './components/alerts/Banner';
+export {default as BannerCarousel} from './components/alerts/BannerCarousel';
+export {default as FlyLargeConfirm} from './components/alerts/FlyLargeConfirm';
+
+// Buttons
+export {ButtonBase} from './components/buttons/_private/ButtonBase/ButtonBase';
+export {Button} from './components/buttons/Button/Button';
+export {default as Close} from './components/buttons/Close';
+export {PrimaryButton} from './components/buttons/PrimaryButton/PrimaryButton';
+export {TextButton} from './components/buttons/TextButton/TextButton';
+
+//
 
 export {default as AdvancedToggle} from './components/AdvancedToggle';
 export {default as Avatar} from './components/Avatar';
-export {default as Banner} from './components/Banner';
-export {default as BannerCarousel} from './components/BannerCarousel';
 export {default as BigLoader} from './components/BigLoader';
 export {default as BrowseInput} from './components/BrowseInput';
 export {default as Card} from './components/Card';
 export {default as Checkbox} from './components/Checkbox';
-export {default as Close} from './components/Close';
 export {default as ClippedContent} from './components/ClippedContent';
 export {Container} from './components/Container';
-export {ButtonBase} from './components/buttons/ButtonBase/ButtonBase';
-export {Button} from './components/buttons/Button/Button';
-export {PrimaryButton} from './components/buttons/PrimaryButton/PrimaryButton';
-export {TextButton} from './components/buttons/TextButton/TextButton';
 export {default as Divider} from './components/Divider';
 export {default as DownloaderItem} from './components/DownloaderItem';
 export {default as DragBar} from './components/DragBar';
 export {default as Drawer} from './components/Drawer';
 export {EmptyArea as EmptyArea} from './components/EmptyArea';
 export {default as FlyDropdown} from './components/FlyDropdown';
-export {default as FlyLargeConfirm} from './components/FlyLargeConfirm';
 export {default as FlyModal} from './components/FlyModal';
 export {default as FlySelect} from './components/FlySelect';
 export {default as FlyTooltip} from './components/FlyTooltip';
@@ -33,7 +38,7 @@ export {
 	InnerPaneSidebarHeader as InnerPaneSidebarHeader,
 	InnerPaneSidebarAddNew as InnerPaneSidebarAddNew,
 	InnerPaneSidebarContent as InnerPaneSidebarContent,
-	InnerPaneSidebarContentItem as InnerPaneSidebarContentItem
+	InnerPaneSidebarContentItem as InnerPaneSidebarContentItem,
 } from './components/InnerPaneSidebar';
 export {default as InputPasswordToggle} from './components/InputPasswordToggle';
 export {default as InputSearch} from './components/InputSearch';
