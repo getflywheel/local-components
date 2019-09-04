@@ -1,6 +1,8 @@
 BannerCarousel example:
 
 ```js
+import Banner from '../Banner';
+
 <BannerCarousel>
     <Banner variant="neutral" icon="warning" buttonText="Click Me!"
         buttonOnClick={() => console.log('buttonOnClick')}><strong>Typewriter!</strong> Poke selvage fam retro pug, offal

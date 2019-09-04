@@ -1,5 +1,5 @@
 ```js
-const { TextButtonExample } = require('./examples/TextButtonExample');
+import { TextButtonExample } from './examples/TextButtonExample';
 
 <TextButtonExample />
 ```

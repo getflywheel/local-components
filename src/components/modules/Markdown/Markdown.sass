@@ -1,0 +1,209 @@
+@import '../../../styles/_partials/index'
+
+.Markdown
+	@include theme-color-gray-else-white
+	font-weight: 300
+
+	p
+		@include theme-color-gray-else-gray25
+
+	h1, h2, h3, h4, h5, h6
+		@include theme-color-graydark-else-white
+
+	h1
+		font-size: 24px
+
+		&:first-child
+			margin-top: 0
+
+	h2
+		font-size: 18px
+
+	h1, h2
+		margin: 30px 0 20px 0
+
+	h3, h4, h5, h6
+		margin: 10px 0 10px 0
+		font-size: 14px
+		font-weight: 500
+
+	// bold / italics
+	strong,
+	em
+		font-style: normal
+		font-weight: 500
+
+	ul
+		list-style: none
+		padding: 0
+		margin: 0
+
+		li
+			margin-top: 10px
+
+			&:before
+				content: ''
+				height: 6px
+				width: 6px
+				display: inline-block
+				margin: 0 10px 2px 3px
+				background-color: $green
+				border-radius: 50%
+
+	ol
+		counter-reset: foo
+		display: table
+		margin: 0
+		padding: 0
+		border-collapse: collapse
+
+		li
+			counter-increment: foo
+			display: table-row
+			list-style: none
+			border-bottom: solid transparent 10px
+
+			&:last-child
+				border-bottom: none
+
+			&:before
+				content: counter(foo) "."
+				display: table-cell
+				text-align: right
+				color: $green
+				font-weight: 500
+				padding-right: (10px - 3px)
+
+	table
+		tr
+			height: 48px
+			line-height: 48px
+
+		thead
+			tr
+				text-transform: uppercase
+				font-weight: 700
+				letter-spacing: 0.02em
+				@include theme-background-gray15-else-gray
+
+		tbody
+			tr
+				&:nth-child(even)
+					@include theme-background-gray2-else-gray2row
+
+				td
+					padding: 0 30px
+
+
+	blockquote
+		$lineWidth: 4px
+
+		position: relative
+		margin: 10px 0
+		padding-left: 10px + $lineWidth
+
+		> p
+			@include theme-color-gray75-else-gray25
+
+		> blockquote
+			margin-left: 20px
+
+		&:before
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			bottom: 0
+			width: $lineWidth
+			@include theme-background-gray15-else-gray
+			border-radius: 4px
+
+	hr
+		border: none
+		@include theme-border-bottom
+
+	img
+		max-width: 100%
+		max-height: 800px
+
+.Lowlight
+	\:global
+		.hljs
+			//display: block
+			//overflow-x: auto
+			//padding: 0.5em
+			//background: #282a36
+			padding: 4px
+			@include theme-color-gray-else-white
+			@include theme-background-gray5-else-graydarkalt
+			border-radius: 4px
+
+			.hljs-nomarkup
+			.hljs-attribute
+				@include theme-color-gray-else-white
+
+			.hljs-keyword,
+			.hljs-selector-tag,
+			.hljs-literal,
+			.hljs-section,
+			.hljs-link
+				color: $green
+
+			.hljs-function .hljs-keyword
+				color: $green
+
+			.hljs,
+			.hljs-subst
+				color: $green
+
+			// html
+			.hljs-tag
+				@include theme-color-gray-else-white
+
+				.hljs-name
+					@include theme-color-gray-else-white
+					font-weight: 300
+
+			// css
+			.hljs-selector-tag,
+			.hljs-selector-class
+				color: $green
+
+			.hljs-params, // js params
+			.hljs-built_in, // js globals
+			.hljs-string,
+			.hljs-regexp,
+			.hljs-number,
+			.hljs-title,
+			.hljs-name,
+			.hljs-type,
+			.hljs-symbol,
+			.hljs-bullet,
+			.hljs-addition,
+			.hljs-variable,
+			.hljs-template-tag,
+			.hljs-template-variable
+				color: $green
+
+			.hljs-meta // e.g. php tag
+				@include theme-color-gray-else-white
+				font-weight: bold
+
+			.hljs-comment,
+			.hljs-quote,
+			.hljs-deletion
+				color: $gray75
+				font-style: italic
+
+			.hljs-keyword,
+			.hljs-literal,
+			.hljs-title,
+			.hljs-section,
+			.hljs-doctag,
+			.hljs-type,
+			.hljs-name,
+			.hljs-strong
+				font-weight: bold
+
+			.hljs-emphasis
+				font-style: italic

@@ -1,0 +1,49 @@
+@import '../../../styles/_partials/index'
+
+$checkboxSize: 16px
+
+.Checkbox
+	&.Checkbox__Checked
+	&.Checkbox__CheckMixed
+
+	&:not(.Checkbox__Checked)
+		@include if-theme-dark
+			color: $gray15
+			font-weight: $font-weight-300-light
+
+	&.Checkbox__Disabled
+		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
+			@include theme-color-gray25-else-gray-dark50
+
+	.Checkbox_Label
+		display: flex
+
+	.Checkbox_LabelContents
+		margin-left: 10px
+		font-weight: 500
+
+	.Checkbox_InputHidden
+		position: absolute
+		opacity: 0
+
+	.Checkbox_GraphicsCont
+		flex-shrink: 0
+		width: $checkboxSize
+		height: $checkboxSize
+		@include theme-background-white-else-graydarkalt
+		@include theme-input-border
+		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
+			@include theme-background-gray5-else-gray-dark50
+
+	.Checkbox_Checkmark
+		margin: 3px 2px
+
+		@include selectors_setAsDefaults
+			path
+				fill: $green
+		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
+			path
+				fill: $gray75
+
+	.Checkbox_CheckmarkMixed
+		margin: 5px 3px
