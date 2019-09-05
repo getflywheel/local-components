@@ -1,7 +1,7 @@
 BannerCarousel example:
 
 ```js
-import Banner from '../Banner';
+import Banner from '../Banner/Banner';
 
 <BannerCarousel>
     <Banner variant="neutral" icon="warning" buttonText="Click Me!"

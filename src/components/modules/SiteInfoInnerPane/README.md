@@ -27,9 +27,9 @@ With `<InnerPaneSidebar />`:
 
 ```js
 import { TableList, TableListRow } from '../../tables/TableList/TableList';
-import { EmptyArea } from '../EmptyArea';
+import { EmptyArea } from '../EmptyArea/EmptyArea';
 import { Button } from '../../buttons/Button/Button';
-import { InnerPaneSidebar, InnerPaneSidebarHeader, InnerPaneSidebarContent } from '../InnerPaneSidebar';
+import { InnerPaneSidebar, InnerPaneSidebarHeader, InnerPaneSidebarContent } from '../InnerPaneSidebar/InnerPaneSidebar';
 
 <SiteInfoInnerPane>
     <TableList>

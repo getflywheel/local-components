@@ -5,7 +5,7 @@ import * as stylesVerticalNav from '../VerticalNav.scss';
 import Popup from '../../../overlays/Popup/Popup';
 import Divider from '../../../layout/Divider/Divider';
 import AddSVG from '../../../../svg/add';
-import Avatar from '../../../media/Avatar';
+import Avatar from '../../../media/Avatar/Avatar';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 import { VerticalNavItem } from '../VerticalNav';
 import CloseSmallSVG from '../../../../svg/close--small';

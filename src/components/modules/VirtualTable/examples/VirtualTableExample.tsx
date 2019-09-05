@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as styles from './VirtualTableExample.scss';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
-import Checkbox from '../../../inputs/Checkbox/index';
-import FlySelect from '../../../inputs/FlySelect/index';
-import Divider from '../../../layout/Divider/index';
+import Checkbox from '../../../inputs/Checkbox/Checkbox';
+import FlySelect from '../../../inputs/FlySelect/FlySelect';
+import Divider from '../../../layout/Divider/Divider';
 import { IVirtualTableCellRendererDataArgs, VirtualTable } from '../VirtualTable';
 
 interface IDataObject {

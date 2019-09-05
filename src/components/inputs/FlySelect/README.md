@@ -48,7 +48,7 @@ Constrained Width:
 
 Using an Avatar within a form FlySelect:
 ```js
-import Avatar from '../../media/Avatar';
+import Avatar from '../../media/Avatar/Avatar';
 
 <div>
 	<div className="FormRow">

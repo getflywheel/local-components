@@ -1,5 +1,5 @@
 ```js
-import { Step } from './index';
+import { Step } from './Stepper';
 
 <Stepper>
     <Step number={1} done={false} active={true}>Setup Site</Step>

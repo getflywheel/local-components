@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import { TableList } from '../TableList/index';
+import { TableList } from '../TableList/TableList';
 import CloseSmallSVG from '../../../svg/close--small';
 import AddSVG from '../../../svg/add';
 import isEqual = require('lodash.isequal');
