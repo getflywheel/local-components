@@ -17,7 +17,7 @@ There's a powerful margin system built into Container that allows for:
 The following example shows how to use Container to add margin around an element in shorthand vertical / horizontal form:
 
 ```js
-import Card from '../Card';
+import Card from '../Card/Card';
 
 <Container margin="m s xl">
 	<Card>
@@ -29,7 +29,7 @@ import Card from '../Card';
 It's equally as easy to add individual margin props.
 
 ```js
-import Card from '../Card';
+import Card from '../Card/Card';
 
 <Container marginLeft="xl">
 	<Card>
@@ -41,7 +41,7 @@ import Card from '../Card';
 These margin props can also handle simple plus / minus arithmatic for both shorthand and individual margin properties.
 
 ```js
-import Card from '../Card';
+import Card from '../Card/Card';
 
 <Container margin="xl+xl -s xl-15 m">
 	<Card>

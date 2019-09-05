@@ -68,7 +68,7 @@ Medium size RadioBlock:
 Disable the 2nd item and show a tooltip on hover:
 
 ```js
-import { Tooltip } from '../../overlays/Tooltip';
+import { Tooltip } from '../../overlays/Tooltip/Tooltip';
 
 <RadioBlock heightSize="m" onChange={() => console.log('onChange')} default={'test1'} options={{
     'test1': {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import ProgressBar from '../ProgressBar/index';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import { TextButton } from '../../buttons/TextButton/TextButton';
 
 const { ipcRenderer } = require('electron');

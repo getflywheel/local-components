@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as styles from './VirtualListExample.scss';
 import { VirtualList } from '../VirtualList';
-import Divider from '../../../layout/Divider/index';
-import Checkbox from '../../../inputs/Checkbox/index';
+import Divider from '../../../layout/Divider/Divider';
+import Checkbox from '../../../inputs/Checkbox/Checkbox';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 
 import { IVirtualListHelperCalculations } from '../helpers/VirtualListHelper';

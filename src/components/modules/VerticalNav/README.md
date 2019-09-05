@@ -83,7 +83,7 @@ import { WorkspaceSwitcher } from '../../modules/VerticalNav/components/Workspac
 _Note the lack of top padding._
 
 ```js
-import FlyTooltip from '../../overlays/FlyTooltip';
+import FlyTooltip from '../../overlays/FlyTooltip/FlyTooltip';
 
 <div className="__OsWindows" style={{ height: '300px' }}>
     <VerticalNav location={{ pathname: '' }}>

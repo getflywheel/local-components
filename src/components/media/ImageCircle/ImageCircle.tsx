@@ -2,7 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './ImageCircle.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import ClippedContent from '../../modules/ClippedContent/index';
+import ClippedContent from '../../modules/ClippedContent/ClippedContent';
 
 interface IProps extends IReactComponentProps {
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VirtualList } from '../VirtualList';
+import { VirtualList } from '../VirtualList/VirtualList';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { VirtualTableRow } from './components/VirtualTableRow';
 import classnames from 'classnames';
