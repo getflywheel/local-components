@@ -1,0 +1,22 @@
+@import '../../../styles/_partials/index';
+
+.BigLoader {
+	text-align: center;
+	justify-content: center;
+	position: relative;
+
+	> h3 {
+		position: absolute;
+		bottom: 50px;
+		width: 100%;
+		font-size: 16px;
+		font-family: $museo-sans-rounded;
+		color: $gray;
+		font-weight: 300;
+		@include tracking(-20);
+
+		@at-root .__Before-React-Loaded .BigLoader > h3 {
+			font-family: $system-font;
+		}
+	}
+}
