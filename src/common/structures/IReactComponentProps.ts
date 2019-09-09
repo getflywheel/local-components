@@ -5,7 +5,7 @@ export default interface IReactComponentProps {
 	children?: React.ReactNode;
 	className?: string;
 	key?: string | number;
-	onClick?: FunctionGeneric;
+	onClick?: any;
 	style?: object;
 	ref?: any;
 

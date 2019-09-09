@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from './BigLoader.sass';
+import * as styles from './BigLoader.scss';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 
 interface IProps extends IReactComponentProps {
