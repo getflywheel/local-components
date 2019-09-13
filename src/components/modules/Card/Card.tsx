@@ -105,7 +105,6 @@ export default class Card extends React.Component<IProps> {
 			>
 				{this.props.contentTitle && (
 					<Title
-						tag="h1"
 						size="s"
 						className={classnames(
 							styles.Card_Content_Title,

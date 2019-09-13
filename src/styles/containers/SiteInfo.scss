@@ -39,7 +39,7 @@
 		position: relative;
 
 		a {
-			h1 {
+			.Title {
 				margin: 0;
 				max-width: calc(100% - 200px);
 				overflow: hidden;
@@ -50,11 +50,11 @@
 				transition: transform .1s ease 0s, color .2s ease 0s;
 			}
 
-			&:hover h1 {
+			&:hover .Title {
 				color: $green;
 			}
 
-			&:active h1 {
+			&:active .Title {
 				transform: scale(.99);
 			}
 		}

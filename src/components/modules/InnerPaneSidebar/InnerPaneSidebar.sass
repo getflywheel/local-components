@@ -14,7 +14,7 @@
 	padding: 15px 20px
 	display: flex
 
-	h3
+	.Title
 		margin: 0
 		@include theme-color-graydark-else-white
 		font-size: 14px
@@ -166,7 +166,7 @@
 		position: relative
 
 		@include if-theme-dark()
-			h5
+			.Title
 				color: $yellow
 
 			pre
@@ -201,13 +201,6 @@
 
 		&:last-child
 			margin-bottom: 0
-
-	h5
-		@include theme-color-graydark-else-white
-		margin: 0 0 10px
-
-	h1, h2, h3, h4
-		font-size: 16px
 
 	p
 		font-weight: 300

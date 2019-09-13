@@ -211,7 +211,7 @@ HTML highlighting
 </ul>
 
 <!-- Main content -->
-<h1>My first styled page</h1>
+<div>My first styled page</div>
 
 <p>Welcome to my styled page!
 

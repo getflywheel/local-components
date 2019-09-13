@@ -11,14 +11,14 @@ import { Button } from '../../buttons/Button/Button';
 </Popup>
 ```
 
-On click, an h2 element is displayed in the right popup position.
+On click, an div element is displayed in the right popup position.
 
 ```js
 <Popup 
 	position="right"
-	triggerContent={<h2>Open h1 to the right</h2>}
+	triggerContent={<div>Open content to the right</div>}
 >
-    <h1>Right!</h1>
+    <div>Right!</div>
 </Popup>
 ```
 
@@ -42,8 +42,8 @@ Offset the x and y position of the popup bubble.
 	offsetX="20px"
 	offsetY="20px"
 	position="right"
-	triggerContent={<h2>Open and offset</h2>}
+	triggerContent={<div>Open and offset</div>}
 >
-    <h1>Simple.</h1>
+    <div>Simple.</div>
 </Popup>
 ```

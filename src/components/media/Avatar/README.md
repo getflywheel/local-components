@@ -1,11 +1,11 @@
 Avatars provide a visual representation of a user or team through an image, initials, or both (with initials as a fallback).
 
-<h3>User type</h3>
+#### User type
 
 A user is visually represented by a circle shape. 
 It can be an image, initials, or both.
 
-<h6>Image</h6>
+##### Image
 
 ```js
 <Avatar
@@ -14,7 +14,7 @@ It can be an image, initials, or both.
 />
 ```
 
-<h6>Initials</h6>
+##### Initials
 
 ```js
 <Avatar
@@ -23,7 +23,7 @@ It can be an image, initials, or both.
 />
 ```
 
-<h6>Image with initials Fallback</h6>
+##### Image with initials Fallback
 
 If both an image `src` and the `initials` props are set, they will work together with the image appearing once loaded and the initials appearing prior to load on upon an error.
 
@@ -37,12 +37,12 @@ If both an image `src` and the `initials` props are set, they will work together
 />
 ```
 
-<h3>Team type</h3>
+#### Team type
 
 A team is visually represented by a rounded square shape. 
 It can be an image, initials, or both.
 
-<h6>Image</h6>
+##### Image
 
 ```js
 <Avatar 
@@ -51,14 +51,14 @@ It can be an image, initials, or both.
 />
 ```
 
-<h3>Background colors</h3>
+#### Background colors
 
 Avatars with initials have a background color.
 By default, the background is set to Flywheel's primary brand color (blue).
 
 In addition, the following colors are available:
 
-<h6>Green</h6>
+##### Green
 
 ```js
 <Avatar
@@ -68,7 +68,7 @@ In addition, the following colors are available:
 />
 ```
 
-<h6>Yellow</h6>
+##### Yellow
 
 ```js
 <Avatar
@@ -78,7 +78,7 @@ In addition, the following colors are available:
 />
 ```
 
-<h6>Orange</h6>
+##### Orange
 
 ```js
 <Avatar
@@ -88,7 +88,7 @@ In addition, the following colors are available:
 />
 ```
 
-<h6>Red</h6>
+##### Red
 
 ```js
 <Avatar
@@ -98,7 +98,7 @@ In addition, the following colors are available:
 />
 ```
 
-<h6>Pink</h6>
+##### Pink
 
 ```js
 <Avatar
@@ -108,7 +108,7 @@ In addition, the following colors are available:
 />
 ```
 
-<h6>Purple</h6>
+##### Purple
 
 ```js
 <Avatar
@@ -118,11 +118,11 @@ In addition, the following colors are available:
 />
 ```
 
-<h3>Sizes</h3>
+#### Sizes
 
 There are two built-in sizes for avatars. The default is medium and there's also a small version.
 
-<h6>Small</h6>
+##### Small
 
 ```js
 <Avatar
@@ -132,7 +132,7 @@ There are two built-in sizes for avatars. The default is medium and there's also
 />
 ```
 
-<h6>Medium</h6>
+##### Medium
 
 ```js
 <Avatar
@@ -142,11 +142,11 @@ There are two built-in sizes for avatars. The default is medium and there's also
 />
 ```
 
-<h3>More on images</h3>
+#### More on images
 
 When using an image without initials, any load error will result in a blank area.
 
-<h6>onError</h6>
+##### onError
 
 ```js
 <Avatar 
@@ -155,7 +155,7 @@ When using an image without initials, any load error will result in a blank area
 />
 ```
 
-<h6>placeholder</h6>
+##### placeholder
 
 You can also have a placeholder image.
 This is most valuable when a cached image is immediately available as a placeholder while a large or external image load as the primary `src`.
@@ -168,7 +168,7 @@ This is most valuable when a cached image is immediately available as a placehol
 />
 ```
 
-<h6>placeholder with src onError</h6>
+##### placeholder with src onError
 
 ```js
 <Avatar 

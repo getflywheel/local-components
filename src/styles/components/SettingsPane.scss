@@ -24,7 +24,7 @@
 			}
 		}
 
-		h4 {
+		.Title {
 			padding: 12px 30px;
 			font-size: 18px;
 			@include theme-color-graydark50-else-white;
@@ -55,7 +55,7 @@
 		padding: 30px;
 		@include theme-border-top;
 
-		button.__Pill {
+		button {
 			margin-left: auto;
 		}
 	}
@@ -66,11 +66,6 @@
 		position: relative;
 		height: 90px;
 		flex-shrink: 0;
-
-		h3 {
-			line-height: 90px;
-			margin: 0;
-		}
 
 		.Close {
 			right: 30px;

@@ -1,6 +1,7 @@
 
 ```js
 import { Button } from '../../buttons/Button/Button';
+import { Title } from '../../text/Title/Title';
 const ReactDOM = require('react-dom');
 const classnames = require('classnames');
 
@@ -29,7 +30,7 @@ class FlywheelModalExample extends React.Component{
         			contentLabel={args.title.toString()}
         			hasIcon={true}
 				>
-        			<h3>Does your lorem ipsum text long for something a little meatier?</h3>
+        			<Title>Does your lorem ipsum text long for something a little meatier?</Title>
         			<p>Bacon ipsum dolor amet kevin meatloaf chicken pork shoulder alcatra filet mignon kielbasa tri-tip beef ribs.</p>
         		</FlyModal>, document.getElementById('popup-container'));
         	});

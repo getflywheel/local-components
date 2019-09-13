@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import * as styles from './BrowseInput.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import untildify = require('untildify');
+import { TextButton } from '../../buttons/TextButton/TextButton';
 
 let remote: any;
 let dialog: any;
@@ -89,7 +90,15 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 				>
 					{this.state.value || this.props.placeholder}
 				</span>
-				<button className="__Inline __Green __MarginLeft_5" onClick={this.browseFolder}>Browse</button>
+				<TextButton
+					style={{
+						marginLeft: '5px',
+						padding: 0,
+					}}
+					onClick={this.browseFolder}
+				>
+					Browse
+				</TextButton>
 			</div>
 		);
 	}

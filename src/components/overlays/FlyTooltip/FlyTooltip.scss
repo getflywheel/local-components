@@ -184,7 +184,7 @@
 		z-index: 3;
 	}
 
-	p, h4, li {
+	p, li, .Title {
 		margin: 8px 0;
 	}
 
@@ -194,7 +194,7 @@
 		@include tracking(20);
 	}
 
-	h4 {
+	.Title {
 		font-weight: 700;
 		font-size: 14px;
 		@include theme-color-graydark-else-white;
