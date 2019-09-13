@@ -26,6 +26,7 @@ $disabled-text-dark: $gray-dark50;
 		'--Button_Background',
 		'--Button_BorderColor',
 		'--Button_TextColor',
+		'--Button_TextColor_Hover',
 		'--Button_SvgPathFillColor',
 		'--Button_IfFill__Background',
 		'--Button_IfFill__Background_Hover',
@@ -37,6 +38,11 @@ $disabled-text-dark: $gray-dark50;
 	color: var(--Button_TextColor);
 	background: var(--Button_Background);
 	border: none;
+
+	// use explicit hover color rather than default color to ensure tags like 'a' don't inherit their global style
+	&:hover {
+		color: var(--Button_TextColor_Hover);
+	}
 
 	// conditionally draw inner border by using the :after selector
 	&:after {
@@ -82,7 +88,7 @@ $disabled-text-dark: $gray-dark50;
 
 		&:hover {
 			@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
-			@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Hover));
+			@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
 		}
 
 		&[disabled] {
@@ -97,7 +103,7 @@ $disabled-text-dark: $gray-dark50;
 		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
 
 		&:hover {
-			@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Hover));
+			@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
 			@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover), transparent);
 			@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background_Hover), var(--Button_IfFill__TextColor_Hover));
 			@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
@@ -116,7 +122,7 @@ $disabled-text-dark: $gray-dark50;
 		@include setThemeVar('--Button_TextColor_Hover', $green-dark50);
 
 		&:hover {
-			@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background_Hover));
+			@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__Background_Hover));
 		}
 
 		&[disabled] {
