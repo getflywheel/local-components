@@ -10,44 +10,44 @@
 
 	// css variable-based styles
 	color: var(--TextBase_TextColor);
+}
 
-	&.TextBase__Color_Gray_Gray75 {
-		@include setThemeVar('--TextBase_TextColor', $gray, $gray75);
-	}
+.TextBase__Color_Gray_Gray75 {
+	@include setThemeVar('--TextBase_TextColor', $gray, $gray75);
+}
 
-	&.TextBase__Color_GrayDark_Gray15 {
-		@include setThemeVar('--TextBase_TextColor', $gray-dark, $gray15);
-	}
+.TextBase__Color_GrayDark_Gray15 {
+	@include setThemeVar('--TextBase_TextColor', $gray-dark, $gray15);
+}
 
-	&.TextBase__Color_GrayDark_White {
-		@include setThemeVar('--TextBase_TextColor', $gray-dark, $white);
-	}
+.TextBase__Color_GrayDark_White {
+	@include setThemeVar('--TextBase_TextColor', $gray-dark, $white);
+}
 
-	&.TextBase__FontSize_Small {
-		font-size: 1.4rem;
-	}
+.TextBase__FontSize_Small {
+	font-size: 1.4rem;
+}
 
-	&.TextBase__FontSize_Medium {
-		font-size: 1.8rem;
-	}
+.TextBase__FontSize_Medium {
+	font-size: 1.8rem;
+}
 
-	&.TextBase__FontSize_Large {
-		font-size: 2.4rem;
-	}
+.TextBase__FontSize_Large {
+	font-size: 2.4rem;
+}
 
-	&.TextBase__FontSize_XLarge {
-		font-size: 4.2rem;
-	}
+.TextBase__FontSize_XLarge {
+	font-size: 4.2rem;
+}
 
-	&.TextBase__FontWeight_300 {
-		font-weight: $font-weight-300-light;
-	}
+.TextBase__FontWeight_300 {
+	font-weight: $font-weight-300-light;
+}
 
-	&.TextBase__FontWeight_500 {
-		font-weight: $font-weight-500-medium;
-	}
+.TextBase__FontWeight_500 {
+	font-weight: $font-weight-500-medium;
+}
 
-	&.TextBase__FontWeight_700 {
-		font-weight: $font-weight-700-bold;
-	}
+.TextBase__FontWeight_700 {
+	font-weight: $font-weight-700-bold;
 }
