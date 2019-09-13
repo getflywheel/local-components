@@ -64,11 +64,6 @@ $disabled-text-dark: $gray-dark50;
 		pointer-events: none;
 	}
 
-	// if default 'button' tag (otherwise don't impose display style)
-	@at-root button#{&} {
-		display: inline-block;
-	}
-
 	svg {
 		width: 14px;
 		height: 14px;
@@ -81,104 +76,109 @@ $disabled-text-dark: $gray-dark50;
 		}
 	}
 
-	&.ButtonBase__Form_Fill {
-		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background));
-		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor));
-		@include setThemeVar('--Button_SvgPathFillColor', $white);
+	// if default 'button' tag (otherwise don't impose display style)
+	@at-root button#{&} {
+		display: inline-block;
+	}
+}
 
-		&:hover {
-			@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
-			@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
-		}
+.ButtonBase__Form_Fill {
+	@include setThemeVar('--Button_Background', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor));
+	@include setThemeVar('--Button_SvgPathFillColor', $white);
 
-		&[disabled] {
-			@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
-			@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
-		}
+	&:hover {
+		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
 	}
 
-	&.ButtonBase__Form_Outline {
-		@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background));
-		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
-		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
+	&[disabled] {
+		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
+	}
+}
 
-		&:hover {
-			@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
-			@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover), transparent);
-			@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background_Hover), var(--Button_IfFill__TextColor_Hover));
-			@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
-		}
+.ButtonBase__Form_Outline {
+	@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
 
-		&[disabled] {
-			@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
-			@include setThemeVar('--Button_BorderColor', $disabled-background-light, $disabled-background-dark);
-			@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
-		}
+	&:hover {
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
+		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover), transparent);
+		@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background_Hover), var(--Button_IfFill__TextColor_Hover));
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
 	}
 
-	&.ButtonBase__Form_Text {
-		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
-		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
-		@include setThemeVar('--Button_TextColor_Hover', $green-dark50);
+	&[disabled] {
+		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
+		@include setThemeVar('--Button_BorderColor', $disabled-background-light, $disabled-background-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
+	}
+}
 
-		&:hover {
-			@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__Background_Hover));
-		}
+.ButtonBase__Form_Text {
+	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_TextColor_Hover', $green-dark50);
 
-		&[disabled] {
-			@include setThemeVar('--Button_TextColor', $disabled-background-light, $disabled-background-dark);
-		}
+	&:hover {
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__Background_Hover));
 	}
 
-	&.ButtonBase__Color_Gray {
-		@include setThemeVar('--Button_IfFill__Background', $gray75, $gray25);
-		@include setThemeVar('--Button_IfFill__TextColor', $white);
-		@include setThemeVar('--Button_IfFill__Background_Hover', $gray25, $gray75);
-		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+	&[disabled] {
+		@include setThemeVar('--Button_TextColor', $disabled-background-light, $disabled-background-dark);
 	}
+}
 
-	&.ButtonBase__Color_Green {
-		@include setThemeVar('--Button_IfFill__Background', $green);
-		@include setThemeVar('--Button_IfFill__TextColor', $white);
-		@include setThemeVar('--Button_IfFill__Background_Hover', $green-dark50);
-		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
-	}
+.ButtonBase__Color_Gray {
+	@include setThemeVar('--Button_IfFill__Background', $gray75, $gray25);
+	@include setThemeVar('--Button_IfFill__TextColor', $white);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $gray25, $gray75);
+	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+}
 
-	&.ButtonBase__Color_Orange {
-		@include setThemeVar('--Button_IfFill__Background', $orange);
-		@include setThemeVar('--Button_IfFill__TextColor', $white);
-		@include setThemeVar('--Button_IfFill__Background_Hover', $orange-dark);
-		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
-	}
+.ButtonBase__Color_Green {
+	@include setThemeVar('--Button_IfFill__Background', $green);
+	@include setThemeVar('--Button_IfFill__TextColor', $white);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $green-dark50);
+	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+}
 
-	&.ButtonBase__Color_Red {
-		@include setThemeVar('--Button_IfFill__Background', $red);
-		@include setThemeVar('--Button_IfFill__TextColor', $white);
-		@include setThemeVar('--Button_IfFill__Background_Hover', $red-dark50);
-		@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
-	}
+.ButtonBase__Color_Orange {
+	@include setThemeVar('--Button_IfFill__Background', $orange);
+	@include setThemeVar('--Button_IfFill__TextColor', $white);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $orange-dark);
+	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+}
 
-	&.ButtonBase__FontSize_XSmall {
-		font-size: 11px;
-	}
+.ButtonBase__Color_Red {
+	@include setThemeVar('--Button_IfFill__Background', $red);
+	@include setThemeVar('--Button_IfFill__TextColor', $white);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $red-dark50);
+	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+}
 
-	&.ButtonBase__FontSize_Small {
-		font-size: 12px;
-	}
+.ButtonBase__FontSize_XSmall {
+	font-size: 11px;
+}
 
-	&.ButtonBase__FontSize_Medium {
-		font-size: 14px;
-	}
+.ButtonBase__FontSize_Small {
+	font-size: 12px;
+}
 
-	&.ButtonBase__Padding_Small {
-		padding: 5px 10px;
-	}
+.ButtonBase__FontSize_Medium {
+	font-size: 14px;
+}
 
-	&.ButtonBase__Padding_Medium {
-		padding: 10px 20px;
-	}
+.ButtonBase__Padding_Small {
+	padding: 5px 10px;
+}
 
-	&.ButtonBase__Padding_Large {
-		padding: 20px 30px;
-	}
+.ButtonBase__Padding_Medium {
+	padding: 10px 20px;
+}
+
+.ButtonBase__Padding_Large {
+	padding: 20px 30px;
 }
