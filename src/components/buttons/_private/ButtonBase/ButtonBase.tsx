@@ -75,10 +75,10 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 						'ButtonBase',
 						className,
 						{
-							[styles.ButtonBase__Color_Gray]: color === ButtonPropColor.gray,
+							[styles.ButtonBase__Color_Gray]: color === ButtonPropColor.default || ButtonPropColor.gray,
 							[styles.ButtonBase__Color_Green]: color === ButtonPropColor.green,
 							[styles.ButtonBase__Color_Orange]: color === ButtonPropColor.orange,
-							[styles.ButtonBase__Color_Red]: color === ButtonPropColor.default || color === ButtonPropColor.red,
+							[styles.ButtonBase__Color_Red]: color === ButtonPropColor.red,
 							[styles.ButtonBase__FontSize_XSmall]: fontSize === ButtonPropFontSize.xs,
 							[styles.ButtonBase__FontSize_Small]: fontSize === ButtonPropFontSize.s,
 							[styles.ButtonBase__FontSize_Medium]: fontSize === ButtonPropFontSize.m,
