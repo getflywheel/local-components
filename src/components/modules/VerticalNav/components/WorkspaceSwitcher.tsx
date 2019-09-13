@@ -151,7 +151,11 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 							>
 								{this.props.workspaces.map((workspaceItem) => {
 									return (
-										<div key={workspaceItem.id} onClick={() => this.onSelect(workspaceItem)}>
+										<div
+											key={workspaceItem.id}
+											onClick={() => this.onSelect(workspaceItem)}
+											style={{width: '32px'}}
+										>
 											<Avatar
 												className={classnames(
 													styles.WorkspaceSwitcher_PopupGridItem,
