@@ -7,7 +7,7 @@ import { InnerPaneSidebarHeader, InnerPaneSidebarContent } from '../InnerPaneSid
 
     <InnerPaneSidebarContent>
         <EmptyArea border={false}>
-            <h3>Test 123</h3>
+            <div>Test 123</div>
         </EmptyArea>
     </InnerPaneSidebarContent>
 </InnerPaneSidebar>

@@ -20,7 +20,7 @@
 		flex-direction: column;
 		flex: 1;
 
-		h5 {
+		.Title {
 			@include tracking(20);
 			text-transform: uppercase;
 			@include theme-color-gray-else-gray15;
@@ -42,19 +42,8 @@
 			text-align: center;
 		}
 
-		h1 {
-			@include theme-color-black-else-white;
-			margin-top: 25px;
-			margin-bottom: 35px;
-		}
-
 		.Middle {
 			display: flex;
-
-			h3 {
-				margin: 0 0 10px;
-				line-height: 28px;
-			}
 
 			p {
 				font-weight: 300;
@@ -76,10 +65,6 @@
 			text-align: center;
 			display: flex;
 			flex-direction: column;
-
-			h4 {
-				margin: 0 0 20px;
-			}
 
 			.button {
 				display: inline-block;
@@ -108,17 +93,6 @@
 			border: 2px dashed $gray15;
 			border-radius: 4px;
 			background: transparent;
-		}
-
-		h3 {
-			@include theme-color-black-else-white;
-			cursor: pointer;
-			transition: color 200ms ease 0ms;
-			margin-right: auto;
-
-			&:hover {
-				color: $green;
-			}
 		}
 
 		img {

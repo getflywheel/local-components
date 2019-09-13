@@ -1,11 +1,11 @@
 The `ClippedContent` component clips its content to a specified shape.
 It uses `clip-path` to achieve this result.
 
-<h3>Shapes</h3>
+#### Shapes
 
 Content can be clipped to any of the predefined shapes through the `shape` prop.
 
-<h6>Rounded rectangle</h6>
+##### Rounded rectangle
 
 ```js
 <div style={{width: "50px", height: "50px"}}>
@@ -17,7 +17,7 @@ Content can be clipped to any of the predefined shapes through the `shape` prop.
 </div>
 ```
 
-<h6>Circle</h6>
+##### Circle
 
 *Note: The circle shape is best used with square size dimensions.*
 
@@ -31,14 +31,14 @@ Content can be clipped to any of the predefined shapes through the `shape` prop.
 </div>
 ```
 
-<h3>Managing size</h3>
+#### Managing size
 
 It's important to understand the options and responsibilities of both the `ClippedContent` and its content (aka children) to get the desired outcome.
 
 By default, the `ClippedContent` component is set to clip its content and uses 100% of its parent's width and height.
 The content you pass to it, however, is completely up to you as this component adds no additional styles to it.
 
-<h4>The content</h4>
+#### The content
 
 The following examples will use the same content with varying styles, `ClippedContent` options (e.g. props), and parent div sizes to achieve different results.
 The content is simply 3 letters and a background color.
@@ -50,7 +50,7 @@ Here's what it looks like:
 </div>
 ```
 
-<h4>The ClippedContent component</h4>
+#### The ClippedContent component
 
 Now let's wrap the content in the `ClippedContent` component.
 Notice the rounded corners.
@@ -63,7 +63,7 @@ Notice the rounded corners.
 </ClippedContent>
 ```
 
-<h4>Controlling size</h4>
+#### Controlling size
 
 In the examples above, both the component and content fill the available width.
 Often times, however, we'll want to control both width and height.
@@ -71,7 +71,7 @@ There's 3 different ways to do this.
 
 *Note: In the following examples, the `ClippedContent` has a gray background to show its width and height relative to its content.*
 
-<h6>1) Parent size</h6>
+##### 1) Parent size
 
 Set the parent's width and height and the component will expand to fill the available space.
 
@@ -85,7 +85,7 @@ Set the parent's width and height and the component will expand to fill the avai
 </div>
 ```
 
-<h6>2) Component size</h6>
+##### 2) Component size
 
 If we don't want to rely on the available space provided by the parent, we can explicitly set the component's `width` and `height` through props.
 
@@ -99,7 +99,7 @@ If we don't want to rely on the available space provided by the parent, we can e
 </div>
 ```
 
-<h6>3) Content size</h6>
+##### 3) Content size
 
 You can also let the content dictate sizing, but the outcome might not be what you'd initially expect.
 
@@ -123,7 +123,7 @@ This means the left side is clipped to the expected rounded rectangle shape but 
 
 How can we adjust this so the content is clipped as desired?
 
-<h6>3.5) Content size with fit-content</h6>
+##### 3.5) Content size with fit-content
 
 The `ClippedContent` component's width and height props can also take a value of `fit-content`.
 This option resizes the component to match that of its content.
@@ -138,13 +138,13 @@ This option resizes the component to match that of its content.
 </div>
 ```
 
-<h3>Managing position</h3>
+#### Managing position
 
 In addition to clipping and sizing, the `ClippedContent` component uses a flex layout allowing for some easy, out-of-the-box alignments.
 
 *Note: If the component and content have the same width and height, there is no available space to change positioning and the following will have no effect.
 
-<h6>Align</h6>
+##### Align
 
 Using the `alignX` and `alignY` props, content can be centered.
 

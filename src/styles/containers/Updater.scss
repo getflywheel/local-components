@@ -14,11 +14,6 @@
 			white-space: nowrap;
 		}
 
-		h3 {
-			@include theme-color-graydark-else-white;
-			margin-bottom: 30px;
-		}
-
 		p {
 			margin: 10px 0;
 		}

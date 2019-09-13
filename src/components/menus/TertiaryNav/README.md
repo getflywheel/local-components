@@ -6,9 +6,9 @@ Simple example where the TertiaryNav Items in the left column change the content
 ```js
 import { TertiaryNav, TertiaryNavItem } from './TertiaryNav';
 
-const Item1 = () => (<h1>Item 1 Content</h1>);
-const Item2 = () => (<h1>Item 2 Content</h1>);
-const Item3 = () => (<h1>Item 3 Content</h1>);
+const Item1 = () => (<div>Item 1 Content</div>);
+const Item2 = () => (<div>Item 2 Content</div>);
+const Item3 = () => (<div>Item 3 Content</div>);
 
 <TertiaryNav>
    <TertiaryNavItem exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
@@ -22,9 +22,9 @@ An example showing error state.
 ```js
 import { TertiaryNav, TertiaryNavItem } from './TertiaryNav';
 
-const Item1 = () => (<div><h1>Item 1 Content</h1><div className='TertiaryNavChild__Error'>error message example</div></div>);
-const Item2 = () => (<h1>Item 2 Content</h1>);
-const Item3 = () => (<h1>Item 3 Content</h1>);
+const Item1 = () => (<div><div>Item 1 Content</div><div className='TertiaryNavChild__Error'>error message example</div></div>);
+const Item2 = () => (<div>Item 2 Content</div>);
+const Item3 = () => (<div>Item 3 Content</div>);
 
 <TertiaryNav>
     <TertiaryNavItem variant={'error'} exact path='/' component={Item1}>Menu Item 1</TertiaryNavItem>
@@ -42,8 +42,8 @@ import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 
-const Item2 = () => (<h1>Item 2 Content</h1>);
-const Item3 = () => (<h1>Item 3 Content</h1>);
+const Item2 = () => (<div>Item 2 Content</div>);
+const Item3 = () => (<div>Item 3 Content</div>);
 
 class Item1 extends React.Component{
     constructor (props) {

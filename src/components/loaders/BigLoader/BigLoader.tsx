@@ -3,6 +3,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import classnames from 'classnames';
 import * as styles from './BigLoader.scss';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
+import { Title } from '../../text/Title/Title';
 
 interface IProps extends IReactComponentProps {
 
@@ -31,7 +32,12 @@ export default class BigLoader extends React.Component<IProps> {
 				{
 					this.props.message
 					&&
-					<h3>{this.props.message}</h3>
+					<Title
+						className={styles.BigLoader__Text}
+						size="m"
+					>
+						{this.props.message}
+					</Title>
 				}
 			</div>
 		);

@@ -36,13 +36,6 @@
 			padding: 0 0 50px;
 		}
 
-		h2 {
-			width: 100%;
-			margin-top: 60px;
-			text-align: center;
-			align-self: flex-start;
-		}
-
 		input.BigInput {
 			width: 100%;
 			height: 70px;
@@ -56,13 +49,13 @@
 			}
 		}
 
-		> button.GoBack {
+		> .GoBack {
 			position: absolute;
 			bottom: 47px;
 			left: 25px;
 		}
 
-		> button.Continue {
+		> .Continue {
 			position: absolute;
 			bottom: 30px;
 			right: 30px;
@@ -70,7 +63,7 @@
 		}
 
 		&.AddSiteContent__NoContinue {
-			> button.GoBack {
+			> .GoBack {
 				bottom: 25px;
 			}
 		}
