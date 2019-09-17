@@ -4,7 +4,6 @@ addStyles();
 // Alerts
 export {default as Banner} from './components/alerts/Banner/Banner';
 export {default as BannerCarousel} from './components/alerts/BannerCarousel/BannerCarousel';
-export {default as FlyLargeConfirm} from './components/alerts/FlyLargeConfirm/FlyLargeConfirm';
 // Buttons
 export {ButtonBase} from './components/buttons/_private/ButtonBase/ButtonBase';
 export {Button} from './components/buttons/Button/Button';
