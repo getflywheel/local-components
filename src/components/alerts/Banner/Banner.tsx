@@ -48,20 +48,20 @@ export default class Banner extends React.Component<IProps> {
 			return null;
 		}
 
-		let color: ButtonPropColor = ButtonPropColor.gray;
+		let buttonColor: ButtonPropColor = ButtonPropColor.gray;
 
 		switch (this.props.variant) {
 			case 'error':
-				color = ButtonPropColor.red;
+				buttonColor = ButtonPropColor.red;
 				break;
 			case 'neutral':
-				color = ButtonPropColor.green;
+				buttonColor = ButtonPropColor.green;
 				break;
 			case 'success':
-				color = ButtonPropColor.green;
+				buttonColor = ButtonPropColor.green;
 				break;
 			case 'warning':
-				color = ButtonPropColor.orange;
+				buttonColor = ButtonPropColor.orange;
 				break;
 		}
 
@@ -70,7 +70,7 @@ export default class Banner extends React.Component<IProps> {
 			<TextButton
 				size={TextButtonPropSize.tiny}
 				privateOptions={{
-					color: color,
+					color: buttonColor,
 					form: this.props.variant === 'neutral' ? ButtonPropForm.fill : ButtonPropForm.reversed
 				}}
 				onClick={this.props.buttonOnClick}
