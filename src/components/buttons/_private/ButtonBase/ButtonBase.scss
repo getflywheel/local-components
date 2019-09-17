@@ -98,6 +98,22 @@ $disabled-text-dark: $gray-dark50;
 	}
 }
 
+.ButtonBase__Form_Reversed {
+	@include setThemeVar('--Button_Background', $white);
+	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
+
+	&:hover {
+		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
+		@include setThemeVar('--Button_TextColor_Hover', $white);
+	}
+
+	&[disabled] {
+		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
+	}
+}
+
 .ButtonBase__Form_Outline {
 	@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background));
 	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
