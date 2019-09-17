@@ -27,6 +27,7 @@ export enum ButtonPropFontSize {
 export enum ButtonPropForm {
 	fill = 'fill',
 	outline = 'outline',
+	reversed = 'reversed',
 	text = 'text',
 }
 
@@ -84,6 +85,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 							[styles.ButtonBase__FontSize_Medium]: fontSize === ButtonPropFontSize.m,
 							[styles.ButtonBase__Form_Fill]: form === ButtonPropForm.fill,
 							[styles.ButtonBase__Form_Outline]: form === ButtonPropForm.outline,
+							[styles.ButtonBase__Form_Reversed]: form === ButtonPropForm.reversed,
 							[styles.ButtonBase__Form_Text]: form === ButtonPropForm.text,
 							[styles.ButtonBase__Padding_Small]: padding === ButtonPropPadding.s,
 							[styles.ButtonBase__Padding_Medium]: padding === ButtonPropPadding.m,
