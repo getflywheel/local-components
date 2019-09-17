@@ -4,7 +4,8 @@ import classnames from 'classnames';
 import * as styles from './Banner.sass';
 import WarningSVG from '../../../svg/warning';
 import CloseSVG from '../../../svg/close--small';
-import { Button } from '../../buttons/Button/Button';
+import { ButtonPropColor, ButtonPropForm } from '../../buttons/_private/ButtonBase/ButtonBase';
+import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
 
 interface IProps extends IReactComponentProps {
 
@@ -47,13 +48,36 @@ export default class Banner extends React.Component<IProps> {
 			return null;
 		}
 
+		let color: ButtonPropColor = ButtonPropColor.gray;
+
+		switch (this.props.variant) {
+			case 'error':
+				color = ButtonPropColor.red;
+				break;
+			case 'neutral':
+				color = ButtonPropColor.green;
+				break;
+			case 'success':
+				color = ButtonPropColor.green;
+				break;
+			case 'warning':
+				color = ButtonPropColor.orange;
+				break;
+		}
+
 		return (
-			<Button
+			// note: use `TextButton` and `tiny` size as this button type and style should always be the same as that preset
+			<TextButton
+				size={TextButtonPropSize.tiny}
+				privateOptions={{
+					color: color,
+					form: this.props.variant === 'neutral' ? ButtonPropForm.fill : ButtonPropForm.reversed
+				}}
 				onClick={this.props.buttonOnClick}
 				className={styles.CTA}
 			>
 				{this.props.buttonText}
-			</Button>
+			</TextButton>
 		);
 	}
 

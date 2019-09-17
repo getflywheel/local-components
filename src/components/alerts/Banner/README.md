@@ -1,7 +1,7 @@
 Neutral:
    
 ```js
-<Banner variant="neutral" icon="warning" buttonText="Click Me!" buttonOnClick={() => console.log('buttonOnClick')}>
+<Banner variant="neutral" icon="warning" buttonText="Complete Setup" buttonOnClick={() => console.log('buttonOnClick')}>
     <strong>Typewriter!</strong> Poke selvage fam retro pug, offal butcher occupy or <a>learn more</a>.
 </Banner>
 ```
@@ -9,7 +9,7 @@ Neutral:
 Warning:
    
 ```js
-<Banner variant="warning" icon="warning" buttonText="Click Me!" buttonOnClick={() => console.log('buttonOnClick')}>
+<Banner variant="warning" icon="warning" buttonText="Fix It" buttonOnClick={() => console.log('buttonOnClick')}>
     <strong>Typewriter!</strong> Poke selvage fam retro pug, offal butcher occupy or <a>learn more</a>.
 </Banner>
 ```
@@ -17,7 +17,7 @@ Warning:
 Error:
    
 ```js
-<Banner variant="error" icon="warning" buttonText="Click Me!" buttonOnClick={() => console.log('buttonOnClick')}>
+<Banner variant="error" icon="warning" buttonText="Retry" buttonOnClick={() => console.log('buttonOnClick')}>
     <strong>Typewriter!</strong> Poke selvage fam retro pug, offal butcher occupy or <a>learn more</a>.
 </Banner>
 ```
@@ -25,7 +25,7 @@ Error:
 Success:
    
 ```js
-<Banner variant="success" icon="warning" buttonText="Click Me!" buttonOnClick={() => console.log('buttonOnClick')}>
+<Banner variant="success" icon="warning" buttonText="Okay" buttonOnClick={() => console.log('buttonOnClick')}>
     <strong>Typewriter!</strong> Poke selvage fam retro pug, offal butcher occupy or <a>learn more</a>.
 </Banner>
 ```
