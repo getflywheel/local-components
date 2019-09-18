@@ -65,7 +65,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 	};
 
 	render () {
-		const {children, color, container, className, disabled, fontSize, form, onClick, padding, tag, ...otherProps} = this.props;
+		const {children, color, container, className, disabled, fontSize, form, innerRef, onClick, padding, tag, ...otherProps} = this.props;
 		const Tag: any = tag;
 
 		return (
@@ -94,6 +94,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 					)}
 					disabled={disabled}
 					onClick={onClick}
+					ref={innerRef}
 					{...otherProps}
 				>
 					{children}
