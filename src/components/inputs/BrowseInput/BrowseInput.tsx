@@ -2,8 +2,8 @@ import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './BrowseInput.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
 import untildify = require('untildify');
-import { TextButton } from '../../buttons/TextButton/TextButton';
 
 let remote: any;
 let dialog: any;
@@ -91,6 +91,7 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 					{this.state.value || this.props.placeholder}
 				</span>
 				<TextButton
+					size={TextButtonPropSize.tiny}
 					style={{
 						marginLeft: '20px',
 						padding: 0,
