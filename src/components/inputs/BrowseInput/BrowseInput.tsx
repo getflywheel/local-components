@@ -92,7 +92,7 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 				</span>
 				<TextButton
 					style={{
-						marginLeft: '5px',
+						marginLeft: '20px',
 						padding: 0,
 					}}
 					onClick={this.browseFolder}
