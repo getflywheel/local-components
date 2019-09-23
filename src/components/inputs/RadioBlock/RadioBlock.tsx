@@ -5,7 +5,7 @@ import ExclamationSVG from '../../../svg/exclamation';
 import * as styles from './RadioBlock.sass';
 import { Container } from '../../modules/Container/Container';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
-import { Title } from '../../text/Title/Title';
+import { Title, TitlePropSize } from '../../text/Title/Title';
 
 interface IProps extends ILocalContainerProps {
 	default: string | null;
@@ -163,7 +163,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 					)}
 				>
 					<label className={styles.RadioBLock_Label}>
-						<Title className={styles.RadioBLock_Label_Text}>
+						<Title size={TitlePropSize.s} className={styles.RadioBLock_Label_Text}>
 							{this.props.label}
 						</Title>
 						<div className={styles.RadioBLock_Arrow}>
