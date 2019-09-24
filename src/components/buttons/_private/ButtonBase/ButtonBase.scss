@@ -2,7 +2,9 @@
 @import '../../../../common/styles/themeUtils';
 
 $disabled-background-light: $gray25;
+$disabled-background-light-alt-soft: $gray5;
 $disabled-background-dark: $gray;
+$disabled-background-dark-alt-hard: $gray-dark50;
 $disabled-text-light: $gray75;
 $disabled-text-dark: $gray-dark50;
 
@@ -127,9 +129,9 @@ $disabled-text-dark: $gray-dark50;
 	}
 
 	&[disabled] {
-		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
+		@include setThemeVar('--Button_Background', $disabled-background-light-alt-soft, $disabled-background-dark-alt-hard);
 		@include setThemeVar('--Button_BorderColor', $disabled-background-light, $disabled-background-dark);
-		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-background-dark);
 	}
 }
 
