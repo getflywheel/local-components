@@ -25,6 +25,7 @@ interface IWorkspaceSwitcherProps extends IReactComponentProps {
 	onClickWorkspaceNav: FunctionGeneric;
 	routeTo: string;
 	showInfoBanner?: boolean;
+	showUpgradeButton?: boolean;
 	tooltip: string;
 	workspaces: any[];
 }
@@ -183,14 +184,16 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 								</div>
 							</div>
 							<Divider />
+							{ this.props.showUpgradeButton &&
 								<>
 									<div className={styles.WorkspaceSwitcher_Section}>
 										<TextButton onClick={this.props.onClickUpgradeToPro}>
 											UPGRADE TO PRO
 										</TextButton>
 									</div>
-									<Divider />
+									<Divider/>
 								</>
+							}
 							<div
 								className={classnames(
 									styles.WorkspaceSwitcher_PopupFooter,

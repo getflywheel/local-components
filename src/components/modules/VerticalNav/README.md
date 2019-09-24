@@ -15,6 +15,7 @@ import { WorkspaceSwitcher } from '../../modules/VerticalNav/components/Workspac
     		onClickWorkspace={(workspace) => console.log('onClickWorkspace: ', workspace)}
 			routeTo="/main/users"
 			showInfoBanner={true}
+            showUpgradeButton={true}
 			tooltip="Login"
 			workspaces={[
 				{
