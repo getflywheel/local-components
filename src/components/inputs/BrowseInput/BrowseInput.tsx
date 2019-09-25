@@ -93,7 +93,7 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 				<TextButton
 					size={TextButtonPropSize.tiny}
 					style={{
-						marginLeft: '20px',
+						marginLeft: '10px',
 						padding: 0,
 					}}
 					onClick={this.browseFolder}
