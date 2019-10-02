@@ -5,22 +5,37 @@
 //
 
 @mixin if-theme-light {
+	// apply as default (no .Theme__Light selector required)
 	@content;
 
-	@each $selector in selector-parse(&) { // must loop over each selector for the css rule to be applied correctly
+	// loop over each selector for the css rule to correctly apply each style
+	@each $selector in selector-parse(&) {
+		// support explicitly setting section theme color for selector pattern: html .Theme__Dark div .Theme__Light div .my-custom-selector
 		@at-root :global(.Theme__Dark) :global(.Theme__Light) #{$selector} {
+			@content;
+		}
+
+		// support explicitly setting section theme color for selector pattern: html .Theme__Dark div .my-custom-selector div .Theme__Light div (e.g .Theme__Dark body .Theme__Light)
+		@at-root :global(.Theme__Dark) #{$selector} :global(.Theme__Light) {
 			@content;
 		}
 	}
 }
 
 @mixin if-theme-dark {
-	@each $selector in selector-parse(&) { // must loop over each selector for the css rule to be applied correctly
+	// loop over each selector for the css rule to correctly apply each style
+	@each $selector in selector-parse(&) {
 		@at-root :global(.Theme__Dark) #{$selector} {
 			@content;
 		}
 
+		// support explicitly setting section theme color for selector pattern: html .Theme__Light div .Theme__Dark div .my-custom-selector
 		@at-root :global(.Theme__Light) :global(.Theme__Dark) #{$selector} {
+			@content;
+		}
+
+		// support explicitly setting section theme color for selector pattern: html .Theme__Light div .my-custom-selector div .Theme__Dark div (e.g .Theme__Light body .Theme__Dark)
+		@at-root :global(.Theme__Light) #{$selector} :global(.Theme__Dark) {
 			@content;
 		}
 	}
