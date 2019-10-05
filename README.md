@@ -18,11 +18,11 @@ In additional to a quickly growing set of React components, we also having SVGs,
 
 ## Digging deeper
 
-The `local-compoennts` library can be broken down into 3 main parts:
+The `local-components` library can be broken down into 3 main parts:
 
-1. components
-2. styles
-3. svg
+1. [Components](#components)
+2. [Styles](#styles)
+3. [SVGs](#svgs)
 
 ### Components
 
@@ -60,3 +60,7 @@ If you'd like to learn more about scoped styles, please check out CSS Modules [h
 ### SVGs
 
 Coming soon!
+
+## License
+
+[MIT](LICENSE)
