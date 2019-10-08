@@ -104,9 +104,6 @@
 		left: auto
 		transform: rotate(45deg)
 
-	&.FlyDropdown_Items__TipItemHover::before
-		background: $green-dark50
-
 	.FlyDropdown.FlyDropdown__Open &
 		transform: scale(1) translateY(0) translateZ(0)
 
@@ -130,7 +127,7 @@
 	display: flex
 	align-items: center
 	transition: all .05s cubic-bezier(.2,.3,.25,.9) 0s
-	padding: 15px 20px
+	padding: 10px 20px
 	height: auto
 	text-align: left
 	text-transform: none
@@ -139,9 +136,14 @@
 	position: relative
 	z-index: 7
 
+	&:first-child
+		padding-top: 20px
+
+	&:last-child
+		padding-bottom: 20px
+
 	&:hover
-		color: $white
-		background: $green-dark50
+		color: $green-dark50
 
 	&:first-of-type
 		border-radius: 4px 4px 0 0
@@ -152,15 +154,11 @@
 	&:last-of-type:first-of-type
 		border-radius: 4px
 
-	&.FlyDropdown_Items__TipItemHover__ColorRed
-
-	// note: remains a lowercase modifier because it's set via a dynamic js variable
 	&.FlyDropdown_Item__ColorRed
 		color: $red
 
 		&:hover
-			color: $white
-			background: $red-dark50
+			color: $red-dark50
 
-		@at-root .FlyDropdown_Items.FlyDropdown_Items__TipItemHover__ColorRed::before
-			background: $red-dark50
+	&.FlyDropdown_Item__ColorNone
+		@include defaultFontAndTextSettings
