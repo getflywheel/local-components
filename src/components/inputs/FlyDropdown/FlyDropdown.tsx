@@ -5,28 +5,22 @@ import CaretSVG from '../../../svg/caret';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IItems {
-
-	color: 'red';
-	label: string;
+	color: 'red' | 'none';
+	content?: React.ReactNode;
+	label?: string;
 	onClick: FunctionGeneric;
-
 }
 
 interface IProps extends IReactComponentProps {
-
 	caret?: boolean;
 	items: IItems[];
 	navItem?: boolean;
 	navItemActive?: boolean;
 	position?: 'top' | 'bottom';
-
 }
 
 interface IState {
-
 	open: boolean;
-	tipItemHover: boolean | string;
-
 }
 
 export default class FlyDropdown extends React.Component<IProps, IState> {
@@ -44,7 +38,6 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 
 		this.state = {
 			open: false,
-			tipItemHover: false,
 		};
 
 		this.onClick = this.onClick.bind(this);
@@ -63,25 +56,12 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 		});
 	}
 
-	tipItemHoverFactory (i: number, value: string | boolean) {
-		if (this.props.position === 'bottom' && i !== 0) {
-			return null;
-		}
-
-		if (this.props.position === 'top' && i !== this.props.items.length - 1) {
-			return null;
-		}
-
-		return () => {
-			this.setState({ tipItemHover: value });
-		};
-	}
-
 	render () {
 		return (
 			<div
 				className={classnames(
 					styles.FlyDropdown,
+					'FlyDropdown',
 					{
 						[styles.FlyDropdown__Open]: this.state.open,
 						'FlyDropdown__Open': this.state.open, // this also needs to be globally accessible so other component styles can reference it
@@ -95,15 +75,16 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 				onBlur={this.onBlur}
 			>
 				{this.props.children}
-				{this.props.caret && <CaretSVG className={styles.FlyDropdown_Caret} />}
+				{this.props.caret && (
+					<CaretSVG className={classnames(styles.FlyDropdown_Caret, 'FlyDropdown_Caret')} />
+				)}
 				<ul
 					className={classnames(
 						styles.FlyDropdown_Items,
+						'FlyDropdown_Items',
 						{
 							[styles.FlyDropdown_Items__PositionTop]: this.props.position === 'top',
-							[styles.FlyDropdown_Items__TipItemHover]: this.state.tipItemHover,
 						},
-						typeof this.state.tipItemHover === 'string' && this.state.tipItemHover === 'red' ? styles.FlyDropdown_Items__TipItemHover__ColorRed : null,
 					)}
 				>
 					{
@@ -112,7 +93,11 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 								key={i}
 								className={classnames(
 									styles.FlyDropdown_Item,
-									item.color && item.color === 'red' ? styles.FlyDropdown_Item__ColorRed : null,
+									'FlyDropdown_Item',
+									{
+										[styles.FlyDropdown_Item__ColorNone]: item.color === 'none',
+										[styles.FlyDropdown_Item__ColorRed]: item.color === 'red',
+									}
 								)}
 								onClick={(event) => {
 									item.onClick.call(null);
@@ -120,10 +105,9 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 									event.stopPropagation();
 								}}
 								onMouseDown={(event) => event.preventDefault()}
-								onMouseOver={(event) => this.tipItemHoverFactory(i, item.color ? item.color : true)}
-								onMouseOut={(event) => this.tipItemHoverFactory(i, false)}
 							>
 								{item.label}
+								{item.content}
 							</li>
 						))
 					}
