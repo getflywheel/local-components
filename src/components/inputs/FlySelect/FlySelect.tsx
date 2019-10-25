@@ -6,32 +6,50 @@ import ArrowRightSVG from '../../../svg/arrow--right';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './FlySelect.scss';
 
-interface IProps extends IReactComponentProps {
+export interface FlySelectOption {
+	disabled?: boolean
+	download?: boolean
+	icon?: React.ReactNode
+	label: React.ReactNode
+	metadata?: any;
+	optionGroup?: FlySelectOptionGroup | null
+	secondaryText?: React.ReactNode
+	value?: string
+}
 
+export interface FlySelectOptionGroup {
+	label: React.ReactNode
+	linkText?: string
+	linkOnClick?: FunctionGeneric
+}
+
+export type FlySelectOptionGroups = {[key: string]: FlySelectOptionGroup};
+export type FlySelectOptions = string[] | FlySelectOptionsFormatted | {[value: string]: string};
+type FlySelectOptionFormatted = FlySelectOption;
+type FlySelectOptionsFormatted = {[value: string]: FlySelectOptionFormatted};
+
+interface IProps extends IReactComponentProps {
 	disabled?: boolean;
 	emptyPlaceholder?: string;
 	footerText?: string;
 	footerOnClick?: FunctionGeneric;
-	loadingOptionsPlaceholder?: any;
+	loadingOptionsPlaceholder?: string;
 	onChange: FunctionGeneric;
-	options?: any;
-	optionsLoader?: any;
-	optionGroups?: any;
+	options?: FlySelectOptions;
+	optionsLoader?: Promise<IProps['options']> | any;
+	optionGroups?: FlySelectOptionGroups;
 	placeholder?: string;
 	readonly?: boolean;
-	value?: any;
-
+	value?: string;
 }
 
 interface IState {
-
 	focus: boolean;
-	options: any;
+	optionsFormatted: FlySelectOptionsFormatted;
 	open: boolean;
 	optionsLoaded: boolean | null;
 	value: any;
 	willClose: boolean;
-
 }
 
 export default class FlySelect extends React.Component<IProps, IState> {
@@ -44,7 +62,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		this.state = {
 			focus: false,
 			open: false,
-			options: this.props.options ? this.formatOptions(this.props.options) : {},
+			optionsFormatted: this.props.options ? this.formatOptions(this.props.options) : {},
 			optionsLoaded: this.props.optionsLoader ? false : null,
 			value: this.props.value,
 			willClose: false,
@@ -60,8 +78,8 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 	componentDidMount () {
 		if (typeof this.props.optionsLoader === 'function') {
-			this.props.optionsLoader().then((options: any) => this.setState({
-				options: this.formatOptions(options),
+			this.props.optionsLoader().then((options: IProps['options']) => this.setState({
+				optionsFormatted: this.formatOptions(options),
 				optionsLoaded: true,
 			}));
 		}
@@ -76,14 +94,14 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 		if (previousProps.options !== this.props.options) {
 			this.setState({
-				options: this.formatOptions(this.props.options),
+				optionsFormatted: this.formatOptions(this.props.options),
 			});
 		}
 	}
 
-	formatOptions (options: any) {
+	formatOptions (options: any): FlySelectOptionsFormatted {
 		const formattedOptions: {[key: string]: any} = {};
-		const formatOption = (option: any, value: any = null) => {
+		const formatOption = (option: FlySelectOptionFormatted, value: any = null) => {
 			if (typeof option === 'object') {
 				if (typeof option.value === 'undefined' && value !== null) {
 					option.value = value;
@@ -93,7 +111,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 					option.optionGroup = null;
 				}
 
-				formattedOptions[option.value] = option;
+				formattedOptions[option.value as string] = option;
 				return;
 			}
 
@@ -160,14 +178,14 @@ export default class FlySelect extends React.Component<IProps, IState> {
 			return this.props.loadingOptionsPlaceholder;
 		}
 
-		if (Object.keys(this.state.options).length) {
+		if (Object.keys(this.state.optionsFormatted).length) {
 			return this.props.placeholder;
 		}
 
 		return this.props.emptyPlaceholder;
 	}
 
-	renderItem (option: any, showCheck: boolean = false) {
+	renderItem (option: FlySelectOptionFormatted, showCheck: boolean = false) {
 		const output = [];
 
 		if (option.download === true) {
@@ -189,7 +207,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				);
 			}
 			else {
-				output.push(React.cloneElement(option.icon, { key: 'icon', className: 'FlySelect__ItemIcon' }));
+				output.push(React.cloneElement(option.icon as React.ReactElement, { key: 'icon', className: 'FlySelect__ItemIcon' }));
 			}
 		}
 
@@ -206,7 +224,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		return output;
 	}
 
-	renderItemRight (option: any, showCheck: boolean) {
+	renderItemRight (option: FlySelectOptionFormatted, showCheck: boolean) {
 		return (
 			<span
 				className="FlySelect__Right"
@@ -252,10 +270,10 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		);
 	}
 
-	renderOption (optionValue: any, i: number, group: any) {
-		const options = this.state.options;
-		const option = options[optionValue];
-		const disabled = typeof options[optionValue] === 'object' ? options[optionValue].disabled : false;
+	renderOption (optionValue: FlySelectOption['value'], i: number, group: any) {
+		const optionsFormatted = this.state.optionsFormatted;
+		const option = optionsFormatted[optionValue as string];
+		const disabled = typeof optionsFormatted[optionValue as string] === 'object' ? optionsFormatted[optionValue as string].disabled : false;
 
 		if (option.optionGroup !== group) {
 			return;
@@ -284,16 +302,16 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		}
 
 		const output: any[] = [];
-		const options = this.state.options;
+		const optionsFormatted = this.state.optionsFormatted;
 
 		Object.keys(this.props.optionGroups).forEach((optionGroupID) => {
-			const optionGroup = this.props.optionGroups[optionGroupID];
-			const optionNodes = Object.keys(options)
+			const optionGroup = this.props.optionGroups && this.props.optionGroups[optionGroupID];
+			const optionNodes = Object.keys(optionsFormatted)
 				.map((optionValue: any, i: number) => this.renderOption(optionValue, i, optionGroupID))
 				.filter((n) => n)
 			;
 
-			if (!optionNodes.length) {
+			if (!optionNodes.length || !optionGroup) {
 				return;
 			}
 
@@ -323,7 +341,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 	}
 
 	render () {
-		const options = this.state.options;
+		const optionsFormatted = this.state.optionsFormatted;
 		const Tag: any = 'div';
 
 		return (
@@ -345,13 +363,13 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				onClick={this.onClick}
 				onBlur={this.onBlur}
 				ref={this.__containerRef}
-				disabled={this.props.disabled || !Object.keys(options).length}
+				disabled={this.props.disabled || !Object.keys(optionsFormatted).length}
 			>
 				<span className="CurrentValue">
 					{
-						this.state.value in options
+						this.state.value in optionsFormatted
 							?
-							this.renderItem(options[this.state.value])
+							this.renderItem(optionsFormatted[this.state.value])
 							:
 							<span className="CurrentValue_Placeholder">
 								{this.renderPlaceholder()}
@@ -364,7 +382,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 					style={this.calculateOptionsPosition()}
 				>
 					<div className="FlySelect_OptionsContainer">
-						{Object.keys(options).map((optionValue, i) => this.renderOption(optionValue, i, null))}
+						{Object.keys(optionsFormatted).map((optionValue, i) => this.renderOption(optionValue, i, null))}
 						{this.renderOptionGroups()}
 					</div>
 					{this.renderFooter()}
