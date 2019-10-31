@@ -2,6 +2,7 @@ import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { TextButton } from '../../buttons/TextButton/TextButton';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 const { ipcRenderer } = require('electron');
 

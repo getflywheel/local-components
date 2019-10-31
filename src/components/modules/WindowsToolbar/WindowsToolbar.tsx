@@ -7,6 +7,7 @@ import WindowsMinimize from '../../../svg/windows_minimize';
 import WindowsMaximize from '../../../svg/windows_maximize';
 import WindowsClose from '../../../svg/windows_close';
 import WindowsBack from '../../../svg/windows_back';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 

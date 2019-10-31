@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import * as styles from './FlyDropdown.sass';
 import CaretSVG from '../../../svg/caret';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IItems {
 	color: 'red' | 'none';

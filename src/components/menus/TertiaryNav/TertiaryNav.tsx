@@ -4,6 +4,7 @@ import { Switch, Route, NavLink, RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface ITertiaryNavProps extends IReactComponentProps {
 

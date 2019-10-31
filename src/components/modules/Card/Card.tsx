@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import * as styles from './Card.sass';
 import Truncate from '../../text/Truncate/Truncate';
 import { Title } from '../../text/Title/Title';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 

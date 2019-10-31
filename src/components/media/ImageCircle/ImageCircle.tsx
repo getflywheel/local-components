@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import * as styles from './ImageCircle.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import ClippedContent from '../../modules/ClippedContent/ClippedContent';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 

@@ -6,6 +6,7 @@ import WarningSVG from '../../../svg/warning';
 import CloseSVG from '../../../svg/close--small';
 import { ButtonPropColor, ButtonPropForm } from '../../buttons/_private/ButtonBase/ButtonBase';
 import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 

@@ -11,6 +11,7 @@ import { VerticalNavItem } from '../VerticalNav';
 import CloseSmallSVG from '../../../../svg/close--small';
 import WarningSVG from '../../../../svg/warning';
 import { TextButton } from '../../../buttons/TextButton/TextButton';
+import { FunctionGeneric } from '../../../../common/structures/Generics';
 
 interface IWorkspaceSwitcherProps extends IReactComponentProps {
 	className?: string;
