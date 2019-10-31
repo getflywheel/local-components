@@ -4,6 +4,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import * as styles from './Checkbox.sass';
 import CheckmarkSVG from '../../../svg/checkmark--sm';
 import CheckMixedSVG from '../../../svg/checkmark--mixed';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 	checked?: boolean | 'mixed';

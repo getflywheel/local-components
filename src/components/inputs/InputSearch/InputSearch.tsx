@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import * as styles from './InputSearch.sass';
 import SearchSVG from '../../../svg/search';
 import ObjectUtils from '../../../utils/object-utils';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 const excludeProps = {
 	className: true,

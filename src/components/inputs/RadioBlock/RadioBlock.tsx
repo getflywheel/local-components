@@ -6,6 +6,7 @@ import * as styles from './RadioBlock.sass';
 import { Container } from '../../modules/Container/Container';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import { Title, TitlePropSize } from '../../text/Title/Title';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends ILocalContainerProps {
 	default: string | null;

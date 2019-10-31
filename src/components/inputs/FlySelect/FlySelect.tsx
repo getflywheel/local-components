@@ -5,6 +5,7 @@ import DownloadSmallSVG from '../../../svg/download--small';
 import ArrowRightSVG from '../../../svg/arrow--right';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './FlySelect.scss';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 export interface FlySelectOption {
 	disabled?: boolean
@@ -159,7 +160,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 	calculateOptionsPosition () {
 		if (!this.state.open) {
-			return;
+			return undefined;
 		}
 
 		const optionsBounding = this.__containerRef.current.getBoundingClientRect();
@@ -276,7 +277,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		const disabled = typeof optionsFormatted[optionValue as string] === 'object' ? optionsFormatted[optionValue as string].disabled : false;
 
 		if (option.optionGroup !== group) {
-			return;
+			return null;
 		}
 
 		return (
@@ -298,7 +299,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 	renderOptionGroups () {
 		if (!this.props.optionGroups) {
-			return;
+			return null;
 		}
 
 		const output: any[] = [];

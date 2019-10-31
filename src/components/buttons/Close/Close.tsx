@@ -3,6 +3,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import classnames from 'classnames';
 import CloseBigSVG from '../../../svg/close--big';
 import * as styles from './Close.scss';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 	position?: 'absolute' | 'static',

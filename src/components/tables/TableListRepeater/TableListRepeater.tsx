@@ -8,6 +8,7 @@ import isEqual = require('lodash.isequal');
 import * as styles from '../TableList/TableList.sass';
 import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import { Button } from '../../buttons/Button/Button';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 

@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import * as styles from './ButtonBase.scss';
 import ILocalContainerProps from '../../../../common/structures/ILocalContainerProps';
 import { Container } from '../../../modules/Container/Container';
+import { FunctionGeneric } from '../../../../common/structures/Generics';
 
 export enum ButtonPropColor {
 	default = 'default',
