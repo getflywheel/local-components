@@ -129,34 +129,12 @@
 			}
 		}
 
-		.FlySelect_Option {
-			height: 30px;
-			padding: 0 10px;
-
-			.FlySelect__SecondaryText {
-				margin-right: 0;
-			}
-
-			&:hover {
-				color: $white;
-				background: $green-dark50;
-
-				span {
-					color: $white;
-				}
-
-				svg path {
-					fill: $white;
-				}
-			}
-		}
-
 		.FlySelect_OptionGroup {
-			@include theme-background-gray5-else-graydarkalt;
 			height: 37px;
 			line-height: 37px;
 			text-align: left;
 			@include theme-color-gray-else-gray25;
+			@include theme-background-gray15-else-graydark50;
 			text-transform: uppercase;
 			@include tracking(5);
 			font-weight: 700;
@@ -186,6 +164,32 @@
 						@include theme-fill-gray-else-white;
 					}
 				}
+			}
+		}
+
+		.FlySelect_Option {
+			height: 30px;
+			padding: 0 10px;
+
+			.FlySelect__SecondaryText {
+				margin-right: 0;
+			}
+
+			&:hover {
+				color: $white;
+				background: $green-dark50;
+
+				span {
+					color: $white;
+				}
+
+				svg path {
+					fill: $white;
+				}
+			}
+
+			&.FlySelect_Option__Striped:nth-child(even):not(:hover) {
+				@include theme-background-gray2-else-gray2row;
 			}
 		}
 	}

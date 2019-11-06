@@ -41,6 +41,7 @@ interface IProps extends IReactComponentProps {
 	optionGroups?: FlySelectOptionGroups;
 	placeholder?: string;
 	readonly?: boolean;
+	striped?: boolean;
 	value?: string;
 }
 
@@ -288,6 +289,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 					'FlySelect_Option',
 					{
 						'__Disabled': disabled,
+						'FlySelect_Option__Striped': this.props.striped,
 					},
 				)}
 				onClick={(e) => this.selectOption(e, optionValue)}
@@ -317,22 +319,25 @@ export default class FlySelect extends React.Component<IProps, IState> {
 			}
 
 			output.push(
-				<div
-					key={optionGroupID}
-					className="FlySelect_OptionGroup"
-				>
-					<span>{optionGroup.label}</span>
-					{
-						optionGroup.linkText
-							?
-							<a onClick={optionGroup.linkOnClick}>
-								{optionGroup.linkText}
-								<ArrowRightSVG/>
-							</a>
-							:
-							null
-					}
-				</div>,
+				<>
+					<div
+						key={optionGroupID}
+						className="FlySelect_OptionGroup"
+					>
+						<span>{optionGroup.label}</span>
+						{
+							optionGroup.linkText
+								?
+								<a onClick={optionGroup.linkOnClick}>
+									{optionGroup.linkText}
+									<ArrowRightSVG/>
+								</a>
+								:
+								null
+						}
+					</div>
+					<span /> {/* note: this is here to ensure that the expected alternating row color order is maintained */}
+				</>,
 			);
 
 			output.push(optionNodes);
