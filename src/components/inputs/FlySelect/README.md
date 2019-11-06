@@ -46,6 +46,49 @@ Constrained Width:
 </div>
 ```
 
+Option groups with striped rows:
+```js
+<div style={{width: '150px'}}>
+    <FlySelect 
+        optionGroups={{
+            active: {
+                label: 'Active Items',
+            },
+            inactive: {
+                label: 'Inactive Items',
+            },
+        }}
+        options={{
+            'a': {
+                label: 'Item A',
+            	optionGroup: 'active',
+            },
+            'b': {
+                disabled: true,
+                label: 'Item B',
+                optionGroup: 'inactive',
+                secondaryText: '(deactivated)',
+            },
+            'c': {
+                label: 'Item C',
+            	optionGroup: 'active',
+            },
+            'd': {
+                label: 'Item D',
+            	optionGroup: 'active',
+            },
+            'e': {
+                label: 'Item E',
+            	optionGroup: 'active',
+            },
+        }}
+        onChange={() => console.log('onChange')} 
+        placeholder="Select Something!" 
+        striped={true}
+    />
+</div>
+```
+
 Using an Avatar within a form FlySelect:
 ```js
 import Avatar from '../../media/Avatar/Avatar';
