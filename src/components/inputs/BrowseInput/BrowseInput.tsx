@@ -53,24 +53,28 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 		}
 	}
 
-	browseFolder () {
-		dialog.showOpenDialog(remote.getCurrentWindow(), {
+	async browseFolder () {
+		const { canceled, filePaths } = await dialog.showOpenDialog(remote.getCurrentWindow(), {
 			'defaultPath': untildify(this.state.value! || this.props.defaultPath!),
 			'properties': this.props.dialogProperties,
 			'title': this.props.dialogTitle,
-		}, (paths: any[]) => {
-			if (!paths) {
-				return;
-			}
-
-			const value = paths[0];
-
-			if (this.props.onChange && this.props.onChange.call(this, value) === false) {
-				return false;
-			}
-
-			this.setState({ value });
 		});
+
+		if (canceled) {
+			return;
+		}
+
+		if (!filePaths) {
+			return;
+		}
+
+		const value = filePaths[0];
+
+		if (this.props.onChange && this.props.onChange.call(this, value) === false) {
+			return false;
+		}
+
+		this.setState({ value });
 	}
 
 	render () {
