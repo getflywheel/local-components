@@ -336,7 +336,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 								null
 						}
 					</div>
-					<span /> {/* note: this is here to ensure that the expected alternating row color order is maintained */}
+					<span key={`${optionGroupID}-empty`} /> {/* note: this is here to ensure that the expected alternating row color order is maintained */}
 				</>,
 			);
 
