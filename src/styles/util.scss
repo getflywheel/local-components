@@ -5,6 +5,14 @@
 		font-weight: 500;
 	}
 
+	/**
+	 * Primarily for disabling motion in visual regression tests.
+	 */
+	.__NoMotion, .__NoMotion * {
+		animation: none !important;
+		transition: none !important;
+	}
+
 	.__MarginTop_10 {
 		margin-top: 10px;
 	}
