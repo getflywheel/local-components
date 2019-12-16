@@ -1,17 +1,20 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import EyeSVG from '../../../svg/eye';
-import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
-interface IState {
-
-	inputType: 'password' | 'text';
-
+interface IProps extends ILocalContainerProps {
+	onChange?: any;
+	value?: string;
 }
 
-export default class InputPasswordToggle extends React.Component<IReactComponentProps, IState> {
+interface IState {
+	inputType: 'password' | 'text';
+}
 
-	constructor (props: IReactComponentProps) {
+export default class InputPasswordToggle extends React.Component<IProps, IState> {
+
+	constructor (props: IProps) {
 		super(props);
 
 		this.state = {

@@ -39,6 +39,8 @@ export interface IButtonCommonProps extends ILocalContainerProps {
 	onClick?: FunctionGeneric;
 	/** The html element tag used for the button. */
 	tag?: string;
+	/** Props specific to the tag prop tag defined and applied to this component. */
+	tagProps?: {[prop: string]: any};
 	/** The default behavior of the button. */
 	type?: 'button' | 'submit' | 'reset';
 }
@@ -66,7 +68,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 	};
 
 	render () {
-		const {children, color, container, className, disabled, fontSize, form, innerRef, onClick, padding, tag, ...otherProps} = this.props;
+		const {children, color, container, className, disabled, fontSize, form, innerRef, onClick, padding, tag, tagProps, ...otherProps} = this.props;
 		const Tag: any = tag;
 
 		return (
@@ -97,6 +99,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 					onClick={onClick}
 					ref={innerRef}
 					{...otherProps}
+					{...tagProps}
 				>
 					{children}
 				</Tag>
