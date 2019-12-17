@@ -14,7 +14,7 @@ export {TextButton} from './components/buttons/TextButton/TextButton';
 export {default as BrowseInput} from './components/inputs/BrowseInput/BrowseInput';
 export {default as Checkbox} from './components/inputs/Checkbox/Checkbox';
 export {default as FlyDropdown} from './components/inputs/FlyDropdown/FlyDropdown';
-export {default as FlySelect} from './components/inputs/FlySelect/FlySelect';
+export {default as FlySelect, FlySelectOption, FlySelectOptions, FlySelectOptionGroups} from './components/inputs/FlySelect/FlySelect';
 export {default as InputPasswordToggle} from './components/inputs/InputPasswordToggle/InputPasswordToggle';
 export {default as InputSearch} from './components/inputs/InputSearch/InputSearch';
 export {default as RadioBlock} from './components/inputs/RadioBlock/RadioBlock';
@@ -73,3 +73,11 @@ export {Text} from './components/text/Text/Text';
 export {TextBase} from './components/text/_private/TextBase/TextBase';
 export {Title} from './components/text/Title/Title';
 export {default as Truncate} from './components/text/Truncate/Truncate';
+export {default as IReactComponentProps} from './common/structures/IReactComponentProps';
+export {
+	IVirtualTableCellRendererDataArgs,
+	IVirtualTableOnChangeRowDataArgs,
+	IVirtualTableRowRendererDataArgs,
+	VirtualTableCellRenderer,
+	VirtualTableRowRenderer,
+} from './components/modules/VirtualTable/VirtualTable';

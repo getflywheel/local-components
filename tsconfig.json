@@ -5,6 +5,7 @@
 		"lib": ["es2017", "dom", "dom.iterable"],
 		"sourceMap": true,
 		"declaration": true,
+		"declarationDir": "dist",
 		"strict": true,
 		"experimentalDecorators": true,
 		"target": "es2015"

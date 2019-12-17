@@ -28,9 +28,9 @@ else {
 }
 
 interface IProps extends IReactComponentProps {
-
 	ariaHideApp?: boolean;
 	closeTimeoutMS?: number;
+	contentLabel: string; // improves accessibility
 	hasIcon?: boolean;
 	isOpen?: boolean;
 	onRequestClose?: () => void;
