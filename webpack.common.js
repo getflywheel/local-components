@@ -25,7 +25,7 @@ module.exports = {
 	plugins: [
 		new DtsBundleWebpack({
 			name: '@getflywheel/local-components',
-			main: './src/index.d.ts',
+			main: './dist/index.d.ts',
 			out: '../dist/typings.d.ts'
 		}),
 		new ExtractCssChunks({
