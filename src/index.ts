@@ -1,4 +1,4 @@
-import addStyles from './add-styles';
+import addStyles from "./add-styles";
 addStyles();
 
 // Alerts
