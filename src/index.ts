@@ -82,7 +82,6 @@ export {
 } from "./components/tables/TableList/TableList";
 export { default as TableListRepeater } from "./components/tables/TableListRepeater/TableListRepeater";
 export { default as TableListMultiDisplay } from "./components/tables/TableListMultiDisplay/TableListMultiDisplay";
-export { default as TestTable } from "./components/tables/TestTable/TestTable";
 // Text
 export { default as List } from "./components/text/List/List";
 export { Text } from "./components/text/Text/Text";
