@@ -2,12 +2,9 @@ import * as React from "react";
 import IReactComponentProps from "../../../common/structures/IReactComponentProps";
 import classnames from "classnames";
 import { TableList } from "../TableList/TableList";
-import CloseSmallSVG from "../../../svg/close--small";
-import AddSVG from "../../../svg/add";
 import isEqual = require("lodash.isequal");
 import * as styles from "../TableList/TableList.sass";
 import { PrimaryButton } from "../../buttons/PrimaryButton/PrimaryButton";
-import { Button } from "../../buttons/Button/Button";
 import { FunctionGeneric } from "../../../common/structures/Generics";
 
 interface IProps extends IReactComponentProps {
@@ -24,7 +21,10 @@ interface IState {
 	unsavedData: any;
 }
 
-export default class TableListRepeater extends React.Component<IProps, IState> {
+export default class TableListMultiDisplay extends React.Component<
+	IProps,
+	IState
+> {
 	static defaultProps: Partial<IProps> = {
 		submitLabel: "Submit"
 	};
@@ -126,7 +126,7 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 	render() {
 		return (
 			<div>
-				<TableList form={true} className={styles.TableListRepeater}>
+				<TableList form={true} className={styles.TableListMultiDisplay}>
 					{this.renderHeader()}
 					{this.state.unsavedData.map((item: any, index: number) => (
 						<li className={styles.TableListRow} key={index}>
@@ -140,7 +140,9 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 					))}
 				</TableList>
 
-				{this.renderSubmit()}
+				<div className={styles.TableListMultiDisplayBottomFloater}>
+					{this.renderSubmit()}
+				</div>
 			</div>
 		);
 	}
