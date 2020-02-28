@@ -13,13 +13,8 @@ import { FunctionGeneric } from "../../../common/structures/Generics";
 interface IProps extends IReactComponentProps {
 	data?: any[];
 	header?: React.ReactNode;
-	itemTemplate: any;
-	labelSingular?: string;
-	onBeforeRemove?: FunctionGeneric;
-	onChange?: FunctionGeneric;
 	onSubmit?: FunctionGeneric;
 	repeatingContent: FunctionGeneric;
-	submitDisabled?: boolean;
 	submitLabel?: string;
 }
 
@@ -29,13 +24,8 @@ interface IState {
 	unsavedData: any;
 }
 
-export default class TableListMultiDisplay extends React.Component<
-	IProps,
-	IState
-> {
+export default class TableListRepeater extends React.Component<IProps, IState> {
 	static defaultProps: Partial<IProps> = {
-		labelSingular: "Item",
-		submitDisabled: false,
 		submitLabel: "Submit"
 	};
 
@@ -64,36 +54,10 @@ export default class TableListMultiDisplay extends React.Component<
 		}
 	}
 
-	onChange(unsavedData: any) {
-		if (typeof this.props.onChange === "function") {
-			this.props.onChange(unsavedData);
-		}
-	}
-
 	async addItem() {
-		let newItem;
-
-		if (typeof this.props.itemTemplate === "function") {
-			this.setState({
-				addingItem: true
-			});
-
-			try {
-				newItem = await this.props.itemTemplate();
-			} catch (e) {
-				this.setState({
-					addingItem: false
-				});
-
-				return;
-			}
-		} else {
-			newItem = this.props.itemTemplate;
-		}
+		let newItem = {};
 
 		const unsavedData = this.state.unsavedData.concat([newItem]);
-
-		this.onChange(unsavedData);
 
 		this.setState({
 			addingItem: false,
@@ -104,20 +68,7 @@ export default class TableListMultiDisplay extends React.Component<
 	async removeItem(index: number) {
 		const unsavedData = this.state.unsavedData.slice();
 
-		if (this.props.onBeforeRemove) {
-			const shouldDelete = await this.props.onBeforeRemove(
-				unsavedData[index],
-				index
-			);
-
-			if (!shouldDelete) {
-				return;
-			}
-		}
-
 		unsavedData.splice(index, 1);
-
-		this.onChange(unsavedData);
 
 		this.setState({
 			unsavedData
@@ -129,8 +80,6 @@ export default class TableListMultiDisplay extends React.Component<
 			const unsavedData = this.state.unsavedData.slice();
 
 			unsavedData[index] = item;
-
-			this.onChange(unsavedData);
 
 			this.setState({
 				unsavedData
@@ -151,12 +100,6 @@ export default class TableListMultiDisplay extends React.Component<
 				)}
 			>
 				{this.props.header}
-				<strong
-					className={classnames(
-						styles.TableListRowHeader__SeparatorLeft,
-						styles.TableListRowHeader__RemoveHeading
-					)}
-				/>
 			</li>
 		);
 	}
@@ -172,10 +115,6 @@ export default class TableListMultiDisplay extends React.Component<
 					onClick={() =>
 						this.props.onSubmit &&
 						this.props.onSubmit(this.state.unsavedData)
-					}
-					disabled={
-						isEqual(this.props.data, this.state.unsavedData) ||
-						this.props.submitDisabled
 					}
 				>
 					{this.props.submitLabel}
@@ -197,32 +136,9 @@ export default class TableListMultiDisplay extends React.Component<
 								index,
 								this.updateItemFactory(index)
 							)}
-							<div
-								className={classnames(
-									styles.TableList__Remove,
-									styles.TableList__SeparatorLeft
-								)}
-							>
-								<span onClick={() => this.removeItem(index)}>
-									<CloseSmallSVG />
-								</span>
-							</div>
 						</li>
 					))}
 				</TableList>
-
-				<div className={styles.TableListRepeaterAdd}>
-					<div className="InnerPaneSidebarHeaderButtons_Add">
-						<Button
-							onClick={this.addItem}
-							disabled={this.state.addingItem}
-						>
-							<AddSVG />
-							{!this.state.addingItem ? "Add " : "Adding"}{" "}
-							{this.props.labelSingular}
-						</Button>
-					</div>
-				</div>
 
 				{this.renderSubmit()}
 			</div>
