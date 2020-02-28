@@ -22,10 +22,7 @@ interface IState {
 	unsavedData: any;
 }
 
-export default class TableListMultiDisplay extends React.Component<
-	IProps,
-	IState
-> {
+export default class TableListRepeater extends React.Component<IProps, IState> {
 	static defaultProps: Partial<IProps> = {
 		submitLabel: 'Submit',
 		noActionButton: true
