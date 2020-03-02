@@ -107,7 +107,7 @@ module.exports = {
 			}
 		},
 	},
-	title: 'Local by Flywheel Style Guide',
+	title: 'Local Style Guide',
     webpackConfig: () => {
         return merge.strategy({
 			plugins: 'replace',
