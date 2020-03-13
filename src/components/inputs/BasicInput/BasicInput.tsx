@@ -7,7 +7,7 @@ interface IProps extends ILocalContainerProps {
 	value?: string;
 }
 
-export default class InputToggle extends React.Component<IProps> {
+export default class BasicInput extends React.Component<IProps> {
 
 	constructor (props: IProps) {
 		super(props);
@@ -20,13 +20,12 @@ export default class InputToggle extends React.Component<IProps> {
 		return (
 			<div
 				className={classnames(
-					'PasswordToggle',
+					'BasicInput',
 					this.props.className,
 				)}
 			>
 				<input
 					type='text'
-					className={className ? `PasswordToggleInput ${className}` : 'PasswordToggleInput'}
 					{...props}
 				/>
 			</div>

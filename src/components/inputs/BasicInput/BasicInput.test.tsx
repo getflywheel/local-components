@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import InputToggle from './InputToggle';
+import BasicInput from './BasicInput';
 
 it ('renders without crashing', () => {
-	shallow(<InputToggle />);
+	shallow(<BasicInput />);
 });
 
 it ('contains a regular input by default', () => {
-	const component = shallow(<InputToggle />);
+	const component = shallow(<BasicInput />);
 
 	expect(component.exists('input[type="text"]')).toBe(true);
 	expect(component.exists('input[type="password"]')).toBe(false);

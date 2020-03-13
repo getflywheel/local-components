@@ -356,4 +356,13 @@
 			}
 		}
 	}
+	.BasicInput {
+		position: relative;
+		display: inline;
+		margin-bottom: 15px;
+
+		input {
+			@include flywheelInput;
+		}
+	}
 }
