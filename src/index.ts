@@ -21,6 +21,7 @@ export {
 	FlySelectOptionGroups
 } from "./components/inputs/FlySelect/FlySelect";
 export { default as InputPasswordToggle } from "./components/inputs/InputPasswordToggle/InputPasswordToggle";
+export { default as InputToggle } from "./components/inputs/InputToggle/InputToggle";
 export { default as InputSearch } from "./components/inputs/InputSearch/InputSearch";
 export { default as RadioBlock } from "./components/inputs/RadioBlock/RadioBlock";
 export { default as Switch } from "./components/inputs/Switch/Switch";
