@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './Divider.sass';
+import * as styles from './Divider.scss';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 const marginsClassMixin = (stylesRef: {[key: string]: any}, props: {[key: string]: any}) => ({
@@ -17,11 +17,9 @@ const marginsClassMixin = (stylesRef: {[key: string]: any}, props: {[key: string
 });
 
 export interface IDividerProps extends IReactComponentProps {
-
 	marginSize?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	marginSizeBottom?: 'xs' | 's' | 'm' | 'l' | 'xl';
 	marginSizeTop?: 'xs' | 's' | 'm' | 'l' | 'xl';
-
 }
 
 const Divider = (props: IDividerProps) => (
@@ -33,7 +31,13 @@ const Divider = (props: IDividerProps) => (
 		)}
 		onClick={props.onClick}
 		style={props.style}
-	/>
+	>
+		{ props.children && (
+			<div className={styles.Divider_ChildrenCont}>
+				{props.children}
+			</div>
+		)}
+	</div>
 );
 
 export default Divider;
