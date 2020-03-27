@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import * as styles from './BasicInput.scss';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
 interface IProps extends ILocalContainerProps {
@@ -21,6 +22,7 @@ export default class BasicInput extends React.Component<IProps> {
 			<div
 				className={classnames(
 					'BasicInput',
+					styles.BasicInput,
 					this.props.className,
 				)}
 			>
