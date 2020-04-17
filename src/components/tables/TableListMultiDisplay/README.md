@@ -31,6 +31,9 @@ Basic:
 					)}
 					onSubmit={console.log("Submitted!")}
 					submitLabel={"Submit"}
-					data={this.state.myRepeatingContentArray}
+					data={[
+						{prop1:"Fiat", prop2:"100", prop3:"100", prop4:"100"},
+						{prop1:"Chevy", prop2:"100", prop3:"100", prop4:"100"}
+					]}
 				/>
 ```
