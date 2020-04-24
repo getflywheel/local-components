@@ -13,6 +13,7 @@ interface IProps extends IReactComponentProps {
 	onSubmit?: FunctionGeneric;
 	repeatingContent: FunctionGeneric;
 	submitLabel?: string;
+	noActionButton?: boolean;
 }
 
 interface IState {
@@ -26,7 +27,8 @@ export default class TableListMultiDisplay extends React.Component<
 	IState
 > {
 	static defaultProps: Partial<IProps> = {
-		submitLabel: "Submit"
+		submitLabel: "Submit",
+		noActionButton: true
 	};
 
 	constructor(props: IProps) {
@@ -37,8 +39,6 @@ export default class TableListMultiDisplay extends React.Component<
 			initialData: this.props.data ? [...this.props.data] : [],
 			unsavedData: this.props.data ? [...this.props.data] : []
 		};
-
-		this.addItem = this.addItem.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps: IProps) {
@@ -54,18 +54,7 @@ export default class TableListMultiDisplay extends React.Component<
 		}
 	}
 
-	async addItem() {
-		let newItem = {};
-
-		const unsavedData = this.state.unsavedData.concat([newItem]);
-
-		this.setState({
-			addingItem: false,
-			unsavedData
-		});
-	}
-
-	async removeItem(index: number) {
+	protected async removeItem(index: number) {
 		const unsavedData = this.state.unsavedData.slice();
 
 		unsavedData.splice(index, 1);
@@ -75,7 +64,7 @@ export default class TableListMultiDisplay extends React.Component<
 		});
 	}
 
-	updateItemFactory(index: number) {
+	protected updateItemFactory(index: number) {
 		return (item: any) => {
 			const unsavedData = this.state.unsavedData.slice();
 
@@ -87,7 +76,7 @@ export default class TableListMultiDisplay extends React.Component<
 		};
 	}
 
-	renderHeader() {
+	protected renderHeader() {
 		if (!this.props.header) {
 			return;
 		}
@@ -104,8 +93,8 @@ export default class TableListMultiDisplay extends React.Component<
 		);
 	}
 
-	renderSubmit() {
-		if (!this.props.onSubmit) {
+	protected renderSubmit() {
+		if (!this.props.onSubmit || this.props.noActionButton) {
 			return;
 		}
 
