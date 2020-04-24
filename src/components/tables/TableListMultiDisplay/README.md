@@ -1,3 +1,5 @@
+TableListMultiDisplay lets you pass in an array of data that needs to be displayed as rows in a table. Unlike TableListRepeater, it does not include buttons for the user to add and delete rows. The action button is hidden by default but can be shown with the `noActionButton={false}` prop.
+
 Basic:
 
 ```js
@@ -31,6 +33,7 @@ Basic:
 					)}
 					onSubmit={console.log("Submitted!")}
 					submitLabel={"Submit"}
+					noActionButton={false}
 					data={[
 						{prop1:"Fiat", prop2:"100", prop3:"100", prop4:"100"},
 						{prop1:"Chevy", prop2:"100", prop3:"100", prop4:"100"}
