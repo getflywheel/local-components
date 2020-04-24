@@ -1,0 +1,15 @@
+@import '../../../styles/_partials/index';
+
+.Divider {
+	@import '../../../styles/partials/margin';
+
+	position: relative;
+	@include theme-border-bottom;
+}
+
+.Divider_ChildrenCont {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

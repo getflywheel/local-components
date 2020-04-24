@@ -1,10 +1,10 @@
-# Local by Flywheel component library
+# Local component library
 
-Welcome to the official component library for [Local by Flywheel](https://local.getflywheel.com/)!
+Welcome to the official component library for [Local](https://localwp.com/)!
 
 ## What's included in this component library?
 
-We appreciate curious minds and that's a great question! 
+We appreciate curious minds and that's a great question!
 Take a quick look at our living component documentation [here](https://getflywheel.github.io/local-components/).
 
 In additional to a quickly growing set of React components, we also having SVGs, SASS partials, and more to come!
@@ -26,8 +26,8 @@ The `local-components` library can be broken down into 3 main parts:
 
 ### Components
 
-These are the visual elements that make up both Local and its Add-ons. 
-There are currently 40+ React components in the library. 
+These are the visual elements that make up both Local and its Add-ons.
+There are currently 40+ React components in the library.
 Each component consists of a `.tsx`, `index.js`, `README.md` and optional `.sass` file.
 
 Try it out for yourself!
@@ -38,13 +38,13 @@ Try it out for yourself!
 
 ### Styles
 
-The component library leverages CSS Modules to manage and scope styles. 
+The component library leverages CSS Modules to manage and scope styles.
 These are considered **local** styles (not to be confused with the Local app 😉)
 Scoped local styles are a beautiful thing that allow Local to isolate components, run Add-ons with multiple versions of `local-components` and avoid collisions.
 
 As wonderful as local styles are, there are instances where CSS needs to transcend a component.
 For that, we make use of **global** styles.
-Global styles should be familiar to most as that's all the web had for 20+ years. 
+Global styles should be familiar to most as that's all the web had for 20+ years.
 These styles are intended to be used sparingly as they introduce a lot of challenges when scaling an app with a library of Add-ons and Environments.
 
 The following is an instance where a scoped component may use a combination of local and global styles to achieve a specific result:
