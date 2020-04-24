@@ -39,17 +39,6 @@ export default class TableListMultiDisplay extends React.Component<
 			initialData: this.props.data ? [...this.props.data] : [],
 			unsavedData: this.props.data ? [...this.props.data] : []
 		};
-
-		// const addItem = async () => {
-		// 	let newItem = {};
-
-		// 	const unsavedData = this.state.unsavedData.concat([newItem]);
-
-		// 	this.setState({
-		// 		addingItem: false,
-		// 		unsavedData
-		// 	});
-		// };
 	}
 
 	componentWillReceiveProps(nextProps: IProps) {
