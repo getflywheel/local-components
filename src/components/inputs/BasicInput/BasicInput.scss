@@ -1,11 +1,11 @@
 @import '../../../styles/_partials/index';
 
 .BasicInput {
-    position: relative;
-    display: block;
-    margin-bottom: 15px;
+	position: relative;
+	display: block;
+	margin-bottom: 15px;
 
-    input {
-        @include flywheelInput;
-    }
+	input {
+		@include flywheelInput;
+	}
 }

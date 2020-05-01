@@ -1,11 +1,11 @@
-import * as React from "react";
-import IReactComponentProps from "../../../common/structures/IReactComponentProps";
-import classnames from "classnames";
-import { TableList } from "../TableList/TableList";
-import isEqual = require("lodash.isequal");
-import * as styles from "../TableList/TableList.sass";
-import { PrimaryButton } from "../../buttons/PrimaryButton/PrimaryButton";
-import { FunctionGeneric } from "../../../common/structures/Generics";
+import * as React from 'react';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import classnames from 'classnames';
+import { TableList } from '../TableList/TableList';
+import isEqual = require('lodash.isequal');
+import * as styles from '../TableList/TableList.sass';
+import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
 	data?: any[];
@@ -27,7 +27,7 @@ export default class TableListMultiDisplay extends React.Component<
 	IState
 > {
 	static defaultProps: Partial<IProps> = {
-		submitLabel: "Submit",
+		submitLabel: 'Submit',
 		noActionButton: true
 	};
 
