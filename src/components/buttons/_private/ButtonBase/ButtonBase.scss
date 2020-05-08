@@ -13,8 +13,6 @@ $disabled-text-dark: $gray-dark50;
 	// base styles
 	position: relative;
 	background: transparent;
-	text-transform: uppercase;
-	font-weight: 700;
 	transition: transform 0.1s ease 0s;
 	text-decoration: none;
 	text-align: center;
@@ -34,12 +32,16 @@ $disabled-text-dark: $gray-dark50;
 		'--Button_IfFill__Background',
 		'--Button_IfFill__Background_Hover',
 		'--Button_IfFill__TextColor',
-		'--Button_IfFill__TextColor_Hover'
+		'--Button_IfFill__TextColor_Hover',
+		'--Button__FontWeight',
+		'--Button__TextTransform'
 	);
 
 	// css variable-based styles
 	color: var(--Button_TextColor);
 	background: var(--Button_Background);
+	font-weight: var(--Button__FontWeight);
+	text-transform: var(--Button__TextTransform);
 	border: none;
 
 	// use explicit hover color rather than default color to ensure tags like 'a' don't inherit their global style
@@ -176,6 +178,22 @@ $disabled-text-dark: $gray-dark50;
 	@include setThemeVar('--Button_IfFill__TextColor', $white);
 	@include setThemeVar('--Button_IfFill__Background_Hover', $red-dark50);
 	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+}
+
+.ButtonBase__FontWeight_Heavy {
+	@include setThemeVar('--Button__FontWeight', 700);
+}
+
+.ButtonBase__FontWeight_Medium {
+	@include setThemeVar('--Button__FontWeight', 500);
+}
+
+.ButtonBase__TextTransform_Upper {
+	@include setThemeVar('--Button__TextTransform', uppercase);
+}
+
+.ButtonBase__TextTransform_None {
+	@include setThemeVar('--Button__TextTransform', none);
 }
 
 .ButtonBase__FontSize_XSmall {
