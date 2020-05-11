@@ -30,12 +30,21 @@ export default class AdvancedToggle extends React.Component<IProps, IState> {
 		};
 
 		this.toggleAdvanced = this.toggleAdvanced.bind(this);
+		this.onKeyDown = this.onKeyDown.bind(this);
 	}
 
 	toggleAdvanced () {
 		this.setState({
 			advancedOpen: !this.state.advancedOpen,
 		});
+	}
+
+	onKeyDown (event: any) {
+		if (!this.state.advancedOpen && (event.keyCode === 40 || event.keyCode === 32)){
+			this.setState({ advancedOpen: true });
+		} else if (this.state.advancedOpen && (event.keyCode === 38 || event.keyCode === 32)){
+			this.setState({ advancedOpen: false });
+		}
 	}
 
 	render () {
@@ -50,8 +59,10 @@ export default class AdvancedToggle extends React.Component<IProps, IState> {
 				)}
 			>
 				<span
+					tabIndex={0}
 					className={styles.Toggle}
 					onClick={this.toggleAdvanced}
+					onKeyDown={this.onKeyDown}
 				>
 					<span>
 						{this.props.headingText}
