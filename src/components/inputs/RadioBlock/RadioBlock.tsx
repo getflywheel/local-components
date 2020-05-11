@@ -124,6 +124,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);
+		this.onKeyDown = this.onKeyDown.bind(this);
 	}
 
 	onClick () {
@@ -133,6 +134,12 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 
 		if (this.props.onClick) {
 			this.props.onClick(this.props.value);
+		}
+	}
+
+	onKeyDown (event: any) {
+		if (event.keyCode === 32){
+			event.target.click();
 		}
 	}
 
@@ -150,6 +157,8 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 			// wrap in optional container
 			<Container {...this.props.container}>
 				<div
+					tabIndex={0}
+					onKeyDown={this.onKeyDown}
 					onClick={this.onClick}
 					className={classnames(
 						styles.RadioBlock_Option,
