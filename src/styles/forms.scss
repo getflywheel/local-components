@@ -367,6 +367,10 @@
 					fill: $green;
 				}
 			}
+
+			&:focus {
+				@include defaultOutline;
+			}
 		}
 	}
 }
