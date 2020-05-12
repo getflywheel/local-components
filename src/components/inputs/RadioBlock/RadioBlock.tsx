@@ -138,7 +138,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 	}
 
 	onKeyDown (event: any) {
-		if (event.keyCode === 32){
+		if (event.key === ' ' || event.key === 'Enter'){
 			event.target.click();
 		}
 	}
