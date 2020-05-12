@@ -25,7 +25,7 @@ export default class Close extends React.Component<IProps> {
 					{
 						[styles.Close__PositionAbsolute]: this.props.position === 'absolute',
 					},
-					this.props.className
+					this.props.className,
 				)}
 				onClick={this.props.onClick}
 				style={this.props.style}

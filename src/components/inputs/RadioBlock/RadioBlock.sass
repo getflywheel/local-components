@@ -75,6 +75,9 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 		height: 100%
 		border-radius: 0
 
+		&:focus
+			@include defaultOutline
+
 		@include selectors_setAsDefaults
 			padding: 29px
 		@include selectors_appendToNthParentSelector('.RadioBlock_Option__HeightSizeMedium', 1)

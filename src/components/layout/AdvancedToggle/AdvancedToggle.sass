@@ -12,9 +12,11 @@
 		@include selectors_setAsDefaults()
 			max-height: 0
 			opacity: 0
+			visibility: hidden
 		@include selectors_ifHostStateIs('.AdvancedToggle__isOpen')
 			max-height: 235px
 			opacity: 1
+			visibility: visible
 		transition: max-height .2s ease 0ms, opacity .2s ease 0ms
 
 		> :first-child
@@ -44,6 +46,9 @@
 
 		&, *
 		 cursor: pointer
+
+		&:focus
+			@include defaultOutline
 
 		svg
 			display: inline

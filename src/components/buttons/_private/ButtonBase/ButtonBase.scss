@@ -79,6 +79,10 @@ $disabled-text-dark: $gray-dark50;
 		}
 	}
 
+	&:focus {
+		@include defaultOutline;
+	}
+
 	// if default 'button' tag (otherwise don't impose display style)
 	@at-root button#{&} {
 		display: inline-block;

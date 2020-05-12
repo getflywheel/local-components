@@ -157,8 +157,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 			// wrap in optional container
 			<Container {...this.props.container}>
 				<div
-					tabIndex={0}
-					onKeyDown={this.onKeyDown}
+					tabIndex={-1}
 					onClick={this.onClick}
 					className={classnames(
 						styles.RadioBlock_Option,
@@ -172,7 +171,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 						},
 					)}
 				>
-					<label className={styles.RadioBLock_Label}>
+					<label onKeyDown={this.onKeyDown} className={styles.RadioBLock_Label}>
 						<Title size={TitlePropSize.s} className={styles.RadioBLock_Label_Text}>
 							{this.props.label}
 						</Title>
