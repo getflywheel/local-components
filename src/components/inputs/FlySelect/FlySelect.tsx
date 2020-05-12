@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import FocusLock from 'react-focus-lock';
 import CheckSVG from '../../../svg/checkmark--big';
 import DownloadSmallSVG from '../../../svg/download--small';
 import ArrowRightSVG from '../../../svg/arrow--right';
