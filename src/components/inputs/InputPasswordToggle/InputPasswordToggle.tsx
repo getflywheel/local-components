@@ -32,7 +32,7 @@ export default class InputPasswordToggle extends React.Component<IProps, IState>
 	}
 
 	onKeyDown (e: any) {
-		if (e.key === ' '){
+		if (e.key === 'Enter'){
 			this.toggleType();
 		}
 	}
