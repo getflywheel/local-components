@@ -40,7 +40,7 @@ export default class AdvancedToggle extends React.Component<IProps, IState> {
 	}
 
 	onKeyDown (event: any) {
-		if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === ' '){
+		if (event.key === 'Enter' || event.key === ' '){
 			this.toggleAdvanced();
 		}
 	}
