@@ -219,6 +219,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 			open,
 		}, () => {
 			if (this.state.open){
+				this.__optionsRef.current.children[this.state.focusedIndex] &&
 				this.__optionsRef.current.children[this.state.focusedIndex].focus();
 			}
 		});
