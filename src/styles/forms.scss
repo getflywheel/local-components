@@ -175,20 +175,8 @@
 				margin-right: 0;
 			}
 
-			&:hover {
-				color: $white;
-				background: $green-dark50;
-
-				span {
-					color: $white;
-				}
-
-				svg path {
-					fill: $white;
-				}
-			}
-
-			&:focus:not(:hover) {
+			&:hover,
+			&:focus {
 				color: $white;
 				background: $green-dark50;
 
