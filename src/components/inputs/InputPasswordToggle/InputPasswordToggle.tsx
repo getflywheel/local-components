@@ -22,12 +22,19 @@ export default class InputPasswordToggle extends React.Component<IProps, IState>
 		};
 
 		this.toggleType = this.toggleType.bind(this);
+		this.onKeyDown = this.onKeyDown.bind(this);
 	}
 
 	toggleType () {
 		this.setState({
 			inputType: this.state.inputType === 'password' ? 'text' : 'password',
 		});
+	}
+
+	onKeyDown (e: any) {
+		if (e.key === 'Enter'){
+			this.toggleType();
+		}
 	}
 
 	render () {
@@ -47,8 +54,10 @@ export default class InputPasswordToggle extends React.Component<IProps, IState>
 					{...props}
 				/>
 				<span
+					tabIndex={0}
 					className="Eye"
 					onClick={this.toggleType}
+					onKeyDown={this.onKeyDown}
 				>
 					<EyeSVG />
 				</span>

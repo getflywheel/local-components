@@ -6,22 +6,23 @@ import ArrowRightSVG from '../../../svg/arrow--right';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './FlySelect.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import ReactDOM = require('react-dom');
 
 export interface FlySelectOption {
-	disabled?: boolean
-	download?: boolean
-	icon?: React.ReactNode
-	label: React.ReactNode
+	disabled?: boolean;
+	download?: boolean;
+	icon?: React.ReactNode;
+	label: React.ReactNode;
 	metadata?: any;
-	optionGroup?: FlySelectOptionGroup | null
-	secondaryText?: React.ReactNode
-	value?: string
+	optionGroup?: FlySelectOptionGroup | null;
+	secondaryText?: React.ReactNode;
+	value?: string;
 }
 
 export interface FlySelectOptionGroup {
-	label: React.ReactNode
-	linkText?: string
-	linkOnClick?: FunctionGeneric
+	label: React.ReactNode;
+	linkText?: string;
+	linkOnClick?: FunctionGeneric;
 }
 
 export type FlySelectOptionGroups = {[key: string]: FlySelectOptionGroup};
@@ -47,6 +48,7 @@ interface IProps extends IReactComponentProps {
 
 interface IState {
 	focus: boolean;
+	focusedIndex: number;
 	optionsFormatted: FlySelectOptionsFormatted;
 	open: boolean;
 	optionsLoaded: boolean | null;
@@ -57,12 +59,14 @@ interface IState {
 export default class FlySelect extends React.Component<IProps, IState> {
 
 	private readonly __containerRef: React.RefObject<any>;
+	private readonly __optionsRef: React.RefObject<any>;
 
 	constructor (props: IProps) {
 		super(props);
 
 		this.state = {
 			focus: false,
+			focusedIndex: 0,
 			open: false,
 			optionsFormatted: this.props.options ? this.formatOptions(this.props.options) : {},
 			optionsLoaded: this.props.optionsLoader ? false : null,
@@ -75,7 +79,11 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		this.selectOption = this.selectOption.bind(this);
 		this.renderOption = this.renderOption.bind(this);
 		this.calculateOptionsPosition = this.calculateOptionsPosition.bind(this);
+		this.onContainerKeyDown = this.onContainerKeyDown.bind(this);
+		this.onOptionKeyDown = this.onOptionKeyDown.bind(this);
+
 		this.__containerRef = React.createRef();
+		this.__optionsRef = React.createRef();
 	}
 
 	componentDidMount () {
@@ -148,6 +156,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		});
 	}
 
+
 	selectOption (e: any, value: any) {
 		this.setState({
 			open: false,
@@ -173,6 +182,52 @@ export default class FlySelect extends React.Component<IProps, IState> {
 			minWidth: optionsBounding.right - optionsBounding.left,
 			top: optionsBounding.top,
 		};
+	}
+
+	onContainerKeyDown (event: any) {
+		let open = this.state.open;
+		let focusedIndex = this.state.focusedIndex;
+		switch (event.key) {
+			case ' ':
+				open = true;
+				break;
+			case 'Enter':
+				open = true;
+				break;
+			case 'ArrowUp':
+				open = true;
+				if (focusedIndex > 0) {
+					focusedIndex--;
+				}
+				break;
+			case 'ArrowDown':
+				open = true;
+				if (focusedIndex < Object.keys(this.state.optionsFormatted).length - 1){
+					focusedIndex++;
+				}
+				break;
+			case 'Tab':
+				open = false;
+				focusedIndex = 0;
+				break;
+		}
+
+		this.setState({
+			focusedIndex,
+			open,
+		}, () => {
+			if (this.state.open){
+				this.__optionsRef.current.children[this.state.focusedIndex] &&
+				this.__optionsRef.current.children[this.state.focusedIndex].focus();
+			}
+		});
+	}
+
+	onOptionKeyDown = (e: any, value: any) => {
+		if (e.key === 'Enter' || e.key === ' '){
+			this.selectOption(e, value);
+		}
+		this.__containerRef.current.focus();
 	}
 
 	renderPlaceholder () {
@@ -283,15 +338,17 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 		return (
 			<div
+				tabIndex={0}
 				key={i}
 				data-value={option.value}
 				className={classnames(
 					'FlySelect_Option',
 					{
-						'__Disabled': disabled,
 						'FlySelect_Option__Striped': this.props.striped,
+						'__Disabled': disabled,
 					},
 				)}
+				onKeyDown={(e) => this.onOptionKeyDown(e, optionValue)}
 				onClick={(e) => this.selectOption(e, optionValue)}
 			>
 				{this.renderItem(option, true)}
@@ -321,6 +378,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 			output.push(
 				<>
 					<div
+						tabIndex={0}
 						key={optionGroupID}
 						className="FlySelect_OptionGroup"
 					>
@@ -349,7 +407,6 @@ export default class FlySelect extends React.Component<IProps, IState> {
 	render () {
 		const optionsFormatted = this.state.optionsFormatted;
 		const Tag: any = 'div';
-
 		return (
 			<Tag
 				className={classnames(
@@ -363,11 +420,11 @@ export default class FlySelect extends React.Component<IProps, IState> {
 						[styles.FlySelect__Readonly]: this.props.readonly,
 					},
 				)}
+				onKeyDown={this.onContainerKeyDown}
 				style={this.props.style}
 				data-current-value={this.state.value}
 				tabIndex={0}
 				onClick={this.onClick}
-				onBlur={this.onBlur}
 				ref={this.__containerRef}
 				disabled={this.props.disabled || !Object.keys(optionsFormatted).length}
 			>
@@ -382,12 +439,16 @@ export default class FlySelect extends React.Component<IProps, IState> {
 							</span>
 					}
 				</span>
-
 				<div
+					onBlur={this.onBlur}
 					className="FlySelect_Options"
 					style={this.calculateOptionsPosition()}
 				>
-					<div className="FlySelect_OptionsContainer">
+					<div
+						tabIndex={0}
+						ref={this.__optionsRef}
+						className="FlySelect_OptionsContainer"
+					>
 						{Object.keys(optionsFormatted).map((optionValue, i) => this.renderOption(optionValue, i, null))}
 						{this.renderOptionGroups()}
 					</div>

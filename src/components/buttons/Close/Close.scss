@@ -29,4 +29,8 @@
 	&:hover svg path {
 		@include theme-fill-greendark50-else-white-hover;
 	}
+
+	&:focus {
+		@include defaultOutline;
+	}
 }

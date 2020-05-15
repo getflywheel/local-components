@@ -124,6 +124,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);
+		this.onKeyDown = this.onKeyDown.bind(this);
 	}
 
 	onClick () {
@@ -133,6 +134,12 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 
 		if (this.props.onClick) {
 			this.props.onClick(this.props.value);
+		}
+	}
+
+	onKeyDown (event: any) {
+		if (event.key === ' ' || event.key === 'Enter'){
+			event.target.click();
 		}
 	}
 
@@ -163,7 +170,11 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 						},
 					)}
 				>
-					<label className={styles.RadioBLock_Label}>
+					<label
+						tabIndex={this.props.selected ? -1 : 0}
+						onKeyDown={this.onKeyDown}
+						className={styles.RadioBLock_Label}
+					>
 						<Title size={TitlePropSize.s} className={styles.RadioBLock_Label_Text}>
 							{this.props.label}
 						</Title>

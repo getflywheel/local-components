@@ -58,3 +58,7 @@
 	height: 23px;
 	width: 100%;
 }
+
+@mixin defaultOutline {
+	outline: 5px auto -webkit-focus-ring-color !important; // default chrome outline style
+}

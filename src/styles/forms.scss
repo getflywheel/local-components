@@ -175,7 +175,8 @@
 				margin-right: 0;
 			}
 
-			&:hover {
+			&:hover,
+			&:focus {
 				color: $white;
 				background: $green-dark50;
 
@@ -353,6 +354,10 @@
 				svg path {
 					fill: $green;
 				}
+			}
+
+			&:focus {
+				@include defaultOutline;
 			}
 		}
 	}
