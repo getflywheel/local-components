@@ -171,7 +171,7 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 					)}
 				>
 					<label
-						tabIndex={0}
+						tabIndex={this.props.selected ? -1 : 0}
 						onKeyDown={this.onKeyDown}
 						className={styles.RadioBLock_Label}
 					>
