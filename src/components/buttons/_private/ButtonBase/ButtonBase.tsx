@@ -67,7 +67,7 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 	/** The font-weight applied to the button */
 	fontWeight?: ButtonPropFontWeight;
 	/** The casing applied to the button */
-	textTransform: ButtonPropTextTransform;
+	textTransform?: ButtonPropTextTransform;
 }
 
 export class ButtonBase extends React.Component<IButtonBaseProps> {
@@ -86,8 +86,6 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 	render () {
 		const {children, color, container, className, disabled, fontSize, form, innerRef, onClick, padding, fontWeight, textTransform, tag, tagProps, ...otherProps} = this.props;
 		const Tag: any = tag;
-
-		console.log('Button Base', this.props)
 
 		return (
 			<Container {...container}>
