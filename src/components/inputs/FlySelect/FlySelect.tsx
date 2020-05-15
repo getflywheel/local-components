@@ -81,7 +81,6 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		this.calculateOptionsPosition = this.calculateOptionsPosition.bind(this);
 		this.onContainerKeyDown = this.onContainerKeyDown.bind(this);
 		this.onOptionKeyDown = this.onOptionKeyDown.bind(this);
-		this.onClickOutside = this.onClickOutside.bind(this);
 
 		this.__containerRef = React.createRef();
 		this.__optionsRef = React.createRef();
@@ -94,7 +93,6 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				optionsLoaded: true,
 			}));
 		}
-		document.addEventListener('click', this.onClickOutside, true);
 	}
 
 	componentDidUpdate (previousProps: IProps) {
@@ -109,10 +107,6 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				optionsFormatted: this.formatOptions(this.props.options),
 			});
 		}
-	}
-
-	componentWillUnmount () {
-		document.removeEventListener('click', this.onClickOutside, true);
 	}
 
 	formatOptions (options: any): FlySelectOptionsFormatted {
@@ -158,6 +152,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 	onBlur () {
 		this.setState({
 			focus: false,
+			open: false,
 		});
 	}
 
@@ -233,20 +228,6 @@ export default class FlySelect extends React.Component<IProps, IState> {
 			this.selectOption(e, value);
 		}
 		this.__containerRef.current.focus();
-	}
-
-	onClickOutside (event: any) {
-		try {
-			const domNode = ReactDOM.findDOMNode(this.__containerRef.current);
-
-			if (!domNode || !domNode.contains(event.target)) {
-				this.setState({
-					focus: false,
-					open: false,
-				});
-			}
-		}
-		catch (error) {}
 	}
 
 	renderPlaceholder () {
@@ -444,7 +425,6 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				data-current-value={this.state.value}
 				tabIndex={0}
 				onClick={this.onClick}
-				onBlur={this.onBlur}
 				ref={this.__containerRef}
 				disabled={this.props.disabled || !Object.keys(optionsFormatted).length}
 			>
@@ -460,6 +440,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 					}
 				</span>
 				<div
+					onBlur={this.onBlur}
 					className="FlySelect_Options"
 					style={this.calculateOptionsPosition()}
 				>
