@@ -1,0 +1,66 @@
+@import '../../../styles/_partials/index.scss';
+@import '../../../common/styles/themeUtils';
+
+.CopyButton {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	background: transparent;
+	border: none;
+	border-radius: 5px;
+	@include defaultFontSettings;
+	@include tracking(40);
+	@include setupThemeVars(
+		'--Button_Background',
+		'--Button_Background_Hover',
+		'--Button_Text_Color',
+		'--Button_Text_Color_Hover',
+		'--Button_Padding'
+	);
+
+	color: var(--Button_Text_Color);
+	background: var(--Button_Background);
+	padding: var(--Button_Padding);
+
+	&:hover {
+		color: var(--Button_Text_Color_Hover);
+		background: var(--Button_Background_Hover);
+	}
+
+	&:active {
+		transform: scale(.98);
+	}
+
+	span, svg, g, path, circle {
+		cursor: pointer;
+	}
+}
+
+.CopyButton__Color_Gray {
+	@include setThemeVar('--Button_Background', $gray5);
+	@include setThemeVar('--Button_Background_Hover', $gray15);
+	@include setThemeVar('--Button_Text_Color', $gray-dark50);
+	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50);
+	@include setThemeVar('--Button_Padding', 5px);
+}
+
+.CopyButton__Color_Green {
+	@include setThemeVar('--Button_Background', $green);
+	@include setThemeVar('--Button_Background_Hover', $green-dark50);
+	@include setThemeVar('--Button_Text_Color', $white);
+	@include setThemeVar('--Button_Text_Color_Hover', $white);
+	@include setThemeVar('--Button_Padding', 5px);
+}
+
+.CopyButton__Color_None {
+	@include setThemeVar('--Button_Background', none);
+	@include setThemeVar('--Button_Background_Hover', none);
+	@include setThemeVar('--Button_Text_Color', $green);
+	@include setThemeVar('--Button_Text_Color_Hover', $green-dark50);
+	@include setThemeVar('--Button_Padding', 0 10px);
+}
+
+.CopyButtonText__Margin {
+	margin-left: 5px;
+}

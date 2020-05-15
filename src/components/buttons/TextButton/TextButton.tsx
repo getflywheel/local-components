@@ -4,7 +4,8 @@ import {
 	ButtonBase,
 	ButtonPropColor,
 	ButtonPropFontSize,
-	ButtonPropForm, IButtonBaseProps,
+	ButtonPropForm,
+	IButtonBaseProps,
 	IButtonCommonProps,
 } from '../_private/ButtonBase/ButtonBase';
 

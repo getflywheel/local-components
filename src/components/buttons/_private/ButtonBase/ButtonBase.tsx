@@ -25,11 +25,21 @@ export enum ButtonPropFontSize {
 	m = 'm',
 }
 
+export enum ButtonPropFontWeight {
+	heavy = 'heavy',
+	medium = 'medium',
+}
+
 export enum ButtonPropForm {
 	fill = 'fill',
 	outline = 'outline',
 	reversed = 'reversed',
 	text = 'text',
+}
+
+enum ButtonPropTextTransform {
+	none = 'none',
+	upper = 'upper',
 }
 
 export interface IButtonCommonProps extends ILocalContainerProps {
@@ -54,6 +64,10 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 	padding?: ButtonPropPadding | keyof typeof ButtonPropPadding;
 	/** The font-fontSize applied to the button. */
 	fontSize?: ButtonPropFontSize | keyof typeof ButtonPropFontSize;
+	/** The font-weight applied to the button */
+	fontWeight?: ButtonPropFontWeight;
+	/** The casing applied to the button */
+	textTransform?: ButtonPropTextTransform;
 }
 
 export class ButtonBase extends React.Component<IButtonBaseProps> {
@@ -65,10 +79,12 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 		form: ButtonPropForm.fill,
 		padding: ButtonPropPadding.m,
 		tag: 'button',
+		fontWeight: ButtonPropFontWeight.heavy,
+		textTransform: ButtonPropTextTransform.upper,
 	};
 
 	render () {
-		const {children, color, container, className, disabled, fontSize, form, innerRef, onClick, padding, tag, tagProps, ...otherProps} = this.props;
+		const {children, color, container, className, disabled, fontSize, form, innerRef, onClick, padding, fontWeight, textTransform, tag, tagProps, ...otherProps} = this.props;
 		const Tag: any = tag;
 
 		return (
@@ -93,6 +109,10 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 							[styles.ButtonBase__Padding_Small]: padding === ButtonPropPadding.s,
 							[styles.ButtonBase__Padding_Medium]: padding === ButtonPropPadding.m,
 							[styles.ButtonBase__Padding_Large]: padding === ButtonPropPadding.l,
+							[styles.ButtonBase__FontWeight_Heavy]: fontWeight === ButtonPropFontWeight.heavy,
+							[styles.ButtonBase__FontWeight_Medium]: fontWeight === ButtonPropFontWeight.medium,
+							[styles.ButtonBase__TextTransform_Upper]: textTransform === ButtonPropTextTransform.upper,
+							[styles.ButtonBase__TextTransform_None]: textTransform === ButtonPropTextTransform.none,
 						},
 					)}
 					disabled={disabled}
