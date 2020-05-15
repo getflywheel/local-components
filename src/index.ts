@@ -10,6 +10,7 @@ export { Button } from './components/buttons/Button/Button';
 export { default as Close } from './components/buttons/Close/Close';
 export { PrimaryButton } from './components/buttons/PrimaryButton/PrimaryButton';
 export { TextButton } from './components/buttons/TextButton/TextButton';
+export { CopyButton } from './components/buttons/CopyButton/CopyButton';
 // Inputs
 export { default as BrowseInput } from './components/inputs/BrowseInput/BrowseInput';
 export { default as Checkbox } from './components/inputs/Checkbox/Checkbox';
