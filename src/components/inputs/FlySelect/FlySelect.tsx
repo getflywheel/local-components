@@ -193,6 +193,9 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		let open = this.state.open;
 		let focusedIndex = this.state.focusedIndex;
 		switch (event.key) {
+			case ' ':
+				open = true;
+				break;
 			case 'Enter':
 				open = true;
 				break;
@@ -226,7 +229,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 	}
 
 	onOptionKeyDown = (e: any, value: any) => {
-		if (e.key === 'Enter'){
+		if (e.key === 'Enter' || e.key === ' '){
 			this.selectOption(e, value);
 		}
 		this.__containerRef.current.focus();
