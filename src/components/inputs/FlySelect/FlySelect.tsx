@@ -149,13 +149,14 @@ export default class FlySelect extends React.Component<IProps, IState> {
 		});
 	}
 
-	onBlur () {
-		this.setState({
-			focus: false,
-			open: false,
-		});
+	onBlur (event: any) {
+		if (!event.currentTarget.contains(event.relatedTarget)){
+			this.setState({
+				focus: false,
+				open: false,
+			});
+		}
 	}
-
 
 	selectOption (e: any, value: any) {
 		this.setState({
@@ -425,6 +426,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				data-current-value={this.state.value}
 				tabIndex={0}
 				onClick={this.onClick}
+				onBlur={this.onBlur}
 				ref={this.__containerRef}
 				disabled={this.props.disabled || !Object.keys(optionsFormatted).length}
 			>
@@ -440,7 +442,6 @@ export default class FlySelect extends React.Component<IProps, IState> {
 					}
 				</span>
 				<div
-					onBlur={this.onBlur}
 					className="FlySelect_Options"
 					style={this.calculateOptionsPosition()}
 				>
