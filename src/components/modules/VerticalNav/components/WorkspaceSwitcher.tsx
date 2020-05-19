@@ -232,7 +232,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 
 						{showLoginButton
 							? <TextButton onClick={onClickLogin}>
-								LOGIN
+								LOGIN TO HUB
 							</TextButton>
 							: <TextButton onClick={onClickLogout}>
 								LOGOUT
