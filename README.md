@@ -1,5 +1,7 @@
 # Local component library
 
+[![npm version](https://badge.fury.io/js/%40getflywheel%2Flocal-components.svg)](https://badge.fury.io/js/%40getflywheel%2Flocal-components)
+
 Welcome to the official component library for [Local](https://localwp.com/)!
 
 ## What's included in this component library?
