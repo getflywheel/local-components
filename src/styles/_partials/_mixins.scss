@@ -60,5 +60,5 @@
 }
 
 @mixin defaultOutline {
-	outline: 5px auto -webkit-focus-ring-color !important; // default chrome outline style
+	outline: 5px auto -webkit-focus-ring-color; // default chrome outline style
 }

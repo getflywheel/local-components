@@ -4,7 +4,6 @@
 	* {
 		box-sizing: border-box;
 		cursor: default;
-		outline: none;
 		-webkit-user-drag: none;
 	}
 
@@ -12,6 +11,18 @@
 		width: 100%;
 		height: 100%;
 		font-size: 62.5%; // set rems to have a base of 10
+	}
+
+	body {
+		outline: none;
+
+		&.using-mouse :focus {
+			outline: none;
+		}
+
+		&:focus {
+			@include defaultOutline;
+		}
 	}
 
 	body,
