@@ -31,6 +31,7 @@
 		&:not(.FlySelect__Open) {
 			&.FlySelect__Focus,
 			&:focus {
+				outline: none;
 				box-shadow: 0 0 0 2px $green;
 			}
 		}
@@ -177,6 +178,7 @@
 
 			&:hover,
 			&:focus {
+				outline: none;
 				color: $white;
 				background: $green-dark50;
 
@@ -354,10 +356,6 @@
 				svg path {
 					fill: $green;
 				}
-			}
-
-			&:focus {
-				@include defaultOutline;
 			}
 		}
 	}
