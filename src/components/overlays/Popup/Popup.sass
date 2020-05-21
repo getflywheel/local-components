@@ -15,6 +15,7 @@
 	&.Popup__PositionBottom
 	&.Popup__PositionRight
 	&.Popup__PositionTop
+	&.Popup__CenteredTail
 
 	.Popup_BubbleWrapper
 		position: absolute
@@ -90,6 +91,8 @@
 			@include theme-background-white-else-graydark50
 			transition: all .05s $ease-in 0s
 			pointer-events: none
+			@include selectors_ifHostHasModifier('.Popup__CenteredTail')
+				right: calc(50% - 14.4px)
 
 		@include selectors_ifHostHasModifier('.Popup__PositionBottom')
 			top: 10px

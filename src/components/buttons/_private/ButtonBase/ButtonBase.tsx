@@ -42,6 +42,11 @@ enum ButtonPropTextTransform {
 	upper = 'upper',
 }
 
+enum ButtonPropTextDecoration {
+	none = 'none',
+	underline = 'underline',
+}
+
 export interface IButtonCommonProps extends ILocalContainerProps {
 	/** Whether the button is disabled. */
 	disabled?: boolean;
@@ -65,9 +70,11 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 	/** The font-fontSize applied to the button. */
 	fontSize?: ButtonPropFontSize | keyof typeof ButtonPropFontSize;
 	/** The font-weight applied to the button */
-	fontWeight?: ButtonPropFontWeight;
+	fontWeight?: ButtonPropFontWeight | keyof typeof ButtonPropFontWeight;
 	/** The casing applied to the button */
-	textTransform?: ButtonPropTextTransform;
+	textTransform?: ButtonPropTextTransform | keyof typeof ButtonPropTextTransform;
+	/** The text decoration applied to the button */
+	textDecoration?: ButtonPropTextDecoration | keyof typeof ButtonPropTextDecoration;
 }
 
 export class ButtonBase extends React.Component<IButtonBaseProps> {
@@ -81,10 +88,29 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 		tag: 'button',
 		fontWeight: ButtonPropFontWeight.heavy,
 		textTransform: ButtonPropTextTransform.upper,
+		textDecoration: ButtonPropTextDecoration.none,
 	};
 
 	render () {
-		const {children, color, container, className, disabled, fontSize, form, innerRef, onClick, padding, fontWeight, textTransform, tag, tagProps, ...otherProps} = this.props;
+		const {
+			children,
+			color,
+			container,
+			className,
+			disabled,
+			fontSize,
+			form,
+			innerRef,
+			onClick,
+			padding,
+			fontWeight,
+			textTransform,
+			textDecoration,
+			tag,
+			tagProps,
+			...otherProps
+		} = this.props;
+
 		const Tag: any = tag;
 
 		return (
@@ -113,6 +139,8 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 							[styles.ButtonBase__FontWeight_Medium]: fontWeight === ButtonPropFontWeight.medium,
 							[styles.ButtonBase__TextTransform_Upper]: textTransform === ButtonPropTextTransform.upper,
 							[styles.ButtonBase__TextTransform_None]: textTransform === ButtonPropTextTransform.none,
+							[styles.ButtonBase__TextDecoration_None]: textDecoration === ButtonPropTextDecoration.none,
+							[styles.ButtonBase__TextDecoration_Underline]: textDecoration === ButtonPropTextDecoration.underline,
 						},
 					)}
 					disabled={disabled}

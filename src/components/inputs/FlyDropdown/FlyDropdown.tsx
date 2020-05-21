@@ -77,7 +77,12 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 			>
 				{this.props.children}
 				{this.props.caret && (
-					<CaretSVG className={classnames(styles.FlyDropdown_Caret, 'FlyDropdown_Caret')} />
+					<CaretSVG
+						className={classnames(
+							styles.FlyDropdown_Caret,
+							'FlyDropdown_Caret'
+							)}
+						/>
 				)}
 				<ul
 					className={classnames(

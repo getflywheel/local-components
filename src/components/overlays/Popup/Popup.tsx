@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import * as styles from './Popup.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
+const { Children, cloneElement, isValidElement } = React;
+
 /**
  * Try catch for Local vs. Styleguidist
  */
@@ -18,21 +20,19 @@ catch (e) {
 }
 
 interface IProps extends IReactComponentProps {
-
 	items?: any[];
 	offsetX?: string;
 	offsetY?: string;
 	padding?: boolean;
 	position?: 'bottom' | 'right' | 'top';
 	triggerContent?: React.ReactNode;
-
+	triggerAble: boolean;
+	centerTail: boolean;
 }
 
 interface IState {
-
 	open: boolean;
 	tipItemHover: boolean;
-
 }
 
 export default class Popup extends React.Component<IProps, IState> {
@@ -41,6 +41,8 @@ export default class Popup extends React.Component<IProps, IState> {
 		items: [],
 		padding: true,
 		position: 'bottom',
+		triggerAble: true,
+		centerTail: false,
 	};
 
 	constructor (props: IProps) {
@@ -64,6 +66,12 @@ export default class Popup extends React.Component<IProps, IState> {
 	}
 
 	onClick () {
+		const { open } = this.state;
+		const { triggerAble } = this.props;
+		if (!open && !triggerAble) {
+			return;
+		}
+
 		this.setState({
 			open: !this.state.open,
 		});
@@ -98,6 +106,7 @@ export default class Popup extends React.Component<IProps, IState> {
 						[styles.Popup__PositionBottom]: this.props.position === 'bottom',
 						[styles.Popup__PositionRight]: this.props.position === 'right',
 						[styles.Popup__PositionTop]: this.props.position === 'top',
+						[styles.Popup__CenteredTail]: this.props.centerTail,
 					},
 					this.props.className,
 				)}
@@ -128,7 +137,17 @@ export default class Popup extends React.Component<IProps, IState> {
 						</div>
 					</div>
 				</div>
-				{this.props.triggerContent}
+				{/**
+				 * Clone top level triggerContents elements and pass this.state to them
+				 * This will allow triggerContents to be state aware to make appropriate styling decisions, etc.
+				 */}
+				{Children.map(this.props.triggerContent, child => {
+					if (!isValidElement(child)) {
+						return child;
+					}
+
+					return cloneElement(child, { popupState: { ...this.state }});
+				})}
 			</div>
 		);
 	}
