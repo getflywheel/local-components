@@ -34,7 +34,8 @@ $disabled-text-dark: $gray-dark50;
 		'--Button_IfFill__TextColor',
 		'--Button_IfFill__TextColor_Hover',
 		'--Button__FontWeight',
-		'--Button__TextTransform'
+		'--Button__TextTransform',
+		'--Button__TextDecoration'
 	);
 
 	// css variable-based styles
@@ -42,6 +43,7 @@ $disabled-text-dark: $gray-dark50;
 	background: var(--Button_Background);
 	font-weight: var(--Button__FontWeight);
 	text-transform: var(--Button__TextTransform);
+	text-decoration: var(--Button__TextDecoration);
 	border: none;
 
 	// use explicit hover color rather than default color to ensure tags like 'a' don't inherit their global style
@@ -194,6 +196,14 @@ $disabled-text-dark: $gray-dark50;
 
 .ButtonBase__TextTransform_None {
 	@include setThemeVar('--Button__TextTransform', none);
+}
+
+.ButtonBase__TextDecoration_None {
+	@include setThemeVar('--Button__TextDecoration', none);
+}
+
+.ButtonBase__TextDecoration_Underline {
+	@include setThemeVar('--Button__TextDecoration', underline);
 }
 
 .ButtonBase__FontSize_XSmall {
