@@ -18,6 +18,11 @@ export enum CopiedStateBGStyleVariants {
 	transparent = 'transparent',
 }
 
+enum PaddingAmount {
+	small = 's',
+	medium = 'm',
+}
+
 export interface ICopyButtonProps extends ILocalContainerProps {
 	tag?: string;
 	/* Timeout for how long to show "copied" state after a click */
@@ -27,11 +32,13 @@ export interface ICopyButtonProps extends ILocalContainerProps {
 	/* Text to show in copied state */
 	copiedStateText?: string;
 	/* Icon to show in uncopied state */
-	uncopiedStateIconVariant?: UncopiedStateIconVariants | null;
+	uncopiedStateIconVariant?: UncopiedStateIconVariants | typeof UncopiedStateIconVariants | null;
 	/* Icon to show in copied state */
-	copiedStateIconVariant?: UncopiedStateIconVariants | null
+	copiedStateIconVariant?: CopiedStateIconVariants | typeof CopiedStateIconVariants | null;
 	/* Background styling for copied state */
-	copiedStateBGStyleVariant?: CopiedStateBGStyleVariants;
+	copiedStateBGStyleVariant?: CopiedStateBGStyleVariants | typeof CopiedStateBGStyleVariants;
+	/* Padding amount to apply */
+	padding: PaddingAmount | typeof PaddingAmount;
 	/* Text to copy to the clipboard */
 	textToCopy: string;
 };
@@ -46,12 +53,18 @@ export const CopyButton = (props: ICopyButtonProps) => {
 		uncopiedStateIconVariant,
 		copiedStateIconVariant,
 		textToCopy,
+		padding,
 		copiedStateBGStyleVariant,
 	} = props;
 
 	const Tag: any = tag;
 
 	const [isCopied, setIsCopied] = useState(false);
+
+	const isTransparentCopiedStateBG = copiedStateBGStyleVariant === CopiedStateBGStyleVariants.transparent;
+	const isGreenCopiedStateBG = copiedStateBGStyleVariant === CopiedStateBGStyleVariants.green;
+	const smallPadding = padding === PaddingAmount.small;
+	const mediumPadding = padding === PaddingAmount.medium;
 
 	return (
 		<Container>
@@ -67,13 +80,19 @@ export const CopyButton = (props: ICopyButtonProps) => {
 					className,
 					{
 						[styles.CopyButton__Color_Gray]: !isCopied,
-						[styles.CopyButton__Color_Green]: isCopied && copiedStateBGStyleVariant === CopiedStateBGStyleVariants.green,
-						[styles.CopyButton__Color_None]: isCopied && copiedStateBGStyleVariant === CopiedStateBGStyleVariants.transparent,
+						[styles.CopyButton__Color_Gray_Padding_Small]: !isCopied && smallPadding,
+						[styles.CopyButton__Color_Gray_Padding_Medium]: !isCopied && mediumPadding,
+						[styles.CopyButton__Color_Green]: isCopied && isGreenCopiedStateBG,
+						[styles.CopyButton__Color_Green_Padding_Small]: isCopied && isGreenCopiedStateBG && smallPadding,
+						[styles.CopyButton__Color_Green_Padding_Medium]: isCopied && isGreenCopiedStateBG && mediumPadding,
+						[styles.CopyButton__Color_None]: isCopied && isTransparentCopiedStateBG,
+						[styles.CopyButton__Color_None_Padding]: isCopied && isTransparentCopiedStateBG,
+						[styles.CopyButton__Color_None_Padding_Medium]: isCopied && isTransparentCopiedStateBG && mediumPadding,
 					}
 				)}
 			>
 				<CopyButtonIcon
-					variant={isCopied ? copiedStateIconVariant : uncopiedStateIconVariant}
+					variant={isCopied ? copiedStateIconVariant as CopiedStateIconVariants : uncopiedStateIconVariant as UncopiedStateIconVariants}
 					classNames={styles.CopyButtonIcon}
 				/>
 				<span
@@ -96,9 +115,10 @@ CopyButton.defaultProps = {
 	copiedTimeout: 1000,
 	uncopiedStateText: 'COPY',
 	copiedStateText: 'COPIED',
-	uncopiedStateIconVariant: UncopiedStateIconVariants.link,
+	uncopiedStateIconVariant: null,
 	copiedStateIconVariant: CopiedStateIconVariants.checkmark,
 	copiedStateBGStyleVariant: CopiedStateBGStyleVariants.green,
+	padding: PaddingAmount.small,
 	/**
 	 * Though this prop is optional, it is included here so that any falsy JS values (null & undefined in particular)
 	 * are passed into the user's clipboard as an empty string

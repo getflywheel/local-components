@@ -42,7 +42,13 @@
 	@include setThemeVar('--Button_Background_Hover', $gray15);
 	@include setThemeVar('--Button_Text_Color', $gray-dark50);
 	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50);
+}
+
+.CopyButton__Color_Gray_Padding_Small {
 	@include setThemeVar('--Button_Padding', 5px);
+}
+.CopyButton__Color_Gray_Padding_Medium {
+	@include setThemeVar('--Button_Padding', 10px);
 }
 
 .CopyButton__Color_Green {
@@ -50,7 +56,14 @@
 	@include setThemeVar('--Button_Background_Hover', $green-dark50);
 	@include setThemeVar('--Button_Text_Color', $white);
 	@include setThemeVar('--Button_Text_Color_Hover', $white);
+}
+
+.CopyButton__Color_Green_Padding_Small {
 	@include setThemeVar('--Button_Padding', 5px);
+}
+
+.CopyButton__Color_Green_Padding_Medium {
+	@include setThemeVar('--Button_Padding', 10px);
 }
 
 .CopyButton__Color_None {
@@ -58,7 +71,14 @@
 	@include setThemeVar('--Button_Background_Hover', none);
 	@include setThemeVar('--Button_Text_Color', $green);
 	@include setThemeVar('--Button_Text_Color_Hover', $green-dark50);
-	@include setThemeVar('--Button_Padding', 0 10px);
+}
+
+.CopyButton__Color_None_Padding_Small {
+	@include setThemeVar('--Button_Padding', 0px);
+}
+
+.CopyButton__Color_None_Padding_Medium {
+	@include setThemeVar('--Button_Padding', 0px);
 }
 
 .CopyButtonText__Margin {

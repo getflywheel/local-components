@@ -20,6 +20,10 @@
 	@include setThemeVar('--TextBase_TextColor', $gray-dark, $gray15);
 }
 
+.TextBase__Color_Gray25 {
+	@include setThemeVar('--TextBase_TextColor', $gray25);
+}
+
 .TextBase__Color_GrayDark_White {
 	@include setThemeVar('--TextBase_TextColor', $gray-dark, $white);
 }
