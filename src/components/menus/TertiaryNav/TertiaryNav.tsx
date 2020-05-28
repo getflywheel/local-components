@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { Switch, Route, NavLink, RouteComponentProps } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Switch, Route, NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
 import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
@@ -82,7 +81,7 @@ export class TertiaryNavItem extends React.Component<ITertiaryNavItemProps & Rou
 					to={`${this.props.match.url}${this.props.path}`}
 					activeClassName={styles.TertiaryNavItem__Active}
 				>
-				  {this.props.children}
+					{this.props.children}
 				</NavLink>
 			</li>
 		);
