@@ -60,6 +60,10 @@
 	@include __theme-background($gray2, #292A2A); // 35% of $gray-dark50
 }
 
+@mixin theme-background-gray2-else-graydark {
+	@include __theme-background($gray2, $gray-dark);
+}
+
 @mixin theme-background-gray2-else-graydark50 {
 	@include __theme-background($gray2, $gray-dark50);
 }
