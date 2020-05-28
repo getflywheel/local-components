@@ -29,6 +29,7 @@ $transitionDuration: 100ms;
 
 .Tooltip_Popper {
 	visibility: hidden;
+	z-index: 500;
 
 	&[data-placement*='top'] {
 		top: (-$arrowSizeRotated / 2 + $arrowOffset) !important;
