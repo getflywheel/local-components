@@ -37,24 +37,26 @@
 		padding: 30px;
 		position: relative;
 
-		a {
-			.Title {
-				margin: 0;
-				max-width: calc(100% - 200px);
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				display: inline-block;
-				@include theme-color-black-else-white;
-				transition: transform .1s ease 0s, color .2s ease 0s;
-			}
+		.Title {
+			margin: 0;
+			max-width: calc(100% - 200px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			display: inline-block;
+			@include theme-color-black-else-white;
+			transition: transform .1s ease 0s, color .2s ease 0s;
 
-			&:hover .Title {
-				color: $green;
-			}
+			a {
+				color: $white;
 
-			&:active .Title {
-				transform: scale(.99);
+				&:hover {
+					color: $green;
+				}
+
+				&:active {
+					transform: scale(.99);
+				}
 			}
 		}
 
