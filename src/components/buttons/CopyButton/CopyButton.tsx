@@ -19,8 +19,8 @@ export enum CopiedStateBGStyleVariants {
 }
 
 enum PaddingAmount {
-	small = 's',
-	medium = 'm',
+	small = 'small',
+	medium = 'medium',
 }
 
 export interface ICopyButtonProps extends ILocalContainerProps {
