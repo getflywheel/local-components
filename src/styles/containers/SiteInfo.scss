@@ -48,6 +48,11 @@
 			transition: transform .1s ease 0s, color .2s ease 0s;
 
 			a {
+				max-width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				display: inline-block;
 				@include theme-color-black-else-white;
 
 				&:hover {
