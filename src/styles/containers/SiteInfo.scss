@@ -48,12 +48,7 @@
 			transition: transform .1s ease 0s, color .2s ease 0s;
 
 			a {
-				@include if-theme-light() {
-					color: $black;
-				}
-				@include if-theme-dark() {
-					color: $white;
-				}
+				@include theme-color-black-else-white;
 
 				&:hover {
 					color: $green;
