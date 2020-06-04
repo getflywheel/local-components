@@ -6,6 +6,7 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
+		overflow: hidden;
 	}
 
 	.DownloaderOverlay {
@@ -36,25 +37,30 @@
 	.SiteInfo_Top {
 		padding: 30px;
 		position: relative;
+		width: fit-content;
+		max-width: 100%;
 
-		a {
-			.Title {
-				margin: 0;
-				max-width: calc(100% - 200px);
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				display: inline-block;
-				@include theme-color-black-else-white;
-				transition: transform .1s ease 0s, color .2s ease 0s;
-			}
+		.SiteInfo_SiteLinkArea {
+			margin-right: 100px;
+			a {
+				.Title {
+					margin: 0;
+					max-width: 100%;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					display: inline-block;
+					@include theme-color-black-else-white;
+					transition: transform .1s ease 0s, color .2s ease 0s;
+				}
 
-			&:hover .Title {
-				color: $green;
-			}
+				&:hover .Title {
+					color: $green;
+				}
 
-			&:active .Title {
-				transform: scale(.99);
+				&:active .Title {
+					transform: scale(.99);
+				}
 			}
 		}
 
@@ -64,6 +70,7 @@
 			line-height: 1.25;
 
 			span {
+				word-break: break-all;
 				margin: 0 0 0 5px;
 			}
 		}
