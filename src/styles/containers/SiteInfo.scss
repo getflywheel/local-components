@@ -6,6 +6,7 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
+		overflow: hidden;
 	}
 
 	.DownloaderOverlay {
@@ -33,75 +34,88 @@
 		}
 	}
 
-	.SiteInfo_Top {
-		padding: 30px;
+	.SiteInfo_Header {
 		position: relative;
+		width: 100%;
+		max-width: 100%;
 
-		a {
-			.Title {
-				margin: 0;
-				max-width: calc(100% - 200px);
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				display: inline-block;
-				@include theme-color-black-else-white;
-				transition: transform .1s ease 0s, color .2s ease 0s;
-			}
+		.SiteInfo_Top {
+			padding: 30px;
+			position: relative;
+			width: fit-content;
+			max-width: 100%;
 
-			&:hover .Title {
-				color: $green;
-			}
+			.SiteInfo_SiteLinkArea {
+				margin-right: 100px;
 
-			&:active .Title {
-				transform: scale(.99);
-			}
-		}
+				a {
+					.Title {
+						margin: 0;
+						max-width: 100%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						display: inline-block;
+						@include theme-color-black-else-white;
+						transition: transform .1s ease 0s, color .2s ease 0s;
+					}
 
-		p {
-			@include theme-color-gray75-else-gray25;
-			margin: 5px 0 0;
-			line-height: 1.25;
+					&:hover .Title {
+						color: $green;
+					}
 
-			span {
-				margin: 0 0 0 5px;
-			}
-		}
-
-		.RevealInFinder {
-			padding: 3px;
-			width: 20px;
-			height: 20px;
-			margin: 0 2px;
-			cursor: pointer;
-
-			svg {
-				cursor: pointer;
-				vertical-align: middle;
-				width: 14px;
-				height: 14px;
-
-				circle,
-				path {
-					fill: none;
-					stroke: $gray25;
-					stroke-linecap: round;
-					stroke-linejoin: round;
-					stroke-miterlimit: 10;
-					stroke-width: 2px;
+					&:active .Title {
+						transform: scale(.99);
+					}
 				}
 			}
 
-			svg,
-			svg * {
-				cursor: pointer;
+			p {
+				@include theme-color-gray75-else-gray25;
+				margin: 5px 0 0;
+				line-height: 1.25;
+
+				span {
+					word-break: break-all;
+					margin: 0 0 0 5px;
+				}
 			}
 
-			&:hover {
+			.RevealInFinder {
+				padding: 3px;
+				width: 20px;
+				height: 20px;
+				margin: 0 2px;
+				cursor: pointer;
+
 				svg {
+					cursor: pointer;
+					vertical-align: middle;
+					width: 14px;
+					height: 14px;
+
 					circle,
 					path {
-						stroke: $gray75;
+						fill: none;
+						stroke: $gray25;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+						stroke-miterlimit: 10;
+						stroke-width: 2px;
+					}
+				}
+
+				svg,
+				svg * {
+					cursor: pointer;
+				}
+
+				&:hover {
+					svg {
+						circle,
+						path {
+							stroke: $gray75;
+						}
 					}
 				}
 			}
