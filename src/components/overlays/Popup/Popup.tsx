@@ -26,7 +26,8 @@ interface IProps extends IReactComponentProps {
 	padding?: boolean;
 	position?: 'bottom' | 'right' | 'top';
 	triggerContent?: React.ReactNode;
-	triggerAble: boolean;
+	triggerAble?: boolean;
+	closeOnPopupClick?: boolean;
 	centerTail: boolean;
 }
 
@@ -42,6 +43,7 @@ export default class Popup extends React.Component<IProps, IState> {
 		padding: true,
 		position: 'bottom',
 		triggerAble: true,
+		closeOnPopupClick: true,
 		centerTail: false,
 	};
 
@@ -67,8 +69,8 @@ export default class Popup extends React.Component<IProps, IState> {
 
 	onClick () {
 		const { open } = this.state;
-		const { triggerAble } = this.props;
-		if (!open && !triggerAble) {
+		const { triggerAble, closeOnPopupClick } = this.props;
+		if ((!open && !triggerAble) || (open && !closeOnPopupClick)) {
 			return;
 		}
 
@@ -107,6 +109,7 @@ export default class Popup extends React.Component<IProps, IState> {
 						[styles.Popup__PositionRight]: this.props.position === 'right',
 						[styles.Popup__PositionTop]: this.props.position === 'top',
 						[styles.Popup__CenteredTail]: this.props.centerTail,
+						[styles.Popup__Cursor_Pointer]: this.props.closeOnPopupClick,
 					},
 					this.props.className,
 				)}
