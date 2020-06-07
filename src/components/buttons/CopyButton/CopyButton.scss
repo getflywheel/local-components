@@ -81,6 +81,10 @@
 	@include setThemeVar('--Button_Padding', 0px);
 }
 
-.CopyButtonText__Margin {
+.CopyButton__Text {
+	font-size: 12px;
+}
+
+.CopyButton__Text_Margin {
 	margin-left: 5px;
 }

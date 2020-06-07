@@ -97,9 +97,9 @@ export const CopyButton = (props: ICopyButtonProps) => {
 				/>
 				<span
 					className={classnames(
-						styles.CopyButtonText,
+						styles.CopyButton__Text,
 						{
-							[styles.CopyButtonText__Margin]: !!(isCopied ? copiedStateIconVariant : uncopiedStateIconVariant)
+							[styles.CopyButton__Text_Margin]: !!(isCopied ? copiedStateIconVariant : uncopiedStateIconVariant)
 						}
 					)}
 				>
