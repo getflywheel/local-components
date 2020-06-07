@@ -2,8 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './Popup.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-
-const { Children, cloneElement, isValidElement } = React;
+import cloneNodes from '../../../utils/cloneNodes';
 
 /**
  * Try catch for Local vs. Styleguidist
@@ -92,6 +91,8 @@ export default class Popup extends React.Component<IProps, IState> {
 		catch (error) {}
 	}
 
+	handleClose = () => this.setState({ open: false });
+
 	render () {
 		const transformStyles = [
 			...(this.props.offsetX ? [`translateX(${this.props.offsetX})`] : []),
@@ -135,7 +136,10 @@ export default class Popup extends React.Component<IProps, IState> {
 							)}
 						>
 							<div className={styles.Popup_BubbleContent}>
-								{this.props.children}
+								{/**
+								 * Clone children and pass a handler function to close the Popup so child nodes can control closing the popup if necessary
+								 */}
+								{cloneNodes(this.props.children, { handleClosePopup: this.handleClose })}
 							</div>
 						</div>
 					</div>
@@ -144,13 +148,7 @@ export default class Popup extends React.Component<IProps, IState> {
 				 * Clone top level triggerContents elements and pass this.state to them
 				 * This will allow triggerContents to be state aware to make appropriate styling decisions, etc.
 				 */}
-				{Children.map(this.props.triggerContent, child => {
-					if (!isValidElement(child)) {
-						return child;
-					}
-
-					return cloneElement(child, { popupState: { ...this.state }});
-				})}
+				{cloneNodes(this.props.triggerContent, { popupState: { ...this.state }})}
 			</div>
 		);
 	}
