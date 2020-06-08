@@ -27,7 +27,7 @@ interface IProps extends IReactComponentProps {
 	triggerContent?: React.ReactNode;
 	triggerAble?: boolean;
 	closeOnPopupClick?: boolean;
-	centerTail: boolean;
+	centerTail?: boolean;
 }
 
 interface IState {
