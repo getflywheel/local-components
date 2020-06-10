@@ -20,9 +20,7 @@
 		list-style-type: none
 
 	.TertiaryNav
-		width: 25%
-		min-width: 230px
-		max-width: 480px
+		width: 200px;
 		padding: 16px 12px
 		overflow-y: auto
 		@include theme-border-right
@@ -47,7 +45,7 @@
 			@include if-theme-light()
 				background: $gray5
 			@include if-theme-dark()
-				background: none
+				background: $gray-dark50
 
 			svg path
 				fill: $white
