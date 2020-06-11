@@ -224,10 +224,7 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 					}
 
 					<div
-						className={classnames(
-							styles.WorkspaceSwitcher_PopupFooter,
-							styles.WorkspaceSwitcher_Section,
-						)}
+						className={styles.WorkspaceSwitcher_Section}
 					>
 
 						{showLoginButton
