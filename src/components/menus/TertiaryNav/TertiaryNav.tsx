@@ -7,7 +7,7 @@ import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface ITertiaryNavProps extends IReactComponentProps {
 
-	children?: Array<React.ReactElement<TertiaryNavItem>> | React.ReactElement<TertiaryNavItem>;
+	children?: TertiaryNavItem[];
 
 }
 
@@ -17,9 +17,7 @@ interface ITertiaryNavProps extends IReactComponentProps {
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
 @(withRouter as any)
 export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactComponentProps & RouteComponentProps> {
-
 	render () {
-		let firstNavItem: any;
 		return (
 			<div
 				className={classnames(
@@ -35,9 +33,6 @@ export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactCompo
 						{React.Children.map(this.props.children, (child: any, index: number) => {
 							const propsWithoutChildren = { ...child.props };
 							delete propsWithoutChildren.children;
-							if (index === 0) {
-								firstNavItem = child;
-							}
 							return (
 								<Route
 									{...propsWithoutChildren}
@@ -45,11 +40,11 @@ export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactCompo
 								/>
 							);
 						})}
-						{firstNavItem &&
+						{this.props.children?.length &&
 							(
 								<Redirect
 									from={`${this.props.match.url}`}
-									to={`${this.props.match.url}${firstNavItem.props.path}`}
+									to={`${this.props.match.url}${this.props.children?.[0].props.path}`}
 								/>
 							)
 
