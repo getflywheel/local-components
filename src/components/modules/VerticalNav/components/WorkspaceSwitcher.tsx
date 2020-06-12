@@ -207,37 +207,34 @@ export class WorkspaceSwitcher extends React.Component<IWorkspaceSwitcherProps, 
 							<Divider />
 						</>
 					}
-					{showUpgradeButton &&
-						<div className={styles.WorkspaceSwitcher_Section}>
-							<TextButton onClick={onClickUpgradeToPro}>
-								UPGRADE TO PRO
-							</TextButton>
-						</div>
-					}
 
-					{!showLoginButton &&
-						<div className={styles.WorkspaceSwitcher_Section}>
-							<TextButton onClick={onClickAccount}>
-								MY ACCOUNT
-							</TextButton>
-						</div>
-					}
-
-					<div
-						className={classnames(
-							styles.WorkspaceSwitcher_PopupFooter,
-							styles.WorkspaceSwitcher_Section,
-						)}
-					>
-
-						{showLoginButton
-							? <TextButton onClick={onClickLogin}>
-								LOGIN TO HUB
-							</TextButton>
-							: <TextButton onClick={onClickLogout}>
-								LOGOUT
-							</TextButton>
+					<div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+						{showUpgradeButton &&
+							<div className={styles.WorkspaceSwitcher_Section}>
+								<TextButton onClick={onClickUpgradeToPro}>
+									UPGRADE TO PRO
+								</TextButton>
+							</div>
 						}
+
+						{!showLoginButton &&
+							<div className={styles.WorkspaceSwitcher_Section}>
+								<TextButton onClick={onClickAccount}>
+									MY ACCOUNT
+								</TextButton>
+							</div>
+						}
+
+						<div className={styles.WorkspaceSwitcher_Section}>
+							{showLoginButton
+								? <TextButton onClick={onClickLogin}>
+									LOGIN TO HUB
+								</TextButton>
+								: <TextButton onClick={onClickLogout}>
+									LOGOUT
+								</TextButton>
+							}
+						</div>
 					</div>
 				</Popup>
 			</VerticalNavItem>
