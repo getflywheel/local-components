@@ -1,13 +1,13 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { Switch, Route, NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+import { Switch, Route, NavLink, RouteComponentProps, withRouter, Redirect } from 'react-router-dom';
 import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface ITertiaryNavProps extends IReactComponentProps {
 
-	children?: Array<React.ReactElement<TertiaryNavItem>> | React.ReactElement<TertiaryNavItem>;
+	children?: TertiaryNavItem[];
 
 }
 
@@ -17,7 +17,6 @@ interface ITertiaryNavProps extends IReactComponentProps {
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
 @(withRouter as any)
 export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactComponentProps & RouteComponentProps> {
-
 	render () {
 		return (
 			<div
@@ -34,7 +33,6 @@ export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactCompo
 						{React.Children.map(this.props.children, (child: any) => {
 							const propsWithoutChildren = { ...child.props };
 							delete propsWithoutChildren.children;
-
 							return (
 								<Route
 									{...propsWithoutChildren}
@@ -42,6 +40,15 @@ export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactCompo
 								/>
 							);
 						})}
+						{this.props.children?.length &&
+							(
+								<Redirect
+									from={`${this.props.match.url}`}
+									to={`${this.props.match.url}${this.props.children?.[0].props.path}`}
+								/>
+							)
+
+						}
 					</Switch>
 				</div>
 			</div>
