@@ -30,7 +30,7 @@ export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactCompo
 				</ul>
 				<div className={classnames(styles.TertiaryContent)}>
 					<Switch>
-						{React.Children.map(this.props.children, (child: any, index: number) => {
+						{React.Children.map(this.props.children, (child: any) => {
 							const propsWithoutChildren = { ...child.props };
 							delete propsWithoutChildren.children;
 							return (
