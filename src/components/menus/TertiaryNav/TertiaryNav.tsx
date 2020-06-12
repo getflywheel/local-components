@@ -5,19 +5,34 @@ import * as styles from './TertiaryNav.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
-interface ITertiaryNavProps extends IReactComponentProps {
-
-	children?: TertiaryNavItem[];
-
-}
-
 // There is a known issue in TypeScript, which doesn't allow decorators to change the signature of the classes
 // they are decorating. Due to this, if you are using @withRouter decorator in your code,
 // you will see a bunch of errors from TypeScript.
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
 @(withRouter as any)
-export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactComponentProps & RouteComponentProps> {
+export class TertiaryNav extends React.Component<IReactComponentProps & RouteComponentProps> {
 	render () {
+		/**
+		 * Store first route so we can automatically redirect to it.
+		 */
+		let firstRoute: React.ReactElement | undefined = undefined;
+
+		const tertiaryNavRoutes = React.Children.map(this.props.children, (child: any) => {
+			const propsWithoutChildren = { ...child.props };
+			delete propsWithoutChildren.children;
+
+			if (typeof firstRoute === 'undefined') {
+				firstRoute = child;
+			}
+
+			return (
+				<Route
+					{...propsWithoutChildren}
+					path={`${this.props.match.url}${propsWithoutChildren.path}`}
+				/>
+			);
+		});
+
 		return (
 			<div
 				className={classnames(
@@ -30,21 +45,12 @@ export class TertiaryNav extends React.Component<ITertiaryNavProps & IReactCompo
 				</ul>
 				<div className={classnames(styles.TertiaryContent)}>
 					<Switch>
-						{React.Children.map(this.props.children, (child: any) => {
-							const propsWithoutChildren = { ...child.props };
-							delete propsWithoutChildren.children;
-							return (
-								<Route
-									{...propsWithoutChildren}
-									path={`${this.props.match.url}${propsWithoutChildren.path}`}
-								/>
-							);
-						})}
-						{this.props.children?.length &&
+						{tertiaryNavRoutes}
+						{firstRoute! &&
 							(
 								<Redirect
 									from={`${this.props.match.url}`}
-									to={`${this.props.match.url}${this.props.children?.[0].props.path}`}
+									to={`${this.props.match.url}${firstRoute!.props.path}`}
 								/>
 							)
 
