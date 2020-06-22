@@ -68,7 +68,6 @@ export {
 	VerticalNav,
 	VerticalNavItem
 } from './components/modules/VerticalNav/VerticalNav';
-export { WorkspaceSwitcher } from './components/modules/VerticalNav/components/WorkspaceSwitcher';
 export { VirtualList } from './components/modules/VirtualList/VirtualList';
 export { VirtualTable } from './components/modules/VirtualTable/VirtualTable';
 export { default as WindowsToolbar } from './components/modules/WindowsToolbar/WindowsToolbar';
