@@ -61,7 +61,7 @@
 		"@types/jest": "^23.3.11",
 		"@types/lodash.isequal": "^4.5.3",
 		"@types/node": "^10.12.18",
-		"@types/react": "^16.9.2",
+		"@types/react": "^16.9.41",
 		"@types/react-dom": "^16.9.0",
 		"@types/react-modal": "^3.6.0",
 		"@types/react-router-dom": "^5.0.1",
@@ -110,6 +110,7 @@
 		"write-file-webpack-plugin": "^4.4.0"
 	},
 	"resolutions": {
+		"@types/react": "^16.9.41",
 		"js-yaml": ">=3.13.1",
 		"fstream": ">=1.0.12",
 		"tar": ">=2.2.2",
