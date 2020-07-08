@@ -6,6 +6,7 @@
 	display: flex;
 	align-items: center;
 	padding: 5px;
+	font-weight: 700;
 	background: transparent;
 	border: none;
 	border-radius: 5px;
@@ -45,7 +46,7 @@
 }
 
 .CopyButton__Color_Gray_Padding_Small {
-	@include setThemeVar('--Button_Padding', 5px);
+	@include setThemeVar('--Button_Padding', 5px 10px);
 }
 .CopyButton__Color_Gray_Padding_Medium {
 	@include setThemeVar('--Button_Padding', 10px);
@@ -59,7 +60,7 @@
 }
 
 .CopyButton__Color_Green_Padding_Small {
-	@include setThemeVar('--Button_Padding', 5px);
+	@include setThemeVar('--Button_Padding', 5px 10px);
 }
 
 .CopyButton__Color_Green_Padding_Medium {
