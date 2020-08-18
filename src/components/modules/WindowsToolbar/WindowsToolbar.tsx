@@ -10,7 +10,6 @@ import WindowsBack from '../../../svg/windows_back.svg';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
-
 	title: string;
 	resizable?: boolean;
 	onBack?: FunctionGeneric;
@@ -18,14 +17,19 @@ interface IProps extends IReactComponentProps {
 	onMaximize?: FunctionGeneric;
 	onQuit: FunctionGeneric;
 	onShowMenu?: FunctionGeneric;
-
 }
 
 class WindowsToolbar extends React.Component<IProps> {
-
 	render () {
 		return (
-			<header className={styles.WindowsToolbar}>
+			<header
+				className={classnames(
+					styles.WindowsToolbar,
+					this.props.className,
+				)}
+				id={this.props.id}
+				style={this.props.style}
+			>
 				{
 					this.props.onBack && (
 						<span
@@ -77,7 +81,6 @@ class WindowsToolbar extends React.Component<IProps> {
 			</header>
 		);
 	}
-
 }
 
 export default WindowsToolbar;

@@ -38,7 +38,6 @@ export interface ITextBaseProps extends ITextCommonProps {
 }
 
 export class TextBase extends React.Component<ITextBaseProps> {
-
 	static defaultProps: Partial<ITextBaseProps> = {
 		color: TextBasePropColor.graydark_white_caption,
 		fontSize: TextBasePropFontSize.s,
@@ -47,7 +46,18 @@ export class TextBase extends React.Component<ITextBaseProps> {
 	};
 
 	render () {
-		const {children, color, container, className, fontSize, fontWeight, tag, ...otherProps} = this.props;
+		const {
+			children,
+			color,
+			container,
+			className,
+			fontSize,
+			fontWeight,
+			id,
+			style,
+			tag,
+			...otherProps
+		} = this.props;
 		const Tag: any = tag;
 
 		return (
@@ -71,6 +81,8 @@ export class TextBase extends React.Component<ITextBaseProps> {
 							[styles.TextBase__FontWeight_700]: fontWeight === TextBasePropFontWeight.heavy,
 						},
 					)}
+					id={this.props.id}
+					style={this.props.style}
 					{...otherProps}
 				>
 					{children}
@@ -78,5 +90,4 @@ export class TextBase extends React.Component<ITextBaseProps> {
 			</Container>
 		);
 	}
-
 }

@@ -56,7 +56,6 @@ interface IState {
 }
 
 export default class FlySelect extends React.Component<IProps, IState> {
-
 	private readonly __containerRef: React.RefObject<any>;
 	private readonly __optionsRef: React.RefObject<any>;
 
@@ -420,14 +419,15 @@ export default class FlySelect extends React.Component<IProps, IState> {
 						[styles.FlySelect__Readonly]: this.props.readonly,
 					},
 				)}
-				onKeyDown={this.onContainerKeyDown}
-				style={this.props.style}
 				data-current-value={this.state.value}
-				tabIndex={0}
-				onClick={this.onClick}
-				onBlur={this.onBlur}
-				ref={this.__containerRef}
 				disabled={this.props.disabled || !Object.keys(optionsFormatted).length}
+				id={this.props.id}
+				onBlur={this.onBlur}
+				onClick={this.onClick}
+				onKeyDown={this.onContainerKeyDown}
+				ref={this.__containerRef}
+				style={this.props.style}
+				tabIndex={0}
 			>
 				<span className="CurrentValue">
 					{

@@ -42,7 +42,6 @@ interface IProps extends IReactComponentProps {
 }
 
 export default class FlyModal extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		ariaHideApp: true,
 		closeTimeoutMS: 0,
@@ -75,7 +74,10 @@ export default class FlyModal extends React.Component<IProps> {
 				className={classnames(
 					styles.FlyModal,
 					'FlyModal', // in here for tests
+					this.props.className
 				)} // warning: this must be set after {...this.props} to work
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<Close
 					className={classnames({
@@ -87,5 +89,4 @@ export default class FlyModal extends React.Component<IProps> {
 			</ReactModal>
 		);
 	}
-
 }

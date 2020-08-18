@@ -25,7 +25,6 @@ interface IState {
 }
 
 export default class FlyDropdown extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		caret: true,
 		items: [],
@@ -71,9 +70,11 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 					},
 					this.props.className,
 				)}
-				tabIndex={0}
+				id={this.props.id}
 				onClick={this.onClick}
 				onBlur={this.onBlur}
+				style={this.props.style}
+				tabIndex={0}
 			>
 				{this.props.children}
 				{this.props.caret && (
@@ -121,5 +122,4 @@ export default class FlyDropdown extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

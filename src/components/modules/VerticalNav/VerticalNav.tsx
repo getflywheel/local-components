@@ -6,15 +6,20 @@ import * as styles from './VerticalNav.scss';
 import FlyTooltip from '../../overlays/FlyTooltip/FlyTooltip';
 
 export class VerticalNav extends React.Component<IReactComponentProps> {
-
 	render () {
 		return (
-			<div className={styles.VerticalNav}>
+			<div
+				className={classnames(
+					styles.VerticalNav,
+					this.props.className,
+				)}
+				id={this.props.id}
+				style={this.props.style}
+			>
 				{this.props.children}
 			</div>
 		);
 	}
-
 }
 
 interface IProps extends IReactComponentProps {
@@ -29,7 +34,6 @@ interface IProps extends IReactComponentProps {
 }
 
 export class VerticalNavItem extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		fadeIn: true,
 		type: 'navlink',
@@ -126,5 +130,4 @@ export class VerticalNavItem extends React.Component<IProps> {
 				return null;
 		}
 	}
-
 }

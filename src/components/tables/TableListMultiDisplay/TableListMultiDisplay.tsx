@@ -115,7 +115,15 @@ export default class TableListMultiDisplay extends React.Component<
 	render() {
 		return (
 			<div>
-				<TableList form={true} className={styles.TableListMultiDisplay}>
+				<TableList
+					className={classnames(
+						styles.TableListMultiDisplay,
+						this.props.className,
+					)}
+					id={this.props.id}
+					form={true}
+					style={this.props.style}
+				>
 					{this.renderHeader()}
 					{this.state.unsavedData.map((item: any, index: number) => (
 						<li className={styles.TableListRow} key={index}>

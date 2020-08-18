@@ -7,7 +7,6 @@ import { Title } from '../../text/Title/Title';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
-
 	content?: React.ReactNode;
 	contentClassName?: string;
 	contentDescription?: React.ReactNode;
@@ -40,11 +39,9 @@ interface IProps extends IReactComponentProps {
 	tag?: string;
 	truncateDefaultLines?: number;
 	truncateDefaultEllipsis?: string;
-
 }
 
 export default class Card extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		overflow: 'hidden',
 		tag: 'article',
@@ -216,8 +213,10 @@ export default class Card extends React.Component<IProps> {
 					styles.Card,
 					this.props.className,
 				)}
+				id={this.props.id}
 				style={{
 					...(this.props.overflow !== 'hidden' && {overflow: this.props.overflow}), // conditionally add style
+					...this.props.style,
 				}}
 			>
 				{this.hasHeader() && this.renderHeader()}
@@ -226,5 +225,4 @@ export default class Card extends React.Component<IProps> {
 			</Tag>
 		);
 	}
-
 }

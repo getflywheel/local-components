@@ -6,14 +6,11 @@ import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 import { Title } from '../../text/Title/Title';
 
 interface IProps extends IReactComponentProps {
-
 	color?: 'Green' | 'Gray';
 	message?: string;
-
 }
 
 export default class BigLoader extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		color: 'Green',
 	};
@@ -21,7 +18,12 @@ export default class BigLoader extends React.Component<IProps> {
 	render () {
 		return (
 			<div
-				className={classnames(styles.BigLoader, 'MainPanel', this.props.className)}
+				className={classnames(
+					styles.BigLoader,
+					'MainPanel',
+					this.props.className,
+				)}
+				id={this.props.id}
 				style={this.props.style}
 			>
 				<LoadingIndicator
@@ -42,5 +44,4 @@ export default class BigLoader extends React.Component<IProps> {
 			</div>
 		);
 	}
-
 }

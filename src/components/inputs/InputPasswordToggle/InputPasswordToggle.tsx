@@ -13,7 +13,6 @@ interface IState {
 }
 
 export default class InputPasswordToggle extends React.Component<IProps, IState> {
-
 	constructor (props: IProps) {
 		super(props);
 
@@ -47,6 +46,8 @@ export default class InputPasswordToggle extends React.Component<IProps, IState>
 					`PasswordToggle__${this.state.inputType}`,
 					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<input
 					type={this.state.inputType}
@@ -64,5 +65,4 @@ export default class InputPasswordToggle extends React.Component<IProps, IState>
 			</div>
 		);
 	}
-
 }

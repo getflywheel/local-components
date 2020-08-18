@@ -78,7 +78,6 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 }
 
 export class ButtonBase extends React.Component<IButtonBaseProps> {
-
 	static defaultProps: Partial<IButtonBaseProps> = {
 		color: ButtonPropColor.default,
 		disabled: false,
@@ -100,10 +99,12 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 			disabled,
 			fontSize,
 			form,
+			id,
 			innerRef,
 			onClick,
 			padding,
 			fontWeight,
+			style,
 			textTransform,
 			textDecoration,
 			tag,
@@ -144,8 +145,10 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 						},
 					)}
 					disabled={disabled}
+					id={id}
 					onClick={onClick}
 					ref={innerRef}
+					style={style}
 					{...otherProps}
 					{...tagProps}
 				>
@@ -154,5 +157,4 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 			</Container>
 		);
 	}
-
 }

@@ -14,7 +14,6 @@ interface IProps extends IReactComponentProps {
 }
 
 export default class FlyTooltip extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		exclamation: false,
 		forceHoverState: false,
@@ -34,6 +33,8 @@ export default class FlyTooltip extends React.Component<IProps> {
 					},
 					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<div
 					className={classnames(
@@ -67,5 +68,4 @@ export default class FlyTooltip extends React.Component<IProps> {
 			</div>
 		);
 	}
-
 }

@@ -21,7 +21,6 @@ const fontWeightClassMixin = (props: {[key: string]: any}) => ({
 });
 
 interface IProps extends IReactComponentProps {
-
 	bullets?: boolean;
 	headerClass?: string;
 	headerHasDivider?: boolean;
@@ -33,11 +32,9 @@ interface IProps extends IReactComponentProps {
 	listItemFontWeight?: '300' | '400' | '500' | '700' | '900';
 	listItemWrapElement?: boolean;
 	tag?: string;
-
 }
 
 export default class List extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		bullets: true,
 		headerTag: 'div',
@@ -63,6 +60,8 @@ export default class List extends React.Component<IProps> {
 					styles.List_Container,
 					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				{this.props.headerText && (
 					<Title
@@ -107,5 +106,4 @@ export default class List extends React.Component<IProps> {
 			</div>
 		);
 	}
-
 }

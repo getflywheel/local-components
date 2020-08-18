@@ -18,7 +18,6 @@ interface IState {
 }
 
 export default class Checkbox extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		checked: false,
 		disabled: false,
@@ -62,7 +61,10 @@ export default class Checkbox extends React.Component<IProps, IState> {
 						[styles.Checkbox__CheckMixed]: this.state.checked === 'mixed',
 						[styles.Checkbox__Disabled]: this.props.disabled,
 					},
+					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<label className={styles.Checkbox_Label}>
 					<input
@@ -91,5 +93,4 @@ export default class Checkbox extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

@@ -2,13 +2,10 @@ import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IState {
-
 	currentIndex?: number;
-
 }
 
 export default class BannerCarousel extends React.Component<IReactComponentProps, IState> {
-
 	constructor (props: IReactComponentProps) {
 		super(props);
 
@@ -19,7 +16,11 @@ export default class BannerCarousel extends React.Component<IReactComponentProps
 
 	render () {
 		return (
-			<div>
+			<div
+				className={this.props.className}
+				id={this.props.id}
+				style={this.props.style}
+			>
 				{React.Children.map(this.props.children as React.ReactElement, (banner: React.ReactChild, index: number) => {
 					if (this.state.currentIndex !== index) {
 						return null;

@@ -10,7 +10,6 @@ interface IProps extends IReactComponentProps {
 }
 
 export default class Spinner extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		color: 'Gray25',
 	};
@@ -30,16 +29,18 @@ export default class Spinner extends React.Component<IProps> {
 	}
 
 	render () {
-		if (!this.props.children) {
-			return this.renderSVG();
-		}
-
 		return (
-			<div className={styles.SpinnerContainer}>
+			<div
+				className={classnames(
+					styles.SpinnerContainer,
+					this.props.className,
+				)}
+				id={this.props.id}
+				style={this.props.style}
+			>
 				{this.renderSVG()}
 				{this.props.children}
 			</div>
 		);
 	}
-
 }

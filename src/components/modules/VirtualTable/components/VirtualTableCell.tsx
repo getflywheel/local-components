@@ -20,7 +20,6 @@ export interface IVirtualTableCellProps extends IReactComponentProps {
 }
 
 export class VirtualTableCell extends React.Component<IVirtualTableCellProps> {
-
 	// the default change event if none is passed in as a prop to VirtualTable
 	protected _changeFn = (newValue: any): void => {
 		this.props.rowData[this.props.colKey] = newValue;
@@ -83,5 +82,4 @@ export class VirtualTableCell extends React.Component<IVirtualTableCellProps> {
 			</VirtualTableContext.Consumer>
 		);
 	}
-
 }

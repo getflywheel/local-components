@@ -3,11 +3,18 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import * as styles from './SiteInfoInnerPane.sass';
 
 export default function SiteInfoInnerPane(props: IReactComponentProps) {
-	const { children, ...propsWithoutChildren } = props;
+	const {
+		children,
+		id,
+		style,
+		...propsWithoutChildren
+	} = props;
 
 	return (
 		<div
 			className={styles.SiteInfoInnerPane}
+			id={id}
+			style={style}
 			{...propsWithoutChildren}
 		>
 			{children}

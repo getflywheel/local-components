@@ -20,7 +20,6 @@ export interface IVirtualTableRowProps extends IReactComponentProps {
 }
 
 export class VirtualTableRow extends React.Component<IVirtualTableRowProps> {
-
 	protected _renderRow (context: IVirtualTableContext) {
 		// this is the default rendered cell contents (which can either be used or ignored by a custom renderer)
 		const children: React.ReactNode = this.props.rowDataOrdered && this.props.rowDataOrdered.map((cellData: any, colIndex: number) => (
@@ -69,5 +68,4 @@ export class VirtualTableRow extends React.Component<IVirtualTableRowProps> {
 			</VirtualTableContext.Consumer>
 		);
 	}
-
 }

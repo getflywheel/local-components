@@ -4,14 +4,11 @@ import * as styles from './TableList.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
-
 	form?: boolean;
 	stripes?: boolean;
-
 }
 
 export class TableList extends React.Component<IProps> {
-
 	render () {
 		return (
 			<ul
@@ -24,6 +21,8 @@ export class TableList extends React.Component<IProps> {
 						[styles.TableList__NoStripes]: this.props.stripes === false,
 					},
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				{this.props.children}
 			</ul>
@@ -32,15 +31,12 @@ export class TableList extends React.Component<IProps> {
 }
 
 interface ITableListRowProps extends IReactComponentProps {
-
 	form?: boolean;
 	label?: string;
 	selectable?: boolean;
-
 }
 
 export class TableListRow extends React.Component<ITableListRowProps> {
-
 	render () {
 		return (
 			<li
@@ -67,5 +63,4 @@ export class TableListRow extends React.Component<ITableListRowProps> {
 			</li>
 		);
 	}
-
 }

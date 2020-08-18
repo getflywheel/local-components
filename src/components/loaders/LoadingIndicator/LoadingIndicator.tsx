@@ -4,15 +4,12 @@ import classnames from 'classnames';
 import * as styles from './LoadingIndicator.sass';
 
 interface IProps extends IReactComponentProps {
-
 	big?: boolean;
 	dots?: 2|3;
 	color?: 'Green' | 'Gray';
-
 }
 
 export default class LoadingIndicator extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		big: false,
 		dots: 2,
@@ -28,7 +25,10 @@ export default class LoadingIndicator extends React.Component<IProps> {
 						[styles.LoadingIndicator__Gray]: this.props.color === 'Gray',
 						[styles.LoadingIndicator__Big]: this.props.big,
 					},
+					this.props.className
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				 <div />
 				 <div />
@@ -36,5 +36,4 @@ export default class LoadingIndicator extends React.Component<IProps> {
 			</div>
 		);
 	}
-
 }

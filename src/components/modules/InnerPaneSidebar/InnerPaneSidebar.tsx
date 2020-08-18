@@ -5,9 +5,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import { Title } from '../../text/Title/Title';
 
 interface IProps extends IReactComponentProps {
-
 	title: string;
-
 }
 
 export function InnerPaneSidebar (props: IReactComponentProps) {
@@ -17,6 +15,8 @@ export function InnerPaneSidebar (props: IReactComponentProps) {
 				styles.InnerPaneSidebar,
 				props.className,
 			)}
+			style={props.style}
+			id={props.id}
 		>
 			{props.children}
 		</div>

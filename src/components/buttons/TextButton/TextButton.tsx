@@ -26,7 +26,15 @@ interface IProps extends IButtonCommonProps {
 }
 
 export const TextButton = (props: IProps) => {
-	const {className, intent, privateOptions, size, ...otherProps} = props;
+	const {
+		className,
+		id,
+		intent,
+		privateOptions,
+		size,
+		style,
+		...otherProps
+	} = props;
 
 	return (
 		<ButtonBase
@@ -37,6 +45,8 @@ export const TextButton = (props: IProps) => {
 			color={intent === TextButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
 			fontSize={size === TextButtonPropSize.tiny ? ButtonPropFontSize.xs : ButtonPropFontSize.m}
 			form={ButtonPropForm.text}
+			id={id}
+			style={style}
 			{...privateOptions}
 			{...otherProps}
 		/>

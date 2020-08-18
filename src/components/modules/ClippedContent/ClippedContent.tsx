@@ -4,7 +4,6 @@ import * as styles from './ClippedContent.sass';
 import classnames from 'classnames';
 
 interface IProps extends IReactComponentProps {
-
 	alignX?: 'none' | 'center';
 	alignY?: 'none' | 'center';
 	height?: string | 'fit-content';
@@ -13,11 +12,9 @@ interface IProps extends IReactComponentProps {
 	width?: string | 'fit-content';
 	useFullHeight?: boolean;
 	useFullWidth?: boolean;
-
 }
 
 export default class ClippedContent extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		alignX: 'none',
 		alignY: 'none',
@@ -43,6 +40,7 @@ export default class ClippedContent extends React.Component<IProps> {
 						[styles.ClippedContent__ShapeCircle]: this.props.shape === 'circle',
 					},
 				)}
+				id={this.props.id}
 				style={{
 					...this.props.style,
 					...(this.props.height && {height: this.props.height}),
@@ -53,5 +51,4 @@ export default class ClippedContent extends React.Component<IProps> {
 			</ContainerTag>
 		);
 	}
-
 }

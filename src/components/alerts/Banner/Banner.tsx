@@ -8,8 +8,7 @@ import { ButtonPropColor, ButtonPropForm } from '../../buttons/_private/ButtonBa
 import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
-interface IProps extends IReactComponentProps {
-
+interface BannerProps extends IReactComponentProps {
 	buttonText?: string;
 	currentIndex?: number;
 	buttonOnClick?: FunctionGeneric;
@@ -18,19 +17,17 @@ interface IProps extends IReactComponentProps {
 	onDismiss?: FunctionGeneric;
 	onIndexChange?: FunctionGeneric;
 	variant?: 'warning' | 'neutral' | 'success' | 'error';
-
 }
 
-export default class Banner extends React.Component<IProps> {
-
-	static defaultProps: Partial<IProps> = {
+export default class Banner extends React.Component<BannerProps> {
+	static defaultProps: Partial<BannerProps> = {
 		currentIndex: 0,
 		icon: 'warning',
 		numBanners: 1,
 		variant: 'neutral',
 	};
 
-	constructor (props: IProps) {
+	constructor (props: BannerProps) {
 		super(props);
 	}
 
@@ -136,7 +133,10 @@ export default class Banner extends React.Component<IProps> {
 						[styles.Banner__Error]: this.props.variant === 'error',
 						[styles.Banner__Success]: this.props.variant === 'success',
 					},
+					this.props.className
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				{this.renderCarousel()}
 				{this.renderIcon()}

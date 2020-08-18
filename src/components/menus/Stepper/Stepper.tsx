@@ -4,8 +4,11 @@ import classnames from 'classnames';
 import CompleteSVG from '../../../svg/complete.svg';
 import * as styles from './Stepper.sass';
 
-export class Stepper extends React.Component<IReactComponentProps> {
+interface IProps extends IReactComponentProps {
+	children: React.ReactNode;
+}
 
+export class Stepper extends React.Component<IProps> {
 	render () {
 		return (
 			<div
@@ -15,26 +18,25 @@ export class Stepper extends React.Component<IReactComponentProps> {
 						[styles.__Steps__2]: (this.props.children as React.ReactNode[]).length === 2,
 						[styles.__Steps__3]: (this.props.children as React.ReactNode[]).length === 3,
 					},
+					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				{this.props.children}
 			</div>
 		);
 	}
-
 }
 
 interface IStepProps extends IReactComponentProps {
-
-	active: boolean;
-	disabled: boolean;
+	active?: boolean;
+	disabled?: boolean;
 	done: boolean;
 	number: number;
-
 }
 
 export class Step extends React.Component<IStepProps> {
-
 	render () {
 		return (
 			<div

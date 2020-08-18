@@ -45,16 +45,18 @@ export interface ICopyButtonProps extends ILocalContainerProps {
 
 export const CopyButton = (props: ICopyButtonProps) => {
 	const {
-		tag,
 		className,
-		copiedTimeout,
-		uncopiedStateText,
-		copiedStateText,
-		uncopiedStateIconVariant,
-		copiedStateIconVariant,
-		textToCopy,
-		padding,
 		copiedStateBGStyleVariant,
+		copiedStateIconVariant,
+		copiedStateText,
+		copiedTimeout,
+		id,
+		padding,
+		style,
+		tag,
+		textToCopy,
+		uncopiedStateText,
+		uncopiedStateIconVariant,
 	} = props;
 
 	const Tag: any = tag;
@@ -90,6 +92,8 @@ export const CopyButton = (props: ICopyButtonProps) => {
 						[styles.CopyButton__Color_None_Padding_Medium]: isCopied && isTransparentCopiedStateBG && mediumPadding,
 					}
 				)}
+				id={id}
+				style={style}
 			>
 				<CopyButtonIcon
 					variant={isCopied ? copiedStateIconVariant as CopiedStateIconVariants : uncopiedStateIconVariant as UncopiedStateIconVariants}

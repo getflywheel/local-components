@@ -11,7 +11,6 @@ import { Button } from '../../buttons/Button/Button';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
-
 	data?: any[];
 	header?: React.ReactNode;
 	itemTemplate: any;
@@ -22,19 +21,15 @@ interface IProps extends IReactComponentProps {
 	repeatingContent: FunctionGeneric;
 	submitDisabled?: boolean;
 	submitLabel?: string;
-
 }
 
 interface IState {
-
 	addingItem: boolean;
 	initialData: any;
 	unsavedData: any;
-
 }
 
 export default class TableListRepeater extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		labelSingular: 'Item',
 		submitDisabled: false,
@@ -186,7 +181,12 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 			<div>
 				<TableList
 					form={true}
-					className={styles.TableListRepeater}
+					className={classnames(
+						styles.TableListRepeater,
+						this.props.className,
+					)}
+					id={this.props.id}
+					style={this.props.style}
 				>
 					{this.renderHeader()}
 					{this.state.unsavedData.map((item: any, index: number) => (
@@ -222,5 +222,4 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

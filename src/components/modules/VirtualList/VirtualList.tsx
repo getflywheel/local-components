@@ -48,7 +48,6 @@ export interface IVirtualListState {
 }
 
 export class VirtualList extends React.Component<IVirtualListProps, IVirtualListState> {
-
 	static defaultProps: Partial<IVirtualListProps> = {
 		disableResizeObserver: false,
 		disableVirtualization: false,
@@ -240,5 +239,4 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 			this._renderWrapper()
 		);
 	}
-
 }

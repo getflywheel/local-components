@@ -19,7 +19,14 @@ interface IProps extends IButtonCommonProps {
 }
 
 export const PrimaryButton = (props: IProps) => {
-	const {className, intent, privateOptions, ...otherProps} = props;
+	const {
+		className,
+		id,
+		intent,
+		privateOptions,
+		style,
+		...otherProps
+	} = props;
 
 	return (
 		<ButtonBase
@@ -28,8 +35,10 @@ export const PrimaryButton = (props: IProps) => {
 				'PrimaryButton',
 			)}
 			color={intent === PrimaryButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
+			id={id}
 			form={ButtonPropForm.fill}
 			padding={ButtonPropPadding.l}
+			style={style}
 			{...privateOptions}
 			{...otherProps}
 		/>
