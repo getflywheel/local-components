@@ -17,7 +17,6 @@ try {
 }
 
 interface IProps extends IReactComponentProps {
-
 	defaultPath?: string;
 	dialogProperties?: string[];
 	dialogTitle?: string;
@@ -26,17 +25,13 @@ interface IProps extends IReactComponentProps {
 	onChange?: FunctionGeneric;
 	placeholder?: string;
 	value?: string;
-
 }
 
 interface IState {
-
 	value: string | undefined;
-
 }
 
 export default class BrowseInput extends React.Component<IProps, IState> {
-
 	constructor (props: IProps) {
 		super(props);
 
@@ -86,7 +81,10 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 						[styles.BrowseInput__Inline]: this.props.isInline,
 						[styles.BrowseInput__FormInput]: this.props.isFormInput,
 					},
+					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<span
 					className={classnames({
@@ -108,5 +106,4 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

@@ -11,7 +11,6 @@ interface IProps extends IReactComponentProps {
 }
 
 export default class Close extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		position: 'absolute',
 	};
@@ -34,6 +33,7 @@ export default class Close extends React.Component<IProps> {
 					},
 					this.props.className,
 				)}
+				id={this.props.id}
 				onClick={this.props.onClick}
 				onKeyDown={this.onKeyDown}
 				style={this.props.style}
@@ -42,5 +42,4 @@ export default class Close extends React.Component<IProps> {
 			</span>
 		);
 	}
-
 }

@@ -20,7 +20,14 @@ interface IProps extends ITextCommonProps {
 }
 
 export const Text = (props: IProps) => {
-	const {className, privateOptions, size, ...otherProps} = props;
+	const {
+		className,
+		id,
+		privateOptions,
+		size,
+		style,
+		...otherProps
+	} = props;
 
 	return (
 		<TextBase
@@ -31,6 +38,8 @@ export const Text = (props: IProps) => {
 			color={size === TextPropSize.default ? TextBasePropColor.graydark_gray15_text : TextBasePropColor.gray_gray75_title}
 			fontSize={TextBasePropFontSize.s}
 			fontWeight={TextBasePropFontWeight.normal}
+			id={id}
+			style={style}
 			{...privateOptions}
 			{...otherProps}
 		/>

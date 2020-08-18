@@ -93,7 +93,6 @@ export interface IVirtualTableState {
 }
 
 export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTableState> {
-
 	static defaultProps: Partial<IVirtualTableProps> = {
 		headersCapitalize: 'upper',
 		headersWeight: 700,
@@ -177,6 +176,8 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 					},
 					this.props.className,
 				)}
+				style={this.props.style}
+				id={this.props.id}
 			>
 				<VirtualTableContext.Provider
 					value={{
@@ -224,5 +225,4 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 			</div>
 		);
 	}
-
 }

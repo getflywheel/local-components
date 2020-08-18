@@ -39,6 +39,8 @@ export class TertiaryNav extends React.Component<IReactComponentProps & RouteCom
 					styles.TertiaryNavContainer,
 					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<ul className={classnames(styles.TertiaryNav)}>
 					{this.props.children}
@@ -60,15 +62,12 @@ export class TertiaryNav extends React.Component<IReactComponentProps & RouteCom
 			</div>
 		);
 	}
-
 }
 
 interface ITertiaryNavItemProps extends IReactComponentProps {
-
 	path: string;
 	render?: FunctionGeneric;
 	variant?: 'error';
-
 }
 
 // There is a known issue in TypeScript, which doesn't allow decorators to change the signature of the classes
@@ -77,7 +76,6 @@ interface ITertiaryNavItemProps extends IReactComponentProps {
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
 @(withRouter as any)
 export class TertiaryNavItem extends React.Component<ITertiaryNavItemProps & RouteComponentProps> {
-
 	render () {
 		return (
 			<li
@@ -99,5 +97,4 @@ export class TertiaryNavItem extends React.Component<ITertiaryNavItemProps & Rou
 			</li>
 		);
 	}
-
 }

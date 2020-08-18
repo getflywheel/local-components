@@ -16,9 +16,7 @@ export interface IContainerProps extends IReactComponentProps {
 	marginTop?: ContainerMarginLookupType;
 }
 
-const defaultProps: Partial<IContainerProps> = {
-
-};
+const defaultProps: Partial<IContainerProps> = {};
 
 export const Container = (props: IContainerProps) => {
 	const Tag: any = props.element || 'div';
@@ -42,6 +40,7 @@ export const Container = (props: IContainerProps) => {
 					className={classnames(
 						props.className,
 					)}
+					id={props.id}
 					style={{
 						...props.style,
 						...ContainerMarginHelper.getContainerMarginStyle(props),

@@ -14,7 +14,10 @@ export const TitleBar = (props: IProps) => (
 			className={classnames(
 				styles.TitleBar,
 				'TitleBar',
+				props.className,
 			)}
+			id={props.id}
+			style={props.style}
 		>
 			<div>
 				{props.title}

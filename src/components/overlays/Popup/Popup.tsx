@@ -36,7 +36,6 @@ interface IState {
 }
 
 export default class Popup extends React.Component<IProps, IState> {
-
 	static defaultProps = {
 		items: [],
 		padding: true,
@@ -114,8 +113,10 @@ export default class Popup extends React.Component<IProps, IState> {
 					},
 					this.props.className,
 				)}
-				tabIndex={0}
+				id={this.props.id}
 				onClick={this.onClick}
+				style={this.props.style}
+				tabIndex={0}
 			>
 				<div
 					className={styles.Popup_BubbleWrapper}
@@ -152,5 +153,4 @@ export default class Popup extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

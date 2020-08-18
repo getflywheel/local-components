@@ -6,25 +6,20 @@ import ImageCircle from '../ImageCircle/ImageCircle';
 import ClippedContent from '../../modules/ClippedContent/ClippedContent';
 
 interface IProps extends IReactComponentProps {
-
 	color?: 'blue' | 'green' | 'yellow' | 'orange' | 'red' | 'pink' | 'purple';
 	initials?: string;
 	placeholderSrc?: string;
 	size?: 's' | 'm' | string;
 	src?: string;
 	type: 'user' | 'team';
-
 }
 
 interface IState {
-
 	isImageError: boolean;
 	isImageLoaded: boolean;
-
 }
 
 export default class Avatar extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		color: 'blue',
 		size: 'm',
@@ -87,6 +82,8 @@ export default class Avatar extends React.Component<IProps, IState> {
 					styles.Avatar,
 					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				{
 					this.props.initials && (
@@ -152,5 +149,4 @@ export default class Avatar extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

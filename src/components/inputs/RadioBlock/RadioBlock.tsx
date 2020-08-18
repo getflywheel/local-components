@@ -25,7 +25,6 @@ interface IState {
 }
 
 export default class RadioBlock extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		direction: 'horiz',
 		disabled: false,
@@ -75,6 +74,8 @@ export default class RadioBlock extends React.Component<IProps, IState> {
 							[styles.RadioBlock__Readonly]: this.props.readonly === true,
 						},
 					)}
+					id={this.props.id}
+					style={this.props.style}
 				>
 					{
 						Object.keys(this.props.options).map((optionValue: string, i: number) => (
@@ -98,7 +99,6 @@ export default class RadioBlock extends React.Component<IProps, IState> {
 			</Container>
 		);
 	}
-
 }
 
 interface IRadioBlockItemProps extends ILocalContainerProps {
@@ -114,7 +114,6 @@ interface IRadioBlockItemProps extends ILocalContainerProps {
 }
 
 class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
-
 	static defaultProps: Partial<IRadioBlockItemProps> = {
 		disabled: false,
 		heightSize: 'l',
@@ -186,5 +185,4 @@ class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
 			</Container>
 		);
 	}
-
 }

@@ -4,15 +4,12 @@ import classnames from 'classnames';
 import * as styles from './TabNav.sass';
 
 interface IProps extends IReactComponentProps {
-
 	tag?: string;
 	itemsClassName?: string;
 	aux?: React.ReactNode; // Used for adding items in the right-hand side of the TabNav such as Site Info buttons
-
 }
 
 export default class TabNav extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		tag: 'nav',
 	};
@@ -38,6 +35,8 @@ export default class TabNav extends React.Component<IProps> {
 					styles.TabNav,
 					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<div
 					className={classnames(
@@ -52,5 +51,4 @@ export default class TabNav extends React.Component<IProps> {
 			</NavTag>
 		);
 	}
-
 }

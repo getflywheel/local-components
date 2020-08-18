@@ -3,17 +3,12 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import Omit from '../../../common/structures/Omit';
 import * as TruncateMarkup from 'react-truncate-markup/lib';
 
-interface IProps {
-
+interface IProps extends IReactComponentProps {
 	ellipsis?: React.ReactNode;
 	lines?: number | undefined;
-
 }
 
-type ReactComponentPropsModified = Omit<IReactComponentProps, 'className' | 'style'>;
-
-export default class Truncate extends React.Component<IProps & ReactComponentPropsModified> {
-
+export default class Truncate extends React.Component<IProps> {
 	static defaultProps: Partial<IProps> = {
 		ellipsis: '...',
 		lines: 1,
@@ -22,8 +17,11 @@ export default class Truncate extends React.Component<IProps & ReactComponentPro
 	render () {
 		return (
 			<TruncateMarkup
-				lines={this.props.lines}
+				className={this.props.className}
 				ellipsis={this.props.ellipsis}
+				id={this.props.id}
+				lines={this.props.lines}
+				style={this.props.style}
 			>
 				<div>
 					{this.props.children}
@@ -31,5 +29,4 @@ export default class Truncate extends React.Component<IProps & ReactComponentPro
 			</TruncateMarkup>
 		);
 	}
-
 }

@@ -6,7 +6,6 @@ import ClippedContent from '../../modules/ClippedContent/ClippedContent';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
-
 	className?: string;
 	containerClassName?: string;
 	onError?: FunctionGeneric;
@@ -15,11 +14,9 @@ interface IProps extends IReactComponentProps {
 	square?: boolean;
 	src: string;
 	tag?: string;
-
 }
 
 export default class ImageCircle extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		size: 'm',
 		square: false,
@@ -49,6 +46,7 @@ export default class ImageCircle extends React.Component<IProps> {
 						styles.ImageCircle,
 						this.props.className,
 					)}
+					id={this.props.id}
 					onError={this.props.onError}
 					onLoad={this.props.onLoad}
 					src={this.props.src}
@@ -57,5 +55,4 @@ export default class ImageCircle extends React.Component<IProps> {
 			</ClippedContent>
 		);
 	}
-
 }

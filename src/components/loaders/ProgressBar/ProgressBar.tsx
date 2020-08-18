@@ -39,7 +39,10 @@ export default class ProgressBar extends React.Component<IProps & IReactComponen
 				className={classnames(
 					styles.ProgressBar,
 					'ProgressBar', // this also needs to be globally accessible so other component styles can reference it
+					this.props.className
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				{!this.props.stripes ? this.renderRegularBar() : this.renderStripes()}
 			</div>

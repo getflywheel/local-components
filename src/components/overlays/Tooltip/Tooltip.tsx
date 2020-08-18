@@ -26,7 +26,6 @@ interface IState {
 }
 
 export class Tooltip extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		hideDelay: 500,
 		forceHover: false,
@@ -184,5 +183,4 @@ export class Tooltip extends React.Component<IProps, IState> {
 			</Manager>
 		);
 	}
-
 }

@@ -12,43 +12,40 @@ import * as php from 'highlight.js/lib/languages/php';
 import * as shell from 'highlight.js/lib/languages/shell';
 import * as sql from 'highlight.js/lib/languages/sql';
 import * as typescript from 'highlight.js/lib/languages/typescript';
-import * as xml from 'highlight.js/lib/languages/xml';
+import * as xml from 'highlight.js/lib/languages/xml'
+import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
-
 	src?: string;
-
 }
 
 export default class Markdown extends React.Component<IProps> {
-
 	render () {
 		return (
 			<ReactMarkdown
-				className={styles.Markdown}
+				className={classnames(
+					styles.Markdown,
+					this.props.className,
+				)}
 				escapeHtml={true}
-				skipHtml={true}
-				source={this.props.src}
 				renderers={{
 					code: MarkdownCodeBlock,
 				}}
+				skipHtml={true}
+				source={this.props.src}
 			/>
 		);
 	}
-
 }
 
 interface IMarkdownCodeBlockProps extends IReactComponentProps {
-
 	value: string;
 	language: string;
 	inline: boolean;
-
 }
 
 class MarkdownCodeBlock extends React.PureComponent<IMarkdownCodeBlockProps> {
-
 	private readonly __languagesEnabled: {[key: string]: any} = {
 		'apache': apache,
 		'bash': bash,
@@ -85,5 +82,4 @@ class MarkdownCodeBlock extends React.PureComponent<IMarkdownCodeBlockProps> {
 			/>
 		);
 	}
-
 }

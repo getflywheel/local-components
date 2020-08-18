@@ -4,21 +4,16 @@ import * as styles from './Drawer.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
-
 	align?: 'left' | 'center' | 'right';
 	children: React.ReactNode;
 	show?: boolean;
-
 }
 
 interface IState {
-
 	disableAnimation: boolean;
-
 }
 
 export default class Drawer extends React.Component<IProps, IState> {
-
 	constructor (props: IProps) {
 		super(props);
 
@@ -50,11 +45,12 @@ export default class Drawer extends React.Component<IProps, IState> {
 							[styles.Drawer__AlignRight]: this.props.align === 'right',
 						},
 					)}
+					id={this.props.id}
+					style={this.props.style}
 				>
 					{this.props.children}
 				</div>
 			</div>
 		);
 	}
-
 }

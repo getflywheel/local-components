@@ -29,6 +29,7 @@ const Divider = (props: IDividerProps) => (
 			props.className,
 			marginsClassMixin(styles, props),
 		)}
+		id={props.id}
 		onClick={props.onClick}
 		style={props.style}
 	>

@@ -9,14 +9,17 @@ interface IProps extends ILocalContainerProps {
 }
 
 export default class BasicInput extends React.Component<IProps> {
-
 	constructor (props: IProps) {
 		super(props);
 	}
 
-
 	render () {
-		const { className, ...props } = this.props;
+		const {
+			className,
+			id,
+			style,
+			...props
+		} = this.props;
 
 		return (
 			<div
@@ -25,6 +28,8 @@ export default class BasicInput extends React.Component<IProps> {
 					styles.BasicInput,
 					this.props.className,
 				)}
+				id={id}
+				style={style}
 			>
 				<input
 					type='text'
@@ -33,5 +38,4 @@ export default class BasicInput extends React.Component<IProps> {
 			</div>
 		);
 	}
-
 }

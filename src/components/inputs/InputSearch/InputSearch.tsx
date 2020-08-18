@@ -15,7 +15,6 @@ const excludeProps = {
 };
 
 interface IProps extends IReactComponentProps {
-
 	className?: string;
 	containerClassName?: string;
 	onChange?: FunctionGeneric;
@@ -24,7 +23,6 @@ interface IProps extends IReactComponentProps {
 }
 
 export default class InputSearch extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		value: '',
 	};
@@ -45,6 +43,7 @@ export default class InputSearch extends React.Component<IProps> {
 						styles.InputSearch,
 						this.props.className,
 					)}
+					id={this.props.id}
 					onChange={this.props.onChange}
 					placeholder={this.props.placeholder}
 					type="text"
@@ -54,5 +53,4 @@ export default class InputSearch extends React.Component<IProps> {
 			</div>
 		);
 	}
-
 }

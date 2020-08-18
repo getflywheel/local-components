@@ -5,19 +5,14 @@ import * as styles from './AdvancedToggle.sass';
 import CaretSVG from '../../../svg/caret.svg';
 
 interface IProps extends IReactComponentProps {
-
 	headingText?: string;
-
 }
 
 interface IState {
-
 	advancedOpen: boolean;
-
 }
 
 export default class AdvancedToggle extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		headingText: 'Advanced Options',
 	};
@@ -55,6 +50,8 @@ export default class AdvancedToggle extends React.Component<IProps, IState> {
 						[styles.AdvancedToggle__isOpen]: this.state.advancedOpen,
 					},
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				<span
 					tabIndex={0}
@@ -74,5 +71,4 @@ export default class AdvancedToggle extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

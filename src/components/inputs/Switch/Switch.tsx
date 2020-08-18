@@ -5,7 +5,6 @@ import * as styles from './Switch.sass';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
-
 	checked?: boolean;
 	disabled?: boolean;
 	flat?: boolean;
@@ -14,17 +13,13 @@ interface IProps extends IReactComponentProps {
 	noValue?: boolean;
 	onChange?: FunctionGeneric;
 	tiny?: boolean;
-
 }
 
 interface IState {
-
 	checked: boolean;
-
 }
 
 export default class Switch extends React.Component<IProps, IState> {
-
 	static defaultProps: Partial<IProps> = {
 		checked: false,
 	};
@@ -64,7 +59,10 @@ export default class Switch extends React.Component<IProps, IState> {
 						[styles.Switch__Tiny]: this.props.tiny,
 						[styles.Switch__Flat]: this.props.flat,
 					},
+					this.props.className,
 				)}
+				id={this.props.id}
+				style={this.props.style}
 			>
 				{
 					this.props.label && (
@@ -81,5 +79,4 @@ export default class Switch extends React.Component<IProps, IState> {
 			</div>
 		);
 	}
-
 }

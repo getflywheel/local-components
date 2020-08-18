@@ -3,11 +3,11 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { TextButton } from '../../buttons/TextButton/TextButton';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import classnames from 'classnames';
 
 const { ipcRenderer } = require('electron');
 
 interface IProps extends IReactComponentProps {
-
 	cancelText?: string;
 	downloaded?: number;
 	itemSize?: number;
@@ -21,11 +21,9 @@ interface IProps extends IReactComponentProps {
 	showCancel?: boolean;
 	showEllipsis?: boolean;
 	stripes?: boolean;
-
 }
 
 export default class DownloaderItem extends React.Component<IProps> {
-
 	static defaultProps: Partial<IProps> = {
 		cancelText: 'Cancel Download',
 		showEllipsis: true,
@@ -49,7 +47,14 @@ export default class DownloaderItem extends React.Component<IProps> {
 
 	render () {
 		return (
-			<li className="DownloaderItem">
+			<li
+				className={classnames(
+					'DownloaderItem',
+					this.props.className,
+				)}
+				id={this.props.id}
+				style={this.props.style}
+			>
 				<span>
 					{this.props.label}
 					{this.props.queueLength && this.props.queueLength > 1 && ` (${(this.props.queueIndex || 0) + 1} of ${this.props.queueLength})`}
