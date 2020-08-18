@@ -40,6 +40,7 @@
 		"watch:webpack": "webpack-dev-server --config webpack.dev.js",
 		"watch:sass": "chokidar 'src/**/*.sass' 'src/**/*.scss' -c 'yarn build:sass'",
 		"test": "jest",
+		"test-coverage": "jest --coverage",
 		"prepare": "yarn run build && shx rm dist/global.css.json",
 		"create-entrypoints": "ts-node --transpile-only tasks/create-component-entrypoints.ts",
 		"create-ts-svgs": "ts-node tasks/create-typescript-svgs.ts",
