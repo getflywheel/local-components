@@ -1,15 +1,28 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { EmptyArea } from './EmptyArea';
+import WindowsToolbar from './WindowsToolbar';
 import TestComponentPropUtils from '../../../utils/TestComponentPropUtils';
 
 describe('EmptyArea', () => {
 	it('renders without crashing', () => {
-		shallow(<EmptyArea />);
+		shallow(
+			<WindowsToolbar
+				title="myTitle"
+				onMinimize={() => {}}
+				onQuit={() => {}}
+			/>
+		);
 	});
 
 	it('renders basic react props like id, className, and style as element attributes', () => {
-		const shallowWrapper = shallow(<EmptyArea {...TestComponentPropUtils.basicReactProps} />);
+		const shallowWrapper = shallow(
+			<WindowsToolbar
+				title="myTitle"
+				onMinimize={() => {}}
+				onQuit={() => {}}
+				{...TestComponentPropUtils.basicReactProps}
+			/>
+		);
 		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, false);
 	});
 });
