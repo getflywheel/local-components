@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import FlyTooltip from './FlyTooltip';
+import { TitleBar } from './TitleBar';
 import TestComponentPropUtils from '../../../utils/TestComponentPropUtils';
 
-describe('FlyTooltip', () => {
+describe('TitleBar', () => {
 	it('renders without crashing', () => {
-		shallow(<FlyTooltip/>);
+		shallow(<TitleBar />);
 	});
 
 	it('renders basic react props like id, className, and style as element attributes', () => {
-		const shallowWrapper = shallow(<FlyTooltip {...TestComponentPropUtils.basicReactProps} />);
-		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, false);
+		const shallowWrapper = shallow(<TitleBar {...TestComponentPropUtils.basicReactProps} />);
+		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true);
 	});
 });
