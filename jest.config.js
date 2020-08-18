@@ -17,5 +17,5 @@ module.exports = {
 	"transform": {
 		"^.+\\.tsx?$": "ts-jest"
 	},
-	"setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.ts"
+	"setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"]
 }
