@@ -8,6 +8,5 @@ node_modules
 /storybook-static
 *.tgz
 /src/svg/*.tsx
-/src/**/*.d.ts
 !/src/global.d.ts
 /coverage
