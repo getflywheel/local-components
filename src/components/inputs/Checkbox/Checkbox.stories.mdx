@@ -1,0 +1,68 @@
+import Checkbox from "./Checkbox";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Inputs/Checkbox" component={Checkbox} />
+
+Default with change handler
+
+<Canvas>
+	<Story name="Default">
+		<div>
+			<Checkbox
+				onChange={(checked) =>
+					console.log("onChange - checked: ", checked)
+				}
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+Checked
+
+<Canvas>
+	<Story name="Checked">
+		<div>
+			<Checkbox checked={true} />
+		</div>
+	</Story>
+</Canvas>
+
+With a label
+
+<Canvas>
+	<Story name="With Label">
+		<div>
+			<Checkbox label="Option" />
+		</div>
+	</Story>
+</Canvas>
+
+Disabled & Unchecked
+
+<Canvas>
+	<Story name="Disabled &amp; Unchecked">
+		<div>
+			<Checkbox disabled={true} label="Option" />
+		</div>
+	</Story>
+</Canvas>
+
+Disabled & Checked
+
+<Canvas>
+	<Story name="Disabled &amp; Checked">
+        <div>
+            <Checkbox disabled={true} checked={true} label="Option" />
+        </div>
+	</Story>
+</Canvas>
+
+Mixed State
+
+<Canvas>
+	<Story name="Mixed State">
+		<div>
+			<Checkbox checked="mixed" />
+		</div>
+	</Story>
+</Canvas>

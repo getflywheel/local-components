@@ -1,0 +1,39 @@
+import Switch from "./Switch";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Inputs/Switch" component={Switch} />
+
+# Basic
+
+<Canvas>
+	<Story name="Switch">
+		<Switch onChange={() => console.log("onChange")} />
+	</Story>
+</Canvas>
+
+# Inline
+
+<Canvas>
+	<Story name="Inline">
+		<Switch
+			label="Label"
+			flat={true}
+			tiny={true}
+			onChange={() => console.log("onChange")}
+		/>
+	</Story>
+</Canvas>
+
+# Inline (No Value)
+
+<Canvas>
+	<Story name="No Value">
+		<Switch
+			label="Label"
+			flat={true}
+			tiny={true}
+			noValue={true}
+			onChange={() => console.log("onChange")}
+		/>
+	</Story>
+</Canvas>

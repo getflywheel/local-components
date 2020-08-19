@@ -1,0 +1,68 @@
+import Banner from "./Banner";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Alerts/Banner" component={Banner} />
+
+# Neutral
+
+<Canvas>
+	<Story name="Neutral">
+		<Banner
+			variant="neutral"
+			icon="warning"
+			buttonText="Complete Setup"
+			buttonOnClick={() => console.log("buttonOnClick")}
+		>
+			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
+			butcher occupy or <a>learn more</a>.
+		</Banner>
+	</Story>
+</Canvas>
+
+# Warning
+
+<Canvas>
+	<Story name="Warning">
+		<Banner
+			variant="warning"
+			icon="warning"
+			buttonText="Fix It"
+			buttonOnClick={() => console.log("buttonOnClick")}
+		>
+			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
+			butcher occupy or <a>learn more</a>.
+		</Banner>
+	</Story>
+</Canvas>
+
+# Error
+
+<Canvas>
+	<Story name="Error">
+		<Banner
+			variant="error"
+			icon="warning"
+			buttonText="Retry"
+			buttonOnClick={() => console.log("buttonOnClick")}
+		>
+			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
+			butcher occupy or <a>learn more</a>.
+		</Banner>
+	</Story>
+</Canvas>
+
+# Success
+
+<Canvas>
+	<Story name="Success">
+		<Banner
+			variant="success"
+			icon="warning"
+			buttonText="Okay"
+			buttonOnClick={() => console.log("buttonOnClick")}
+		>
+			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
+			butcher occupy or <a>learn more</a>.
+		</Banner>
+	</Story>
+</Canvas>

@@ -1,0 +1,36 @@
+import LoadingIndicator from "./LoadingIndicator";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Loaders/LoadingIndicator" component={LoadingIndicator} />
+
+## Small
+
+<Canvas>
+	<Story name="Small">
+        <LoadingIndicator />
+	</Story>
+</Canvas>
+
+## Big
+
+<Canvas>
+	<Story name="Big">
+        <LoadingIndicator big={true} />
+	</Story>
+</Canvas>
+
+## Gray
+
+<Canvas>
+	<Story name="Gray">
+        <LoadingIndicator color="Gray" dots={3} />
+	</Story>
+</Canvas>
+
+## Gray - 2 dots
+
+<Canvas>
+	<Story name="Gray - 2 dots">
+        <LoadingIndicator dots={2} color="Gray" />
+	</Story>
+</Canvas>

@@ -1,0 +1,23 @@
+import ProgressBar from "./ProgressBar";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Loaders/ProgressBar" component={ProgressBar} />
+
+# Basic (Locked to 60%)
+
+<Canvas>
+	<Story name="ProgressBar">
+        <ProgressBar progress={60} />
+	</Story>
+</Canvas>
+
+# Stripes
+
+`stripes` should be used if you do not have access to the progress of a particular task/job.
+
+<Canvas>
+	<Story name="Stripes">
+        <ProgressBar stripes={true} />
+    </Story>
+</Canvas>
+

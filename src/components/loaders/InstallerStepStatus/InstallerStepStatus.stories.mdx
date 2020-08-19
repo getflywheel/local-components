@@ -1,0 +1,42 @@
+import InstallerStepStatus from "./InstallerStepStatus";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Loaders/InstallerStepStatus" component={InstallerStepStatus} />
+
+<Canvas>
+	<Story name="InstallerStepStatus">
+		<div style={{ width: "50px", height: "70px", position: "relative" }}>
+			<InstallerStepStatus />
+		</div>
+	</Story>
+</Canvas>
+
+# In Progress
+
+<Canvas>
+	<Story name="In Progress">
+		<div style={{ width: "50px", height: "70px", position: "relative" }}>
+			<InstallerStepStatus inProgress={true} />
+		</div>
+	</Story>
+</Canvas>
+
+# In Progress (Requires Attention)
+
+<Canvas>
+	<Story name="Requires Attention">
+		<div style={{ width: "50px", height: "70px", position: "relative" }}>
+			<InstallerStepStatus inProgress={true} requiresAttention={true} />
+		</div>
+	</Story>
+</Canvas>
+
+# Ready
+
+<Canvas>
+	<Story name="Ready">
+		<div style={{ width: "50px", height: "70px", position: "relative" }}>
+			<InstallerStepStatus ready={true} />
+		</div>
+	</Story>
+</Canvas>

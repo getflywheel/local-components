@@ -1,0 +1,20 @@
+import { EmptyArea } from "../EmptyArea/EmptyArea";
+import { InnerPaneSidebarHeader, InnerPaneSidebarContent, InnerPaneSidebar } from "./InnerPaneSidebar";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Modules/InnerPaneSidebar" component={InnerPaneSidebar} />
+
+# Example
+
+<Canvas>
+	<Story name="InnerPaneSidebar">
+        <InnerPaneSidebar>
+            <InnerPaneSidebarHeader title="Test" />
+            <InnerPaneSidebarContent>
+                <EmptyArea border={false}>
+                    <div>Test 123</div>
+                </EmptyArea>
+            </InnerPaneSidebarContent>
+        </InnerPaneSidebar>
+	</Story>
+</Canvas>

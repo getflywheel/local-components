@@ -1,0 +1,14 @@
+import { TableListRow, TableList } from './TableList';
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Tables/TableList" component={TableList} />
+
+<Canvas>
+	<Story name="TableList">
+       <TableList>
+            <TableListRow label="Label">Some Content</TableListRow>
+            <TableListRow label="Another Label">More Content</TableListRow>
+            <TableListRow label="And Another Label">Some More Content</TableListRow>
+        </TableList>
+	</Story>
+</Canvas>

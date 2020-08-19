@@ -1,0 +1,22 @@
+import Spinner from "./Spinner";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Loaders/Spinner" component={Spinner} />
+
+# Without Text
+
+<Canvas>
+	<Story name="Without Text">
+		<Spinner />
+	</Story>
+</Canvas>
+
+# With Text
+
+<Canvas>
+	<Story name="With Text">
+		<Spinner>
+			With some text...
+		</Spinner>
+	</Story>
+</Canvas>

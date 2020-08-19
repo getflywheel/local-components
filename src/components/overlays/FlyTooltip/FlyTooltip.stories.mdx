@@ -1,0 +1,57 @@
+import FlyTooltip from "./FlyTooltip";
+import { Button } from '../../buttons/Button/Button';
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Overlays/FlyTooltip" component={FlyTooltip} />
+
+# Basic
+
+<Canvas>
+	<Story name="Bansic">
+        <FlyTooltip content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}>
+			<Button>Hover over me</Button><br />
+		</FlyTooltip>
+	</Story>
+</Canvas>
+
+# With exclamation icon and auto width
+
+<Canvas>
+	<Story name="Exclamation">
+        <FlyTooltip 
+			position="bottom" 
+			width="auto"
+			exclamation={true} 
+			content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
+			>
+			<Button>Hover over me</Button><br />
+		</FlyTooltip>
+	</Story>
+</Canvas>
+
+# Position center horizontal position with max-content width:
+
+<Canvas>
+	<Story name="Centered">
+        <FlyTooltip 
+			position="center" 
+			width="max-content"
+			content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
+			>
+			<Button>Hover over me</Button><br />
+		</FlyTooltip>
+	</Story>
+</Canvas>
+
+# Position right
+
+<Canvas>
+	<Story name="Position Right">
+        <FlyTooltip 
+			position="right" 
+			content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
+			>
+			<Button>Hover over me</Button><br />
+		</FlyTooltip>
+	</Story>
+</Canvas>

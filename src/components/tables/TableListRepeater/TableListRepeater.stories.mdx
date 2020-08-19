@@ -1,0 +1,78 @@
+import TableListRepeater from "./TableListRepeater";
+import FlySelect from '../../inputs/FlySelect/FlySelect';
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+export const header = (
+    <>
+        <strong className="TableListRowHeader__SeparatorRight" style={{ width: '33%' }}>Column 1</strong>
+        <strong style={{ width: '33%' }}>Column 2</strong>
+        <strong style={{ width: '33%' }}>Column 3</strong>
+    </>
+);
+
+export const repeatingContent = (item, index, updateItem) => (
+    <>
+        <div className="TableListRowHeader__SeparatorRight TableListRow__Input">
+            <input placeholder="Column 1" value={item.column1} onChange={(e) => {
+                item.column1 = e.target.value;
+                updateItem(item);
+            }}/>
+        </div>
+        <div className="TableListRow__Input">
+            <input placeholder="I am a dumb input and won't store data."/>
+        </div>
+        <div>
+            <FlySelect placeholder="– Select Something –" value={item.column3} options={['Test 1', 'Test 2']}
+                       onChange={(value) => {
+                           item.column3 = value;
+                           updateItem(item);
+                       }}/>
+        </div>
+    </>
+);
+
+<Meta title="Tables/TableListRepeater" component={TableListRepeater} />
+
+# Basic
+
+<Canvas>
+	<Story name="TableListRepeater">
+        <TableListRepeater header={header} repeatingContent={repeatingContent}
+            onSubmit={() => console.log('onSubmit')}
+            submitLabel="Submit This Stuff!"
+            labelSingular="Item"
+            itemTemplate={{
+                column1: '',
+                column3: 'Test 2',
+            }}/>
+	</Story>
+</Canvas>
+
+# No Submit
+
+<Canvas>
+	<Story name="No Submit">
+        <TableListRepeater header={header} repeatingContent={repeatingContent}
+            labelSingular="Item"
+            onChange={() => console.log('onChange')}
+            itemTemplate={{
+                column1: '',
+                column3: 'Test 2',
+            }}/>
+	</Story>
+</Canvas>
+
+# No Header
+
+<Canvas>
+	<Story name="No Header">
+        <TableListRepeater repeatingContent={repeatingContent}
+            onSubmit={() => console.log('onSubmit')}
+            submitLabel="Submit This Stuff!"
+            labelSingular="Item"
+            itemTemplate={{
+                column1: '',
+                column3: 'Test 2',
+            }}/>
+	</Story>
+</Canvas>
