@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import EyeSVG from '../../../svg/eye';
+import EyeSVG from '../../../svg/eye.svg';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
 interface IProps extends ILocalContainerProps {

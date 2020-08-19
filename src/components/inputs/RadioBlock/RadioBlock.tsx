@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import CheckmarkSVG from '../../../svg/checkmark--big';
-import ExclamationSVG from '../../../svg/exclamation';
+import CheckmarkSVG from '../../../svg/checkmark--big.svg';
+import ExclamationSVG from '../../../svg/exclamation.svg';
 import * as styles from './RadioBlock.sass';
 import { Container } from '../../modules/Container/Container';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';

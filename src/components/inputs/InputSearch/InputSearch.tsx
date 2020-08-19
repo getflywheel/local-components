@@ -2,7 +2,7 @@ import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import * as styles from './InputSearch.sass';
-import SearchSVG from '../../../svg/search';
+import SearchSVG from '../../../svg/search.svg';
 import ObjectUtils from '../../../utils/object-utils';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
