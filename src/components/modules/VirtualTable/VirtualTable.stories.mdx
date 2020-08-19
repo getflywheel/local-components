@@ -1,0 +1,16 @@
+import { VirtualTableExample } from './examples/VirtualTableExample';
+import { VirtualTable } from "./VirtualTable";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Modules/VirtualTable" component={VirtualTable} />
+
+VirtualTable is a table of visible and overscan rows that are virtually swapped in and out while being positioned within a statically set scroll area that represents the size of all items (as if they were being rendered in their entirety).
+This component builds upon VirtualList.
+
+### Interactive Example
+
+<Canvas>
+	<Story name="Interactive Example">
+        <VirtualTableExample />
+	</Story>
+</Canvas>

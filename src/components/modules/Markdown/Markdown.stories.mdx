@@ -1,0 +1,15 @@
+import Markdown from "./Markdown";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import MarkdownKitchenSink from './examples/markdown-kitchen-sink';
+
+<Meta title="Modules/Markdown" component={Markdown} />
+
+# Kitchen Sink
+
+<Canvas>
+	<Story name="Kitchen Sink">
+       <Markdown src={MarkdownKitchenSink} />
+	</Story>
+</Canvas>
+
+

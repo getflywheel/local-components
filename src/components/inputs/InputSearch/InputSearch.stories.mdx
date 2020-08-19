@@ -1,0 +1,27 @@
+import InputSearch from "./InputSearch";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Inputs/InputSearch" component={InputSearch} />
+
+Input with `placeholder` and `onChange` props.
+
+<Canvas>
+	<Story name="With Placeholder">
+		<InputSearch
+			onChange={(event) => console.log("onChange: ", event)}
+			placeholder="Type here ..."
+		/>
+	</Story>
+</Canvas>
+
+Input with initial `value` set.
+
+<Canvas>
+	<Story name="With Value">
+		<InputSearch
+			onChange={(event) => console.log("onChange: ", event)}
+			placeholder="Type here ..."
+			value="John Smith"
+		/>
+	</Story>
+</Canvas>

@@ -1,0 +1,59 @@
+import Popup from "./Popup";
+import { Button } from '../../buttons/Button/Button';
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Overlays/Popup" component={Popup} />
+
+On click, a simple span element is displayed in the default bottom popup position.
+
+<Canvas>
+	<Story name="Popup">
+        <Popup 
+			position="bottom"
+			triggerContent={<Button>Click to open span below</Button>}
+		>
+			<span>Hello, I should be below this ^ button.</span>
+		</Popup>
+	</Story>
+</Canvas>
+
+On click, an div element is displayed in the right popup position.
+
+<Canvas>
+	<Story name="Positioned Right">
+        <Popup 
+			position="right"
+			triggerContent={<div>Open content to the right</div>}
+		>
+			<div>Right!</div>
+		</Popup>
+	</Story>
+</Canvas>
+
+On click, an image is displayed in the top popup position.
+
+<Canvas>
+	<Story name="Image">
+    	<Popup 
+			position="top"
+			triggerContent={<Button>Show image above</Button>}
+		>
+			<img src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png" style={{width: "100%"}} />
+		</Popup>
+	</Story>
+</Canvas>
+
+Offset the x and y position of the popup bubble.
+
+<Canvas>
+	<Story name="Offset">
+        <Popup 
+			offsetX="20px"
+			offsetY="20px"
+			position="right"
+			triggerContent={<div>Open and offset</div>}
+		>
+			<div>Simple.</div>
+		</Popup>
+	</Story>
+</Canvas>

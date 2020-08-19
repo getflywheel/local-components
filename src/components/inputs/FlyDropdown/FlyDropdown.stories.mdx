@@ -1,0 +1,61 @@
+import FlyDropdown from "./FlyDropdown";
+import { TextButton } from "../../buttons/TextButton/TextButton";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Inputs/FlyDropdown" component={FlyDropdown} />
+
+Basic:
+
+<Canvas>
+	<Story name="FlyDropdown">
+		<FlyDropdown
+			position="bottom"
+			items={[
+				{
+					label: "Option 1",
+					onClick: () => console.log("onClick"),
+				},
+				{
+					label: "Option 2",
+					onClick: () => console.log("onClick"),
+				},
+			]}
+		>
+			<TextButton privateOptions={{ color: "gray" }}>
+				Open Dropdown
+			</TextButton>
+		</FlyDropdown>
+	</Story>
+</Canvas>
+
+No Caret (Top Open):
+
+<Canvas>
+	<Story name="No Caret">
+		<div style={{marginTop: 150}}>
+			<FlyDropdown
+				position="top"
+				caret={false}
+				items={[
+					{
+						label: "Option 1",
+						onClick: () => console.log("onClick"),
+					},
+					{
+						label: "Option 2",
+						onClick: () => console.log("onClick"),
+					},
+					{
+						label: "Option 3 (Red)",
+						onClick: () => console.log("onClick"),
+						color: "red",
+					},
+				]}
+			>
+				<TextButton privateOptions={{ color: "gray" }}>
+					Open Dropdown (but up)
+				</TextButton>
+			</FlyDropdown>
+		</div>
+	</Story>
+</Canvas>

@@ -1,0 +1,42 @@
+import { EmptyArea } from "./EmptyArea";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Modules/EmptyArea" component={EmptyArea} />
+
+# Basic
+
+<Canvas>
+	<Story name="EmptyArea">
+		<EmptyArea>
+			<div>I'm a basic example of &lt;EmptyArea /&gt;.</div>
+		</EmptyArea>
+	</Story>
+</Canvas>
+
+# No Border
+
+<Canvas>
+	<Story name="No border">
+		<EmptyArea border={false}>
+			<div>
+				I'm an example of &lt;EmptyArea /&gt;
+				<br />
+				with no border.
+			</div>
+		</EmptyArea>
+	</Story>
+</Canvas>
+
+# Fade In
+
+<Canvas>
+	<Story name="Fade In">
+		<EmptyArea FadeIn={true}>
+			<div>
+				I'm an example of &lt;EmptyArea /&gt;
+				<br />
+				that will fade in when rendered.
+			</div>
+		</EmptyArea>
+	</Story>
+</Canvas>

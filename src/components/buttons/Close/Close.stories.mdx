@@ -1,0 +1,12 @@
+import Close from "./Close";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Buttons/Close" component={Close} />
+
+<Canvas>
+	<Story name="Close">
+		  <div style={{ height: '80px' }}>
+              <Close onClick={() => console.log('onClick')} />
+          </div>
+	</Story>
+</Canvas>

@@ -1,0 +1,27 @@
+import TabNav from "./TabNav";
+import TabNavReactRouterExample from "./examples/TabNavReactRouterExample";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Menus/TabNav" component={TabNav} />
+
+# Basic `TabNav` use without React Router
+
+<Canvas>
+	<Story name="TabNav">
+        <TabNav>
+			<a className="active">Nav Item 1</a>
+			<a>Nav Item 2</a>
+		</TabNav>
+	</Story>
+</Canvas>
+
+# TabNav using React Router
+
+<Canvas>
+	<Story name="React Router">
+		<TabNavReactRouterExample />
+	</Story>
+</Canvas>
+
+
+

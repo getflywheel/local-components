@@ -1,0 +1,47 @@
+import ImageCircle from "./ImageCircle";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Media/ImageCircle" component={ImageCircle} />
+
+Default image clipped to circle shape.
+The contained image uses 'object-fit: cover' to ensure that the entire circle area has pixel data within it regardless of the aspect ratio of the original source.
+
+<Canvas>
+	<Story name="ImageCircle">
+		<ImageCircle src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png" />
+	</Story>
+</Canvas>
+
+Small circle.
+
+<Canvas>
+	<Story name="Small">
+		<ImageCircle
+			size="s"
+			src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+		/>
+	</Story>
+</Canvas>
+
+Custom sized circle.
+
+<Canvas>
+	<Story name="Custom Size">
+		<ImageCircle
+			size="100px"
+			src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+		/>
+	</Story>
+</Canvas>
+
+Image clipped to rounded square shape.
+
+<Canvas>
+	<Story name="Square">
+		<ImageCircle
+			size="s"
+			square={true}
+			src="https://getflywheel.com/wp-content/uploads/2017/06/php-7-small.png"
+		/>
+	</Story>
+</Canvas>

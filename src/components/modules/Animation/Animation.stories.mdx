@@ -1,0 +1,23 @@
+import AnimationExample1 from './examples/AnimationExample';
+import AnimationExample2 from './examples/AnimationExample2';
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Modules/Animation" component={AnimationExample1} />
+
+Animations are managed via `react-move`. There are two types of animation categories: a single element and a group of elements.
+
+Group example of list items with add/remove animations:
+
+<Canvas>
+	<Story name="Example 1">
+        <AnimationExample1 />
+	</Story>
+</Canvas>
+
+Element example of modal animation.
+
+<Canvas>
+	<Story name="Example 2">
+        <AnimationExample2 />
+	</Story>
+</Canvas>

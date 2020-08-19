@@ -1,0 +1,20 @@
+import { Stepper, Step } from "./Stepper";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Menus/Stepper" component={Stepper} />
+
+<Canvas>
+	<Story name="Stepper">
+		<Stepper>
+			<Step number={1} done={false} active={true}>
+				Setup Site
+			</Step>
+			<Step number={2} done={false}>
+				Setup Environment
+			</Step>
+			<Step number={3} done={false}>
+				Setup WordPress
+			</Step>
+		</Stepper>
+	</Story>
+</Canvas>

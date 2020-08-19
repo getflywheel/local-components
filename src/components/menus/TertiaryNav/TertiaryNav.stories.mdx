@@ -1,0 +1,64 @@
+import { TertiaryNav, TertiaryNavItem } from "./TertiaryNav";
+import TertiaryNavWithDrawerExample from "./examples/TertiaryNavWithDrawerExample";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+export const Item1 = () => <div>Item 1 Content</div>;
+export const Item1Error = () => (<div><div>Item 1 Content</div><div className='TertiaryNavChild__Error'>error message example</div></div>);
+export const Item2 = () => <div>Item 2 Content</div>;
+export const Item3 = () => <div>Item 3 Content</div>;
+
+<Meta title="Menus/TertiaryNav" component={TertiaryNav} />
+
+The TertiaryNav component follows a two-column master/detail pattern with a nav menu in the left column and content associated the active menu item displayed in the right column.
+React Router 4 is used for routing and the props used for TertiaryNavItem mirror that API.
+
+Simple example where the TertiaryNav Items in the left column change the content (via the **component** prop) in the right column.
+
+<Canvas>
+	<Story name="TertiaryNav">
+		<TertiaryNav>
+			<TertiaryNavItem exact path="/" component={Item1}>
+				Menu Item 1
+			</TertiaryNavItem>
+			<TertiaryNavItem path="/item2" component={Item2}>
+				Menu Item 2
+			</TertiaryNavItem>
+			<TertiaryNavItem path="/item3" component={Item3}>
+				Menu Item 3
+			</TertiaryNavItem>
+		</TertiaryNav>
+	</Story>
+</Canvas>
+
+An example showing error state.
+
+<Canvas>
+	<Story name="Error State">
+		<TertiaryNav>
+			<TertiaryNavItem
+				variant={"error"}
+				exact
+				path="/"
+				component={Item1Error}
+			>
+				Menu Item 1
+			</TertiaryNavItem>
+			<TertiaryNavItem path="/item2" component={Item2}>
+				Menu Item 2
+			</TertiaryNavItem>
+			<TertiaryNavItem path="/item3" component={Item3}>
+				Menu Item 3
+			</TertiaryNavItem>
+		</TertiaryNav>
+	</Story>
+</Canvas>
+
+Advanced pattern combining the TertiaryNav with the Drawer component.
+
+<Canvas>
+	<Story name="With Drawer">
+		<div style={{ height: "200px" }}>
+			<TertiaryNavWithDrawerExample />
+		</div>
+	</Story>
+</Canvas>

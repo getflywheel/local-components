@@ -1,0 +1,24 @@
+import BigLoader from "./BigLoader";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Loaders/BigLoader" component={BigLoader} />
+
+## No Message
+
+<Canvas>
+	<Story name="No Message">
+		<div style={{ height: "100px" }}>
+			<BigLoader />
+		</div>
+	</Story>
+</Canvas>
+
+## With Message
+
+<Canvas>
+	<Story name="With Message">
+		<div style={{ height: "300px" }}>
+			<BigLoader message="Hello, World!" />
+		</div>
+	</Story>
+</Canvas>

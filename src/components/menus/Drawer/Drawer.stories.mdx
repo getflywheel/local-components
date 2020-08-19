@@ -1,0 +1,17 @@
+import Drawer from './Drawer';
+import DrawerExample from './examples/DrawerExample';
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Menus/Drawer" component={Drawer} />
+
+The Drawer component, which is hidden by default, contains content that can be programmatically shown or hidden as needed.
+This content slides up and down from below the container its used within.
+
+<Canvas>
+	<Story name="Drawer">
+        <div style={{height: '200px'}}>
+            <DrawerExample />
+        </div>
+	</Story>
+</Canvas>

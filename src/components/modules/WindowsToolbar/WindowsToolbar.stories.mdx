@@ -1,0 +1,47 @@
+import WindowsToolbar from "./WindowsToolbar";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Modules/WindowsToolbar" component={WindowsToolbar} />
+
+# Basic
+
+<Canvas>
+	<Story name="Basic">
+		<div style={{ contain: "strict", height: "32px" }}>
+			<WindowsToolbar
+				title="Local Storybook"
+				onMinimize={() => console.log("onMinimize")}
+				onMaximize={() => console.log("onMaximize")}
+				onQuit={() => console.log("onQuit")}
+				resizable={true}
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+# With Menu
+
+<Canvas>
+	<Story name="With Menu">
+		<div style={{ contain: "strict", height: "32px" }}>
+			<WindowsToolbar
+				title="Local Storybook"
+				onMinimize={() => console.log("onMinimize")}
+				onShowMenu={() => console.log("onShowMenu")}
+				onMaximize={() => console.log("onMaximize")}
+				onQuit={() => console.log("onQuit")}
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+# With Back
+
+<Canvas>
+	<Story name="With Back">
+        	<div style={{ contain: 'strict', height: '32px' }}>
+                <WindowsToolbar title="Local Storybook" onMinimize={() => console.log('onMinimize')}
+                        onBack={() => console.log('onBack')} onMaximize={() => console.log('onMaximize')} onQuit={() => console.log('onQuit')}/>
+            </div>
+    </Story>
+</Canvas>
