@@ -8,6 +8,7 @@
 		"declarationDir": "dist",
 		"strict": true,
 		"experimentalDecorators": true,
+		"esModuleInterop": true,
 		"target": "es2015"
 	},
 	"include": [
