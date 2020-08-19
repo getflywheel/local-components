@@ -5,10 +5,7 @@ node_modules
 .DS_Store
 /style.css
 /style.css.map
-/styleguide/index.html
-/styleguide/build
-/styleguide/style.*
-/styleguide/svg
+/storybook-static
 *.tgz
 /src/svg/*.tsx
 /src/**/*.d.ts
