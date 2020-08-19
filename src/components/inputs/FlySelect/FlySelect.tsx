@@ -6,7 +6,6 @@ import ArrowRightSVG from '../../../svg/arrow--right.svg';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './FlySelect.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
-import ReactDOM from 'react-dom';
 
 export interface FlySelectOption {
 	disabled?: boolean;
