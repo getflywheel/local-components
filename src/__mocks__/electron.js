@@ -5,15 +5,15 @@ const electronMock = {
     ipcMain: new EventEmitter(),
     remote: {
         app: {},
-        getGlobal: jest.fn(),
-        require: jest.fn().mockReturnValue(() => {}),
+        getGlobal: () => undefined,
+        require: () => ({}),
     },
     dialog: {
-        showErrorBox: jest.fn(),
+        showErrorBox: () => undefined,
     },
     shell: {
-        moveItemToTrash: jest.fn(),
-        openExternal: jest.fn(),
+        moveItemToTrash: () => undefined,
+        openExternal: () => undefined,
     },
 };
 
