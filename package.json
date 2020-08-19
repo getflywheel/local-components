@@ -41,7 +41,7 @@
 		"watch:sass": "chokidar 'src/**/*.sass' 'src/**/*.scss' -c 'yarn build:sass'",
 		"test": "jest",
 		"test-coverage": "jest --coverage",
-		"prepare": "yarn run build && shx rm dist/global.css.json",
+    "prepublishOnly": "yarn run build && shx rm dist/global.css.json",
 		"create-entrypoints": "ts-node --transpile-only tasks/create-component-entrypoints.ts",
 		"gh-pages:build": "styleguidist build",
 		"gh-pages:deploy": "styleguidist build && gh-pages -d styleguide",
