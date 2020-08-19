@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import * as styles from './BrowseInput.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
-import * as untildify from 'untildify';
+import untildify from 'untildify';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 let remote: any;
