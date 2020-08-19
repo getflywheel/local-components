@@ -11,6 +11,8 @@ module.exports = {
             options: {
                 viewport: false,
                 backgrounds: false,
+                actions: false,
+                controls: false,
             }
         }
     ],
