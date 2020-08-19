@@ -5,7 +5,14 @@ module.exports = {
         "../src/**/*.stories.mdx",
     ],
     "addons": [
-      '@storybook/addon-essentials'
+        'storybook-addon-themes',
+        {
+            name: '@storybook/addon-essentials',
+            options: {
+                viewport: false,
+                backgrounds: false,
+            }
+        }
     ],
     webpackFinal: (config) => {
         const fileLoaderRule = config.module.rules.find(rule => rule.test.test && rule.test.test('.svg'));
