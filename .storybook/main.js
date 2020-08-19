@@ -1,4 +1,6 @@
 const sharedRules = require('../webpack/shared-rules');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     "stories": [
@@ -26,6 +28,12 @@ module.exports = {
 
         config.module.rules.unshift(sharedRules.reactSvg);
         config.module.rules.unshift(sharedRules.cssSvg);
+
+        config.plugins.push(
+            new webpack.NormalModuleReplacementPlugin(/electron/, function (resource) {
+                resource.request = path.resolve(__dirname, '../src', '__mocks__', 'electron.js');
+            })
+        );
 
         return config;
     },
