@@ -8,7 +8,8 @@ module.exports = {
 		"node"
 	],
 	"moduleNameMapper": {
-		"\\.(css|scss|sass)$": "identity-obj-proxy"
+		"\\.(css|scss|sass)$": "identity-obj-proxy",
+		"\\.(png|svg|jpg|gif)$": "<rootDir>/src/__mocks__/file.js"
 	},
 	"roots": [
 		"<rootDir>/src"
