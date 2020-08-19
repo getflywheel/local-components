@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import CheckSVG from '../../../svg/checkmark--big';
-import DownloadSmallSVG from '../../../svg/download--small';
-import ArrowRightSVG from '../../../svg/arrow--right';
+import CheckSVG from '../../../svg/checkmark--big.svg';
+import DownloadSmallSVG from '../../../svg/download--small.svg';
+import ArrowRightSVG from '../../../svg/arrow--right.svg';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './FlySelect.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';

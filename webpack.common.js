@@ -70,7 +70,28 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(png|jpg|gif|svg)$/i,
+				test: /\.svg$/,
+				issuer: {
+					test: /\.[tj]sx?$/,
+				},
+				use: [
+					'babel-loader',
+					{
+						loader: 'react-svg-loader',
+						options: {
+							svgo: {
+								plugins: [
+									{
+										inlineStyles: { onlyMatchedOnce: false },
+									},
+								],
+							},
+						},
+					},
+				],
+			},
+			{
+				test: /\.(png|jpg|gif)$/i,
 				use: [
 					{
 						loader: 'url-loader',
@@ -79,7 +100,25 @@ module.exports = {
 						}
 					}
 				]
-			}
+			},
+			/**
+			 * SVGs inside CSS still need to be loaded with the URL loader instead of being converted to
+			 * React components
+			 */
+			{
+				test: /\.(svg)$/i,
+				issuer: {
+					test: /\.(css|sass|scss)$/,
+				},
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 16384,
+						},
+					},
+				],
+			},
 		],
 	},
 	node: {

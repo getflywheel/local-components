@@ -2,8 +2,8 @@ import * as React from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './Checkbox.sass';
-import CheckmarkSVG from '../../../svg/checkmark--sm';
-import CheckMixedSVG from '../../../svg/checkmark--mixed';
+import CheckmarkSVG from '../../../svg/checkmark--sm.svg';
+import CheckMixedSVG from '../../../svg/checkmark--mixed.svg';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {

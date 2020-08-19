@@ -1,8 +1,8 @@
 import * as React from 'react';
-import CircleSVG from '../../../svg/circle';
-import ExclamationSVG from '../../../svg/exclamation';
-import CompleteSVG from '../../../svg/complete';
-import SpinnerSVG from '../../../svg/spinner';
+import CircleSVG from '../../../svg/circle.svg';
+import ExclamationSVG from '../../../svg/exclamation.svg';
+import CompleteSVG from '../../../svg/complete.svg';
+import SpinnerSVG from '../../../svg/spinner.svg';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {

@@ -2,11 +2,11 @@ import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import * as styles from './WindowsToolbar.sass';
-import WindowsHamburger from '../../../svg/windows_hamburger';
-import WindowsMinimize from '../../../svg/windows_minimize';
-import WindowsMaximize from '../../../svg/windows_maximize';
-import WindowsClose from '../../../svg/windows_close';
-import WindowsBack from '../../../svg/windows_back';
+import WindowsHamburger from '../../../svg/windows_hamburger.svg';
+import WindowsMinimize from '../../../svg/windows_minimize.svg';
+import WindowsMaximize from '../../../svg/windows_maximize.svg';
+import WindowsClose from '../../../svg/windows_close.svg';
+import WindowsBack from '../../../svg/windows_back.svg';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {

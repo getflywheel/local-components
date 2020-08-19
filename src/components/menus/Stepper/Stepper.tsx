@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import CompleteSVG from '../../../svg/complete';
+import CompleteSVG from '../../../svg/complete.svg';
 import * as styles from './Stepper.sass';
 
 export class Stepper extends React.Component<IReactComponentProps> {
