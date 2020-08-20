@@ -1,10 +1,10 @@
 /// <reference path="../src/global.d.ts" />
 import 'ignore-styles';
 
-import * as globby from 'globby';
-import * as path from 'path';
-import * as mock from 'mock-require';
-import * as fs from 'fs';
+import globby from 'globby';
+import path from 'path';
+import mock from 'mock-require';
+import fs from 'fs';
 
 mock('electron', {
 	remote: {
