@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as styles from './Markdown.sass';
-import * as ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 import * as Lowlight from 'react-lowlight';
 import * as apache from 'highlight.js/lib/languages/apache';
 import * as bash from 'highlight.js/lib/languages/bash';
