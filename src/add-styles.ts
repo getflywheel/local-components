@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import * as urlParse from 'url-parse';
+import urlParse from 'url-parse';
 
 const isStylesheetLoaded = (href: string) => {
 

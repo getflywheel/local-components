@@ -1,14 +1,14 @@
 import React from 'react';
 import TabNav from '../TabNav';
-import { NavLink, Switch, Route, withRouter } from 'react-router-dom';
+import { NavLink, Switch, Route, withRouter, RouteComponentProps } from 'react-router-dom';
 
-class ExampleBase extends React.Component{
-    render () {
-        return (
-        	<div>
+class ExampleBase extends React.Component<RouteComponentProps> {
+	render () {
+		return (
+			<div>
 				<TabNav>
 					<NavLink
-						exact
+						exact={true}
 						to={`${this.props.match.url}/`}
 						activeClassName="active"
 					>
@@ -21,23 +21,23 @@ class ExampleBase extends React.Component{
 						NavLink B
 					</NavLink>
 			   </TabNav>
-			   <div style={{padding: "30px"}}>
+			   <div style={{padding: '30px'}}>
 				   <Switch>
 						<Route
-							exact
+							exact={true}
 							path={`${this.props.match.url}/`}
 							render={(props) => <div>Content A</div>}
 						/>
 						<Route
-							exact
+							exact={true}
 							path={`${this.props.match.url}/page-b`}
 							render={(props) => <div>Content B</div>}
 						/>
 					</Switch>
 				</div>
 		   </div>
-        );
-    };
+		);
+	}
 }
 
 // in our exporting of the component, we wrap it in withRouter(), giving it access to the props that we need for the Routes
