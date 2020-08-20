@@ -11,12 +11,33 @@ Take a quick look at our living component documentation [here](https://getflywhe
 
 In additional to a quickly growing set of React components, we also have SVGs, SASS partials, and more to come!
 
-## Quick start
+## Installation
 
-1. Clone and pull down the latest
-1. Install using `yarn`
-1. Start up Styleguidist `yarn start`
-1. Check it out at `http://localhost:6060`
+1. Clone and pull down the latest from the repo
+2. Install dependencies using `yarn`
+
+## Storybook
+
+The quickest way to work on `local-components` is to leverage [Storybook](https://storybook.js.org/). Storybook is a 
+local development area that works well with React components and supports hot-module reloading.
+
+To start Storybook, run `yarn storybook`.
+
+## Developing within Local
+
+If you wish to work on `local-components` and see the changes within Local, you will need to run the following:
+
+1. `yarn link` in `local-components` (only needed one time or after unlinking)
+2. Run `nps components.link` in `flywheel-local` (only needed one time or after unlinking)
+3. Run `nps build.dev` in `flywheel-local`
+4. Start Local
+5. Make any necessary changes in `local-components`. Note, Local does not support hot-module reloading in all locations
+so refreshing the UI in Local (<kbd>Cmd</kbd> + <kbd>R</kbd>) will likely be necessary.
+
+## Running both Storybook and Watch at the same time
+
+If you wish to run both Storybook and the watcher for Local at the same time, you can run `yarn start`. Note, this particular
+script spawns two instances of Webpack and is very resource intensive.
 
 ## Digging deeper
 
@@ -50,7 +71,7 @@ In addition, the Container wrapper adds convenience props that allow for easy on
 
 #### Organization
 
-Components are organized by type. These type groups can be seen when running styledist and are defined within `styleguide.config.js`).
+Components are organized by type. These type groups can be seen when running Storybook.
 
 ### Styles
 
