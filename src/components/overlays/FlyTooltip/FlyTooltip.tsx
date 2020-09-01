@@ -31,10 +31,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent,
 						[styles.FlyTooltip_Container__ForceHoverState]: this.props.forceHoverState,
 					},
-					this.props.className,
 				)}
-				id={this.props.id}
-				style={this.props.style}
 			>
 				<div
 					className={classnames(
@@ -49,6 +46,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 						},
 						this.props.className,
 					)}
+					id={this.props.id}
 					style={this.props.style}
 				>
 					{
