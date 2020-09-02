@@ -63,7 +63,7 @@ export {
 } from './components/modules/InnerPaneSidebar/InnerPaneSidebar';
 export { default as Markdown } from './components/modules/Markdown/Markdown';
 export { default as SiteInfoInnerPane } from './components/modules/SiteInfoInnerPane/SiteInfoInnerPane';
-export { TitleBar } from './components/modules/Titlebar/TitleBar';
+export { TitleBar } from './components/modules/TitleBar/TitleBar';
 export {
 	VerticalNav,
 	VerticalNavItem
