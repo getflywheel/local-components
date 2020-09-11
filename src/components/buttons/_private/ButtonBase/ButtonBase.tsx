@@ -47,6 +47,11 @@ enum ButtonPropTextDecoration {
 	underline = 'underline',
 }
 
+enum ButtonLetterSpacing {
+	normal = 'normal',
+	tracked = 'tracked',
+}
+
 export interface IButtonCommonProps extends ILocalContainerProps {
 	/** Whether the button is disabled. */
 	disabled?: boolean;
@@ -75,6 +80,8 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 	textTransform?: ButtonPropTextTransform | keyof typeof ButtonPropTextTransform;
 	/** The text decoration applied to the button */
 	textDecoration?: ButtonPropTextDecoration | keyof typeof ButtonPropTextDecoration;
+	/** The letter spacing applied to the button */
+	letterSpacing?: ButtonLetterSpacing | keyof typeof ButtonLetterSpacing;
 }
 
 export class ButtonBase extends React.Component<IButtonBaseProps> {
@@ -88,6 +95,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 		fontWeight: ButtonPropFontWeight.heavy,
 		textTransform: ButtonPropTextTransform.upper,
 		textDecoration: ButtonPropTextDecoration.none,
+		letterSpacing: ButtonLetterSpacing.tracked,
 	};
 
 	render () {
@@ -101,6 +109,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 			form,
 			id,
 			innerRef,
+			letterSpacing,
 			onClick,
 			padding,
 			fontWeight,
@@ -133,6 +142,8 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 							[styles.ButtonBase__Form_Outline]: form === ButtonPropForm.outline,
 							[styles.ButtonBase__Form_Reversed]: form === ButtonPropForm.reversed,
 							[styles.ButtonBase__Form_Text]: form === ButtonPropForm.text,
+							[styles.ButtonBase__LetterSpacing_Normal]: letterSpacing === ButtonLetterSpacing.normal,
+							[styles.ButtonBase__LetterSpacing_Tracked]: letterSpacing === ButtonLetterSpacing.tracked,
 							[styles.ButtonBase__Padding_Small]: padding === ButtonPropPadding.s,
 							[styles.ButtonBase__Padding_Medium]: padding === ButtonPropPadding.m,
 							[styles.ButtonBase__Padding_Large]: padding === ButtonPropPadding.l,

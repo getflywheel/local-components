@@ -21,7 +21,6 @@ $disabled-text-dark: $gray-dark50;
 	flex-shrink: 0;
 	border-radius: 500px;
 	@include defaultFontSettings;
-	@include tracking(40);
 	// setup a light and dark css variable for each css prop name so we can effortlessly toggle between them based on the current theme
 	@include setupThemeVars(
 		'--Button_Background',
@@ -204,6 +203,14 @@ $disabled-text-dark: $gray-dark50;
 
 .ButtonBase__TextDecoration_Underline {
 	@include setThemeVar('--Button__TextDecoration', underline);
+}
+
+.ButtonBase__LetterSpacing_Normal {
+	letter-spacing: normal;
+}
+
+.ButtonBase__LetterSpacing_Tracked {
+	@include tracking(40);
 }
 
 .ButtonBase__FontSize_XSmall {
