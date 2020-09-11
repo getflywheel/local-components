@@ -8,8 +8,6 @@
 	padding: 5px;
 	font-weight: 700;
 	background: transparent;
-	border: none;
-	border-radius: 5px;
 	@include defaultFontSettings;
 	@include tracking(40);
 	@include setupThemeVars(
@@ -17,16 +15,21 @@
 		'--Button_Background_Hover',
 		'--Button_Text_Color',
 		'--Button_Text_Color_Hover',
-		'--Button_Padding'
+		'--Button_Padding',
+		'--Button_Border',
+		'--Button_Border_Hover',
 	);
 
 	color: var(--Button_Text_Color);
 	background: var(--Button_Background);
 	padding: var(--Button_Padding);
+	border: var(--Button_Border);
+	border-radius: 5px;
 
 	&:hover {
 		color: var(--Button_Text_Color_Hover);
 		background: var(--Button_Background_Hover);
+		border: var(--Button_Border_Hover);
 	}
 
 	&:active {
@@ -36,20 +39,32 @@
 	span, svg, g, path, circle {
 		cursor: pointer;
 	}
+
+	svg path {
+		fill: var(--Button_Text_Color);
+	}
+
+	&:hover svg path {
+		fill: var(--Button_Text_Color_Hover);
+	}
 }
 
 .CopyButton__Color_Gray {
-	@include setThemeVar('--Button_Background', $gray5);
-	@include setThemeVar('--Button_Background_Hover', $gray15);
-	@include setThemeVar('--Button_Text_Color', $gray-dark50);
-	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50);
+	@include setThemeVar('--Button_Background', $gray5, none);
+	@include setThemeVar('--Button_Background_Hover', $gray15, none);
+	@include setThemeVar('--Button_Text_Color', $gray-dark50, $gray25);
+	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50, $white);
+	@include setThemeVar('--Button_Border', none, 1px solid $gray25);
+	@include setThemeVar('--Button_Border_Hover', none, 1px solid $white);
 }
 
 .CopyButton__Color_Gray_Padding_Small {
-	@include setThemeVar('--Button_Padding', 5px 10px);
+	@include setThemeVar('--Button_Padding', 5px 10px, 4px 10px);
+	@include setThemeVar('--Button_Border_Width', none, 1px);
 }
 .CopyButton__Color_Gray_Padding_Medium {
 	@include setThemeVar('--Button_Padding', 10px);
+	@include setThemeVar('--Button_Border_Width', none, 1.5px);
 }
 
 .CopyButton__Color_Green {
@@ -60,7 +75,7 @@
 }
 
 .CopyButton__Color_Green_Padding_Small {
-	@include setThemeVar('--Button_Padding', 5px 10px);
+	@include setThemeVar('--Button_Padding', 5px 10px, 4px 10px);
 }
 
 .CopyButton__Color_Green_Padding_Medium {
@@ -84,6 +99,7 @@
 
 .CopyButton__Text {
 	font-size: 12px;
+	letter-spacing: 0.24px;
 }
 
 .CopyButton__Text_Margin {
