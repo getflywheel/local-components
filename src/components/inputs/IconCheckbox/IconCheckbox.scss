@@ -1,0 +1,29 @@
+
+@import '../../../styles/_partials/index';
+
+.IconCheckbox {
+	height: 24px;
+	width: 24px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		@include theme-background-gray5-else-gray-dark50;
+		border-radius: 100%;
+	}
+}
+
+.IconCheckbox_InputHidden {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.IconCheckbox_Icon {
+	overflow: inherit;
+}
+
