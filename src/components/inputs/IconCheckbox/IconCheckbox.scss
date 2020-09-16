@@ -1,0 +1,27 @@
+
+.IconCheckbox {
+	height: 24px;
+	width: 24px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:hover {
+		background-color: #f7f6f6;
+		border-radius: 100%;
+	}
+}
+
+.IconCheckbox_InputHidden {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.IconCheckbox_Icon {
+	overflow: inherit;
+}
+
