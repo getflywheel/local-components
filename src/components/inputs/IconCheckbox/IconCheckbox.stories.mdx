@@ -1,6 +1,5 @@
 import IconCheckbox from "./IconCheckbox";
-import YellowStarSVG from '../../../svg/star--yellow.tsx'
-import GrayStarSVG from '../../../svg/star--gray.tsx'
+import { GrayStarIcon, YellowStarIcon } from './_private/StarIcons';
 
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
@@ -12,8 +11,8 @@ Default with change handler
 	<Story name="Default">
 		<div>
 			<IconCheckbox
-				svgCheckedIcon={YellowStarSVG}
-				svgUncheckedIcon={GrayStarSVG}
+				svgCheckedIcon={YellowStarIcon}
+				svgUncheckedIcon={GrayStarIcon}
 				onChange={(checked) =>
 					console.log("onChange - checked: ", checked)
 				}
@@ -28,8 +27,8 @@ Checked
 	<Story name="Checked">
 		<div>
 			<IconCheckbox
-				svgCheckedIcon={YellowStarSVG}
-				svgUncheckedIcon={GrayStarSVG}
+				svgCheckedIcon={YellowStarIcon}
+				svgUncheckedIcon={GrayStarIcon}
 				checked={true}
 			/>
 		</div>
@@ -42,8 +41,8 @@ Disabled & Unchecked
 	<Story name="Disabled &amp; Unchecked">
 		<div>
 			<IconCheckbox
-				svgCheckedIcon={YellowStarSVG}
-				svgUncheckedIcon={GrayStarSVG}
+				svgCheckedIcon={YellowStarIcon}
+				svgUncheckedIcon={GrayStarIcon}
 				disabled={true}
 				checked={false}
 			/>
@@ -57,8 +56,8 @@ Disabled & Checked
 	<Story name="Disabled &amp; Checked">
         <div>
             <IconCheckbox
-				svgCheckedIcon={YellowStarSVG}
-				svgUncheckedIcon={GrayStarSVG}
+				svgCheckedIcon={YellowStarIcon}
+				svgUncheckedIcon={GrayStarIcon}
 				disabled={true}
 				checked={true}
 			/>
