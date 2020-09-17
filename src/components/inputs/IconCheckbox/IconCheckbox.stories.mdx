@@ -1,0 +1,67 @@
+import IconCheckbox from "./IconCheckbox";
+import YellowStarSVG from '../../../svg/star--yellow.tsx'
+import GrayStarSVG from '../../../svg/star--gray.tsx'
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Inputs/IconCheckbox" component={IconCheckbox} />
+
+Default with change handler
+
+<Canvas>
+	<Story name="Default">
+		<div>
+			<IconCheckbox
+				svgCheckedIcon={YellowStarSVG}
+				svgUncheckedIcon={GrayStarSVG}
+				onChange={(checked) =>
+					console.log("onChange - checked: ", checked)
+				}
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+Checked
+
+<Canvas>
+	<Story name="Checked">
+		<div>
+			<IconCheckbox
+				svgCheckedIcon={YellowStarSVG}
+				svgUncheckedIcon={GrayStarSVG}
+				checked={true}
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+Disabled & Unchecked
+
+<Canvas>
+	<Story name="Disabled &amp; Unchecked">
+		<div>
+			<IconCheckbox
+				svgCheckedIcon={YellowStarSVG}
+				svgUncheckedIcon={GrayStarSVG}
+				disabled={true}
+				checked={false}
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+Disabled & Checked
+
+<Canvas>
+	<Story name="Disabled &amp; Checked">
+        <div>
+            <IconCheckbox
+				svgCheckedIcon={YellowStarSVG}
+				svgUncheckedIcon={GrayStarSVG}
+				disabled={true}
+				checked={true}
+			/>
+        </div>
+	</Story>
+</Canvas>

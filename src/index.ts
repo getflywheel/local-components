@@ -21,6 +21,7 @@ export {
 	FlySelectOptions,
 	FlySelectOptionGroups
 } from './components/inputs/FlySelect/FlySelect';
+export { default as IconCheckbox } from './components/inputs/IconCheckbox/IconCheckbox';
 export { default as InputPasswordToggle } from './components/inputs/InputPasswordToggle/InputPasswordToggle';
 export { default as BasicInput } from './components/inputs/BasicInput/BasicInput';
 export { default as InputSearch } from './components/inputs/InputSearch/InputSearch';
