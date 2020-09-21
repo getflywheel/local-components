@@ -30,10 +30,7 @@ export const IconCheckbox: React.FC<IProps> = ({
 		const checkedUpdate: boolean = !isChecked;
 
 		updateCheckedState(checkedUpdate);
-
-		if (onChange) {
-			onChange(isChecked);
-		}
+		onChange?.(checkedUpdate);
 	};
 
 	const CheckedSVG = svgCheckedIcon;
