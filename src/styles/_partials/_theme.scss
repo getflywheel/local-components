@@ -68,10 +68,6 @@
 	@include __theme-background($gray2, $gray-dark50);
 }
 
-@mixin theme-background-gray5-else-black {
-	@include __theme-background($gray5, $black);
-}
-
 @mixin theme-background-gray5-else-graydarkalt {
 	@include __theme-background($gray5, $gray-dark-alt);
 }
