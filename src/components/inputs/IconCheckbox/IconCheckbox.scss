@@ -10,7 +10,7 @@
 	justify-content: center;
 
 	&:hover {
-		@include theme-background-gray5-else-gray-dark50;
+		@include theme-background-gray5-else-black;
 		border-radius: 100%;
 	}
 }
