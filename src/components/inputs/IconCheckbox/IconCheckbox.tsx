@@ -14,6 +14,7 @@ interface IProps extends IReactComponentProps {
 	onChange: FunctionGeneric;
 	svgCheckedIcon: React.FC<ISvgProps>;
 	svgUncheckedIcon: React.FC<ISvgProps>;
+	useAltHoverColor?: boolean;
 }
 
 export const IconCheckbox: React.FC<IProps> = ({
@@ -22,6 +23,7 @@ export const IconCheckbox: React.FC<IProps> = ({
 	onChange,
 	svgCheckedIcon,
 	svgUncheckedIcon,
+	useAltHoverColor,
 	...props
 }) => {
 	const [ isChecked, updateCheckedState ] = useState(checked === undefined ? false : checked);
@@ -43,6 +45,7 @@ export const IconCheckbox: React.FC<IProps> = ({
 				{
 					[styles.IconCheckbox__Checked]: isChecked === true,
 					[styles.IconCheckbox__Disabled]: disabled,
+					[styles.IconCheckbox__AltHoverColor]: useAltHoverColor === true,
 				},
 				props.className,
 			)}

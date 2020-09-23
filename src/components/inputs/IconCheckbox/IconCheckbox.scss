@@ -10,8 +10,12 @@
 	justify-content: center;
 
 	&:hover {
-		@include theme-background-gray5-else-black;
+		@include theme-background-gray5-else-gray-dark50;
 		border-radius: 100%;
+	}
+
+	&.IconCheckbox__AltHoverColor:hover {
+		@include theme-background-gray5-else-graydarkalt;
 	}
 }
 
