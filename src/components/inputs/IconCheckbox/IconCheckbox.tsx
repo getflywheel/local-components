@@ -11,56 +11,71 @@ interface ISvgProps {
 interface IProps extends IReactComponentProps {
 	checked?: boolean;
 	disabled?: boolean;
+	Icon: React.FC<ISvgProps>;
 	onChange: FunctionGeneric;
-	svgCheckedIcon: React.FC<ISvgProps>;
-	svgUncheckedIcon: React.FC<ISvgProps>;
-	useAltHoverColor?: boolean;
+	/** Whether to override svg icon path colors **/
+	useIconColorsOnChecked?: boolean;
+	useIconColorsOnCheckedHover?: boolean;
+	useIconColorsOnUnchecked?: boolean;
+	useIconColorsOnUncheckedHover?: boolean;
 }
 
 export const IconCheckbox: React.FC<IProps> = ({
 	checked,
 	disabled,
+	Icon,
 	onChange,
-	svgCheckedIcon,
-	svgUncheckedIcon,
-	useAltHoverColor,
+	useIconColorsOnChecked,
+	useIconColorsOnCheckedHover,
+	useIconColorsOnUnchecked,
+	useIconColorsOnUncheckedHover,
 	...props
 }) => {
 	const [ isChecked, updateCheckedState ] = useState(checked === undefined ? false : checked);
+	// state to track temporarily disabling hover to make the checked/unchecked effect play nicer with hover
+	const [ disableHoverStyles, setDisableHoverStyles ] = useState(checked === undefined ? false : checked);
 
 	const handleChange = () => {
 		const checkedUpdate: boolean = !isChecked;
 
+		setDisableHoverStyles(true);
 		updateCheckedState(checkedUpdate);
 		onChange?.(checkedUpdate);
 	};
 
-	const CheckedSVG = svgCheckedIcon;
-	const UncheckedSVG = svgUncheckedIcon;
+	const onMouseLeave = () => {
+		if (disableHoverStyles) {
+			setDisableHoverStyles(false);
+		}
+	}
 
 	return (
 		<div
 			className={classnames(
 				styles.IconCheckbox,
 				{
-					[styles.IconCheckbox__Checked]: isChecked === true,
+					[styles.IconCheckbox__Checked]: isChecked,
 					[styles.IconCheckbox__Disabled]: disabled,
-					[styles.IconCheckbox__AltHoverColor]: useAltHoverColor === true,
+					[styles.IconCheckbox__DisableHoverStyles]: disableHoverStyles,
+					[styles.IconCheckbox__UseIconColorsOnChecked]: useIconColorsOnChecked,
+					[styles.IconCheckbox__UseIconColorsOnCheckedHover]: useIconColorsOnCheckedHover,
+					[styles.IconCheckbox__UseIconColorsOnUnchecked]: useIconColorsOnUnchecked,
+					[styles.IconCheckbox__UseIconColorsOnUncheckedHover]: useIconColorsOnUncheckedHover,
 				},
 				props.className,
 			)}
 			id={props.id}
+			onMouseLeave={onMouseLeave}
 			style={props.style}
 		>
 			<input
 				type="checkbox"
 				className={styles.IconCheckbox_InputHidden}
-				checked={isChecked === true}
+				checked={isChecked}
 				disabled={disabled}
 				onChange={handleChange}
 			/>
-			{isChecked && <CheckedSVG className={styles.IconCheckbox_Icon} />}
-			{!isChecked && <UncheckedSVG className={styles.IconCheckbox_Icon} />}
+			<Icon className={styles.IconCheckbox_Icon} />
 		</div>
 	);
 };
