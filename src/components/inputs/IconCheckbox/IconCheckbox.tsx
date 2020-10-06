@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './IconCheckbox.scss';
@@ -31,9 +31,13 @@ export const IconCheckbox: React.FC<IProps> = ({
 	useIconColorsOnUncheckedHover,
 	...props
 }) => {
-	const [ isChecked, updateCheckedState ] = useState(checked === undefined ? false : checked);
+	const isCheckedProp = checked === undefined ? false : checked;
+	const [ isChecked, updateCheckedState ] = useState(isCheckedProp);
 	// state to track temporarily disabling hover to make the checked/unchecked effect play nicer with hover
-	const [ disableHoverStyles, setDisableHoverStyles ] = useState(checked === undefined ? false : checked);
+	const [ disableHoverStyles, setDisableHoverStyles ] = useState(isCheckedProp);
+
+	// to allow updates to the state via prop changes, an effect much be used
+	useEffect(() => { updateCheckedState(isCheckedProp)}, [checked] )
 
 	const handleChange = () => {
 		const checkedUpdate: boolean = !isChecked;
