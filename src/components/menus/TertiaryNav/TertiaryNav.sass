@@ -2,7 +2,6 @@
 
 .TertiaryNavContainer
 	display: flex
-	overflow-y: auto
 	flex-direction: row
 	flex: 1 // this assumes its parent is a flex element
 	@include theme-background-white-else-graydark
@@ -69,5 +68,5 @@
 	.TertiaryContent
 		flex: 1
 		overflow: inherit
-
+		max-height: calc(100vh - 255px)
 
