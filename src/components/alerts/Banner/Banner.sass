@@ -42,6 +42,24 @@
 	@at-root :global(.SettingsPane_Content) &
 		margin: -34px 0 20px
 
+	.renderIcon
+		min-width: 18px
+		min-height: 18px
+		margin-right: 10px
+
+		> svg
+			width: 18px
+			height: 18px
+			margin-right: 10px
+			vertical-align: middle
+
+			path, circle, rect
+				fill: $white
+
+			@include selectors_ifHostHasModifier('.Banner__Neutral')
+				path
+					fill: $yellow
+
 	> svg
 		width: 18px
 		height: 18px
