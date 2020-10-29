@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Switch, Route, NavLink, RouteComponentProps, withRouter, Redirect } from 'react-router-dom';
-import * as styles from './TertiaryNav.sass';
+import * as styles from './TertiaryNav.scss';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
