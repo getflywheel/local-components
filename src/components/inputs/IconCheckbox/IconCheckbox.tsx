@@ -37,7 +37,7 @@ export const IconCheckbox: React.FC<IProps> = ({
 	const [ disableHoverStyles, setDisableHoverStyles ] = useState(isCheckedProp);
 
 	// to allow updates to the state via prop changes, an effect much be used
-	useEffect(() => { updateCheckedState(isCheckedProp)}, [checked] )
+	useEffect(() => { updateCheckedState(isCheckedProp)}, [checked] );
 
 	const handleChange = () => {
 		const checkedUpdate: boolean = !isChecked;
@@ -68,11 +68,11 @@ export const IconCheckbox: React.FC<IProps> = ({
 				},
 				props.className,
 			)}
-			id={props.id}
 			onMouseLeave={onMouseLeave}
 			style={props.style}
 		>
 			<input
+				id={props.id}
 				type="checkbox"
 				className={styles.IconCheckbox_InputHidden}
 				checked={isChecked}
