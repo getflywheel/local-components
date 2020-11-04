@@ -46,10 +46,10 @@ export default class InputPasswordToggle extends React.Component<IProps, IState>
 					`PasswordToggle__${this.state.inputType}`,
 					this.props.className,
 				)}
-				id={this.props.id}
 				style={this.props.style}
 			>
 				<input
+					id={this.props.id}
 					type={this.state.inputType}
 					className={className ? `PasswordToggleInput ${className}` : 'PasswordToggleInput'}
 					{...props}
