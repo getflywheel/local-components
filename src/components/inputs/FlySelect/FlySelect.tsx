@@ -337,6 +337,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 		return (
 			<div
+				id={`${this.props.id}_Option`}
 				tabIndex={0}
 				key={i}
 				data-value={option.value}
