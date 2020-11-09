@@ -133,6 +133,7 @@ $disabled-text-dark: $gray-dark50;
 	}
 
 	&[disabled] {
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-alt-soft, $disabled-background-dark);
 		@include setThemeVar('--Button_Background', $disabled-background-light-alt-soft, $disabled-background-dark-alt-hard);
 		@include setThemeVar('--Button_BorderColor', $disabled-background-light, $disabled-background-dark);
 		@include setThemeVar('--Button_TextColor', $disabled-text-light-alt-soft, $disabled-background-dark);
