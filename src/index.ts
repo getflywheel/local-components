@@ -36,6 +36,7 @@ export { default as DownloaderItem } from './components/loaders/DownloaderItem/D
 export { default as InstallerStepStatus } from './components/loaders/InstallerStepStatus/InstallerStepStatus';
 export { default as LoadingIndicator } from './components/loaders/LoadingIndicator/LoadingIndicator';
 export { default as ProgressBar } from './components/loaders/ProgressBar/ProgressBar';
+export { default as ProgressRing } from './components/loaders/ProgressRing/ProgressRing';
 export { default as Spinner } from './components/loaders/Spinner/Spinner';
 // Media
 export { default as Avatar } from './components/media/Avatar/Avatar';

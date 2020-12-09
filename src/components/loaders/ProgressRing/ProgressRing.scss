@@ -1,0 +1,98 @@
+@import '../../../styles/_partials/index';
+
+@mixin overrideColorLightAndDark($color) {
+	@include if-theme-light() {
+		color: $color;
+	}
+	@include if-theme-dark() {
+		color: $color;
+	}
+}
+
+@mixin overrideStrokeLightAndDark($stroke1, $stroke2: $stroke1) {
+	@include if-theme-light() {
+		stroke: $stroke1;
+	}
+	@include if-theme-dark() {
+		stroke: $stroke2;
+	}
+}
+
+// Base Component
+
+.ProgressRing {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+// SVG
+
+.ProgressRing_Svg {
+	// position at "12 o'clock" by shifting -90 degrees and nudging to offset 'stroke-linecap: round' overhang
+	transform: rotate(-88deg);
+	transform-origin: 50% 50%;
+}
+
+.ProgressRing_SvgBackground {
+	@include if-theme-dark() {
+		mix-blend-mode: luminosity;
+	}
+}
+
+.ProgressRing_SvgForeground {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+// SVG Circle "Ring" Background
+
+.ProgressRing_SvgBackground_Circle {
+	fill: none;
+	stroke: $gray15;
+	stroke-linecap: round;
+
+	@include if-theme-dark() {
+		stroke: $gray;
+		opacity: 0.5;
+	}
+}
+
+// SVG Circle "Ring" Foreground Fill
+
+.ProgressRing_SvgForeground_Circle {
+	fill: none;
+	stroke-linecap: round;
+	transition: stroke-dashoffset 500ms ease-in-out;
+	@include overrideStrokeLightAndDark($green, $white);
+}
+
+// SVG Circle "Ring" Foreground Fill Modifiers
+
+.ProgressRing_SvgForeground_Circle__disabledTransition {
+	transition: stroke-dashoffset 0ms;
+}
+
+.ProgressRing_SvgForeground_Circle__strokeLight {
+	@include overrideStrokeLightAndDark($green);
+}
+
+// Text
+
+.ProgressRing_Text {
+	margin-left: 10px;
+	@include theme-color-gray-else-white;
+	font-weight: 500;
+	letter-spacing: 0.005em;
+}
+
+// Text Modifiers
+
+.ProgressRing_Text__Dark {
+	@include overrideColorLightAndDark($gray);
+}
+
+.ProgressRing_Text__Light {
+	@include overrideColorLightAndDark($white);
+}
