@@ -1,0 +1,76 @@
+import ProgressRing from "./ProgressRing";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { useEffect, useState } from 'react';
+
+<Meta title="Loaders/ProgressRing" component={ProgressRing} />
+
+# Non-updating progress state both large (default) and small
+
+<Canvas>
+	<Story name="large (default)">
+        <ProgressRing progress={0} />
+        <ProgressRing progress={25} />
+        <ProgressRing progress={50} />
+        <ProgressRing progress={75} />
+        <ProgressRing progress={100} />
+	</Story>
+    <Story name="small">
+        <ProgressRing size="small" progress={0} />
+        <ProgressRing size="small" progress={25} />
+        <ProgressRing size="small" progress={50} />
+        <ProgressRing size="small" progress={75} />
+        <ProgressRing size="small" progress={100} />
+    </Story>
+</Canvas>
+
+# Updating progress
+
+<Canvas>
+    <Story name="updating progress">
+        {() => {
+            const [counter, setCounter] = useState(0);
+            useEffect(() => {
+                const interval = setInterval(() => { setCounter(num => num + 1) }, 1000);
+                return () => clearInterval(interval);
+            }, []);
+            return (
+                <>
+                    <ProgressRing progress={counter * 0.75} />
+                    <ProgressRing progress={counter * 1.5} />
+                    <ProgressRing progress={counter * 3} />
+                    <ProgressRing progress={counter * 5} />
+                    <ProgressRing progress={counter * 10} />
+                    <ProgressRing progress={counter * 20} />
+                </>
+            );
+        }}
+    </Story>
+</Canvas>
+
+# Text and progress color
+
+<Canvas>
+    <Story name="auto theme colors">
+        <div className="Theme__Light" style={{ padding: '10px' }}>
+            <h1 style={{ padding: '10px 0' }}>Light theme</h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <ProgressRing progress={25} size="large">Installing..</ProgressRing>
+                <ProgressRing progress={25} size="small">Installing..</ProgressRing>
+            </div>
+        </div>
+        <div className="Theme__Dark" style={{ background: '#262727', padding: '10px' }}>
+            <h1 style={{ color: '#FFFFFF', padding: '10px 0' }}>Dark theme</h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <ProgressRing progress={25} size="large">Installing..</ProgressRing>
+                <ProgressRing progress={25} size="small">Installing..</ProgressRing>
+            </div>
+        </div>
+        <div className="Theme__Dark" style={{ background: '#f47820', padding: '10px' }}>
+            <h1 style={{ color: '#FFFFFF', padding: '10px 0' }}>Dark theme / orange bg</h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <ProgressRing progress={25} size="large">Installing..</ProgressRing>
+                <ProgressRing progress={25} size="small">Installing..</ProgressRing>
+            </div>
+        </div>
+    </Story>
+</Canvas>
