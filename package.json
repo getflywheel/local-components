@@ -57,6 +57,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-typescript": "^7.12.1",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/react": "^6.1.11",
     "@types/classnames": "^2.2.7",
