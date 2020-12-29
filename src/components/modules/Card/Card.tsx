@@ -7,6 +7,7 @@ import { Title } from '../../text/Title/Title';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
+	childrenClassName?: string;
 	content?: React.ReactNode;
 	contentClassName?: string;
 	contentDescription?: React.ReactNode;
@@ -178,7 +179,7 @@ export default class Card extends React.Component<IProps> {
 				)}
 				{(this.props.content || this.props.children) && (
 					// note this needs to be wrapped in a div for sibling :last-child styles to work
-					<div>
+					<div className={this.props.childrenClassName}>
 						{this.props.content}
 						{this.props.children}
 					</div>
@@ -214,6 +215,7 @@ export default class Card extends React.Component<IProps> {
 					this.props.className,
 				)}
 				id={this.props.id}
+				onClick={this.props.onClick}
 				style={{
 					...(this.props.overflow !== 'hidden' && {overflow: this.props.overflow}), // conditionally add style
 					...this.props.style,
