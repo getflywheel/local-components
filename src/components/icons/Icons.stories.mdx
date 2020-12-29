@@ -1,0 +1,22 @@
+import { AddIcon, Icons } from "./Icons";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { IconsStoriesAll } from './IconsStoriesAll';
+
+<Meta title="Icons/Icons" component={Icons} />
+
+## All Icons
+
+<Canvas>
+	<Story name="All Icons">
+        <IconsStoriesAll />
+	</Story>
+</Canvas>
+
+## Ways to Import Icons
+
+<Canvas>
+    <Story name="Import Icons">
+        <AddIcon />
+        <Icons.Add />
+    </Story>
+</Canvas>

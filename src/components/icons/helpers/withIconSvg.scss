@@ -1,0 +1,12 @@
+@import '../../../styles/_partials/index';
+
+.IconSvg {
+
+}
+
+.IconSvg__neutralizeFill {
+	path,
+	circle {
+		fill: $gray75;
+	}
+}
