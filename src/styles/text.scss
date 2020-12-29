@@ -11,8 +11,7 @@
 		font-size: 62.5%; // set rems to have a base of 10
 	}
 
-	body,
-	div#styleguide-container {
+	body {
 		@include defaultFontAndTextSettings;
 		@include theme-color-graydark-else-white;
 	}
