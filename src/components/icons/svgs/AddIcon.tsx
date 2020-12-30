@@ -16,7 +16,6 @@ export default withIconSvg(
 	Icon,
 	true,
 	{
-		displayName: 'Add',
 		tags: [
 			'create',
 			'new',

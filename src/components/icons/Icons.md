@@ -54,13 +54,12 @@ import { Icons } from "./Icons";
 
 ## 📝 Todo Improvements
 
-* todo - crum
-* handle size
-* test within flywheel-local
-* how to manage colors?
-* examples for both Icons.Circle and CircleIcon
+* examples for both Icons.Circle and CircleIcon (should allow toggling of this)
 * copy snippet when clicked (and display toast)
+* todo - crum
+* test within flywheel-local
 * show icon dimensions in preview
+* how to manage colors?
 * move drawer outside of example, work it into layout flow (static), make can span entire bottom, and use storage to sync
 * unified search that keeps light and dark mode storybook example in sync
 * sort by relevance

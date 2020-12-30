@@ -6,20 +6,30 @@ import * as styles from './withIconSvg.scss';
  * Note: need to export to avoid error in Icons namespace.
  */
 export interface IconSvgProps {
-	className?: string,
+	className?: string;
 	key?: string | number;
 	id?: string;
 	style?: object;
+}
+
+export interface AdditionalProps {
+	/* the name of the icon prop */
+	propName: string;
+	/* the name of the component type used to allow changes to the prop */
+	type: 'select';
+	/* the options for the component type */
+	options: any[];
+	/* the default option */
+	default: any;
 }
 
 /**
  * Typing for icon meta data used for Storybook.
  */
 export interface IconSvgMeta {
-	additionalProps?: string[];
-	/** the name as displayed and searched for within storybook example **/
-	displayName: string;
-	/** addition search terms as used by the storybook example **/
+	/* manually included props used to disply in storybook and allow the user to change options */
+	additionalProps?: AdditionalProps[];
+	/* additional search terms as used by the storybook example */
 	tags: string[];
 }
 

@@ -24,7 +24,6 @@ export default withIconSvg(
 	Icon,
 	true,
 	{
-		displayName: 'Caret',
 		tags: [
 			'arrow',
 			'chevron',
