@@ -25,7 +25,6 @@ export default withIconSvg(
 	Icon,
 	true,
 	{
-		displayName: 'Caret Double',
 		tags: [
 			'arrow',
 			'chevron',

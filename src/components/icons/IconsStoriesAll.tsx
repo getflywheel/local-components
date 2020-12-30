@@ -10,6 +10,7 @@ import Drawer from '../menus/Drawer/Drawer';
 import { IconSvgMeta } from './helpers/withIconSvg';
 import { Text } from '../text/Text/Text';
 import { Title } from '../text/Title/Title';
+import FlySelect from '../inputs/FlySelect/FlySelect';
 
 const ReactDOM = require('react-dom');
 
@@ -25,24 +26,27 @@ export const IconsStoriesAll = () => {
 			meta: IconSvgMeta,
 		} | undefined
 		>(undefined);
+	const [showAdditionalProps, set_showAdditionalProps] = useState(false);
+	const [additionalPropChanges, set_additionalPropChanges] = useState<{[propName: string]: any}>({});
 	// use reflection to get all available icons
 	const iconsPropKeys: PropertyKey[] = Reflect.ownKeys(Icons);
 	const iconsNamespacePropKeys: PropertyKey[] = Reflect.ownKeys(IconsNamespace);
+	const applyChangedAdditionalProps: {[propName: string]: any} = {};
 
-	function onClick (Icon: any) {
-		console.log('selectedIcon: ', Icon);
-	}
+	Object.entries(additionalPropChanges).map(([propName, propValue]) => {
+		applyChangedAdditionalProps[propName] = propValue;
+	})
 
 	return (
-		<div>
-			<div className={styles.IconsStoriesAll_InputSearch_Container}>
+		<div className={styles.IconsStoriesAll}>
+			<div className={styles.IconsStoriesAll_Header}>
 				<InputSearch
 					onChange={(event) => set_searchInput(event.target.value)}
 					placeholder="Filter by icon names and tags ..."
 					value={searchValue}
 				/>
 			</div>
-			<div style={{ display: 'flex', flexWrap: 'wrap' }}>
+			<div className={styles.IconsStoriesAll_Content}>
 				{iconsPropKeys.map((iconPropKey) => {
 					// ignore if property key is not a string or is in exclusion list
 					if (typeof iconPropKey !== 'string'
@@ -69,7 +73,6 @@ export const IconsStoriesAll = () => {
 					if (searchValue
 						&& !iconPropKey.toLowerCase().includes(searchValue.toLowerCase())
 						&& !exportNamespaceIconName.toLowerCase().includes(searchValue.toLowerCase())
-						&& !meta?.displayName?.toLowerCase().includes(searchValue.toLowerCase())
 						&& !meta?.tags?.join('`').toLowerCase().includes(searchValue.toLowerCase())
 					) {
 						return;
@@ -84,43 +87,83 @@ export const IconsStoriesAll = () => {
 									[styles.IconsStoriesAll_Card__Selected]: selectedIconData?.Icon === Icon,
 								}
 							)}
-							onClick={() => (
+							onClick={() => {
+								// clear out all additional prop value changes made
+								set_additionalPropChanges({});
+								// select clicked icon
 								set_selectedIconData({
 									exportIconName: iconPropKey,
 									exportNamespaceIconName,
 									Icon,
 									meta
-								})
-							)}
+								});
+							}}
 						>
 							<>
 								<div className={styles.IconsStoriesAll_Card_Content}>
-									{/*todo - crum: remove*/}
-									<Icon className={styles.DELETE_THIS} />
+									<Icon />
 								</div>
-								{/*<Title size="caption">*/}
-								{/*	{iconName}*/}
-								{/*</Title>*/}
 							</>
 						</button>
 					);
 				})}
 			</div>
-			<div>
-				<Drawer show align="left">
-					{!!selectedIconData
-						? (
+			<div className={styles.IconsStoriesAll_Footer}>
+				{!!selectedIconData
+					? (
+						<>
+							{selectedIconData.meta.additionalProps && showAdditionalProps && (
+								<div className={styles.IconsStoriesAll_AdditionalProps}>
+									{selectedIconData.meta.additionalProps.map((propData) => {
+										return (
+											<span
+												key={propData.propName}
+												className={styles.IconsStoriesAll_AdditionalProps_Container}
+											>
+												<Text className={styles.IconsStoriesAll_AdditionalProps_Label}>
+													{propData.propName}:
+												</Text>
+												<FlySelect
+													options={propData.options}
+													onChange={(value) => set_additionalPropChanges({
+														...additionalPropChanges,
+														...{
+															[propData.propName]: value,
+														}
+													})}
+													value={propData.default}
+												/>
+											</span>
+										)
+									})}
+								</div>
+							)}
 							<div className={styles.IconsStoriesAll_Details}>
 								<div className={styles.IconsStoriesAll_Details_Col1}>
-									<Title
-										className={styles.IconsStoriesAll_Details_IconName}
-										size="s"
-									>
-										{selectedIconData.meta.displayName}
-									</Title>
+									{selectedIconData.meta.additionalProps && (
+										<div
+											className={styles.IconsStoriesAll_Details_PropsBtn}
+											onClick={() => set_showAdditionalProps(!showAdditionalProps)}
+										>
+											additional props
+											{' '}
+											{showAdditionalProps ? '(-)' : '(+)'}
+										</div>
+									)}
 									<Text className={styles.IconsStoriesAll_Details_Snippet}>
 										{'<Icons.'}
 										{selectedIconData.exportNamespaceIconName}
+										{Object.entries(applyChangedAdditionalProps).map(([propName, propValue]) => {
+											return (
+												<span key={propName}>
+													{' '}
+													{propName}
+													{'="'}
+													{propValue}
+													{'"'}
+												</span>
+											)
+										})}
 										{' />'}
 									</Text>
 								</div>
@@ -133,15 +176,15 @@ export const IconsStoriesAll = () => {
 										preview
 									</Text>
 									<div className={styles.IconsStoriesAll_Details_Preview}>
-										<selectedIconData.Icon />
+										<selectedIconData.Icon {...applyChangedAdditionalProps} />
 									</div>
 								</div>
 							</div>
-						)
-						: (
-							<span>Select an Icon to see how to use it</span>
-						)}
-				</Drawer>
+						</>
+					)
+					: (
+						<Text>Select an Icon to see how to use it</Text>
+					)}
 			</div>
 		</div>
 	);

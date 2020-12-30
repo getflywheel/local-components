@@ -6,8 +6,7 @@ import CaretIcon from './svgs/CaretIcon';
 import CheckmarkIcon from './svgs/CheckmarkIcon';
 import CheckmarkMixedIcon from './svgs/CheckmarkMixedIcon';
 import CircleIcon from './svgs/CircleIcon';
-import CloseLargeIcon from './svgs/CloseLargeIcon';
-import CloseSmallIcon from './svgs/CloseSmallIcon';
+import CloseIcon from './svgs/CloseIcon';
 
 /**
  * Namespace of Icons that can be imported once and reference multiple icons: `Icons.Add`.
@@ -21,8 +20,7 @@ namespace Icons {
 	export const Checkmark = CheckmarkIcon;
 	export const CheckmarkMixed = CheckmarkMixedIcon;
 	export const Circle = CircleIcon;
-	export const CloseLarge = CloseLargeIcon;
-	export const CloseSmall = CloseSmallIcon;
+	export const Close = CloseIcon;
 }
 
 /**
@@ -37,7 +35,6 @@ export {
 	CheckmarkIcon,
 	CheckmarkMixedIcon,
 	CircleIcon,
-	CloseLargeIcon,
-	CloseSmallIcon,
-	Icons, // export the namespace 'Icons'
+	CloseIcon,
+	Icons, // export the namespace 'Icons' here
 }

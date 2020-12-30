@@ -16,7 +16,6 @@ export default withIconSvg(
 	Icon,
 	true,
 	{
-		displayName: 'Checkmark Mixed',
 		tags: [
 			'checkbox',
 		],

@@ -1,85 +1,140 @@
 @import '../../styles/_partials/index';
 
-.IconsStoriesAll_InputSearch_Container {
-	margin: 10px;
-}
-
-.IconsStoriesAll_Card {
-	height: 60px;
-	width: 60px;
-	margin: 5px;
-	text-align: center;
-	@include theme-background-white-else-graydark;
-	@include theme-input-border;
-
-	&,
-	& * {
-		cursor: pointer;
-	}
-
-	&:focus {
-		outline: 0;
-	}
-
-	&:hover {
-		@include theme-background-gray5-else-graydarkalt;
-	}
-	&:active {
-		@include theme-background-gray15-else-gray;
-	}
-}
-
-.IconsStoriesAll_Card__Selected {
-	border: 2px solid $green !important;
-}
-
-.IconsStoriesAll_Card_Content {
-	cursor: pointer;
-	flex-grow: 1;
-}
-
-.IconsStoriesAll_Details {
+.IconsStoriesAll {
 	display: flex;
-	flex-direction: row;
-	width: 100%;
+	flex-direction: column;
+	height: 100%;
 
-	.IconsStoriesAll_Details_VerticalDivider {
-		margin: 0 10px;
-		@include theme-border-right;
+	> * {
+		padding: 10px;
+	}
+}
+
+.IconsStoriesAll_Header {
+	padding: 10px;
+	@include theme-background-gray5-else-graydarkalt;
+	@include theme-border-top;
+	@include theme-border-bottom;
+	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.04);
+}
+
+.IconsStoriesAll_Content {
+	display: flex;
+	flex-wrap: wrap;
+	flex-grow: 1;
+	align-content: baseline; // eliminate space between rows
+
+	.IconsStoriesAll_Card {
+		height: 60px;
+		width: 60px;
+		margin: 5px;
+		text-align: center;
+		@include theme-background-white-else-graydark;
+		@include theme-input-border;
+
+		&,
+		& * {
+			cursor: pointer;
+		}
+
+		&:focus {
+			outline: 0;
+		}
+
+		&:hover {
+			@include theme-background-gray5-else-graydarkalt;
+		}
+		&:active {
+			@include theme-background-gray15-else-gray;
+		}
 	}
 
-	.IconsStoriesAll_Details_Col1 {
-		display: flex;
-		flex-direction: column;
+	.IconsStoriesAll_Card__Selected {
+		border: 2px solid $green !important;
+	}
+
+	.IconsStoriesAll_Card_Content {
+		cursor: pointer;
 		flex-grow: 1;
+	}
+}
 
-		.IconsStoriesAll_Details_IconName {
-			margin-bottom: 10px;
-		}
+.IconsStoriesAll_Footer {
+	@include theme-background-gray5-else-graydarkalt;
+	@include theme-border-top;
+	box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.04);
 
-		.IconsStoriesAll_Details_Snippet {
-			flex-grow: 1;
-			width: 100%;
-			padding: 5px;
-			@include theme-background-white-else-graydark;
-			@include theme-input-border;
+	.IconsStoriesAll_AdditionalProps {
+		display: flex;
+		flex-wrap: wrap;
+		align-content: baseline; // eliminate space between rows
+		//padding-bottom: 10px;
+		@include theme-border-bottom;
+
+		.IconsStoriesAll_AdditionalProps_Container {
+			margin: 0 5px 10px;
+
+			.IconsStoriesAll_AdditionalProps_Label {
+				margin-right: 5px;
+			}
 		}
 	}
 
-	.IconsStoriesAll_Details_Col2 {
-		.IconsStoriesAll_Details_PreviewText {
-			display: inline-block;
-			margin-bottom: 5px;
+	.IconsStoriesAll_Details:first-child {
+		margin-top: 0;
+	}
+
+	.IconsStoriesAll_Details {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		margin-top: 10px;
+
+		.IconsStoriesAll_Details_VerticalDivider {
+			margin: 0 10px;
+			@include theme-border-right;
 		}
 
-		.IconsStoriesAll_Details_Preview {
+		.IconsStoriesAll_Details_PropsBtn {
+			margin: 0 5px 5px;
+			color: $green;
+			text-align: right;
+			cursor: pointer;
+		}
+
+		.IconsStoriesAll_Details_Col1 {
 			display: flex;
-			width: 50px;
-			height: 50px;
-			align-items: center;
-			justify-content: center;
-			@include theme-background-white-else-graydark;
-			@include theme-border;
+			flex-direction: column;
+			flex-grow: 1;
+
+			.IconsStoriesAll_Details_IconName {
+				margin-bottom: 10px;
+			}
+
+			.IconsStoriesAll_Details_Snippet {
+				flex-grow: 1;
+				width: 100%;
+				padding: 5px;
+				@include theme-background-white-else-graydark;
+				@include theme-input-border;
+			}
+		}
+
+		.IconsStoriesAll_Details_Col2 {
+			.IconsStoriesAll_Details_PreviewText {
+				display: inline-block;
+				margin-bottom: 5px;
+			}
+
+			.IconsStoriesAll_Details_Preview {
+				display: flex;
+				width: 50px;
+				height: 50px;
+				align-items: center;
+				justify-content: center;
+				@include theme-background-white-else-graydark;
+				@include theme-border;
+			}
 		}
 	}
 }
