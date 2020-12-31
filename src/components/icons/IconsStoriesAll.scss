@@ -23,6 +23,7 @@
 	flex-wrap: wrap;
 	flex-grow: 1;
 	align-content: baseline; // eliminate space between rows
+	overflow-y: auto; // allow content scrolling so footer doesn't get pushed below fold
 
 	.IconsStoriesAll_Card {
 		height: 60px;
