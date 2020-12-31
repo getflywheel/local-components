@@ -6,8 +6,6 @@ import InputSearch from '../inputs/InputSearch/InputSearch';
 import { useContext, useState } from 'react';
 import * as styles from './IconsStoriesAll.scss';
 import { IconSvgStoryMeta } from './helpers/withIconSvg';
-import { Text } from '../text/Text/Text';
-import FlySelect from '../inputs/FlySelect/FlySelect';
 import { IconsStoriesAllFooter } from './IconsStoriesAllFooter';
 
 type AdditionalPropChanges = {[propName: string]: any};

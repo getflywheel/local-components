@@ -53,18 +53,48 @@
 			}
 
 			.IconsStoriesAll_Details_Snippet {
+				position: relative;
 				flex-grow: 1;
 				width: 100%;
 				padding: 5px;
 				@include theme-background-white-else-graydark;
 				@include theme-input-border;
+				cursor: pointer;
+
+				.IconsStoriesAll_Details_Snippet_CopyToast {
+					position: absolute;
+					bottom: 0;
+					right: 3px;
+					padding: 5px;
+					font-weight: 700;
+					font-size: 10px;
+					line-height: 10px;
+					color: $white;
+					background: $green;
+					//border-bottom-right-radius: 4px;
+
+					svg {
+						margin-right: 3px;
+
+						path {
+							fill: $white;
+						}
+					}
+				}
 			}
 		}
 
 		.IconsStoriesAll_Details_Col2 {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end; // eliminate space between rows and place on bottom
+		}
+
+		.IconsStoriesAll_Details_Col3 {
 			.IconsStoriesAll_Details_PreviewText {
-				display: inline-block;
 				margin-bottom: 5px;
+				font-size: 12px;
+				text-align: center;
 			}
 
 			.IconsStoriesAll_Details_Preview {

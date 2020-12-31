@@ -1,6 +1,6 @@
 # Icons
 
-todo - crum
+Icon system meant to standardize implementation and make them more discoverable.
 
 ## 🎯 Objectives
 
@@ -54,11 +54,6 @@ import { Icons } from "./Icons";
 
 ## 📝 Todo Improvements
 
-* combine circle exclamation and information and implement `size`
-* examples for both Icons.Circle and CircleIcon (should allow toggling of this)
-* copy snippet when clicked (and display toast)
-* todo - crum
-* test within flywheel-local
 * break-up and componentize IconsStoriesAll
 * how to handle larger icons? scale for story? show scale %?
 * show icon dimensions in preview

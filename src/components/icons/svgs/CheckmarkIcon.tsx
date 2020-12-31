@@ -56,7 +56,7 @@ export default withIconSvg<Props>(
 			{
 				propName: 'size',
 				type: 'select',
-				options: ['s', 'l'], // todo - crum: how to automatically get these options???
+				options: ['s', 'l'], // todo: how to automatically get these options???
 				default: Icon.defaultProps.size,
 			},
 		],

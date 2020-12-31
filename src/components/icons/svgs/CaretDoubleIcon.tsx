@@ -3,7 +3,6 @@ import withIconSvg from '../helpers/withIconSvg';
 
 /**
  * Note: need to export to avoid error in Icons namespace.
- * todo - crum: look into this
  */
 export interface ISvgProps {
 	className?: string,
