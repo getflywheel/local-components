@@ -12,7 +12,7 @@ export interface IconSvgProps {
 	style?: object;
 }
 
-export interface AdditionalProps {
+export interface IconSvgStoryMetaAdditionalProps {
 	/* the name of the icon prop */
 	propName: string;
 	/* the name of the component type used to allow changes to the prop */
@@ -26,9 +26,9 @@ export interface AdditionalProps {
 /**
  * Typing for icon meta data used for Storybook.
  */
-export interface IconSvgMeta {
+export interface IconSvgStoryMeta {
 	/* manually included props used to disply in storybook and allow the user to change options */
-	additionalProps?: AdditionalProps[];
+	additionalProps?: IconSvgStoryMetaAdditionalProps[];
 	/* additional search terms as used by the storybook example */
 	tags: string[];
 }
@@ -60,7 +60,6 @@ const _withIconSvg = <P extends object>(
 				className,
 				{
 					[styles.IconSvg__neutralizeFill]: neutralFill,
-					[styles.IconSvg__neutralizeFill2]: neutralFill,
 				},
 			)}
 			id={id}
@@ -82,7 +81,7 @@ const _withIconSvg = <P extends object>(
 const withIconSvg = <P extends object>(
 	IconComponent: any,
 	neutralFill: boolean,
-	meta: IconSvgMeta,
+	meta: IconSvgStoryMeta,
 ): React.FC<P & IconSvgProps> => {
 	const HocComponent = _withIconSvg(IconComponent, neutralFill);
 

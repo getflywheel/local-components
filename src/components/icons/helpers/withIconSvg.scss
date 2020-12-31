@@ -6,7 +6,8 @@
 
 .IconSvg__neutralizeFill {
 	path,
-	circle {
+	circle,
+	rect, {
 		fill: $gray75;
 	}
 }

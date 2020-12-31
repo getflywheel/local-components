@@ -54,10 +54,13 @@ import { Icons } from "./Icons";
 
 ## 📝 Todo Improvements
 
+* combine circle exclamation and information and implement `size`
 * examples for both Icons.Circle and CircleIcon (should allow toggling of this)
 * copy snippet when clicked (and display toast)
 * todo - crum
 * test within flywheel-local
+* break-up and componentize IconsStoriesAll
+* how to handle larger icons? scale for story? show scale %?
 * show icon dimensions in preview
 * how to manage colors?
 * move drawer outside of example, work it into layout flow (static), make can span entire bottom, and use storage to sync

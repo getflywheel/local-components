@@ -27,6 +27,8 @@ export default withIconSvg(
 		tags: [
 			'caret',
 			'chevron',
+			'greater',
+			'gt',
 		],
 	},
 );
