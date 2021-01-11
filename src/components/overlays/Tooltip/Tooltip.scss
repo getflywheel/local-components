@@ -1,100 +1,129 @@
 @import '../../../styles/_partials/index';
 
-$arrowSize: 15px;
-$arrowOffset: 14px;
+$arrowSize: 16px;
 $arrowSizeRotated: calculateRotatedSquaresLength($arrowSize, 45deg);
 $transitionEaseIn: cubic-bezier(.2,.3,.25,.9);
-$transitionDuration: 100ms;
+$transitionDuration: 120ms;
+$extraShadowArea: 100%;
+$borderThickness: 1px;
 
 @mixin tooltipBoxShadow {
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.14);
 }
 
-.Tooltip_Content {
-	&:hover + .Tooltip_Popper,
-	& + .Tooltip_Popper.Tooltip_Popper__DoPreventTransitionOut,
-	& + .Tooltip_Popper.Tooltip_Popper__ForceHover {
-		visibility: visible;
-
-		& > .Tooltip_Popper_Inner {
-			transform: scale(1.0) translateX(0%) translateY(0%) translateZ(0);
-			transform-origin: 50% 50%;
-		}
-	}
-
-	& + .Tooltip_Popper.Tooltip_Popper__IsTransitionLeaving {
-		visibility: visible;
-	}
-}
-
-.Tooltip_Popper {
-	visibility: hidden;
-	z-index: 500;
-
-	&[data-placement*='top'] {
-		top: (-$arrowSizeRotated / 2 + $arrowOffset) !important;
-	}
-
-	&[data-placement*='right'] {
-		left: ($arrowSizeRotated / 2 - $arrowOffset) !important;
-	}
-
-	&[data-placement*='bottom'] {
-		top: ($arrowSizeRotated / 2 - $arrowOffset) !important;
-	}
-
-	&[data-placement*='left'] {
-		left: (-$arrowSizeRotated / 2 + $arrowOffset) !important;
-	}
-}
-
-.Tooltip_Popper_Inner {
-	transition: transform $transitionDuration $transitionEaseIn, transform-origin $transitionDuration $transitionEaseIn;
-	will-change: transform;
-
-	@at-root .Tooltip_Popper:not(.Tooltip_Popper__DoPreventTransitionOut) & {
-		transform: scale(0) translateX(0%) translateY(0%) translateZ(0);
-	}
-
-	&[data-placement*='top'] {
-		transform-origin: 50% 100%;
-	}
-
-	&[data-placement*='right'] {
-		transform-origin: 0 50%;
-	}
-
-	&[data-placement*='bottom'] {
-		transform-origin: 50% 0;
-	}
-
-	&[data-placement*='left'] {
-		transform-origin: 100% 50%;
-	}
-}
-
-.Tooltip_Popper_Content {
-	padding: 20px;
+.Tooltip_Popper_VisualContainer {
+	padding: 10px 15px;
 	font-weight: 300;
 	text-align: center;
 	@include theme-color-graydark50-else-gray25;
 	@include theme-input-background-color;
 	@include theme-input-border;
 	@include tooltipBoxShadow;
+
+	transition:
+		transform $transitionDuration $transitionEaseIn,
+		transform-origin $transitionDuration $transitionEaseIn,
+		opacity ($transitionDuration * 1.5) $transitionEaseIn;
+	will-change: transform;
+
+	visibility: hidden;
+	opacity: 0;
+	transform: scale(0.0);
+	transform-origin: 50% 50%;
+
+	&[data-popper-placement*='top'] {
+		transform-origin: 50% 100%;
+	}
+
+	&[data-popper-placement*='right'] {
+		transform-origin: 0 50%;
+	}
+
+	&[data-popper-placement*='bottom'] {
+		transform-origin: 50% 0;
+	}
+
+	&[data-popper-placement*='left'] {
+		transform-origin: 100% 50%;
+	}
+}
+
+.Tooltip_Popper_VisualContainer__IsShowing {
+	visibility: visible;
+	opacity: 1;
+	transform: scale(1.0);
+}
+
+.Tooltip_Popper_VisualContainer__IsTransitionLeaving {
+	visibility: visible;
+	opacity: 0;
+	transform: scale(0.0);
+}
+
+.Tooltip_Popper_Arrow_Container {
+	position: absolute;
+	pointer-events: none;
+
+	&[data-popper-placement^='top'] {
+		bottom: -6 - $borderThickness - 1; // overlay border
+		transform-origin: 0 100%;
+	}
+
+	&[data-popper-placement^='right'] {
+		left: -$arrowSize / 2 + $borderThickness - 1;
+		top: calc(50% - #{$arrowSizeRotated / 2});
+		transform-origin: 49% 57%;
+	}
+
+	&[data-popper-placement^='bottom'] {
+		top: -$arrowSize / 2 + $borderThickness - 1;
+		left: calc(50% - #{$arrowSizeRotated / 2});
+		transform-origin: 60% 46%;
+
+		&[data-popper-placement$='start'] {
+			left: 13px;
+		}
+
+		&[data-popper-placement$='end'] {
+			left: calc(100% - #{$arrowSizeRotated} - 13px);
+		}
+	}
+
+	&[data-popper-placement^='left'] {
+		right: -$arrowSize / 2 + $borderThickness - 1;
+		top: calc(50% - #{$arrowSizeRotated/ 2});
+		transform-origin: 70% 63%;
+	}
+
+	&[data-popper-placement^='top'][data-popper-placement$='start'],
+	&[data-popper-placement^='bottom'][data-popper-placement$='start'] {
+		left: 13px;
+	}
+
+	&[data-popper-placement^='top'][data-popper-placement$='end'],
+	&[data-popper-placement^='bottom'][data-popper-placement$='end'] {
+		left: calc(100% - #{$arrowSizeRotated} - 13px);
+	}
+
+	&[data-popper-placement^='right'][data-popper-placement$='start'],
+	&[data-popper-placement^='left'][data-popper-placement$='start'] {
+		top: 13px;
+	}
+
+	&[data-popper-placement^='right'][data-popper-placement$='end'],
+	&[data-popper-placement^='left'][data-popper-placement$='end'] {
+		top: calc(100% - #{$arrowSizeRotated} - 13px);
+	}
 }
 
 .Tooltip_Popper_Arrow {
-	$extraShadowArea: 100%;
-	$borderThickness: 1px;
-
-	position: absolute;
 	width: $arrowSize;
 	height: $arrowSize;
 	@include theme-input-background-color;
 	@include theme-input-border;
 	border-radius: 0 0 4px 0;
 	@include tooltipBoxShadow;
-	pointer-events: none;
+
 	// pre-rotate poly used to clip the content
 	clip-path: polygon(
 		(0% - $extraShadowArea) (100% + $extraShadowArea), // bottom-left (left after rotate)
@@ -102,59 +131,19 @@ $transitionDuration: 100ms;
 		(100% + $extraShadowArea) (100% + $extraShadowArea) // bottom-right (bottom after rotate)
 	);
 
-	&[data-placement^='top'] {
-		bottom: $borderThickness; // overlay border
-		left: calc(50% - #{$arrowSizeRotated / 2});
-		transform-origin: 0 100%;
+	&[data-popper-placement^='top'] {
 		transform: rotate(45deg);
 	}
 
-	&[data-placement^='right'] {
-		left: -$arrowSize / 2 + $borderThickness;
-		top: calc(50% - #{$arrowSizeRotated / 2});
-		transform-origin: 49% 57%;
+	&[data-popper-placement^='right'] {
 		transform: rotate(135deg);
 	}
 
-	&[data-placement^='bottom'] {
-		top: -$arrowSize / 2 + $borderThickness;
-		left: calc(50% - #{$arrowSizeRotated / 2});
-		transform-origin: 60% 46%;
+	&[data-popper-placement^='bottom'] {
 		transform: rotate(225deg);
-
-		&[data-placement$='start'] {
-			left: 13px;
-		}
-
-		&[data-placement$='end'] {
-			left: calc(100% - #{$arrowSizeRotated} - 13px);
-		}
 	}
 
-	&[data-placement^='left'] {
-		right: -$arrowSize / 2 + $borderThickness;
-		top: calc(50% - #{$arrowSizeRotated/ 2});
-		transform-origin: 70% 63%;
+	&[data-popper-placement^='left'] {
 		transform: rotate(-45deg);
-	}
-
-	&[data-placement^='top'][data-placement$='start'],
-	&[data-placement^='bottom'][data-placement$='start'] {
-		left: 13px;
-	}
-
-	&[data-placement^='top'][data-placement$='end'],
-	&[data-placement^='bottom'][data-placement$='end'] {
-		left: calc(100% - #{$arrowSizeRotated} - 13px);
-	}
-
-	&[data-placement^='right'][data-placement$='start'],
-	&[data-placement^='left'][data-placement$='start'] {
-		top: 13px;
-	}
-
-	&[data-placement^='right'][data-placement$='end'],
-	&[data-placement^='left'][data-placement$='end'] {
-		top: calc(100% - #{$arrowSizeRotated} - 13px);
 	}
 }
