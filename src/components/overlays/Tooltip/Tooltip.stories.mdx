@@ -3,11 +3,9 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Meta title="Overlays/Tooltip" component={Tooltip} />
 
-The `Tooltip` component allows content to display additional information on hover. Tooltips can be set to top, right, bottom, and left positions.
+The `Tooltip` component allows content to display additional information on hover.
 
-> Note: Tooltips are drawn relative to a component's initial size. As such, any component that transitions to its final, needs to load content first, or has any delay in its rendering of its final size will likely result in being positioned incorrectly. Enable `useJsHover` for these use cases.
-
-Default tooltip with default `top` position.
+Default tooltip with default `top` position. This is the most common configuration within Local.
 
 <Canvas>
 	<Story name="Tooltip">
@@ -15,52 +13,99 @@ Default tooltip with default `top` position.
             <Tooltip
                 content={<div>This is a tooltip</div>}
             >
-                <div>Hover over me</div>
+                <div style={{ cursor: 'pointer' }}>Hover over me</div>
             </Tooltip>
         </div>
 	</Story>
 </Canvas>
 
-Set `forceHover` to `true`.
+Set `forceHover` to `true` and showcase each available `position` prop option (if not set, defaults to `top`).
+This can be especially helpful when developing or debugging the inner tooltip content.
+
+> Notice how, while scrolling and resizing the browser, a tooltip might auto-adjust it's defined `position` if there's not enough screen real estate available to be placed there.
 
 <Canvas>
 	<Story name="Force Hover">
-        <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+		{() => {
+			const placements = ['top-start', 'top', 'top-end', 'left-start', 'bottom-start', 'right-start', 'left', 'bottom', 'right', 'left-end', 'bottom-end', 'right-end', 'auto-start', 'auto', 'auto-end'];
+			return (
+				<div style={{ height: '750px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+					{placements.map((placement) => {
+						return (
+							<Tooltip
+								content={<div><strong>{placement}</strong></div>}
+								key={placement}
+								forceHover
+								position={placement}
+								style={{width: '10%', margin: '0 10%'}}
+							>
+								<div style={{ background: '#9f9c9c', padding: '10px', borderRadius: '4px', textAlign: 'center' }}>
+									target
+								</div>
+							</Tooltip>
+						)
+					})}
+				</div>
+			)
+		}}
+	</Story>
+</Canvas>
+
+Manually offset the popper through `offsetPopper` prop to nudge the tooltip as needed (e.g. to the right `50` pixels).
+
+<Canvas>
+	<Story name="Offset">
+        <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
             <Tooltip
-                content={<p><strong>Yo! This is a test.</strong><br />I'm a tooltip.</p>}
-                forceHover={true}
+                content={<div>Offset to the right 50px</div>}
+				offsetPopper={[50, 10]}
             >
-                <div>I am a button</div>
+                <div style={{cursor: 'pointer'}}>Hover over me</div>
             </Tooltip>
         </div>
 	</Story>
 </Canvas>
 
-Position set to `right`.
+Increase the delay for both showing and hiding the tooltip via the `showDelay` and `hideDelay` props.
+> Note that increasing these values can improve user experience when the tooltip appears to often and untentionally showDelay
+> or when the tooltip content is interactive and allowing for more time to hover over it would lead to a better user experience.
 
 <Canvas>
-	<Story name="Positioned Right">
-    	<div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+	<Story name="Increase delays">
+        <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
             <Tooltip
-                content={<div>This is a tooltip</div>}
-                position="right"
+				content={
+					<>
+						<div>Inteactive content</div>
+						<input style={{display: 'block', margin: '10px 0'}}/>
+						<div>
+							<button>Submit</button>
+						</div>
+					</>
+				}
+				hideDelay={2000}
+				showDelay={2000}
             >
-                <div>Hover over me</div>
+                <div style={{cursor: 'pointer'}}>Hover over me for 2 seconds to show options.</div>
             </Tooltip>
         </div>
 	</Story>
 </Canvas>
 
-Position set to `right` but is repositioned to the left because there's not enough space to the right.
+Turn off the delay before showing the tooltip along with the delay for hiding it via the `showDelay` and `hideDelay` props.
+> Notice how the tooltip starts to fade in immediately after mousing over the target (this is typically undesirable UX behavior).
+> This tooltip also starts to fade out immediately after mousing out from target which does not allow a user much time to interact with the popup content.
 
 <Canvas>
-	<Story name="Constrained Left">
-        <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+	<Story name="Remove delays">
+        <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
             <Tooltip
-                content={<div>This is a tooltip</div>}
-                position="right"
+                content={<div>This shows and hides very quickly. Be very intentional if using either of these props!</div>}
+				hideDelay={0}
+				position={'right'}
+				showDelay={0}
             >
-                <div>Hover over me</div>
+                <div style={{cursor: 'pointer'}}>Hover over me</div>
             </Tooltip>
         </div>
 	</Story>
