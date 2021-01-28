@@ -1,4 +1,4 @@
-# Local component library
+ya# Local component library
 
 [![npm version](https://badge.fury.io/js/%40getflywheel%2Flocal-components.svg)](https://badge.fury.io/js/%40getflywheel%2Flocal-components)
 
@@ -18,20 +18,22 @@ In additional to a quickly growing set of React components, we also have SVGs, S
 
 ## Storybook
 
-The quickest way to work on `local-components` is to leverage [Storybook](https://storybook.js.org/). Storybook is a 
+The quickest way to work on `local-components` is to leverage [Storybook](https://storybook.js.org/). Storybook is a
 local development area that works well with React components and supports hot-module reloading.
 
 To start Storybook, run `yarn storybook`.
 
 ## Developing within Local
 
-If you wish to work on `local-components` and see the changes within Local, you will need to run the following:
+If you wish to work on `local-components` and see the changes within Local, you will need to do the following:
 
-1. `yarn link` in `local-components` (only needed one time or after unlinking)
-2. Run `nps components.link` in `flywheel-local` (only needed one time or after unlinking)
-3. Run `nps build.dev` in `flywheel-local`
-4. Start Local
-5. Make any necessary changes in `local-components`. Note, Local does not support hot-module reloading in all locations
+1. First run `yarn build` in `local-components`
+2. Next run `yarn link` (only needed one time or after unlinking)
+3. Switch to `flywheel-local`
+3. Then run `nps components.link` (only needed one time or after unlinking)
+4. Finally run `nps build.dev`
+5. Start Local
+6. Make any necessary changes in `local-components`. Note, Local does not support hot-module reloading in all locations
 so refreshing the UI in Local (<kbd>Cmd</kbd> + <kbd>R</kbd>) will likely be necessary.
 
 ## Running both Storybook and Watch at the same time
