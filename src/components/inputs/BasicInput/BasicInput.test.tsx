@@ -19,4 +19,9 @@ describe('BasicInput', () => {
 		const shallowWrapper = shallow(<BasicInput {...TestComponentPropUtils.basicReactProps} />);
 		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, false);
 	});
+
+	it('renders name attribute correctly', () => {
+		const component = shallow(<BasicInput name="FormName" />);
+		expect(component.exists('[name="FormName"]')).toBe(true);
+	});
 });

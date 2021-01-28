@@ -12,4 +12,9 @@ describe('Switch', () => {
 		const shallowWrapper = shallow(<Switch {...TestComponentPropUtils.basicReactProps} />);
 		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, false);
 	});
+
+	it('renders name attribute correctly', () => {
+		const component = shallow(<Switch name="FormName" />);
+		expect(component.exists('[name="FormName"]')).toBe(true);
+	});
 });

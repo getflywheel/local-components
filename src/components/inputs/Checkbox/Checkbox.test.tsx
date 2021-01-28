@@ -12,4 +12,9 @@ describe('Checkbox', () => {
 		const shallowWrapper = shallow(<Checkbox {...TestComponentPropUtils.basicReactProps} />);
 		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, false);
 	});
+
+	it('renders name attribute correctly', () => {
+		const component = shallow(<Checkbox name="FormName" />);
+		expect(component.exists('[name="FormName"]')).toBe(true);
+	});
 });

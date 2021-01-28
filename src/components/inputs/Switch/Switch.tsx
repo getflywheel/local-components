@@ -73,6 +73,7 @@ export default class Switch extends React.Component<IProps, IState> {
 					type="checkbox"
 					defaultChecked={this.state.checked}
 					disabled={this.props.disabled || this.props.noValue}
+					name={this.props.name}
 					onChange={this.handleChange}
 					data-no-value={this.props.noValue}
 				/>

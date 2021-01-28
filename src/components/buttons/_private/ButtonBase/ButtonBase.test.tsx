@@ -12,4 +12,9 @@ describe('ButtonBase', () => {
 		const shallowWrapper = shallow(<ButtonBase {...TestComponentPropUtils.basicReactProps} />);
 		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true);
 	});
+
+	it('renders name attribute correctly', () => {
+		const component = shallow(<ButtonBase name="FormName" />);
+		expect(component.exists('[name="FormName"]')).toBe(true);
+	});
 });

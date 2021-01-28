@@ -10,6 +10,7 @@ interface IProps extends IReactComponentProps {
 	checked?: boolean | 'mixed';
 	disabled?: boolean;
 	label?: string;
+	name?: string;
 	onChange: FunctionGeneric;
 }
 
@@ -72,6 +73,7 @@ export default class Checkbox extends React.Component<IProps, IState> {
 						className={styles.Checkbox_InputHidden}
 						checked={this.state.checked === true}
 						disabled={this.props.disabled}
+						name={this.props.name}
 						onChange={this._handleChange}
 					/>
 					<div

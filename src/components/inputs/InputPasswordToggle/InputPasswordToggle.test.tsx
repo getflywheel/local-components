@@ -28,4 +28,9 @@ describe('InputPasswordToggle', () => {
 		const shallowWrapper = shallow(<InputPasswordToggle {...TestComponentPropUtils.basicReactProps} />);
 		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true);
 	});
+
+	it('renders name attribute correctly', () => {
+		const component = shallow(<InputPasswordToggle name="FormName" />);
+		expect(component.exists('[name="FormName"]')).toBe(true);
+	});
 });

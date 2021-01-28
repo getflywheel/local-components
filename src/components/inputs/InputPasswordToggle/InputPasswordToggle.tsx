@@ -4,6 +4,7 @@ import EyeSVG from '../../../svg/eye.svg';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
 interface IProps extends ILocalContainerProps {
+	name?: string;
 	onChange?: any;
 	value?: string;
 }
@@ -50,6 +51,7 @@ export default class InputPasswordToggle extends React.Component<IProps, IState>
 			>
 				<input
 					id={this.props.id}
+					name={this.props.name}
 					type={this.state.inputType}
 					className={className ? `PasswordToggleInput ${className}` : 'PasswordToggleInput'}
 					{...props}
