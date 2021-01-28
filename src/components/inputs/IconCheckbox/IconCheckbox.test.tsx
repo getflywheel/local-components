@@ -16,4 +16,9 @@ describe('Checkbox', () => {
 		expect(shallowWrapper.props().style.cursor).toBe('pointer');
 		expect(shallowWrapper.props().className).toContain('myClass');
 	});
+
+	it('renders name attribute correctly', () => {
+		const component = shallow(<IconCheckbox name="FormName" onChange={() => null} Icon={YellowStar} />);
+		expect(component.exists('[name="FormName"]')).toBe(true);
+	});
 });

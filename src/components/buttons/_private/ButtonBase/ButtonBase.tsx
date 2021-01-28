@@ -55,6 +55,8 @@ enum ButtonLetterSpacing {
 export interface IButtonCommonProps extends ILocalContainerProps {
 	/** Whether the button is disabled. */
 	disabled?: boolean;
+	/** The form name attribute */
+	name?: string;
 	/** The click handler. */
 	onClick?: FunctionGeneric;
 	/** The html element tag used for the button. */
@@ -110,6 +112,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 			id,
 			innerRef,
 			letterSpacing,
+			name,
 			onClick,
 			padding,
 			fontWeight,
@@ -157,6 +160,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 					)}
 					disabled={disabled}
 					id={id}
+					name={name}
 					onClick={onClick}
 					ref={innerRef}
 					style={style}

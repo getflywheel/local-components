@@ -4,6 +4,7 @@ import * as styles from './BasicInput.scss';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
 interface IProps extends ILocalContainerProps {
+	name?: string;
 	onChange?: any;
 	value?: string;
 }
@@ -17,6 +18,7 @@ export default class BasicInput extends React.Component<IProps> {
 		const {
 			className,
 			id,
+			name,
 			style,
 			...props
 		} = this.props;
@@ -32,6 +34,7 @@ export default class BasicInput extends React.Component<IProps> {
 				style={style}
 			>
 				<input
+					name={name}
 					type='text'
 					{...props}
 				/>
