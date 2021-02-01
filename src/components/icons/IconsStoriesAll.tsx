@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import classnames from 'classnames';
 import * as Icons from './Icons';
 import { Icons as IconsNamespace } from './Icons';
@@ -9,6 +10,7 @@ import { IconSvgStoryMeta } from './helpers/withIconSvg';
 import { IconsStoriesAllFooter } from './IconsStoriesAllFooter';
 
 type AdditionalPropChanges = {[propName: string]: any};
+type IconType = React.FC & {meta: IconSvgStoryMeta};
 
 interface IconStoriesAllContextType {
 	additionalPropChanges: AdditionalPropChanges;
@@ -16,7 +18,7 @@ interface IconStoriesAllContextType {
 	selectedIconData?: {
 		exportIconName: string,
 		exportNamespaceIconName: string | undefined,
-		Icon: React.FC,
+		Icon: IconType,
 		meta: IconSvgStoryMeta,
 	};
 	set_additionalPropChanges: (value: AdditionalPropChanges) => void,
@@ -30,8 +32,10 @@ export const IconStoriesAllContext = React.createContext<IconStoriesAllContextTy
 	selectedIconData: undefined,
 	set_additionalPropChanges: () => {},
 	set_doShowAdditionalProps: () => {},
-	doShowAdditionalProps: false,
+	doShowAdditionalProps: true,
 });
+
+const iconPropKeyLocalStorage = 'IconsStoryAll-selected-iconPropKey';
 
 export const IconsStoriesAll = () => {
 	const contextValue = useContext(IconStoriesAllContext);
@@ -40,13 +44,75 @@ export const IconsStoriesAll = () => {
 	const [doShowAdditionalProps, set_doShowAdditionalProps] = useState(contextValue.doShowAdditionalProps);
 	const [additionalPropChanges, set_additionalPropChanges] = useState<AdditionalPropChanges>(contextValue.additionalPropChanges);
 	const changedAdditionalProps: AdditionalPropChanges = {};
-	// use reflection to get all available icons
-	const iconsPropKeys: PropertyKey[] = Reflect.ownKeys(Icons);
+	const iconsPropKeys: PropertyKey[] = Reflect.ownKeys(Icons); // use reflection to get all available icons
 	const iconsNamespacePropKeys: PropertyKey[] = Reflect.ownKeys(IconsNamespace);
+
+	function getIconComponentRef(iconPropKey?: string): IconType | undefined {
+		if (!iconPropKey) {
+			return;
+		}
+
+		return (Icons as any)[iconPropKey];
+	}
+
+	function getExportNamespaceIconName(iconPropKey?: string): string | undefined {
+		if (!iconPropKey) {
+			return;
+		}
+
+		const Icon = getIconComponentRef(iconPropKey);
+
+		return iconsNamespacePropKeys.find((key) => (IconsNamespace as any)[key] === Icon) as string;
+	}
+
+	function onIconChangeByIconPropKey(iconPropKey?: string){
+		const Icon = getIconComponentRef(iconPropKey);
+
+		if (!iconPropKey || !Icon) {
+			return;
+		}
+
+		localStorage.setItem(iconPropKeyLocalStorage, iconPropKey);
+		// need to manually dispatch for this picked up by the split view since it's in the same tab
+		window.dispatchEvent(new Event('storage'));
+	}
+
+	function checkUserData() {
+		const iconPropKey = window.localStorage.getItem(iconPropKeyLocalStorage);
+
+		if (typeof iconPropKey !== undefined && iconPropKey !== null) {
+			const Icon = getIconComponentRef(iconPropKey);
+
+			if (!Icon) {
+				return;
+			}
+
+			// clear out all additional prop value changes made
+			set_additionalPropChanges({});
+			// select clicked icon
+			set_selectedIconData({
+				exportIconName: iconPropKey,
+				exportNamespaceIconName: getExportNamespaceIconName(iconPropKey),
+				Icon,
+				meta: Icon.meta,
+			});
+		}
+	}
 
 	Object.entries(additionalPropChanges).map(([propName, propValue]) => {
 		changedAdditionalProps[propName] = propValue;
-	})
+	});
+
+	React.useEffect(() => {
+		// check for initial persisted value
+		checkUserData();
+
+		window.addEventListener('storage', checkUserData);
+
+		return () => {
+			window.removeEventListener('storage', checkUserData);
+		}
+	  }, []);
 
 	return (
 		<IconStoriesAllContext.Provider value={{
@@ -78,20 +144,15 @@ export const IconsStoriesAll = () => {
 							return;
 						}
 
-						const Icon = (Icons as any)[iconPropKey];
-						const exportNamespaceIconName: string | undefined = iconsNamespacePropKeys.find(
-							(key) => (IconsNamespace as any)[key] === Icon,
-						) as string;
-						const meta: IconSvgStoryMeta = Icon.meta;
-
-						// if (Icon.prototype?.constructor?.__docgenInfo?.props?.size) {
-						// 	console.log('zzz123: ', Icon.prototype.constructor.__docgenInfo.props);
-						// }
+						const Icon = getIconComponentRef(iconPropKey);
+						const exportNamespaceIconName = getExportNamespaceIconName(iconPropKey);
+						const meta: IconSvgStoryMeta | undefined = Icon?.meta;
+						const IconRef: React.FC = Icon as React.FC;
 
 						// filter out non-matching icons if there is search criteria
 						if (searchValue
 							&& !iconPropKey.toLowerCase().includes(searchValue.toLowerCase())
-							&& !exportNamespaceIconName.toLowerCase().includes(searchValue.toLowerCase())
+							&& !exportNamespaceIconName?.toLowerCase().includes(searchValue.toLowerCase())
 							&& !meta?.tags?.join('`').toLowerCase().includes(searchValue.toLowerCase())
 						) {
 							return;
@@ -106,21 +167,11 @@ export const IconsStoriesAll = () => {
 										[styles.IconsStoriesAll_Card__Selected]: selectedIconData?.Icon === Icon,
 									}
 								)}
-								onClick={() => {
-									// clear out all additional prop value changes made
-									set_additionalPropChanges({});
-									// select clicked icon
-									set_selectedIconData({
-										exportIconName: iconPropKey,
-										exportNamespaceIconName,
-										Icon,
-										meta
-									});
-								}}
+								onClick={() => onIconChangeByIconPropKey(iconPropKey)}
 							>
 								<>
 									<div className={styles.IconsStoriesAll_Card_Content}>
-										<Icon />
+										<IconRef />
 									</div>
 								</>
 							</button>
