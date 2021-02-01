@@ -3,7 +3,7 @@
 .IconsStoriesAll {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	max-height: 100%; // note: this needs to use `max-height` (not `height`) because that's what the storybook outer div for this example uses
 
 	> * {
 		padding: 10px;

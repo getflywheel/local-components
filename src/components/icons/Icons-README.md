@@ -54,6 +54,7 @@ import { Icons } from "./Icons";
 
 ## 📝 Todo Improvements
 
+* remove old svgs when it's confirmed that they're no longer being used (src/svg/*)
 * break-up and componentize IconsStoriesAll
 * how to handle larger icons? scale for story? show scale %?
 * show icon dimensions in preview
