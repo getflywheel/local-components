@@ -1,6 +1,7 @@
 import { AddIcon, Icons } from "./Icons";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { IconsStoriesAll } from './IconsStoriesAll';
+import { Title } from '../text/Title/Title';
 
 <Meta title="Icons/Icons" component={Icons} />
 
@@ -8,7 +9,10 @@ import { IconsStoriesAll } from './IconsStoriesAll';
 
 <Canvas>
 	<Story name="All Icons">
-        <IconsStoriesAll />
+		// note: this layout is tricky and `max-height` is specifically used here and must match the examples `max-height: 100%` style */
+		<div style={{ maxHeight: '90vh', display: 'flex' }}>
+        	<IconsStoriesAll />
+		</div>
 	</Story>
 </Canvas>
 
@@ -16,7 +20,15 @@ import { IconsStoriesAll } from './IconsStoriesAll';
 
 <Canvas>
     <Story name="Import Icons">
-        <AddIcon />
-        <Icons.Add />
+		<div style={{ padding: '0 10px' }}>
+			<div>
+				<Title size="caption">Invidual named import</Title>
+				<AddIcon />
+			</div>
+			<div>
+				<Title size="caption">Icons namespaced import</Title>
+				<Icons.Add />
+			</div>
+		</div>
     </Story>
 </Canvas>
