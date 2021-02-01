@@ -35,11 +35,12 @@ export const IconStoriesAllContext = React.createContext<IconStoriesAllContextTy
 	doShowAdditionalProps: true,
 });
 
-const iconPropKeyLocalStorage = 'IconsStoryAll-selected-iconPropKey';
+const localStorageIconPropKey = 'IconsStoryAll-selected-iconPropKey';
+const localStorageSearchText = 'IconsStoryAll-selected-searchText';
 
 export const IconsStoriesAll = () => {
 	const contextValue = useContext(IconStoriesAllContext);
-	const [searchValue, set_searchInput] = useState('');
+	const [searchInputValue, set_searchInputValue] = useState('');
 	const [selectedIconData, set_selectedIconData] = useState<IconStoriesAllContextType['selectedIconData'] | undefined>(contextValue.selectedIconData);
 	const [doShowAdditionalProps, set_doShowAdditionalProps] = useState(contextValue.doShowAdditionalProps);
 	const [additionalPropChanges, set_additionalPropChanges] = useState<AdditionalPropChanges>(contextValue.additionalPropChanges);
@@ -72,16 +73,28 @@ export const IconsStoriesAll = () => {
 			return;
 		}
 
-		localStorage.setItem(iconPropKeyLocalStorage, iconPropKey);
+		localStorage.setItem(localStorageIconPropKey, iconPropKey);
 		// need to manually dispatch for this picked up by the split view since it's in the same tab
 		window.dispatchEvent(new Event('storage'));
 	}
 
-	function checkUserData() {
-		const iconPropKey = window.localStorage.getItem(iconPropKeyLocalStorage);
+	function onChangeInput(event: React.ChangeEvent<HTMLInputElement>) {
+		const value = event?.target?.value;
 
-		if (typeof iconPropKey !== undefined && iconPropKey !== null) {
-			const Icon = getIconComponentRef(iconPropKey);
+		set_searchInputValue(value ? value : '');
+
+		localStorage.setItem(localStorageSearchText, value);
+		// need to manually dispatch for this picked up by the split view since it's in the same tab
+		window.dispatchEvent(new Event('storage'));
+	}
+
+	function onStorage() {
+		// SELECTED ICON
+
+		const lsIconPropKey = window.localStorage.getItem(localStorageIconPropKey);
+
+		if (typeof lsIconPropKey !== undefined && lsIconPropKey !== null && selectedIconData?.exportIconName !== lsIconPropKey) {
+			const Icon = getIconComponentRef(lsIconPropKey);
 
 			if (!Icon) {
 				return;
@@ -91,11 +104,22 @@ export const IconsStoriesAll = () => {
 			set_additionalPropChanges({});
 			// select clicked icon
 			set_selectedIconData({
-				exportIconName: iconPropKey,
-				exportNamespaceIconName: getExportNamespaceIconName(iconPropKey),
+				exportIconName: lsIconPropKey,
+				exportNamespaceIconName: getExportNamespaceIconName(lsIconPropKey),
 				Icon,
 				meta: Icon.meta,
 			});
+		}
+
+		// SEARCH TEXT
+
+		const lsSearchText = window.localStorage.getItem(localStorageSearchText);
+
+		if (!!lsSearchText) {
+			set_searchInputValue(lsSearchText);
+		}
+		else {
+			set_searchInputValue('');
 		}
 	}
 
@@ -104,13 +128,13 @@ export const IconsStoriesAll = () => {
 	});
 
 	React.useEffect(() => {
-		// check for initial persisted value
-		checkUserData();
+		// check for initial persisted values
+		onStorage();
 
-		window.addEventListener('storage', checkUserData);
+		window.addEventListener('storage', onStorage);
 
 		return () => {
-			window.removeEventListener('storage', checkUserData);
+			window.removeEventListener('storage', onStorage);
 		}
 	  }, []);
 
@@ -126,9 +150,9 @@ export const IconsStoriesAll = () => {
 			<div className={styles.IconsStoriesAll}>
 				<div className={styles.IconsStoriesAll_Header}>
 					<InputSearch
-						onChange={(event) => set_searchInput(event.target.value)}
+						onChange={onChangeInput}
 						placeholder="Filter by icon names and tags ..."
-						value={searchValue}
+						value={searchInputValue}
 					/>
 				</div>
 				<div className={styles.IconsStoriesAll_Content}>
@@ -150,10 +174,10 @@ export const IconsStoriesAll = () => {
 						const IconRef: React.FC = Icon as React.FC;
 
 						// filter out non-matching icons if there is search criteria
-						if (searchValue
-							&& !iconPropKey.toLowerCase().includes(searchValue.toLowerCase())
-							&& !exportNamespaceIconName?.toLowerCase().includes(searchValue.toLowerCase())
-							&& !meta?.tags?.join('`').toLowerCase().includes(searchValue.toLowerCase())
+						if (searchInputValue
+							&& !iconPropKey.toLowerCase().includes(searchInputValue.toLowerCase())
+							&& !exportNamespaceIconName?.toLowerCase().includes(searchInputValue.toLowerCase())
+							&& !meta?.tags?.join('`').toLowerCase().includes(searchInputValue.toLowerCase())
 						) {
 							return;
 						}

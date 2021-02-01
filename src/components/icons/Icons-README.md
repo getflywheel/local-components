@@ -58,6 +58,5 @@ import { Icons } from "./Icons";
 * how to handle larger icons? scale for story? show scale %?
 * show icon dimensions in preview
 * how to manage colors?
-* move drawer outside of example, work it into layout flow (static), make can span entire bottom, and use storage to sync
-* unified search that keeps light and dark mode storybook example in sync
+* show no results and hide footer
 * sort by relevance
