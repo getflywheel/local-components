@@ -9,7 +9,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-content: baseline; // eliminate space between rows
-		//padding-bottom: 10px;
 		@include theme-border-bottom;
 
 		.IconsStoriesAll_AdditionalProps_Container {

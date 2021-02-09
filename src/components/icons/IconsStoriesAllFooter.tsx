@@ -15,17 +15,17 @@ export const IconsStoriesAllFooter = () => {
 		changedAdditionalProps,
 		doShowAdditionalProps,
 		selectedIconData,
-		set_additionalPropChanges,
-		set_doShowAdditionalProps,
+		setAdditionalPropChanges,
+		setDoShowAdditionalProps,
 	} = useContext(IconStoriesAllContext);
-	const [snippet, set_snippet] = useState('');
-	const [useIndividualImportOption, set_useIndividualImportOption] = useState(true);
-	const [doShowCopiedTimeoutRef, set_doShowCopiedTimeoutRef] = useState<NodeJS.Timeout>();
+	const [snippet, setSnippet] = useState('');
+	const [useIndividualImportOption, setUseIndividualImportOption] = useState(true);
+	const [doShowCopiedTimeoutRef, setDoShowCopiedTimeoutRef] = useState<NodeJS.Timeout>();
 
 	const clearCopyTimeout = () => {
 		if (doShowCopiedTimeoutRef) {
 			clearTimeout(doShowCopiedTimeoutRef);
-			set_doShowCopiedTimeoutRef(undefined);
+			setDoShowCopiedTimeoutRef(undefined);
 		}
 	}
 
@@ -39,7 +39,7 @@ export const IconsStoriesAllFooter = () => {
 		});
 
 		snippetText += ' />';
-		set_snippet(snippetText);
+		setSnippet(snippetText);
 
 		// if changing settings or the icon selected, make sure this hides
 		clearCopyTimeout();
@@ -54,10 +54,10 @@ export const IconsStoriesAllFooter = () => {
 		clearCopyTimeout();
 
 		const timeout = setTimeout(() => {
-			set_doShowCopiedTimeoutRef(undefined);
+			setDoShowCopiedTimeoutRef(undefined);
 		}, 1500);
 
-		set_doShowCopiedTimeoutRef(timeout);
+		setDoShowCopiedTimeoutRef(timeout);
 	};
 
 	return (
@@ -78,7 +78,7 @@ export const IconsStoriesAllFooter = () => {
 											</Text>
 											<FlySelect
 												options={propData.options}
-												onChange={(value) => set_additionalPropChanges({
+												onChange={(value) => setAdditionalPropChanges({
 													...additionalPropChanges,
 													...{
 														[propData.propName]: value,
@@ -96,7 +96,7 @@ export const IconsStoriesAllFooter = () => {
 								{selectedIconData.meta.additionalProps && (
 									<div
 										className={styles.IconsStoriesAll_Details_PropsBtn}
-										onClick={() => set_doShowAdditionalProps(!doShowAdditionalProps)}
+										onClick={() => setDoShowAdditionalProps(!doShowAdditionalProps)}
 									>
 										additional props
 										{' '}
@@ -122,7 +122,7 @@ export const IconsStoriesAllFooter = () => {
 									content={<div>Import by namespace</div>}
 									position="top"
 								>
-									<div onClick={() => set_useIndividualImportOption(!useIndividualImportOption)}>
+									<div onClick={() => setUseIndividualImportOption(!useIndividualImportOption)}>
 										{useIndividualImportOption
 											? (
 												<FileFolderOpenedIcon />

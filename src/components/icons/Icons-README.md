@@ -32,7 +32,7 @@ Icon system meant to standardize implementation and make them more discoverable.
 Chances are, the exported svg xml does not include an explicit `width` and `height` attribute
 but a developer can add this after the fact.
 
-### Why use <svg>? Why not <img>?
+### Why use `<svg>` and not`<img>`?
 
 The problem with both <img> and background-images is that you don’t get to control the innards of the svg.
 
@@ -55,7 +55,7 @@ import { Icons } from "./Icons";
 ## 📝 Todo Improvements
 
 * remove old svgs when it's confirmed that they're no longer being used (src/svg/*)
-* break-up and componentize IconsStoriesAll
+* break-up and componentize IconsStoriesAll (including helpers like `// filter out non-matching icons`)
 * how to handle larger icons? scale for story? show scale %?
 * show icon dimensions in preview
 * how to manage colors?
