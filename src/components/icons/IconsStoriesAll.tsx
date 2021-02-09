@@ -12,6 +12,10 @@ import { IconsStoriesAllFooter } from './IconsStoriesAllFooter';
 type AdditionalPropChanges = {[propName: string]: any};
 type IconType = React.FC & {meta: IconSvgStoryMeta};
 
+interface IconsImportType {
+	[key: string]: IconType;
+}
+
 interface IconStoriesAllContextType {
 	additionalPropChanges: AdditionalPropChanges;
 	changedAdditionalProps: AdditionalPropChanges;
@@ -21,8 +25,8 @@ interface IconStoriesAllContextType {
 		Icon: IconType,
 		meta: IconSvgStoryMeta,
 	};
-	set_additionalPropChanges: (value: AdditionalPropChanges) => void,
-	set_doShowAdditionalProps: (value: IconStoriesAllContextType['doShowAdditionalProps']) => void,
+	setAdditionalPropChanges: (value: AdditionalPropChanges) => void,
+	setDoShowAdditionalProps: (value: IconStoriesAllContextType['doShowAdditionalProps']) => void,
 	doShowAdditionalProps: boolean;
 }
 
@@ -30,8 +34,8 @@ export const IconStoriesAllContext = React.createContext<IconStoriesAllContextTy
 	additionalPropChanges: {},
 	changedAdditionalProps: {},
 	selectedIconData: undefined,
-	set_additionalPropChanges: () => {},
-	set_doShowAdditionalProps: () => {},
+	setAdditionalPropChanges: () => {},
+	setDoShowAdditionalProps: () => {},
 	doShowAdditionalProps: true,
 });
 
@@ -40,10 +44,10 @@ const localStorageSearchText = 'IconsStoryAll-selected-searchText';
 
 export const IconsStoriesAll = () => {
 	const contextValue = useContext(IconStoriesAllContext);
-	const [searchInputValue, set_searchInputValue] = useState('');
-	const [selectedIconData, set_selectedIconData] = useState<IconStoriesAllContextType['selectedIconData'] | undefined>(contextValue.selectedIconData);
-	const [doShowAdditionalProps, set_doShowAdditionalProps] = useState(contextValue.doShowAdditionalProps);
-	const [additionalPropChanges, set_additionalPropChanges] = useState<AdditionalPropChanges>(contextValue.additionalPropChanges);
+	const [searchInputValue, setSearchInputValue] = useState('');
+	const [selectedIconData, setSelectedIconData] = useState<IconStoriesAllContextType['selectedIconData'] | undefined>(contextValue.selectedIconData);
+	const [doShowAdditionalProps, setDoShowAdditionalProps] = useState(contextValue.doShowAdditionalProps);
+	const [additionalPropChanges, setAdditionalPropChanges] = useState<AdditionalPropChanges>(contextValue.additionalPropChanges);
 	const changedAdditionalProps: AdditionalPropChanges = {};
 	const iconsPropKeys: PropertyKey[] = Reflect.ownKeys(Icons); // use reflection to get all available icons
 	const iconsNamespacePropKeys: PropertyKey[] = Reflect.ownKeys(IconsNamespace);
@@ -53,7 +57,7 @@ export const IconsStoriesAll = () => {
 			return;
 		}
 
-		return (Icons as any)[iconPropKey];
+		return (Icons as unknown as IconsImportType)[iconPropKey];
 	}
 
 	function getExportNamespaceIconName(iconPropKey?: string): string | undefined {
@@ -81,7 +85,7 @@ export const IconsStoriesAll = () => {
 	function onChangeInput(event: React.ChangeEvent<HTMLInputElement>) {
 		const value = event?.target?.value;
 
-		set_searchInputValue(value ? value : '');
+		setSearchInputValue(value ? value : '');
 
 		localStorage.setItem(localStorageSearchText, value);
 		// need to manually dispatch for this picked up by the split view since it's in the same tab
@@ -101,9 +105,9 @@ export const IconsStoriesAll = () => {
 			}
 
 			// clear out all additional prop value changes made
-			set_additionalPropChanges({});
+			setAdditionalPropChanges({});
 			// select clicked icon
-			set_selectedIconData({
+			setSelectedIconData({
 				exportIconName: lsIconPropKey,
 				exportNamespaceIconName: getExportNamespaceIconName(lsIconPropKey),
 				Icon,
@@ -116,10 +120,10 @@ export const IconsStoriesAll = () => {
 		const lsSearchText = window.localStorage.getItem(localStorageSearchText);
 
 		if (!!lsSearchText) {
-			set_searchInputValue(lsSearchText);
+			setSearchInputValue(lsSearchText);
 		}
 		else {
-			set_searchInputValue('');
+			setSearchInputValue('');
 		}
 	}
 
@@ -127,7 +131,7 @@ export const IconsStoriesAll = () => {
 		changedAdditionalProps[propName] = propValue;
 	});
 
-	React.useEffect(() => {
+	useEffect(() => {
 		// check for initial persisted values
 		onStorage();
 
@@ -143,8 +147,8 @@ export const IconsStoriesAll = () => {
 			additionalPropChanges,
 			changedAdditionalProps,
 			selectedIconData,
-			set_additionalPropChanges,
-			set_doShowAdditionalProps,
+			setAdditionalPropChanges,
+			setDoShowAdditionalProps,
 			doShowAdditionalProps,
 		}}>
 			<div className={styles.IconsStoriesAll}>

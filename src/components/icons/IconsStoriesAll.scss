@@ -4,6 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	max-height: 100%; // note: this needs to use `max-height` (not `height`) because that's what the storybook outer div for this example uses
+	width: -webkit-fill-available; // if smaller than available space being of filtered results, then expand to fill
 
 	> * {
 		padding: 10px;

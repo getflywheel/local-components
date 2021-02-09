@@ -17,6 +17,7 @@ export default withIconSvg(
 	true,
 	{
 		tags: [
+			'circle',
 			'round',
 		],
 	},

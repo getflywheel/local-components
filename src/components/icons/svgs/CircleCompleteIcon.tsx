@@ -19,6 +19,7 @@ export default withIconSvg(
 	{
 		tags: [
 			'checkbox',
+			'circle',
 			'complete',
 			'done',
 			'round',

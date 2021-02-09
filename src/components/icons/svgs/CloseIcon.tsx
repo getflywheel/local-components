@@ -57,6 +57,7 @@ export default withIconSvg<Props>(
 			},
 		],
 		tags: [
+			'close',
 			'dismiss',
 			'x',
 		],
