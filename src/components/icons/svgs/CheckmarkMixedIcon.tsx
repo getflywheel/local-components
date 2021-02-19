@@ -18,6 +18,9 @@ export default withIconSvg(
 	{
 		tags: [
 			'checkbox',
+			'minus',
+			'mixed',
+			'subtract',
 		],
 	},
 );
