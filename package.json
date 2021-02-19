@@ -16,6 +16,7 @@
     "clipboard-copy": "^3.1.0",
     "highlight.js": "^9.13.1",
     "lodash.isequal": "^4.5.0",
+    "react-animate-height": "^2.0.23",
     "react-lowlight": "^2.0.0",
     "react-markdown": "^4.0.3",
     "react-modal": "^3.5.1",
