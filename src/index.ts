@@ -30,6 +30,7 @@ export { default as RadioBlock } from './components/inputs/RadioBlock/RadioBlock
 export { default as Switch } from './components/inputs/Switch/Switch';
 // Layout
 export { default as Accordion } from './components/layout/Accordion/Accordion';
+export { default as AccordionItem } from './components/layout/Accordion/AccordionItem';
 export { default as AdvancedToggle } from './components/layout/AdvancedToggle/AdvancedToggle';
 export { default as Divider } from './components/layout/Divider/Divider';
 // Loaders

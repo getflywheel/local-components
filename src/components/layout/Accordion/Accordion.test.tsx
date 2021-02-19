@@ -5,11 +5,11 @@ import TestComponentPropUtils from '../../../utils/TestComponentPropUtils';
 
 describe('Accordion', () => {
 	it('renders without crashing', () => {
-		shallow(<Accordion />);
+		shallow(<Accordion><div /></Accordion>);
 	});
 
 	it('renders basic react props like id, className, and style as element attributes', () => {
-		const shallowWrapper = shallow(<Accordion {...TestComponentPropUtils.basicReactProps} />);
+		const shallowWrapper = shallow(<Accordion {...TestComponentPropUtils.basicReactProps}><div /></Accordion>);
 		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true);
 	});
 });
