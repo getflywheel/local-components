@@ -1,16 +1,168 @@
-import Accordion from "./Accordion";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import Accordion from "./Accordion";
+import { Title } from '../../text/Title/Title';
+import { Text } from '../../text/Text/Text';
+import { ConnectBothIcon, ConnectPullIcon, ConnectPushIcon } from '../../icons/Icons';
 
 <Meta title="Layout/Accordion" component={Accordion} />
 
+# Basic
+
+Barebones example of multiple Accordion items with the default functionality of only one item being open at a time.
+
 <Canvas>
 	<Story name="Accordion">
-		<div>
-			<div>Some text</div>
+		<div className="Story__Padding">
 			<Accordion>
-				<div>
-					According to me
+				<div style={{paddingBottom: '10px', borderBottom: '1px solid #9f9c9c', marginBottom: '10px'}}>
+					<Title>
+						Connect
+					</Title>
+					<Text>
+						We've built a workflow where you can push local sites to Flywheel and WP Engine in a few quick clicks, easily pull down live sites for offline editing, and sync up your tools for a simplified process!
+					</Text>
 				</div>
+				<div style={{paddingBottom: '10px', borderBottom: '1px solid #9f9c9c', marginBottom: '10px'}}>
+					<Title>
+						Pull
+					</Title>
+					<Text>
+						As long as the Local site is running the “Preferred” environment with PHP 7.3, you can push it straight to Flywheel. And if it’s running a different environment, don’t fret. Simply export the local site and re-import with the “Preferred” environment.
+					</Text>
+				</div>
+				<div>
+					<Title>
+						Push
+					</Title>
+					<Text>
+						If you Connect to multiple hosts, so it’s totally up to you which one your site goes to when it’s time to go live!
+					</Text>
+				</div>
+			</Accordion>
+		</div>
+	</Story>
+</Canvas>
+
+# Stylized Example
+
+An example with plenty of styling combined with basic functionality.
+
+<Canvas>
+	<Story name="Accordion Custom">
+		<div className="Story__Padding">
+			<Accordion>
+				<div style={{paddingBottom: '10px', borderBottom: '1px solid #9f9c9c', marginBottom: '10px'}}>
+					<div style={{display: 'flex', alignItems: 'center'}}>
+						<div style={{textAlign: 'center', width: '24px'}}>
+							<ConnectBothIcon />
+						</div>
+						<div style={{display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
+							<Title>
+								Connect
+							</Title>
+							<Text>
+								What can Connect do for me?
+							</Text>
+						</div>
+					</div>
+					<div style={{margin: '10px 0 0 34px', padding: '10px 0', borderTop: '1px solid #9f9c9c'}}>
+						<Text>
+							We've built a workflow where you can push local sites to Flywheel and WP Engine in a few quick clicks, easily pull down live sites for offline editing, and sync up your tools for a simplified process!
+						</Text>
+					</div>
+				</div>
+				<div style={{paddingBottom: '10px', borderBottom: '1px solid #9f9c9c', marginBottom: '10px'}}>
+					<div style={{display: 'flex', alignItems: 'center'}}>
+						<div style={{textAlign: 'center', width: '24px'}}>
+							<ConnectPullIcon />
+						</div>
+						<div style={{display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
+							<Title>
+								Pull
+							</Title>
+							<Text>
+								Can I push existing Local Sites to Flywheel?
+							</Text>
+						</div>
+					</div>
+					<div style={{margin: '10px 0 0 34px', padding: '10px 0', borderTop: '1px solid #9f9c9c'}}>
+						<Text>
+							Yup! As long as the Local site is running the “Preferred” environment with PHP 7.3, you can push it straight to Flywheel. And if it’s running a different environment, don’t fret. Simply export the local site and re-import with the “Preferred” environment.
+						</Text>
+					</div>
+				</div>
+				<div>
+					<div style={{display: 'flex', alignItems: 'center'}}>
+						<div style={{textAlign: 'center', width: '24px'}}>
+							<ConnectPushIcon />
+						</div>
+						<div style={{display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
+							<Title>
+								Push
+							</Title>
+							<Text>
+								If I connect to Flywheel, do I have to host all my sites there?
+							</Text>
+						</div>
+					</div>
+					<div style={{margin: '10px 0 0 34px', padding: '10px 0', borderTop: '1px solid #9f9c9c'}}>
+						<Text>
+							Nope! In fact, you can Connect to multiple hosts, so it’s totally up to you which one your site goes to when it’s time to go live!
+						</Text>
+					</div>
+				</div>
+			</Accordion>
+		</div>
+	</Story>
+</Canvas>
+
+# FAQ
+
+FAQ example that allows multiple items to be open at the same time via `allowMultipleOpenItems` and enables the entire question area to be clicked via `clickArea` prop.
+
+<Canvas>
+	<Story name="Accordion Multi-Open">
+		<div className="Story__Padding">
+			<Accordion allowMultipleOpenItems clickArea="all">
+				<div
+					className="testClass"
+					onClick={(itemId) => console.log('item clicked: ', itemId)}
+					style={{paddingBottom: '10px', borderBottom: '1px solid #9f9c9c', marginBottom: '10px'}}
+				>
+					<Title>How to export a WordPress site from Local</Title>
+					<Text>
+						<p>
+							Start by opening “Local” and ensure that the site you want to export is running. Next, right-click on the site and select “Export.” Follow the prompts to save the website in a place that you can find it like the Desktop!
+						</p>
+						<p>
+							The zip file that is created contains everything you need for the site, including Media, Plugins, Themes, and an export of the database! The export is the entire /wp-content folder and the database.
+						</p>
+					</Text>
+				</div>
+				<div style={{paddingBottom: '10px', borderBottom: '1px solid #9f9c9c', marginBottom: '10px'}}>
+					<Title>Do you have to be a Flywheel customer to use Local?</Title>
+					<Text>
+						<p>
+							Not at all! While Local will likely work, look, and feel best if you’re using it with Flywheel, it is a standalone local development application. Enjoy! 🙂
+						</p>
+					</Text>
+				</div>
+				<div style={{paddingBottom: '10px', borderBottom: '1px solid #9f9c9c', marginBottom: '10px'}}>
+					<Title>Have another question?</Title>
+					<Text>
+						<p>
+							Visit our <a href="https://localwp.com/community/">community forums</a> for Local at localwp.com/community. Chances are we’ve answered your question already!
+						</p>
+					</Text>
+				</div>
+				<>
+					<Title>Can I use a React Fragment to contain an Accordion item instead of an html element?</Title>
+					<Text>
+						<p>
+							Why yes! In fact, this example does exactly that 😃
+						</p>
+					</Text>
+				</>
 			</Accordion>
 		</div>
 	</Story>

@@ -1,0 +1,56 @@
+@import '../../../styles/_partials/index';
+
+.AccordionItem {
+	display: flex;
+	flex-direction: column;
+}
+
+.AccordionItem_Summary {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+button.AccordionItem_Summary {
+	// hide button default styles
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	text-align: inherit;
+}
+
+.AccordionItem_Summary__ClickAreaAll {
+	&,
+	& * {
+		cursor: pointer;
+	}
+}
+
+.AccordionItem_Summary > * {
+	flex: 1;
+}
+
+.AccordionItem_Summary > *:last-child {
+	flex: initial;
+}
+
+.AccordionItem_Summary_Action {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: stretch; // increase vertical hit area
+	max-height: 44px;
+	margin-left: 20px;
+
+	// hide button styles
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+
+	&,
+	& * {
+		cursor: pointer;
+	}
+}

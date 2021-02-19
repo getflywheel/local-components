@@ -1,0 +1,99 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import AccordionItem from "./AccordionItem";
+import { Title } from '../../text/Title/Title';
+import { Text } from '../../text/Text/Text';
+import { CircleInfoIcon } from '../../icons/Icons';
+
+<Meta title="Layout/AccordionItem" component={AccordionItem} />
+
+# Basic
+
+Default single Accordion item.
+
+<Canvas>
+	<Story name="AccordionItem">
+		<div className="Story__Padding">
+			<AccordionItem>
+				<Title>
+					Click me to reveal a secret!
+				</Title>
+				<Text>
+					<p>
+						But then it wouldn't be a secret, would it?! 😉
+					</p>
+				</Text>
+			</AccordionItem>
+		</div>
+	</Story>
+</Canvas>
+
+# Open by Default
+
+An Accordion item that ruins the joke by showing the punchline via `openedDefault` prop 😂
+
+<Canvas>
+	<Story name="AccordionItem Opened">
+		<div className="Story__Padding">
+			<AccordionItem openedDefault>
+				<Title>
+					What did the pirate say when he turned 80?
+				</Title>
+				<Text>
+					<p>
+						Aye Matey
+					</p>
+				</Text>
+			</AccordionItem>
+		</div>
+	</Story>
+</Canvas>
+
+# Hide Icon
+
+Disable `icon` prop and allow the entire summary row to be clicked to open and close.
+
+<Canvas>
+	<Story name="AccordionItem No Icon">
+		<div className="Story__Padding">
+			<AccordionItem
+				icon={false}
+				clickArea="all"
+			>
+				<Title>
+					Look, no icon! Click anywhere on this row.
+				</Title>
+				<Text>
+					<p>
+						Please use this wisely as the icon is used to indicate the intended behavior of an Accordion item.
+					</p>
+				</Text>
+			</AccordionItem>
+		</div>
+	</Story>
+</Canvas>
+
+# Custom Icon
+
+Customize the `icon` used to open and close the item.
+
+<Canvas>
+	<Story name="AccordionItem New Icon">
+		<div className="Story__Padding">
+			<AccordionItem
+				icon={<CircleInfoIcon />}
+			>
+				<Title>
+					Is the default icon not your jam?
+				</Title>
+				<Text>
+					<p>
+						No problem, we've got you covered!
+					</p>
+					<p>
+						In addition to adding a different icon, you can tap into the CSS selector for the open state and add styles like `transform: rotate(90deg)`.
+					</p>
+				</Text>
+			</AccordionItem>
+		</div>
+	</Story>
+</Canvas>
