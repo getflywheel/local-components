@@ -8,8 +8,10 @@ import * as styles from './withIconSvg.scss';
 export interface IconSvgProps {
 	className?: string;
 	key?: string | number;
+	height?: number;
 	id?: string;
 	style?: object;
+	width?: number;
 }
 
 export interface IconSvgStoryMetaAdditionalProps {
