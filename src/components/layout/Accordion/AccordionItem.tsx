@@ -176,7 +176,7 @@ const AccordionItem : React.FC<PropsControlled | PropsUncontrolled> = (props) =>
 		/>
 	) : (
 		<AccordionItemUncontrolled
-			{...(props)}
+			{...props}
 		/>
 	);
 };

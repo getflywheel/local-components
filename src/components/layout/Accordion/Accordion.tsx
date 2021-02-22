@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './Accordion.scss';
 import { Container } from '../../modules/Container/Container';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import AccordionItem from './AccordionItem';
@@ -44,7 +43,6 @@ const Accordion: React.FC<Props> = ({
 		<Container {...container}>
 			<div
 				className={classnames(
-					styles.Accordion,
 					'Accordion',
 					className,
 				)}
