@@ -139,9 +139,11 @@ export default class Banner extends React.Component<BannerProps> {
 				style={this.props.style}
 			>
 				{this.renderCarousel()}
-				<div className={styles.renderIcon}>
-					{this.renderIcon()}
-				</div>
+				{this.renderIcon() &&
+					<div className={styles.renderIcon}>
+						{this.renderIcon()}
+					</div>
+				}
 				<span className={styles.Content}>
 					{this.props.children}
 				</span>
