@@ -47,6 +47,7 @@ export class VirtualTableRow extends React.Component<IVirtualTableRowProps> {
 			<div
 				className={classnames(
 					styles.VirtualTable_Row,
+					'VirtualTable_Row',
 					this.props.className,
 				)}
 				style={this.props.style}
