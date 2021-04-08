@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './FlyDropdown.sass';
+import * as styles from './FlyDropdown.scss';
 import CaretSVG from '../../../svg/caret.svg';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
