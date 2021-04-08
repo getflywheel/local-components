@@ -159,6 +159,7 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 			<div
 				className={classnames(
 					styles.VirtualTable,
+					'VirtualTable',
 					{
 						[styles.VirtualTable__RowHeaderCapitalize]: this.props.headersCapitalize === true,
 						[styles.VirtualTable__RowHeaderCapitalizeLower]: this.props.headersCapitalize === 'lower',
@@ -192,7 +193,10 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 					}}
 				>
 					{this._helper.getDataCalculationsMemoized(this.props).headersNormalized && (
-						<div className={styles.VirtualTable_Header}>
+						<div className={classnames(
+							styles.VirtualTable_Header,
+							'VirtualTable_Header',
+						)}>
 							{this._rowRenderer(this._helper.getDataCalculationsMemoized(this.props).headersNormalized, -1, {} as any, {isHeader: true})}
 						</div>
 					)}
@@ -216,6 +220,7 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 			<div
 				className={classnames(
 					styles.VirtualTable_Container,
+					'VirtualTable_Container',
 					this.props.containerClassName,
 				)}
 				style={this.props.style}

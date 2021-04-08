@@ -56,6 +56,7 @@ export class VirtualTableCell extends React.Component<IVirtualTableCellProps> {
 			<div
 				className={classnames(
 					styles.VirtualTable_Cell,
+					'VirtualTable_Cell',
 					this.props.className,
 					context.cellClassName,
 					context.columnClassNames[this.props.cellIndex],
