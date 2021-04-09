@@ -20,5 +20,5 @@ export const useDetectHover = (element: HTMLElement | null) => {
 		[element],
 	);
 
-	return { isHover };
+	return isHover;
 }

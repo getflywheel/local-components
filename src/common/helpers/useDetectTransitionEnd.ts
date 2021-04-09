@@ -20,5 +20,5 @@ export const useDetectTransitionEnd = (element: HTMLElement | null, transitionEn
 		[ element ],
 	);
 
-	return { isTransitionEnd };
+	return isTransitionEnd;
 }
