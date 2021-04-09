@@ -8,6 +8,10 @@ import { VirtualTableHelper } from './helpers/VirtualTableHelper';
 import { IVirtualTableContext, VirtualTableContext } from './helpers/VirtualTableContext';
 import {IVirtualListProps} from "../VirtualList/VirtualList";
 
+export interface VirtualTableCSSProperties extends React.CSSProperties {
+	'--VirtualTable_RowHeight': string;
+}
+
 export interface IVirtualTableCellRendererDataArgs {
 	cellData: any;
 	changeFn: IVirtualTableProps['cellRendererChangeFn'];
@@ -44,6 +48,7 @@ export type VirtualTableCellRenderer = (dataArgs: IVirtualTableCellRendererDataA
 export type VirtualTableRowRenderer = (dataArgs: IVirtualTableRowRendererDataArgs) => React.ReactNode | null | undefined;
 
 export interface IVirtualTableProps extends IReactComponentProps {
+
 	cellClassName: string;
 	/** custom cell renderer (return an element to custom render, false to bypass and use default text cell) */
 	cellRenderer?: VirtualTableCellRenderer;
@@ -73,8 +78,8 @@ export interface IVirtualTableProps extends IReactComponentProps {
 	onChangeRowData: (dataArgs: IVirtualTableOnChangeRowDataArgs) => void;
 	/** class to be applied to every row */
 	rowClassName: string;
-	/** Row height (using size values). */
-	rowHeightSize?: 's' | 'm' | 'l';
+	/** Row height as size values or explicit number of pixels */
+	rowHeightSize?: 's' | 'm' | 'l' | number;
 	/**
 	 * Row header height (using size values).
 	 * Note: the 'auto' setting matches that of 'rowHeightSize' resulting in the header and row heights being identical.
@@ -120,8 +125,14 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 		this._onDidMountOrUpdate();
 	}
 
+	protected _isRowHeightSizeAnExplicitNumber () {
+		return typeof this.props.rowHeightSize === 'number';
+	}
+
 	protected async _onDidMountOrUpdate () {
-		const rowHeight: number | null = await this._helper.getRowHeight(this._tableContainerRef);
+		const rowHeight: number | null = this._isRowHeightSizeAnExplicitNumber()
+			? this.props.rowHeightSize as number
+			: await this._helper.getRowHeight(this._tableContainerRef);
 
 		if (rowHeight !== null && rowHeight !== this.state.rowHeight) {
 			this.setState(() => ({
@@ -177,7 +188,12 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 					},
 					this.props.className,
 				)}
-				style={this.props.style}
+				style={{
+					...(this._isRowHeightSizeAnExplicitNumber() && {
+						['--VirtualTable_RowHeight']: `${this.props.rowHeightSize}px`,
+					}) as VirtualTableCSSProperties,
+					...this.props.style,
+				}}
 				id={this.props.id}
 			>
 				<VirtualTableContext.Provider

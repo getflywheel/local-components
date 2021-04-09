@@ -143,5 +143,4 @@ export class VirtualTableExample extends React.Component<IReactComponentProps, I
 			</div>
 		);
 	};
-
 }
