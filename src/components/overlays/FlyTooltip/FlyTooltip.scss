@@ -19,8 +19,90 @@
 	}
 }
 
+@mixin fixRemovedExtendStyles () {
+	$ease-in: cubic-bezier(.2,.3,.25,.9);
+	$border-radius: 4px;
+
+	position: absolute;
+	top: calc(100% - 1px);
+	right: -15px;
+	left: auto;
+	transform: scale(0) translateY(0%) translateZ(0);
+	transform-origin: 90% -15px;
+	transition: transform 80ms $ease-in 80ms;
+	z-index: 6;
+	margin-left: 0;
+	border-radius: $border-radius;
+	box-shadow: 0 0 20px 0 rgba($gray-dark, .15);
+	@include theme-background-white-else-graydark50;
+	padding: 0;
+	width: 160px;
+	height: auto;
+	list-style-type: none;
+	text-align: center;
+	line-height: normal;
+
+	&::before,
+	&::after {
+		content: "";
+		pointer-events: none;
+		display: block;
+		position: absolute;
+		top: -6px;
+		left: 50%;
+		transition: all .05s $ease-in 0s;
+		z-index: 2;
+		margin-left: -10px;
+		border-radius: $border-radius;
+		@include theme-background-white-else-graydark50;
+		width: 20px;
+		height: 20px;
+	}
+
+	&::after {
+		top: 0;
+		right: 7px;
+		left: auto;
+		margin-left: -15px;
+		width: 30px;
+		height: 18px;
+		border-radius: 0;
+		background: $white;
+	}
+
+	&::before {
+		right: 11px;
+		left: auto;
+		transform: rotate(45deg);
+	}
+
+	.FlyDropdown.FlyDropdown__Open & {
+		transform: scale(1) translateY(0) translateZ(0);
+	}
+
+	&.FlyDropdown_Items__PositionTop {
+		top: -10px;
+
+		&::after {
+			top: auto;
+			bottom: 0;
+			right: 10px;
+		}
+
+		&::before {
+			bottom: -6px;
+			top: auto;
+			right: 14px;
+		}
+
+		.FlyDropdown.FlyDropdown__Open & {
+			transform: scale(1) translateY(-100%) translateZ(0);
+		}
+	}
+}
+
 .FlyTooltip {
-	@extend .FlyDropdown_Items;
+	@include fixRemovedExtendStyles();
 
 	top: auto;
 	z-index: 5;
