@@ -37,7 +37,7 @@ This can be especially helpful when developing or debugging the inner tooltip co
 								key={placement}
 								forceHover
 								position={placement}
-								style={{width: '10%', minWidth: '50px', margin: '0 10%'}}
+								style={{width: '10%', minWidth: '50px', maxWidth: '70px', margin: '0 10%'}}
 							>
 								<div style={{ background: '#9f9c9c', padding: '10px', borderRadius: '4px', textAlign: 'center', fontSize: '1.2rem' }}>
 									target
@@ -51,14 +51,14 @@ This can be especially helpful when developing or debugging the inner tooltip co
 	</Story>
 </Canvas>
 
-Manually offset the popper through `offsetPopper` prop to nudge the tooltip as needed (e.g. to the right `50` pixels).
+Manually offset the popper through `popperOffsetModifier` prop to nudge the tooltip as needed (e.g. to the right `50` pixels).
 
 <Canvas>
 	<Story name="Offset">
         <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
             <Tooltip
                 content={<div>Offset to the right 50px</div>}
-				offsetPopper={[50, 10]}
+				popperOffsetModifier={[50, 10]}
             >
                 <div style={{cursor: 'pointer'}}>Hover over me</div>
             </Tooltip>

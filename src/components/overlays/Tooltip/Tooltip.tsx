@@ -8,6 +8,9 @@ import { Portal } from '../../../common/helpers/Portal';
 import { useDetectHover } from '../../../common/helpers/useDetectHover';
 import { useDetectTransitionEnd } from '../../../common/helpers/useDetectTransitionEnd';
 import { useSwappableTimeout } from '../../../common/helpers/useTimeout';
+import { useDetectClickWithinTargets } from '../../../common/helpers/useDetectClickWithinTargets';
+import { Options } from '@popperjs/core/lib/modifiers/arrow';
+import { Options as OffsetOptions } from '@popperjs/core/lib/modifiers/offset';
 
 interface Props extends IReactComponentProps {
 	/** the content that should show the tooltip upon the user's mouse entering it **/
@@ -16,12 +19,20 @@ interface Props extends IReactComponentProps {
 	forceHover?: boolean;
 	/** the number of milliseconds to delay hiding the tooltip after the user's mouse leaves this component **/
 	hideDelay?: number;
-	/** how much to offset the popper tooltip [position's direction, perpendicular direction] */
-	offsetPopper: [number, number],
+	/** Additional popper arrow modifier */
+	popperArrowModifier?: Partial<Options>;
+	/** Additional popper offset modifier to reposition the popper tooltip [position's direction, perpendicular direction] */
+	popperOffsetModifier?: Partial<OffsetOptions>;
+	/** className to tweak popper container styles */
+	popperContainerClassName?: string,
+	/** className to tweak popper visual container styles */
+	popperVisualContainerClassName?: string,
 	/** the position/placement of the tooltip relative to the content **/
 	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'auto' | 'auto-start' | 'auto-end';
 	/** the number of milliseconds to delay showing the tooltip once the user's mouse enters this component **/
 	showDelay?: number;
+	//** whether to change default hover tooltip interaction to click/blur */
+	useClickInsteadOfHover?: boolean;
 }
 
 // whether moving forward to the next stage or reverting back to a previous stage
@@ -214,34 +225,49 @@ const useTooltipStage = (
 	}
 }
 
-const useTooltip = (options: {
+const useTooltip = ({
+	hideDelay,
+	placement,
+	popperArrowModifier,
+	popperOffsetModifier,
+	showDelay,
+	transitionEndPropName,
+	useClickInsteadOfHover,
+}: {
 	hideDelay?: number,
 	placement?: Props['position'],
-	offset?: [number, number];
+	popperArrowModifier?: Props['popperArrowModifier'],
+	popperOffsetModifier?: Props['popperOffsetModifier'],
 	showDelay?: number,
 	transitionEndPropName: string,
+	useClickInsteadOfHover: boolean,
 }) => {
 	const [ targetElement, setReferenceElement ] = useState<HTMLElement | null>(null);
 	const [ popperElement, setPopperElement ] = useState<HTMLElement | null>(null);
 	const [ transitionElement, setTransitionElement ] = useState<HTMLElement | null>(null);
-	const { isHover: isHoverTarget } = useDetectHover(targetElement);
-	const { isHover: isHoverPopper } = useDetectHover(popperElement);
-	const { isTransitionEnd } = useDetectTransitionEnd(transitionElement, options.transitionEndPropName);
-	const stages = useTooltipStage(isTransitionEnd, isHoverTarget, isHoverPopper, options.hideDelay, options.showDelay);
+	const isHoverTarget = useClickInsteadOfHover
+		? useDetectClickWithinTargets(targetElement, null, true)
+		: useDetectHover(targetElement);
+	const isHoverPopper = useClickInsteadOfHover
+		? useDetectClickWithinTargets(null, null) // pass nulls to bypass otherwise this will conflict with other click detects (above)
+		: useDetectHover(popperElement);
+	const isTransitionEnd = useDetectTransitionEnd(transitionElement, transitionEndPropName);
+	const stages = useTooltipStage(isTransitionEnd, isHoverTarget, isHoverPopper, hideDelay, showDelay);
 	const [ arrowElement, setArrowElement ] = useState<HTMLElement | null>(null); // the ref for the arrow must be a callback ref
 	const { styles, attributes } = usePopper(targetElement, popperElement, {
-		placement: options.placement,
+		placement: placement,
 		modifiers: [
 			{
 				name: 'arrow',
 				options: {
-					element: arrowElement,
+					element: popperArrowModifier?.element ?? arrowElement,
+					padding: popperArrowModifier?.padding ?? 0,
 				}
 			},
 			{
 				name: 'offset',
 				options: {
-					offset: options.offset || [0, 10],
+					offset: popperOffsetModifier?.offset || [0, 10],
 				}
 			}
 		]
@@ -261,8 +287,13 @@ const useTooltip = (options: {
 export const Tooltip = (props: Props) => {
 	const {
 		children,
+		className,
+		id,
 		forceHover,
+		popperContainerClassName,
+		popperVisualContainerClassName,
 		style,
+		useClickInsteadOfHover,
 	} = props;
 
 	const {
@@ -276,9 +307,11 @@ export const Tooltip = (props: Props) => {
 	} = useTooltip({
 		hideDelay: props.hideDelay,
 		placement: props.position,
-		offset: props.offsetPopper,
+		popperArrowModifier: props.popperArrowModifier,
+		popperOffsetModifier: props.popperOffsetModifier,
 		showDelay: props.showDelay,
 		transitionEndPropName: 'transform',
+		useClickInsteadOfHover: !!useClickInsteadOfHover,
 	});
 
 	return (
@@ -287,7 +320,9 @@ export const Tooltip = (props: Props) => {
 				className={classnames(
 					styles.Tooltip_Target_Container,
 					'Tooltip_Target_Container',
+					className,
 				)}
+				id={id}
 				ref={targetRef}
 				style={style}
 			>
@@ -304,6 +339,7 @@ export const Tooltip = (props: Props) => {
 						className={classnames(
 							styles.Tooltip_Popper_PositionContainer,
 							'Tooltip_Popper_PositionContainer',
+							popperContainerClassName,
 						)}
 						ref={popperRef}
 						style={popperStyles.popper}
@@ -312,6 +348,7 @@ export const Tooltip = (props: Props) => {
 							className={classnames(
 								styles.Tooltip_Popper_VisualContainer,
 								'Tooltip_Popper_VisualContainer',
+								popperVisualContainerClassName,
 								{
 									[styles.Tooltip_Popper_VisualContainer__IsShowing]: stages.isVisible || forceHover,
 									[styles.Tooltip_Popper_VisualContainer__IsTransitionLeaving]: stages.isStage5FadingOutToHide,
@@ -366,4 +403,5 @@ Tooltip.defaultProps = {
 	offsetPopper: [0, 10],
 	position: 'top',
 	showDelay: 1000,
+	useClickInsteadOfHover: false,
 } as Partial<Props>;

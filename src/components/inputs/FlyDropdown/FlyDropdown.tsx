@@ -5,6 +5,8 @@ import * as styles from './FlyDropdown.scss';
 import CaretSVG from '../../../svg/caret.svg';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import { Tooltip } from '../../overlays/Tooltip/Tooltip';
+import { Rect } from '@popperjs/core';
 
 interface IItems {
 	color: 'red' | 'none';
@@ -15,17 +17,29 @@ interface IItems {
 
 interface IProps extends IReactComponentProps {
 	caret?: boolean;
+	/** whether to force the tooltip to show and ignore mouse events **/
+	forceHover?: boolean;
+	/** */
 	items: IItems[];
 	navItem?: boolean;
 	navItemActive?: boolean;
 	position?: 'top' | 'bottom';
 }
 
+const setArrowPadding = ({ popper }: { popper: Rect }) => {
+	const $arrowSize = 16;
+
+	return {
+		left: popper.width - $arrowSize - 20,
+	};
+};
+
 const FlyDropdown = (props: IProps) => {
 	const {
 		caret,
 		children,
 		className,
+		forceHover,
 		id,
 		items,
 		navItem,
@@ -50,7 +64,7 @@ const FlyDropdown = (props: IProps) => {
 	}
 
 	return (
-		<div
+		<Tooltip
 			className={classnames(
 				styles.FlyDropdown,
 				'FlyDropdown',
@@ -62,58 +76,62 @@ const FlyDropdown = (props: IProps) => {
 				},
 				className,
 			)}
+			content={
+				<ul
+					className={classnames(
+						styles.FlyDropdown_Items,
+						'FlyDropdown_Items',
+					)}
+				>
+					{
+						items.map((item: IItems, i: number) => (
+							<li
+								key={i}
+								className={classnames(
+									styles.FlyDropdown_Item,
+									'FlyDropdown_Item',
+									{
+										[styles.FlyDropdown_Item__ColorNone]: item.color === 'none',
+										[styles.FlyDropdown_Item__ColorRed]: item.color === 'red',
+									}
+								)}
+								onClick={(event) => onClickItem(event, item)}
+								onMouseDown={(event) => event.preventDefault()}
+							>
+								{item.label}
+								{item.content}
+							</li>
+						))
+					}
+				</ul>
+			}
+			forceHover={forceHover}
 			id={id}
-			onClick={onClick}
-			onBlur={onBlur}
+			popperArrowModifier={{ padding: setArrowPadding }}
+			popperOffsetModifier={{ offset: [ 20, 0 ] }}
+			popperVisualContainerClassName={styles.FlyDropdown_PopperVisualContainer}
+			position={position === 'top' ? 'top-end' : 'bottom-end'}
+			hideDelay={0}
+			showDelay={0}
 			style={style}
-			tabIndex={0}
+			useClickInsteadOfHover
 		>
 			{children}
 			{caret && (
 				<CaretSVG
 					className={classnames(
 						styles.FlyDropdown_Caret,
-						'FlyDropdown_Caret'
+						'FlyDropdown_Caret',
 					)}
 				/>
 			)}
-			<ul
-				className={classnames(
-					styles.FlyDropdown_Items,
-					'FlyDropdown_Items',
-					{
-						[styles.FlyDropdown_Items__PositionTop]: position === 'top',
-					},
-				)}
-			>
-				{
-					items.map((item: IItems, i: number) => (
-						<li
-							key={i}
-							className={classnames(
-								styles.FlyDropdown_Item,
-								'FlyDropdown_Item',
-								{
-									[styles.FlyDropdown_Item__ColorNone]: item.color === 'none',
-									[styles.FlyDropdown_Item__ColorRed]: item.color === 'red',
-								}
-							)}
-							onClick={(event) => onClickItem(event, item)}
-							onMouseDown={(event) => event.preventDefault()}
-						>
-							{item.label}
-							{item.content}
-						</li>
-					))
-				}
-			</ul>
-		</div>
+		</Tooltip>
 	);
 }
 
 FlyDropdown.defaultProps = {
 	caret: true,
-	forceHover: true,
+	forceHover: false,
 	items: [],
 	navItem: false,
 	navItemActive: false,
