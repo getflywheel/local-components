@@ -7,6 +7,7 @@ import { VirtualTableContext, IVirtualTableContext } from '../helpers/VirtualTab
 import { IVirtualTableProps, IVirtualTableRowRendererDataArgs, VirtualTableDataType } from '../VirtualTable';
 
 export interface IVirtualTableRowProps extends IReactComponentProps {
+	extraData?: any;
 	/** whether this is a header row or not */
 	isHeader: boolean;
 	/** */
@@ -27,6 +28,7 @@ export class VirtualTableRow extends React.Component<IVirtualTableRowProps> {
 				cellData={cellData}
 				cellIndex={colIndex}
 				colKey={context.dataKeysOrderedColumns![colIndex]}
+				extraData={this.props.extraData}
 				isHeader={this.props.isHeader}
 				key={`${colIndex}.${JSON.stringify(cellData)}`}
 				onChangeRowData={this.props.onChangeRowData}
@@ -37,6 +39,7 @@ export class VirtualTableRow extends React.Component<IVirtualTableRowProps> {
 		const rowRendererDataArgs: IVirtualTableRowRendererDataArgs = {
 			children,
 			data: context.data,
+			extraData: this.props.extraData,
 			isHeader: this.props.isHeader,
 			rowData: this.props.rowData,
 			rowIndex: this.props.rowIndex,
