@@ -9,6 +9,7 @@ export interface IVirtualTableCellProps extends IReactComponentProps {
 	cellData: any;
 	cellIndex: number;
 	colKey: string | number;
+	extraData?: any;
 	/** whether this cell is part of a header row or not */
 	isHeader: boolean;
 	/** */
@@ -27,6 +28,7 @@ export class VirtualTableCell extends React.Component<IVirtualTableCellProps> {
 		if (this.props.onChangeRowData) {
 			const dataArgs: IVirtualTableOnChangeRowDataArgs = {
 				colKey: this.props.colKey,
+				extraData: this.props.extraData,
 				isHeader: this.props.isHeader,
 				rowData: this.props.rowData,
 				rowIndex: this.props.rowIndex,
@@ -42,10 +44,11 @@ export class VirtualTableCell extends React.Component<IVirtualTableCellProps> {
 		const children: React.ReactNode = this.props.cellData;
 		const cellRendererDataArgs: IVirtualTableCellRendererDataArgs = {
 			cellData: this.props.cellData,
+			children,
 			colKey: this.props.colKey,
 			changeFn: context.cellRendererChangeFn || this._changeFn,
 			data: context.data,
-			children,
+			extraData: this.props.extraData,
 			isHeader: this.props.isHeader,
 			rowData: this.props.rowData,
 			rowIndex: this.props.rowIndex,

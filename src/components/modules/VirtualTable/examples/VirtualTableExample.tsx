@@ -4,7 +4,7 @@ import IReactComponentProps from '../../../../common/structures/IReactComponentP
 import Checkbox from '../../../inputs/Checkbox/Checkbox';
 import FlySelect from '../../../inputs/FlySelect/FlySelect';
 import Divider from '../../../layout/Divider/Divider';
-import { IVirtualTableCellRendererDataArgs, VirtualTable } from '../VirtualTable';
+import { IVirtualTableCellRendererDataArgs, VirtualTable, IVirtualTableRowRendererDataArgs } from '../VirtualTable';
 
 interface IDataObject {
 	index: number;

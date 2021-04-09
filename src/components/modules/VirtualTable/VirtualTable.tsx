@@ -19,6 +19,7 @@ export interface IVirtualTableCellRendererDataArgs {
 	children: React.ReactNode;
 	colKey: string | number;
 	data: IVirtualTableContext['data'] | any;
+	extraData?: any;
 	isHeader: boolean;
 	rowData: VirtualTableDataType | any;
 	rowIndex: number;
@@ -28,6 +29,7 @@ export interface IVirtualTableRowRendererDataArgs {
 	/** the default rendered cell contents that can either be rendered within a custom row renderer or ignored all together */
 	children: React.ReactNode;
 	data: IVirtualTableContext['data'] | any;
+	extraData?: any;
 	isHeader: boolean;
 	rowData: VirtualTableDataType | any;
 	rowIndex: number;
@@ -35,6 +37,7 @@ export interface IVirtualTableRowRendererDataArgs {
 
 export interface IVirtualTableOnChangeRowDataArgs {
 	colKey: string | number;
+	extraData?: any;
 	isHeader: boolean;
 	rowData: VirtualTableDataType | any;
 	rowIndex: number;
@@ -62,6 +65,8 @@ export interface IVirtualTableProps extends IReactComponentProps {
 	 * e.g. data={[{index: 1, name: 'one', selected: true}, {index: 2, name: 'two', selected: true}]} // object-based
 	 */
 	data: VirtualTableDataType[] | null | undefined;
+	/** */
+	extraData?: any;
 	/**
 	 * header data is the order in which is will be displayed
 	 * the header data much match the same type as the data (either array or object-based)
@@ -147,6 +152,7 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 		return (
 			<VirtualTableRow
 				className={this.props.rowClassName}
+				extraData={this.props.extraData}
 				isHeader={extraData ? extraData.isHeader : false}
 				key={key}
 				onChangeRowData={this.props.onChangeRowData}
