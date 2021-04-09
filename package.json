@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@getflywheel/memoize-one-ts": "^0.0.2",
-    "@popperjs/core": "^2.6.0",
+    "@popperjs/core": "^2.9.2",
     "@types/untildify": "^3.0.0",
     "classnames": "^2.2.6",
     "clipboard-copy": "^3.1.0",
@@ -21,7 +21,7 @@
     "react-markdown": "^4.0.3",
     "react-modal": "^3.5.1",
     "react-move": "^6.0.0",
-    "react-popper": "^2.2.4",
+    "react-popper": "^2.2.5",
     "react-resize-observer": "^1.1.1",
     "react-router-dom": "^5.0.1",
     "react-truncate-markup": "^3.0.0",
