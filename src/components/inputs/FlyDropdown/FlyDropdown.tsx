@@ -49,19 +49,10 @@ const FlyDropdown = (props: IProps) => {
 	} = props;
 	const [ open, setOpen ] = useState(false);
 
-	const onClick = () => {
-		setOpen((open) => !open);
-	};
-
-	const onBlur = () => {
-		setOpen(false);
-	}
-
 	const onClickItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, item: IItems) => {
 		item.onClick.call(null);
-		setOpen(false);
 		event.stopPropagation();
-	}
+	};
 
 	return (
 		<Tooltip

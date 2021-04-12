@@ -11,8 +11,8 @@ export const useDetectClickWithinTargets = (el1: HTMLElement | null, el2?: HTMLE
 					return;
 				}
 
-				document.removeEventListener('mousedown', listener);
-				document.removeEventListener('touchstart', listener);
+				document.removeEventListener('click', listener);
+				document.removeEventListener('touchend', listener);
 
 				setIsClickFocus(false);
 			};
@@ -23,24 +23,24 @@ export const useDetectClickWithinTargets = (el1: HTMLElement | null, el2?: HTMLE
 				setIsClickFocus((is) => alwaysBlurOnClick ? !is : true);
 
 				// just to be safe because of intermittent re-processing code
-				document.removeEventListener('mousedown', listener);
-				document.removeEventListener('touchstart', listener);
-				document.addEventListener('mousedown', listener);
-				document.addEventListener('touchstart', listener);
+				document.removeEventListener('click', listener);
+				document.removeEventListener('touchend', listener);
+				document.addEventListener('click', listener);
+				document.addEventListener('touchend', listener);
 			}
 
 			el1?.addEventListener('click', onClick);
 
 			// if re-processing in between click and click outside
 			if (isClickFocus) {
-				document.addEventListener('mousedown', listener);
-				document.addEventListener('touchstart', listener);
+				document.addEventListener('click', listener);
+				document.addEventListener('touchend', listener);
 			}
 
 			return () => {
 				el1?.removeEventListener('click', onClick);
-				document.removeEventListener('mousedown', listener);
-				document.removeEventListener('touchstart', listener);
+				document.removeEventListener('click', listener);
+				document.removeEventListener('touchend', listener);
 			};
 		},
 		[el1, el2, alwaysBlurOnClick],
