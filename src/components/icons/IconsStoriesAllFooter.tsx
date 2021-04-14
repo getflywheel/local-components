@@ -20,11 +20,11 @@ export const IconsStoriesAllFooter = () => {
 	} = useContext(IconStoriesAllContext);
 	const [snippet, setSnippet] = useState('');
 	const [useIndividualImportOption, setUseIndividualImportOption] = useState(true);
-	const [doShowCopiedTimeoutRef, setDoShowCopiedTimeoutRef] = useState<NodeJS.Timeout>();
+	const [doShowCopiedTimeoutRef, setDoShowCopiedTimeoutRef] = useState<NodeJS.Timeout | number | undefined>();
 
 	const clearCopyTimeout = () => {
 		if (doShowCopiedTimeoutRef) {
-			clearTimeout(doShowCopiedTimeoutRef);
+			clearTimeout(doShowCopiedTimeoutRef as number);
 			setDoShowCopiedTimeoutRef(undefined);
 		}
 	}
