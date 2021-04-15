@@ -17,7 +17,9 @@
 			@include theme-tab-border-active;
 		}
 
-		&:hover, &.FlyDropdown__Open, &.FlyDropdown__NavItemActive {
+		&:hover,
+		&:global(.Popper__Showing),
+		&.FlyDropdown__NavItemActive {
 			button {
 				color: inherit;
 			}
@@ -28,17 +30,27 @@
 				@include theme-fill-graydark-else-white;
 			}
 		}
-		&.FlyDropdown__Open {
+		&:global(.Popper__Showing) {
 			.FlyDropdown_Caret {
 				@include __theme-background($gray-dark, $white);
+			}
+		}
+	}
+
+	&:global(.Popper__Showing) {
+		.FlyDropdown_Caret {
+			height: 2px;
+			background: $gray25;
+			margin-top: -2px;
+
+			* {
+				opacity: 0;
 			}
 		}
 	}
 }
 
 .FlyDropdown_Caret {
-	$ease-in: cubic-bezier(.2,.3,.25,.9);
-
 	width: 14px;
 	margin-left: 3px;
 	margin-bottom: 2.5px;
@@ -47,18 +59,7 @@
 	path {
 		fill: $gray25;
 	}
-
-	.FlyDropdown.FlyDropdown__Open & {
-		height: 2px;
-		background: $gray25;
-		margin-top: -2px;
-
-		* {
-			opacity: 0;
-		}
-	}
 }
-
 
 .FlyDropdown_Items {
 	$border-radius: 4px;
