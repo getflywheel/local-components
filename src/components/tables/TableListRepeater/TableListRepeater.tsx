@@ -48,7 +48,7 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 		this.addItem = this.addItem.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
 		if (isEqual(nextProps.data, this.state.initialData)) {
 			return;
 		}

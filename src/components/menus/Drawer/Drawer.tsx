@@ -22,7 +22,7 @@ export default class Drawer extends React.Component<IProps, IState> {
 		};
 	}
 
-	componentWillReceiveProps (nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
 		if (nextProps.show) {
 			this.setState({
 				disableAnimation: false,

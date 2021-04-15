@@ -32,7 +32,7 @@ export default class Checkbox extends React.Component<IProps, IState> {
 		};
 	};
 
-	componentWillReceiveProps (nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
 		if (nextProps.checked) {
 			this.setState({
 				checked: nextProps.checked,

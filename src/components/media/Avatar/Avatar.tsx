@@ -37,7 +37,7 @@ export default class Avatar extends React.Component<IProps, IState> {
 		this.onLoad = this.onLoad.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
 		if (this.props.src !== nextProps.src) {
 			this.setState({
 				isImageError: false,

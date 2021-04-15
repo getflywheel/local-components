@@ -95,7 +95,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 		this._onDidMountOrUpdate();
 	}
 
-	componentWillReceiveProps (nextProps: IVirtualListProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IVirtualListProps) {
 		if (nextProps.data !== this.props.data
 			|| (nextProps.data && nextProps.data.length !== this.state.lastDataLen)
 			|| nextProps.itemHeight !== this.props.itemHeight

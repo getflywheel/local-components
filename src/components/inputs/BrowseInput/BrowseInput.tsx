@@ -42,7 +42,7 @@ export default class BrowseInput extends React.Component<IProps, IState> {
 		this.browseFolder = this.browseFolder.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
 		if ('value' in nextProps) {
 			this.setState({ value: nextProps.value });
 		}
