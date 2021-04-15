@@ -76,10 +76,6 @@
 		transform: rotate(45deg);
 	}
 
-	.FlyDropdown.FlyDropdown__Open & {
-		transform: scale(1) translateY(0) translateZ(0);
-	}
-
 	&.FlyDropdown_Items__PositionTop {
 		top: -10px;
 
@@ -93,10 +89,6 @@
 			bottom: -6px;
 			top: auto;
 			right: 14px;
-		}
-
-		.FlyDropdown.FlyDropdown__Open & {
-			transform: scale(1) translateY(-100%) translateZ(0);
 		}
 	}
 }

@@ -12,7 +12,7 @@ import { useDetectClickWithinTargets } from '../../../common/helpers/useDetectCl
 import { Options } from '@popperjs/core/lib/modifiers/arrow';
 import { Options as OffsetOptions } from '@popperjs/core/lib/modifiers/offset';
 
-interface Props extends IReactComponentProps {
+export interface TooltipProps extends IReactComponentProps {
 	/** the content that should show the tooltip upon the user's mouse entering it **/
 	content?: React.ReactElement;
 	/** whether to force the tooltip to show and ignore mouse events **/
@@ -235,9 +235,9 @@ const useTooltip = ({
 	useClickInsteadOfHover,
 }: {
 	hideDelay?: number,
-	placement?: Props['position'],
-	popperArrowModifier?: Props['popperArrowModifier'],
-	popperOffsetModifier?: Props['popperOffsetModifier'],
+	placement?: TooltipProps['position'],
+	popperArrowModifier?: TooltipProps['popperArrowModifier'],
+	popperOffsetModifier?: TooltipProps['popperOffsetModifier'],
 	showDelay?: number,
 	transitionEndPropName: string,
 	useClickInsteadOfHover: boolean,
@@ -284,7 +284,7 @@ const useTooltip = ({
 	};
 }
 
-export const Tooltip = (props: Props) => {
+export const Tooltip = (props: TooltipProps) => {
 	const {
 		children,
 		className,
@@ -313,6 +313,7 @@ export const Tooltip = (props: Props) => {
 		transitionEndPropName: 'transform',
 		useClickInsteadOfHover: !!useClickInsteadOfHover,
 	});
+	const isShowing = forceHover || !stages.isStage0Hidden;
 
 	return (
 		<>
@@ -321,6 +322,10 @@ export const Tooltip = (props: Props) => {
 					styles.Tooltip_Target_Container,
 					'Tooltip_Target_Container',
 					className,
+					{
+						[styles.Popper__Showing]: isShowing,
+						'Popper__Showing': isShowing, // this also needs to be globally accessible so other component styles can reference it
+					},
 				)}
 				id={id}
 				ref={targetRef}
@@ -332,7 +337,7 @@ export const Tooltip = (props: Props) => {
 			  * render if forced or not in the hidden tooltip stage
 			  * note: this needs to render on hover when waiting for initial show delay even those it's not visible
 			*/}
-			{(forceHover || !stages.isStage0Hidden) && (
+			{isShowing && (
 				<Portal>
 					{/* this is the dedicated popper container that applies the 3rd party library position styles without conflicting with our custom transition styles */}
 					<div
@@ -340,6 +345,10 @@ export const Tooltip = (props: Props) => {
 							styles.Tooltip_Popper_PositionContainer,
 							'Tooltip_Popper_PositionContainer',
 							popperContainerClassName,
+							{
+								[styles.Popper__Showing]: isShowing,
+								'Popper__Showing': isShowing, // this also needs to be globally accessible so other component styles can reference it
+							},
 						)}
 						ref={popperRef}
 						style={popperStyles.popper}
@@ -404,4 +413,4 @@ Tooltip.defaultProps = {
 	position: 'top',
 	showDelay: 1000,
 	useClickInsteadOfHover: false,
-} as Partial<Props>;
+} as Partial<TooltipProps>;
