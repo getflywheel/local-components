@@ -34,7 +34,7 @@ export default class Switch extends React.Component<IProps, IState> {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
 		if ('checked' in nextProps) {
 			this.setState({ checked: !!nextProps.checked });
 		}

@@ -41,7 +41,7 @@ export default class TableListMultiDisplay extends React.Component<
 		};
 	}
 
-	componentWillReceiveProps(nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps(nextProps: IProps) {
 		if (isEqual(nextProps.data, this.state.initialData)) {
 			return;
 		}

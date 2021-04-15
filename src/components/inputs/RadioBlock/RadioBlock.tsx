@@ -43,7 +43,7 @@ export default class RadioBlock extends React.Component<IProps, IState> {
 		this.onClick = this.onClick.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps: IProps) {
+	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
 		if (nextProps.default !== this.state.value) {
 			this.setState({
 				value: nextProps.default,
