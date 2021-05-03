@@ -74,7 +74,7 @@ export default class FlyModal extends React.Component<IProps> {
 				className={classnames(
 					styles.FlyModal,
 					'FlyModal', // in here for tests
-					this.props.className
+					this.props.className,
 				)} // warning: this must be set after {...this.props} to work
 				id={this.props.id}
 				style={this.props.style}
