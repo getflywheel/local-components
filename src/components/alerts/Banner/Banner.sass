@@ -6,10 +6,15 @@
 	position: relative
 	display: flex
 	align-items: center
-	min-height: 56px
 	font-weight: 300;
 	@include stripes(#f58f30, #f48720)
 	@include selectable
+
+	&.Height__Thin
+		min-height: 40px
+
+	&.Height__Default
+		min-height: 56px
 
 	// modifiers and states (if no direct styles, this still needs to be here to set the class in React)
 	&.Banner__Neutral

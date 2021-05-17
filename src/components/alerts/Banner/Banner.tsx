@@ -17,11 +17,16 @@ interface BannerProps extends IReactComponentProps {
 	onDismiss?: FunctionGeneric;
 	onIndexChange?: FunctionGeneric;
 	variant?: 'warning' | 'neutral' | 'success' | 'error';
+	/**
+	 * Thin height is 40px; default height is 56px
+	 */
+	height: 'thin' | 'default';
 }
 
 export default class Banner extends React.Component<BannerProps> {
 	static defaultProps: Partial<BannerProps> = {
 		currentIndex: 0,
+		height: 'default',
 		icon: 'warning',
 		numBanners: 1,
 		variant: 'neutral',
@@ -132,6 +137,8 @@ export default class Banner extends React.Component<BannerProps> {
 						[styles.Banner__Neutral]: this.props.variant === 'neutral',
 						[styles.Banner__Error]: this.props.variant === 'error',
 						[styles.Banner__Success]: this.props.variant === 'success',
+						[styles.Height__Thin]: this.props.height === 'thin',
+						[styles.Height__Default]: this.props.height === 'default',
 					},
 					this.props.className,
 				)}
