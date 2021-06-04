@@ -7,6 +7,14 @@ interface IProps extends ILocalContainerProps {
 	name?: string;
 	onChange?: any;
 	value?: string;
+	minlength?: number;
+	maxlength?: number;
+	list?: string;
+	pattern?: string;
+	placeholder?: string;
+	readonly?: boolean;
+	size?: number;
+	spellcheck?: boolean;
 }
 
 export default class BasicInput extends React.Component<IProps> {
