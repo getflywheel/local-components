@@ -29,6 +29,10 @@
 // SVG
 
 .ProgressRing_Svg {
+	// maintain ring shape regardless of inherited svg styles
+	width: auto !important;
+	height: auto !important;
+	margin: auto !important;
 	// position at "12 o'clock" by shifting -90 degrees and nudging to offset 'stroke-linecap: round' overhang
 	transform: rotate(-88deg);
 	transform-origin: 50% 50%;
@@ -81,6 +85,7 @@
 .ProgressRing_SvgBackground_Circle__strokeLight {
 	@include overrideStrokeLightAndDark($gray75, $gray15);
 }
+
 
 // Text
 
