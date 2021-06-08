@@ -75,7 +75,11 @@
 }
 
 .ProgressRing_SvgForeground_Circle__strokeLight {
-	@include overrideStrokeLightAndDark($green);
+	@include overrideStrokeLightAndDark($white, $white);
+}
+
+.ProgressRing_SvgBackground_Circle__strokeLight {
+	@include overrideStrokeLightAndDark($gray75, $gray15);
 }
 
 // Text
