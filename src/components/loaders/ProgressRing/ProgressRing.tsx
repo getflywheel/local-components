@@ -79,6 +79,9 @@ const ProgressRing = (props: IProps) => {
 					className={classnames(
 						styles.ProgressRing_SvgBackground_Circle,
 						'ProgressRing_SvgBackground_Circle',
+						{
+							[styles.ProgressRing_SvgBackground_Circle__strokeLight]: progressColor === 'light',
+						},
 					)}
 					cx={center}
 					cy={center}
@@ -123,7 +126,7 @@ const ProgressRing = (props: IProps) => {
 					},
 				)}
 			>
-				{ children }
+				{children}
 			</span>
 		</div>
 	);
