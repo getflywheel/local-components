@@ -15,7 +15,6 @@
 	&.Popup__PositionRight
 	&.Popup__PositionTop
 	&.Popup__CenteredTail
-	&.Popup__Cursor_Pointer
 
 	.Popup_BubbleWrapper
 		position: absolute
@@ -54,6 +53,7 @@
 		right: 0
 		bottom: 0
 		left: 0
+		cursor: pointer
 
 	.Popup_Bubble
 		$border-radius: 4px
@@ -132,7 +132,3 @@
 			opacity: 0
 		@include selectors_ifHostHasModifier('.Popup__Open')
 			opacity: 1
-
-
-	@include selectors_ifHostHasModifier('.Popup__Cursor_Pointer')
-		@include cursorPointer
