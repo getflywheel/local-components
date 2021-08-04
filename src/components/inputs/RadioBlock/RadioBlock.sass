@@ -37,9 +37,14 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 	&.RadioBlock_Option__Disabled
 		@include theme-color-gray25-else-gray-dark50
 		@include theme-background-gray15-else-gray
+		opacity: .5
+		cursor: not-allowed
+
+		.RadioBLock_Label
+			cursor: not-allowed
 
 	&.RadioBlock_Option__Selected
-		z-index: 4
+		z-index: 10
 
 		.RadioBLock_Label
 			z-index: $zIndexOptionNormal + 1
