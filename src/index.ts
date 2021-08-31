@@ -4,6 +4,7 @@ addStyles();
 // Alerts
 export { default as Banner } from './components/alerts/Banner/Banner';
 export { default as BannerCarousel } from './components/alerts/BannerCarousel/BannerCarousel';
+export { default as OfflineBanner } from './components/alerts/OfflineBanner/OfflineBanner';
 // Buttons
 export { ButtonBase } from './components/buttons/_private/ButtonBase/ButtonBase';
 export { Button } from './components/buttons/Button/Button';
