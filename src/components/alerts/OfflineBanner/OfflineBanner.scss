@@ -6,9 +6,33 @@
 	width: 100%;
 	font-size: 14px;
 	padding: 15px 0 15px 30px;
+	color: $gray;
+
+	svg {
+		path {
+			stroke: $gray;
+		}
+
+		circle {
+			fill: $gray;
+		}
+	}
+
+	@include if-theme-dark() {
+		background-color: $gray-dark50;
+		color: $white;
+		svg {
+			path {
+				stroke: $white;
+			}
+
+			circle {
+				fill: $white;
+			}
+		}
+	}
 }
 
 .OfflineBanner_text {
-	color: $gray;
 	margin-left: 12px;
 }
