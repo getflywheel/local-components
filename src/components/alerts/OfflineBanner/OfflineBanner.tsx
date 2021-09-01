@@ -1,7 +1,7 @@
 import React from 'react';
-import Offline from '../../../svg/offline.svg';
 import * as styles from './OfflineBanner.scss';
 import { default as IReactComponentProps } from '../../../common/structures/IReactComponentProps';
+import OfflineIcon from '../../icons/svgs/OfflineIcon';
 
 export interface IOfflineBannerProps extends IReactComponentProps {
 	offline: boolean;
@@ -14,7 +14,7 @@ export const OfflineBanner: React.FC<IOfflineBannerProps> = (props) => {
 
 	return (
 		<div id={props.id} style={props.style} className={styles.OfflineBanner_container}>
-			<Offline />
+			<OfflineIcon />
 			<div className={styles.OfflineBanner_text}>No internet connection.</div>
 		</div>
 	);
