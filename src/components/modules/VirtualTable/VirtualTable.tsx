@@ -12,6 +12,8 @@ export interface VirtualTableCSSProperties extends React.CSSProperties {
 	'--VirtualTable_RowHeight': string;
 }
 
+export type GenericObject = { [key: string]: any };
+
 export interface IVirtualTableCellRendererDataArgs {
 	cellData: any;
 	changeFn: IVirtualTableProps['cellRendererChangeFn'];
@@ -19,7 +21,7 @@ export interface IVirtualTableCellRendererDataArgs {
 	children: React.ReactNode;
 	colKey: string | number;
 	data: IVirtualTableContext['data'] | any;
-	extraData?: any;
+	extraData?: GenericObject;
 	isHeader: boolean;
 	rowData: VirtualTableDataType | any;
 	rowIndex: number;
@@ -29,7 +31,7 @@ export interface IVirtualTableRowRendererDataArgs {
 	/** the default rendered cell contents that can either be rendered within a custom row renderer or ignored all together */
 	children: React.ReactNode;
 	data: IVirtualTableContext['data'] | any;
-	extraData?: any;
+	extraData?: GenericObject;
 	isHeader: boolean;
 	rowData: VirtualTableDataType | any;
 	rowIndex: number;
@@ -37,7 +39,7 @@ export interface IVirtualTableRowRendererDataArgs {
 
 export interface IVirtualTableOnChangeRowDataArgs {
 	colKey: string | number;
-	extraData?: any;
+	extraData?: GenericObject;
 	isHeader: boolean;
 	rowData: VirtualTableDataType | any;
 	rowIndex: number;
@@ -66,7 +68,7 @@ export interface IVirtualTableProps extends IReactComponentProps {
 	 */
 	data: VirtualTableDataType[] | null | undefined;
 	/** */
-	extraData?: any;
+	extraData?: GenericObject;
 	/**
 	 * header data is the order in which is will be displayed
 	 * the header data much match the same type as the data (either array or object-based)
@@ -109,6 +111,7 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 		rowHeightSize: 'l',
 		rowHeaderHeightSize: 'auto',
 		striped: true,
+		extraData: {},
 	};
 
 	protected _helper: VirtualTableHelper = new VirtualTableHelper();
@@ -146,14 +149,14 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 		}
 	}
 
-	protected _rowRenderer = (rowData: any, rowIndex: number, customRendererStyles: {transform: string}, extraData: {isHeader: boolean}) => {
+	protected _rowRenderer = (rowData: any, rowIndex: number, customRendererStyles: {transform: string}, extraData: GenericObject) => {
 		const key: string = this.props.rowKeyPropName ? rowData[this.props.rowKeyPropName] : `${rowIndex}.${JSON.stringify(rowData)}`;
 
 		return (
 			<VirtualTableRow
 				className={this.props.rowClassName}
-				extraData={this.props.extraData}
-				isHeader={extraData ? extraData.isHeader : false}
+				extraData={extraData}
+				isHeader={extraData.isHeader}
 				key={key}
 				onChangeRowData={this.props.onChangeRowData}
 				rowData={rowData}
@@ -219,7 +222,7 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 							styles.VirtualTable_Header,
 							'VirtualTable_Header',
 						)}>
-							{this._rowRenderer(this._helper.getDataCalculationsMemoized(this.props).headersNormalized, -1, {} as any, {isHeader: true})}
+							{this._rowRenderer(this._helper.getDataCalculationsMemoized(this.props).headersNormalized, -1, {} as any, {...this.props.extraData, isHeader: true})}
 						</div>
 					)}
 					<VirtualList
@@ -231,6 +234,7 @@ export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTa
 						overscan={this.props.overscan}
 						striped={this.props.striped}
 						wrapperRenderer={this._tableBodyRenderer}
+						itemRendererExtraData={this.props.extraData}
 					/>
 				</VirtualTableContext.Provider>
 			</div>
