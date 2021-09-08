@@ -101,6 +101,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 			|| nextProps.itemHeight !== this.props.itemHeight
 			|| nextProps.itemRenderer !== this.props.itemRenderer
 			|| nextProps.overscan !== this.props.overscan
+			|| nextProps.itemRendererExtraData !== this.props.itemRendererExtraData
 		) {
 			this._calculateItemsAndRenderIfChanged(nextProps, true);
 		}
