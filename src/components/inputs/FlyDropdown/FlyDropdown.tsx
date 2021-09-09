@@ -29,6 +29,7 @@ interface IProps extends IReactComponentProps {
 	navItemActive?: boolean;
 	popperOptions?: TooltipProps;
 	position?: 'top' | 'bottom';
+	useClickInsteadOfHover?: boolean;
 }
 
 const setArrowPadding = ({ popper }: { popper: Rect }) => {
@@ -54,6 +55,7 @@ const FlyDropdown = (props: IProps) => {
 		popperOptions,
 		position,
 		style,
+		useClickInsteadOfHover,
 	} = props;
 	const {
 		popperArrowModifier,
@@ -120,10 +122,10 @@ const FlyDropdown = (props: IProps) => {
 			}}
 			popperVisualContainerClassName={styles.FlyDropdown_PopperVisualContainer}
 			position={position === 'top' ? 'top-end' : 'bottom-end'}
-			hideDelay={0}
+			hideDelay={useClickInsteadOfHover ? 0 : 300}
 			showDelay={0}
 			style={style}
-			useClickInsteadOfHover
+			useClickInsteadOfHover={useClickInsteadOfHover}
 			{...restPopperOptions}
 		>
 			{children}
@@ -146,6 +148,7 @@ FlyDropdown.defaultProps = {
 	navItem: false,
 	navItemActive: false,
 	position: 'bottom',
+	useClickInsteadOfHover: true,
 } as Partial<IProps>;
 
 export default FlyDropdown;
