@@ -5,10 +5,9 @@ import * as styles from './Tooltip.scss';
 import { usePopper } from 'react-popper';
 import {  useEffect, useState } from 'react';
 import { Portal } from '../../../common/helpers/Portal';
-import { useDetectHover } from '../../../common/helpers/useDetectHover';
 import { useDetectTransitionEnd } from '../../../common/helpers/useDetectTransitionEnd';
 import { useSwappableTimeout } from '../../../common/helpers/useTimeout';
-import { useDetectClickWithinTargets } from '../../../common/helpers/useDetectClickWithinTargets';
+import { useDetectClickOrHoverWithinTargets } from '../../../common/helpers/useDetectClickOrHoverWithinTargets';
 import { Options } from '@popperjs/core/lib/modifiers/arrow';
 import { Options as OffsetOptions } from '@popperjs/core/lib/modifiers/offset';
 
@@ -245,8 +244,8 @@ const useTooltip = ({
 	const [ targetElement, setReferenceElement ] = useState<HTMLElement | null>(null);
 	const [ popperElement, setPopperElement ] = useState<HTMLElement | null>(null);
 	const [ transitionElement, setTransitionElement ] = useState<HTMLElement | null>(null);
-	const isHoverTarget = useDetectClickWithinTargets({popperEl: targetElement, hoverEl: targetElement, alwaysBlurOnClick: true, useClickInsteadOfHover})
-	const isHoverPopper= useDetectClickWithinTargets({popperEl: null, hoverEl: popperElement, alwaysBlurOnClick: false, useClickInsteadOfHover}) // pass nulls to bypass otherwise this will conflict with other click detects (above)
+	const isHoverTarget = useDetectClickOrHoverWithinTargets({targetEl: targetElement, alwaysBlurOnClick: true, useClickInsteadOfHover})
+	const isHoverPopper= useDetectClickOrHoverWithinTargets({targetEl: popperElement, alwaysBlurOnClick: false, useClickInsteadOfHover}) // pass nulls to bypass otherwise this will conflict with other click detects (above)
 
 	const isTransitionEnd = useDetectTransitionEnd(transitionElement, transitionEndPropName);
 	const stages = useTooltipStage(isTransitionEnd, isHoverTarget, isHoverPopper, hideDelay, showDelay);

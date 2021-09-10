@@ -1,28 +1,35 @@
 import { useEffect, useState } from 'react';
 
-export const useDetectClickWithinTargets = ({popperEl, hoverEl, alwaysBlurOnClick, useClickInsteadOfHover}: { popperEl: HTMLElement | null, hoverEl: HTMLElement | null, alwaysBlurOnClick: boolean, useClickInsteadOfHover: boolean }) => {
+export const useDetectClickOrHoverWithinTargets = ({
+	targetEl, 
+	alwaysBlurOnClick, 
+	useClickInsteadOfHover
+}: { 
+	targetEl: HTMLElement | null, 
+	alwaysBlurOnClick: boolean, 
+	useClickInsteadOfHover: boolean 
+}) => {
 	const [isClickFocus, setIsClickFocus] = useState(false);
 	const [isHover, setIsHover] = useState(false);
 
 	const handleMouseOver = () => setIsHover(true);
 	const handleMouseOut = () => setIsHover(false);
 
-	useEffect(
-		() => {
-			if (hoverEl && !useClickInsteadOfHover) {
-				hoverEl.addEventListener('mouseover', handleMouseOver);
-				hoverEl.addEventListener('mouseout', handleMouseOut);
+	useEffect(() => {
+			if (targetEl && !useClickInsteadOfHover) {
+				targetEl.addEventListener('mouseover', handleMouseOver);
+				targetEl.addEventListener('mouseout', handleMouseOut);
 
 				return () => {
-					hoverEl.removeEventListener('mouseover', handleMouseOver);
-					hoverEl.removeEventListener('mouseout', handleMouseOut);
+					targetEl.removeEventListener('mouseover', handleMouseOver);
+					targetEl.removeEventListener('mouseout', handleMouseOut);
 				};
 			}
 
-			if (popperEl && useClickInsteadOfHover) {
+			if (targetEl && useClickInsteadOfHover) {
 				const listener = (event: {target: any}) => {
 					// if clicking ref's element or descendent elements
-					if (!popperEl || popperEl.contains(event.target)) {
+					if (!targetEl || targetEl.contains(event.target)) {
 						return;
 					}
 
@@ -36,7 +43,7 @@ export const useDetectClickWithinTargets = ({popperEl, hoverEl, alwaysBlurOnClic
 					// depending on whether to detect every click as cancelling something (e.g. tooltip)
 					// this should either toogle or set to true
 					setIsClickFocus((is) => alwaysBlurOnClick ? !is : true);
-
+					console.log("Inside onClick event")
 					// just to be safe because of intermittent re-processing code
 					document.removeEventListener('click', listener);
 					document.removeEventListener('touchend', listener);
@@ -44,7 +51,7 @@ export const useDetectClickWithinTargets = ({popperEl, hoverEl, alwaysBlurOnClic
 					document.addEventListener('touchend', listener);
 				}
 
-				popperEl?.addEventListener('click', onClick);
+				targetEl?.addEventListener('click', onClick);
 
 				// if re-processing in between click and click outside
 				if (isClickFocus) {
@@ -53,13 +60,13 @@ export const useDetectClickWithinTargets = ({popperEl, hoverEl, alwaysBlurOnClic
 				}
 
 				return () => {
-					popperEl?.removeEventListener('click', onClick);
+					targetEl?.removeEventListener('click', onClick);
 					document.removeEventListener('click', listener);
 					document.removeEventListener('touchend', listener);
 				};
 			}
 		},
-		[hoverEl, popperEl, alwaysBlurOnClick, useClickInsteadOfHover],
+		[targetEl, alwaysBlurOnClick, useClickInsteadOfHover],
 	);
 
 	return useClickInsteadOfHover ? isClickFocus : isHover;
