@@ -245,12 +245,9 @@ const useTooltip = ({
 	const [ targetElement, setReferenceElement ] = useState<HTMLElement | null>(null);
 	const [ popperElement, setPopperElement ] = useState<HTMLElement | null>(null);
 	const [ transitionElement, setTransitionElement ] = useState<HTMLElement | null>(null);
-	const isHoverTarget = useClickInsteadOfHover
-		? useDetectClickWithinTargets(targetElement, null, true)
-		: useDetectHover(targetElement);
-	const isHoverPopper = useClickInsteadOfHover
-		? useDetectClickWithinTargets(null, null) // pass nulls to bypass otherwise this will conflict with other click detects (above)
-		: useDetectHover(popperElement);
+	const isHoverTarget = useDetectClickWithinTargets({popperEl: targetElement, hoverEl: targetElement, alwaysBlurOnClick: true, useClickInsteadOfHover})
+	const isHoverPopper= useDetectClickWithinTargets({popperEl: null, hoverEl: popperElement, alwaysBlurOnClick: false, useClickInsteadOfHover}) // pass nulls to bypass otherwise this will conflict with other click detects (above)
+
 	const isTransitionEnd = useDetectTransitionEnd(transitionElement, transitionEndPropName);
 	const stages = useTooltipStage(isTransitionEnd, isHoverTarget, isHoverPopper, hideDelay, showDelay);
 	const [ arrowElement, setArrowElement ] = useState<HTMLElement | null>(null); // the ref for the arrow must be a callback ref
