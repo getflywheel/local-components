@@ -1,6 +1,6 @@
 
 import { ComponentExampleBase } from '../../../../common/helpers/ComponentExampleBase';
-import { CopyButton, ICopyButtonProps, CopiedStateBGStyleVariants } from '../CopyButton';
+import { CopyButton, ICopyButtonProps, CopiedStateBGStyleVariants, UncopiedStateBGStyleVariants, PaddingAmount } from '../CopyButton';
 import { CopiedStateIconVariants, UncopiedStateIconVariants } from '../_private/CopyButtonIcon';
 
 export class CopyButtonExample extends ComponentExampleBase {
@@ -46,6 +46,16 @@ export class CopyButtonExample extends ComponentExampleBase {
 					propName: 'copiedStateBGStyleVariant',
 					type: 'enum',
 					options: { none: '', ...CopiedStateBGStyleVariants as object },
+				},
+				{
+					propName: 'uncopiedStateBGStyleVariant',
+					type: 'enum',
+					options: { none: '', ...UncopiedStateBGStyleVariants as object },
+				},
+				{
+					propName: 'padding',
+					type: 'enum',
+					options: { none: '', ...PaddingAmount as object }
 				},
 				{
 					propName: 'textToCopy',

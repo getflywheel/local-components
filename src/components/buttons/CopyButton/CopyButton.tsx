@@ -16,9 +16,15 @@ const { useState } = React;
 export enum CopiedStateBGStyleVariants {
 	green = 'green',
 	transparent = 'transparent',
+	transparentGrayText = 'transparentGrayText',
 }
 
-enum PaddingAmount {
+export enum UncopiedStateBGStyleVariants {
+	gray = 'gray',
+	transparent = 'transparent',
+}
+
+export enum PaddingAmount {
 	small = 'small',
 	medium = 'medium',
 }
@@ -35,6 +41,8 @@ export interface ICopyButtonProps extends ILocalContainerProps {
 	uncopiedStateIconVariant?: UncopiedStateIconVariants | keyof typeof UncopiedStateIconVariants | null;
 	/* Icon to show in copied state */
 	copiedStateIconVariant?: CopiedStateIconVariants | keyof typeof CopiedStateIconVariants | null;
+	/* Background styling for uncopied state */
+	uncopiedStateBGStyleVariant?: UncopiedStateBGStyleVariants | keyof typeof UncopiedStateBGStyleVariants;
 	/* Background styling for copied state */
 	copiedStateBGStyleVariant?: CopiedStateBGStyleVariants | keyof typeof CopiedStateBGStyleVariants;
 	/* Padding amount to apply */
@@ -47,6 +55,7 @@ export const CopyButton = (props: ICopyButtonProps) => {
 	const {
 		className,
 		copiedStateBGStyleVariant,
+		uncopiedStateBGStyleVariant,
 		copiedStateIconVariant,
 		copiedStateText,
 		copiedTimeout,
@@ -63,8 +72,13 @@ export const CopyButton = (props: ICopyButtonProps) => {
 
 	const [isCopied, setIsCopied] = useState(false);
 
-	const isTransparentCopiedStateBG = copiedStateBGStyleVariant === CopiedStateBGStyleVariants.transparent;
+	const isTransparentUncopiedStateBG = uncopiedStateBGStyleVariant === UncopiedStateBGStyleVariants.transparent;
+	const isGrayUncopiedStateBG = uncopiedStateBGStyleVariant === UncopiedStateBGStyleVariants.gray;
+
+	const isGrayCopiedStateText = copiedStateBGStyleVariant === CopiedStateBGStyleVariants.transparentGrayText;
+	const isTransparentCopiedStateBG = copiedStateBGStyleVariant === CopiedStateBGStyleVariants.transparent || isGrayCopiedStateText;
 	const isGreenCopiedStateBG = copiedStateBGStyleVariant === CopiedStateBGStyleVariants.green;
+
 	const smallPadding = padding === PaddingAmount.small;
 	const mediumPadding = padding === PaddingAmount.medium;
 
@@ -81,15 +95,16 @@ export const CopyButton = (props: ICopyButtonProps) => {
 					'CopyButton',
 					className,
 					{
-						[styles.CopyButton__Color_Gray]: !isCopied,
+						[styles.CopyButton__Color_Gray]: !isCopied && isGrayUncopiedStateBG,
 						[styles.CopyButton__Color_Gray_Padding_Small]: !isCopied && smallPadding,
 						[styles.CopyButton__Color_Gray_Padding_Medium]: !isCopied && mediumPadding,
 						[styles.CopyButton__Color_Green]: isCopied && isGreenCopiedStateBG,
 						[styles.CopyButton__Color_Green_Padding_Small]: isCopied && isGreenCopiedStateBG && smallPadding,
 						[styles.CopyButton__Color_Green_Padding_Medium]: isCopied && isGreenCopiedStateBG && mediumPadding,
-						[styles.CopyButton__Color_None]: isCopied && isTransparentCopiedStateBG,
-						[styles.CopyButton__Color_None_Padding]: isCopied && isTransparentCopiedStateBG,
-						[styles.CopyButton__Color_None_Padding_Medium]: isCopied && isTransparentCopiedStateBG && mediumPadding,
+						[styles.CopyButton__Color_None]: (isCopied && isTransparentCopiedStateBG) || (!isCopied && isTransparentUncopiedStateBG),
+						[styles.CopyButton__Color_None_Padding_Small]: ((isCopied && isTransparentCopiedStateBG) || (!isCopied && isTransparentUncopiedStateBG)) && smallPadding,
+						[styles.CopyButton__Color_None_Padding_Medium]: ((isCopied && isTransparentCopiedStateBG) || (!isCopied && isTransparentUncopiedStateBG)) && mediumPadding,
+						[styles.CopyButton__Text_Gray]: isCopied && isGrayCopiedStateText,
 					}
 				)}
 				id={id}
@@ -122,6 +137,7 @@ CopyButton.defaultProps = {
 	uncopiedStateIconVariant: null,
 	copiedStateIconVariant: CopiedStateIconVariants.checkmark,
 	copiedStateBGStyleVariant: CopiedStateBGStyleVariants.green,
+	uncopiedStateBGStyleVariant: UncopiedStateBGStyleVariants.gray,
 	padding: PaddingAmount.small,
 	/**
 	 * Though this prop is optional, it is included here so that any falsy JS values (null & undefined in particular)

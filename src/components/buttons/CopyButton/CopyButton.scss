@@ -97,6 +97,11 @@
 	@include setThemeVar('--Button_Padding', 0px);
 }
 
+.CopyButton__Text_Gray {
+	@include setThemeVar('--Button_Text_Color', $gray-dark50, $white);
+	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50, $white);
+}
+
 .CopyButton__Text {
 	font-size: 12px;
 	letter-spacing: 0.24px;
