@@ -43,7 +43,7 @@ export const useDetectClickOrHoverWithinTargets = ({
 					// depending on whether to detect every click as cancelling something (e.g. tooltip)
 					// this should either toogle or set to true
 					setIsClickFocus((is) => alwaysBlurOnClick ? !is : true);
-					console.log("Inside onClick event")
+
 					// just to be safe because of intermittent re-processing code
 					document.removeEventListener('click', listener);
 					document.removeEventListener('touchend', listener);
