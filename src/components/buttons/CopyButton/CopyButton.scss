@@ -98,8 +98,8 @@
 }
 
 .CopyButton__Text_Gray {
-	@include setThemeVar('--Button_Text_Color', $gray-dark50, $white);
-	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50, $white);
+	@include setThemeVar('--Button_Text_Color', $gray-dark50, $gray25);
+	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50, $gray25);
 }
 
 .CopyButton__Text {
