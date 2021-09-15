@@ -54,7 +54,11 @@ export const CopyInput = (props: ICopyInputProps) => {
 	};
 
 	return (
-		<div className={styles.CopyInput__Container}>
+		<div
+			className={classNames(styles.CopyInput__Container, props.className)}
+			id={props.id}
+			style={props.style}
+		>
 			{label && (
 				<label
 					htmlFor={styles.CopyInput__Input}
