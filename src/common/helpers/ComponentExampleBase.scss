@@ -41,4 +41,13 @@
 	&:last-child {
 		margin-bottom: 0;
 	}
+
+	input {
+		@include theme-border-color;
+		@include theme-input-background-color;
+	}
+
+	label {
+		@include theme-color-black-else-white;
+	}
 }
