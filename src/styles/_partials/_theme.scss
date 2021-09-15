@@ -261,6 +261,10 @@
 	@include __theme-color($white, $gray25);
 }
 
+@mixin theme-color-red-dark50-else-red {
+	@include __theme-color($red-dark50, $red);
+}
+
 @mixin __theme-fill($fillLight, $fillDark) {
 	@include if-theme-light() {
 		fill: $fillLight;
