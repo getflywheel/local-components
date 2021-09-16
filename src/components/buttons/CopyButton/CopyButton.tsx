@@ -38,13 +38,13 @@ export interface ICopyButtonProps extends ILocalContainerProps {
 	/* Text to show in copied state */
 	copiedStateText?: string;
 	/* Icon to show in uncopied state */
-	uncopiedStateIconVariant?: UncopiedStateIconVariants | keyof typeof UncopiedStateIconVariants | null;
+	uncopiedStateIconVariant?: keyof typeof UncopiedStateIconVariants | null;
 	/* Icon to show in copied state */
-	copiedStateIconVariant?: CopiedStateIconVariants | keyof typeof CopiedStateIconVariants | null;
+	copiedStateIconVariant?: keyof typeof CopiedStateIconVariants | null;
 	/* Background styling for uncopied state */
-	uncopiedStateBGStyleVariant?: UncopiedStateBGStyleVariants | keyof typeof UncopiedStateBGStyleVariants;
+	uncopiedStateBGStyleVariant?: keyof typeof UncopiedStateBGStyleVariants;
 	/* Background styling for copied state */
-	copiedStateBGStyleVariant?: CopiedStateBGStyleVariants | keyof typeof CopiedStateBGStyleVariants;
+	copiedStateBGStyleVariant?: keyof typeof CopiedStateBGStyleVariants;
 	/* Padding amount to apply */
 	padding?: PaddingAmount | keyof typeof PaddingAmount;
 	/* Text to copy to the clipboard */
