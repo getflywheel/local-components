@@ -1,0 +1,59 @@
+@import '../../../styles/_partials/index';
+
+.DrawerContainer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	pointer-events: none;
+
+	.Drawer {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		flex-direction: row;
+		padding: 20px 12px 30px 12px;
+		@include theme-border-top;
+		box-shadow: none;
+		transform: translateY(100%);
+		transition: box-shadow 0.5s ease-in, transform 0.35s cubic-bezier(0.4, 0.5, 0.6, -1.03) 0s; // hide/out transition
+		pointer-events: initial;
+
+		&.Drawer__DisableAnimation {
+			transition: none;
+		}
+
+		&.Drawer__Show {
+			transform: translateY(10px);
+			transition: box-shadow 0.25s ease, transform 0.35s cubic-bezier(0.4, 1.65, 0.6, 0.9) 0s; // show/in transition
+
+			&.Drawer__Shadow {
+				@include theme-overlay-boxshadow;
+			}
+		}
+
+		&.Drawer__AlignLeft {
+			justify-content: left;
+		}
+
+		&.Drawer__AlignCenter {
+			justify-content: center;
+		}
+
+		&.Drawer__AlignRight {
+			justify-content: right;
+		}
+
+		&.Drawer__Stripes {
+			@include theme-stripes-white-else-graydark;
+		}
+
+		&.Drawer__Shadow {
+			border-top: none;
+		}
+	}
+}
