@@ -72,10 +72,21 @@ export const CopyButton = (props: ICopyButtonProps) => {
 
 	const [isCopied, setIsCopied] = useState(false);
 	const [popin, setPopin] = useState(false);
-	const [popout, setPopout] = useState(false);
-	const setPopinPopout = (popin: boolean, popout: boolean) => {
-		setPopin(popin);
-		setPopout(popout);
+	const animationDuration: number = 500;
+
+	const setIsCopiedAndTriggerPopin = (newIsCopied: boolean) => {
+		setIsCopied(newIsCopied);
+		setPopin(true);
+		setTimeout(() => setPopin(false), animationDuration)
+	}
+
+	const handleClick = () => {
+		copy(textToCopy);
+		if (isCopied) return;
+
+		const newTimeout: number = copiedTimeout + animationDuration * 2;
+		setIsCopiedAndTriggerPopin(true);
+		setTimeout(() => setIsCopiedAndTriggerPopin(false), newTimeout);
 	}
 
 	const isTransparentUncopiedStateBG = uncopiedStateBGStyleVariant === UncopiedStateBGStyleVariants.transparent;
@@ -87,26 +98,6 @@ export const CopyButton = (props: ICopyButtonProps) => {
 
 	const smallPadding = padding === PaddingAmount.small;
 	const mediumPadding = padding === PaddingAmount.medium;
-
-	const handleClick = () => {
-		copy(textToCopy);
-		if (isCopied) return;
-
-		const newTimeout = copiedTimeout + 2000;
-		const animationDuration = 475;
-
-		setPopout(true);
-		setTimeout(() => { 
-			setIsCopied(true);
-			setPopinPopout(true, false);
-		}, animationDuration);
-		setTimeout(() => setPopinPopout(false, true), newTimeout - animationDuration)
-		setTimeout(() => {
-			setIsCopied(false);
-			setPopinPopout(true, false);
-		}, newTimeout);
-		setTimeout(() => setPopin(false), newTimeout + animationDuration);
-	}
 
 	return (
 		<Container>
@@ -127,7 +118,7 @@ export const CopyButton = (props: ICopyButtonProps) => {
 						[styles.CopyButton__Color_None_Padding_Small]: ((isCopied && isTransparentCopiedStateBG) || (!isCopied && isTransparentUncopiedStateBG)) && smallPadding,
 						[styles.CopyButton__Color_None_Padding_Medium]: ((isCopied && isTransparentCopiedStateBG) || (!isCopied && isTransparentUncopiedStateBG)) && mediumPadding,
 						[styles.CopyButton__Text_Gray]: isCopied && isGrayCopiedStateText,
-						[styles.popin]: popin, [styles.popout]: popout,
+						[styles.popin]: popin,
 					}
 				)}
 				id={id}
