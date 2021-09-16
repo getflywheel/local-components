@@ -4,7 +4,6 @@ import { CopyButton } from "../../buttons/CopyButton/CopyButton";
 import IReactComponentProps from "../../../common/structures/IReactComponentProps";
 import { FunctionGeneric } from "../../../common/structures/Generics";
 import * as styles from "./CopyInput.scss";
-import classNames from "classnames";
 
 export interface ICopyInputProps extends IReactComponentProps {
 	/* A function that will receive the new value on change - could be used to determine validity of input */
@@ -55,14 +54,14 @@ export const CopyInput = (props: ICopyInputProps) => {
 
 	return (
 		<div
-			className={classNames(styles.CopyInput__Container, props.className)}
+			className={classnames(styles.CopyInput__Container, props.className)}
 			id={props.id}
 			style={props.style}
 		>
 			{label && (
 				<label
 					htmlFor={styles.CopyInput__Input}
-					className={classNames(styles.CopyInput__Label)}
+					className={classnames(styles.CopyInput__Label)}
 				>
 					{label}
 				</label>
@@ -99,7 +98,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 			</div>
 			{showMessage && (
 				<span
-					className={classNames(styles.CopyInput__Message, {
+					className={classnames(styles.CopyInput__Message, {
 						[styles.__Invalid]: isInvalid,
 					})}
 				>
