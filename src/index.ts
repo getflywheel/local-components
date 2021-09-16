@@ -29,6 +29,7 @@ export { default as BasicInput } from './components/inputs/BasicInput/BasicInput
 export { default as InputSearch } from './components/inputs/InputSearch/InputSearch';
 export { default as RadioBlock } from './components/inputs/RadioBlock/RadioBlock';
 export { default as Switch } from './components/inputs/Switch/Switch';
+export { CopyInput } from './components/inputs/CopyInput/CopyInput';
 // Layout
 export { default as Accordion } from './components/layout/Accordion/Accordion';
 export { default as AccordionItem } from './components/layout/Accordion/AccordionItem';
