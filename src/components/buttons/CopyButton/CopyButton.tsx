@@ -93,7 +93,7 @@ export const CopyButton = (props: ICopyButtonProps) => {
 		if (isCopied) return;
 
 		const newTimeout = copiedTimeout + 2000;
-		const animationDuration = 500;
+		const animationDuration = 475;
 
 		setPopout(true);
 		setTimeout(() => { 
