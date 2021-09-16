@@ -1,5 +1,5 @@
 import Drawer from './Drawer';
-import DrawerExample from './examples/DrawerExample';
+import { DrawerExample, DrawerExample2 } from './examples/DrawerExample';
 
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
@@ -9,9 +9,19 @@ The Drawer component, which is hidden by default, contains content that can be p
 This content slides up and down from below the container its used within.
 
 <Canvas>
-	<Story name="Drawer">
+	<Story name="Example Drawer">
         <div style={{height: '200px'}}>
             <DrawerExample />
+        </div>
+	</Story>
+</Canvas>
+
+# Example 2
+
+<Canvas>
+	<Story name="Example Drawer 2">
+        <div style={{height: '200px'}}>
+            <DrawerExample2 />
         </div>
 	</Story>
 </Canvas>

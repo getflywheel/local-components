@@ -302,6 +302,19 @@
 	@include __theme-fill($green-dark50, $white);
 }
 
+@mixin __theme-overlay-boxshadow($boxshadowLight, $boxshadowDark) {
+	@include if-theme-light() {
+		box-shadow: 0px -5px 16px $boxshadowLight;
+	}
+	@include if-theme-dark() {
+		box-shadow: 0px -5px 16px $boxshadowDark;
+	}
+}
+
+@mixin theme-overlay-boxshadow {
+	@include __theme-overlay-boxshadow($theme-overlay-box-shadow-light, $theme-overlay-box-shadow-dark);
+}
+
 // Theme Components
 
 @mixin theme-button-pill-disabled {

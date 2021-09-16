@@ -1,12 +1,14 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './Drawer.sass';
+import * as styles from './Drawer.scss';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IProps extends IReactComponentProps {
 	align?: 'left' | 'center' | 'right';
 	children: React.ReactNode;
 	show?: boolean;
+	stripes?: boolean;
+	shadow?: boolean;
 }
 
 interface IState {
@@ -14,6 +16,11 @@ interface IState {
 }
 
 export default class Drawer extends React.Component<IProps, IState> {
+	static defaultProps: Partial<IProps> = {
+		stripes: true,
+		shadow: false,
+	};
+
 	constructor (props: IProps) {
 		super(props);
 
@@ -43,6 +50,8 @@ export default class Drawer extends React.Component<IProps, IState> {
 							[styles.Drawer__AlignLeft]: this.props.align === 'left',
 							[styles.Drawer__AlignCenter]: this.props.align === 'center' || !this.props.align,
 							[styles.Drawer__AlignRight]: this.props.align === 'right',
+							[styles.Drawer__Stripes]: this.props.stripes,
+							[styles.Drawer__Shadow]: this.props.shadow,
 						},
 					)}
 					id={this.props.id}

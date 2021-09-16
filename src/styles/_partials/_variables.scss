@@ -68,6 +68,9 @@ $system-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, 
 $theme-border-light: $gray15;
 $theme-border-dark: $gray;
 $theme-input-border-box-shadow-dark: $gray;
+$theme-overlay-box-shadow-light: rgba(0, 0, 0, 0.09);
+$theme-overlay-box-shadow-dark: rgba(0, 0, 0, 0.4);
+
 
 $font-size-header-xs: 1.4rem;
 $font-size-header-s: 1.8rem;
