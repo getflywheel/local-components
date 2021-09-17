@@ -20,7 +20,7 @@
 		@include theme-border-top;
 		box-shadow: none;
 		transform: translateY(100%);
-		transition: box-shadow 0.35s ease-in, transform 0.35s cubic-bezier(0.4, 0.5, 0.6, -1.03) 0s; // hide/out transition
+		transition: box-shadow 0.25s ease-in, transform 0.35s cubic-bezier(.4,-0.24,.6,-0.12) 0s; // hide/out transition
 		pointer-events: initial;
 
 		&.Drawer__DisableAnimation {
