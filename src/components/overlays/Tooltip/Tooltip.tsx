@@ -32,6 +32,8 @@ export interface TooltipProps extends IReactComponentProps {
 	showDelay?: number;
 	//** whether to change default hover tooltip interaction to click/blur */
 	useClickInsteadOfHover?: boolean;
+	/** whether to hide tooltip from dom */
+	hideTooltip?: boolean;
 }
 
 // whether moving forward to the next stage or reverting back to a previous stage
@@ -290,6 +292,7 @@ export const Tooltip = (props: TooltipProps) => {
 		popperVisualContainerClassName,
 		style,
 		useClickInsteadOfHover,
+		hideTooltip,
 	} = props;
 
 	const {
@@ -309,7 +312,7 @@ export const Tooltip = (props: TooltipProps) => {
 		transitionEndPropName: 'transform',
 		useClickInsteadOfHover: !!useClickInsteadOfHover,
 	});
-	const isShowing = forceHover || !stages.isStage0Hidden;
+	const isShowing = (forceHover || !stages.isStage0Hidden) && !hideTooltip;
 
 	return (
 		<>
