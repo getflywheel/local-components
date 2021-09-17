@@ -29,6 +29,7 @@ import FileUnlockedIcon from './svgs/FileUnlockedIcon';
 import PlayIcon from './svgs/PlayIcon';
 import PushIcon from './svgs/PushIcon';
 import OfflineIcon from './svgs/OfflineIcon';
+import RefreshIcon from './svgs/RefreshIcon';
 import SearchIcon from './svgs/SearchIcon';
 import SpinnerIcon from './svgs/SpinnerIcon';
 import StarIcon from './svgs/StarIcon';
@@ -69,6 +70,7 @@ namespace Icons {
 	export const Offline = OfflineIcon;
 	export const Play = PlayIcon;
 	export const Push = PushIcon;
+	export const Refresh = RefreshIcon;
 	export const Search = SearchIcon;
 	export const Spinner = SpinnerIcon;
 	export const Stars = StarIcon;
@@ -111,6 +113,7 @@ export {
 	OfflineIcon,
 	PlayIcon,
 	PushIcon,
+	RefreshIcon,
 	SpinnerIcon,
 	StarIcon,
 	StopIcon,
