@@ -7,7 +7,7 @@ interface IProps extends IReactComponentProps {
 	align?: 'left' | 'center' | 'right';
 	children: React.ReactNode;
 	show?: boolean;
-	stripes?: boolean;
+	noStripes?: boolean;
 	shadow?: boolean;
 }
 
@@ -17,7 +17,7 @@ interface IState {
 
 export default class Drawer extends React.Component<IProps, IState> {
 	static defaultProps: Partial<IProps> = {
-		stripes: true,
+		noStripes: false,
 		shadow: false,
 	};
 
@@ -50,7 +50,7 @@ export default class Drawer extends React.Component<IProps, IState> {
 							[styles.Drawer__AlignLeft]: this.props.align === 'left',
 							[styles.Drawer__AlignCenter]: this.props.align === 'center' || !this.props.align,
 							[styles.Drawer__AlignRight]: this.props.align === 'right',
-							[styles.Drawer__Stripes]: this.props.stripes,
+							[styles.Drawer__Stripes]: !this.props.noStripes,
 							[styles.Drawer__Shadow]: this.props.shadow,
 						},
 					)}
