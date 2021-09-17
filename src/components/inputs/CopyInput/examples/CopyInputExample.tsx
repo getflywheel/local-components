@@ -6,6 +6,11 @@ export const CopyInputExample = () => {
 	const onChange = (newValue: string) => {
         setInvalid(newValue.length < 5 ? true : false);
 	};
+        const offset: [number, number] = [0 , 15];
+        const copyButtonTooltipOptions = { 
+                content: <>Copy to clipboard</>, 
+                popperOffsetModifier: {offset},
+        }
 
 	return (
         <CopyInput
@@ -14,6 +19,7 @@ export const CopyInputExample = () => {
             label={'Username'}
             message={'Minimum 5 characters.'}
             value={'mouse'}
+            copyButtonTooltipOptions={copyButtonTooltipOptions}
         />
 	);
 };

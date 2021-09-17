@@ -81,7 +81,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 				<Tooltip 
 					className={styles.CopyInput__CopyButton} 
 					{...copyButtonTooltipOptions}
-					hideToolTip={copyButtonTooltipOptions ? copyButtonTooltipOptions.hideToolTip : true}
+					hideTooltip={copyButtonTooltipOptions ? copyButtonTooltipOptions.hideTooltip : true}
 					>
 					<CopyButton
 						copiedStateIconVariant="checkmarkStroke"
