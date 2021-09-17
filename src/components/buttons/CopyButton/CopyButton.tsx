@@ -128,7 +128,7 @@ export const CopyButton = (props: ICopyButtonProps) => {
 					variant={isCopied ? copiedStateIconVariant as CopiedStateIconVariants : uncopiedStateIconVariant as UncopiedStateIconVariants}
 					classNames={styles.CopyButtonIcon}
 				/>
-				<span
+				{(isCopied && copiedStateText || !isCopied && uncopiedStateText) && <span
 					className={classnames(
 						styles.CopyButton__Text,
 						{
@@ -137,7 +137,7 @@ export const CopyButton = (props: ICopyButtonProps) => {
 					)}
 				>
 					{isCopied ? copiedStateText : uncopiedStateText}
-				</span>
+				</span>}
 			</Tag>
 		</Container>
 	)
