@@ -4,18 +4,11 @@ import { CopyButton } from "../../buttons/CopyButton/CopyButton";
 import IReactComponentProps from "../../../common/structures/IReactComponentProps";
 import { FunctionGeneric } from "../../../common/structures/Generics";
 import * as styles from "./CopyInput.scss";
+import { IBasicInputProps } from "../BasicInput/BasicInput";
 
-export interface ICopyInputProps extends IReactComponentProps {
-	/* A function that will receive the new value on change - could be used to determine validity of input */
-	onChange?: FunctionGeneric;
-	/* Initial value for text input */
-	value?: string;
-	/* Placeholder text for text input */
-	placeholder?: string;
+export interface ICopyInputProps extends IBasicInputProps {
 	/* Whether value is invalid - shows the invalid state of text input if true */
 	invalid?: boolean;
-	/* Whether input is disabled */
-	disabled?: boolean;
 	/* Label to be shown above text input */
 	label?: string;
 	/* Message to be shown underneath an enabled input e.g. length requirement, example input, etc. */
@@ -30,7 +23,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 		value,
 		onChange,
 		invalid,
-		disabled,
+		readonly,
 		label,
 		message,
 		onlyShowMessageWhenInvalid,
@@ -42,9 +35,9 @@ export const CopyInput = (props: ICopyInputProps) => {
 	}, [value]);
 
 	const showMessage =
-		!disabled &&
+		!readonly &&
 		(onlyShowMessageWhenInvalid ? invalid && message : !!message);
-	const isInvalid = invalid && !disabled;
+	const isInvalid = invalid && !readonly;
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue: string = event.target.value;
@@ -61,14 +54,14 @@ export const CopyInput = (props: ICopyInputProps) => {
 			{label && (
 				<label
 					htmlFor={styles.CopyInput__Input}
-					className={classnames(styles.CopyInput__Label)}
+					className={styles.CopyInput__Label}
 				>
 					{label}
 				</label>
 			)}
 			<div
 				className={classnames(styles.CopyInput, {
-					[styles.__Disabled]: disabled,
+					[styles.__Disabled]: readonly,
 				})}
 			>
 				<input
@@ -80,9 +73,10 @@ export const CopyInput = (props: ICopyInputProps) => {
 					placeholder={placeholder}
 					type="text"
 					value={textToCopy}
-					disabled={disabled}
+					readOnly={readonly}
+					autoComplete="off"
 				/>
-				<span className={classnames(styles.CopyInput__CopyButton)}>
+				<span className={styles.CopyInput__CopyButton}>
 					<CopyButton
 						copiedStateIconVariant="checkmarkStroke"
 						copiedStateBGStyleVariant="transparentGrayText"
@@ -110,9 +104,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 };
 
 CopyInput.defaultProps = {
-	value: "",
-	placeholder: "",
 	invalid: false,
-	disabled: false,
+	readonly: false,
 	onlyShowMessageWhenInvalid: false,
 };

@@ -36,7 +36,7 @@ export class CopyInputPlayground extends ComponentExampleBase {
 					type: 'boolean',
 				},
                 {
-					propName: 'disabled',
+					propName: 'readonly',
 					type: 'boolean',
 				},
 			],

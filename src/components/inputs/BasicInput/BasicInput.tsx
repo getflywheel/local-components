@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import * as styles from './BasicInput.scss';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
-interface IProps extends ILocalContainerProps {
+export interface IBasicInputProps extends ILocalContainerProps {
 	name?: string;
 	onChange?: any;
 	value?: string;
@@ -17,8 +17,8 @@ interface IProps extends ILocalContainerProps {
 	spellcheck?: boolean;
 }
 
-export default class BasicInput extends React.Component<IProps> {
-	constructor (props: IProps) {
+export default class BasicInput extends React.Component<IBasicInputProps> {
+	constructor (props: IBasicInputProps) {
 		super(props);
 	}
 
