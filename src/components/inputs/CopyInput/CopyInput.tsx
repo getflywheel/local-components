@@ -1,10 +1,9 @@
 import * as React from "react";
 import classnames from "classnames";
 import { CopyButton } from "../../buttons/CopyButton/CopyButton";
-import IReactComponentProps from "../../../common/structures/IReactComponentProps";
-import { FunctionGeneric } from "../../../common/structures/Generics";
 import * as styles from "./CopyInput.scss";
 import { IBasicInputProps } from "../BasicInput/BasicInput";
+import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
 
 export interface ICopyInputProps extends IBasicInputProps {
 	/* Whether value is invalid - shows the invalid state of text input if true */
@@ -15,6 +14,8 @@ export interface ICopyInputProps extends IBasicInputProps {
 	message?: string;
 	/* Only show message when invalid is true - useful for only displaying error/validity CTAs */
 	onlyShowMessageWhenInvalid?: boolean;
+	/* Options for CopyButton Tooltip */
+	copyButtonTooltipOptions?: TooltipProps;
 }
 
 export const CopyInput = (props: ICopyInputProps) => {
@@ -27,6 +28,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 		label,
 		message,
 		onlyShowMessageWhenInvalid,
+		copyButtonTooltipOptions,
 	} = props;
 
 	const [textToCopy, setTextToCopy] = React.useState(value);
@@ -76,7 +78,11 @@ export const CopyInput = (props: ICopyInputProps) => {
 					readOnly={readonly}
 					autoComplete="off"
 				/>
-				<span className={styles.CopyInput__CopyButton}>
+				<Tooltip 
+					className={styles.CopyInput__CopyButton} 
+					{...copyButtonTooltipOptions}
+					hideToolTip={copyButtonTooltipOptions ? copyButtonTooltipOptions.hideToolTip : true}
+					>
 					<CopyButton
 						copiedStateIconVariant="checkmarkStroke"
 						copiedStateBGStyleVariant="transparentGrayText"
@@ -88,7 +94,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 						uncopiedStateText=""
 						copiedStateText=""
 					/>
-				</span>
+				</Tooltip>
 			</div>
 			{showMessage && (
 				<span
