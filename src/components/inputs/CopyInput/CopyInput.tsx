@@ -15,7 +15,7 @@ export interface ICopyInputProps extends IBasicInputProps {
 	/* Only show message when invalid is true - useful for only displaying error/validity CTAs */
 	onlyShowMessageWhenInvalid?: boolean;
 	/* Options for CopyButton Tooltip */
-	copyButtonTooltipOptions?: TooltipProps;
+	copyButtonTooltipProps?: TooltipProps;
 }
 
 export const CopyInput = (props: ICopyInputProps) => {
@@ -28,7 +28,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 		label,
 		message,
 		onlyShowMessageWhenInvalid,
-		copyButtonTooltipOptions,
+		copyButtonTooltipProps,
 	} = props;
 
 	const [textToCopy, setTextToCopy] = React.useState(value);
@@ -80,8 +80,8 @@ export const CopyInput = (props: ICopyInputProps) => {
 				/>
 				<Tooltip 
 					className={styles.CopyInput__CopyButton} 
-					{...copyButtonTooltipOptions}
-					hideTooltip={copyButtonTooltipOptions ? copyButtonTooltipOptions.hideTooltip : true}
+					{...copyButtonTooltipProps}
+					hideTooltip={copyButtonTooltipProps ? copyButtonTooltipProps.hideTooltip : true}
 					>
 					<CopyButton
 						copiedStateIconVariant="checkmarkStroke"
