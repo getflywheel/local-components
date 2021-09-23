@@ -10,6 +10,9 @@
 	@include stripes(#f58f30, #f48720)
 	@include selectable
 
+	&.Stripes__None
+			background: #f58f30
+
 	&.Height__Thin
 		min-height: 40px
 
@@ -22,6 +25,9 @@
 		@include theme-border
 		@include theme-stripes-white-else-graydark
 
+		&.Stripes__None
+			@include theme-background-white-else-graydark
+
 		a
 			color: $green
 
@@ -31,11 +37,17 @@
 	&.Banner__Error
 		@include stripes(#f05b6f, #ef4e65)
 
+		&.Stripes__None
+			background: #f05b6f
+
 		a:hover
 			color: $red-dark
 
 	&.Banner__Success
 		@include stripes($green, mix($black, $green, 5%))
+
+		&.Stripes__None
+			background: $green
 
 		a:hover
 			color: $green-dark
@@ -131,6 +143,18 @@
 					fill: $red-dark50
 				@include selectors_ifHostHasModifier('.Banner__Success')
 					fill: $green-dark50
+		
+		&.Dismiss__Large
+			svg
+				width: 18px
+				height: 18px
+				transform: translateY(0);
+				
+				path
+					@include selectors_setAsDefaults()
+						fill: $white
+					@include selectors_ifHostHasModifier('.Banner__Neutral')
+						@include theme-fill-gray-else-white
 
 	.Carousel
 		float: left

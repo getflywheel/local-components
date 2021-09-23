@@ -6,7 +6,9 @@ import WarningSVG from '../../../svg/warning.svg';
 import CloseSVG from '../../../svg/close--small.svg';
 import { ButtonPropColor, ButtonPropForm } from '../../buttons/_private/ButtonBase/ButtonBase';
 import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
+import Close from '../../buttons/Close/Close';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+
 
 interface BannerProps extends IReactComponentProps {
 	buttonText?: string;
@@ -21,6 +23,8 @@ interface BannerProps extends IReactComponentProps {
 	 * Thin height is 40px; default height is 56px
 	 */
 	height: 'thin' | 'default';
+	noStripes: boolean;
+	closeSize: 'sm' | 'l';
 }
 
 export default class Banner extends React.Component<BannerProps> {
@@ -30,6 +34,8 @@ export default class Banner extends React.Component<BannerProps> {
 		icon: 'warning',
 		numBanners: 1,
 		variant: 'neutral',
+		noStripes: false,
+		closeSize: 'sm',
 	};
 
 	constructor (props: BannerProps) {
@@ -118,13 +124,19 @@ export default class Banner extends React.Component<BannerProps> {
 			return null;
 		}
 
-		return (
+		return this.props.closeSize === 'sm' ? (
 			<span
 				className={styles.Dismiss}
 				onClick={this.props.onDismiss}
 			>
 				<CloseSVG />
 			</span>
+		) : (
+			<Close 
+				position="static"
+				className={classnames(styles.Dismiss__Large, styles.Dismiss)}
+				onClick={this.props.onDismiss}
+			/>
 		);
 	}
 
@@ -139,6 +151,7 @@ export default class Banner extends React.Component<BannerProps> {
 						[styles.Banner__Success]: this.props.variant === 'success',
 						[styles.Height__Thin]: this.props.height === 'thin',
 						[styles.Height__Default]: this.props.height === 'default',
+						[styles.Stripes__None]: this.props.noStripes,
 					},
 					this.props.className,
 				)}
