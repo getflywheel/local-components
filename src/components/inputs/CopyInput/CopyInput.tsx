@@ -75,7 +75,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 					placeholder={placeholder}
 					type="text"
 					value={textToCopy}
-					readOnly={readonly}
+					disabled={readonly}
 					autoComplete="off"
 					spellCheck="false"
 				/>
