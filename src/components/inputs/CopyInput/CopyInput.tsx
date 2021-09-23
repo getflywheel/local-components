@@ -11,7 +11,7 @@ export interface ICopyInputProps extends IBasicInputProps {
 	/* Label to be shown above text input */
 	label?: string;
 	/* Message to be shown underneath an enabled input e.g. length requirement, example input, etc. */
-	message?: string;
+	message?: React.ReactNode;
 	/* Only show message when invalid is true - useful for only displaying error/validity CTAs */
 	onlyShowMessageWhenInvalid?: boolean;
 	/* Options for CopyButton Tooltip */
@@ -77,6 +77,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 					value={textToCopy}
 					readOnly={readonly}
 					autoComplete="off"
+					spellCheck="false"
 				/>
 				<Tooltip 
 					className={styles.CopyInput__CopyButton} 
