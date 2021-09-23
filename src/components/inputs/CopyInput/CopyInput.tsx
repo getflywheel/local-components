@@ -16,6 +16,8 @@ export interface ICopyInputProps extends IBasicInputProps {
 	onlyShowMessageWhenInvalid?: boolean;
 	/* Options for CopyButton Tooltip */
 	copyButtonTooltipProps?: TooltipProps;
+	/* Whether or not to disable the input */
+	disabled?: boolean;
 }
 
 export const CopyInput = (props: ICopyInputProps) => {
@@ -24,7 +26,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 		value,
 		onChange,
 		invalid,
-		readonly,
+		disabled,
 		label,
 		message,
 		onlyShowMessageWhenInvalid,
@@ -37,9 +39,9 @@ export const CopyInput = (props: ICopyInputProps) => {
 	}, [value]);
 
 	const showMessage =
-		!readonly &&
+		!disabled &&
 		(onlyShowMessageWhenInvalid ? invalid && message : !!message);
-	const isInvalid = invalid && !readonly;
+	const isInvalid = invalid && !disabled;
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue: string = event.target.value;
@@ -63,7 +65,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 			)}
 			<div
 				className={classnames(styles.CopyInput, {
-					[styles.__Disabled]: readonly,
+					[styles.__Disabled]: disabled,
 				})}
 			>
 				<input
@@ -75,7 +77,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 					placeholder={placeholder}
 					type="text"
 					value={textToCopy}
-					disabled={readonly}
+					disabled={disabled}
 					autoComplete="off"
 					spellCheck="false"
 				/>
@@ -112,6 +114,6 @@ export const CopyInput = (props: ICopyInputProps) => {
 
 CopyInput.defaultProps = {
 	invalid: false,
-	readonly: false,
+	disabled: false,
 	onlyShowMessageWhenInvalid: false,
 };
