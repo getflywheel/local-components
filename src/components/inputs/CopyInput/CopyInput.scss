@@ -19,8 +19,8 @@
 		margin-top: 10px;
 		display: block;
 		font-weight: 300;
+		font-size: $font-size-content-s;
 		
-	
 		&.__Invalid {
 			@include theme-color-red-dark50-else-red;
 		}
