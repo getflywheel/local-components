@@ -20,14 +20,17 @@
 		@include theme-border-top;
 		box-shadow: none;
 		transform: translateY(100%);
-		transition: box-shadow 0.25s ease-in, transform 0.35s cubic-bezier(.4,-0.24,.6,-0.12) 0s; // hide/out transition
+		transition: box-shadow 0.25s ease-in, transform 0.35s cubic-bezier(.4,-0.24,.6,-0.05) 0s, visibility 0s 0.35s; // hide/out transition
 		pointer-events: initial;
+		visibility: hidden;
+		@include theme-background-white-else-graydark;
 
 		&.Drawer__DisableAnimation {
 			transition: none;
 		}
 
 		&.Drawer__Show {
+			visibility: visible;
 			transform: translateY(10px);
 			transition: box-shadow 0.15s ease, transform 0.35s cubic-bezier(0.4, 1.65, 0.6, 0.9) 0s; // show/in transition
 
