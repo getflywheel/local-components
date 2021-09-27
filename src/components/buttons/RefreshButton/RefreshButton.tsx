@@ -23,6 +23,7 @@ export const RefreshButton = (props: IRefreshButtonProps) => {
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		if (!clicked && !disabled) {
 			setClicked(true);
+			// Set a timeout equal to the length of the spin animation/transition
 			setTimeout( () => setClicked(false), 550)
 			onClick(e);
 		}
