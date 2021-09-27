@@ -18,6 +18,8 @@ export interface ICopyInputProps extends IBasicInputProps {
 	copyButtonTooltipProps?: TooltipProps;
 	/* Whether or not to disable the input */
 	disabled?: boolean;
+	/* Options for disabled input Tooltip */
+	inputTooltipProps?: TooltipProps;
 }
 
 export const CopyInput = (props: ICopyInputProps) => {
@@ -31,6 +33,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 		message,
 		onlyShowMessageWhenInvalid,
 		copyButtonTooltipProps,
+		inputTooltipProps
 	} = props;
 
 	const [textToCopy, setTextToCopy] = React.useState(value);
@@ -66,26 +69,30 @@ export const CopyInput = (props: ICopyInputProps) => {
 			<div
 				className={classnames(styles.CopyInput, {
 					[styles.__Disabled]: disabled,
+					[styles.__Invalid]: isInvalid,
 				})}
 			>
-				<input
-					className={classnames(styles.CopyInput__Input, {
-						[styles.__Invalid]: isInvalid,
-					})}
-					id={styles.CopyInput__Input}
-					onChange={handleChange}
-					placeholder={placeholder}
-					type="text"
-					value={textToCopy}
-					disabled={disabled}
-					autoComplete="off"
-					spellCheck="false"
-				/>
+				<Tooltip
+					{...inputTooltipProps}
+					hideTooltip={inputTooltipProps ? inputTooltipProps.hideTooltip : true}
+				>
+					<input
+						className={styles.CopyInput__Input}
+						id={styles.CopyInput__Input}
+						onChange={handleChange}
+						placeholder={placeholder}
+						type="text"
+						value={textToCopy}
+						disabled={disabled}
+						autoComplete="off"
+						spellCheck="false"
+					/>
+				</Tooltip>
 				<Tooltip 
 					className={styles.CopyInput__CopyButton} 
 					{...copyButtonTooltipProps}
 					hideTooltip={copyButtonTooltipProps ? copyButtonTooltipProps.hideTooltip : true}
-					>
+				>
 					<CopyButton
 						copiedStateIconVariant="checkmarkStroke"
 						copiedStateBGStyleVariant="transparentGrayText"
