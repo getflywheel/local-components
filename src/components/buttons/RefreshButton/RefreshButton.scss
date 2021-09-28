@@ -28,7 +28,7 @@
 
 	&.spin {
 		transform: rotate(360deg);
-		transition: transform 0.55s cubic-bezier(0.5, 1.8, 0.6, 0.75) 0s;
+		transition: transform 0.55s cubic-bezier(.42,1.56,.61,.83) 0s; 
 	}
 
 	&.disabled {
