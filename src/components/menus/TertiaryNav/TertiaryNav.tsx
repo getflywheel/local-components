@@ -45,7 +45,9 @@ export class TertiaryNav extends React.Component<IReactComponentProps & RouteCom
 				<ul className={classnames(styles.TertiaryNav)}>
 					{this.props.children}
 				</ul>
-				<div className={classnames(styles.TertiaryContent)}>
+				{/* globally scoping TertiaryContent so overflow can be hijacked
+				to make Drawer components work with overflowing content */}
+				<div className={classnames(styles.TertiaryContent, "TertiaryContent")}>
 					<Switch>
 						{tertiaryNavRoutes}
 						{firstRoute! &&
