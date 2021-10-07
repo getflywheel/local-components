@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import * as styles from './Popup.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import cloneNodes from '../../../utils/cloneNodes';
+import classNames from 'classnames';
 
 /**
  * Try catch for Local vs. Styleguidist
@@ -94,8 +95,7 @@ export default class Popup extends React.Component<IProps, IState> {
 	}
 
 	maybeClose (event: any) {
-		const shouldClose = event.target.classList.contains(styles.Popup_BubbleWrapper) && this.props.closeOnTrigger;
-		if (shouldClose) this.handleClose();
+		if (this.props.closeOnTrigger) this.handleClose();
 	}
 
 	handleClose = () => this.setState({ open: false });
@@ -126,12 +126,7 @@ export default class Popup extends React.Component<IProps, IState> {
 				style={this.props.style}
 				tabIndex={0}
 			>
-				<div
-					className={classnames(styles.Popup_BubbleWrapper, {
-						[styles.Popup__Cursor_Pointer]: this.props.closeOnTrigger,
-					})}
-					onClick={this.maybeClose}
-				>
+				<div className={styles.Popup_BubbleWrapper} >
 					<div
 						className={styles.Popup_BubbleOffsetContainer}
 						style={{
@@ -160,7 +155,14 @@ export default class Popup extends React.Component<IProps, IState> {
 				 * Clone top level triggerContents elements and pass this.state to them
 				 * This will allow triggerContents to be state aware to make appropriate styling decisions, etc.
 				 */}
-				{cloneNodes(this.props.triggerContent, { popupState: { ...this.state }})}
+				 <div
+				 	className={classNames(styles.triggerContent, {
+						 [styles.triggerContent__Pointer]: this.props.closeOnTrigger,
+					})}
+					onClick={this.maybeClose}
+				>
+					{cloneNodes(this.props.triggerContent, { popupState: { ...this.state }})}
+				 </div>
 			</div>
 		);
 	}
