@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import * as styles from './Popup.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import cloneNodes from '../../../utils/cloneNodes';
-import classNames from 'classnames';
 
 /**
  * Try catch for Local vs. Styleguidist
@@ -156,7 +155,7 @@ export default class Popup extends React.Component<IProps, IState> {
 				 * This will allow triggerContents to be state aware to make appropriate styling decisions, etc.
 				 */}
 				 <div
-				 	className={classNames(styles.triggerContent, {
+				 	className={classnames(styles.triggerContent, {
 						 [styles.triggerContent__Pointer]: this.props.closeOnTrigger,
 					})}
 					onClick={this.maybeClose}
