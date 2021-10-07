@@ -28,6 +28,7 @@ interface IProps extends IReactComponentProps {
 	triggerAble?: boolean;
 	closeOnPopupClick?: boolean;
 	centerTail?: boolean;
+	closeOnTrigger?: boolean;
 }
 
 interface IState {
@@ -43,6 +44,7 @@ export default class Popup extends React.Component<IProps, IState> {
 		triggerAble: true,
 		closeOnPopupClick: true,
 		centerTail: false,
+		closeOnTrigger: false,
 	};
 
 	constructor (props: IProps) {
@@ -55,6 +57,7 @@ export default class Popup extends React.Component<IProps, IState> {
 
 		this.onClick = this.onClick.bind(this);
 		this.onClickOutside = this.onClickOutside.bind(this);
+		this.maybeClose = this.maybeClose.bind(this);
 	}
 
 	componentDidMount () {
@@ -80,6 +83,7 @@ export default class Popup extends React.Component<IProps, IState> {
 	onClickOutside (event: any) {
 		try {
 			const domNode = ReactDOM.findDOMNode(this);
+			// const shouldClose = event.target.classList.contains(styles.Popup_BubbleWrapper) && this.props.closeOnTrigger;
 
 			if (!domNode || !domNode.contains(event.target)) {
 				this.setState({
@@ -88,6 +92,11 @@ export default class Popup extends React.Component<IProps, IState> {
 			}
 		}
 		catch (error) {}
+	}
+
+	maybeClose (event: any) {
+		const shouldClose = event.target.classList.contains(styles.Popup_BubbleWrapper) && this.props.closeOnTrigger;
+		if (shouldClose) this.handleClose();
 	}
 
 	handleClose = () => this.setState({ open: false });
@@ -119,7 +128,10 @@ export default class Popup extends React.Component<IProps, IState> {
 				tabIndex={0}
 			>
 				<div
-					className={styles.Popup_BubbleWrapper}
+					className={classnames(styles.Popup_BubbleWrapper, {
+						[styles.Popup__Cursor_Pointer]: this.props.closeOnTrigger,
+					})}
+					onClick={this.maybeClose}
 				>
 					<div
 						className={styles.Popup_BubbleOffsetContainer}

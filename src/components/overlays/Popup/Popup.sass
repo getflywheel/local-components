@@ -16,6 +16,9 @@
 	&.Popup__PositionTop
 	&.Popup__CenteredTail
 
+	.Popup__Cursor_Pointer
+		cursor: pointer
+
 	.Popup_BubbleWrapper
 		position: absolute
 		z-index: 6 // this need to be on this parent object for pseudo element to appear below
@@ -53,7 +56,6 @@
 		right: 0
 		bottom: 0
 		left: 0
-		cursor: pointer
 
 	.Popup_Bubble
 		$border-radius: 4px
