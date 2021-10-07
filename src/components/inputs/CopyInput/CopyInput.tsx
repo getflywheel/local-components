@@ -98,7 +98,7 @@ export const CopyInput = (props: ICopyInputProps) => {
 						copiedStateBGStyleVariant="transparentGrayText"
 						uncopiedStateBGStyleVariant="transparent"
 						uncopiedStateIconVariant="copy"
-						tag="span"
+						tag="button"
 						copiedTimeout={1000}
 						textToCopy={textToCopy}
 						uncopiedStateText=""
