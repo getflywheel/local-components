@@ -58,6 +58,7 @@ const Switch = (props: IProps) => {
 		>
 			{label && <label>{label}</label>}
 			<button
+				name={name}
 				type="button"
 				aria-pressed={isChecked}
 				onClick={handleChange}
