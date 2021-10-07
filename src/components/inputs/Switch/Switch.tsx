@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from './Switch.sass';
+import * as styles from './Switch.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface IProps extends IReactComponentProps {
@@ -19,65 +19,58 @@ interface IState {
 	checked: boolean;
 }
 
-export default class Switch extends React.Component<IProps, IState> {
-	static defaultProps: Partial<IProps> = {
-		checked: false,
-	};
+const Switch = (props: IProps) => {
+	const {
+		checked,
+		disabled,
+		flat,
+		label,
+		name,
+		noValue,
+		onChange,
+		tiny,
+		className,
+		id,
+		style
+	} = props;
 
-	constructor (props: IProps) {
-		super(props);
+	const [isChecked, setIsChecked] = React.useState(checked)
 
-		this.state = {
-			checked: !!this.props.checked,
-		};
+	React.useEffect(() => setIsChecked(checked), [checked])
 
-		this.handleChange = this.handleChange.bind(this);
-	}
-
-	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
-		if ('checked' in nextProps) {
-			this.setState({ checked: !!nextProps.checked });
+	const handleChange = () => {
+		setIsChecked(prev => !prev);
+		if (onChange) {
+			onChange(name, checked);
 		}
 	}
 
-	handleChange () {
-		const checked = !this.state.checked;
-
-		this.setState({ checked });
-
-		if (this.props.onChange) {
-			this.props.onChange(this.props.name, checked);
-		}
-	}
-
-	render () {
-		return (
-			<div
-				className={classnames(
-					styles.Switch,
-					{
-						[styles.Switch__Tiny]: this.props.tiny,
-						[styles.Switch__Flat]: this.props.flat,
-					},
-					this.props.className,
-				)}
-				id={this.props.id}
-				style={this.props.style}
-			>
+	return (
+		<div
+			className={classnames(styles.Switch, className,
 				{
-					this.props.label && (
-						<label>{this.props.label}</label>
-					)
-				}
-				<input
-					type="checkbox"
-					defaultChecked={this.state.checked}
-					disabled={this.props.disabled || this.props.noValue}
-					name={this.props.name}
-					onChange={this.handleChange}
-					data-no-value={this.props.noValue}
-				/>
-			</div>
-		);
-	}
+					[styles.Switch__Tiny]: tiny,
+					[styles.Switch__Flat]: flat,
+				},
+			)}
+			id={id}
+			style={style}
+		>
+			{label && <label>{label}</label>}
+			<button
+				type="button"
+				aria-pressed={isChecked}
+				onClick={handleChange}
+				data-no-value={noValue}
+				disabled={disabled || noValue}
+			/>
+		</div>
+	);
+
 }
+
+Switch.defaultProps = {
+	checked: false,
+};
+
+export default Switch;
