@@ -45,7 +45,7 @@ export default class Popup extends React.Component<IProps, IState> {
 		triggerAble: true,
 		closeOnPopupClick: true,
 		centerTail: false,
-		closeOnTrigger: false,
+		closeOnTrigger: true,
 	};
 
 	constructor (props: IProps) {
