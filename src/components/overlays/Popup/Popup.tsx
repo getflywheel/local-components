@@ -83,7 +83,6 @@ export default class Popup extends React.Component<IProps, IState> {
 	onClickOutside (event: any) {
 		try {
 			const domNode = ReactDOM.findDOMNode(this);
-			// const shouldClose = event.target.classList.contains(styles.Popup_BubbleWrapper) && this.props.closeOnTrigger;
 
 			if (!domNode || !domNode.contains(event.target)) {
 				this.setState({
