@@ -59,6 +59,9 @@
 			@include theme-color-gray-else-gray15;
 			cursor: text;
 			width: 100%;
+			border: none;
+			outline: none;
+			background: transparent;
 		}
 
 		> :global(.Tooltip_Target_Container):first-of-type {
@@ -69,8 +72,8 @@
 			border-color: transparent;
 
 			&:focus-within {
+				border-color: transparent;
 				box-shadow: none;
-				border: none;
 			}
 
 			input.CopyInput__Input {
