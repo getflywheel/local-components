@@ -68,6 +68,11 @@
 		&.__Disabled {
 			border-color: transparent;
 
+			&:focus-within {
+				box-shadow: none;
+				border: none;
+			}
+
 			input.CopyInput__Input {
 				text-align: right;
 			}

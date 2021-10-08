@@ -29,6 +29,8 @@
 			@include if-theme-dark() {
 				background: linear-gradient(to right, $gray-dark-alt, $gray-dark 10%);
 			}
+
+			z-index: 10;
 		}
 	}
 
