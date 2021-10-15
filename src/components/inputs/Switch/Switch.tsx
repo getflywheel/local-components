@@ -38,10 +38,13 @@ const Switch = (props: IProps) => {
 	React.useEffect(() => setChecked(props.checked), [props.checked])
 
 	const handleChange = () => {
-		setChecked(!checked);
-		if (onChange) {
-			onChange(name, !checked);
-		}
+		setChecked((prev) => {
+			if (onChange) {
+				onChange(name, !prev);
+			}
+
+			return !prev;
+		});
 	}
 
 	return (
