@@ -21,7 +21,6 @@ interface IState {
 
 const Switch = (props: IProps) => {
 	const {
-		checked,
 		disabled,
 		flat,
 		label,
@@ -34,14 +33,14 @@ const Switch = (props: IProps) => {
 		style
 	} = props;
 
-	const [isChecked, setIsChecked] = React.useState(checked)
+	const [checked, setChecked] = React.useState(props.checked)
 
-	React.useEffect(() => setIsChecked(checked), [checked])
+	React.useEffect(() => setChecked(props.checked), [props.checked])
 
 	const handleChange = () => {
-		setIsChecked(prev => !prev);
+		setChecked(!checked);
 		if (onChange) {
-			onChange(name, checked);
+			onChange(name, !checked);
 		}
 	}
 
@@ -60,7 +59,7 @@ const Switch = (props: IProps) => {
 			<button
 				name={name}
 				type="button"
-				aria-pressed={isChecked}
+				aria-pressed={checked}
 				onClick={handleChange}
 				data-no-value={noValue}
 				disabled={disabled || noValue}
