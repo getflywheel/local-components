@@ -83,6 +83,7 @@ export { default as WindowsToolbar } from './components/modules/WindowsToolbar/W
 export { default as FlyModal } from './components/overlays/FlyModal/FlyModal';
 export { default as FlyTooltip } from './components/overlays/FlyTooltip/FlyTooltip';
 export { default as Popup } from './components/overlays/Popup/Popup';
+export { ScrollShadow } from './components/overlays/ScrollShadow/ScrollShadow';
 export { Tooltip } from './components/overlays/Tooltip/Tooltip';
 // Tables
 export {
