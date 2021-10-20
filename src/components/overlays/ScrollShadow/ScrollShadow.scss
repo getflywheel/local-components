@@ -1,0 +1,33 @@
+@import '../../../styles/_partials/index';
+
+
+.ScrollableContent {
+	overflow: auto;
+	height: 100%;
+}
+
+.ScrollShadow__Container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	pointer-events: none;
+
+	.ScrollShadow {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 25px;
+		transform: translateY(100%);
+		transition: box-shadow 0.4s;
+		
+		&.ScrollShadow__Show {
+			@include theme-overlay-boxshadow;
+			transition: box-shadow 0.2s;
+		}
+	}
+
+}
