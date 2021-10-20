@@ -81,6 +81,7 @@ const withMemoryRouter = (Story, context) => {
 							className={themeData.themeMode}
 							style={{
 								background: themeData.bgColor,
+								color: themeData.textColor,
 								display: 'flex',
 								flexDirection: 'column',
 								flex: theme === 'stacked' || theme === 'split' ? '0 0 50%' : '1',
