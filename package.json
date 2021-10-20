@@ -73,6 +73,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-modal": "^3.6.0",
     "@types/react-router-dom": "^5.0.1",
+    "@types/resize-observer-browser": "^0.1.6",
     "@types/url-parse": "^1.4.2",
     "babel-loader": "^8.1.0",
     "chokidar-cli": "^1.2.1",
