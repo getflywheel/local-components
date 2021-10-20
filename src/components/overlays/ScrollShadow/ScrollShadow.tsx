@@ -3,11 +3,6 @@ import classnames from 'classnames';
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './ScrollShadow.scss';
 
-interface IResizeObserver {
-    disconnect(): void;
-    observe(target: Element): void;
-    unobserve(target: Element): void;
-}
 
 export const ScrollShadow = (props: IReactComponentProps) => {
 	const scrollableContent = useRef(document.createElement('div'));
@@ -27,7 +22,7 @@ export const ScrollShadow = (props: IReactComponentProps) => {
 		setShowScrollShadow(canScroll(el));
 
 		el.addEventListener('scroll', handleScroll);
-		const resizeObserver: IResizeObserver = new ResizeObserver((events) => {
+		const resizeObserver = new ResizeObserver((events) => {
 			for (const event of events) {
 				handleScroll(event);
 			}
