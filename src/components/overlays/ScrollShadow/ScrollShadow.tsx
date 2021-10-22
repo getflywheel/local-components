@@ -1,11 +1,16 @@
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from './ScrollShadow.scss';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
+interface IProps extends IReactComponentProps {
+	// Callback for accessing the scrollable content div ref from a parent - element will be passed on change
+	refCallback?: FunctionGeneric;
+}
 
-export const ScrollShadow = (props: IReactComponentProps) => {
-	const scrollableContent = useRef(document.createElement('div'));
+export const ScrollShadow = (props: IProps) => {
+	const [scrollableContent, setScrollableContent] = useState<HTMLDivElement | null>(null);
 	const [showScrollShadow, setShowScrollShadow] = useState(false);
 
 	const canScroll = (el: Element) => el.scrollHeight > el.clientHeight;
@@ -17,27 +22,34 @@ export const ScrollShadow = (props: IReactComponentProps) => {
 	};
 
 	useEffect(() => {
-		const el = scrollableContent.current;
+		if (!scrollableContent) return;
 
-		setShowScrollShadow(canScroll(el));
+		setShowScrollShadow(canScroll(scrollableContent));
 
-		el.addEventListener('scroll', handleScroll);
+		scrollableContent.addEventListener('scroll', handleScroll, { passive: true });
+
 		const resizeObserver = new ResizeObserver((events) => {
 			for (const event of events) {
 				handleScroll(event);
 			}
 		});
-		resizeObserver.observe(el);
+
+		resizeObserver.observe(scrollableContent);
 
 		return () => {
-			el.removeEventListener('scroll', handleScroll);
+			scrollableContent.removeEventListener('scroll', handleScroll);
 			resizeObserver.disconnect();
 		};
-	}, []);
+	}, [scrollableContent]);
+
+	const setScrollableContentRef = useCallback((element: HTMLDivElement | null) => {
+		setScrollableContent(element);
+		if (props.refCallback) props.refCallback(element);
+	}, [props.refCallback]);
 
 	return (
 		<>
-			<div className={styles.ScrollableContent} ref={scrollableContent}>
+			<div className={styles.ScrollableContent} ref={setScrollableContentRef}>
 				{props.children}
 			</div>
 			<div 
