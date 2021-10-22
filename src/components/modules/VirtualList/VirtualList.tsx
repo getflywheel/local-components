@@ -5,6 +5,7 @@ import { VirtualListHelper, IVirtualListHelperCalculations } from './helpers/Vir
 import classnames from 'classnames';
 import * as styles from './VirtualList.scss';
 import { ReactElement } from 'react';
+import { ScrollShadow } from '../../overlays/ScrollShadow/ScrollShadow';
 
 export interface IVirtualListProps extends IReactComponentProps {
 	/* container render function used to generate the faked height of all items as if they were drawn in their entirety
@@ -57,7 +58,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 	protected _calcs!: IVirtualListHelperCalculations;
 	protected _helper = new VirtualListHelper();
 	protected _scrollTop: number = 0;
-	protected _wrapperRef = React.createRef<HTMLDivElement>();
+	protected _wrapperRef: HTMLDivElement | null = null;
 	protected _wrapperSizePx: number;
 
 	constructor (props: IVirtualListProps) {
@@ -70,24 +71,30 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 			itemsRenderedList: [],
 			lastDataLen: 0,
 		};
+
+		this.setWrapperRef = this.setWrapperRef.bind(this);
 	}
 
-	componentDidMount (): void {
-		if (this._wrapperRef.current) {
-			this._wrapperRef.current.addEventListener('scroll', this._onScroll as any, {
+	setWrapperRef = (element: HTMLDivElement | null) => {
+		if (this._wrapperRef) {
+			this._wrapperRef.removeEventListener('scroll', this._onScroll as any);
+		}
+
+		if (element) {
+			this._wrapperRef = element;
+			this._wrapperRef.addEventListener('scroll', this._onScroll as any, {
 				passive: true,
 			});
 		}
-		else {
-			new Error('Error - VirtualList: the wrapper ref is undefined.');
-		}
+	};
 
+	componentDidMount (): void {
 		this._onDidMountOrUpdate();
 	}
 
 	componentWillUnmount () {
-		if (this._wrapperRef.current) {
-			this._wrapperRef.current.removeEventListener('scroll', this._onScroll as any);
+		if (this._wrapperRef) {
+			this._wrapperRef.removeEventListener('scroll', this._onScroll as any);
 		}
 	}
 
@@ -153,8 +160,8 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 	}
 
 	protected _onScroll = (event: UIEvent) => {
-		if (this._wrapperRef.current && event.target === this._wrapperRef.current) {
-			this._scrollTop = this._wrapperRef.current.scrollTop;
+		if (this._wrapperRef && event.target === this._wrapperRef) {
+			this._scrollTop = this._wrapperRef.scrollTop;
 			this._calculateItemsAndRenderIfChanged(this.props, false);
 		}
 	};
@@ -162,7 +169,7 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 	protected _onResize = (rect: DOMRect) => {
 		if (rect.height !== this._wrapperSizePx) {
 			// get clientHeight from ref if it's available (may not immediately be) otherwise get resize height (which is effectively its offsetHeight)
-			this._wrapperSizePx = this._wrapperRef.current ? this._wrapperRef.current.clientHeight : rect.height;
+			this._wrapperSizePx = this._wrapperRef ? this._wrapperRef.clientHeight : rect.height;
 
 			this._calculateItemsAndRenderIfChanged(this.props, false);
 		}
@@ -219,16 +226,12 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 					wrapperRenderer as React.ReactElement<any>,
 					{
 						...wrapperRenderer.props,
-						ref: this._wrapperRef,
 						className: classnames(wrapperRenderer.props.className || '', wrapperClassName),
 					},
 				)
 				:
 				(
-					<div
-						ref={this._wrapperRef}
-						className={wrapperClassName}
-					>
+					<div className={wrapperClassName}>
 						{wrapperChildren}
 					</div>
 				)
@@ -237,7 +240,9 @@ export class VirtualList extends React.Component<IVirtualListProps, IVirtualList
 
 	render () {
 		return (
-			this._renderWrapper()
+			<ScrollShadow refCallback={this.setWrapperRef}>
+				{this._renderWrapper()}
+			</ScrollShadow>
 		);
 	}
 }

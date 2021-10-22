@@ -14,6 +14,7 @@ $row-height-size-m: 37px;
 $row-height-size-l: 48px;
 
 .VirtualTable_Container {
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -23,7 +24,7 @@ $row-height-size-l: 48px;
 .VirtualTable {
 	--VirtualTable_RowHeight: #{$row-height-size-l};
 	--VirtualTable_RowHeaderHeight: var(--VirtualTable_RowHeight);
-
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
