@@ -1,6 +1,8 @@
 import * as React from 'react';
 import AddIcon from './svgs/AddIcon';
 import ArrowRightIcon from './svgs/ArrowRightIcon';
+import BellIcon from './svgs/BellIcon';
+import BugIcon from './svgs/BugIcon';
 import CaretDoubleIcon from './svgs/CaretDoubleIcon';
 import CaretIcon from './svgs/CaretIcon';
 import CheckmarkIcon from './svgs/CheckmarkIcon';
@@ -14,6 +16,7 @@ import CloseIcon from './svgs/CloseIcon';
 import ConnectBothIcon from './svgs/ConnectBothIcon';
 import ConnectPullIcon from './svgs/ConnectPullIcon';
 import ConnectPushIcon from './svgs/ConnectPushIcon';
+import DocIcon from './svgs/DocIcon';
 import DotsIcon from './svgs/DotsIcon';
 import DownloadIcon from './svgs/DownloadIcon';
 import ExclamationIcon from './svgs/ExclamationIcon';
@@ -42,6 +45,8 @@ import StopIcon from './svgs/StopIcon';
 namespace Icons {
 	export const Add = AddIcon;
 	export const ArrowRight = ArrowRightIcon;
+	export const Bell = BellIcon;
+	export const Bug = BugIcon;
 	export const CaretDouble = CaretDoubleIcon;
 	export const Caret = CaretIcon;
 	export const Checkmark = CheckmarkIcon;
@@ -55,6 +60,7 @@ namespace Icons {
 	export const ConnectBoth = ConnectBothIcon;
 	export const ConnectPull = ConnectPullIcon;
 	export const ConnectPush = ConnectPushIcon;
+	export const Doc = DocIcon;
 	export const Dots = DotsIcon;
 	export const Download = DownloadIcon;
 	export const Exclamation = ExclamationIcon;
@@ -85,6 +91,8 @@ export {
 	Icons, // export the namespace 'Icons' here
 	AddIcon,
 	ArrowRightIcon,
+	BellIcon,
+	BugIcon,
 	CaretDoubleIcon,
 	CaretIcon,
 	CheckmarkIcon,
@@ -98,6 +106,7 @@ export {
 	ConnectBothIcon,
 	ConnectPullIcon,
 	ConnectPushIcon,
+	DocIcon,
 	DotsIcon,
 	DownloadIcon,
 	ExclamationIcon,
