@@ -8,4 +8,4 @@ export const BellIcon: React.FC = ({...props}) => {
 	);
 };
 
-export default withIconSvg(BellIcon, true, { tags: ['bell', 'request', 'notification']});
+export default withIconSvg(BellIcon, false, { tags: ['bell', 'request', 'notification']});
