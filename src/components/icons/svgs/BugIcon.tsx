@@ -8,4 +8,4 @@ export const BugIcon: React.FC = ({...props}) => {
 	);
 };
 
-export default withIconSvg(BugIcon, true, { tags: ['bug']});
+export default withIconSvg(BugIcon, false, { tags: ['bug']});
