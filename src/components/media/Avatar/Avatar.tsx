@@ -9,7 +9,7 @@ interface IProps extends IReactComponentProps {
 	color?: 'blue' | 'green' | 'yellow' | 'orange' | 'red' | 'pink' | 'purple';
 	initials?: string;
 	placeholderSrc?: string;
-	size?: 's' | 'm' | string;
+	size?: 's' | 'm' | 'l' | string;
 	src?: string;
 	type: 'user' | 'team';
 }
@@ -62,6 +62,9 @@ export default class Avatar extends React.Component<IProps, IState> {
 		let size: string = this.props.size || Avatar.defaultProps.size as string;
 
 		switch (size) {
+			case 'l':
+				size = '45px';
+				break;
 			case 'm':
 				size = '40px';
 				break;
