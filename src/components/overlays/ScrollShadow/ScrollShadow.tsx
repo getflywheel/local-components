@@ -7,6 +7,7 @@ import { FunctionGeneric } from '../../../common/structures/Generics';
 interface IProps extends IReactComponentProps {
 	// Callback for accessing the scrollable content div ref from a parent - element will be passed on change
 	refCallback?: FunctionGeneric;
+	shadowClassName?: string;
 }
 
 export const ScrollShadow = (props: IProps) => {
@@ -49,13 +50,16 @@ export const ScrollShadow = (props: IProps) => {
 
 	return (
 		<>
-			<div className={styles.ScrollableContent} ref={setScrollableContentRef}>
+			<div 
+				className={classnames(styles.ScrollableContent, props.className)} 
+				id={props.id}
+				style={props.style}
+				ref={setScrollableContentRef}
+			>
 				{props.children}
 			</div>
 			<div 
-				className={classnames(styles.ScrollShadow__Container, props.className)}
-				id={props.id}
-				style={props.style}
+				className={classnames(styles.ScrollShadow__Container, props.shadowClassName)}
 			>
 				<div
 					className={classnames(props.className, styles.ScrollShadow, {
