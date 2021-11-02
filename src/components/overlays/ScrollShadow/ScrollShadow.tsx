@@ -58,9 +58,7 @@ export const ScrollShadow = (props: IProps) => {
 			>
 				{props.children}
 			</div>
-			<div 
-				className={classnames(styles.ScrollShadow__Container, props.shadowClassName)}
-			>
+			<div className={classnames(styles.ScrollShadow__Container, props.shadowClassName)}>
 				<div
 					className={classnames(styles.ScrollShadow, {
 						[styles.ScrollShadow__Show]: showScrollShadow,
