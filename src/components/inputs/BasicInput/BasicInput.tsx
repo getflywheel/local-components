@@ -15,6 +15,7 @@ export interface IBasicInputProps extends ILocalContainerProps {
 	readonly?: boolean;
 	size?: number;
 	spellcheck?: boolean;
+	onKeyUp?: any;
 }
 
 export default class BasicInput extends React.Component<IBasicInputProps> {
