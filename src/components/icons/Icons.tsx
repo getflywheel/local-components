@@ -37,6 +37,7 @@ import SearchIcon from './svgs/SearchIcon';
 import SpinnerIcon from './svgs/SpinnerIcon';
 import StarIcon from './svgs/StarIcon';
 import StopIcon from './svgs/StopIcon';
+import YieldIcon from './svgs/YieldIcon';
 
 /**
  * Namespace of Icons that can be imported once and reference multiple icons: `Icons.Add`.
@@ -81,6 +82,7 @@ namespace Icons {
 	export const Spinner = SpinnerIcon;
 	export const Stars = StarIcon;
 	export const Stop = StopIcon;
+	export const Yield = YieldIcon;
 }
 
 /**
@@ -126,4 +128,5 @@ export {
 	SpinnerIcon,
 	StarIcon,
 	StopIcon,
+	YieldIcon,
 }
