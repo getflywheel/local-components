@@ -286,6 +286,7 @@
 				display: block;
 				margin: 0 0 10px;
 				@include theme-color-graydark-else-white;
+				font-weight: bold;
 			}
 
 			input:not([type="checkbox"]) {
