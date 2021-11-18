@@ -26,7 +26,7 @@ describe('InputPasswordToggle', () => {
 
 	it('renders basic react props like id, className, and style as element attributes', () => {
 		const shallowWrapper = shallow(<InputPasswordToggle {...TestComponentPropUtils.basicReactProps} />);
-		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true);
+		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, false);
 	});
 
 	it('renders name attribute correctly', () => {
