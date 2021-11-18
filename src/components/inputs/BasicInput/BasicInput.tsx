@@ -16,6 +16,8 @@ export interface IBasicInputProps extends ILocalContainerProps {
 	size?: number;
 	spellcheck?: boolean;
 	onKeyUp?: any;
+	invalid?: boolean;
+	invalidMessage?: string;
 }
 
 export default class BasicInput extends React.Component<IBasicInputProps> {
@@ -29,6 +31,8 @@ export default class BasicInput extends React.Component<IBasicInputProps> {
 			id,
 			name,
 			style,
+			invalid,
+			invalidMessage,
 			...props
 		} = this.props;
 
@@ -45,8 +49,14 @@ export default class BasicInput extends React.Component<IBasicInputProps> {
 				<input
 					name={name}
 					type='text'
+					className={classnames({[styles.__Invalid]: invalid})}
 					{...props}
 				/>
+				{(invalid && invalidMessage) && (
+					<span>{invalidMessage}</span>
+				)}
+				
+
 			</div>
 		);
 	}

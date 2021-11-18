@@ -8,4 +8,10 @@
 	input {
 		@include flywheelInput;
 	}
+
+	span {
+		display: block;
+		margin-top: 10px;
+		@include theme-color-red-dark50-else-red;
+	}
 }
