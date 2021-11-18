@@ -59,7 +59,7 @@ const InputPasswordToggle = (props: IProps) => {
 				name={name}
 				type={inputType}
 				className={classnames(styles.PasswordToggleInput, {
-					[styles.__Invalid]: invalid,
+					[`${styles.__Invalid} __Invalid`]: invalid,
 					[styles.__Checkbox]: checkbox,
 				})}
 			/>
