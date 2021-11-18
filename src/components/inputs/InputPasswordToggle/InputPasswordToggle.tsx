@@ -69,10 +69,11 @@ const InputPasswordToggle = (props: IProps) => {
 			/>
 			{checkbox ? (
 				<div className={classnames(styles.InputPasswordToggle__Checkbox)}>
-					<Checkbox 
+					<Checkbox
 						label="Show Password"
 						checked={inputType === 'text'}
 						onChange={toggleType}
+						onKeyDown={onKeyDown}
 					/>
 				</div>
 			) : (
