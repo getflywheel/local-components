@@ -17,7 +17,7 @@ export interface IAlertProps extends ILocalContainerProps {
 	show?: boolean;
 }
 
-const Alert = (props: IAlertProps) => {
+export const Alert = (props: IAlertProps) => {
 	const {
 		dismissable,
 		onDismiss,
@@ -72,5 +72,3 @@ const Alert = (props: IAlertProps) => {
 		);
 	} else return null;
 };
-
-export default Alert;
