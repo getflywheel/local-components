@@ -35,7 +35,7 @@ export const Alert = (props: IAlertProps) => {
 
 	const handleDismiss = () => {
 		setShowAlert(false);
-		if (onDismiss) onDismiss();
+		onDismiss?.();
 	}
 
 	useEffect(() => {
