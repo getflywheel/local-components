@@ -49,7 +49,7 @@ export default class BasicInput extends React.Component<IBasicInputProps> {
 				<input
 					name={name}
 					type='text'
-					className={classnames({[styles.__Invalid]: invalid})}
+					className={classnames({[`${styles.__Invalid} __Invalid`]: invalid})}
 					{...props}
 				/>
 				{(invalid && invalidMessage) && (
