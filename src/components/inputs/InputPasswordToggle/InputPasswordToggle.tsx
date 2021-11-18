@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import * as styles from './InputPasswordToggle.scss'
 import EyeSVG from '../../../svg/eye.svg';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
+import Checkbox from '../Checkbox/Checkbox';
 
 interface IProps extends ILocalContainerProps {
 	name?: string;
@@ -10,11 +11,8 @@ interface IProps extends ILocalContainerProps {
 	value?: string;
 	invalid?: boolean;
 	invalidMessage?: string;
-	type?: IState['inputType'];
-}
-
-interface IState {
-	inputType: 'password' | 'text';
+	type?: 'password' | 'text';
+	checkbox?: boolean;
 }
 
 const InputPasswordToggle = (props: IProps) => {
@@ -26,6 +24,7 @@ const InputPasswordToggle = (props: IProps) => {
 		invalid,
 		invalidMessage,
 		type = 'password',
+		checkbox,
 		...otherProps 
 	} = props;
 
@@ -59,16 +58,30 @@ const InputPasswordToggle = (props: IProps) => {
 			<input
 				name={name}
 				type={inputType}
-				className={classnames(styles.PasswordToggleInput, {[styles.__Invalid]: invalid})}
+				className={classnames(styles.PasswordToggleInput, {
+					[styles.__Invalid]: invalid,
+					[styles.__Checkbox]: checkbox,
+				})}
 			/>
-			<span
-				tabIndex={0}
-				className={classnames(styles.Eye, 'Eye')}
-				onClick={toggleType}
-				onKeyDown={onKeyDown}
-			>
-				<EyeSVG />
-			</span>
+			{checkbox ? (
+				<div className={classnames(styles.InputPasswordToggle__Checkbox)}>
+					<Checkbox 
+						label="Show Password"
+						checked={inputType === 'text'}
+						onChange={toggleType}
+					/>
+				</div>
+			) : (
+				<span
+					tabIndex={0}
+					className={classnames(styles.Eye, 'Eye')}
+					onClick={toggleType}
+					onKeyDown={onKeyDown}
+				>
+					<EyeSVG />
+				</span>
+			)}
+
 			{(invalid && invalidMessage) && (
 				<span className={styles.InputPasswordToggle__InvalidMessage}>{invalidMessage}</span>
 			)}
