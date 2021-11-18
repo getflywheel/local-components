@@ -12,6 +12,7 @@ interface IProps extends IReactComponentProps {
 	label?: string;
 	name?: string;
 	onChange: FunctionGeneric;
+	onKeyDown?: FunctionGeneric;
 }
 
 interface IState {
@@ -33,11 +34,9 @@ export default class Checkbox extends React.Component<IProps, IState> {
 	};
 
 	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
-		if (nextProps.checked) {
-			this.setState({
-				checked: nextProps.checked,
-			});
-		}
+		this.setState({
+			checked: nextProps.checked as boolean | 'mixed',
+		});
 	}
 
 	protected _handleChange = () => {
@@ -69,6 +68,7 @@ export default class Checkbox extends React.Component<IProps, IState> {
 			>
 				<label className={styles.Checkbox_Label}>
 					<input
+						tabIndex={-1}
 						type="checkbox"
 						className={styles.Checkbox_InputHidden}
 						checked={this.state.checked === true}
@@ -77,6 +77,8 @@ export default class Checkbox extends React.Component<IProps, IState> {
 						onChange={this._handleChange}
 					/>
 					<div
+						onKeyDown={this.props.onKeyDown}
+						tabIndex={this.props.onKeyDown ? 0 : -1}
 						className={styles.Checkbox_GraphicsCont}
 					>
 						{this.state.checked === true && (
