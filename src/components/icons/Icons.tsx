@@ -12,6 +12,7 @@ import CircleCompleteIcon from './svgs/CircleCompleteIcon';
 import CircleExclamationIcon from './svgs/CircleExclamationIcon';
 import CircleInfoIcon from './svgs/CircleInfoIcon';
 import CircleWarnIcon from './svgs/CircleWarnIcon';
+import CloseSmallIcon from './svgs/CloseSmallIcon';
 import CloseIcon from './svgs/CloseIcon';
 import ConnectBothIcon from './svgs/ConnectBothIcon';
 import ConnectPullIcon from './svgs/ConnectPullIcon';
@@ -58,6 +59,7 @@ namespace Icons {
 	export const CircleInfo= CircleInfoIcon;
 	export const CircleWarn = CircleWarnIcon;
 	export const Close = CloseIcon;
+	export const CloseSmall = CloseSmallIcon;
 	export const ConnectBoth = ConnectBothIcon;
 	export const ConnectPull = ConnectPullIcon;
 	export const ConnectPush = ConnectPushIcon;
@@ -105,6 +107,7 @@ export {
 	CircleInfoIcon,
 	CircleWarnIcon,
 	CloseIcon,
+	CloseSmallIcon,
 	ConnectBothIcon,
 	ConnectPullIcon,
 	ConnectPushIcon,
