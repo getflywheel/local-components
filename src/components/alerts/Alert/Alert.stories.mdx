@@ -1,0 +1,18 @@
+import Alert from "./Alert";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Alerts/Alert" component={Alert} />
+
+<Canvas>
+	<Story name="Alert">
+		<Alert dismissable>Lorem ipsum dolor sit amet, consectetur adipiscing 
+			elit, sed do eiusmod tempor</Alert>
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Alert Warn">
+		<Alert type="warning">Lorem ipsum dolor sit amet, consectetur adipiscing 
+			elit, sed do eiusmod tempor</Alert>
+	</Story>
+</Canvas>
