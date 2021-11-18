@@ -1,0 +1,51 @@
+@import '../../../styles/_partials/index';
+
+.Alert, .Alert_wrapper, .Alert_icon, .Alert_close {
+	display: flex;
+	align-items: center;
+}
+
+.Alert {
+	justify-content: space-between;
+	@include theme-background-white-else-graydark;
+	border-radius: 4px;
+	border: 2px solid $green;
+
+	.Alert_icon {
+		align-self: stretch;
+		padding: 0 20px;
+		@include stripes($green, mix($gray1, $green, 10%));
+
+		svg {
+			width: 24px;
+			height: 24px;
+			path {
+				fill: $white;
+			}
+		}
+	}
+
+	&.__warn {
+		border: 2px solid $red;
+	}
+
+	&.__warn .Alert_icon {
+		@include stripes($red, mix($gray1, $red, 10%));
+	}
+	
+	.Alert_close {
+		margin-right: 20px;
+	
+		* { 
+			cursor: pointer;
+		}
+	
+		svg path {
+			@include theme-fill-graydark-else-white;
+		}
+	
+		&:hover svg path {
+			@include __theme-fill($gray, $gray75)
+		}
+	}
+}
