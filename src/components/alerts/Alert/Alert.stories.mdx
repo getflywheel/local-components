@@ -5,7 +5,7 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Canvas>
 	<Story name="Alert">
-		<Alert dismissable>Lorem ipsum dolor sit amet, consectetur adipiscing 
+		<Alert dismissable onDismiss={() => console.log('DISMISSING!')}>Lorem ipsum dolor sit amet, consectetur adipiscing 
 			elit, sed do eiusmod tempor</Alert>
 	</Story>
 </Canvas>
