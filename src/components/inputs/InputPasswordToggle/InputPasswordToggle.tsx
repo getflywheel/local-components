@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import classnames from 'classnames';
+import * as styles from './InputPasswordToggle.scss'
 import EyeSVG from '../../../svg/eye.svg';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
@@ -7,64 +8,72 @@ interface IProps extends ILocalContainerProps {
 	name?: string;
 	onChange?: any;
 	value?: string;
+	invalid?: boolean;
+	invalidMessage?: string;
+	type?: IState['inputType'];
 }
 
 interface IState {
 	inputType: 'password' | 'text';
 }
 
-export default class InputPasswordToggle extends React.Component<IProps, IState> {
-	constructor (props: IProps) {
-		super(props);
+const InputPasswordToggle = (props: IProps) => {
+	const { 
+		className,
+		style,
+		id,
+		name,
+		invalid,
+		invalidMessage,
+		type = 'password',
+		...otherProps 
+	} = props;
 
-		this.state = {
-			inputType: 'password',
-		};
+	const [inputType, setInputType] = useState(type)
 
-		this.toggleType = this.toggleType.bind(this);
-		this.onKeyDown = this.onKeyDown.bind(this);
+	const toggleType = () => {
+		setInputType((prev) => prev === 'password' ? 'text' : 'password')
 	}
 
-	toggleType () {
-		this.setState({
-			inputType: this.state.inputType === 'password' ? 'text' : 'password',
-		});
-	}
-
-	onKeyDown (e: any) {
+	const onKeyDown = (e: any) => {
 		if (e.key === 'Enter'){
-			this.toggleType();
+			toggleType();
 		}
 	}
 
-	render () {
-		const { className, ...props } = this.props;
+	useEffect(() => {
+		setInputType(type)
+	}, [type])
 
-		return (
-			<div
-				className={classnames(
-					'PasswordToggle',
-					`PasswordToggle__${this.state.inputType}`,
-					this.props.className,
-				)}
-				style={this.props.style}
+	return (
+		<div
+			className={classnames(
+				styles.PasswordToggle,
+				styles[`PasswordToggle__${inputType}`],
+				className,
+			)}
+			style={style}
+			id={id}
+			{...otherProps}
+		>
+			<input
+				name={name}
+				type={inputType}
+				className={classnames(styles.PasswordToggleInput, {[styles.__Invalid]: invalid})}
+			/>
+			<span
+				tabIndex={0}
+				className={classnames(styles.Eye, 'Eye')}
+				onClick={toggleType}
+				onKeyDown={onKeyDown}
 			>
-				<input
-					id={this.props.id}
-					name={this.props.name}
-					type={this.state.inputType}
-					className={className ? `PasswordToggleInput ${className}` : 'PasswordToggleInput'}
-					{...props}
-				/>
-				<span
-					tabIndex={0}
-					className="Eye"
-					onClick={this.toggleType}
-					onKeyDown={this.onKeyDown}
-				>
-					<EyeSVG />
-				</span>
-			</div>
-		);
-	}
+				<EyeSVG />
+			</span>
+			{(invalid && invalidMessage) && (
+				<span className={styles.InputPasswordToggle__InvalidMessage}>{invalidMessage}</span>
+			)}
+		</div>
+	);
 }
+
+export default InputPasswordToggle;
