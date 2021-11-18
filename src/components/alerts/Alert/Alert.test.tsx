@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import Alert from './Alert';
+import { Alert } from './Alert';
 import TestComponentPropUtils from '../../../utils/TestComponentPropUtils';
 
 describe('Banner', () => {
