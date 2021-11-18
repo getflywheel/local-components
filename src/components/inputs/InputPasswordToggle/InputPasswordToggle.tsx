@@ -26,6 +26,7 @@ const InputPasswordToggle = (props: IProps) => {
 		type = 'password',
 		checkbox,
 		value,
+		onChange,
 		...otherProps 
 	} = props;
 
@@ -64,6 +65,7 @@ const InputPasswordToggle = (props: IProps) => {
 					[`${styles.__Invalid} __Invalid`]: invalid,
 					[styles.__Checkbox]: checkbox,
 				})}
+				onChange={onChange}
 			/>
 			{checkbox ? (
 				<div className={classnames(styles.InputPasswordToggle__Checkbox)}>
