@@ -282,7 +282,7 @@
 			width: 100%;
 			min-width: 0; // Flex box text overflow workaround: http://stackoverflow.com/questions/12022288/how-to-keep-a-flex-item-from-overflowing-due-to-its-text
 
-			label {
+			> label {
 				display: block;
 				margin: 0 0 10px;
 				@include theme-color-graydark-else-white;
