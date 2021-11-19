@@ -8,4 +8,4 @@ export const CloseSmallIcon: React.FC = ({...props}) => {
 	);
 };
 
-export default withIconSvg(CloseSmallIcon, true, { tags: ['bug']});
+export default withIconSvg(CloseSmallIcon, true, { tags: ['close', 'small', 'exit', 'dismiss']});

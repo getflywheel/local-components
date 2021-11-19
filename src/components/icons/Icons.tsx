@@ -1,6 +1,7 @@
 import * as React from 'react';
 import AddIcon from './svgs/AddIcon';
 import ArrowRightIcon from './svgs/ArrowRightIcon';
+import ArrowLeftIcon from './svgs/ArrowLeftIcon';
 import BellIcon from './svgs/BellIcon';
 import BugIcon from './svgs/BugIcon';
 import CaretDoubleIcon from './svgs/CaretDoubleIcon';
@@ -47,6 +48,7 @@ import YieldIcon from './svgs/YieldIcon';
 namespace Icons {
 	export const Add = AddIcon;
 	export const ArrowRight = ArrowRightIcon;
+	export const ArrowLeft = ArrowLeftIcon;
 	export const Bell = BellIcon;
 	export const Bug = BugIcon;
 	export const CaretDouble = CaretDoubleIcon;
@@ -95,6 +97,7 @@ export {
 	Icons, // export the namespace 'Icons' here
 	AddIcon,
 	ArrowRightIcon,
+	ArrowLeftIcon,
 	BellIcon,
 	BugIcon,
 	CaretDoubleIcon,
