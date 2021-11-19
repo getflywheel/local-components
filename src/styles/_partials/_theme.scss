@@ -278,6 +278,10 @@
 	@include __theme-fill($gray, $white);
 }
 
+@mixin theme-fill-gray25-else-gray {
+	@include __theme-fill($gray25, $gray);
+}
+
 @mixin theme-fill-gray15-else-gray {
 	@include __theme-fill($gray15, $gray);
 }
