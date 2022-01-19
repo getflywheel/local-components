@@ -95,7 +95,7 @@ export class ButtonBase extends React.Component<IButtonBaseProps> {
 		padding: ButtonPropPadding.m,
 		tag: 'button',
 		fontWeight: ButtonPropFontWeight.heavy,
-		textTransform: ButtonPropTextTransform.upper,
+		textTransform: ButtonPropTextTransform.none,
 		textDecoration: ButtonPropTextDecoration.none,
 		letterSpacing: ButtonLetterSpacing.tracked,
 	};
