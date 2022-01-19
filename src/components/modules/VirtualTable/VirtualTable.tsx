@@ -106,7 +106,7 @@ export interface IVirtualTableState {
 
 export class VirtualTable extends React.Component<IVirtualTableProps, IVirtualTableState> {
 	static defaultProps: Partial<IVirtualTableProps> = {
-		headersCapitalize: 'upper',
+		headersCapitalize: 'none',
 		headersWeight: 700,
 		rowHeightSize: 'l',
 		rowHeaderHeightSize: 'auto',
