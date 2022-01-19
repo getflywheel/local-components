@@ -146,8 +146,8 @@ export const CopyButton = (props: ICopyButtonProps) => {
 CopyButton.defaultProps = {
 	tag: 'button',
 	copiedTimeout: 1000,
-	uncopiedStateText: 'COPY',
-	copiedStateText: 'COPIED',
+	uncopiedStateText: 'Copy',
+	copiedStateText: 'Copied',
 	uncopiedStateIconVariant: null,
 	copiedStateIconVariant: CopiedStateIconVariants.checkmark,
 	copiedStateBGStyleVariant: CopiedStateBGStyleVariants.green,
