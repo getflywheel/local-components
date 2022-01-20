@@ -14,7 +14,7 @@ interface IState {
 
 export default class AdvancedToggle extends React.Component<IProps, IState> {
 	static defaultProps: Partial<IProps> = {
-		headingText: 'Advanced Options',
+		headingText: 'Advanced options',
 	};
 
 	constructor (props: IProps) {
