@@ -82,7 +82,7 @@
 		}
 
 		&::after {
-			content: "OFF";
+			content: "Off";
 			display: block;
 			position: absolute;
 			top: 0;
@@ -106,7 +106,7 @@
 		}
 
 		&[aria-pressed="true"]::after {
-			content: "ON";
+			content: "On";
 			left: 1em;
 			color: $white;
 		}
