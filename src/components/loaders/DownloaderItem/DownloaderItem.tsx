@@ -25,7 +25,7 @@ interface IProps extends IReactComponentProps {
 
 export default class DownloaderItem extends React.Component<IProps> {
 	static defaultProps: Partial<IProps> = {
-		cancelText: 'Cancel Download',
+		cancelText: 'Cancel download',
 		showEllipsis: true,
 	};
 
