@@ -1,7 +1,24 @@
 import { PrimaryButtonExample } from "./examples/PrimaryButtonExample";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { PrimaryButton } from "./PrimaryButton";
+import PushIcon from "../../icons/svgs/PushIcon.tsx";
+import Doc from "../../icons/svgs/DocIcon.tsx";
 
-<Meta title="Buttons/PrimaryButtons" component={PrimaryButtonExample} />
+<Meta title="Buttons/PrimaryButtons" component={PrimaryButton, PrimaryButtonExample} />
+
+# SVG Examples
+
+<Canvas>
+	<Story name="SVG Example">
+        <PrimaryButton privateOptions={{ color:'gray' }} rightIcon={PushIcon}>Push up</PrimaryButton>
+    </Story>
+</Canvas>
+
+<Canvas>
+	<Story name="SVG Stroke Example">
+        <PrimaryButton svgStyle="stroke" leftIcon={Doc}>Go to doc</PrimaryButton>
+    </Story>
+</Canvas>
 
 # Playground
 

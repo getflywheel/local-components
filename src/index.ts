@@ -7,11 +7,11 @@ export { default as BannerCarousel } from './components/alerts/BannerCarousel/Ba
 export { default as OfflineBanner } from './components/alerts/OfflineBanner/OfflineBanner';
 export { Alert } from './components/alerts/Alert/Alert';
 // Buttons
-export { ButtonBase } from './components/buttons/_private/ButtonBase/ButtonBase';
+export { ButtonBase, IButtonBaseProps, IButtonCommonProps } from './components/buttons/_private/ButtonBase/ButtonBase';
 export { Button } from './components/buttons/Button/Button';
 export { default as Close } from './components/buttons/Close/Close';
 export { PrimaryButton } from './components/buttons/PrimaryButton/PrimaryButton';
-export { TextButton } from './components/buttons/TextButton/TextButton';
+export { TextButton, ITextButtonProps } from './components/buttons/TextButton/TextButton';
 export { CopyButton } from './components/buttons/CopyButton/CopyButton';
 export { RefreshButton } from './components/buttons/RefreshButton/RefreshButton';
 // Inputs

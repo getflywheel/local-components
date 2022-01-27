@@ -3,20 +3,21 @@
 
 $disabled-background-light: $gray25;
 $disabled-background-light-alt-soft: $gray5;
-$disabled-background-dark: $gray;
+$disabled-background-dark: $gray25;
 $disabled-background-dark-alt-hard: $gray-dark50;
 $disabled-text-light: $gray75;
 $disabled-text-light-alt-soft: $gray25;
-$disabled-text-dark: $gray-dark50;
+$disabled-text-dark: $gray75;
 
 .ButtonBase {
 	// base styles
+	display: flex;
+	align-items: center;
 	position: relative;
 	background: transparent;
-	transition: transform 0.1s ease 0s;
+	transition: transform 0.1s ease 0s, background .1s ease 0s, color .1s ease 0s;
 	text-decoration: none;
 	text-align: center;
-	align-self: center;
 	cursor: pointer;
 	flex-shrink: 0;
 	border-radius: 500px;
@@ -30,11 +31,17 @@ $disabled-text-dark: $gray-dark50;
 		'--Button_SvgPathFillColor',
 		'--Button_IfFill__Background',
 		'--Button_IfFill__Background_Hover',
+		'--Button_IfFill__Background_Active',
 		'--Button_IfFill__TextColor',
 		'--Button_IfFill__TextColor_Hover',
+		'--Button_IfFill__TextColor_Active',
+		'--Button_IfText__TextColor',
+		'--Button_IfText__TextColor_Hover',
+		'--Button_IfText__TextColor_Active',
 		'--Button__FontWeight',
 		'--Button__TextTransform',
-		'--Button__TextDecoration'
+		'--Button__TextDecoration',
+		'--Button__TextDecoration_Hover',
 	);
 
 	// css variable-based styles
@@ -48,6 +55,7 @@ $disabled-text-dark: $gray-dark50;
 	// use explicit hover color rather than default color to ensure tags like 'a' don't inherit their global style
 	&:hover {
 		color: var(--Button_TextColor_Hover);
+		text-decoration: var(--Button__TextDecoration_Hover);
 	}
 
 	// conditionally draw inner border by using the :after selector
@@ -62,7 +70,7 @@ $disabled-text-dark: $gray-dark50;
 		border-radius: 500px;
 	}
 
-	&:active {
+	&:active, &._active {
 		transform: scale(.98);
 	}
 
@@ -71,36 +79,58 @@ $disabled-text-dark: $gray-dark50;
 	}
 
 	svg {
-		width: 14px;
-		height: 14px;
-		vertical-align: middle;
+		width: auto;
+		height: auto;
+		flex-shrink: 0;
 		margin: 0 10px 0 0;
 
 		path {
 			transition: fill .1s ease 0s, stroke .1s ease 0s;
-			fill: var(--Button_SvgPathFillColor);
+		}
+
+		&.ButtonBase_SVG_Left {
+			margin: 0 10px 0 0;
+		}
+		
+		&.ButtonBase_SVG_Right {
+			margin: 0 0 0 10px;
 		}
 	}
 
-	// if default 'button' tag (otherwise don't impose display style)
-	@at-root button#{&} {
-		display: inline-block;
+	&.ButtonBase__SVG_Fill svg path {
+		stroke: none;
+		fill: var(--Button_SvgPathFillColor);	
+	}
+
+	&.ButtonBase__SVG_Stroke svg path {
+		fill: none;
+		stroke: var(--Button_SvgPathFillColor);
 	}
 }
 
 .ButtonBase__Form_Fill {
 	@include setThemeVar('--Button_Background', var(--Button_IfFill__Background));
 	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor));
-	@include setThemeVar('--Button_SvgPathFillColor', $white);
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
 
-	&:hover {
+	&:hover, &:focus {
 		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
 		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
+		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Hover));
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor_Hover));
+	}
+
+	&:active, &._active {
+		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Active));
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Active));
+		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Active));
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor_Active));
 	}
 
 	&[disabled] {
 		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
 		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light, $disabled-text-dark);
 	}
 }
 
@@ -123,63 +153,100 @@ $disabled-text-dark: $gray-dark50;
 .ButtonBase__Form_Outline {
 	@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background));
 	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
-	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
 
-	&:hover {
-		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
-		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background), transparent);
-		@include setThemeVar('--Button_BorderColor', transparent, var(--Button_IfFill__TextColor_Hover));
+	&:hover, &:focus {
+		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor));
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor));
+		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background));
+		@include setThemeVar('--Button_BorderColor', transparent);
 		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
 	}
 
+	&:active,&._active {
+		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Hover));
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
+		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
+		@include setThemeVar('--Button_BorderColor', transparent);
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor_Hover));
+	}
+
 	&[disabled] {
-		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-alt-soft, $disabled-background-dark);
-		@include setThemeVar('--Button_Background', $disabled-background-light-alt-soft, $disabled-background-dark-alt-hard);
-		@include setThemeVar('--Button_BorderColor', $disabled-background-light, $disabled-background-dark);
-		@include setThemeVar('--Button_TextColor', $disabled-text-light-alt-soft, $disabled-background-dark);
+		@include setThemeVar('--Button_Background', transparent);
+		@include setThemeVar('--Button_SvgPathFillColor', $gray25, $gray75);
+		@include setThemeVar('--Button_BorderColor', $gray25, $gray75);
+		@include setThemeVar('--Button_TextColor', $gray25, $gray75);
 	}
 }
 
 .ButtonBase__Form_Text {
-	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
-	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
-	@include setThemeVar('--Button_TextColor_Hover', $green-dark50);
+	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor));
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
 
-	&:hover {
-		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__Background_Hover));
+	&:hover, &:focus {
+		@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor_Hover));
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfText__TextColor_Hover));
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor_Hover));
+	}
+
+	&:active, &._active {
+		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor_Active));
+		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfText__TextColor_Active));
+		@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor_Active));
 	}
 
 	&[disabled] {
-		@include setThemeVar('--Button_TextColor', $disabled-background-light, $disabled-background-dark);
+		@include setThemeVar('--Button_SvgPathFillColor', $gray25, $gray75);
+		@include setThemeVar('--Button_TextColor', $gray25, $gray75);
 	}
 }
 
 .ButtonBase__Color_Gray {
-	@include setThemeVar('--Button_IfFill__Background', $gray75, $gray25);
-	@include setThemeVar('--Button_IfFill__TextColor', $white);
-	@include setThemeVar('--Button_IfFill__Background_Hover', $gray25, $gray75);
-	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+	@include setThemeVar('--Button_IfFill__Background', $gray, $white);
+	@include setThemeVar('--Button_IfFill__TextColor', $white, $gray-dark);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $gray-dark50, $gray15);
+	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white, $gray-dark);
+	@include setThemeVar('--Button_IfFill__Background_Active', $gray-dark, $gray25);
+	@include setThemeVar('--Button_IfFill__TextColor_Active', $white, $gray-dark);
+	@include setThemeVar('--Button_IfText__TextColor', $gray, $white);
+	@include setThemeVar('--Button_IfText__TextColor_Hover', $gray-dark50, $gray15);
+	@include setThemeVar('--Button_IfText__TextColor_Active', $gray-dark, $gray25);
 }
 
 .ButtonBase__Color_Green {
-	@include setThemeVar('--Button_IfFill__Background', $green);
-	@include setThemeVar('--Button_IfFill__TextColor', $white);
-	@include setThemeVar('--Button_IfFill__Background_Hover', $green-dark50);
+	@include setThemeVar('--Button_IfFill__Background', $green-dark, $white);
+	@include setThemeVar('--Button_IfFill__TextColor', $white, $gray-dark);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $green);
 	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+	@include setThemeVar('--Button_IfFill__Background_Active', $green-dark50);
+	@include setThemeVar('--Button_IfFill__TextColor_Active', $white);
+	@include setThemeVar('--Button_IfText__TextColor', $green-dark, $green);
+	@include setThemeVar('--Button_IfText__TextColor_Hover', $green, $green-dark50);
+	@include setThemeVar('--Button_IfText__TextColor_Active', $green-dark50, $green-dark);
 }
 
 .ButtonBase__Color_Orange {
-	@include setThemeVar('--Button_IfFill__Background', $orange);
+	@include setThemeVar('--Button_IfFill__Background', $orange-dark50, $orange);
 	@include setThemeVar('--Button_IfFill__TextColor', $white);
-	@include setThemeVar('--Button_IfFill__Background_Hover', $orange-dark);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $orange, $orange-dark50);
 	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+	@include setThemeVar('--Button_IfFill__Background_Active', $orange-dark50, $orange-dark);
+	@include setThemeVar('--Button_IfFill__TextColor_Active', $white);
+	@include setThemeVar('--Button_IfText__TextColor', $orange-dark50, $orange);
+	@include setThemeVar('--Button_IfText__TextColor_Hover', $orange, $orange-dark50);
+	@include setThemeVar('--Button_IfText__TextColor_Active', $orange-dark50, $orange-dark);
 }
 
 .ButtonBase__Color_Red {
-	@include setThemeVar('--Button_IfFill__Background', $red);
+	@include setThemeVar('--Button_IfFill__Background', $red-dark50, $red);
 	@include setThemeVar('--Button_IfFill__TextColor', $white);
-	@include setThemeVar('--Button_IfFill__Background_Hover', $red-dark50);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $red, $red-dark50);
 	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white);
+	@include setThemeVar('--Button_IfFill__Background_Active', $red-dark50, $red-dark);
+	@include setThemeVar('--Button_IfFill__TextColor_Active', $white);
+	@include setThemeVar('--Button_IfText__TextColor', $red-dark50, $red);
+	@include setThemeVar('--Button_IfText__TextColor_Hover', $red, $red-dark50);
+	@include setThemeVar('--Button_IfText__TextColor_Active', $red-dark50, $red-dark);
 }
 
 .ButtonBase__FontWeight_Heavy {
@@ -206,24 +273,52 @@ $disabled-text-dark: $gray-dark50;
 	@include setThemeVar('--Button__TextDecoration', underline);
 }
 
+.ButtonBase__TextDecoration_Underline_Hover {
+	@include setThemeVar('--Button__TextDecoration_Hover', underline);
+}
+
 .ButtonBase__LetterSpacing_Normal {
 	letter-spacing: normal;
 }
 
 .ButtonBase__LetterSpacing_Tracked {
+	@include tracking(5);
+}
+
+.ButtonBase__LetterSpacing_Extra {
 	@include tracking(40);
 }
 
+.ButtonBase__Display_Inline {
+	display: inline-flex;
+}
+
 .ButtonBase__FontSize_XSmall {
-	font-size: 11px;
+	font-size: 1.1rem;
 }
 
 .ButtonBase__FontSize_Small {
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 
 .ButtonBase__FontSize_Medium {
-	font-size: 14px;
+	font-size: 1.4rem;
+}
+
+.ButtonBase__FontSize_Large {
+	font-size: 1.8rem;
+}
+
+.ButtonBase__FontSize_XLarge {
+	font-size: 2.4rem;
+}
+
+.ButtonBase__FontSize_XXLarge {
+	font-size: 4.2rem;
+}
+
+.ButtonBase__Padding_None {
+	padding: 0;
 }
 
 .ButtonBase__Padding_Small {
