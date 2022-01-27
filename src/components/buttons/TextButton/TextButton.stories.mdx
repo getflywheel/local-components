@@ -1,7 +1,16 @@
 import { TextButtonExample } from "./examples/TextButtonExample";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { TextButton } from "./TextButton"
 
-<Meta title="Buttons/TextButton" component={TextButtonExample} />
+<Meta title="Buttons/TextButton" component={TextButtonExample, TextButton} />
+
+# Example
+
+<Canvas>
+	<Story name="Underlined">
+        <TextButton privateOptions={{ textDecoration: 'underline' }}>I'm an underlined button</TextButton>
+	</Story>
+</Canvas>
 
 # Playground
 
