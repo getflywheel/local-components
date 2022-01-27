@@ -19,13 +19,13 @@ export enum TextButtonPropSize {
 	tiny = 'tiny',
 }
 
-interface IProps extends IButtonCommonProps {
+export interface ITextButtonProps extends IButtonCommonProps {
 	intent?: TextButtonPropIntent | keyof typeof TextButtonPropIntent;
 	privateOptions?: IButtonBaseProps;
 	size?: TextButtonPropSize | keyof typeof TextButtonPropSize;
 }
 
-export const TextButton = (props: IProps) => {
+export const TextButton = (props: ITextButtonProps) => {
 	const {
 		className,
 		id,
@@ -58,4 +58,4 @@ TextButton.defaultProps = {
 	intent: TextButtonPropIntent.default,
 	size: TextButtonPropSize.default,
 	tag: ButtonBase.defaultProps.tag,
-} as Partial<IProps>;
+} as Partial<ITextButtonProps>;
