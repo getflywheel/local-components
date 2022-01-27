@@ -13,6 +13,7 @@ $disabled-text-dark: $gray75;
 	// base styles
 	display: flex;
 	align-items: center;
+	align-self: center;
 	position: relative;
 	background: transparent;
 	transition: transform 0.1s ease 0s, background .1s ease 0s, color .1s ease 0s;
@@ -153,7 +154,7 @@ $disabled-text-dark: $gray75;
 .ButtonBase__Form_Outline {
 	@include setThemeVar('--Button_BorderColor', var(--Button_IfFill__Background));
 	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
-	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
 
 	&:hover, &:focus {
 		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor));

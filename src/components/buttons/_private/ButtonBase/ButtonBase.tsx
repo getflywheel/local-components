@@ -189,7 +189,8 @@ const ButtonBase = (props: IButtonBaseProps) => {
 						[styles.ButtonBase__TextTransform_None]: textTransform === ButtonPropTextTransform.none,
 						[styles.ButtonBase__TextDecoration_None]: textDecoration === ButtonPropTextDecoration.none,
 						[styles.ButtonBase__TextDecoration_Underline]: textDecoration === ButtonPropTextDecoration.underline,
-						[styles.ButtonBase__TextDecoration_UnderlineOnHover]: textDecoration === ButtonPropTextDecoration.underlineOnHover,
+						[styles.ButtonBase__TextDecoration_Underline_Hover]: (textDecoration === ButtonPropTextDecoration.underlineOnHover)
+							||  (textDecoration === ButtonPropTextDecoration.underline),
 						[styles.ButtonBase__Display_Inline]: inline,
 						[styles.ButtonBase__SVG_Stroke]: svgStyle === ButtonSvgStyle.stroke,
 						[styles.ButtonBase__SVG_Fill]: svgStyle === ButtonSvgStyle.fill,

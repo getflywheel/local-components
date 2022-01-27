@@ -1,7 +1,18 @@
 import { ButtonExample } from "./examples/ButtonExample";
+import { Button } from "./Button";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import WPIcon from "../../icons/svgs/WPIcon.tsx";
 
-<Meta title="Buttons/Button" component={ButtonExample} />
+
+<Meta title="Buttons/Button" component={ButtonExample, Button} />
+
+# SVG Examples
+
+<Canvas>
+	<Story name="SVG Example">
+        <Button leftIcon={WPIcon}>WP Admin</Button>
+    </Story>
+</Canvas>
 
 # Playground
 
