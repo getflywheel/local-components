@@ -18,6 +18,7 @@ import CloseIcon from './svgs/CloseIcon';
 import ConnectBothIcon from './svgs/ConnectBothIcon';
 import ConnectPullIcon from './svgs/ConnectPullIcon';
 import ConnectPushIcon from './svgs/ConnectPushIcon';
+import DashIcon from './svgs/DashIcon';
 import DocIcon from './svgs/DocIcon';
 import DotsIcon from './svgs/DotsIcon';
 import DownloadIcon from './svgs/DownloadIcon';
@@ -66,6 +67,7 @@ namespace Icons {
 	export const ConnectBoth = ConnectBothIcon;
 	export const ConnectPull = ConnectPullIcon;
 	export const ConnectPush = ConnectPushIcon;
+	export const Dash = DashIcon;
 	export const Doc = DocIcon;
 	export const Dots = DotsIcon;
 	export const Download = DownloadIcon;
@@ -116,6 +118,7 @@ export {
 	ConnectBothIcon,
 	ConnectPullIcon,
 	ConnectPushIcon,
+	DashIcon,
 	DocIcon,
 	DotsIcon,
 	DownloadIcon,

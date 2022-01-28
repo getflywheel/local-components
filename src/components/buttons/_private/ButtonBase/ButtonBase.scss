@@ -85,7 +85,7 @@ $disabled-text-dark: $gray75;
 		flex-shrink: 0;
 		margin: 0 10px 0 0;
 
-		path {
+		path, rect, circle {
 			transition: fill .1s ease 0s, stroke .1s ease 0s;
 		}
 
@@ -98,20 +98,24 @@ $disabled-text-dark: $gray75;
 		}
 	}
 
-	&.ButtonBase__SVG_Fill svg path {
-		stroke: none;
-		fill: var(--Button_SvgPathFillColor);	
+	&.ButtonBase__SVG_Fill svg {
+		path, rect, circle{
+			stroke: none;
+			fill: var(--Button_SvgPathFillColor);
+		}	
 	}
 
-	&.ButtonBase__SVG_Stroke svg path {
-		fill: none;
-		stroke: var(--Button_SvgPathFillColor);
+	&.ButtonBase__SVG_Stroke svg {
+		path, rect, circle {
+			fill: none;
+			stroke: var(--Button_SvgPathFillColor);
+		}
 	}
 
 	&.ButtonBase__SVG_Background svg {
 		background: var(--Button_SvgPathFillColor);
 
-		path {
+		path, rect, circle {
 			fill: none;
 			stroke: none;
 		}
