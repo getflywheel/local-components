@@ -107,6 +107,15 @@ $disabled-text-dark: $gray75;
 		fill: none;
 		stroke: var(--Button_SvgPathFillColor);
 	}
+
+	&.ButtonBase__SVG_Background svg {
+		background: var(--Button_SvgPathFillColor);
+
+		path {
+			fill: none;
+			stroke: none;
+		}
+	}
 }
 
 .ButtonBase__Form_Fill {
