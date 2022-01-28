@@ -23,6 +23,7 @@ export enum ButtonPropPadding {
 export enum ButtonSvgStyle {
 	fill = 'fill',
 	stroke = 'stroke',
+	background = 'background',
 	none = 'none',
 }
 
@@ -77,7 +78,7 @@ export interface IButtonCommonProps extends ILocalContainerProps {
 	/** SVG Icon to be placed right of text */
 	rightIcon?: any; // has to be any since optional
 	/** Whether the svg is stroke only, fill only, or whether to not modify either */
-	svgStyle?: ButtonSvgStyle;
+	svgStyle?: ButtonSvgStyle | keyof typeof ButtonSvgStyle;
 	/** Display inline-flex vs flex */
 	inline?: boolean;
 }
@@ -194,6 +195,7 @@ const ButtonBase = (props: IButtonBaseProps) => {
 						[styles.ButtonBase__Display_Inline]: inline,
 						[styles.ButtonBase__SVG_Stroke]: svgStyle === ButtonSvgStyle.stroke,
 						[styles.ButtonBase__SVG_Fill]: svgStyle === ButtonSvgStyle.fill,
+						[styles.ButtonBase__SVG_Background]: svgStyle === ButtonSvgStyle.background,
 					},
 				)}
 				disabled={disabled}
