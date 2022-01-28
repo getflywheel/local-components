@@ -10,6 +10,7 @@ import { useSwappableTimeout } from '../../../common/helpers/useTimeout';
 import { useDetectClickOrHoverWithinTargets } from '../../../common/helpers/useDetectClickOrHoverWithinTargets';
 import { Options } from '@popperjs/core/lib/modifiers/arrow';
 import { Options as OffsetOptions } from '@popperjs/core/lib/modifiers/offset';
+import { FunctionGeneric } from '../../../common/structures/Generics';
 
 export interface TooltipProps extends IReactComponentProps {
 	/** the content that should show the tooltip upon the user's mouse entering it **/
@@ -34,6 +35,10 @@ export interface TooltipProps extends IReactComponentProps {
 	useClickInsteadOfHover?: boolean;
 	/** whether to hide tooltip from dom */
 	hideTooltip?: boolean;
+	/** callback run when tooltip shows */
+	onShow?: FunctionGeneric;
+	/** callback run when tooltip hides */
+	onHide?: FunctionGeneric;
 }
 
 // whether moving forward to the next stage or reverting back to a previous stage
@@ -293,6 +298,8 @@ export const Tooltip = (props: TooltipProps) => {
 		style,
 		useClickInsteadOfHover,
 		hideTooltip,
+		onHide,
+		onShow,
 	} = props;
 
 	const {
@@ -312,7 +319,16 @@ export const Tooltip = (props: TooltipProps) => {
 		transitionEndPropName: 'transform',
 		useClickInsteadOfHover: !!useClickInsteadOfHover,
 	});
+
 	const isShowing = (forceHover || !stages.isStage0Hidden) && !hideTooltip;
+
+	useEffect(() => {
+		if (isShowing) {
+			onShow?.();
+		} else {
+			onHide?.();
+		}
+	}, [isShowing])
 
 	return (
 		<>

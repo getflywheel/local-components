@@ -1,11 +1,14 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import * as styles from './FlyDropdown.scss';
-import CaretSVG from '../../../svg/caret.svg';
+// import CaretSVG from '../../../svg/caret.svg';
+import { CaretIcon, CheckmarkMixedIcon } from '../../icons/Icons';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
 import { Rect } from '@popperjs/core';
+import { TextButton } from '../../buttons/TextButton/TextButton'
+import { DashIcon } from '../../icons/svgs/DashIcon';
 
 interface IItems {
 	color: 'red' | 'none';
@@ -67,6 +70,8 @@ const FlyDropdown = (props: IProps) => {
 		event.stopPropagation();
 	};
 
+	const [isShowing, setIsShowing] = React.useState(false);
+
 	return (
 		<Tooltip
 			className={classnames(
@@ -126,17 +131,17 @@ const FlyDropdown = (props: IProps) => {
 			showDelay={0}
 			style={style}
 			useClickInsteadOfHover={useClickInsteadOfHover}
+			onShow={() => setIsShowing(true)}
+			onHide={() => setIsShowing(false)}
 			{...restPopperOptions}
 		>
-			{children}
-			{caret && (
-				<CaretSVG
-					className={classnames(
-						styles.FlyDropdown_Caret,
-						'FlyDropdown_Caret',
-					)}
-				/>
-			)}
+			
+			<TextButton 
+				rightIcon={caret && (isShowing ? DashIcon : CaretIcon)}
+				privateOptions={{ fontWeight: 'medium', padding: 'none' }}
+			>
+				{children}
+			</TextButton>
 		</Tooltip>
 	);
 }

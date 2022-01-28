@@ -95,14 +95,28 @@
 		}
 
 		&[aria-pressed="true"] {
-			box-shadow: inset 0 2px 0 $green-dark50;
-			background: $green;
+			@include if-theme-dark() {
+				box-shadow: inset 0 2px 0 $green-dark50;
+				background: $green;
+			}
+
+			@include if-theme-light() {
+				box-shadow: inset 0 2px 0 $gray-dark50;
+				background: $green-dark;	
+			}
 		}
 
 		&[aria-pressed="true"]::before {
 			left: calc(100% - 2.2em);
 			background: $white;
-			box-shadow: 0 2px 0 $green-dark50;
+
+			@include if-theme-dark() {
+				box-shadow: 0 2px 0 $green-dark50;
+			}
+			@include if-theme-light() {
+				box-shadow: 0 2px 0 $gray-dark50
+			}
+			
 		}
 
 		&[aria-pressed="true"]::after {
