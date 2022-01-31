@@ -2,44 +2,14 @@
 @import '../../../common/styles/themeUtils';
 
 .RefreshButton {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	padding: 0;
-	background: transparent;
-	border: none;
-	transition: transform 0s;
-
-	&:active {
-		border: none;
-	}
-
-	span, svg, g, path, circle {
-		cursor: pointer;
-	}
-
-	svg path {
-		fill: $green;
-	}
-
-	&:hover svg path {
-		fill: $green-dark50;
+	svg {
+		margin: 0 !important;
 	}
 
 	&.spin {
-		transform: rotate(360deg);
-		transition: transform 0.55s cubic-bezier(.42,1.56,.61,.83) 0s; 
-	}
-
-	&.disabled {
-		svg path, &:hover svg path {
-			@include theme-fill-gray25-else-gray75;
-		}
-
-		cursor: default;
-
-		span, svg, g, path, circle {
-			cursor: default;
+		svg {
+			transform: rotate(360deg);
+			transition: transform 0.55s cubic-bezier(.42,1.56,.61,.83) 0s; 
 		}
 	}
 }

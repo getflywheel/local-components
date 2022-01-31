@@ -1,21 +1,17 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import { Container } from '../../modules/Container/Container';
 import * as styles from './RefreshButton.scss';
 import { RefreshIcon } from '../../icons/svgs/RefreshIcon';
+import { TextButton, ITextButtonProps } from '../TextButton/TextButton';
 
-export interface IRefreshButtonProps extends ILocalContainerProps {
-	disabled?: boolean;
-}
-
-export const RefreshButton = (props: IRefreshButtonProps) => {
+export const RefreshButton = (props: ITextButtonProps) => {
 	const {
-		id,
 		className,
 		onClick,
-		style,
 		disabled,
+		container,
+		...otherProps
 	} = props;
 
 	const [clicked, setClicked] = React.useState(false);
@@ -25,27 +21,24 @@ export const RefreshButton = (props: IRefreshButtonProps) => {
 			setClicked(true);
 			// Set a timeout equal to the length of the spin animation/transition
 			setTimeout( () => setClicked(false), 550)
-			onClick(e);
+			onClick?.(e);
 		}
 	};
 
 	return (
-		<Container>
-			<button
+		<Container {...container}>
+			<TextButton
 				onClick={handleClick}
 				className={classnames(
 					styles.RefreshButton,
 					className,
-					{
-						[styles.spin]: clicked && !disabled,
-						[styles.disabled]: disabled,
-					}
+					{ [styles.spin]: clicked && !disabled }
 				)}
-				id={id}
-				style={style}
-			>
-				<RefreshIcon />
-			</button>
+				disabled={disabled}
+				privateOptions={{ padding: 'none' }}
+				rightIcon={RefreshIcon}
+				{...otherProps}
+			/>
 		</Container>
 	)
 };
