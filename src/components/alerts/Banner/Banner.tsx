@@ -77,6 +77,7 @@ export default class Banner extends React.Component<BannerProps> {
 		return (
 			// note: use `TextButton` and `tiny` size as this button type and style should always be the same as that preset
 			<TextButton
+				inline
 				size={TextButtonPropSize.tiny}
 				privateOptions={{
 					color: buttonColor,

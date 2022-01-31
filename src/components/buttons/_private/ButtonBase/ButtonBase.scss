@@ -151,12 +151,21 @@ $disabled-text-dark: $gray75;
 
 .ButtonBase__Form_Reversed {
 	@include setThemeVar('--Button_Background', $white);
-	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__Background));
-	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__Background));
+	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor_Light));
+	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
 
-	&:hover {
-		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
+	&:hover, &:focus {
+		@include setThemeVar('--Button_Background', var(--Button_IfText__TextColor_Hover_Light));
 		@include setThemeVar('--Button_TextColor_Hover', $white);
+		@include setThemeVar('--Button_TextColor', $white);
+		@include setThemeVar('--Button_SvgPathFillColor', $white);
+	}
+
+	&:active, &._active {
+		@include setThemeVar('--Button_Background', var(--Button_IfText__TextColor_Active_Light));
+		@include setThemeVar('--Button_TextColor_Hover', var($white));
+		@include setThemeVar('--Button_TextColor', var($white));
+		@include setThemeVar('--Button_SvgPathFillColor', var($white));
 	}
 
 	&[disabled] {
