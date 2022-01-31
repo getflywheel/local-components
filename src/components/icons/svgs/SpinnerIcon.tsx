@@ -4,7 +4,7 @@ import withIconSvg from '../helpers/withIconSvg';
 const Icon: React.FC = (props) => (
 	<svg
 		height="22"
-		width="18"
+		width="24"
 		viewBox="-4590 -2755 17.89 22.1"
 		{...props}
 	>
