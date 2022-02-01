@@ -101,6 +101,7 @@ export default class TableListMultiDisplay extends React.Component<
 		return (
 			<div className={styles.TableListRepeaterSubmit}>
 				<PrimaryButton
+					inline
 					onClick={() =>
 						this.props.onSubmit &&
 						this.props.onSubmit(this.state.unsavedData)

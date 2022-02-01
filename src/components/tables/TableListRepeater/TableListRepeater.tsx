@@ -3,12 +3,12 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import classnames from 'classnames';
 import { TableList } from '../TableList/TableList';
 import CloseSmallSVG from '../../../svg/close--small.svg';
-import AddSVG from '../../../svg/add.svg';
 import isEqual from 'lodash.isequal';
 import * as styles from '../TableList/TableList.sass';
 import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import { Button } from '../../buttons/Button/Button';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import { AddIcon } from '../../icons/Icons';
 
 interface IProps extends IReactComponentProps {
 	data?: any[];
@@ -166,6 +166,7 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 		return (
 			<div className={styles.TableListRepeaterSubmit}>
 				<PrimaryButton
+					inline
 					onClick={() => this.props.onSubmit && this.props.onSubmit(this.state.unsavedData)}
 					disabled={isEqual(this.props.data, this.state.unsavedData) || this.props.submitDisabled}
 				>
@@ -209,10 +210,11 @@ export default class TableListRepeater extends React.Component<IProps, IState> {
 				<div className={styles.TableListRepeaterAdd}>
 					<div className="InnerPaneSidebarHeaderButtons_Add">
 						<Button
+							inline
+							leftIcon={AddIcon}
 							onClick={this.addItem}
 							disabled={this.state.addingItem}
 						>
-							<AddSVG />
 							{!this.state.addingItem ? 'Add ' : 'Adding'} {this.props.labelSingular}
 						</Button>
 					</div>
