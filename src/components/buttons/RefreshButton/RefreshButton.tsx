@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { Container } from '../../modules/Container/Container';
 import * as styles from './RefreshButton.scss';
 import { RefreshIcon } from '../../icons/svgs/RefreshIcon';
 import { TextButton, ITextButtonProps } from '../TextButton/TextButton';
@@ -10,7 +9,6 @@ export const RefreshButton = (props: ITextButtonProps) => {
 		className,
 		onClick,
 		disabled,
-		container,
 		...otherProps
 	} = props;
 
@@ -26,19 +24,17 @@ export const RefreshButton = (props: ITextButtonProps) => {
 	};
 
 	return (
-		<Container {...container}>
-			<TextButton
-				onClick={handleClick}
-				className={classnames(
-					styles.RefreshButton,
-					className,
-					{ [styles.spin]: clicked && !disabled }
-				)}
-				disabled={disabled}
-				privateOptions={{ padding: 'none' }}
-				rightIcon={RefreshIcon}
-				{...otherProps}
-			/>
-		</Container>
+		<TextButton
+			onClick={handleClick}
+			className={classnames(
+				styles.RefreshButton,
+				className,
+				{ [styles.spin]: clicked && !disabled }
+			)}
+			disabled={disabled}
+			privateOptions={{ padding: 'none' }}
+			rightIcon={RefreshIcon}
+			{...otherProps}
+		/>
 	)
 };
