@@ -318,27 +318,27 @@ $disabled-text-dark: $gray75;
 }
 
 .ButtonBase__FontSize_XSmall {
-	font-size: 1.1rem;
+	font-size: $font-size-content-xs;
 }
 
 .ButtonBase__FontSize_Small {
-	font-size: 1.2rem;
+	font-size: $font-size-content-s;
 }
 
 .ButtonBase__FontSize_Medium {
-	font-size: 1.4rem;
+	font-size: $font-size-content-m;
 }
 
 .ButtonBase__FontSize_Large {
-	font-size: 1.8rem;
+	font-size: $font-size-header-s;
 }
 
 .ButtonBase__FontSize_XLarge {
-	font-size: 2.4rem;
+	font-size: $font-size-header-m;
 }
 
 .ButtonBase__FontSize_XXLarge {
-	font-size: 4.2rem;
+	font-size: $font-size-header-xl;
 }
 
 .ButtonBase__Padding_None {

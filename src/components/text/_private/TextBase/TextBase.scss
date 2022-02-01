@@ -29,19 +29,19 @@
 }
 
 .TextBase__FontSize_Small {
-	font-size: 1.4rem;
+	font-size: $font-size-header-xs;
 }
 
 .TextBase__FontSize_Medium {
-	font-size: 1.8rem;
+	font-size: $font-size-header-s;
 }
 
 .TextBase__FontSize_Large {
-	font-size: 2.4rem;
+	font-size: $font-size-header-m;
 }
 
 .TextBase__FontSize_XLarge {
-	font-size: 4.2rem;
+	font-size: $font-size-header-xl;
 }
 
 .TextBase__FontWeight_300 {
