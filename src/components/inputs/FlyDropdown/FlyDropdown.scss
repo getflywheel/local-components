@@ -73,7 +73,7 @@
 	height: auto;
 	text-align: left;
 	text-transform: none;
-	color: $green;
+	@include __theme-color($green-dark, $green);
 	font-weight: 400;
 	position: relative;
 	z-index: 7;
@@ -87,7 +87,7 @@
 	}
 
 	&:hover {
-		color: $green-dark50;
+		@include __theme-color($green, $green-dark50);
 	}
 
 	&:first-of-type {
@@ -102,10 +102,10 @@
 	}
 
 	&.FlyDropdown_Item__ColorRed {
-		color: $red;
+		@include __theme-color($red-dark50, $red);
 
 		&:hover {
-			color: $red-dark50;
+			@include __theme-color($red, $red-dark50);
 		}
 	}
 
