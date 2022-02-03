@@ -6,6 +6,7 @@ import ArrowRightSVG from '../../../svg/arrow--right.svg';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './FlySelect.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import { CaretIcon } from '../../icons/Icons'
 
 export interface FlySelectOption {
 	disabled?: boolean;
@@ -430,6 +431,7 @@ export default class FlySelect extends React.Component<IProps, IState> {
 				style={this.props.style}
 				tabIndex={0}
 			>
+				<CaretIcon className={styles.FlySelect__Caret}/>
 				<span className="CurrentValue">
 					{
 						this.state.value in optionsFormatted

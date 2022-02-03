@@ -11,9 +11,6 @@
 		font-weight: 300;
 		-webkit-appearance: none;
 		padding: 0 35px 0 10px;
-		background: url(../svg/down_arrow_green.svg) no-repeat $white;
-		background-position: right 9px top 12px;
-		background-size: 14px 6px;
 		cursor: pointer;
 		position: relative;
 		max-width: 100%;
@@ -55,7 +52,7 @@
 			}
 
 			path {
-				fill: $green;
+				@include __theme-fill($green-dark, $green);
 			}
 		}
 
@@ -178,15 +175,15 @@
 			&:hover,
 			&:focus {
 				outline: none;
-				color: $white;
-				background: $green-dark50;
+				@include __theme-color($white, $gray-dark);
+				@include __theme-background($green-dark, white);
 
 				span {
-					color: $white;
+					@include __theme-color($white, $gray-dark);
 				}
 
 				svg path {
-					fill: $white;
+					@include __theme-fill($white, $gray-dark);
 				}
 			}
 
