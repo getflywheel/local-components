@@ -38,11 +38,12 @@
 	}
 
 	a {
-		color: $green;
+		@include __theme-color($green-dark, $green);
 		text-decoration: none;
 
 		&:hover {
-			color: $green-dark;
+			text-decoration: underline;
+			@include __theme-color($green, $green-dark50);
 		}
 	}
 }
