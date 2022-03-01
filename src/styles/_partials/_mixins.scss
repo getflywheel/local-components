@@ -21,6 +21,18 @@
 	font-family: $museo-sans-rounded;
 }
 
+@mixin defaultAnchorSettings {
+	a {
+		@include __theme-color($green-dark, $green);
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+			@include __theme-color($green, $green-dark50);
+		}
+	}
+}
+
 @mixin defaultFontAndTextSettings {
 	@include defaultFontSettings;
 	@include theme-color-graydark-else-white;
