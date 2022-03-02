@@ -134,8 +134,8 @@ const FlyDropdown = (props: IProps) => {
 			onHide={() => setIsShowing(false)}
 			{...restPopperOptions}
 		>
-			
-			<TextButton 
+
+			<TextButton
 				rightIcon={caret && (isShowing ? DashIcon : CaretIcon)}
 				privateOptions={{ fontWeight: 'medium', padding: 'none' }}
 			>

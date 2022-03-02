@@ -1,0 +1,59 @@
+@import "../../../styles/_partials/index";
+@import '../../../common/styles/themeUtils';
+
+.ContextMenu {
+	position: relative;
+	display: inline-block;
+	@include cursorPointer;
+
+	&.ContextMenu__NavItem {
+		border-bottom: 4px solid transparent;
+		padding: 6px 4px 11px;
+
+		button {
+			color: $gray25;
+		}
+	}
+
+}
+
+.ContextMenu_Item_TextButton {
+	@include setThemeVar('--Button_IfText__TextColor', $gray, $white);
+}
+
+.ContextMenu_Trigger {
+	@include setThemeVar('--Button_IfFill__Background', $gray15, $white);
+	@include setThemeVar('--Button_IfFill__TextColor', $gray-dark50, $gray-dark);
+	@include setThemeVar('--Button_IfFill__Background_Hover', $green-dark50, $green);
+	@include setThemeVar('--Button_IfFill__Background_Active', $green-dark, $green-dark50);
+}
+
+.ContextMenu_Items {
+	left: auto;
+	border-radius: 4px;
+	padding: 0 20px;
+	min-width: 160px;
+	height: auto;
+	list-style-type: none;
+	margin: 0;
+}
+
+.ContextMenu_Item {
+	display: flex;
+
+	&:first-child {
+		padding-top: 10px;
+	}
+
+	&:last-child {
+		padding-bottom: 10px;
+	}
+
+	&:hover {
+		@include __theme-color($green, $green-dark50);
+	}
+}
+
+.ContextMenu_PopperVisualContainer {
+	padding: 0 !important;
+}

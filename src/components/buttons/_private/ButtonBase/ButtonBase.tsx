@@ -63,6 +63,8 @@ enum ButtonPropTextDecoration {
 export interface IButtonCommonProps extends ILocalContainerProps {
 	/** Whether the button is disabled. */
 	disabled?: boolean;
+	/** Whether the button is active. */
+	active?: boolean;
 	/** The form name attribute */
 	name?: string;
 	/** The click handler. */
@@ -83,8 +85,8 @@ export interface IButtonCommonProps extends ILocalContainerProps {
 	inline?: boolean;
 }
 
-/** 
- * Props specific to a button form, surfaced via privateOptions. 
+/**
+ * Props specific to a button form, surfaced via privateOptions.
  * A button form should be built by specifying these props, and instances
  * of that form should sitll be able to modify them via privateOptions.
  */
@@ -116,6 +118,7 @@ const ButtonBase = (props: IButtonBaseProps) => {
 		container,
 		className,
 		disabled,
+		active,
 		fontSize,
 		form,
 		id,
@@ -140,19 +143,23 @@ const ButtonBase = (props: IButtonBaseProps) => {
 	const LeftIcon = leftIcon;
 	const RightIcon = rightIcon;
 
-	const [ isActive, setIsActive ] = React.useState(false);
+	const [ isActive, setIsActive ] = React.useState(active);
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
-		if (e.key === 'Enter') {
+		if (e.key === 'Enter' && !active) {
 			setIsActive(true);
 		}
 	}
 
 	const handleKeyUp = (e: React.KeyboardEvent) => {
-		if (e.key === 'Enter') {
+		if (e.key === 'Enter' && !active) {
 			setIsActive(false);
 		}
 	}
+
+	React.useEffect(() => {
+		setIsActive(active);
+	}, [active])
 
 	return (
 		<Container {...container}>
