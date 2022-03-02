@@ -1,0 +1,36 @@
+import ContextMenu from "./ContextMenu";
+import { TextButton } from "../../buttons/TextButton/TextButton";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Inputs/ContextMenu" component={ContextMenu} />
+
+Basic:
+
+<Canvas>
+	<Story name="ContextMenu">
+		<ContextMenu
+			position="bottom"
+			items={[
+				{
+					label: "Option 1",
+					onClick: () => console.log("onClick Option 1"),
+				},
+				{
+					label: "Option 2",
+					onClick: () => console.log("onClick Option 2"),
+				},
+				{ type: 'separator' },
+				{
+					label: "Option 1",
+					onClick: () => console.log("onClick Option 1"),
+					enabled: false,
+				},
+				{
+					label: "Option 2",
+					onClick: () => console.log("onClick Option 2"),
+					color: "red",
+				},
+			]}
+		/>
+	</Story>
+</Canvas>

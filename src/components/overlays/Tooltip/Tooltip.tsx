@@ -19,6 +19,8 @@ export interface TooltipProps extends IReactComponentProps {
 	forceHover?: boolean;
 	/** the number of milliseconds to delay hiding the tooltip after the user's mouse leaves this component **/
 	hideDelay?: number;
+	/** hide the tooltip arrow */
+	hideArrow?: boolean;
 	/** Additional popper arrow modifier */
 	popperArrowModifier?: Partial<Options>;
 	/** Additional popper offset modifier to reposition the popper tooltip [position's direction, perpendicular direction] */
@@ -300,6 +302,7 @@ export const Tooltip = (props: TooltipProps) => {
 		hideTooltip,
 		onHide,
 		onShow,
+		hideArrow,
 	} = props;
 
 	const {
@@ -396,23 +399,25 @@ export const Tooltip = (props: TooltipProps) => {
 									{props.content}
 								</div>
 							</div>
-							<div
-								className={classnames(
-									styles.Tooltip_Popper_Arrow_Container,
-									'Tooltip_Popper_Arrow_Container',
-								)}
-								ref={arrowRef}
-								style={popperStyles.arrow}
-								{...attributes.popper}
-							>
+							{!hideArrow && (
 								<div
 									className={classnames(
-										styles.Tooltip_Popper_Arrow,
-										'Tooltip_Popper_Arrow',
+										styles.Tooltip_Popper_Arrow_Container,
+										'Tooltip_Popper_Arrow_Container',
 									)}
+									ref={arrowRef}
+									style={popperStyles.arrow}
 									{...attributes.popper}
-								/>
-							</div>
+								>
+									<div
+										className={classnames(
+											styles.Tooltip_Popper_Arrow,
+											'Tooltip_Popper_Arrow',
+										)}
+										{...attributes.popper}
+									/>
+								</div>
+							)}
 						</div>
 					</div>
 				</Portal>

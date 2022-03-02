@@ -9,4 +9,5 @@ export default interface IReactComponentProps {
 	onClick?: any;
 	style?: object;
 	ref?: any;
+	role?: string;
 }
