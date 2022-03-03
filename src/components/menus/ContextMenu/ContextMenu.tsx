@@ -95,7 +95,7 @@ const ContextMenu = (props: IContextMenuProps) => {
             {...restPopperOptions}
         >
             <PrimaryButton
-				aria-label="Open context menu"
+                aria-label='Open context menu'
                 active={isShowing}
                 className={styles.ContextMenu_Trigger}
                 privateOptions={{ style: { padding: '6px' } }}
