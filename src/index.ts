@@ -56,6 +56,10 @@ export {
 	TertiaryNav,
 	TertiaryNavItem
 } from './components/menus/TertiaryNav/TertiaryNav';
+export {
+	default as ContextMenu,
+	IMenuItem,
+} from './components/menus/ContextMenu/ContextMenu';
 // Modules
 export { default as Animation } from './components/modules/Animation/Animation';
 export { default as Card } from './components/modules/Card/Card';
