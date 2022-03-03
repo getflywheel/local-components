@@ -7,9 +7,4 @@ describe('Popup', () => {
 	it('renders without crashing', () => {
 		shallow(<ScrollShadow />);
 	});
-
-	it('renders basic react props like id, className, and style as element attributes', () => {
-		const shallowWrapper = shallow(<ScrollShadow {...TestComponentPropUtils.basicReactProps} />);
-		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true, 1);
-	});
 });
