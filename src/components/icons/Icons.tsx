@@ -37,6 +37,7 @@ import PushIcon from './svgs/PushIcon';
 import OfflineIcon from './svgs/OfflineIcon';
 import RefreshIcon from './svgs/RefreshIcon';
 import SearchIcon from './svgs/SearchIcon';
+import SiteShellIcon from './svgs/SiteShellIcon';
 import SpinnerIcon from './svgs/SpinnerIcon';
 import StarIcon from './svgs/StarIcon';
 import StopIcon from './svgs/StopIcon';
@@ -86,6 +87,7 @@ namespace Icons {
 	export const Push = PushIcon;
 	export const Refresh = RefreshIcon;
 	export const Search = SearchIcon;
+	export const SiteShell = SiteShellIcon;
 	export const Spinner = SpinnerIcon;
 	export const Stars = StarIcon;
 	export const Stop = StopIcon;
@@ -136,6 +138,8 @@ export {
 	PlayIcon,
 	PushIcon,
 	RefreshIcon,
+	SearchIcon,
+	SiteShellIcon,
 	SpinnerIcon,
 	StarIcon,
 	StopIcon,
