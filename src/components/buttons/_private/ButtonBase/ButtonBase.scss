@@ -247,6 +247,11 @@ $disabled-text-dark: $gray75;
 	@include setThemeVar('--Button_IfText__TextColor', $green-dark, $green);
 	@include setThemeVar('--Button_IfText__TextColor_Hover', $green, $green-dark50);
 	@include setThemeVar('--Button_IfText__TextColor_Active', $green-dark50, $green-dark);
+
+	&.ButtonBase__Secondary { // must be below above styles to override
+		@include setThemeVar('--Button_IfFill__Background', $gray15, $gray-darker);
+		@include setThemeVar('--Button_IfFill__TextColor', $gray-dark50, $green);
+	}
 }
 
 .ButtonBase__Color_Orange {
@@ -279,6 +284,10 @@ $disabled-text-dark: $gray75;
 
 .ButtonBase__FontWeight_Medium {
 	@include setThemeVar('--Button__FontWeight', 500);
+}
+
+.ButtonBase__FontWeight_Light {
+	@include setThemeVar('--Button__FontWeight', 300);
 }
 
 .ButtonBase__TextTransform_Upper {

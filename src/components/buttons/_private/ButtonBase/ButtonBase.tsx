@@ -39,9 +39,11 @@ export enum ButtonPropFontSize {
 export enum ButtonPropFontWeight {
 	heavy = 'heavy',
 	medium = 'medium',
+	light = 'light',
 }
 
 export enum ButtonPropForm {
+	secondary = 'secondary',
 	fill = 'fill',
 	outline = 'outline',
 	reversed = 'reversed',
@@ -95,6 +97,8 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 	color?: ButtonPropColor | keyof typeof ButtonPropColor;
 	/** The styles applied to the button that forms how colors are applied to styles like background, border, color, etc. */
 	form?: ButtonPropForm | keyof typeof ButtonPropForm;
+	/** If button should use secondary styling */
+	secondary?: Boolean;
 	/** The fontSize of padding applied to the button. */
 	padding?: ButtonPropPadding | keyof typeof ButtonPropPadding;
 	/** The font-fontSize applied to the button. */
@@ -121,6 +125,7 @@ const ButtonBase = (props: IButtonBaseProps) => {
 		active,
 		fontSize,
 		form,
+		secondary,
 		id,
 		innerRef,
 		name,
@@ -180,6 +185,7 @@ const ButtonBase = (props: IButtonBaseProps) => {
 						[styles.ButtonBase__FontSize_Large]: fontSize === ButtonPropFontSize.l,
 						[styles.ButtonBase__FontSize_XLarge]: fontSize === ButtonPropFontSize.xl,
 						[styles.ButtonBase__FontSize_XXLarge]: fontSize === ButtonPropFontSize.xxl,
+						[styles.ButtonBase__Secondary]: secondary,
 						[styles.ButtonBase__Form_Fill]: form === ButtonPropForm.fill,
 						[styles.ButtonBase__Form_Outline]: form === ButtonPropForm.outline,
 						[styles.ButtonBase__Form_Reversed]: form === ButtonPropForm.reversed,
@@ -193,6 +199,7 @@ const ButtonBase = (props: IButtonBaseProps) => {
 						[styles.ButtonBase__Padding_Large]: padding === ButtonPropPadding.l,
 						[styles.ButtonBase__FontWeight_Heavy]: fontWeight === ButtonPropFontWeight.heavy,
 						[styles.ButtonBase__FontWeight_Medium]: fontWeight === ButtonPropFontWeight.medium,
+						[styles.ButtonBase__FontWeight_Light]: fontWeight === ButtonPropFontWeight.light,
 						[styles.ButtonBase__TextTransform_Upper]: textTransform === ButtonPropTextTransform.upper,
 						[styles.ButtonBase__TextTransform_None]: textTransform === ButtonPropTextTransform.none,
 						[styles.ButtonBase__TextDecoration_None]: textDecoration === ButtonPropTextDecoration.none,
@@ -234,6 +241,7 @@ ButtonBase.defaultProps = {
 	disabled: false,
 	fontSize: ButtonPropFontSize.m,
 	form: ButtonPropForm.fill,
+	secondary: false,
 	padding: ButtonPropPadding.m,
 	tag: 'button',
 	fontWeight: ButtonPropFontWeight.heavy,

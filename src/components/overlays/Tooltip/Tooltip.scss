@@ -31,20 +31,37 @@ $borderThickness: 1px;
 	transform: scale(0.0);
 	transform-origin: 50% 50%;
 
-	&[data-popper-placement*='top'] {
+	&[data-popper-placement='top'] {
 		transform-origin: 50% 100%;
 	}
 
-	&[data-popper-placement*='right'] {
+	&[data-popper-placement='right'] {
 		transform-origin: 0 50%;
 	}
 
-	&[data-popper-placement*='bottom'] {
+	&[data-popper-placement='bottom'] {
 		transform-origin: 50% 0;
 	}
 
-	&[data-popper-placement*='left'] {
+	&[data-popper-placement='left'] {
 		transform-origin: 100% 50%;
+	}
+
+	&[data-popper-placement='top-start'], &[data-popper-placement='right-end'] {
+		transform-origin: 0 100%;
+	}
+
+	&[data-popper-placement='top-end'], &[data-popper-placement='left-end'] {
+		transform-origin: 100% 100%;
+	}
+
+	&[data-popper-placement='right-start'], &[data-popper-placement='bottom-start'] {
+		transform-origin: 0 0;
+	}
+
+
+	&[data-popper-placement='bottom-end'], &[data-popper-placement='left-start'] {
+		transform-origin: 100% 0;
 	}
 }
 
