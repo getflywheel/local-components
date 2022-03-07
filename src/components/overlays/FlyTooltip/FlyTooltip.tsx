@@ -7,7 +7,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 interface IProps extends IReactComponentProps {
 	content?: React.ReactNode;
 	exclamation?: boolean;
-	forceHoverState?: boolean;
+	forceShowState?: boolean;
 	hoverIntent?: boolean;
 	position?: 'top' | 'bottom' | 'right' | 'center';
 	width: '300' | 'auto' | 'max-content';
@@ -16,7 +16,7 @@ interface IProps extends IReactComponentProps {
 export default class FlyTooltip extends React.Component<IProps> {
 	static defaultProps: Partial<IProps> = {
 		exclamation: false,
-		forceHoverState: false,
+		forceShowState: false,
 		position: 'top',
 		width: '300',
 	};
@@ -29,7 +29,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 					'FlyTooltip_Container', // this also needs to be globally accessible so other component styles can reference it
 					{
 						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent,
-						[styles.FlyTooltip_Container__ForceHoverState]: this.props.forceHoverState,
+						[styles.FlyTooltip_Container__forceShowState]: this.props.forceShowState,
 					},
 				)}
 			>
