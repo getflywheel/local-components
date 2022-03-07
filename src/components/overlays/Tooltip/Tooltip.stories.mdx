@@ -19,7 +19,7 @@ Default tooltip with default `top` position. This is the most common configurati
 	</Story>
 </Canvas>
 
-Set `forceHover` to `true` and showcase each available `position` prop option (if not set, defaults to `top`).
+Set `forceShow` to `true` and showcase each available `position` prop option (if not set, defaults to `top`).
 This can be especially helpful when developing or debugging the inner tooltip content.
 
 > Notice how, while scrolling and resizing the browser, a tooltip might auto-adjust it's defined `position` if there's not enough screen real estate available to be placed there.
@@ -35,7 +35,7 @@ This can be especially helpful when developing or debugging the inner tooltip co
 							<Tooltip
 								content={<div style={{ fontSize: '1.1rem' }}>{placement}</div>}
 								key={placement}
-								forceHover
+								forceShow
 								position={placement}
 								style={{width: '10%', minWidth: '50px', maxWidth: '70px', margin: '0 10%'}}
 							>

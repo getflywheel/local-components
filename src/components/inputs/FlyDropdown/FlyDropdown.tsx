@@ -24,7 +24,7 @@ interface IProps extends IReactComponentProps {
 	/** className for an individual list item */
 	classNameListItem?: string;
 	/** whether to force the tooltip to show and ignore mouse events **/
-	forceHover?: boolean;
+	forceShow?: boolean;
 	/** */
 	items: IItems[];
 	navItem?: boolean;
@@ -49,7 +49,7 @@ const FlyDropdown = (props: IProps) => {
 		className,
 		classNameList,
 		classNameListItem,
-		forceHover,
+		forceShow,
 		id,
 		items,
 		navItem,
@@ -114,7 +114,7 @@ const FlyDropdown = (props: IProps) => {
 					}
 				</ul>
 			}
-			forceHover={forceHover}
+			forceShow={forceShow}
 			id={id}
 			popperArrowModifier={{
 				padding: setArrowPadding,
@@ -147,7 +147,7 @@ const FlyDropdown = (props: IProps) => {
 
 FlyDropdown.defaultProps = {
 	caret: true,
-	forceHover: false,
+	forceShow: false,
 	items: [],
 	navItem: false,
 	navItemActive: false,

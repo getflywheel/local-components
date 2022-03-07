@@ -16,7 +16,7 @@ export interface TooltipProps extends IReactComponentProps {
 	/** the content that should show the tooltip upon the user's mouse entering it **/
 	content?: React.ReactElement;
 	/** whether to force the tooltip to show and ignore mouse events **/
-	forceHover?: boolean;
+	forceShow?: boolean;
 	/** the number of milliseconds to delay hiding the tooltip after the user's mouse leaves this component **/
 	hideDelay?: number;
 	/** hide the tooltip arrow */
@@ -294,7 +294,7 @@ export const Tooltip = (props: TooltipProps) => {
 		children,
 		className,
 		id,
-		forceHover,
+		forceShow,
 		popperContainerClassName,
 		popperVisualContainerClassName,
 		style,
@@ -323,7 +323,7 @@ export const Tooltip = (props: TooltipProps) => {
 		useClickInsteadOfHover: !!useClickInsteadOfHover,
 	});
 
-	const isShowing = (forceHover || !stages.isStage0Hidden) && !hideTooltip;
+	const isShowing = (forceShow || !stages.isStage0Hidden) && !hideTooltip;
 
 	useEffect(() => {
 		if (isShowing) {
@@ -377,7 +377,7 @@ export const Tooltip = (props: TooltipProps) => {
 								'Tooltip_Popper_VisualContainer',
 								popperVisualContainerClassName,
 								{
-									[styles.Tooltip_Popper_VisualContainer__IsShowing]: stages.isVisible || forceHover,
+									[styles.Tooltip_Popper_VisualContainer__IsShowing]: stages.isVisible || forceShow,
 									[styles.Tooltip_Popper_VisualContainer__IsTransitionLeaving]: stages.isStage5FadingOutToHide,
 								},
 							)}
@@ -428,7 +428,7 @@ export const Tooltip = (props: TooltipProps) => {
 
 Tooltip.defaultProps = {
 	hideDelay: 500,
-	forceHover: false,
+	forceShow: false,
 	offsetPopper: [0, 10],
 	position: 'top',
 	showDelay: 1000,
