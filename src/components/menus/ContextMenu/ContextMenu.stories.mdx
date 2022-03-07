@@ -9,27 +9,71 @@ Basic:
 <Canvas>
 	<Story name="ContextMenu">
 		<ContextMenu
-			position="bottom"
 			items={[
 				{
-					label: "Option 1",
+					label: "Open site",
 					onClick: () => console.log("onClick Option 1"),
 				},
 				{
-					label: "Option 2",
+					label: "Admin dashboard",
 					onClick: () => console.log("onClick Option 2"),
 				},
 				{ type: 'separator' },
 				{
-					label: "Option 1",
-					onClick: () => console.log("onClick Option 1"),
+					label: "Reveal in Finder",
+					onClick: () => console.log("onClick Option 3"),
 					enabled: false,
 				},
 				{
-					label: "Option 2",
-					onClick: () => console.log("onClick Option 2"),
+					label: "Open site shell",
+					onClick: () => console.log("onClick Option 4"),
 					color: "red",
 				},
+				{ type: 'separator' },
+				{
+					label: "Restart",
+					onClick: () => console.log("onClick Option 5"),
+				},
+				{
+					enabled: false,
+					color: 'red',
+					label: "Stop",
+					onClick: () => console.log("onClick Option 6"),
+				},
+				{
+					label: "Start",
+					onClick: () => console.log("onClick Option 7"),
+				},
+				{ type: 'separator' },
+				{
+					label: "Clone site",
+					onClick: () => console.log("onClick Option 8"),
+				},
+				{
+					label: "Export",
+					onClick: () => console.log("onClick Option 9"),
+				},
+				{
+					label: "Save as Blueprint",
+					onClick: () => console.log("onClick Option 10"),
+				},
+				{ type: 'separator' },
+				{
+					label: "Change domain",
+					onClick: () => console.log("onClick Option 11"),
+				},
+				{
+					label: "Rename",
+					onClick: () => console.log("onClick Option 12"),
+				},
+				{ type: 'separator' },
+				{
+					label: "Delete",
+					onClick: () => console.log("onClick Option 13"),
+				},
+				{},
+				{},
+				{},
 			]}
 		/>
 	</Story>

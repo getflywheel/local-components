@@ -21,11 +21,17 @@
 	@include setThemeVar('--Button_IfText__TextColor', $gray, $white);
 }
 
+.ContextMenu_Divider {
+	flex-grow: 1;
+	height: 2px;
+	@include theme-background-gray5-else-gray-dark50;
+	border-radius: 2px;
+	margin: 5px 0;
+}
+
 .ContextMenu_Trigger {
 	@include setThemeVar('--Button_IfFill__Background', $gray15, $white);
 	@include setThemeVar('--Button_IfFill__TextColor', $gray-dark50, $gray-dark);
-	@include setThemeVar('--Button_IfFill__Background_Hover', $green-dark50, $green);
-	@include setThemeVar('--Button_IfFill__Background_Active', $green-dark, $green-dark50);
 }
 
 .ContextMenu_Items {
@@ -42,11 +48,11 @@
 	display: flex;
 
 	&:first-child {
-		padding-top: 10px;
+		padding-top: 15px;
 	}
 
 	&:last-child {
-		padding-bottom: 10px;
+		padding-bottom: 15px;
 	}
 
 	&:hover {
