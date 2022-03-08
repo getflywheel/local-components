@@ -27,7 +27,7 @@ export interface IContextMenuProps extends Omit<TooltipProps, 'content'> {
 }
 
 const ContextMenu = (props: IContextMenuProps) => {
-    const { className, classNameList, classNameListItem, items, ...otherProps } = props;
+    const { className, classNameList, classNameListItem, items, onShow, onHide, ...otherProps } = props;
 
     const onClickItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, item: IMenuItem) => {
         item.onClick?.call(null);
@@ -67,8 +67,14 @@ const ContextMenu = (props: IContextMenuProps) => {
             className={classnames(styles.ContextMenu, className)}
             popperVisualContainerClassName={styles.ContextMenu_PopperVisualContainer}
             hideDelay={props.useClickInsteadOfHover ? 0 : 300}
-            onShow={() => setIsShowing(true)}
-            onHide={() => setIsShowing(false)}
+            onShow={() => {
+                onShow?.call(null);
+                setIsShowing(true);
+            }}
+            onHide={() => {
+                onHide?.call(null);
+                setIsShowing(false);
+            }}
             {...otherProps}
             content={content}
         >
