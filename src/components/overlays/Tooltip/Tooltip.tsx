@@ -3,7 +3,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import classnames from 'classnames';
 import * as styles from './Tooltip.scss';
 import { usePopper } from 'react-popper';
-import {  useEffect, useState } from 'react';
+import {  useEffect, useState, useRef } from 'react';
 import { Portal } from '../../../common/helpers/Portal';
 import { useDetectTransitionEnd } from '../../../common/helpers/useDetectTransitionEnd';
 import { useSwappableTimeout } from '../../../common/helpers/useTimeout';
@@ -324,12 +324,17 @@ export const Tooltip = (props: TooltipProps) => {
 	});
 
 	const isShowing = (forceShow || !stages.isStage0Hidden) && !hideTooltip;
+	const isFirstRender = useRef(true);
 
 	useEffect(() => {
-		if (isShowing) {
-			onShow?.();
+		if (isFirstRender.current) {
+			isFirstRender.current = false;
 		} else {
-			onHide?.();
+			if (isShowing) {
+				onShow?.();
+			} else {
+				onHide?.();
+			}
 		}
 	}, [isShowing])
 

@@ -12,6 +12,11 @@ Default tooltip with default `top` position. This is the most common configurati
         <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Tooltip
                 content={<div>This is a tooltip</div>}
+				onShow={() => console.log("SHOWING!")}
+				onHide={() => console.log("HIDING!")}
+				useClickInsteadOfHover
+				showDelay={0}
+				hideDelay={0}
             >
                 <div style={{ cursor: 'pointer' }}>Hover over me</div>
             </Tooltip>
