@@ -38,7 +38,7 @@ export const Button = (props: IProps) => {
 			id={id}
 			secondary
 			form={setForm(props, ButtonPropForm.fill)}
-			padding={ButtonPropPadding.m}
+			padding={ButtonPropPadding.s}
 			style={style}
 			{...privateOptions}
 			{...otherProps}
