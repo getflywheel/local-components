@@ -39,7 +39,7 @@ export const Button = (props: IProps) => {
 			secondary
 			form={setForm(props, ButtonPropForm.fill)}
 			padding={ButtonPropPadding.s}
-			style={style}
+			style={{ lineHeight: 1.5, ...style }}
 			{...privateOptions}
 			{...otherProps}
 		/>
