@@ -31,7 +31,7 @@
 		font-size: 14px
 		font-weight: 700
 		@include tracking(20)
-		color: $gray25
+		@include theme-color-gray-else-gray25
 
 		&:before,
 		&:after
@@ -59,4 +59,4 @@
 				transform: rotate(180deg)
 
 			path
-				fill: $gray25
+				@include __theme-fill($gray, $gray25)

@@ -9,7 +9,7 @@
 
 	// needs to be global so any element, outside this library, can use it
 	:global(.TertiaryNavChild__Error) {
-		color: $red;
+		@include theme-color-red-dark50-else-red;
 	}
 
 	// reset unordered lists
@@ -38,7 +38,7 @@
 			line-height: 36px;
 			padding: 1px 20px 0;
 			border-radius: 4px;
-			color: $gray75;
+			@include theme-color-gray-else-gray15;
 			font-weight: 500;
 			font-size: 14px;
 			@include tracking(40);
@@ -59,7 +59,7 @@
 		}
 
 		&.TertiaryNavItem__Error a {
-			color: $red;
+			@include __theme-color($red-darker, $white);
 			padding-left: 34px;
 		}
 
@@ -72,7 +72,7 @@
 			height: 100%;
 			-webkit-mask: url(../../../svg/warning.svg) no-repeat 50% 50%;
 			mask: url(../../../svg/warning.svg) no-repeat 50% 50%;
-			background-color: $red;
+			@include __theme-background($red-darker, $red);
 		}
 	}
 

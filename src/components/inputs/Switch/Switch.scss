@@ -16,7 +16,7 @@
 		display: inline-block;
 		font-weight: 700;
 		font-size: 11px;
-		color: $gray25;
+		@include theme-color-gray-else-gray15;
 		@include tracking(20);
 		margin: 0 5px 0 0;
 	}
@@ -76,7 +76,7 @@
 			transition: left 200ms ease 0ms;
 			border-radius: 50%;
 			box-shadow: 0 2px 0 $gray75;
-			@include theme-background-white-else-gray25;
+			@include __theme-background($white, $gray15);
 			width: 2.2em;
 			height: 2.2em;
 		}
@@ -89,7 +89,7 @@
 			left: 2.6em;
 			transition: left 200ms ease 0ms;
 			line-height: 2.4;
-			@include theme-color-white-else-gray25;
+			@include __theme-color($white, $gray15);
 			font-size: 1.4em;
 			font-weight: 700;
 		}

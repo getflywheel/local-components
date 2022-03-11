@@ -2,12 +2,11 @@
 @import '../../../../common/styles/themeUtils';
 
 $disabled-background-light: $gray25;
-$disabled-background-light-alt-soft: $gray5;
 $disabled-background-dark: $gray25;
-$disabled-background-dark-alt-hard: $gray-dark50;
-$disabled-text-light: $gray75;
-$disabled-text-light-alt-soft: $gray25;
-$disabled-text-dark: $gray75;
+$disabled-text-light: $gray25;
+$disabled-text-light-alt-hard: $gray75;
+$disabled-text-dark: $gray;
+$disabled-text-dark-alt-hard: $gray75;
 
 .ButtonBase {
 	// base styles
@@ -144,8 +143,8 @@ $disabled-text-dark: $gray75;
 
 	&[disabled] {
 		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
-		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
-		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light, $disabled-text-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
 	}
 }
 
@@ -170,7 +169,8 @@ $disabled-text-dark: $gray75;
 
 	&[disabled] {
 		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
-		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
 	}
 }
 
@@ -197,9 +197,9 @@ $disabled-text-dark: $gray75;
 
 	&[disabled] {
 		@include setThemeVar('--Button_Background', transparent);
-		@include setThemeVar('--Button_SvgPathFillColor', $gray25, $gray75);
-		@include setThemeVar('--Button_BorderColor', $gray25, $gray75);
-		@include setThemeVar('--Button_TextColor', $gray25, $gray75);
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light, $disabled-text-dark);
+		@include setThemeVar('--Button_BorderColor', $disabled-text-light, $disabled-text-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
 	}
 }
 
@@ -220,8 +220,8 @@ $disabled-text-dark: $gray75;
 	}
 
 	&[disabled] {
-		@include setThemeVar('--Button_SvgPathFillColor', $gray25, $gray75);
-		@include setThemeVar('--Button_TextColor', $gray25, $gray75);
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light, $disabled-text-dark);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light, $disabled-text-dark);
 	}
 }
 

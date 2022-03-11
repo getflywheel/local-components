@@ -12,8 +12,8 @@
 	color: var(--TextBase_TextColor);
 }
 
-.TextBase__Color_Gray_Gray75 {
-	@include setThemeVar('--TextBase_TextColor', $gray, $gray75);
+.TextBase__Color_Gray_Gray25 {
+	@include setThemeVar('--TextBase_TextColor', $gray, $gray25);
 }
 
 .TextBase__Color_GrayDark_Gray15 {

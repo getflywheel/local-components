@@ -10,7 +10,7 @@
 		padding: 6px 4px 11px;
 
 		button {
-			color: $gray25;
+			@include theme-color-gray-else-gray25
 		}
 
 		&.FlyDropdown__NavItemActive {
@@ -40,7 +40,7 @@
 	&:global(.Popper__Showing) {
 		.FlyDropdown_Caret {
 			height: 2px;
-			background: $gray25;
+			@include __theme-background($gray, $gray25);
 			margin-top: -2px;
 
 			* {

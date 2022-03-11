@@ -41,13 +41,13 @@
 
 	.Card_Content_Sub
 		margin-bottom: 10px
-		color: $gray75
+		@include theme-color-gray-else-gray25
 
 		&:last-child
 			margin-bottom: 0
 
 	.Card_Content_Description
-		@include theme-color-gray-else-gray75
+		@include theme-color-gray-else-gray25
 		font-weight: 300
 
 	.Card_Footer
