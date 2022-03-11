@@ -42,6 +42,10 @@
 			font-weight: 500;
 			font-size: 14px;
 			@include tracking(40);
+			
+			&:hover {
+				@include theme-color-graydark-else-white;
+			}
 		}
 
 		a.TertiaryNavItem__Active {
