@@ -20,7 +20,7 @@
 		a {
 			@include tracking(40);
 			font-weight: 700;
-			color: $gray25;
+			@include theme-color-gray-else-gray25;
 			text-decoration: none;
 			padding: 6px 10px 14px;
 			transition: .1s color ease 0s, .1s border-bottom-color ease 0s;

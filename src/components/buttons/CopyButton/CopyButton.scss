@@ -52,9 +52,9 @@
 .CopyButton__Color_Gray {
 	@include setThemeVar('--Button_Background', $gray5, none);
 	@include setThemeVar('--Button_Background_Hover', $gray15, none);
-	@include setThemeVar('--Button_Text_Color', $gray-dark50, $gray25);
+	@include setThemeVar('--Button_Text_Color', $gray-dark50, $gray15);
 	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50, $white);
-	@include setThemeVar('--Button_Border', none, 1px solid $gray25);
+	@include setThemeVar('--Button_Border', none, 1px solid $gray15);
 	@include setThemeVar('--Button_Border_Hover', none, 1px solid $white);
 }
 
@@ -98,8 +98,8 @@
 }
 
 .CopyButton__Text_Gray {
-	@include setThemeVar('--Button_Text_Color', $gray-dark50, $gray25);
-	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50, $gray25);
+	@include setThemeVar('--Button_Text_Color', $gray-dark50, $gray15);
+	@include setThemeVar('--Button_Text_Color_Hover', $gray-dark50, $gray15);
 }
 
 .CopyButton__Text {

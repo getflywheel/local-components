@@ -73,7 +73,7 @@ function setSizeProp (props: IProps, defaultValue: TextBasePropFontSize): TextBa
 function setColorProp (props: IProps, defaultColor: TextBasePropColor): TextBasePropColor {
 	switch (props.size) {
 		case TitlePropSize.caption:
-			return TextBasePropColor.gray_gray75_title;
+			return TextBasePropColor.gray_gray25_title;
 	}
 
 	return defaultColor;

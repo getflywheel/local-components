@@ -5,7 +5,7 @@ import ILocalContainerProps from '../../../../common/structures/ILocalContainerP
 import { Container } from '../../../modules/Container/Container';
 
 export enum TextBasePropColor {
-	gray_gray75_title = 'gray_gray75_title',
+	gray_gray25_title = 'gray_gray25_title',
 	gray25_text = 'gray25_text',
 	graydark_gray15_text = 'graydark_gray15_text',
 	graydark_white_caption = 'graydark_white_caption',
@@ -68,7 +68,7 @@ export class TextBase extends React.Component<ITextBaseProps> {
 						'TextBase',
 						className,
 						{
-							[styles.TextBase__Color_Gray_Gray75]: color === TextBasePropColor.gray_gray75_title,
+							[styles.TextBase__Color_Gray_Gray25]: color === TextBasePropColor.gray_gray25_title,
 							[styles.TextBase__Color_GrayDark_Gray15]: color === TextBasePropColor.graydark_gray15_text,
 							[styles.TextBase__Color_Gray25]: color === TextBasePropColor.gray25_text,
 							[styles.TextBase__Color_GrayDark_White]: color === TextBasePropColor.graydark_white_caption,
