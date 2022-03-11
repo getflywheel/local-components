@@ -29,7 +29,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 					'FlyTooltip_Container', // this also needs to be globally accessible so other component styles can reference it
 					{
 						[styles.FlyTooltip_Container__HoverIntent]: this.props.hoverIntent,
-						[styles.FlyTooltip_Container__forceShowState]: this.props.forceShowState,
+						[styles.FlyTooltip_Container__ForceShowState]: this.props.forceShowState,
 					},
 				)}
 			>

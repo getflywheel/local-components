@@ -343,7 +343,7 @@
 
 @mixin theme-tab-border-active {
 	@include if-theme-light() {
-		border-bottom: 4px solid $gray-dark;
+		border-bottom: 4px solid $green;
 	}
 	@include if-theme-dark() {
 		border-bottom: 4px solid $green;
