@@ -253,7 +253,7 @@ const useTooltip = ({
 	const [ triggerElement, setReferenceElement ] = useState<HTMLElement | null>(null);
 	const [ popperElement, setPopperElement ] = useState<HTMLElement | null>(null);
 	const [ transitionElement, setTransitionElement ] = useState<HTMLElement | null>(null);
-	const isHoverTarget = useDetectClickOrHoverWithinTargets({targetEl: triggerElement, alwaysBlurOnClick: true, useClickInsteadOfHover})
+	const isHoverTarget = useDetectClickOrHoverWithinTargets({targetEl: triggerElement, alwaysBlurOnClick: true, useClickInsteadOfHover, ignoreClickOn: popperElement})
 	const isHoverPopper= useDetectClickOrHoverWithinTargets({targetEl: popperElement, alwaysBlurOnClick: false, useClickInsteadOfHover}) // pass nulls to bypass otherwise this will conflict with other click detects (above)
 
 	const isTransitionEnd = useDetectTransitionEnd(transitionElement, transitionEndPropName);

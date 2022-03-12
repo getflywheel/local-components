@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 export const useDetectClickOrHoverWithinTargets = ({
 	targetEl, 
 	alwaysBlurOnClick, 
-	useClickInsteadOfHover
+	useClickInsteadOfHover,
+	ignoreClickOn,
 }: { 
 	targetEl: HTMLElement | null, 
 	alwaysBlurOnClick: boolean, 
-	useClickInsteadOfHover: boolean 
+	useClickInsteadOfHover: boolean,
+	ignoreClickOn?: HTMLElement | null,
 }) => {
 	const [isClickFocus, setIsClickFocus] = useState(false);
 	const [isHover, setIsHover] = useState(false);
@@ -32,11 +34,12 @@ export const useDetectClickOrHoverWithinTargets = ({
 					if (!targetEl || targetEl.contains(event.target)) {
 						return;
 					}
-
-					document.removeEventListener('click', listener);
-					document.removeEventListener('touchend', listener);
-
-					setIsClickFocus(false);
+	
+					if (!ignoreClickOn || !ignoreClickOn.contains(event.target)) {
+						document.removeEventListener('click', listener);
+						document.removeEventListener('touchend', listener);
+						setIsClickFocus(false);
+					}
 				};
 
 				const onClick = () => {
@@ -66,7 +69,7 @@ export const useDetectClickOrHoverWithinTargets = ({
 				};
 			}
 		},
-		[targetEl, alwaysBlurOnClick, useClickInsteadOfHover],
+		[targetEl, alwaysBlurOnClick, useClickInsteadOfHover, ignoreClickOn],
 	);
 
 	return useClickInsteadOfHover ? isClickFocus : isHover;
