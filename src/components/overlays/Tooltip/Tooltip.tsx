@@ -279,9 +279,9 @@ const useTooltip = ({
 	});
 
 	return {
-		arrowRef: setArrowElement,
+		setArrowRef: setArrowElement,
 		attributes,
-		popperRef: setPopperElement,
+		setPopperRef: setPopperElement,
 		stages,
 		styles,
 		targetRef: setReferenceElement,
@@ -306,9 +306,9 @@ export const Tooltip = (props: TooltipProps) => {
 	} = props;
 
 	const {
-		arrowRef,
+		setArrowRef,
 		attributes,
-		popperRef,
+		setPopperRef,
 		styles: popperStyles,
 		stages,
 		targetRef,
@@ -325,6 +325,13 @@ export const Tooltip = (props: TooltipProps) => {
 
 	const isShowing = (forceShow || !stages.isStage0Hidden) && !hideTooltip;
 	const isFirstRender = useRef(true);
+
+	const popperRefCallback = (element: HTMLDivElement) => {
+		setPopperRef(element);
+		if (element) {
+			element.focus();
+		}
+	};
 
 	useEffect(() => {
 		if (isFirstRender.current) {
@@ -373,8 +380,9 @@ export const Tooltip = (props: TooltipProps) => {
 								'Popper__Showing': isShowing, // this also needs to be globally accessible so other component styles can reference it
 							},
 						)}
-						ref={popperRef}
+						ref={popperRefCallback}
 						style={popperStyles.popper}
+						tabIndex={-1}
 					>
 						<div
 							className={classnames(
@@ -410,7 +418,7 @@ export const Tooltip = (props: TooltipProps) => {
 										styles.Tooltip_Popper_Arrow_Container,
 										'Tooltip_Popper_Arrow_Container',
 									)}
-									ref={arrowRef}
+									ref={setArrowRef}
 									style={popperStyles.arrow}
 									{...attributes.popper}
 								>
