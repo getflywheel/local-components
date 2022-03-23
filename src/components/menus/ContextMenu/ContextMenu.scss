@@ -30,8 +30,8 @@
 }
 
 .ContextMenu_Trigger {
-	@include setThemeVar('--Button_IfFill__Background', $gray15, $white);
-	@include setThemeVar('--Button_IfFill__TextColor', $gray-dark50, $gray-dark);
+	@include setThemeVar('--Button_IfFill__Background', $gray5, $gray-darker);
+	@include setThemeVar('--Button_IfFill__TextColor', $green-dark, $green);
 }
 
 .ContextMenu_Items {
