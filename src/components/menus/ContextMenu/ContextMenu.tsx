@@ -4,7 +4,7 @@ import * as styles from './ContextMenu.scss';
 import { DotsIcon } from '../../icons/Icons';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
-import { Button } from '../../buttons/Button/Button';
+import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import { TextButton } from '../../buttons/TextButton/TextButton';
 
 export interface IMenuItem {
@@ -78,14 +78,14 @@ const ContextMenu = (props: IContextMenuProps) => {
             {...otherProps}
             content={content}
         >
-            <Button
+            <PrimaryButton
                 aria-label="Open context menu"
                 active={isShowing}
                 className={styles.ContextMenu_Trigger}
                 privateOptions={{ style: { padding: '6px' } }}
             >
                 <DotsIcon />
-            </Button>
+            </PrimaryButton>
         </Tooltip>
     );
 };
