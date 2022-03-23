@@ -24,7 +24,6 @@ export const PrimaryButton = (props: IProps) => {
 		id,
 		intent,
 		privateOptions,
-		style,
 		...otherProps
 	} = props;
 
@@ -38,7 +37,6 @@ export const PrimaryButton = (props: IProps) => {
 			id={id}
 			form={ButtonPropForm.fill}
 			padding={ButtonPropPadding.l}
-			style={{ lineHeight: 1.5, ...style}}
 			{...privateOptions}
 			{...otherProps}
 		/>
