@@ -2,7 +2,7 @@ import React from 'react';
 import SiteShell from '../../../svg/site-shell.svg';
 import withIconSvg from '../helpers/withIconSvg';
 
-export const SiteShellIcon: React.FC = ({...props}) => {
+export const SiteShellIcon: React.FC = (props) => {
 	return (
 		<SiteShell {...props} />
 	);
