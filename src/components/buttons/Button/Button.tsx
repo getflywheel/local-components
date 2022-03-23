@@ -24,7 +24,6 @@ export const Button = (props: IProps) => {
 		id,
 		intent,
 		privateOptions,
-		style,
 		...otherProps
 	} = props;
 
@@ -36,10 +35,8 @@ export const Button = (props: IProps) => {
 			)}
 			color={setIntentColor(props, ButtonPropColor.green)}
 			id={id}
-			secondary
-			form={setForm(props, ButtonPropForm.fill)}
-			padding={ButtonPropPadding.s}
-			style={{ lineHeight: 1.5, ...style }}
+			form={setForm(props, ButtonPropForm.outline)}
+			padding={ButtonPropPadding.m}
 			{...privateOptions}
 			{...otherProps}
 		/>

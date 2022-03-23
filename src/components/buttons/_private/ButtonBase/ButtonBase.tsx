@@ -43,7 +43,6 @@ export enum ButtonPropFontWeight {
 }
 
 export enum ButtonPropForm {
-	secondary = 'secondary',
 	fill = 'fill',
 	outline = 'outline',
 	reversed = 'reversed',
@@ -97,8 +96,6 @@ export interface IButtonBaseProps extends IButtonCommonProps {
 	color?: ButtonPropColor | keyof typeof ButtonPropColor;
 	/** The styles applied to the button that forms how colors are applied to styles like background, border, color, etc. */
 	form?: ButtonPropForm | keyof typeof ButtonPropForm;
-	/** If button should use secondary styling */
-	secondary?: Boolean;
 	/** The fontSize of padding applied to the button. */
 	padding?: ButtonPropPadding | keyof typeof ButtonPropPadding;
 	/** The font-fontSize applied to the button. */
@@ -125,7 +122,6 @@ const ButtonBase = (props: IButtonBaseProps) => {
 		active,
 		fontSize,
 		form,
-		secondary,
 		id,
 		innerRef,
 		name,
@@ -185,7 +181,6 @@ const ButtonBase = (props: IButtonBaseProps) => {
 						[styles.ButtonBase__FontSize_Large]: fontSize === ButtonPropFontSize.l,
 						[styles.ButtonBase__FontSize_XLarge]: fontSize === ButtonPropFontSize.xl,
 						[styles.ButtonBase__FontSize_XXLarge]: fontSize === ButtonPropFontSize.xxl,
-						[styles.ButtonBase__Secondary]: secondary,
 						[styles.ButtonBase__Form_Fill]: form === ButtonPropForm.fill,
 						[styles.ButtonBase__Form_Outline]: form === ButtonPropForm.outline,
 						[styles.ButtonBase__Form_Reversed]: form === ButtonPropForm.reversed,
@@ -241,7 +236,6 @@ ButtonBase.defaultProps = {
 	disabled: false,
 	fontSize: ButtonPropFontSize.m,
 	form: ButtonPropForm.fill,
-	secondary: false,
 	padding: ButtonPropPadding.m,
 	tag: 'button',
 	fontWeight: ButtonPropFontWeight.heavy,
