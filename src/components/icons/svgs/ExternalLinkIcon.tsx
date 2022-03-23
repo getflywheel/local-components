@@ -2,7 +2,7 @@ import React from 'react';
 import ExternalLink from '../../../svg/external-link.svg';
 import withIconSvg from '../helpers/withIconSvg';
 
-export const ExternalLinkIcon: React.FC = ({...props}) => {
+export const ExternalLinkIcon: React.FC = (props) => {
 	return (
 		<ExternalLink {...props} />
 	);

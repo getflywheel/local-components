@@ -2,7 +2,7 @@ import React from 'react';
 import Yield from '../../../svg/yield.svg';
 import withIconSvg from '../helpers/withIconSvg';
 
-export const YieldIcon: React.FC = ({...props}) => {
+export const YieldIcon: React.FC = (props) => {
 	return (
 		<Yield {...props} />
 	);
