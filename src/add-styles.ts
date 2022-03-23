@@ -46,6 +46,6 @@ export default function () {
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
 
-	document.getElementsByTagName( 'head' )[0].appendChild( link );
-
+	const head = document.getElementsByTagName( 'head' )[0];
+	head.insertBefore( link, head.firstChild );
 }
