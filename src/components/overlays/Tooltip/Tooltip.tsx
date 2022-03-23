@@ -328,7 +328,7 @@ export const Tooltip = (props: TooltipProps) => {
 
 	const popperRefCallback = (element: HTMLDivElement) => {
 		setPopperRef(element);
-		if (element) {
+		if (element && stages.isStage2FadingInToShow) {
 			element.focus();
 		}
 	};
