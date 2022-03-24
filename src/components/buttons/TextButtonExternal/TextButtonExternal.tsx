@@ -25,6 +25,7 @@ const TextButtonExternal = (props: TextButtonExternalProps) => {
 
 	return (
 		<TextButton
+			inline
 			tag="a"
 			tagProps={{ href }}
 			privateOptions={{
