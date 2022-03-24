@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import TextButtonExternal from "./TextButtonExternal"
+
+<Meta title="Buttons/TextButtonExternal" component={TextButtonExternal} />
+
+# Examples
+
+The default underline behavior of TextButtonExternal is to underline on hover. This is adequate for links that stand alone in a design, outside of the context of any other text.
+
+<Canvas>
+	<Story name="Default">
+        <TextButtonExternal href="javascript:;">I'm a default TextButtonExternal</TextButtonExternal>
+	</Story>
+</Canvas>
+
+Setting the `underline` prop to true means the link will always be underlined. This is suitable for links that exist in the context of surrounding text.
+
+<Canvas>
+	<Story name="Underlined and Heavy">
+		<TextButtonExternal href="javascript:;" underline heavy>I'm a heavy undelrined link</TextButtonExternal>!
+	</Story>
+</Canvas>
+
+Finally, to fully remove the underline, explicity set the `unerline` prop to `false`
+
+<Canvas>
+	<Story name="No underline">
+        <TextButtonExternal href="javascript:;" underline={false}>I'm a default TextButtonExternal</TextButtonExternal>
+	</Story>
+</Canvas>
+
