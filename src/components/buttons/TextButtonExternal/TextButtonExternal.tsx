@@ -4,7 +4,6 @@ import { IButtonBaseProps } from '../_private/ButtonBase/ButtonBase';
 
 interface TextButtonExternalProps extends ITextButtonProps {
 	href?: string;
-	// trackKey?: TrackIdElementKeyType;
 	/** Undefined deafults to underlineOnHover, to stop all underlines, set explicitly to false */
 	underline?: boolean;
 	heavy?: boolean;
