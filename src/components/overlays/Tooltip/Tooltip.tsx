@@ -41,6 +41,8 @@ export interface TooltipProps extends IReactComponentProps {
 	onShow?: FunctionGeneric;
 	/** callback run when tooltip hides */
 	onHide?: FunctionGeneric;
+	/** focus the tooltip on opening, useful for dropdowns, contextmenus, etc */
+	focusOnOpen?: boolean;
 }
 
 // whether moving forward to the next stage or reverting back to a previous stage
@@ -303,6 +305,7 @@ export const Tooltip = (props: TooltipProps) => {
 		onHide,
 		onShow,
 		hideArrow,
+		focusOnOpen,
 	} = props;
 
 	const {
@@ -328,7 +331,7 @@ export const Tooltip = (props: TooltipProps) => {
 
 	const popperRefCallback = (element: HTMLDivElement) => {
 		setPopperRef(element);
-		if (element && stages.isStage2FadingInToShow) {
+		if (element && stages.isStage2FadingInToShow && focusOnOpen) {
 			element.focus();
 		}
 	};
@@ -446,4 +449,5 @@ Tooltip.defaultProps = {
 	position: 'top',
 	showDelay: 1000,
 	useClickInsteadOfHover: false,
+	focusOnOpen: false,
 } as Partial<TooltipProps>;
