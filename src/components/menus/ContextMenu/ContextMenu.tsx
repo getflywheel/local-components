@@ -75,6 +75,7 @@ const ContextMenu = (props: IContextMenuProps) => {
                 onHide?.call(null);
                 setIsShowing(false);
             }}
+			focusOnOpen
             {...otherProps}
             content={content}
         >
