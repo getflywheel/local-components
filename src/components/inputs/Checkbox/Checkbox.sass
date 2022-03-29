@@ -5,6 +5,12 @@ $checkboxSize: 16px
 .Checkbox
 	&.Checkbox__Checked
 	&.Checkbox__CheckMixed
+		@include selectors_setAsDefaults
+			path
+				@include __theme-fill($green-dark, $green)
+		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
+			path
+				fill: $gray75
 
 	&:not(.Checkbox__Checked)
 		@include if-theme-dark
@@ -17,6 +23,11 @@ $checkboxSize: 16px
 
 	.Checkbox_Label
 		display: flex
+
+	.Checkbox_Label, .Checkbox_Label *
+		cursor: pointer
+		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
+			cursor: default
 
 	.Checkbox_LabelContents
 		margin-left: 10px
@@ -31,7 +42,9 @@ $checkboxSize: 16px
 		width: $checkboxSize
 		height: $checkboxSize
 		@include theme-background-white-else-graydarkalt
-		@include theme-input-border
+		border: none
+		border-radius: 4px
+		@include __theme-border("border", 0%, 0%, $gray25, $gray75)
 		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
 			@include theme-background-gray5-else-gray-dark50
 
@@ -40,7 +53,7 @@ $checkboxSize: 16px
 
 		@include selectors_setAsDefaults
 			path
-				fill: $green
+				@include __theme-fill($green-dark, $green)
 		@include selectors_ifHostHasModifier('.Checkbox__Disabled')
 			path
 				fill: $gray75
