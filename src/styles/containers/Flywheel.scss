@@ -79,6 +79,7 @@
 		@include theme-background-white-else-graydark;
 		border-radius: 4px;
 		margin: 0 0 10px;
+		box-shadow: 0 3px 5px 0 rgba($gray-dark, 0.08);
 
 		&.FlySite__Incompatible {
 			border: 2px dashed $gray15;
