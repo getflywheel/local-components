@@ -179,8 +179,6 @@ $disabled-text-dark-alt-hard: $gray75;
 	@include setThemeVar('--Button_BorderColor', var(--Button_IfText__TextColor));
 	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor));
 	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
-	@include setThemeVar('--Button_Background', var(--Button_IfFill__TextColor));
-
 
 	&:hover, &:focus {
 		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Hover));
