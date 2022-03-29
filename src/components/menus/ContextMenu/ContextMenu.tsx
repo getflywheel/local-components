@@ -57,7 +57,7 @@ const ContextMenu = (props: IContextMenuProps) => {
                             </TextButton>
                         )}
                     </li>
-                )})}
+                ))}
         </ul>
     );
 
