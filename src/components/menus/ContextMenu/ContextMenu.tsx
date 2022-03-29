@@ -50,15 +50,14 @@ const ContextMenu = (props: IContextMenuProps) => {
                                 onClick={(event) => onClickItem(event, item)}
                                 disabled={item.enabled === undefined ? false : !item.enabled}
                                 intent={item.color === 'red' ? 'destructive' : 'default'}
-                                style={{ flexGrow: 1, padding: '5px 0', lineHeight: '20px' }}
-                                privateOptions={{ fontWeight: 'medium' }}
+                                style={{ flexGrow: 1, padding: '5px 0' }}
                             >
                                 {item.label}
                                 {item.content}
                             </TextButton>
                         )}
                     </li>
-                ))}
+                )})}
         </ul>
     );
 

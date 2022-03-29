@@ -133,7 +133,7 @@ export default class Banner extends React.Component<BannerProps> {
 				<CloseSVG />
 			</span>
 		) : (
-			<Close 
+			<Close
 				position="static"
 				className={classnames(styles.Dismiss__Large, styles.Dismiss)}
 				onClick={this.props.onDismiss}

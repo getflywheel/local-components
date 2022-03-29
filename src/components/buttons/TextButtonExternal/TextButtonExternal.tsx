@@ -6,7 +6,6 @@ interface TextButtonExternalProps extends ITextButtonProps {
 	href?: string;
 	/** Undefined deafults to underlineOnHover, to stop all underlines, set explicitly to false */
 	underline?: boolean;
-	heavy?: boolean;
 	padding?: IButtonBaseProps['padding'];
 }
 
@@ -17,7 +16,6 @@ const TextButtonExternal = (props: TextButtonExternalProps) => {
 		onClick,
 		privateOptions,
 		underline,
-		heavy = false,
 		padding = 'none',
 		...otherProps
 	} = props;
@@ -25,13 +23,13 @@ const TextButtonExternal = (props: TextButtonExternalProps) => {
 	return (
 		<TextButton
 			inline
+			role="link"
 			tag="a"
 			tagProps={{ href }}
 			privateOptions={{
 				// eslint-disable-next-line no-nested-ternary
 				textDecoration: underline ? 'underline'
 					: underline === false ? 'none' : 'underlineOnHover',
-				fontWeight: heavy ? 'heavy' : 'medium',
 				padding,
 				...privateOptions,
 			}}
