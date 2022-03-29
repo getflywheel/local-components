@@ -24,7 +24,8 @@
 @mixin defaultAnchorSettings {
 	a {
 		@include __theme-color($green-dark, $green);
-		text-decoration: none;
+		text-decoration: underline;
+		font-weight: 700;
 
 		&:hover {
 			text-decoration: underline;
@@ -37,6 +38,7 @@
 	a {
 		@include __theme-color($green-dark, $green);
 		text-decoration: none;
+		font-weight: 700;
 
 		&:hover {
 			@include __theme-color($green, $green-dark50);

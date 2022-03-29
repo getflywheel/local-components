@@ -39,10 +39,10 @@
 			padding: 1px 20px 0;
 			border-radius: 4px;
 			@include theme-color-gray-else-gray25;
-			font-weight: 500;
+			font-weight: 700;
 			font-size: 14px;
 			@include tracking(40);
-			
+
 			&:hover {
 				@include theme-color-graydark-else-white;
 			}
