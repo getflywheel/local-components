@@ -84,7 +84,7 @@
 
 			.EnvironmentSpaceRequired { // needed for distributed Environments
 				margin: 30px 0 0;
-				color: $gray75;
+				@include theme-color-gray-else-gray75;
 				font-weight: 300;
 				text-align: center;
 			}
