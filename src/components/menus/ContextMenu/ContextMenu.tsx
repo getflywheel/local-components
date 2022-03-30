@@ -6,6 +6,7 @@ import { FunctionGeneric } from '../../../common/structures/Generics';
 import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
 import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import { TextButton } from '../../buttons/TextButton/TextButton';
+import classNames from 'classnames';
 
 export interface IMenuItem {
     color?: 'red' | 'none';
@@ -24,10 +25,12 @@ export interface IContextMenuProps extends Omit<TooltipProps, 'content'> {
     classNameListItem?: string;
     /** array of menu items */
     items: IMenuItem[];
+	/** whether to have background behind 3 dots - set to false for low key 3 dot dropdowns */
+	noBG?: boolean;
 }
 
 const ContextMenu = (props: IContextMenuProps) => {
-    const { className, classNameList, classNameListItem, items, onShow, onHide, ...otherProps } = props;
+    const { className, classNameList, classNameListItem, items, onShow, onHide, noBG, ...otherProps } = props;
 
     const onClickItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, item: IMenuItem) => {
         item.onClick?.call(null);
@@ -81,8 +84,11 @@ const ContextMenu = (props: IContextMenuProps) => {
             <PrimaryButton
                 aria-label="Open context menu"
                 active={isShowing}
-                className={styles.ContextMenu_Trigger}
-                privateOptions={{ style: { padding: '6px' } }}
+                className={classNames({
+					[styles.ContextMenu_Trigger]: !noBG,
+					[styles.ContextMenu_Trigger_NoBG]: noBG,
+				})}
+                privateOptions={{ style: { padding: '6px' }, form: noBG ? 'text' : 'fill' }}
             >
                 <DotsIcon />
             </PrimaryButton>

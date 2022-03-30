@@ -34,6 +34,10 @@
 	@include setThemeVar('--Button_IfFill__TextColor', $green-dark, $green);
 }
 
+.ContextMenu_Trigger_NoBG {
+	@include setThemeVar('--Button_SvgPathFillColor', $gray, $green);
+}
+
 .ContextMenu_Items {
 	left: auto;
 	border-radius: 4px;
