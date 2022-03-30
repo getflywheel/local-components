@@ -220,11 +220,15 @@ const ButtonBase = (props: IButtonBaseProps) => {
 				{...tagProps}
 			>
 				{leftIcon && (
-					<LeftIcon className={styles.ButtonBase_SVG_Left}/>
+					<LeftIcon className={classnames(styles.ButtonBase_SVG_Left, {
+						[styles.ButtonBase_SVG_MarginBottom]: !!children,
+					})}/>
 				)}
 				{children}
 				{rightIcon && (
-					<RightIcon className={styles.ButtonBase_SVG_Right}/>
+					<RightIcon className={classnames(styles.ButtonBase_SVG_Right, {
+						[styles.ButtonBase_SVG_MarginBottom]: !!children,
+					})}/>
 				)}
 			</Tag>
 		</Container>
