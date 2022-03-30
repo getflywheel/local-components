@@ -2,11 +2,11 @@
 @import '../../../../common/styles/themeUtils';
 
 $disabled-background-light: $gray25;
-$disabled-background-dark: $gray25;
+$disabled-background-dark: $gray75;
 $disabled-text-light: $gray25;
-$disabled-text-light-alt-hard: $gray75;
-$disabled-text-dark: $gray;
-$disabled-text-dark-alt-hard: $gray75;
+$disabled-text-light-fill: $gray75;
+$disabled-text-dark: $gray75;
+$disabled-text-dark-fill: $gray;
 
 .ButtonBase {
 	// base styles
@@ -97,6 +97,10 @@ $disabled-text-dark-alt-hard: $gray75;
 		&.ButtonBase_SVG_Right {
 			margin: 0 0 0 10px;
 		}
+
+		&.ButtonBase_SVG_MarginBottom {
+			margin-bottom: 1px;
+		}
 	}
 
 	&.ButtonBase__SVG_Fill svg {
@@ -144,8 +148,8 @@ $disabled-text-dark-alt-hard: $gray75;
 
 	&[disabled] {
 		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
-		@include setThemeVar('--Button_TextColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
-		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light-fill, $disabled-text-dark-fill);
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-fill, $disabled-text-dark-fill);
 	}
 }
 
@@ -170,8 +174,8 @@ $disabled-text-dark-alt-hard: $gray75;
 
 	&[disabled] {
 		@include setThemeVar('--Button_Background', $disabled-background-light, $disabled-background-dark);
-		@include setThemeVar('--Button_TextColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
-		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-alt-hard, $disabled-text-dark-alt-hard);
+		@include setThemeVar('--Button_TextColor', $disabled-text-light-fill, $disabled-text-dark-fill);
+		@include setThemeVar('--Button_SvgPathFillColor', $disabled-text-light-fill, $disabled-text-dark-fill);
 	}
 }
 
