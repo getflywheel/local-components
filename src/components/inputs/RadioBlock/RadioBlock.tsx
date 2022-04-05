@@ -8,181 +8,174 @@ import ILocalContainerProps from '../../../common/structures/ILocalContainerProp
 import { Title, TitlePropSize } from '../../text/Title/Title';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
-interface IProps extends ILocalContainerProps {
-	default: string | null;
-	direction: 'horiz' | 'vert';
-	disabled?: boolean;
-	warn?: boolean;
-	heightSize?: 'm' | 'l';
-	onChange: FunctionGeneric;
-	options: {[key: string]: IRadioBlockItemProps};
-	readonly: boolean;
-}
-
-interface IState {
-	options: {[key: string]: IRadioBlockItemProps};
-	value: string | null;
-}
-
-export default class RadioBlock extends React.Component<IProps, IState> {
-	static defaultProps: Partial<IProps> = {
-		direction: 'horiz',
-		disabled: false,
-		heightSize: 'l',
-		readonly: false,
-	};
-
-	constructor (props: IProps) {
-		super(props);
-
-		this.state = {
-			options: {},
-			value: null || props.default,
-		};
-
-		this.onClick = this.onClick.bind(this);
-	}
-
-	UNSAFE_componentWillReceiveProps (nextProps: IProps) {
-		if (nextProps.default !== this.state.value) {
-			this.setState({
-				value: nextProps.default,
-			});
-		}
-	}
-
-	onClick (value: string | null) {
-		this.setState({
-			value,
-		});
-
-		if (this.props.onChange) {
-			this.props.onChange(value);
-		}
-	}
-
-	render () {
-		return (
-			// wrap in optional container
-			<Container {...this.props.container}>
-				<div
-					className={classnames(
-						styles.RadioBlock,
-						this.props.className,
-						{
-							[styles.RadioBlock__DirectionVert]: this.props.direction === 'vert',
-							[styles.RadioBlock__Readonly]: this.props.readonly === true,
-						},
-					)}
-					id={this.props.id}
-					style={this.props.style}
-				>
-					{
-						Object.keys(this.props.options).map((optionValue: string, i: number) => (
-							<RadioBlockItem
-								onClick={this.onClick}
-								className={this.props.options[optionValue].className}
-								container={this.props.options[optionValue].container}
-								disabled={this.props.disabled || this.props.options[optionValue].disabled}
-								warn={this.props.warn || this.props.options[optionValue].warn}
-								heightSize={this.props.heightSize}
-								label={this.props.options[optionValue].label}
-								value={optionValue}
-								key={i}
-								readonly={this.props.readonly || this.props.options[optionValue].readonly}
-								svg={this.props.options[optionValue].svg}
-								selected={this.state.value === optionValue}
-							/>
-						))
-					}
-				</div>
-			</Container>
-		);
-	}
-}
-
 interface IRadioBlockItemProps extends ILocalContainerProps {
 	disabled?: boolean;
 	warn?: boolean;
-	heightSize?: 'm' | 'l';
+	heightSize?: 'm' | 'l' | 'none';
 	label?: string;
 	onClick?: FunctionGeneric;
 	readonly?: boolean;
 	selected?: boolean;
 	svg?: any;
 	value?: string | null;
+	content?: React.ReactNode;
 }
 
-class RadioBlockItem extends React.Component<IRadioBlockItemProps> {
-	static defaultProps: Partial<IRadioBlockItemProps> = {
-		disabled: false,
-		heightSize: 'l',
-	};
+const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemProps) => {
+	const {
+		svg: svgProp,
+		value,
+		selected,
+		disabled,
+		onClick,
+		warn,
+		heightSize,
+		label,
+		content,
+		readonly,
+		container,
+		className,
+		...otherProps
+	} = props;
 
-	constructor (props: IRadioBlockItemProps) {
-		super(props);
-
-		this.onClick = this.onClick.bind(this);
-		this.onKeyDown = this.onKeyDown.bind(this);
-	}
-
-	onClick () {
-		if (this.props.disabled) {
+	const handleClick = () => {
+		if (disabled) {
 			return;
 		}
 
-		if (this.props.onClick) {
-			this.props.onClick(this.props.value);
+		if (onClick) {
+			onClick(value);
 		}
-	}
+	};
 
-	onKeyDown (event: any) {
-		if (event.key === ' ' || event.key === 'Enter'){
+	const onKeyDown = (event: any) => {
+		if (event.key === ' ' || event.key === 'Enter') {
 			event.target.click();
 		}
-	}
+	};
 
-	render () {
-		const svg = this.props.warn ?
-			<ExclamationSVG />
-			:
-			this.props.svg ?
-				this.props.svg
-				:
-				<CheckmarkSVG />
-		;
+	const svg = warn ? <ExclamationSVG /> : svgProp || <CheckmarkSVG />;
 
-		return (
-			// wrap in optional container
-			<Container {...this.props.container}>
-				<div
-					onClick={this.onClick}
-					className={classnames(
-						styles.RadioBlock_Option,
-						this.props.className,
-						{
-							[styles.RadioBlock_Option__Disabled]: this.props.disabled,
-							[styles.RadioBlock_Option__Warn]: this.props.warn,
-							[styles.RadioBlock_Option__HeightSizeMedium]: this.props.heightSize === 'm',
-							[styles.RadioBlock_Option__Readonly]: this.props.readonly,
-							[styles.RadioBlock_Option__Selected]: this.props.selected,
-						},
-					)}
-				>
-					<label
-						tabIndex={this.props.selected ? -1 : 0}
-						onKeyDown={this.onKeyDown}
-						className={styles.RadioBLock_Label}
-					>
-						<Title size={TitlePropSize.s} className={styles.RadioBLock_Label_Text}>
-							{this.props.label}
+	return (
+		// wrap in optional container
+		<Container {...container}>
+			<div
+				role="checkbox"
+				aria-checked={selected}
+				tabIndex={selected ? -1 : 0}
+				onClick={handleClick}
+				onKeyDown={onKeyDown}
+				className={classnames(styles.RadioBlock_Option, className, {
+					[styles.RadioBlock_Option__Disabled]: disabled,
+					[styles.RadioBlock_Option__Warn]: warn,
+					[styles.RadioBlock_Option__HeightSizeNone]: heightSize === 'none',
+					[styles.RadioBlock_Option__HeightSizeMedium]: heightSize === 'm',
+					[styles.RadioBlock_Option__Readonly]: readonly,
+					[styles.RadioBlock_Option__Selected]: selected,
+				})}
+				{...otherProps}
+			>
+				<div className={styles.RadioBlock_Wrapper}>
+					{label && (
+						<Title size={TitlePropSize.s} className={styles.RadioBlock_Label_Text}>
+							{label}
 						</Title>
-						<div className={styles.RadioBLock_Arrow}>
-							{svg}
+					)}
+					{content && (
+						<div style={{ marginTop: label && '10px' }} className={styles.RadioBlock_Content}>
+							{content}
 						</div>
-					</label>
+					)}
+					<div className={styles.RadioBlock_Arrow}>{svg}</div>
 				</div>
-			</Container>
-		);
-	}
+			</div>
+		</Container>
+	);
+};
+
+RadioBlockItem.defaultProps = {
+	disabled: false,
+	heightSize: 'l',
+};
+interface IProps extends ILocalContainerProps {
+	default?: string | null;
+	direction?: 'horiz' | 'vert';
+	disabled?: boolean;
+	warn?: boolean;
+	heightSize?: 'm' | 'l' | 'none';
+	onChange?: FunctionGeneric;
+	options: { [key: string]: IRadioBlockItemProps };
+	readonly?: boolean;
 }
+
+const RadioBlock: React.FC<IProps> = (props: IProps) => {
+	const {
+		default: defaultValue,
+		direction,
+		disabled,
+		warn,
+		heightSize,
+		onChange,
+		options,
+		readonly,
+		container,
+		className,
+		id,
+		style,
+		...otherProps
+	} = props;
+
+	const [value, setValue] = React.useState(null || defaultValue);
+
+	React.useEffect(() => {
+		setValue(defaultValue);
+	}, [defaultValue]);
+
+	const onClick = (selection: string | null) => {
+		setValue(selection);
+
+		if (onChange) {
+			onChange(selection);
+		}
+	};
+
+	return (
+		// wrap in optional container
+		<Container {...container}>
+			<div
+				className={classnames(styles.RadioBlock, className, {
+					[styles.RadioBlock__DirectionVert]: direction === 'vert',
+					[styles.RadioBlock__Readonly]: readonly,
+				})}
+				id={id}
+				style={style}
+				{...otherProps}
+			>
+				{Object.keys(options).map((optionValue: string) => (
+					<RadioBlockItem
+						onClick={onClick}
+						className={options[optionValue].className}
+						container={options[optionValue].container}
+						disabled={disabled || options[optionValue].disabled}
+						warn={warn || options[optionValue].warn}
+						heightSize={heightSize || options[optionValue].heightSize}
+						label={options[optionValue].label}
+						value={optionValue}
+						key={options[optionValue].label}
+						readonly={readonly || options[optionValue].readonly}
+						svg={options[optionValue].svg}
+						selected={value === optionValue}
+						content={options[optionValue].content}
+						style={options[optionValue].style}
+					/>
+				))}
+			</div>
+		</Container>
+	);
+};
+
+RadioBlock.defaultProps = {
+	disabled: false,
+};
+
+export default RadioBlock;
