@@ -1,4 +1,5 @@
 import addStyles from './add-styles';
+
 addStyles();
 
 // Alerts
@@ -23,7 +24,7 @@ export {
 	default as FlySelect,
 	FlySelectOption,
 	FlySelectOptions,
-	FlySelectOptionGroups
+	FlySelectOptionGroups,
 } from './components/inputs/FlySelect/FlySelect';
 export * from './components/icons/Icons';
 export { default as IconCheckbox } from './components/inputs/IconCheckbox/IconCheckbox';
@@ -53,14 +54,8 @@ export { default as ImageCircle } from './components/media/ImageCircle/ImageCirc
 export { default as Drawer } from './components/menus/Drawer/Drawer';
 export { Stepper, Step } from './components/menus/Stepper/Stepper';
 export { default as TabNav } from './components/menus/TabNav/TabNav';
-export {
-	TertiaryNav,
-	TertiaryNavItem
-} from './components/menus/TertiaryNav/TertiaryNav';
-export {
-	default as ContextMenu,
-	IMenuItem,
-} from './components/menus/ContextMenu/ContextMenu';
+export { TertiaryNav, TertiaryNavItem } from './components/menus/TertiaryNav/TertiaryNav';
+export { default as ContextMenu, IMenuItem } from './components/menus/ContextMenu/ContextMenu';
 // Modules
 export { default as Animation } from './components/modules/Animation/Animation';
 export { default as Card } from './components/modules/Card/Card';
@@ -73,15 +68,12 @@ export {
 	InnerPaneSidebarHeader,
 	InnerPaneSidebarAddNew,
 	InnerPaneSidebarContent,
-	InnerPaneSidebarContentItem
+	InnerPaneSidebarContentItem,
 } from './components/modules/InnerPaneSidebar/InnerPaneSidebar';
 export { default as Markdown } from './components/modules/Markdown/Markdown';
 export { default as SiteInfoInnerPane } from './components/modules/SiteInfoInnerPane/SiteInfoInnerPane';
 export { TitleBar } from './components/modules/TitleBar/TitleBar';
-export {
-	VerticalNav,
-	VerticalNavItem
-} from './components/modules/VerticalNav/VerticalNav';
+export { VerticalNav, VerticalNavItem } from './components/modules/VerticalNav/VerticalNav';
 export { VirtualList } from './components/modules/VirtualList/VirtualList';
 export { VirtualTable } from './components/modules/VirtualTable/VirtualTable';
 export { default as WindowsToolbar } from './components/modules/WindowsToolbar/WindowsToolbar';
@@ -92,10 +84,7 @@ export { default as Popup } from './components/overlays/Popup/Popup';
 export { ScrollShadow } from './components/overlays/ScrollShadow/ScrollShadow';
 export { Tooltip } from './components/overlays/Tooltip/Tooltip';
 // Tables
-export {
-	TableList,
-	TableListRow
-} from './components/tables/TableList/TableList';
+export { TableList, TableListRow } from './components/tables/TableList/TableList';
 export { default as TableListRepeater } from './components/tables/TableListRepeater/TableListRepeater';
 export { default as TableListMultiDisplay } from './components/tables/TableListMultiDisplay/TableListMultiDisplay';
 // Text
@@ -110,5 +99,5 @@ export {
 	IVirtualTableOnChangeRowDataArgs,
 	IVirtualTableRowRendererDataArgs,
 	VirtualTableCellRenderer,
-	VirtualTableRowRenderer
+	VirtualTableRowRenderer,
 } from './components/modules/VirtualTable/VirtualTable';
