@@ -70,7 +70,7 @@ const withMemoryRouter = (Story, context) => {
 						// use dark mode for everything except dark mode (including stacked and split)
 						theme !== 'light' && {
 							themeMode: 'Theme__Dark',
-							bgColor: '#262727',
+							bgColor: '#303031',
 							textColor: '#FFFFFF',
 							header: 'Dark Mode',
 						},
@@ -97,7 +97,7 @@ const withMemoryRouter = (Story, context) => {
 								{ themeData.header }
 							</h1>
 							{/* examples that depend on an outer absolute position need this to appear correctly within the story */}
-							<div style={{position: 'relative', flexGrow: '1', overflow: 'auto'}}>
+							<div style={{position: 'relative', flexGrow: '1', overflow: 'auto', padding: '10px'}}>
 								<Story {...context} />
 							</div>
 						</div>
