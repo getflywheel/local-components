@@ -73,7 +73,7 @@ export interface IButtonCommonProps extends ILocalContainerProps {
 	/** The html element tag used for the button. */
 	tag?: string;
 	/** Props specific to the tag prop tag defined and applied to this component. */
-	tagProps?: {[prop: string]: any};
+	tagProps?: { [prop: string]: any };
 	/** The default behavior of the button. */
 	type?: 'button' | 'submit' | 'reset';
 	/** SVG Icon to be placed left of text */
@@ -144,69 +144,68 @@ const ButtonBase = (props: IButtonBaseProps) => {
 	const LeftIcon = leftIcon;
 	const RightIcon = rightIcon;
 
-	const [ isActive, setIsActive ] = React.useState(active);
+	const [isActive, setIsActive] = React.useState(active);
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (e.key === 'Enter' && !active) {
 			setIsActive(true);
 		}
-	}
+	};
 
 	const handleKeyUp = (e: React.KeyboardEvent) => {
 		if (e.key === 'Enter' && !active) {
 			setIsActive(false);
 		}
-	}
+	};
 
 	React.useEffect(() => {
 		setIsActive(active);
-	}, [active])
+	}, [active]);
 
 	return (
 		<Container {...container}>
 			<Tag
-				className={classnames(
-					styles.ButtonBase,
-					'ButtonBase',
-					className,
-					{
-						[styles._active]: isActive,
-						[styles.ButtonBase__Color_Gray]: color === ButtonPropColor.default || ButtonPropColor.gray,
-						[styles.ButtonBase__Color_Green]: color === ButtonPropColor.green,
-						[styles.ButtonBase__Color_Orange]: color === ButtonPropColor.orange,
-						[styles.ButtonBase__Color_Red]: color === ButtonPropColor.red,
-						[styles.ButtonBase__FontSize_XSmall]: fontSize === ButtonPropFontSize.xs,
-						[styles.ButtonBase__FontSize_Small]: fontSize === ButtonPropFontSize.s,
-						[styles.ButtonBase__FontSize_Medium]: fontSize === ButtonPropFontSize.m,
-						[styles.ButtonBase__FontSize_Large]: fontSize === ButtonPropFontSize.l,
-						[styles.ButtonBase__FontSize_XLarge]: fontSize === ButtonPropFontSize.xl,
-						[styles.ButtonBase__FontSize_XXLarge]: fontSize === ButtonPropFontSize.xxl,
-						[styles.ButtonBase__Form_Fill]: form === ButtonPropForm.fill,
-						[styles.ButtonBase__Form_Outline]: form === ButtonPropForm.outline,
-						[styles.ButtonBase__Form_Reversed]: form === ButtonPropForm.reversed,
-						[styles.ButtonBase__Form_Text]: form === ButtonPropForm.text,
-						[styles.ButtonBase__LetterSpacing_Normal]: fontWeight === ButtonPropFontWeight.medium,
-						[styles.ButtonBase__LetterSpacing_Tracked]: (fontWeight === ButtonPropFontWeight.heavy) || (textTransform === ButtonPropTextTransform.upper),
-						[styles.ButtonBase__LetterSpacing_Extra]: ((fontWeight === ButtonPropFontWeight.heavy) && (textTransform === ButtonPropTextTransform.upper)),
-						[styles.ButtonBase__Padding_None]: padding === ButtonPropPadding.none,
-						[styles.ButtonBase__Padding_Small]: padding === ButtonPropPadding.s,
-						[styles.ButtonBase__Padding_Medium]: padding === ButtonPropPadding.m,
-						[styles.ButtonBase__Padding_Large]: padding === ButtonPropPadding.l,
-						[styles.ButtonBase__FontWeight_Heavy]: fontWeight === ButtonPropFontWeight.heavy,
-						[styles.ButtonBase__FontWeight_Medium]: fontWeight === ButtonPropFontWeight.medium,
-						[styles.ButtonBase__FontWeight_Light]: fontWeight === ButtonPropFontWeight.light,
-						[styles.ButtonBase__TextTransform_Upper]: textTransform === ButtonPropTextTransform.upper,
-						[styles.ButtonBase__TextTransform_None]: textTransform === ButtonPropTextTransform.none,
-						[styles.ButtonBase__TextDecoration_None]: textDecoration === ButtonPropTextDecoration.none,
-						[styles.ButtonBase__TextDecoration_Underline]: textDecoration === ButtonPropTextDecoration.underline,
-						[styles.ButtonBase__TextDecoration_Underline_Hover]: (textDecoration === ButtonPropTextDecoration.underlineOnHover)
-							||  (textDecoration === ButtonPropTextDecoration.underline),
-						[styles.ButtonBase__Display_Inline]: inline,
-						[styles.ButtonBase__SVG_Stroke]: svgStyle === ButtonSvgStyle.stroke,
-						[styles.ButtonBase__SVG_Fill]: svgStyle === ButtonSvgStyle.fill,
-						[styles.ButtonBase__SVG_Background]: svgStyle === ButtonSvgStyle.background,
-					},
-				)}
+				className={classnames(styles.ButtonBase, 'ButtonBase', className, {
+					[styles._active]: isActive,
+					[styles.ButtonBase__Color_Gray]: color === ButtonPropColor.default || ButtonPropColor.gray,
+					[styles.ButtonBase__Color_Green]: color === ButtonPropColor.green,
+					[styles.ButtonBase__Color_Orange]: color === ButtonPropColor.orange,
+					[styles.ButtonBase__Color_Red]: color === ButtonPropColor.red,
+					[styles.ButtonBase__FontSize_XSmall]: fontSize === ButtonPropFontSize.xs,
+					[styles.ButtonBase__FontSize_Small]: fontSize === ButtonPropFontSize.s,
+					[styles.ButtonBase__FontSize_Medium]: fontSize === ButtonPropFontSize.m,
+					[styles.ButtonBase__FontSize_Large]: fontSize === ButtonPropFontSize.l,
+					[styles.ButtonBase__FontSize_XLarge]: fontSize === ButtonPropFontSize.xl,
+					[styles.ButtonBase__FontSize_XXLarge]: fontSize === ButtonPropFontSize.xxl,
+					[styles.ButtonBase__Form_Fill]: form === ButtonPropForm.fill,
+					[styles.ButtonBase__Form_Outline]: form === ButtonPropForm.outline,
+					[styles.ButtonBase__Form_Reversed]: form === ButtonPropForm.reversed,
+					[styles.ButtonBase__Form_Text]: form === ButtonPropForm.text,
+					[styles.ButtonBase__LetterSpacing_Normal]: fontWeight === ButtonPropFontWeight.medium,
+					[styles.ButtonBase__LetterSpacing_Tracked]:
+						fontWeight === ButtonPropFontWeight.heavy || textTransform === ButtonPropTextTransform.upper,
+					[styles.ButtonBase__LetterSpacing_Extra]:
+						fontWeight === ButtonPropFontWeight.heavy && textTransform === ButtonPropTextTransform.upper,
+					[styles.ButtonBase__Padding_None]: padding === ButtonPropPadding.none,
+					[styles.ButtonBase__Padding_Small]: padding === ButtonPropPadding.s,
+					[styles.ButtonBase__Padding_Medium]: padding === ButtonPropPadding.m,
+					[styles.ButtonBase__Padding_Large]: padding === ButtonPropPadding.l,
+					[styles.ButtonBase__FontWeight_Heavy]: fontWeight === ButtonPropFontWeight.heavy,
+					[styles.ButtonBase__FontWeight_Medium]: fontWeight === ButtonPropFontWeight.medium,
+					[styles.ButtonBase__FontWeight_Light]: fontWeight === ButtonPropFontWeight.light,
+					[styles.ButtonBase__TextTransform_Upper]: textTransform === ButtonPropTextTransform.upper,
+					[styles.ButtonBase__TextTransform_None]: textTransform === ButtonPropTextTransform.none,
+					[styles.ButtonBase__TextDecoration_None]: textDecoration === ButtonPropTextDecoration.none,
+					[styles.ButtonBase__TextDecoration_Underline]:
+						textDecoration === ButtonPropTextDecoration.underline,
+					[styles.ButtonBase__TextDecoration_Underline_Hover]:
+						textDecoration === ButtonPropTextDecoration.underlineOnHover ||
+						textDecoration === ButtonPropTextDecoration.underline,
+					[styles.ButtonBase__Display_Inline]: inline,
+					[styles.ButtonBase__SVG_Stroke]: svgStyle === ButtonSvgStyle.stroke,
+					[styles.ButtonBase__SVG_Fill]: svgStyle === ButtonSvgStyle.fill,
+					[styles.ButtonBase__SVG_Background]: svgStyle === ButtonSvgStyle.background,
+				})}
 				disabled={disabled}
 				id={id}
 				name={name}
@@ -220,20 +219,24 @@ const ButtonBase = (props: IButtonBaseProps) => {
 				{...tagProps}
 			>
 				{leftIcon && (
-					<LeftIcon className={classnames(styles.ButtonBase_SVG_Left, {
-						[styles.ButtonBase_SVG_MarginBottom]: !!children,
-					})}/>
+					<LeftIcon
+						className={classnames(styles.ButtonBase_SVG_Left, {
+							[styles.ButtonBase_SVG_MarginBottom]: !!children,
+						})}
+					/>
 				)}
 				{children}
 				{rightIcon && (
-					<RightIcon className={classnames(styles.ButtonBase_SVG_Right, {
-						[styles.ButtonBase_SVG_MarginBottom]: !!children,
-					})}/>
+					<RightIcon
+						className={classnames(styles.ButtonBase_SVG_Right, {
+							[styles.ButtonBase_SVG_MarginBottom]: !!children,
+						})}
+					/>
 				)}
 			</Tag>
 		</Container>
 	);
-}
+};
 
 ButtonBase.defaultProps = {
 	color: ButtonPropColor.default,
