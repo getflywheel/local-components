@@ -14,14 +14,14 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '12.13.0'
-    
+    versionSpec: '14.17.0'
+
 - script: |
     git config --local user.name "Local Bot"
     git config --local user.email "local@getflywheel.com"
     git config --global --add url."git@github.com:".insteadOf "https://github.com/"
   displayName: 'Configure Git'
-  
+
 - task: DownloadSecureFile@1
   name: downloadKey
   inputs:
