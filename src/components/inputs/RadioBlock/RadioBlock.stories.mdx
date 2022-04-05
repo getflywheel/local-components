@@ -1,6 +1,9 @@
 import RadioBlock from "./RadioBlock";
 import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Text } from '../../text/Text/Text';
+import { default as TextButtonExternal } from '../../buttons/TextButtonExternal/TextButtonExternal';
+import { default as radioBlockOptions } from './RadioBlockContentExample'
 
 <Meta title="Inputs/RadioBlock" component={RadioBlock} />
 
@@ -19,6 +22,50 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 					label: "Test 2",
 				},
 			}}
+		/>
+	</Story>
+</Canvas>
+
+# RadioBlock with description example
+
+<Canvas>
+	<Story name="RadioBlock Description">
+		<RadioBlock
+			onChange={() => console.log("onChange")}
+			default={"test1"}
+			options={{
+				test1: {
+					content: (
+						<>
+							<Text>
+								This is a description for option 1, Text 1
+							</Text>
+							<TextButtonExternal
+								inline={false}
+								onClick={(event) => {event.stopPropagation();}}
+							>
+								Click me!
+							</TextButtonExternal>
+						</>
+					),
+				},
+				test2: {
+					label: "Test 2",
+				},
+			}}
+		/>
+	</Story>
+</Canvas>
+
+# RadioBlock with with just content example
+
+<Canvas>
+	<Story name="RadioBlock Content">
+		<RadioBlock
+			heightSize="none"
+			direction="vert"
+			options={radioBlockOptions}
+			onChange={(value) => console.log("onChange: ", value)}
 		/>
 	</Story>
 </Canvas>

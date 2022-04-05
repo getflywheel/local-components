@@ -1,0 +1,22 @@
+@import '../../../styles/_partials/index';
+
+.SavedBlueprintCard {
+	flex-direction: row;
+	flex-wrap: nowrap;
+	flex-grow: 0;
+	min-width: 100%;
+	max-width: 100%;
+}
+
+.SavedBlueprintCard_Footer {
+	align-items: center;
+}
+
+.SavedBlueprintCard_Footer_Dropdown {
+	margin-left: 30px - 5px;
+	@include theme-color-gray75-else-gray25;
+}
+
+.SavedBlueprintCard_Title {
+	font-weight: 700;
+}
