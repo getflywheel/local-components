@@ -29,6 +29,8 @@
 		"react/function-component-definition": "off",
 		"no-nested-ternary": "off",
 		"react/require-default-props": "off",
-		"no-underscore-dangle": "off"
+		"no-underscore-dangle": "off",
+		"import/prefer-default-export": "off",
+		"consistent-return": "off"
 	}
 }

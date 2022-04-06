@@ -2,6 +2,7 @@
 
 :global {
 	.AddSiteContent {
+		@include theme-background-white-else-graydarkalt;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
