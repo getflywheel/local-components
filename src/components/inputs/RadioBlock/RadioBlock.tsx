@@ -19,6 +19,7 @@ interface IRadioBlockItemProps extends ILocalContainerProps {
 	svg?: any;
 	value?: string | null;
 	content?: React.ReactNode;
+	borderOnHover?: boolean;
 }
 
 const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemProps) => {
@@ -30,6 +31,7 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 		onClick,
 		warn,
 		heightSize,
+		borderOnHover,
 		label,
 		content,
 		readonly,
@@ -72,6 +74,7 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 					[styles.RadioBlock_Option__HeightSizeMedium]: heightSize === 'm',
 					[styles.RadioBlock_Option__Readonly]: readonly,
 					[styles.RadioBlock_Option__Selected]: selected,
+					[styles.RadioBlock_Option__BorderOnHover]: borderOnHover,
 				})}
 				{...otherProps}
 			>
@@ -96,6 +99,7 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 RadioBlockItem.defaultProps = {
 	disabled: false,
 	heightSize: 'l',
+	borderOnHover: true,
 };
 interface IProps extends ILocalContainerProps {
 	default?: string | null;
@@ -106,6 +110,7 @@ interface IProps extends ILocalContainerProps {
 	onChange?: FunctionGeneric;
 	options: { [key: string]: IRadioBlockItemProps };
 	readonly?: boolean;
+	borderOnHover?: boolean;
 }
 
 const RadioBlock: React.FC<IProps> = (props: IProps) => {
@@ -118,6 +123,7 @@ const RadioBlock: React.FC<IProps> = (props: IProps) => {
 		onChange,
 		options,
 		readonly,
+		borderOnHover,
 		container,
 		className,
 		id,
@@ -156,17 +162,18 @@ const RadioBlock: React.FC<IProps> = (props: IProps) => {
 						onClick={onClick}
 						className={options[optionValue].className}
 						container={options[optionValue].container}
-						disabled={disabled || options[optionValue].disabled}
-						warn={warn || options[optionValue].warn}
+						disabled={disabled ?? options[optionValue].disabled}
+						warn={warn ?? options[optionValue].warn}
 						heightSize={heightSize || options[optionValue].heightSize}
 						label={options[optionValue].label}
 						value={optionValue}
 						key={options[optionValue].label}
-						readonly={readonly || options[optionValue].readonly}
+						readonly={readonly ?? options[optionValue].readonly}
 						svg={options[optionValue].svg}
 						selected={value === optionValue}
 						content={options[optionValue].content}
 						style={options[optionValue].style}
+						borderOnHover={borderOnHover ?? options[optionValue].borderOnHover}
 					/>
 				))}
 			</div>
