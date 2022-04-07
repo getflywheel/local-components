@@ -1,0 +1,41 @@
+@import '../../../styles/_partials/index';
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   80% { transform: rotate(0deg); }
+   85% { transform: rotate(5deg); }
+   95% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes breathe {
+    0% { transform: scale(1.01); }
+   50% { transform: scale(0.98); }
+  100% { transform: scale(1.01); }
+}
+
+.Badge {
+	width: fit-content;
+	padding: 2px 5px 0px 5px;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: bold;
+	letter-spacing: 0.02em;
+	@include theme-color-gray-else-white;
+	line-height: 20px;
+	@include theme-background-gray25-else-gray();
+	border-radius: 4px;
+
+	&.Badge__Yellow {
+		background: $yellow25;
+		color: $yellow-dark;
+	}
+}
+
+.Badge__Wiggle {
+	animation: wiggle 3s ease-in-out infinite;
+}
+
+.Badge__Breathe {
+	animation: breathe 3s ease-in-out infinite alternate;
+}
