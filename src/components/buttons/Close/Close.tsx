@@ -1,45 +1,40 @@
 import * as React from 'react';
-import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import CloseBigSVG from '../../../svg/close--big.svg';
 import * as styles from './Close.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import { CloseIcon } from '../../icons/Icons';
+import { ButtonBase } from '../_private/ButtonBase/ButtonBase';
 
 interface IProps extends IReactComponentProps {
 	position?: 'absolute' | 'static';
-	onClick: FunctionGeneric;
+	onClick?: FunctionGeneric;
 }
 
-export default class Close extends React.Component<IProps> {
-	static defaultProps: Partial<IProps> = {
-		position: 'absolute',
-	};
+const Close: React.FC<IProps> = (props: IProps) => {
+	const { position = 'absolute', onClick, className, ...otherProps } = props;
 
-	onKeyDown = (event: any) => {
-		if (event.key === 'Enter'){
-			event.target.click();
-		}
-	}
+	return (
+		<ButtonBase
+			tabIndex={0}
+			form="text"
+			color="green"
+			padding="none"
+			onClick={onClick}
+			className={classnames(
+				styles.Close,
+				'Close', // this also needs to be globally accessible so other component styles can reference it
+				{
+					[styles.Close__PositionAbsolute]: position === 'absolute',
+				},
+				className
+			)}
+			{...otherProps}
+		>
+			<CloseIcon size="l" />
+		</ButtonBase>
+	);
+};
 
-	render () {
-		return (
-			<span
-				tabIndex={0}
-				className={classnames(
-					styles.Close,
-					'Close', // this also needs to be globally accessible so other component styles can reference it
-					{
-						[styles.Close__PositionAbsolute]: this.props.position === 'absolute',
-					},
-					this.props.className,
-				)}
-				id={this.props.id}
-				onClick={this.props.onClick}
-				onKeyDown={this.onKeyDown}
-				style={this.props.style}
-			>
-				<CloseBigSVG />
-			</span>
-		);
-	}
-}
+export default Close;
