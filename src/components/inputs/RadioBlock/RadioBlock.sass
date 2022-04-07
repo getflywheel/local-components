@@ -45,6 +45,10 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 	text-align: center
 	flex: 1
 
+	.RadioBlock_Label_Text
+		pointer-events: none
+		@include theme-color-gray-else-gray15;
+
 	&.RadioBlock_Option__BorderOnHover
 		&:hover:not(.RadioBlock_Option__Disabled) .RadioBlock_Wrapper::before
 			opacity: 1
@@ -61,14 +65,13 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 
 	&.RadioBlock_Option__Selected
 		z-index: 10
+		transform: scale(1.01)
+		transition:  transform .2s ease 0s
+
+		.RadioBlock_Label_Text
+			@include theme-color-graydark-else-white;
 
 		.RadioBlock_Wrapper
-			z-index: $zIndexOptionNormal + 1
-			border-color: $green
-
-			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
-				border-color: $orange
-
 			&::before
 				opacity: 1
 
@@ -112,8 +115,13 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 			transition: all .15s ease 0s
 			opacity: 0
 			z-index: $zIndexOptionNormal + 1
-			border: 2px solid $green
+			border: 2px solid
 			border-radius: 4px
+
+			@include if-theme-light()
+				border-color: $green-dark
+			@include if-theme-dark()
+				border-color: $green
 
 			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
 				border-color: $orange
@@ -130,9 +138,6 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 			position: relative
 			z-index: $zIndexOptionNormal + 1
 			cursor: pointer
-
-	.RadioBlock_Label_Text
-		pointer-events: none
 
 	.RadioBlock_Arrow
 		$width: 50px
@@ -162,15 +167,19 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 			top: 0
 			border-width: 0 $width $width 0
 			border-style: solid
-			border-color: transparent $green transparent transparent
 			width: 0
 			height: 0
+
+			@include if-theme-light()
+				border-color:  transparent $green-dark transparent transparent
+			@include if-theme-dark()
+				border-color:  transparent $green transparent transparent
 
 			@include selectors_ifHostHasModifier('.RadioBlock_Option__Warn')
 				border-color: transparent $orange transparent transparent
 
-		top: 0
-		right: 0
+		top: -1px
+		right: -1px
 		width: $width
 		height: $width
 

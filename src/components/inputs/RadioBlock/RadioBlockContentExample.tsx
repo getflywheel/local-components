@@ -66,7 +66,6 @@ const radioBlockOptions = blueprints.reduce(
 			style: {
 				textAlign: 'unset',
 				margin: '5px 30px 5px 30px',
-				boxShadow: 'none',
 				borderRadius: '4px',
 			},
 		},

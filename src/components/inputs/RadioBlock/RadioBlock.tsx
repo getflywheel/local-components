@@ -181,8 +181,4 @@ const RadioBlock: React.FC<IProps> = (props: IProps) => {
 	);
 };
 
-RadioBlock.defaultProps = {
-	disabled: false,
-};
-
 export default RadioBlock;
