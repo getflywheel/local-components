@@ -26,22 +26,11 @@ export interface ITextButtonProps extends IButtonCommonProps {
 }
 
 export const TextButton = (props: ITextButtonProps) => {
-	const {
-		className,
-		id,
-		intent,
-		privateOptions,
-		size,
-		style,
-		...otherProps
-	} = props;
+	const { className, id, intent, privateOptions, size, style, ...otherProps } = props;
 
 	return (
 		<ButtonBase
-			className={classnames(
-				className,
-				'TextButton',
-			)}
+			className={classnames(className, 'TextButton')}
 			color={intent === TextButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
 			fontSize={size === TextButtonPropSize.tiny ? ButtonPropFontSize.xs : ButtonPropFontSize.m}
 			form={ButtonPropForm.text}

@@ -10,4 +10,5 @@ export default interface IReactComponentProps {
 	style?: object;
 	ref?: any;
 	role?: string;
+	tabIndex?: number;
 }

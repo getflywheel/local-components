@@ -11,22 +11,22 @@
 		top: 30px;
 	}
 
-	* {
-		cursor: pointer;
-	}
+	// * {
+	// 	cursor: pointer;
+	// }
 
-	svg {
-		width: 18px;
-		height: 18px;
-		transform: translateY(2px);
-	}
+	// svg {
+	// 	width: 18px;
+	// 	height: 18px;
+	// 	transform: translateY(2px);
+	// }
 
-	svg path {
-		@include theme-fill-green-else-gray25;
-		transition: fill .1s ease 0ms;
-	}
+	// svg path {
+	// 	@include theme-fill-green-else-gray25;
+	// 	transition: fill .1s ease 0ms;
+	// }
 
-	&:hover svg path {
-		@include theme-fill-greendark50-else-white-hover;
-	}
+	// &:hover svg path {
+	// 	@include theme-fill-greendark50-else-white-hover;
+	// }
 }
