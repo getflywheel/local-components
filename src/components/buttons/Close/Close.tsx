@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import CloseBigSVG from '../../../svg/close--big.svg';
 import * as styles from './Close.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { CloseIcon } from '../../icons/Icons';
