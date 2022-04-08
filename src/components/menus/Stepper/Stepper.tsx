@@ -18,7 +18,7 @@ interface IStepProps {
 	children?: React.ReactNode;
 	active?: boolean;
 	disabled?: boolean;
-	done: boolean;
+	done?: boolean;
 	number: number;
 }
 
