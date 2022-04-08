@@ -1,7 +1,6 @@
 @import '../../../styles/_partials/index';
 
-
-.ScrollableContent {
+.ScrollableContent_ScrollingDiv {
 	overflow: auto;
 	height: 100%;
 }
@@ -14,6 +13,7 @@
 	left: 0;
 	overflow: hidden;
 	pointer-events: none;
+	z-index: 100;
 
 	.ScrollShadow {
 		position: absolute;
@@ -23,7 +23,7 @@
 		height: 25px;
 		transform: translateY(100%);
 		transition: box-shadow 0.4s;
-		
+
 		&.ScrollShadow__Show {
 			@include theme-overlay-boxshadow;
 			transition: box-shadow 0.2s;
