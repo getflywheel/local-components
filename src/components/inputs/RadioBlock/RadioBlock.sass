@@ -46,8 +46,9 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 	flex: 1
 
 	.RadioBlock_Label_Text
+		font-size: 18px
 		pointer-events: none
-		@include theme-color-gray-else-gray15;
+		@include theme-color-gray-else-gray15
 
 	&.RadioBlock_Option__BorderOnHover
 		&:hover:not(.RadioBlock_Option__Disabled) .RadioBlock_Wrapper::before
@@ -69,7 +70,7 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 		transition:  transform .2s ease 0s
 
 		.RadioBlock_Label_Text
-			@include theme-color-graydark-else-white;
+			@include theme-color-graydark-else-white
 
 		.RadioBlock_Wrapper
 			&::before
@@ -82,12 +83,12 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 
 	.RadioBlock_Content
 		display: block
-		height: 100%
-		width: 100%
 
 	.RadioBlock_Wrapper
+		display: flex
+		flex-direction: column
+		justify-content: center
 		cursor: pointer
-		display: block
 		top: 0
 		right: 0
 		bottom: 0
