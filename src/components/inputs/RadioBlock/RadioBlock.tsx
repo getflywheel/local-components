@@ -20,6 +20,7 @@ interface IRadioBlockItemProps extends ILocalContainerProps {
 	value?: string | null;
 	content?: React.ReactNode;
 	borderOnHover?: boolean;
+	centerContent?: boolean;
 }
 
 const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemProps) => {
@@ -30,6 +31,7 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 		disabled,
 		onClick,
 		warn,
+		centerContent,
 		heightSize,
 		borderOnHover,
 		label,
@@ -78,7 +80,11 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 				})}
 				{...otherProps}
 			>
-				<div className={styles.RadioBlock_Wrapper}>
+				<div
+					className={classnames(styles.RadioBlock_Wrapper, {
+						[styles.RadioBlock_Option_Wrapper_Center]: centerContent,
+					})}
+				>
 					{label && (
 						<Title size={TitlePropSize.s} className={styles.RadioBlock_Label_Text}>
 							{label}
@@ -100,6 +106,7 @@ RadioBlockItem.defaultProps = {
 	disabled: false,
 	heightSize: 'l',
 	borderOnHover: true,
+	centerContent: true,
 };
 interface IProps extends ILocalContainerProps {
 	default?: string | null;
@@ -111,6 +118,7 @@ interface IProps extends ILocalContainerProps {
 	options: { [key: string]: IRadioBlockItemProps };
 	readonly?: boolean;
 	borderOnHover?: boolean;
+	centerContent?: boolean;
 }
 
 const RadioBlock: React.FC<IProps> = (props: IProps) => {
@@ -121,6 +129,7 @@ const RadioBlock: React.FC<IProps> = (props: IProps) => {
 		warn,
 		heightSize,
 		onChange,
+		centerContent,
 		options,
 		readonly,
 		borderOnHover,
@@ -174,6 +183,7 @@ const RadioBlock: React.FC<IProps> = (props: IProps) => {
 						content={options[optionValue].content}
 						style={options[optionValue].style}
 						borderOnHover={borderOnHover ?? options[optionValue].borderOnHover}
+						centerContent={centerContent ?? options[optionValue].centerContent}
 					/>
 				))}
 			</div>

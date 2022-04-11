@@ -85,9 +85,7 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 		display: block
 
 	.RadioBlock_Wrapper
-		display: flex
-		flex-direction: column
-		justify-content: center
+		display: block
 		cursor: pointer
 		top: 0
 		right: 0
@@ -139,6 +137,12 @@ $zIndexOptionTooltip: $zIndexOptionSelected + 3
 			position: relative
 			z-index: $zIndexOptionNormal + 1
 			cursor: pointer
+
+		&.RadioBlock_Option_Wrapper_Center
+			display: flex
+			flex-direction: column
+			justify-content: center
+
 
 	.RadioBlock_Arrow
 		$width: 50px
