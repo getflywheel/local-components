@@ -311,15 +311,21 @@ export const Tooltip = (props: TooltipProps) => {
 		onShow,
 		hideArrow,
 		focusOnOpen,
+		content,
+		hideDelay,
+		position,
+		popperArrowModifier,
+		popperOffsetModifier,
+		showDelay,
 		...otherProps
 	} = props;
 
 	const { setArrowRef, attributes, setPopperRef, popperStyles, stages, targetRef, transitionRef } = useTooltip({
-		hideDelay: props.hideDelay,
-		placement: props.position,
-		popperArrowModifier: props.popperArrowModifier,
-		popperOffsetModifier: props.popperOffsetModifier,
-		showDelay: props.showDelay,
+		hideDelay,
+		placement: position,
+		popperArrowModifier,
+		popperOffsetModifier,
+		showDelay,
 		transitionEndPropName: 'transform',
 		useClickInsteadOfHover: !!useClickInsteadOfHover,
 	});
@@ -394,7 +400,7 @@ export const Tooltip = (props: TooltipProps) => {
 						>
 							<div className={classnames(styles.Tooltip_Popper_Inner, 'Tooltip_Popper_Inner_Container')}>
 								<div className={classnames(styles.Tooltip_Popper_Content, 'Tooltip_Popper_Content')}>
-									{props.content}
+									{content}
 								</div>
 							</div>
 							{!hideArrow && (
