@@ -1,23 +1,23 @@
 import * as React from 'react';
-import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from './Tooltip.scss';
 import { usePopper } from 'react-popper';
-import {  useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Options } from '@popperjs/core/lib/modifiers/arrow';
+import { Options as OffsetOptions } from '@popperjs/core/lib/modifiers/offset';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import * as styles from './Tooltip.scss';
 import { Portal } from '../../../common/helpers/Portal';
 import { useDetectTransitionEnd } from '../../../common/helpers/useDetectTransitionEnd';
 import { useSwappableTimeout } from '../../../common/helpers/useTimeout';
 import { useDetectClickOrHoverWithinTargets } from '../../../common/helpers/useDetectClickOrHoverWithinTargets';
-import { Options } from '@popperjs/core/lib/modifiers/arrow';
-import { Options as OffsetOptions } from '@popperjs/core/lib/modifiers/offset';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 export interface TooltipProps extends IReactComponentProps {
-	/** the content that should show the tooltip upon the user's mouse entering it **/
+	/** the content that should show the tooltip upon the user's mouse entering it * */
 	content?: React.ReactElement;
-	/** whether to force the tooltip to show and ignore mouse events **/
+	/** whether to force the tooltip to show and ignore mouse events * */
 	forceShow?: boolean;
-	/** the number of milliseconds to delay hiding the tooltip after the user's mouse leaves this component **/
+	/** the number of milliseconds to delay hiding the tooltip after the user's mouse leaves this component * */
 	hideDelay?: number;
 	/** hide the tooltip arrow */
 	hideArrow?: boolean;
@@ -26,14 +26,29 @@ export interface TooltipProps extends IReactComponentProps {
 	/** Additional popper offset modifier to reposition the popper tooltip [position's direction, perpendicular direction] */
 	popperOffsetModifier?: Partial<OffsetOptions>;
 	/** className to tweak popper container styles */
-	popperContainerClassName?: string,
+	popperContainerClassName?: string;
 	/** className to tweak popper visual container styles */
-	popperVisualContainerClassName?: string,
-	/** the position/placement of the tooltip relative to the content **/
-	position?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'auto' | 'auto-start' | 'auto-end';
-	/** the number of milliseconds to delay showing the tooltip once the user's mouse enters this component **/
+	popperVisualContainerClassName?: string;
+	/** the position/placement of the tooltip relative to the content * */
+	position?:
+		| 'top'
+		| 'top-start'
+		| 'top-end'
+		| 'right'
+		| 'right-start'
+		| 'right-end'
+		| 'bottom'
+		| 'bottom-start'
+		| 'bottom-end'
+		| 'left'
+		| 'left-start'
+		| 'left-end'
+		| 'auto'
+		| 'auto-start'
+		| 'auto-end';
+	/** the number of milliseconds to delay showing the tooltip once the user's mouse enters this component * */
 	showDelay?: number;
-	//** whether to change default hover tooltip interaction to click/blur */
+	//* * whether to change default hover tooltip interaction to click/blur */
 	useClickInsteadOfHover?: boolean;
 	/** whether to hide tooltip from dom */
 	hideTooltip?: boolean;
@@ -49,21 +64,15 @@ export interface TooltipProps extends IReactComponentProps {
 type ReducerStageDirection = 'prev' | 'stopped' | 'next';
 
 interface ReducerState {
-	stage:
-	| '0Hidden'
-	| '1WaitingToFadeIn'
-	| '2FadingInToShow'
-	| '3Showing'
-	| '4WaitingToFadeOut'
-	| '5FadingOutToHide',
-	direction: ReducerStageDirection,
+	stage: '0Hidden' | '1WaitingToFadeIn' | '2FadingInToShow' | '3Showing' | '4WaitingToFadeOut' | '5FadingOutToHide';
+	direction: ReducerStageDirection;
 }
 
 type ReducerAction =
-| { type: 'onDelayComplete' }
-| { type: 'onMouseOff' }
-| { type: 'onMouseOver' }
-| { type: 'onTransitionEnd' }
+	| { type: 'onDelayComplete' }
+	| { type: 'onMouseOff' }
+	| { type: 'onMouseOver' }
+	| { type: 'onTransitionEnd' };
 
 /**
  * a reducer that handles revelant events changes the tooltip stage accordingly
@@ -74,7 +83,7 @@ type ReducerAction =
  * @param action
  */
 function reducer(prevState: ReducerState, action: ReducerAction): ReducerState {
-	const newState = {...prevState};
+	const newState = { ...prevState };
 	const { type } = action;
 
 	switch (prevState.stage) {
@@ -88,12 +97,10 @@ function reducer(prevState: ReducerState, action: ReducerAction): ReducerState {
 			if (type === 'onDelayComplete' || (newState.direction === 'prev' && type === 'onMouseOver')) {
 				newState.direction = 'next';
 				newState.stage = '2FadingInToShow';
-			}
-			else if (type === 'onMouseOff') {
+			} else if (type === 'onMouseOff') {
 				newState.direction = 'stopped';
 				newState.stage = '0Hidden';
-			}
-			else if (prevState.direction === 'prev') {
+			} else if (prevState.direction === 'prev') {
 				newState.direction = 'stopped';
 				newState.stage = '0Hidden';
 			}
@@ -102,8 +109,7 @@ function reducer(prevState: ReducerState, action: ReducerAction): ReducerState {
 			if (type === 'onTransitionEnd') {
 				newState.direction = 'next';
 				newState.stage = '3Showing';
-			}
-			else if (type === 'onMouseOff') {
+			} else if (type === 'onMouseOff') {
 				newState.direction = 'prev';
 				newState.stage = '1WaitingToFadeIn';
 			}
@@ -118,8 +124,7 @@ function reducer(prevState: ReducerState, action: ReducerAction): ReducerState {
 			if (type === 'onDelayComplete' || (newState.direction === 'prev' && type === 'onMouseOff')) {
 				newState.direction = 'next';
 				newState.stage = '5FadingOutToHide';
-			}
-			else if (prevState.direction === 'prev') {
+			} else if (prevState.direction === 'prev') {
 				newState.stage = '3Showing';
 			}
 			break;
@@ -127,8 +132,7 @@ function reducer(prevState: ReducerState, action: ReducerAction): ReducerState {
 			if (type === 'onTransitionEnd') {
 				newState.direction = 'stopped';
 				newState.stage = '0Hidden';
-			}
-			else if (type === 'onMouseOver') {
+			} else if (type === 'onMouseOver') {
 				newState.direction = 'prev';
 				newState.stage = '4WaitingToFadeOut';
 			}
@@ -163,10 +167,10 @@ const useTooltipStage = (
 	isHoverTarget: boolean,
 	isHoverPopper: boolean,
 	hideDelay: number | undefined,
-	showDelay: number | undefined,
+	showDelay: number | undefined
 ) => {
 	// manage the complex, bi-directional stages of the tooltip state
-	const [ state, dispatchState ] = React.useReducer(reducer, reducerInitialState);
+	const [state, dispatchState] = React.useReducer(reducer, reducerInitialState);
 	// use a single timer that when swapped out automatically cancels the active timeout if any exist
 	const { swapTimeout, clearTimeoutRef } = useSwappableTimeout();
 
@@ -185,43 +189,35 @@ const useTooltipStage = (
 
 	// process and handle timers for show and hide delays
 	useEffect(() => {
-		switch(state.stage) {
+		switch (state.stage) {
 			case '1WaitingToFadeIn':
 				if (state.direction === 'next') {
-					swapTimeout(
-						() => callback1.current(),
-						showDelay ?? 1000,
-					);
-				}
-				else {
+					swapTimeout(() => callback1.current(), showDelay ?? 1000);
+				} else {
 					// stop timeout since we're interupting and don't want it to finish
 					clearTimeoutRef();
 				}
 				break;
 			case '4WaitingToFadeOut':
 				if (state.direction === 'next') {
-					swapTimeout(
-						() => callback4.current(isHoverTarget || isHoverPopper),
-						hideDelay ?? 500,
-					);
-				}
-				else {
+					swapTimeout(() => callback4.current(isHoverTarget || isHoverPopper), hideDelay ?? 500);
+				} else {
 					// stop timeout since we're interupting and don't want it to finish
 					clearTimeoutRef();
 				}
 				break;
 		}
-	}, [ state.stage, isHoverTarget, isHoverPopper ]);
+	}, [state.stage, isHoverTarget, isHoverPopper]);
 
 	// process and handle transition ends
 	useEffect(() => {
 		isTransitionEnd && dispatchState({ type: 'onTransitionEnd' });
-	}, [ isTransitionEnd ]);
+	}, [isTransitionEnd]);
 
 	// process and handle mouse events
 	useEffect(() => {
 		dispatchState({ type: isHoverTarget || isHoverPopper ? 'onMouseOver' : 'onMouseOff' });
-	}, [ isHoverTarget, isHoverPopper ]);
+	}, [isHoverTarget, isHoverPopper]);
 
 	// make it easier on anything that consumes this by turning each stage into a bool
 	return {
@@ -232,8 +228,8 @@ const useTooltipStage = (
 		isStage4WaitingToFadeOut: state.stage === '4WaitingToFadeOut',
 		isStage5FadingOutToHide: state.stage === '5FadingOutToHide',
 		isVisible: state.stage !== '0Hidden' && state.stage !== '1WaitingToFadeIn',
-	}
-}
+	};
+};
 
 const useTooltip = ({
 	hideDelay,
@@ -244,40 +240,49 @@ const useTooltip = ({
 	transitionEndPropName,
 	useClickInsteadOfHover,
 }: {
-	hideDelay?: number,
-	placement?: TooltipProps['position'],
-	popperArrowModifier?: TooltipProps['popperArrowModifier'],
-	popperOffsetModifier?: TooltipProps['popperOffsetModifier'],
-	showDelay?: number,
-	transitionEndPropName: string,
-	useClickInsteadOfHover: boolean,
+	hideDelay?: number;
+	placement?: TooltipProps['position'];
+	popperArrowModifier?: TooltipProps['popperArrowModifier'];
+	popperOffsetModifier?: TooltipProps['popperOffsetModifier'];
+	showDelay?: number;
+	transitionEndPropName: string;
+	useClickInsteadOfHover: boolean;
 }) => {
-	const [ triggerElement, setReferenceElement ] = useState<HTMLElement | null>(null);
-	const [ popperElement, setPopperElement ] = useState<HTMLElement | null>(null);
-	const [ transitionElement, setTransitionElement ] = useState<HTMLElement | null>(null);
-	const isHoverTarget = useDetectClickOrHoverWithinTargets({targetEl: triggerElement, alwaysBlurOnClick: true, useClickInsteadOfHover, ignoreClickOn: popperElement})
-	const isHoverPopper= useDetectClickOrHoverWithinTargets({targetEl: popperElement, alwaysBlurOnClick: false, useClickInsteadOfHover}) // pass nulls to bypass otherwise this will conflict with other click detects (above)
+	const [triggerElement, setReferenceElement] = useState<HTMLElement | null>(null);
+	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
+	const [transitionElement, setTransitionElement] = useState<HTMLElement | null>(null);
+	const isHoverTarget = useDetectClickOrHoverWithinTargets({
+		targetEl: triggerElement,
+		alwaysBlurOnClick: true,
+		useClickInsteadOfHover,
+		ignoreClickOn: popperElement,
+	});
+	const isHoverPopper = useDetectClickOrHoverWithinTargets({
+		targetEl: popperElement,
+		alwaysBlurOnClick: false,
+		useClickInsteadOfHover,
+	}); // pass nulls to bypass otherwise this will conflict with other click detects (above)
 
 	const isTransitionEnd = useDetectTransitionEnd(transitionElement, transitionEndPropName);
 	const stages = useTooltipStage(isTransitionEnd, isHoverTarget, isHoverPopper, hideDelay, showDelay);
-	const [ arrowElement, setArrowElement ] = useState<HTMLElement | null>(null); // the ref for the arrow must be a callback ref
-	const { styles, attributes } = usePopper(triggerElement, popperElement, {
-		placement: placement,
+	const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null); // the ref for the arrow must be a callback ref
+	const { styles: popperStyles, attributes } = usePopper(triggerElement, popperElement, {
+		placement,
 		modifiers: [
 			{
 				name: 'arrow',
 				options: {
 					element: popperArrowModifier?.element ?? arrowElement,
 					padding: popperArrowModifier?.padding ?? 0,
-				}
+				},
 			},
 			{
 				name: 'offset',
 				options: {
 					offset: popperOffsetModifier?.offset || [0, 10],
-				}
-			}
-		]
+				},
+			},
+		],
 	});
 
 	return {
@@ -285,11 +290,11 @@ const useTooltip = ({
 		attributes,
 		setPopperRef: setPopperElement,
 		stages,
-		styles,
+		popperStyles,
 		targetRef: setReferenceElement,
 		transitionRef: setTransitionElement,
 	};
-}
+};
 
 export const Tooltip = (props: TooltipProps) => {
 	const {
@@ -308,15 +313,7 @@ export const Tooltip = (props: TooltipProps) => {
 		focusOnOpen,
 	} = props;
 
-	const {
-		setArrowRef,
-		attributes,
-		setPopperRef,
-		styles: popperStyles,
-		stages,
-		targetRef,
-		transitionRef,
-	} = useTooltip({
+	const { setArrowRef, attributes, setPopperRef, popperStyles, stages, targetRef, transitionRef } = useTooltip({
 		hideDelay: props.hideDelay,
 		placement: props.position,
 		popperArrowModifier: props.popperArrowModifier,
@@ -339,27 +336,20 @@ export const Tooltip = (props: TooltipProps) => {
 	useEffect(() => {
 		if (isFirstRender.current) {
 			isFirstRender.current = false;
+		} else if (isShowing) {
+			onShow?.();
 		} else {
-			if (isShowing) {
-				onShow?.();
-			} else {
-				onHide?.();
-			}
+			onHide?.();
 		}
-	}, [isShowing])
+	}, [isShowing]);
 
 	return (
 		<>
 			<div
-				className={classnames(
-					styles.Tooltip_Target_Container,
-					'Tooltip_Target_Container',
-					className,
-					{
-						[styles.Popper__Showing]: isShowing,
-						'Popper__Showing': isShowing, // this also needs to be globally accessible so other component styles can reference it
-					},
-				)}
+				className={classnames(styles.Tooltip_Target_Container, 'Tooltip_Target_Container', className, {
+					[styles.Popper__Showing]: isShowing,
+					Popper__Showing: isShowing, // this also needs to be globally accessible so other component styles can reference it
+				})}
 				id={id}
 				ref={targetRef}
 				style={style}
@@ -367,9 +357,9 @@ export const Tooltip = (props: TooltipProps) => {
 				{children}
 			</div>
 			{/*
-			  * render if forced or not in the hidden tooltip stage
-			  * note: this needs to render on hover when waiting for initial show delay even those it's not visible
-			*/}
+			 * render if forced or not in the hidden tooltip stage
+			 * note: this needs to render on hover when waiting for initial show delay even those it's not visible
+			 */}
 			{isShowing && (
 				<Portal>
 					{/* this is the dedicated popper container that applies the 3rd party library position styles without conflicting with our custom transition styles */}
@@ -379,9 +369,8 @@ export const Tooltip = (props: TooltipProps) => {
 							'Tooltip_Popper_PositionContainer',
 							popperContainerClassName,
 							{
-								[styles.Popper__Showing]: isShowing,
-								'Popper__Showing': isShowing, // this also needs to be globally accessible so other component styles can reference it
-							},
+								Popper__Showing: isShowing, // this also needs to be globally accessible so other component styles can reference it
+							}
 						)}
 						ref={popperRefCallback}
 						style={popperStyles.popper}
@@ -394,24 +383,15 @@ export const Tooltip = (props: TooltipProps) => {
 								popperVisualContainerClassName,
 								{
 									[styles.Tooltip_Popper_VisualContainer__IsShowing]: stages.isVisible || forceShow,
-									[styles.Tooltip_Popper_VisualContainer__IsTransitionLeaving]: stages.isStage5FadingOutToHide,
-								},
+									[styles.Tooltip_Popper_VisualContainer__IsTransitionLeaving]:
+										stages.isStage5FadingOutToHide,
+								}
 							)}
 							ref={transitionRef}
 							{...attributes.popper}
 						>
-							<div
-								className={classnames(
-									styles.Tooltip_Popper_Inner,
-									'Tooltip_Popper_Inner_Container',
-								)}
-							>
-								<div
-									className={classnames(
-										styles.Tooltip_Popper_Content,
-										'Tooltip_Popper_Content',
-									)}
-								>
+							<div className={classnames(styles.Tooltip_Popper_Inner, 'Tooltip_Popper_Inner_Container')}>
+								<div className={classnames(styles.Tooltip_Popper_Content, 'Tooltip_Popper_Content')}>
 									{props.content}
 								</div>
 							</div>
@@ -419,17 +399,14 @@ export const Tooltip = (props: TooltipProps) => {
 								<div
 									className={classnames(
 										styles.Tooltip_Popper_Arrow_Container,
-										'Tooltip_Popper_Arrow_Container',
+										'Tooltip_Popper_Arrow_Container'
 									)}
 									ref={setArrowRef}
 									style={popperStyles.arrow}
 									{...attributes.popper}
 								>
 									<div
-										className={classnames(
-											styles.Tooltip_Popper_Arrow,
-											'Tooltip_Popper_Arrow',
-										)}
+										className={classnames(styles.Tooltip_Popper_Arrow, 'Tooltip_Popper_Arrow')}
 										{...attributes.popper}
 									/>
 								</div>
@@ -440,7 +417,7 @@ export const Tooltip = (props: TooltipProps) => {
 			)}
 		</>
 	);
-}
+};
 
 Tooltip.defaultProps = {
 	hideDelay: 500,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export default interface IReactComponentProps {
+	onKeyDown?: any;
 	children?: React.ReactNode;
 	className?: string;
 	key?: string | number;

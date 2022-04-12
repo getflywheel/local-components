@@ -11,6 +11,10 @@ $borderThickness: 1px;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.14);
 }
 
+.Tooltip_Popper_PositionContainer {
+	z-index: 10;
+}
+
 .Tooltip_Popper_VisualContainer {
 	padding: 10px 15px;
 	font-weight: 300;
