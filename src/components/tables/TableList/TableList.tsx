@@ -8,59 +8,51 @@ interface IProps extends IReactComponentProps {
 	stripes?: boolean;
 }
 
-export class TableList extends React.Component<IProps> {
-	render () {
-		return (
-			<ul
-				className={classnames(
-					styles.TableList,
-					'TableList', // this also needs to be globally accessible so other component styles can reference it
-					this.props.className,
-					{
-						[styles.Form]: this.props.form,
-						[styles.TableList__NoStripes]: this.props.stripes === false,
-					},
-				)}
-				id={this.props.id}
-				style={this.props.style}
-			>
-				{this.props.children}
-			</ul>
-		);
-	}
-}
+export const TableList = (props: IProps) => {
+	const { className, form, stripes, children, ...otherProps } = props;
+	return (
+		<ul
+			className={classnames(
+				styles.TableList,
+				'TableList', // this also needs to be globally accessible so other component styles can reference it
+				className,
+				{
+					[styles.Form]: form,
+					[styles.TableList__NoStripes]: stripes === false,
+				}
+			)}
+			{...otherProps}
+		>
+			{children}
+		</ul>
+	);
+};
 
 interface ITableListRowProps extends IReactComponentProps {
-	form?: boolean;
 	label?: string;
 	selectable?: boolean;
 }
 
-export class TableListRow extends React.Component<ITableListRowProps> {
-	render () {
-		return (
-			<li
-				className={classnames(
-					styles.TableListRow,
-					'TableListRow', // this also needs to be globally accessible so other component styles can reference it
-					this.props.className,
-				)}
-			>
-				{this.props.label && <strong>{this.props.label}</strong>}
+export const TableListRow = (props: ITableListRowProps) => {
+	const { className, label, selectable, children } = props;
 
-				<div>
-					{
-						this.props.selectable && typeof this.props.children !== 'object'
-							?
-							<input
-								type="text"
-								readOnly={true}
-								value={this.props.children as string | string[] | number}
-							/>
-							: this.props.children
-					}
-				</div>
-			</li>
-		);
-	}
-}
+	return (
+		<li
+			className={classnames(
+				styles.TableListRow,
+				'TableListRow', // this also needs to be globally accessible so other component styles can reference it
+				className
+			)}
+		>
+			{label && <strong>{label}</strong>}
+
+			<div>
+				{selectable && typeof children !== 'object' ? (
+					<input type="text" readOnly value={children as string | string[] | number} />
+				) : (
+					children
+				)}
+			</div>
+		</li>
+	);
+};
