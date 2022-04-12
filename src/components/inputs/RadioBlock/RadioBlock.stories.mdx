@@ -35,7 +35,7 @@ import { default as radioBlockOptions } from './RadioBlockContentExample'
 			default={"test1"}
 			options={{
 				test1: {
-					label: "Test 2",
+					label: "Test 1",
 					content: (
 						<>
 							<Text>
@@ -67,6 +67,68 @@ import { default as radioBlockOptions } from './RadioBlockContentExample'
 							</TextButtonExternal>
 						</>
 					),
+				},
+			}}
+		/>
+	</Story>
+</Canvas>
+
+# RadioBlock with description disabled tooltip example
+
+<Canvas>
+	<Story name="RadioBlock Description Disabled Tooltip">
+		<RadioBlock
+			onChange={() => console.log("onChange")}
+			default={"test1"}
+			options={{
+				test1: {
+					label: "Test 1",
+					content: (
+						<>
+							<Text>
+								This is a description for option 1, Test 1
+							</Text>
+							<TextButtonExternal
+								underline
+								inline={false}
+								onClick={(event) => {event.stopPropagation();}}
+							>
+								Click me!
+							</TextButtonExternal>
+						</>
+					),
+				},
+				test2: {
+					label: "Test 2",
+					disabled: true,
+					content: (
+						<>
+							<Text>
+								This is a description for option 2, Test 2
+							</Text>
+							<TextButtonExternal
+								underline
+								inline={false}
+								onClick={(event) => {event.stopPropagation();}}
+							>
+								Click me!
+							</TextButtonExternal>
+						</>
+					),
+					container: {
+						element: (
+							<Tooltip
+								forceShow
+								content={
+									<div>
+										Hey, this option's disabled.
+										<br />
+										<a>Here's why</a>
+									</div>
+								}
+							/>
+						),
+					},
 				},
 			}}
 		/>

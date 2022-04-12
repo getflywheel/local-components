@@ -54,6 +54,7 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 
 	const onKeyDown = (event: any) => {
 		if (event.key === ' ' || event.key === 'Enter') {
+			event.preventDefault();
 			event.target.click();
 		}
 	};
@@ -62,41 +63,40 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 
 	return (
 		// wrap in optional container
-		<Container {...container}>
+		<Container
+			{...container}
+			role="checkbox"
+			aria-checked={selected}
+			tabIndex={selected ? -1 : 0}
+			onClick={handleClick}
+			onKeyDown={onKeyDown}
+			className={classnames(styles.RadioBlock_Option, className, {
+				[styles.RadioBlock_Option__Disabled]: disabled,
+				[styles.RadioBlock_Option__Warn]: warn,
+				[styles.RadioBlock_Option__HeightSizeNone]: heightSize === 'none',
+				[styles.RadioBlock_Option__HeightSizeMedium]: heightSize === 'm',
+				[styles.RadioBlock_Option__Readonly]: readonly,
+				[styles.RadioBlock_Option__Selected]: selected,
+				[styles.RadioBlock_Option__BorderOnHover]: borderOnHover,
+			})}
+			{...otherProps}
+		>
 			<div
-				role="checkbox"
-				aria-checked={selected}
-				tabIndex={selected ? -1 : 0}
-				onClick={handleClick}
-				onKeyDown={onKeyDown}
-				className={classnames(styles.RadioBlock_Option, className, {
-					[styles.RadioBlock_Option__Disabled]: disabled,
-					[styles.RadioBlock_Option__Warn]: warn,
-					[styles.RadioBlock_Option__HeightSizeNone]: heightSize === 'none',
-					[styles.RadioBlock_Option__HeightSizeMedium]: heightSize === 'm',
-					[styles.RadioBlock_Option__Readonly]: readonly,
-					[styles.RadioBlock_Option__Selected]: selected,
-					[styles.RadioBlock_Option__BorderOnHover]: borderOnHover,
+				className={classnames(styles.RadioBlock_Wrapper, {
+					[styles.RadioBlock_Option_Wrapper_Center]: centerContent,
 				})}
-				{...otherProps}
 			>
-				<div
-					className={classnames(styles.RadioBlock_Wrapper, {
-						[styles.RadioBlock_Option_Wrapper_Center]: centerContent,
-					})}
-				>
-					{label && (
-						<Title size={TitlePropSize.s} className={styles.RadioBlock_Label_Text}>
-							{label}
-						</Title>
-					)}
-					{content && (
-						<div style={{ marginTop: label && '10px' }} className={styles.RadioBlock_Content}>
-							{content}
-						</div>
-					)}
-					<div className={styles.RadioBlock_Arrow}>{svg}</div>
-				</div>
+				{label && (
+					<Title size={TitlePropSize.s} className={styles.RadioBlock_Label_Text}>
+						{label}
+					</Title>
+				)}
+				{content && (
+					<div style={{ marginTop: label && '10px' }} className={styles.RadioBlock_Content}>
+						{content}
+					</div>
+				)}
+				<div className={styles.RadioBlock_Arrow}>{svg}</div>
 			</div>
 		</Container>
 	);

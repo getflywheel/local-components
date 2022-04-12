@@ -21,46 +21,41 @@ const defaultProps: Partial<IContainerProps> = {};
 export const Container = (props: IContainerProps) => {
 	const Tag: any = props.element || 'div';
 	const element: React.ReactElement = props.element as React.ReactElement;
-	const propsWithoutDefaults: Partial<IContainerProps> = {...props};
+	const propsWithoutDefaults: Partial<IContainerProps> = { ...props };
 	delete propsWithoutDefaults.children;
 	delete propsWithoutDefaults.disabled;
 	const doRenderOnlyChildren: boolean = props.disabled === true || Object.keys(propsWithoutDefaults).length === 0;
 	const doRenderContainerWithTagName: boolean = typeof props.element === 'string' || props.element === undefined;
 
-	return (
-		doRenderOnlyChildren
-			?
-			<>
-				{props.children}
-			</>
-			:
-				doRenderContainerWithTagName
-				?
-				<Tag
-					className={classnames(
-						props.className,
-					)}
-					id={props.id}
-					style={{
-						...props.style,
-						...ContainerMarginHelper.getContainerMarginStyle(props),
-					}}
-				>
-					{props.children}
-				</Tag>
-				:
-				React.cloneElement(
-					element,
-					{
-						children: Array(props.children || []).concat(element.props.children || []),
-						className: classnames(props.className, element.props.className),
-						style: {
-							...props.style,
-							...element.props.style,
-							...ContainerMarginHelper.getContainerMarginStyle(props),
-						},
-					},
-				)
+	return doRenderOnlyChildren ? (
+		<>{props.children}</>
+	) : doRenderContainerWithTagName ? (
+		<Tag
+			className={classnames(props.className)}
+			id={props.id}
+			style={{
+				...props.style,
+				...ContainerMarginHelper.getContainerMarginStyle(props),
+			}}
+			onClick={props.onClick}
+			onKeyDown={props.onKeyDown}
+			tabIndex={props.tabIndex}
+		>
+			{props.children}
+		</Tag>
+	) : (
+		React.cloneElement(element, {
+			children: Array(props.children || []).concat(element.props.children || []),
+			className: classnames(props.className, element.props.className),
+			style: {
+				...props.style,
+				...element.props.style,
+				...ContainerMarginHelper.getContainerMarginStyle(props),
+			},
+			onClick: props.onClick,
+			onKeyDown: props.onKeyDown,
+			tabIndex: props.tabIndex,
+		})
 	);
 };
 
