@@ -311,6 +311,7 @@ export const Tooltip = (props: TooltipProps) => {
 		onShow,
 		hideArrow,
 		focusOnOpen,
+		...otherProps
 	} = props;
 
 	const { setArrowRef, attributes, setPopperRef, popperStyles, stages, targetRef, transitionRef } = useTooltip({
@@ -353,6 +354,7 @@ export const Tooltip = (props: TooltipProps) => {
 				id={id}
 				ref={targetRef}
 				style={style}
+				{...otherProps}
 			>
 				{children}
 			</div>
