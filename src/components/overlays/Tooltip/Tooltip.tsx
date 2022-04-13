@@ -430,7 +430,6 @@ export const Tooltip = (props: TooltipProps) => {
 Tooltip.defaultProps = {
 	hideDelay: 500,
 	forceShow: false,
-	offsetPopper: [0, 10],
 	position: 'top',
 	showDelay: 1000,
 	useClickInsteadOfHover: false,
