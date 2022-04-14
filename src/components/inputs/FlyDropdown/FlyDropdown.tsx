@@ -34,6 +34,8 @@ interface IProps extends IReactComponentProps {
 	useClickInsteadOfHover?: boolean;
 	/** Icon to show to the left of the selected item - will not have fill added */
 	selectedIcon?: any;
+	/** Style the trigger textButton as disabled */
+	disabledStyle?: boolean;
 }
 
 const setArrowPadding = ({ popper }: { popper: Rect }) => {
@@ -61,6 +63,7 @@ const FlyDropdown = (props: IProps) => {
 		style,
 		useClickInsteadOfHover,
 		selectedIcon,
+		disabledStyle,
 	} = props;
 	const { popperArrowModifier, popperOffsetModifier, ...restPopperOptions } = popperOptions ?? {};
 	const onClickItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, item: IItems) => {
@@ -129,6 +132,7 @@ const FlyDropdown = (props: IProps) => {
 		>
 			{selectedIcon && <SelectedIcon />}
 			<TextButton
+				disabled={disabledStyle}
 				inline
 				rightIcon={caret && (isShowing ? DashIcon : CaretIcon)}
 				privateOptions={{ padding: 'none' }}
