@@ -18,46 +18,32 @@ export interface IBasicInputProps extends ILocalContainerProps {
 	onKeyUp?: any;
 	invalid?: boolean;
 	invalidMessage?: string;
+	autofocus?: boolean;
 }
 
-export default class BasicInput extends React.Component<IBasicInputProps> {
-	constructor (props: IBasicInputProps) {
-		super(props);
-	}
+const BasicInput = (props: IBasicInputProps) => {
+	const { className, id, name, style, invalid, invalidMessage, autofocus, ...otherProps } = props;
 
-	render () {
-		const {
-			className,
-			id,
-			name,
-			style,
-			invalid,
-			invalidMessage,
-			...props
-		} = this.props;
+	const input = React.useRef<HTMLInputElement>(null);
 
-		return (
-			<div
-				className={classnames(
-					'BasicInput',
-					styles.BasicInput,
-					this.props.className,
-				)}
-				id={id}
-				style={style}
-			>
-				<input
-					name={name}
-					type='text'
-					className={classnames({[`${styles.__Invalid} __Invalid`]: invalid})}
-					{...props}
-				/>
-				{(invalid && invalidMessage) && (
-					<span>{invalidMessage}</span>
-				)}
-				
+	React.useEffect(() => {
+		if (autofocus) {
+			input.current?.focus();
+		}
+	}, []);
 
-			</div>
-		);
-	}
-}
+	return (
+		<div className={classnames('BasicInput', styles.BasicInput, className)} id={id} style={style}>
+			<input
+				name={name}
+				type="text"
+				className={classnames({ [`${styles.__Invalid} __Invalid`]: invalid })}
+				ref={input}
+				{...otherProps}
+			/>
+			{invalid && invalidMessage && <span>{invalidMessage}</span>}
+		</div>
+	);
+};
+
+export default BasicInput;
