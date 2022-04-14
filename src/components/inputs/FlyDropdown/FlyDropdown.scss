@@ -5,6 +5,10 @@
 	display: inline-block;
 	@include cursorPointer;
 
+	> svg {
+		vertical-align: middle;
+	}
+
 	&.FlyDropdown__NavItem {
 		border-bottom: 4px solid transparent;
 		padding: 6px 4px 11px;

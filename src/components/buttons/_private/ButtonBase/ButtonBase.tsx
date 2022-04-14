@@ -141,8 +141,8 @@ const ButtonBase = (props: IButtonBaseProps) => {
 	} = props;
 
 	const Tag: any = tag;
-	const LeftIcon = leftIcon;
-	const RightIcon = rightIcon;
+	const LeftIcon: any = leftIcon;
+	const RightIcon: any = rightIcon;
 
 	const [isActive, setIsActive] = React.useState(active);
 
