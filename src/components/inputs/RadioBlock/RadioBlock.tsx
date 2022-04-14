@@ -176,7 +176,7 @@ const RadioBlock: React.FC<IProps> = (props: IProps) => {
 						heightSize={heightSize || options[optionValue].heightSize}
 						label={options[optionValue].label}
 						value={optionValue}
-						key={options[optionValue].label}
+						key={optionValue}
 						readonly={readonly ?? options[optionValue].readonly}
 						svg={options[optionValue].svg}
 						selected={value === optionValue}
