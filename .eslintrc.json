@@ -3,34 +3,54 @@
 		"node": true,
 		"es2021": true
 	},
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"react",
+		"prettier"
+	],
 	"extends": [
 		"plugin:react/recommended",
 		"airbnb",
-		"airbnb-typescript",
 		"plugin:prettier/recommended"
 	],
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": "latest",
-		"sourceType": "module",
-		"project": "./tsconfig.json"
-	},
-	"plugins": [
-		"react",
-		"@typescript-eslint",
-		"prettier"
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"parserOptions": {
+				"ecmaFeatures": {
+					"jsx": true
+				},
+				"ecmaVersion": "latest",
+				"sourceType": "module",
+				"project": "./tsconfig.json"
+			},
+			"extends": [
+				"plugin:react/recommended",
+				"airbnb",
+				"airbnb-typescript",
+				"plugin:prettier/recommended"
+			],
+			"rules": {
+				"prettier/prettier": "error",
+				"react/jsx-props-no-spreading": "off",
+				"react/function-component-definition": "off",
+				"no-nested-ternary": "off",
+				"react/require-default-props": "off",
+				"no-underscore-dangle": "off",
+				"import/prefer-default-export": "off",
+				"consistent-return": "off",
+				"import/no-extraneous-dependencies": "off"
+			}
+		}
 	],
 	"rules": {
 		"prettier/prettier": "error",
-		"react/jsx-props-no-spreading": "off",
-		"react/function-component-definition": "off",
 		"no-nested-ternary": "off",
 		"react/require-default-props": "off",
 		"no-underscore-dangle": "off",
 		"import/prefer-default-export": "off",
-		"consistent-return": "off"
+		"consistent-return": "off",
+		"import/no-extraneous-dependencies": "off",
+		"import/extensions": "off"
 	}
 }

@@ -13,7 +13,7 @@
 }
 
 @mixin tracking($tracking) {
-	letter-spacing: ( $tracking / 1000 ) * 1em;
+	letter-spacing: calc( $tracking / 1000 ) * 1em;
 }
 
 @mixin defaultFontSettings {

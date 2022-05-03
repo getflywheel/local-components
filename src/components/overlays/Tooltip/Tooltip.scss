@@ -91,14 +91,14 @@ $borderThickness: 1px;
 	}
 
 	&[data-popper-placement^='right'] {
-		left: -$arrowSize / 2 + $borderThickness - 1;
-		top: calc(50% - #{$arrowSizeRotated / 2});
+		left: -1 * calc($arrowSize / 2) + $borderThickness - 1;
+		top: calc(50% - #{calc($arrowSizeRotated / 2)});
 		transform-origin: 49% 57%;
 	}
 
 	&[data-popper-placement^='bottom'] {
-		top: -$arrowSize / 2 + $borderThickness - 1;
-		left: calc(50% - #{$arrowSizeRotated / 2});
+		top: -1 * calc($arrowSize / 2) + $borderThickness - 1;
+		left: calc(50% - #{calc($arrowSizeRotated / 2)});
 		transform-origin: 60% 46%;
 
 		&[data-popper-placement$='start'] {
@@ -111,8 +111,8 @@ $borderThickness: 1px;
 	}
 
 	&[data-popper-placement^='left'] {
-		right: -$arrowSize / 2 + $borderThickness - 1;
-		top: calc(50% - #{$arrowSizeRotated/ 2});
+		right: -1 * calc($arrowSize / 2) + $borderThickness - 1;
+		top: calc(50% - #{calc($arrowSizeRotated/ 2)});
 		transform-origin: 70% 63%;
 	}
 
