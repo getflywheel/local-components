@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @function deprecated($selector, $sinceLocalVersion: '', $sinceComponentsVersion: '', $notes: '') {
 	@return $selector
 }
@@ -34,10 +36,10 @@
 
 @function rad ($angle) {
 	$unit: unit($angle);
-	$unitless: $angle / ($angle * 0 + 1);
+	$unitless: math.div($angle, ($angle * 0 + 1));
 	// If the angle has 'deg' as unit, convert to radians.
 	@if $unit == deg {
-		$unitless: $unitless / 180 * pi();
+		$unitless: calc($unitless / 180) * pi();
 	}
 	@return $unitless;
 }
@@ -47,7 +49,7 @@
 	$angle: rad($angle);
 	// Iterate a bunch of times.
 	@for $i from 0 through 10 {
-		$sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+		$sin: $sin + calc(pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1));
 	}
 	@return $sin;
 }
@@ -57,7 +59,7 @@
 	$angle: rad($angle);
 	// Iterate a bunch of times.
 	@for $i from 0 through 10 {
-		$cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+		$cos: $cos + calc(pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i));
 	}
 	@return $cos;
 }
