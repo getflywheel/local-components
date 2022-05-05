@@ -1,34 +1,29 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import urlParse from 'url-parse';
 
 const isStylesheetLoaded = (href: string) => {
+	// eslint-disable-next-line no-restricted-syntax
+	for (const stylesheet of document.styleSheets) {
+		if (stylesheet.href) {
+			const parsedURL = new URL(stylesheet.href);
 
-	for ( const stylesheet of document.styleSheets ) {
-		if (!stylesheet.href) {
-			continue;
-		}
+			try {
+				const a = fs.realpathSync(path.resolve(href));
+				const b = fs.realpathSync(path.resolve(decodeURI(parsedURL.pathname)));
 
-		const parsedURL = urlParse(stylesheet.href);
-
-		try {
-			const a = fs.realpathSync(path.resolve(href));
-			const b = fs.realpathSync(path.resolve(decodeURI(parsedURL.pathname)));
-
-			if (a === b) {
-				return true;
+				if (a === b) {
+					return true;
+				}
+			} catch (e) {
+				console.error(e);
 			}
-		} catch (e) {
-			console.error(e);
 		}
 	}
 
 	return false;
-
 };
 
-export default function () {
-
+const addStyles = () => {
 	/* Do not inject styles on Styleguide */
 	if (!process) {
 		return;
@@ -40,12 +35,14 @@ export default function () {
 		return;
 	}
 
-	const link = document.createElement( 'link' );
+	const link = document.createElement('link');
 
 	link.href = stylesheetPath;
 	link.type = 'text/css';
 	link.rel = 'stylesheet';
 
-	const head = document.getElementsByTagName( 'head' )[0];
-	head.insertBefore( link, head.firstChild );
-}
+	const head = document.getElementsByTagName('head')[0];
+	head.insertBefore(link, head.firstChild);
+};
+
+export default addStyles;
