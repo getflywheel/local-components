@@ -27,8 +27,7 @@
     "react-resize-observer": "^1.1.1",
     "react-router-dom": "^5.0.1",
     "react-truncate-markup": "^3.0.0",
-    "untildify": "^4.0.0",
-    "url-parse": "^1.4.4"
+    "untildify": "^4.0.0"
   },
   "typescript": {
     "definition": "dist/typings.d.ts"
@@ -79,7 +78,6 @@
     "@types/react-modal": "^3.6.0",
     "@types/react-router-dom": "^5.0.1",
     "@types/resize-observer-browser": "^0.1.6",
-    "@types/url-parse": "^1.4.2",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "babel-loader": "^8.1.0",
