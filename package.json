@@ -5,6 +5,7 @@
   "homepage": "https://build.localbyflywheel.com",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "jsnext:main": "src/index.ts",
   "author": "",
   "license": "MIT",
@@ -29,9 +30,6 @@
     "react-truncate-markup": "^3.0.0",
     "untildify": "^4.0.0",
     "url-parse": "^1.4.4"
-  },
-  "typescript": {
-    "definition": "dist/typings.d.ts"
   },
   "scripts": {
     "start": "run-p 'watch' 'styleguide' 'create-entrypoints'",
@@ -85,7 +83,6 @@
     "babel-loader": "^8.1.0",
     "chokidar-cli": "^1.2.1",
     "css-loader": "^1.0.0",
-    "dts-bundle-webpack": "^1.0.2",
     "enzyme": "^3.8",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^8.10.0",
