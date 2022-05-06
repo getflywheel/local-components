@@ -9,7 +9,11 @@
 		"strict": true,
 		"experimentalDecorators": true,
 		"esModuleInterop": true,
-		"target": "es2015"
+		"target": "es2015",
+		"baseUrl": ".",
+		"paths": {
+			"react-router": ["node_modules/@types/react-router"]
+		}
 	},
 	"include": [
 		"./src/**/*"
