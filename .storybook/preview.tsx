@@ -1,6 +1,6 @@
 import '../src/global.sass';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 
 export const globalTypes = {
 	theme: {
@@ -50,32 +50,32 @@ export const globalTypes = {
 const withMemoryRouter = (Story, context) => {
 	const { theme } = context.globals;
 
+	const themeArr = [
+		theme !== 'dark' && {
+			themeMode: 'Theme__Light',
+			bgColor: '#FFFFFF',
+			textColor: '#262727',
+			header: 'Light Mode',
+		},
+		theme !== 'light' && {
+			themeMode: 'Theme__Dark',
+			bgColor: '#303031',
+			textColor: '#FFFFFF',
+			header: 'Dark Mode',
+		},
+	]
+
 	return (
 		<MemoryRouter>
 			<div
 				style={{
 					display: 'flex',
-					flexDirection: theme === 'stacked'? 'column' : 'row',
+					flexDirection: theme === 'stacked' ? 'column' : 'row',
 				}}
 			>
 				{
-					[
-						// use light mode for everything except dark mode (including stacked and split)
-						theme !== 'dark' && {
-							themeMode: 'Theme__Light',
-							bgColor: '#FFFFFF',
-							textColor: '#262727',
-							header: 'Light Mode',
-						},
-						// use dark mode for everything except dark mode (including stacked and split)
-						theme !== 'light' && {
-							themeMode: 'Theme__Dark',
-							bgColor: '#303031',
-							textColor: '#FFFFFF',
-							header: 'Dark Mode',
-						},
 					// loop over modes to render depending on whether split, stacked, light, or dark
-					].filter(Boolean).map((themeData) => (
+					themeArr.filter(Boolean).map((themeData) => (
 						<div
 							key={themeData.themeMode}
 							className={themeData.themeMode}
@@ -97,15 +97,17 @@ const withMemoryRouter = (Story, context) => {
 								{ themeData.header }
 							</h1>
 							{/* examples that depend on an outer absolute position need this to appear correctly within the story */}
-							<div style={{position: 'relative', flexGrow: '1', overflow: 'auto', padding: '10px'}}>
+							<div style={{position: 'relative', flexGrow: 1, overflow: 'auto', padding: '10px'}}>
 								<Story {...context} />
 							</div>
 						</div>
 					))
 				}
+
 			</div>
 		</MemoryRouter>
 	)
 }
 
 export const decorators = [withMemoryRouter];
+
