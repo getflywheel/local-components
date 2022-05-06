@@ -10,6 +10,7 @@
 		"experimentalDecorators": true,
 		"esModuleInterop": true,
 		"target": "es2015",
+		// see https://github.com/storybookjs/storybook/issues/16837#issuecomment-984006866
 		"baseUrl": ".",
 		"paths": {
 			"react-router": ["node_modules/@types/react-router"]
