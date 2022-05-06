@@ -136,6 +136,7 @@
     "fstream": ">=1.0.12",
     "tar": ">=2.2.2",
     "lodash": ">=4.17.13",
-    "terser-webpack-plugin": ">=2.2.2"
+    "terser-webpack-plugin": ">=2.2.2",
+	"react-router-dom": "^5.0.1"
   }
 }
