@@ -132,10 +132,8 @@
   },
   "resolutions": {
     "@types/react": "^16.9.41",
-    "js-yaml": ">=3.13.1",
     "fstream": ">=1.0.12",
     "tar": ">=2.2.2",
-    "lodash": ">=4.17.13",
-    "terser-webpack-plugin": ">=2.2.2"
+    "lodash": ">=4.17.13"
   }
 }
