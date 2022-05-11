@@ -7,7 +7,6 @@ module.exports = {
 		"../src/**/*.stories.mdx",
 	],
 	"addons": [
-		'storybook-addon-themes',
 		{
 			name: '@storybook/addon-essentials',
 			options: {

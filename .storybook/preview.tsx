@@ -48,16 +48,14 @@ export const globalTypes = {
  * @param {*} context
  */
 const withMemoryRouter = (Story, context) => {
-	const { theme } = context.globals;
-
 	const themeArr = [
-		theme !== 'dark' && {
+		{
 			themeMode: 'Theme__Light',
 			bgColor: '#FFFFFF',
 			textColor: '#262727',
 			header: 'Light Mode',
 		},
-		theme !== 'light' && {
+		{
 			themeMode: 'Theme__Dark',
 			bgColor: '#303031',
 			textColor: '#FFFFFF',
@@ -70,7 +68,7 @@ const withMemoryRouter = (Story, context) => {
 			<div
 				style={{
 					display: 'flex',
-					flexDirection: theme === 'stacked' ? 'column' : 'row',
+					flexDirection: 'row',
 				}}
 			>
 				{
@@ -84,8 +82,8 @@ const withMemoryRouter = (Story, context) => {
 								color: themeData.textColor,
 								display: 'flex',
 								flexDirection: 'column',
-								flex: theme === 'stacked' || theme === 'split' ? '0 0 50%' : '1',
-								minHeight: theme === 'stacked'? '0' : 'initial', // silly flexbox fix
+								flex: '0 0 50%',
+								minHeight: 'initial', // silly flexbox fix
 							}}
 						>
 							<h1
