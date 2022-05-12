@@ -39,7 +39,6 @@ interface IProps extends IReactComponentProps {
 	portalClassName?: string;
 	shouldCloseOnOverlayClick?: boolean;
 	hideCloseIcon?: boolean;
-
 }
 
 export default class FlyModal extends React.Component<IProps> {
