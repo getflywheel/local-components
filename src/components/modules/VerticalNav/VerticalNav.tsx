@@ -1,26 +1,19 @@
+/* eslint-disable max-classes-per-file */
 import * as React from 'react';
-import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
 import { NavLink } from 'react-router-dom';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import * as styles from './VerticalNav.scss';
 import FlyTooltip from '../../overlays/FlyTooltip/FlyTooltip';
 
-export class VerticalNav extends React.Component<IReactComponentProps> {
-	render () {
-		return (
-			<div
-				className={classnames(
-					styles.VerticalNav,
-					this.props.className,
-				)}
-				id={this.props.id}
-				style={this.props.style}
-			>
-				{this.props.children}
-			</div>
-		);
-	}
-}
+export const VerticalNav = (props: IReactComponentProps) => {
+	const { className, id, children, style } = props;
+	return (
+		<div className={classnames(styles.VerticalNav, className)} id={id} style={style}>
+			{children}
+		</div>
+	);
+};
 
 interface IProps extends IReactComponentProps {
 	className?: string;
@@ -33,101 +26,73 @@ interface IProps extends IReactComponentProps {
 	type?: 'addsite' | 'filler' | 'navlink' | 'switcher';
 }
 
-export class VerticalNavItem extends React.Component<IProps> {
-	static defaultProps: Partial<IProps> = {
-		fadeIn: true,
-		type: 'navlink',
+export const VerticalNavItem = (props: IProps) => {
+	const { className, fadeIn, navLinkActive, navLinkActiveClassName, navLinkClass, routeTo, tooltip, type, children } =
+		props;
+
+	const renderWrapper = (child: any, additionalTooltipClassName?: string | string[]) => {
+		return tooltip ? (
+			<FlyTooltip
+				className={classnames(styles.VerticalNavItem, additionalTooltipClassName, className)}
+				content={tooltip}
+				position="right"
+				hoverIntent
+			>
+				{child}
+			</FlyTooltip>
+		) : (
+			<div className={classnames(styles.VerticalNavItem, className)}>{child}</div>
+		);
 	};
 
-	renderWrapper (children: any, additionalTooltipClassName?: string | string[]) {
-		return (
-			this.props.tooltip
-				?
-				(
-					<FlyTooltip
-						className={classnames(
-							styles.VerticalNavItem,
-							additionalTooltipClassName,
-							this.props.className,
-						)}
-						content={this.props.tooltip}
-						position="right"
-						hoverIntent={true}
-					>
-						{children}
-					</FlyTooltip>
-				)
-				:
-				(
-					<div
-						className={classnames(
-							styles.VerticalNavItem,
-							this.props.className,
-						)}
-					>
-						{children}
-					</div>
-				)
-		);
-	}
-
-	renderTypeNavLink (additionalTooltipClassName?: string | string[], additionalNavLinkClass?: string | string[]) {
-		return this.renderWrapper(
-			(
-				<NavLink
-					to={this.props.routeTo || ''}
-					exact={false}
-					activeClassName={this.props.navLinkActiveClassName || '__Active'}
-					className={classnames(
-						this.props.navLinkClass,
-						additionalNavLinkClass,
-						{
-							'__Active': this.props.navLinkActive,
-							'__FadeIn': this.props.fadeIn,
-						},
-					)}
-				>
-					{this.props.children}
-				</NavLink>
-			),
-			additionalTooltipClassName,
-		);
-	}
-
-	renderTypeFiller () {
-		return <div className={styles.VerticalNavItem_DragRegion}/>;
-	}
-
-	renderTypeAddSite () {
-		return this.renderTypeNavLink(styles.FlyTooltip__AddSite, [styles.VerticalNav_Add, 'TID_VerticalNav_NavLink_Add']);
-	}
-
-	renderTypeSwitcher () {
-		return (
-			<div
-				className={classnames(
-					styles.VerticalNav_NonNavLinkItemOuter,
-					this.props.className,
-				)}
+	const renderTypeNavLink = (
+		additionalTooltipClassName?: string | string[],
+		additionalNavLinkClass?: string | string[]
+	) => {
+		return renderWrapper(
+			<NavLink
+				to={routeTo || ''}
+				exact={false}
+				activeClassName={navLinkActiveClassName || '__Active'}
+				className={classnames(navLinkClass, additionalNavLinkClass, {
+					__Active: navLinkActive,
+					__FadeIn: fadeIn,
+				})}
 			>
-				{this.props.children}
-			</div>
+				{children}
+			</NavLink>,
+			additionalTooltipClassName
 		);
-	}
+	};
 
-	render () {
-		switch (this.props.type) {
-			case 'addsite':
-				return this.renderTypeAddSite();
-			case 'filler':
-				return this.renderTypeFiller();
-			case 'navlink':
-				return this.renderTypeNavLink();
-			case 'switcher':
-				return this.renderTypeSwitcher();
-			default:
-				console.error(`The VerticalNavItem type '${this.props.type}' is invalid and will not render.`);
-				return null;
-		}
+	const renderTypeFiller = () => {
+		return <div className={styles.VerticalNavItem_DragRegion} />;
+	};
+
+	const renderTypeAddSite = () => {
+		return renderTypeNavLink(styles.FlyTooltip__AddSite, [styles.VerticalNav_Add, 'TID_VerticalNav_NavLink_Add']);
+	};
+
+	const renderTypeSwitcher = () => {
+		return <div className={classnames(styles.VerticalNav_NonNavLinkItemOuter, className)}>{children}</div>;
+	};
+
+	switch (type) {
+		case 'addsite':
+			return renderTypeAddSite();
+		case 'filler':
+			return renderTypeFiller();
+		case 'navlink':
+			return renderTypeNavLink();
+		case 'switcher':
+			return renderTypeSwitcher();
+		default:
+			console.error(`The VerticalNavItem type '${type}' is invalid and will not render.`);
+			return null;
 	}
-}
+};
+
+VerticalNavItem.defaultProps = {
+	fadeIn: true,
+	type: 'navlink',
+};
