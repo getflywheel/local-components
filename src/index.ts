@@ -1,4 +1,5 @@
 import addStyles from './add-styles';
+import './global.sass';
 
 addStyles();
 
