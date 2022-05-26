@@ -40,39 +40,27 @@ export interface IconSvgStoryMeta {
  * @param IconComponent The icon component to be decorated by the hoc.
  * @param neutralFill Whether to set the color of the svg path fill to the theme's neutral gray color.
  */
-const _withIconSvg = <P extends object>(
-	IconComponent: any,
-	neutralFill: boolean,
-): React.FC<P & IconSvgProps> => ({
-	...props
-}) => {
-	const {
-		className,
-		id,
-		key,
-		style,
-		...otherProps
-	} = props;
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const _withIconSvg =
+	<P extends object>(IconComponent: any, neutralFill: boolean, neutralStroke: boolean): React.FC<P & IconSvgProps> =>
+	({ ...props }: P & IconSvgProps) => {
+		const { className, id, key, style, ...otherProps } = props;
 
-	const render = (
-		<IconComponent
-			className={classnames(
-				styles.IconSvg,
-				'IconSvg',
-				className,
-				{
+		const render = (
+			<IconComponent
+				className={classnames(styles.IconSvg, 'IconSvg', className, {
 					[styles.IconSvg__neutralizeFill]: neutralFill,
-				},
-			)}
-			id={id}
-			key={key}
-			style={style}
-			{...otherProps as P}
-		/>
-	);
+					[styles.IconSvg__neutralizeStroke]: neutralStroke,
+				})}
+				id={id}
+				key={key}
+				style={style}
+				{...(otherProps as P)}
+			/>
+		);
 
-	return render;
-}
+		return render;
+	};
 
 /**
  * HOC that adds additional props and styles to icons.
@@ -84,14 +72,15 @@ const withIconSvg = <P extends object>(
 	IconComponent: any,
 	neutralFill: boolean,
 	meta: IconSvgStoryMeta,
+	neutralStroke: boolean = false
 ): React.FC<P & IconSvgProps> => {
-	const HocComponent = _withIconSvg(IconComponent, neutralFill);
+	const HocComponent = _withIconSvg(IconComponent, neutralFill, neutralStroke);
 
 	// store the meta data in prototype so it can easily be accessed later (the hoc makes this a little trickier)
 	// @ts-ignore
 	HocComponent.meta = meta;
 
 	return HocComponent as any;
-}
+};
 
 export default withIconSvg;
