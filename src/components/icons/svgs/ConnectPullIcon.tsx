@@ -1,11 +1,11 @@
 import * as React from 'react';
 import withIconSvg from '../helpers/withIconSvg';
-import ConnectPush from '../../../svg/connect-pull.svg';
+import ConnectPull from '../../../svg/connect-pull.svg';
 
-const ConnectPushIcon: React.FC = (props) => <ConnectPush {...props} />;
+const ConnectPullIcon: React.FC = (props) => <ConnectPull {...props} />;
 
 export default withIconSvg(
-	ConnectPushIcon,
+	ConnectPullIcon,
 	false,
 	{
 		tags: ['connect', 'host', 'push', 'remote'],
