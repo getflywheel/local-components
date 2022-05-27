@@ -4,11 +4,6 @@ import ConnectPush from '../../../svg/connect-push.svg';
 
 const ConnectPushIcon: React.FC = (props) => <ConnectPush {...props} />;
 
-export default withIconSvg(
-	ConnectPushIcon,
-	false,
-	{
-		tags: ['connect', 'host', 'push', 'remote'],
-	},
-	true
-);
+export default withIconSvg(ConnectPushIcon, true, {
+	tags: ['connect', 'host', 'push', 'remote'],
+});
