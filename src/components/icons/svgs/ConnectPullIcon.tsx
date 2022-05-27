@@ -5,5 +5,5 @@ import ConnectPull from '../../../svg/connect-pull.svg';
 const ConnectPullIcon: React.FC = (props) => <ConnectPull {...props} />;
 
 export default withIconSvg(ConnectPullIcon, true, {
-	tags: ['connect', 'host', 'push', 'remote'],
+	tags: ['connect', 'host', 'pull', 'remote'],
 });
