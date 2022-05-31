@@ -123,6 +123,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "resolutions": {
+	"trim": "^0.0.3",
     "@types/react": "^16.14.26",
     "fstream": ">=1.0.12",
     "tar": ">=2.2.2",
