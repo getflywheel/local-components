@@ -93,7 +93,7 @@
 	}
 
 	.__Site__Label {
-		@include theme-color-gray-else-gray15;
+		@include __theme-color($graydark, $gray15);
 		font-weight: 700;
 	}
 
