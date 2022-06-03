@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './OfflineBanner.scss';
+import styles from './OfflineBanner.scss';
 import { default as IReactComponentProps } from '../../../common/structures/IReactComponentProps';
 import OfflineIcon from '../../icons/svgs/OfflineIcon';
 

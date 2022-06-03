@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './AccordionItem.scss';
+import styles from './AccordionItem.scss';
 import { Container } from '../../modules/Container/Container';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import AnimateHeight from 'react-animate-height';

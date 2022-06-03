@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './IconsStoriesAllFooter.scss';
+import styles from './IconsStoriesAllFooter.scss';
 import { Text } from '../text/Text/Text';
 import FlySelect from '../inputs/FlySelect/FlySelect';
 import { IconStoriesAllContext } from './IconsStoriesAll';

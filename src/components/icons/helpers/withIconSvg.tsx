@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './withIconSvg.scss';
+import styles from './withIconSvg.scss';
 
 /**
  * Note: need to export to avoid error in Icons namespace.

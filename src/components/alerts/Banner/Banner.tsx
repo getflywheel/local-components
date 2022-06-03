@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from './Banner.sass';
+import styles from './Banner.sass';
 import WarningSVG from '../../../svg/warning.svg';
 import CloseSVG from '../../../svg/close--small.svg';
 import { ButtonPropColor, ButtonPropForm } from '../../buttons/_private/ButtonBase/ButtonBase';

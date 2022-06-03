@@ -9,9 +9,10 @@ module.exports = {
 			{
 				loader: 'css-loader',
 				options: {
-					modules: true,
+					modules: {
+						localIdentName: `[local]_[hash:base64:5]_v${packageJson.version.replace(/\./g, '-')}`,
+					},
 					importLoaders: 1,
-					localIdentName: `[local]_[hash:base64:5]_v${packageJson.version.replace(/\./g, '-')}`,
 				},
 			},
 			{
@@ -28,16 +29,13 @@ module.exports = {
 		],
 	}),
 	reactSvg: {
-		test: /\.svg$/,
-		issuer: {
-			test: /\.[tj]sx?$/,
-		},
+		test: /\.svg$/i,
+		issuer: /\.[tj]sx?$/,
 		use: [
-			'babel-loader',
 			{
-				loader: 'react-svg-loader',
+				loader: '@svgr/webpack',
 				options: {
-					svgo: {
+					svgoOptions: {
 						plugins: [
 							{
 								inlineStyles: { onlyMatchedOnce: false },
@@ -54,9 +52,7 @@ module.exports = {
 	 */
 	cssSvg: {
 		test: /\.(svg)$/i,
-		issuer: {
-			test: /\.(css|sass|scss)$/,
-		},
+		issuer: /\.(css|sass|scss)$/,
 		use: [
 			{
 				loader: 'url-loader',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from './TabNav.sass';
+import styles from './TabNav.sass';
 
 interface IProps extends IReactComponentProps {
 	tag?: string;

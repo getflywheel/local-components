@@ -3,7 +3,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import ResizeObserver, { DOMRect } from 'react-resize-observer';
 import { VirtualListHelper, IVirtualListHelperCalculations } from './helpers/VirtualListHelper';
 import classnames from 'classnames';
-import * as styles from './VirtualList.scss';
+import styles from './VirtualList.scss';
 import { ReactElement } from 'react';
 import { ScrollShadow } from '../../overlays/ScrollShadow/ScrollShadow';
 

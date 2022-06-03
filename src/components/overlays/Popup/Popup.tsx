@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './Popup.sass';
+import styles from './Popup.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import cloneNodes from '../../../utils/cloneNodes';
 

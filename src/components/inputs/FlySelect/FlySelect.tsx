@@ -4,7 +4,7 @@ import CheckSVG from '../../../svg/checkmark--big.svg';
 import DownloadSmallSVG from '../../../svg/download--small.svg';
 import ArrowRightSVG from '../../../svg/arrow--right.svg';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import * as styles from './FlySelect.scss';
+import styles from './FlySelect.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { CaretIcon } from '../../icons/Icons'
 

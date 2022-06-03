@@ -1,6 +1,6 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import * as styles from './ClippedContent.sass';
+import styles from './ClippedContent.sass';
 import classnames from 'classnames';
 
 interface IProps extends IReactComponentProps {

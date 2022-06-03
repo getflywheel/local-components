@@ -5,7 +5,7 @@ import * as Icons from './Icons';
 import { Icons as IconsNamespace } from './Icons';
 import InputSearch from '../inputs/InputSearch/InputSearch';
 import { useContext, useState } from 'react';
-import * as styles from './IconsStoriesAll.scss';
+import styles from './IconsStoriesAll.scss';
 import { IconSvgStoryMeta } from './helpers/withIconSvg';
 import { IconsStoriesAllFooter } from './IconsStoriesAllFooter';
 

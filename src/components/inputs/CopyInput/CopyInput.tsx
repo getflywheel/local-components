@@ -1,7 +1,7 @@
 import * as React from "react";
 import classnames from "classnames";
 import { CopyButton } from "../../buttons/CopyButton/CopyButton";
-import * as styles from "./CopyInput.scss";
+import styles from "./CopyInput.scss";
 import { IBasicInputProps } from "../BasicInput/BasicInput";
 import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
 
@@ -88,8 +88,8 @@ export const CopyInput = (props: ICopyInputProps) => {
 						spellCheck="false"
 					/>
 				</Tooltip>
-				<Tooltip 
-					className={styles.CopyInput__CopyButton} 
+				<Tooltip
+					className={styles.CopyInput__CopyButton}
 					{...copyButtonTooltipProps}
 					hideTooltip={copyButtonTooltipProps ? copyButtonTooltipProps?.hideTooltip : true}
 				>

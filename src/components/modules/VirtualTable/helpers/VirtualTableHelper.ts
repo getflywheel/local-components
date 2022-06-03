@@ -1,8 +1,11 @@
 /* eslint-disable class-methods-use-this */
 import * as React from 'react';
 import memoizeOne from 'memoize-one';
-import * as styles from '../VirtualTable.scss';
-import { IVirtualTableProps, VirtualTableDataType, VirtualTableHeaderObjectType } from '../VirtualTable';
+import styles from '../VirtualTable.scss';
+import {
+	IVirtualTableProps,
+	VirtualTableDataType, VirtualTableHeaderObjectType,
+} from '../VirtualTable';
 import { IVirtualTableRowProps } from '../components/VirtualTableRow';
 
 export interface VirtualTableHelperCalculations {

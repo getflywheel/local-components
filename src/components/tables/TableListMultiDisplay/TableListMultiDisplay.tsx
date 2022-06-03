@@ -3,7 +3,7 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import classnames from 'classnames';
 import { TableList } from '../TableList/TableList';
 import isEqual from 'lodash.isequal';
-import * as styles from '../TableList/TableList.sass';
+import styles from '../TableList/TableList.sass';
 import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 

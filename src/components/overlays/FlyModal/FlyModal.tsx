@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './FlyModal.sass';
+import styles from './FlyModal.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import Close from '../../buttons/Close/Close';
 

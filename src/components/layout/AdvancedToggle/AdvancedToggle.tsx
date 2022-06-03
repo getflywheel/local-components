@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from './AdvancedToggle.sass';
+import styles from './AdvancedToggle.sass';
 import CaretSVG from '../../../svg/caret.svg';
 
 interface IProps extends IReactComponentProps {

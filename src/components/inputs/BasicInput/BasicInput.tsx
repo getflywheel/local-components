@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './BasicInput.scss';
+import styles from './BasicInput.scss';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
 export interface IBasicInputProps extends ILocalContainerProps {

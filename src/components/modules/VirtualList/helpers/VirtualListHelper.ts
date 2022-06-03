@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { IVirtualListProps } from '../VirtualList';
-import * as styles from '../VirtualList.scss';
+import styles from '../VirtualList.scss';
 
 export interface IVirtualListHelperCalculations {
 	containerSizePx: number;

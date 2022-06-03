@@ -3,7 +3,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import * as styles from './VerticalNav.scss';
+import styles from './VerticalNav.scss';
 import FlyTooltip from '../../overlays/FlyTooltip/FlyTooltip';
 
 export const VerticalNav = (props: IReactComponentProps) => {

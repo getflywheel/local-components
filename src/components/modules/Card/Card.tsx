@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from './Card.sass';
+import styles from './Card.sass';
 import Truncate from '../../text/Truncate/Truncate';
 import { Title } from '../../text/Title/Title';
 import { FunctionGeneric } from '../../../common/structures/Generics';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import CompleteSVG from '../../../svg/complete.svg';
-import * as styles from './Stepper.sass';
+import styles from './Stepper.sass';
 
 interface IProps extends IReactComponentProps {
 	children: React.ReactNode;

@@ -1,11 +1,13 @@
+const { mergeWithCustomize, customizeObject } = require('webpack-merge');
 const path = require('path');
-const merge = require('webpack-merge');
 
 const port = process.env.PORT || 1212;
 const publicPath = `http://localhost:${port}/dist`;
 
-module.exports = merge.strategy({
-	entry: 'prepend',
+module.exports = mergeWithCustomize({
+	customizeObject: customizeObject({
+		entry: 'prepend',
+	}),
 })(require('./webpack.common.js'), {
 	mode: 'development',
 	entry: [`webpack-dev-server/client?http://localhost:${port}/`],

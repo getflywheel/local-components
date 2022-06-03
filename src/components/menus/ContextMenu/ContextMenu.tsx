@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './ContextMenu.scss';
+import styles from './ContextMenu.scss';
 import { DotsIcon } from '../../icons/Icons';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';

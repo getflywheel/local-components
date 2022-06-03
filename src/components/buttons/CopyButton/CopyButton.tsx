@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import { Container } from '../../modules/Container/Container';
 import { CopyButtonIcon, CopiedStateIconVariants, UncopiedStateIconVariants } from './_private/CopyButtonIcon';
-import * as styles from './CopyButton.scss';
+import styles from './CopyButton.scss';
 
 /**
  * This lib is only exported as a CommonJS module, so the require syntax must be used

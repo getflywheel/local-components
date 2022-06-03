@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
 const sharedRules = require('./webpack/shared-rules');
 
@@ -15,18 +15,17 @@ module.exports = {
 		extensions: ['.ts', '.tsx', '.js', '.jsx'],
 	},
 	target: 'electron-renderer',
+	externalsPresets: { electronRenderer: true },
 	externals: [
 		nodeExternals({
 			modulesDir: './node_modules',
-			whitelist: [/webpack-dev-server/, /webpack\/hot/],
+			allowlist: [/webpack-dev-server/, /webpack\/hot/],
 		}),
 	],
 	plugins: [
-		new ExtractCssChunks({
+		new MiniCSSExtractPlugin({
 			filename: 'scoped.css',
 			chunkFilename: '[id].css',
-			hot: true,
-			cssModules: true,
 		}),
 	],
 	module: {
@@ -37,7 +36,7 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			sharedRules.sass({
-				loader: ExtractCssChunks.loader,
+				loader: MiniCSSExtractPlugin.loader,
 				options: {},
 			}),
 			sharedRules.reactSvg,
@@ -45,9 +44,5 @@ module.exports = {
 			sharedRules.cssSvg,
 		],
 	},
-	node: {
-		__dirname: false,
-		fs: false,
-		path: false,
-	},
+	node: false,
 };

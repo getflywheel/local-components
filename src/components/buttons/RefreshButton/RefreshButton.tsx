@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './RefreshButton.scss';
+import styles from './RefreshButton.scss';
 import { RefreshIcon } from '../../icons/svgs/RefreshIcon';
 import { TextButton, ITextButtonProps } from '../TextButton/TextButton';
 

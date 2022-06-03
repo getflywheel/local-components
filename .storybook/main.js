@@ -3,6 +3,9 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+	core: {
+		builder: 'webpack5',
+	},
 	"stories": [
 		"../src/**/*.stories.mdx",
 	],
@@ -34,6 +37,8 @@ module.exports = {
 				resource.request = path.resolve(__dirname, '../src', '__mocks__', 'electron.js');
 			})
 		);
+
+		config.resolve.fallback = { ...config.resolve.fallback, os: require.resolve('os-browserify/browser') };
 
 		return config;
 	},
