@@ -4,7 +4,7 @@ import { Container } from '../../modules/Container/Container';
 import CircleWarnIcon from '../../icons/svgs/CircleWarnIcon';
 import { CloseSmallIcon } from '../../icons/svgs/CloseSmallIcon';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
-import * as styles from './Alert.scss';
+import styles from './Alert.scss';
 
 export interface IAlertProps extends ILocalContainerProps {
 	/** If true, close icon will be present, component will return null on click*/

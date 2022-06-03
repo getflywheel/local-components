@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './VirtualListExample.scss';
+import styles from './VirtualListExample.scss';
 import { VirtualList } from '../VirtualList';
 import Divider from '../../../layout/Divider/Divider';
 import Checkbox from '../../../inputs/Checkbox/Checkbox';

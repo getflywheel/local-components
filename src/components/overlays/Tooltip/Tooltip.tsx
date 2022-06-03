@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Options } from '@popperjs/core/lib/modifiers/arrow';
 import { Options as OffsetOptions } from '@popperjs/core/lib/modifiers/offset';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import * as styles from './Tooltip.scss';
+import styles from './Tooltip.scss';
 import { Portal } from '../../../common/helpers/Portal';
 import { useDetectTransitionEnd } from '../../../common/helpers/useDetectTransitionEnd';
 import { useSwappableTimeout } from '../../../common/helpers/useTimeout';

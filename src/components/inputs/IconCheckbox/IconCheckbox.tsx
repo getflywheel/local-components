@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import * as styles from './IconCheckbox.scss';
+import styles from './IconCheckbox.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface ISvgProps {

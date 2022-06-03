@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './ComponentExampleBase.scss';
+import styles from './ComponentExampleBase.scss';
 import IReactComponentProps from '../structures/IReactComponentProps';
 import { Button } from '../../components/buttons/Button/Button';
 import { Title, TitlePropSize } from '../../components/text/Title/Title';

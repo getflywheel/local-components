@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '../../buttons/Button/Button';
 import Card from '../../modules/Card/Card';
-import * as styles from './RadioBlockContentExample.scss';
+import styles from './RadioBlockContentExample.scss';
 
 interface BlueprintCardProps {
 	blueprintName: string;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import * as styles from '../VirtualTable.scss';
+import styles from '../VirtualTable.scss';
 import { VirtualTableContext, IVirtualTableContext } from '../helpers/VirtualTableContext';
 import { IVirtualTableCellRendererDataArgs, IVirtualTableProps, IVirtualTableOnChangeRowDataArgs } from '../VirtualTable';
 

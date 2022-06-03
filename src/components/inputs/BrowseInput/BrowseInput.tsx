@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './BrowseInput.sass';
+import styles from './BrowseInput.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
 import untildify from 'untildify';

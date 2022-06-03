@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import classnames from 'classnames';
-import * as styles from './InputPasswordToggle.scss'
+import styles from './InputPasswordToggle.scss'
 import EyeSVG from '../../../svg/eye.svg';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import Checkbox from '../Checkbox/Checkbox';
@@ -16,7 +16,7 @@ interface IProps extends ILocalContainerProps {
 }
 
 const InputPasswordToggle = (props: IProps) => {
-	const { 
+	const {
 		className,
 		style,
 		id,
@@ -27,7 +27,7 @@ const InputPasswordToggle = (props: IProps) => {
 		checkbox,
 		value,
 		onChange,
-		...otherProps 
+		...otherProps
 	} = props;
 
 	const [inputType, setInputType] = useState(type)

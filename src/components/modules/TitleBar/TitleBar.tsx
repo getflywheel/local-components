@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
-import * as styles from './TitleBar.scss';
+import styles from './TitleBar.scss';
 import classnames from 'classnames';
 import { Container } from '../Container/Container';
 

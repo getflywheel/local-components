@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './VirtualTableExample.scss';
+import styles from './VirtualTableExample.scss';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 import Checkbox from '../../../inputs/Checkbox/Checkbox';
 import FlySelect from '../../../inputs/FlySelect/FlySelect';

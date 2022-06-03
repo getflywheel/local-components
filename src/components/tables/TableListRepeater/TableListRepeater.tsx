@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { TableList } from '../TableList/TableList';
 import CloseSmallSVG from '../../../svg/close--small.svg';
 import isEqual from 'lodash.isequal';
-import * as styles from '../TableList/TableList.sass';
+import styles from '../TableList/TableList.sass';
 import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import { Button } from '../../buttons/Button/Button';
 import { FunctionGeneric } from '../../../common/structures/Generics';

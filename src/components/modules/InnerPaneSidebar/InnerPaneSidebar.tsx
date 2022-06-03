@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './InnerPaneSidebar.sass';
+import styles from './InnerPaneSidebar.sass';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { Title } from '../../text/Title/Title';

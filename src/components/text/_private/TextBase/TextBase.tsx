@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './TextBase.scss';
+import styles from './TextBase.scss';
 import ILocalContainerProps from '../../../../common/structures/ILocalContainerProps';
 import { Container } from '../../../modules/Container/Container';
 

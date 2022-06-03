@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from '../VirtualTable.scss';
+import styles from '../VirtualTable.scss';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../../common/structures/IReactComponentProps';
 import { VirtualTableCell } from './VirtualTableCell';

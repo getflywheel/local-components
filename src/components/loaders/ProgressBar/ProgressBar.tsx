@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import * as styles from './ProgressBar.sass';
+import styles from './ProgressBar.sass';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 
 interface IProps {

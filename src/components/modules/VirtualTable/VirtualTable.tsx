@@ -3,7 +3,7 @@ import { VirtualList } from '../VirtualList/VirtualList';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { VirtualTableRow } from './components/VirtualTableRow';
 import classnames from 'classnames';
-import * as styles from './VirtualTable.scss';
+import styles from './VirtualTable.scss';
 import { VirtualTableHelper } from './helpers/VirtualTableHelper';
 import { IVirtualTableContext, VirtualTableContext } from './helpers/VirtualTableContext';
 import {IVirtualListProps} from "../VirtualList/VirtualList";

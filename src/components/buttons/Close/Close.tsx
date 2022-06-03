@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import * as styles from './Close.scss';
+import styles from './Close.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { CloseIcon } from '../../icons/Icons';
 import { ButtonBase } from '../_private/ButtonBase/ButtonBase';

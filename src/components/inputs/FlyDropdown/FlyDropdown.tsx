@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Rect } from '@popperjs/core';
-import * as styles from './FlyDropdown.scss';
+import styles from './FlyDropdown.scss';
 import { CaretIcon, CheckmarkMixedIcon } from '../../icons/Icons';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './AnimationExample2.scss';
+import styles from './AnimationExample2.scss';
 import { Animate } from 'react-move';
 import { Button } from '../../../buttons/Button/Button';
 
