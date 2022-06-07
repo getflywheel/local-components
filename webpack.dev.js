@@ -10,10 +10,6 @@ module.exports = mergeWithCustomize({
 	}),
 })(require('./webpack.common.js'), {
 	mode: 'development',
-	entry: [`webpack-dev-server/client?http://localhost:${port}/`],
-	output: {
-		publicPath: `http://localhost:${port}/dist/`,
-	},
 	devServer: {
 		port,
 		hot: 'only',
@@ -21,6 +17,11 @@ module.exports = mergeWithCustomize({
 		devMiddleware: {
 			publicPath,
 			writeToDisk: true,
+		},
+		client: {
+			webSocketURL: {
+				hostname: 'localhost',
+			},
 		},
 		static: path.join(__dirname, 'dist'),
 	},
