@@ -1,0 +1,31 @@
+@import '../../../styles/_partials/index';
+
+.Combobox {
+	// host modifiers
+	&.Combobox__Readonly {
+		@include if-theme-light() {
+			background-color: $gray2;
+		}
+		@include if-theme-dark() {
+			background-color: $gray-dark-alt;
+		}
+	}
+
+	.Combobox__Caret {
+		position: absolute;
+		right: 9px;
+		top: 45%;
+		width: 14px;
+		height: 6px;
+
+		path {
+			@include __theme-fill($green-dark, $green)
+		}
+	}
+
+	&:hover {
+		.Combobox__Caret path {
+			@include __theme-fill($green, $green-dark50)
+		}
+	}
+}
