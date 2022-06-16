@@ -7,7 +7,7 @@ BasicInput functions just the same as `InputPasswordToggle`, without the passwor
 
 <Canvas>
 	<Story name="BasicInput">
-        <BasicInput onChange={(event) => console.log('onChange: ', event)} />
+        <BasicInput autofocus onChange={(event) => console.log('onChange: ', event)} />
 	</Story>
 </Canvas>
 
@@ -15,7 +15,7 @@ Inavlid:
 
 <Canvas>
 	<Story name="BasicInput Invalid">
-        <BasicInput 
+        <BasicInput
 			invalid
 			invalidMessage='Invalid Input'
 			onChange={(event) => console.log('onChange: ', event)}

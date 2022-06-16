@@ -21,10 +21,25 @@ export interface IBasicInputProps extends ILocalContainerProps {
 	autofocus?: boolean;
 }
 
-const BasicInput = (props: IBasicInputProps) => {
+const useForwardedRef = (ref: React.ForwardedRef<HTMLInputElement>) => {
+	const innerRef = React.useRef<HTMLInputElement>(null);
+	React.useEffect(() => {
+		if (!ref) return;
+		if (typeof ref === 'function') {
+			ref(innerRef.current);
+		} else {
+			// eslint-disable-next-line no-param-reassign
+			ref.current = innerRef.current;
+		}
+	});
+
+	return innerRef;
+};
+
+const BasicInput = React.forwardRef((props: IBasicInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
 	const { className, id, name, style, invalid, invalidMessage, autofocus, ...otherProps } = props;
 
-	const input = React.useRef<HTMLInputElement>(null);
+	const input = useForwardedRef(ref);
 
 	React.useEffect(() => {
 		if (autofocus) {
@@ -44,6 +59,6 @@ const BasicInput = (props: IBasicInputProps) => {
 			{invalid && invalidMessage && <span>{invalidMessage}</span>}
 		</div>
 	);
-};
+});
 
 export default BasicInput;
