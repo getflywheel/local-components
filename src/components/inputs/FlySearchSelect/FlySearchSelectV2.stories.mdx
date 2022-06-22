@@ -9,8 +9,9 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
 <Canvas>
 	<Story name="Options = Array">
-		<div style={{ width: "90%", height: "100px" }}>
+		<div style={{ width: "90%", height: "125px" }}>
 			<FlySelect
+				inputHeight='s'
 				options={["Test 1", "Test 2"]}
 				onChange={() => console.log("onChange")}
 				value="Test 1"
@@ -23,7 +24,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
 <Canvas>
 	<Story name="Disabled">
-		<div style={{ width: "90%", height: "100px" }}>
+		<div style={{ width: "90%", height: "125px" }}>
 			<FlySelect
 				options={["Test 1", "Test 2"]}
 				onChange={() => console.log("onChange")}
@@ -38,7 +39,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
 <Canvas>
 	<Story name="Disabled with tooltip">
-		<div style={{ width: "90%", height: "100px" }}>
+		<div style={{ width: "90%", height: "125px" }}>
 			<FlySelect
 				container={{
 					element: (
@@ -62,7 +63,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
 <Canvas>
 	<Story name="Invalid">
-		<div style={{ width: "90%", height: "100px" }}>
+		<div style={{ width: "90%", height: "125px" }}>
 			<FlySelect
 				invalid
 				options={["Test 1", "Test 2"]}
@@ -73,11 +74,27 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	</Story>
 </Canvas>
 
+## Basic (Invalid with message)
+
+<Canvas>
+	<Story name="Invalid with message">
+		<div style={{ width: "90%", height: "125px" }}>
+			<FlySelect
+				invalid
+				options={["Test 1", "Test 2"]}
+				onChange={() => console.log("onChange")}
+				placeholder="Select an option..."
+				invalidMessage="Sample error message"
+			/>
+		</div>
+	</Story>
+</Canvas>
+
 ## Basic (Options = Object)
 
 <Canvas>
 	<Story name="Options = Object">
-		<div style={{ width: "90%", height: "100px" }}>
+		<div style={{ width: "90%", height: "125px" }}>
 			<FlySelect
 				options={{
 					a: "Example A",
@@ -94,7 +111,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
 <Canvas>
 	<Story name="Striped">
-		<div style={{ width: "90%", height: "255px" }}>
+		<div style={{ width: "90%", height: "310px" }}>
 			<FlySelect
 				optionGroups={{
 					active: {
@@ -142,7 +159,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Connect">
 		<div style={{ width: "90%", height: "510px" }}>
 			<FlySelect
-				formHeight
+				optionHeight='l'
 				optionGroups={{
 					active: {
 						label: "Active Items",
