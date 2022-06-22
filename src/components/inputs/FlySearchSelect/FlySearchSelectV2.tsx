@@ -50,10 +50,11 @@ export interface IFlySearchSelectProps extends ILocalContainerProps {
 	loadingOptionsPlaceholder?: string;
 	onChange: FunctionGeneric;
 	options?: FlySearchSelectOptions;
+	optionHeight?: 's' | 'l';
+	inputHeight?: 's' | 'l';
 	optionsLoader?: FlySearchSelectOptionsLoader;
 	optionGroups?: FlySearchSelectOptionGroups;
 	placeholder?: string;
-	readonly?: boolean;
 	striped?: boolean;
 	value?: string;
 	id: string;
@@ -82,10 +83,11 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 		loadingOptionsPlaceholder,
 		onChange,
 		options = {},
+		optionHeight = 's',
+		inputHeight = 'l',
 		optionsLoader,
 		optionGroups,
 		placeholder,
-		readonly,
 		striped,
 		value,
 		id,
@@ -130,7 +132,7 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 	};
 
 	const [state, setState] = useState<IState>({
-		focusedIndex: 0,
+		focusedIndex: -1,
 		open: false,
 		options: formatOptions(options),
 		optionsLoaded: !optionsLoader,
@@ -198,6 +200,13 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 		}
 	};
 
+	const onFocus = () => {
+		setState((prevState) => ({
+			...prevState,
+			focusedIndex: -1,
+		}));
+	};
+
 	const selectOption = (e: React.MouseEvent | React.KeyboardEvent, val: IFlySearchSelectProps['value']) => {
 		e.persist();
 		setState((prevState) => {
@@ -219,11 +228,47 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 			...prevState,
 			filter: event.target.value,
 			shouldFilter: true,
+			open: true,
+			focusedIndex: prevState.open ? prevState.focusedIndex : -1,
 		}));
+	};
+
+	const getFilteredOptions = (): FlySearchSelectOptionsFormatted => {
+		if (!state.shouldFilter || !state.filter) {
+			return state.options;
+		}
+		const optionsList = Object.keys(state.options).map((key) => state.options[key]);
+		const fuse = new Fuse(optionsList, {
+			keys: ['label'],
+			threshold: 0.5,
+		});
+
+		const result = fuse.search(state.filter).map((option) => option.item.value);
+
+		if (!result.length) {
+			return {
+				[noResultsMessage]: {
+					label: noResultsMessage,
+					value: noResultsMessage,
+					disabled: true,
+				},
+			};
+		}
+
+		const filteredOptions = Object.keys(state.options).reduce((acc, key) => {
+			if (result.includes(key)) {
+				acc[key] = state.options[key];
+			}
+
+			return acc;
+		}, {} as FlySearchSelectOptionsFormatted);
+
+		return filteredOptions;
 	};
 
 	const onContainerKeyDown = (event: React.KeyboardEvent) => {
 		let { open, focusedIndex } = state;
+		console.log(focusedIndex);
 
 		// TODO handle case where focus index is zero, focus the input
 
@@ -237,27 +282,28 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 				}
 				break;
 			case 'Enter':
-				event.stopPropagation();
+				// event.stopPropagation();
 				open = true;
 				break;
 			case 'ArrowUp':
-				event.stopPropagation();
+				// event.stopPropagation();
+				event.preventDefault();
 				open = true;
 				if (focusedIndex > 0) {
 					focusedIndex -= 1;
 				}
 				break;
 			case 'ArrowDown':
-				event.stopPropagation();
+				// event.stopPropagation();
+				event.preventDefault();
 				open = true;
-				if (focusedIndex < Object.keys(state.options).length - 1) {
+				if (focusedIndex < Object.keys(getFilteredOptions()).length - 1) {
 					focusedIndex += 1;
 				}
 				break;
 			case 'Tab':
 				event.stopPropagation();
 				open = false;
-				focusedIndex = 0;
 				break;
 			default:
 				return;
@@ -273,12 +319,11 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 
 	const onOptionKeyDown = (e: React.KeyboardEvent, val: IFlySearchSelectProps['value']) => {
 		e.persist();
-		if (e.key === 'Enter' || e.key === ' ') {
+		if (e.key === 'Enter') {
 			// TODO consider removing space case here ?
 			e.stopPropagation();
 			selectOption(e, val!);
 		}
-		inputRef.current?.focus();
 	};
 
 	const renderPlaceholder = () => {
@@ -404,39 +449,6 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 		return output;
 	};
 
-	const getFilteredOptions = (): FlySearchSelectOptionsFormatted => {
-		if (!state.shouldFilter || !state.filter) {
-			return state.options;
-		}
-		const optionsList = Object.keys(state.options).map((key) => state.options[key]);
-		const fuse = new Fuse(optionsList, {
-			keys: ['label'],
-			threshold: 0.5,
-		});
-
-		const result = fuse.search(state.filter).map((option) => option.item.value);
-
-		if (!result.length) {
-			return {
-				[noResultsMessage]: {
-					label: noResultsMessage,
-					value: noResultsMessage,
-					disabled: true,
-				},
-			};
-		}
-
-		const filteredOptions = Object.keys(state.options).reduce((acc, key) => {
-			if (result.includes(key)) {
-				acc[key] = state.options[key];
-			}
-
-			return acc;
-		}, {} as FlySearchSelectOptionsFormatted);
-
-		return filteredOptions;
-	};
-
 	const clearFilter = () => {
 		setState((prevState) => ({
 			...prevState,
@@ -458,12 +470,14 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 		<Container
 			className={classnames(styles.FlySelect, className, {
 				[styles.FlySelect__Open]: state.open,
-				[styles.FlySelect__Readonly]: readonly,
 				[styles.FlySelect__Disabled]: disabled || !Object.keys(state.options).length,
+				[styles.FlySelect__InputHeightLarge]: inputHeight === 'l',
+				[styles.FlySelect__OptionHeightLarge]: optionHeight === 'l',
 			})}
 			id={id}
 			ref={containerRef}
 			style={style}
+			onKeyDown={onContainerKeyDown}
 			{...container}
 		>
 			<BasicInput
@@ -475,8 +489,7 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 				placeholder={renderPlaceholder()}
 				onChange={handleTyping}
 				value={state.filter}
-				onKeyDown={onContainerKeyDown}
-				{...{ invalid, invalidMessage, onClick, onBlur, disabled }}
+				{...{ invalid, invalidMessage, onClick, onBlur, onFocus, disabled }}
 				// rightIcon={state.open ? CloseIcon : CaretIcon}
 			/>
 			<SearchIcon

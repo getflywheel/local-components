@@ -10,6 +10,7 @@ export default interface IReactComponentProps {
 	onClick?: any;
 	onMouseDown?: any;
 	onBlur?: any;
+	onFocus?: any;
 	style?: object;
 	ref?: any;
 	role?: string;

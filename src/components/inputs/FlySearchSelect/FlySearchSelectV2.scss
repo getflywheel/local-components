@@ -3,12 +3,20 @@
 
 
 .FlySelect {
-	--height: 57px;
-
+	--inputHeight: 37px;
+	--optionHeight: 37px;
 	display: inline-flex;
 	width: 100%;
 	position: relative;
 	max-width: 100%;
+
+	&.FlySelect__InputHeightLarge {
+		--inputHeight: 57px;
+	}
+
+	&.FlySelect__OptionHeightLarge {
+		--optionHeight: 57px;
+	}
 
 	.FlySelect__SearchIcon {
 		pointer-events: none;
@@ -23,6 +31,8 @@
 		width: 100%;
 
 		input {
+			padding: 0;
+			height: var(--inputHeight);
 			transition: padding-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 			padding-left: 20px;
 			padding-right: 42px;
@@ -38,40 +48,10 @@
 		}
 	}
 
-	&.FlySelect__Readonly {
-		@include __theme-background($gray2, $gray-dark-alt);
-	}
-
 	.FlySelect__CaretIcon, .FlySelect__CloseIcon {
 		position: absolute;
 		right: 20px;
-		// @include cursorPointer;
-
-		// &:hover path {
-		// 	@include __theme-fill($green, $green-dark50);
-		// }
-
-		// path {
-		// 	@include __theme-fill($green-dark, $green)
-		// }
 	}
-
-	// .FlySelect__RightIcon {
-	// 	position: absolute;
-	// 	right: 10px;
-	// 	// width: 24px;
-	// 	// height: 24px;
-	// 	// padding: 5px;
-	// 	@include cursorPointer;
-
-	// 	&:hover path {
-	// 		@include __theme-fill($green, $green-dark50);
-	// 	}
-
-	// 	path {
-	// 		@include __theme-fill($green-dark, $green)
-	// 	}
-	// }
 
 	&:not(.FlySelect__Open) {
 
@@ -118,7 +98,7 @@
 
 	.FlySelect_Options {
 		position: absolute;
-		top: calc(var(--height) + 1px);
+		top: calc(var(--inputHeight) + 1px);
 		left: 0;
 		display: none;
 		width: 100%;
@@ -167,8 +147,8 @@
 	.FlySelect_Option {
 		display: flex;
 		align-items: center;
-		line-height: var(--height);
-		height: var(--height);
+		line-height: var(--optionHeight);
+		height: var(--optionHeight);
 		padding: 0 10px;
 
 		&:last-of-type {
