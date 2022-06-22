@@ -203,7 +203,8 @@
 		}
 
 		&:hover,
-		&:focus {
+		&:focus,
+		&.FlySelect_Option__Focus {
 			outline: none;
 			@include __theme-color($white, $gray-dark);
 			@include __theme-background($green-dark, white);
@@ -217,7 +218,7 @@
 			}
 		}
 
-		&.FlySelect_Option__Striped:nth-child(even):not(:hover):not(:focus) {
+		&.FlySelect_Option__Striped:nth-child(even):not(:hover):not(:focus):not(.FlySelect_Option__Focus) {
 			@include theme-background-gray2-else-gray2row;
 		}
 	}
