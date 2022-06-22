@@ -18,7 +18,7 @@ export interface IContainerProps extends IReactComponentProps {
 
 const defaultProps: Partial<IContainerProps> = {};
 
-export const Container = (props: IContainerProps) => {
+export const Container = React.forwardRef((props: IContainerProps, ref: React.ForwardedRef<HTMLElement>) => {
 	const Tag: any = props.element || 'div';
 	const element: React.ReactElement = props.element as React.ReactElement;
 	const propsWithoutDefaults: Partial<IContainerProps> = { ...props };
@@ -40,6 +40,7 @@ export const Container = (props: IContainerProps) => {
 			onClick={props.onClick}
 			onKeyDown={props.onKeyDown}
 			tabIndex={props.tabIndex}
+			ref={ref}
 		>
 			{props.children}
 		</Tag>
@@ -55,8 +56,9 @@ export const Container = (props: IContainerProps) => {
 			onClick: props.onClick,
 			onKeyDown: props.onKeyDown,
 			tabIndex: props.tabIndex,
+			ref,
 		})
 	);
-};
+});
 
 Container.defaultProps = defaultProps;
