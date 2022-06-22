@@ -11,6 +11,8 @@ import { useDetectTransitionEnd } from '../../../common/helpers/useDetectTransit
 import { useSwappableTimeout } from '../../../common/helpers/useTimeout';
 import { useDetectClickOrHoverWithinTargets } from '../../../common/helpers/useDetectClickOrHoverWithinTargets';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import useForwardedRef from '../../../common/helpers/useForwardedRef';
+import useCombinedRefs from '../../../common/helpers/useCombinedRefs';
 
 export interface TooltipProps extends IReactComponentProps {
 	/** the content that should show the tooltip upon the user's mouse entering it * */
@@ -296,7 +298,7 @@ const useTooltip = ({
 	};
 };
 
-export const Tooltip = (props: TooltipProps) => {
+export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.ForwardedRef<HTMLElement>) => {
 	const {
 		children,
 		className,
@@ -330,6 +332,9 @@ export const Tooltip = (props: TooltipProps) => {
 		useClickInsteadOfHover: !!useClickInsteadOfHover,
 	});
 
+	const forwardedRef = useForwardedRef(ref);
+	const combinedRef = useCombinedRefs(forwardedRef, targetRef);
+
 	const isShowing = (forceShow || !stages.isStage0Hidden) && !hideTooltip;
 	const isFirstRender = useRef(true);
 
@@ -358,7 +363,7 @@ export const Tooltip = (props: TooltipProps) => {
 					Popper__Showing: isShowing, // this also needs to be globally accessible so other component styles can reference it
 				})}
 				id={id}
-				ref={targetRef}
+				ref={combinedRef}
 				style={style}
 				{...otherProps}
 			>
@@ -425,7 +430,7 @@ export const Tooltip = (props: TooltipProps) => {
 			)}
 		</>
 	);
-};
+});
 
 Tooltip.defaultProps = {
 	hideDelay: 500,
