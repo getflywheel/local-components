@@ -12,6 +12,9 @@ export interface IconSvgProps {
 	id?: string;
 	style?: object;
 	width?: number;
+	onClick?: any;
+	tabIndex?: number;
+	onMouseDown?: any;
 }
 
 export interface IconSvgStoryMetaAdditionalProps {

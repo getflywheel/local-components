@@ -8,6 +8,8 @@ export default interface IReactComponentProps {
 	id?: string;
 	innerRef?: (element: HTMLElement) => void | string;
 	onClick?: any;
+	onMouseDown?: any;
+	onBlur?: any;
 	style?: object;
 	ref?: any;
 	role?: string;
