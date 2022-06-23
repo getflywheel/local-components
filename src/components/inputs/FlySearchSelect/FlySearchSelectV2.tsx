@@ -248,68 +248,63 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 	};
 
 	const getFilteredOptions = (): FlySearchSelectOptionsFormatted => {
-		if (!state.shouldFilter || !state.filter) {
-			return sortOptions(state.options);
-		}
+		let result = state.options;
 
-		const fuse = new Fuse(state.options, {
-			keys: ['label'],
-			threshold: 0.5,
-		});
+		if (state.shouldFilter && state.filter) {
+			const fuse = new Fuse(state.options, {
+				keys: ['label'],
+				threshold: 0.5,
+			});
 
-		const result = fuse.search(state.filter).map((option) => option.item);
+			result = fuse.search(state.filter).map((option) => option.item);
 
-		if (!result.length) {
-			return [
-				{
-					label: noResultsMessage,
-					value: noResultsMessage,
-					disabled: true,
-				},
-			];
+			if (!result.length) {
+				return [
+					{
+						label: noResultsMessage,
+						value: noResultsMessage,
+						disabled: true,
+					},
+				];
+			}
 		}
 
 		return sortOptions(result);
 	};
 
-	const getNextAvailableFocusedIndex = () => {
-		const { focusedIndex } = state;
-		const filteredOptions = getFilteredOptions().slice();
+	/**
+	 * Function to get the next index in
+	 */
+	const getNextIndex = (index: number, arrayLength: number, next: boolean = true) => {
+		let i = index;
 
-		if (focusedIndex < 0 || focusedIndex === filteredOptions.filter((opt) => !opt.disabled).length - 1) {
-			return filteredOptions.findIndex((option) => !option.disabled);
+		if (arrayLength === 1) {
+			i = 0;
+		} else if (i === arrayLength - 1) {
+			i = next ? 0 : i - 1;
+		} else if (i === -1 || i === 0) {
+			i = next ? i + 1 : arrayLength - 1;
+		} else if (i < arrayLength - 1) {
+			i = next ? i + 1 : i - 1;
+		} else if (i > arrayLength - 1) {
+			i = next ? 0 : arrayLength - 1;
 		}
-
-		const index = filteredOptions.findIndex((option, i) => !option.disabled && i > focusedIndex);
-
-		return index === -1 ? 0 : index;
+		return i;
 	};
 
-	const getPreviousAvailableFocusedIndex = () => {
+	const getAvailableFocusedIndex = (next: boolean = true) => {
 		const { focusedIndex } = state;
 		const filteredOptions = getFilteredOptions();
 
-		if (focusedIndex < 1) {
-			return filteredOptions.findIndex(
-				(option) =>
-					option ===
-					filteredOptions
-						.slice()
-						.reverse()
-						.find((opt) => !opt.disabled)
-			);
+		let i = getNextIndex(focusedIndex, filteredOptions.length, next);
+		let option = filteredOptions[i];
+
+		while (option && i !== focusedIndex && option.disabled) {
+			i = getNextIndex(i, filteredOptions.length, next);
+			option = filteredOptions[i];
 		}
 
-		const index = filteredOptions.findIndex(
-			(option) =>
-				option ===
-				filteredOptions
-					.slice(0, focusedIndex)
-					.reverse()
-					.find((opt) => !opt.disabled)
-		);
-
-		return index === -1 ? 0 : index;
+		return i;
 	};
 
 	const onContainerKeyDown = (event: React.KeyboardEvent) => {
@@ -338,12 +333,12 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 			case 'ArrowUp':
 				event.preventDefault();
 				open = true;
-				focusedIndex = getPreviousAvailableFocusedIndex();
+				focusedIndex = getAvailableFocusedIndex(false);
 				break;
 			case 'ArrowDown':
 				event.preventDefault();
 				open = true;
-				focusedIndex = getNextAvailableFocusedIndex();
+				focusedIndex = getAvailableFocusedIndex();
 				break;
 			case 'Tab':
 				event.stopPropagation();
@@ -419,7 +414,9 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 			return null;
 		}
 
-		const isFocused = getFilteredOptions().indexOf(option) === state.focusedIndex;
+		const filteredOptions = getFilteredOptions();
+
+		const isFocused = filteredOptions.indexOf(option) === state.focusedIndex;
 
 		return (
 			<div
@@ -435,6 +432,12 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 				})}
 				onKeyDown={() => {}}
 				onClick={(e) => selectOption(e, option.value)}
+				onMouseEnter={() =>
+					setState((prevState) => ({
+						...prevState,
+						focusedIndex: filteredOptions.indexOf(option),
+					}))
+				}
 			>
 				{renderItem(option, true)}
 			</div>
