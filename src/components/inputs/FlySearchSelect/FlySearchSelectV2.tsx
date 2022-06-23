@@ -272,22 +272,20 @@ const FlySearchSelectV2 = (props: IFlySearchSelectProps) => {
 		return sortOptions(result);
 	};
 
-	/**
-	 * Function to get the next index in
-	 */
 	const getNextIndex = (index: number, arrayLength: number, next: boolean = true) => {
 		let i = index;
+		const limit = arrayLength - 1;
 
-		if (arrayLength === 1) {
+		if (limit === 0) {
 			i = 0;
-		} else if (i === arrayLength - 1) {
+		} else if (i === limit) {
 			i = next ? 0 : i - 1;
 		} else if (i === -1 || i === 0) {
-			i = next ? i + 1 : arrayLength - 1;
-		} else if (i < arrayLength - 1) {
+			i = next ? i + 1 : limit;
+		} else if (i < limit) {
 			i = next ? i + 1 : i - 1;
-		} else if (i > arrayLength - 1) {
-			i = next ? 0 : arrayLength - 1;
+		} else if (i > limit) {
+			i = next ? 0 : limit;
 		}
 		return i;
 	};
