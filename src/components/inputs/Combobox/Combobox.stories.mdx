@@ -1,9 +1,10 @@
 import Combobox from "./Combobox";
+import { ComboboxConnectExample } from "./ComboboxConnectExample"
 import Avatar from "../../media/Avatar/Avatar";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
-<Meta title="Inputs/Combobox" component={Combobox} />
+<Meta title="Inputs/Combobox" component={Combobox, ComboboxConnectExample} />
 
 ## Basic (Options = Array)
 
@@ -11,6 +12,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Options = Array">
 		<div style={{ width: "90%", height: "125px" }}>
 			<Combobox
+				id="OptionsArray"
 				inputHeight='s'
 				options={["Test 1", "Test 2"]}
 				onChange={() => console.log("onChange")}
@@ -26,6 +28,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Disabled">
 		<div style={{ width: "90%", height: "125px" }}>
 			<Combobox
+				id="Disabled"
 				options={["Test 1", "Test 2"]}
 				onChange={() => console.log("onChange")}
 				disabled
@@ -41,6 +44,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Disabled with tooltip">
 		<div style={{ width: "90%", height: "125px" }}>
 			<Combobox
+				id="DisabledWithTooltip"
 				container={{
 					element: (
 						<Tooltip
@@ -65,6 +69,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Invalid">
 		<div style={{ width: "90%", height: "125px" }}>
 			<Combobox
+				id="Invalid"
 				invalid
 				options={["Test 1", "Test 2"]}
 				onChange={() => console.log("onChange")}
@@ -80,6 +85,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Invalid with message">
 		<div style={{ width: "90%", height: "125px" }}>
 			<Combobox
+				id="InvalidWithMessage"
 				invalid
 				options={["Test 1", "Test 2"]}
 				onChange={() => console.log("onChange")}
@@ -96,6 +102,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Options = Object">
 		<div style={{ width: "90%", height: "125px" }}>
 			<Combobox
+				id="OptionsObject"
 				options={{
 					a: "Example A",
 					b: "Example B",
@@ -113,6 +120,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 	<Story name="Striped">
 		<div style={{ width: "90%", height: "310px" }}>
 			<Combobox
+				id="OptionGroupsStriped"
 				optionGroups={{
 					active: {
 						label: "Active Items",
@@ -158,79 +166,7 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 <Canvas>
 	<Story name="Connect">
 		<div style={{ width: "90%", height: "600px" }}>
-			<Combobox
-				optionHeight='l'
-				optionGroups={{
-					active: {
-						label: "Active Items",
-					},
-					inactive: {
-						label: "Inactive Items",
-					},
-					connected: {
-						label: "Connected sites",
-					},
-				}}
-				options={{
-					vi6tamon66: {
-						label: 'EduardoTest',
-						optionGroup: 'connected',
-						disabled: true,
-						secondaryText: 'EduardoTest',
-					},
-					f9tl99u20j: {
-						label: 'gameovertest',
-						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-					xvvkshuge5: {
-						label: 'Hot Thoughts',
-						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v3.svg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-					eb4048qhg3: {
-						label: "Let's Learn Local",
-						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-					xljat07he5: {
-						label: 'Local by WPE',
-						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v1.svg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-					'9tk3oojmil': {
-						label: 'Product Roadmaps',
-						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v1.svg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-					'47b1364yva': {
-						label: 'Spacemind 5000',
-						icon: 'https:flywheel-app-production.s3.amazonaws.com/uploads/site/657948/1643221998-57-0001-1961/expanded_brain_large.jpeg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-					'8eht8gi4t8': {
-						label: 'Star Map',
-						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-					vwddlo8lal: {
-						label: 'Starship Wingnut',
-						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
-						optionGroup: undefined,
-						disabled: false,
-					},
-				}}
-				onChange={() => console.log("onChange")}
-				placeholder="Select Something!"
-				striped={true}
-			/>
+			<ComboboxConnectExample />
 		</div>
 	</Story>
 </Canvas>
