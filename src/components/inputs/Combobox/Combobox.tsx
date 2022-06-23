@@ -176,14 +176,14 @@ const Combobox = (props: IComboboxProps) => {
 	}, []);
 
 	useEffect(() => {
-		setState({ value, options: formatOptions(options) });
-	}, [value, options]);
+		setState({ value });
+	}, [value]);
 
 	useEffect(() => {
 		setState((prevState) => ({
 			filter: prevState.value ? prevState.options.find((opt) => opt.value === prevState.value)!.label : '',
 		}));
-	}, [state.value, state.options]);
+	}, [state.value]);
 
 	useEffect(() => {
 		if (!state.open) {
