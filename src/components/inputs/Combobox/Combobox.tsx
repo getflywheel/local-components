@@ -1,376 +1,458 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { useEffect, useRef, useState } from 'react';
+import Fuse from 'fuse.js';
 import CheckSVG from '../../../svg/checkmark--big.svg';
 import DownloadSmallSVG from '../../../svg/download--small.svg';
 import ArrowRightSVG from '../../../svg/arrow--right.svg';
-import IReactComponentProps from '../../../common/structures/IReactComponentProps';
-import * as styles from './Combobox.scss';
+import styles from './Combobox.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
-import { CaretIcon } from '../../icons/Icons'
+import { CaretIcon, CloseSmallIcon, SearchIcon } from '../../icons/Icons';
+import BasicInput from '../BasicInput/BasicInput';
+import { IconButton } from '../../buttons/IconButton/IconButton';
+import { Container } from '../../modules/Container/Container';
+import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 
-export interface FlySelectOption {
+export interface ComboboxOption {
 	disabled?: boolean;
 	download?: boolean;
 	icon?: React.ReactNode;
-	label: React.ReactNode;
+	label: string;
 	metadata?: any;
-	optionGroup?: FlySelectOptionGroup | null;
+	optionGroup?: string;
 	secondaryText?: React.ReactNode;
-	value?: string;
 }
 
-export interface FlySelectOptionGroup {
-	label: React.ReactNode;
+// Guarantees the key of each state.options option will equal option.value
+export interface ComboboxOptionFormatted extends ComboboxOption {
+	value: string;
+}
+
+// Guarantees structure of state.options - we should refactor this to an array of objects instead of an object of objects maybe
+export type ComboboxOptionsFormatted = ComboboxOptionFormatted[];
+export type ComboboxOptions =
+	| ComboboxOptionFormatted[]
+	| string[]
+	| { [value: string]: ComboboxOption }
+	| { [value: string]: string };
+export type ComboboxOptionsLoader = () => Promise<ComboboxOptions>;
+
+export interface ComboboxOptionGroup {
+	label: string;
 	linkText?: string;
 	linkOnClick?: FunctionGeneric;
 }
+export type ComboboxOptionGroups = { [key: string]: ComboboxOptionGroup };
 
-export type FlySelectOptionGroups = {[key: string]: FlySelectOptionGroup};
-export type FlySelectOptions = string[] | FlySelectOptionsFormatted | {[value: string]: string};
-type FlySelectOptionFormatted = FlySelectOption;
-type FlySelectOptionsFormatted = {[value: string]: FlySelectOptionFormatted};
-
-interface IProps extends IReactComponentProps {
+export interface IComboboxProps extends ILocalContainerProps {
 	disabled?: boolean;
 	emptyPlaceholder?: string;
-	footerText?: string;
-	footerOnClick?: FunctionGeneric;
 	loadingOptionsPlaceholder?: string;
 	onChange: FunctionGeneric;
-	options?: FlySelectOptions;
-	optionsLoader?: Promise<IProps['options']> | any;
-	optionGroups?: FlySelectOptionGroups;
+	options?: ComboboxOptions;
+	optionHeight?: 's' | 'l';
+	inputHeight?: 's' | 'l';
+	optionsLoader?: ComboboxOptionsLoader;
+	optionGroups?: ComboboxOptionGroups;
 	placeholder?: string;
-	readonly?: boolean;
 	striped?: boolean;
 	value?: string;
+	id: string;
+	noResultsMessage?: string;
+	invalid?: boolean;
+	invalidMessage?: string;
 }
 
 interface IState {
-	focus: boolean;
 	focusedIndex: number;
-	optionsFormatted: FlySelectOptionsFormatted;
+	options: ComboboxOptionsFormatted;
 	open: boolean;
-	optionsLoaded: boolean | null;
-	value: any;
-	willClose: boolean;
+	optionsLoaded: boolean;
+	value: IComboboxProps['value'];
+	filter: string;
+	shouldFilter: boolean;
 }
 
-export default class FlySelect extends React.Component<IProps, IState> {
-	private readonly __containerRef: React.RefObject<any>;
-	private readonly __optionsRef: React.RefObject<any>;
+const Combobox = (props: IComboboxProps) => {
+	const {
+		container,
+		className,
+		style,
+		disabled,
+		emptyPlaceholder,
+		loadingOptionsPlaceholder,
+		onChange,
+		options = {},
+		optionHeight = 's',
+		inputHeight = 'l',
+		optionsLoader,
+		optionGroups,
+		placeholder,
+		striped,
+		value,
+		id,
+		invalid,
+		invalidMessage,
+		noResultsMessage = 'None found. Try a new search term.',
+	} = props;
 
-	constructor (props: IProps) {
-		super(props);
-
-		this.state = {
-			focus: false,
-			focusedIndex: 0,
-			open: false,
-			optionsFormatted: this.props.options ? this.formatOptions(this.props.options) : {},
-			optionsLoaded: this.props.optionsLoader ? false : null,
-			value: this.props.value,
-			willClose: false,
+	const formatOption = (
+		option: ComboboxOption,
+		optionValue: ComboboxOptionFormatted['value']
+	): ComboboxOptionFormatted => {
+		return {
+			value: optionValue,
+			optionGroup: option.optionGroup === null ? undefined : option.optionGroup,
+			...option,
 		};
+	};
 
-		this.onClick = this.onClick.bind(this);
-		this.onBlur = this.onBlur.bind(this);
-		this.selectOption = this.selectOption.bind(this);
-		this.renderOption = this.renderOption.bind(this);
-		this.calculateOptionsPosition = this.calculateOptionsPosition.bind(this);
-		this.onContainerKeyDown = this.onContainerKeyDown.bind(this);
-		this.onOptionKeyDown = this.onOptionKeyDown.bind(this);
+	const formatOptions = (opts: ComboboxOptions) => {
+		const formattedOptions: ComboboxOptionsFormatted = [];
 
-		this.__containerRef = React.createRef();
-		this.__optionsRef = React.createRef();
-	}
-
-	componentDidMount () {
-		if (typeof this.props.optionsLoader === 'function') {
-			this.props.optionsLoader().then((options: IProps['options']) => this.setState({
-				optionsFormatted: this.formatOptions(options),
-				optionsLoaded: true,
-			}));
-		}
-	}
-
-	componentDidUpdate (previousProps: IProps) {
-		if (previousProps.value !== this.props.value) {
-			this.setState({
-				value: this.props.value,
-			});
-		}
-
-		if (previousProps.options !== this.props.options) {
-			this.setState({
-				optionsFormatted: this.formatOptions(this.props.options),
-			});
-		}
-	}
-
-	formatOptions (options: any): FlySelectOptionsFormatted {
-		const formattedOptions: {[key: string]: any} = {};
-		const formatOption = (option: FlySelectOptionFormatted, value: any = null) => {
-			if (typeof option === 'object') {
-				if (typeof option.value === 'undefined' && value !== null) {
-					option.value = value;
+		if (Array.isArray(opts)) {
+			opts.forEach((option: string | ComboboxOptionFormatted) => {
+				if (typeof option === 'string') {
+					formattedOptions.push(formatOption({ label: option }, option));
+				} else {
+					formattedOptions.push(formatOption(option, option.value));
 				}
-
-				if (typeof option.optionGroup === 'undefined') {
-					option.optionGroup = null;
-				}
-
-				formattedOptions[option.value as string] = option;
-				return;
-			}
-
-			formattedOptions[value !== null ? value : option] = {
-				label: option,
-				optionGroup: null,
-				value: value !== null ? value : option,
-			};
-		};
-
-		if (Array.isArray(options)) {
-			options.forEach((option) => formatOption(option));
-		}
-		else {
-			Object.keys(options).forEach((optionValue) => formatOption(options[optionValue], optionValue));
+			});
+		} else {
+			Object.keys(opts).forEach((optionValue) => {
+				const option = opts[optionValue];
+				formattedOptions.push(
+					formatOption(typeof option === 'string' ? { label: option } : option, optionValue)
+				);
+			});
 		}
 
 		return formattedOptions;
-	}
+	};
 
-	onClick () {
-		this.setState({
-			focus: true,
-			open: true,
-		});
-	}
+	const [state, setState] = useState<IState>({
+		focusedIndex: -1,
+		open: false,
+		options: formatOptions(options),
+		optionsLoaded: !optionsLoader,
+		value,
+		filter: '',
+		shouldFilter: false,
+	});
 
-	onBlur (event: any) {
-		if (!event.currentTarget.contains(event.relatedTarget)){
-			this.setState({
-				focus: false,
-				open: false,
-			});
+	const containerRef = useRef<HTMLDivElement>(null);
+	const optionsRef = useRef<HTMLDivElement>(null);
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	// load options on mount
+	useEffect(() => {
+		if (optionsLoader) {
+			optionsLoader().then((opts: ComboboxOptions) =>
+				setState((prevState) => ({
+					...prevState,
+					options: formatOptions(opts),
+					optionsLoaded: true,
+				}))
+			);
 		}
-	}
+	}, []);
 
-	selectOption (e: any, value: any) {
-		this.setState({
-			open: false,
+	useEffect(() => {
+		setState((prevState) => ({
+			...prevState,
 			value,
+			options: formatOptions(options),
+		}));
+	}, [value, options]);
+
+	useEffect(() => {
+		setState((prevState) => ({
+			...prevState,
+			filter: prevState.value ? prevState.options.find((opt) => opt.value === prevState.value)!.label : '',
+		}));
+	}, [state.value, state.options]);
+
+	useEffect(() => {
+		if (!state.open) {
+			setState((prevState) => ({
+				...prevState,
+				shouldFilter: false,
+				filter: prevState.value ? prevState.options.find((opt) => opt.value === prevState.value)!.label : '',
+			}));
+		}
+	}, [state.open]);
+
+	const onClick = () => {
+		setState((prevState) => ({
+			...prevState,
+			open: true,
+		}));
+		inputRef.current?.focus();
+	};
+
+	const onBlur = (event: React.FocusEvent<HTMLElement>) => {
+		if (!containerRef.current?.contains(event.relatedTarget as HTMLElement)) {
+			setState((prevState) => ({
+				...prevState,
+				open: false,
+			}));
+		}
+	};
+
+	const onFocus = () => {
+		setState((prevState) => ({
+			...prevState,
+			focusedIndex: -1,
+		}));
+	};
+
+	const selectOption = (e: React.MouseEvent | React.KeyboardEvent, val: IComboboxProps['value']) => {
+		e.persist();
+		setState((prevState) => {
+			onChange(val!);
+			e.stopPropagation();
+
+			return {
+				...prevState,
+				open: false,
+				value: val!,
+			};
 		});
+	};
 
-		this.props.onChange.call(this, value);
+	const handleTyping = (event: React.ChangeEvent<HTMLInputElement>) => {
+		event.persist();
 
-		e.stopPropagation();
-	}
+		setState((prevState) => ({
+			...prevState,
+			filter: event.target.value,
+			shouldFilter: true,
+			open: true,
+			focusedIndex: prevState.open ? prevState.focusedIndex : -1,
+		}));
+	};
 
-	calculateOptionsPosition () {
-		if (!this.state.open) {
-			return undefined;
+	const sortOptions = (opts: ComboboxOptionsFormatted) => {
+		return opts.sort((a, b) => {
+			if (a.optionGroup && !b.optionGroup) {
+				return 1;
+			}
+			if (!a.optionGroup && b.optionGroup) {
+				return -1;
+			}
+			if (!a.optionGroup && !b.optionGroup) {
+				return 0;
+			}
+			return a.optionGroup!.localeCompare(b.optionGroup!);
+		});
+	};
+
+	const getFilteredOptions = (): ComboboxOptionsFormatted => {
+		let result = state.options;
+
+		if (state.shouldFilter && state.filter) {
+			const fuse = new Fuse(state.options, {
+				keys: ['label'],
+				threshold: 0.5,
+			});
+
+			result = fuse.search(state.filter).map((option) => option.item);
+
+			if (!result.length) {
+				return [
+					{
+						label: noResultsMessage,
+						value: noResultsMessage,
+						disabled: true,
+					},
+				];
+			}
 		}
 
-		const optionsBounding = this.__containerRef.current.getBoundingClientRect();
-		const maxBottomBounding = window.innerHeight - 40;
+		return sortOptions(result);
+	};
 
-		return {
-			left: optionsBounding.left,
-			maxHeight: maxBottomBounding - optionsBounding.top,
-			minWidth: optionsBounding.right - optionsBounding.left,
-			top: optionsBounding.top,
-		};
-	}
+	const getNextIndex = (index: number, arrayLength: number, next: boolean = true) => {
+		let i = index;
+		const limit = arrayLength - 1;
 
-	onContainerKeyDown (event: any) {
-		let open = this.state.open;
-		let focusedIndex = this.state.focusedIndex;
+		if (limit === 0) {
+			i = 0;
+		} else if (i === limit) {
+			i = next ? 0 : i - 1;
+		} else if (i === -1 || i === 0) {
+			i = next ? i + 1 : limit;
+		} else if (i < limit) {
+			i = next ? i + 1 : i - 1;
+		} else if (i > limit) {
+			i = next ? 0 : limit;
+		}
+		return i;
+	};
+
+	const getAvailableFocusedIndex = (next: boolean = true) => {
+		const { focusedIndex } = state;
+		const filteredOptions = getFilteredOptions();
+
+		let i = getNextIndex(focusedIndex, filteredOptions.length, next);
+		let option = filteredOptions[i];
+
+		while (option && i !== focusedIndex && option.disabled) {
+			i = getNextIndex(i, filteredOptions.length, next);
+			option = filteredOptions[i];
+		}
+
+		return i;
+	};
+
+	const onContainerKeyDown = (event: React.KeyboardEvent) => {
+		let { open, focusedIndex } = state;
+
 		switch (event.key) {
 			case ' ':
-				open = true;
+				if (!open) {
+					open = true;
+				} else {
+					return;
+				}
 				break;
 			case 'Enter':
-				open = true;
+				if (!open) {
+					open = true;
+				} else {
+					const option = getFilteredOptions()[focusedIndex];
+					if (state.options.includes(option)) {
+						selectOption(event, getFilteredOptions()[focusedIndex].value);
+						inputRef.current?.blur();
+					}
+					return;
+				}
 				break;
 			case 'ArrowUp':
+				event.preventDefault();
 				open = true;
-				if (focusedIndex > 0) {
-					focusedIndex--;
-				}
+				focusedIndex = getAvailableFocusedIndex(false);
 				break;
 			case 'ArrowDown':
+				event.preventDefault();
 				open = true;
-				if (focusedIndex < Object.keys(this.state.optionsFormatted).length - 1){
-					focusedIndex++;
-				}
+				focusedIndex = getAvailableFocusedIndex();
 				break;
 			case 'Tab':
+				event.stopPropagation();
 				open = false;
-				focusedIndex = 0;
 				break;
+			default:
+				return;
+		}
+		setState((prevState) => ({ ...prevState, open, focusedIndex }));
+	};
+
+	const renderPlaceholder = () => {
+		if (!state.optionsLoaded) {
+			return loadingOptionsPlaceholder;
 		}
 
-		this.setState({
-			focusedIndex,
-			open,
-		}, () => {
-			if (this.state.open){
-				this.__optionsRef.current.children[this.state.focusedIndex] &&
-				this.__optionsRef.current.children[this.state.focusedIndex].focus();
-			}
-		});
-	}
-
-	onOptionKeyDown = (e: any, value: any) => {
-		if (e.key === 'Enter' || e.key === ' '){
-			this.selectOption(e, value);
-		}
-		this.__containerRef.current.focus();
-	}
-
-	renderPlaceholder () {
-		if (this.state.optionsLoaded === false) {
-			return this.props.loadingOptionsPlaceholder;
+		if (state.options.length) {
+			return placeholder;
 		}
 
-		if (Object.keys(this.state.optionsFormatted).length) {
-			return this.props.placeholder;
-		}
+		return emptyPlaceholder;
+	};
 
-		return this.props.emptyPlaceholder;
-	}
+	const renderItemRight = (option: ComboboxOptionFormatted, showCheck: boolean) => {
+		return (
+			<span className={styles.Combobox__Right} key={`${option.value}-right`}>
+				{option.secondaryText && (
+					<span className={styles.Combobox__SecondaryText} key={`${option.value}-secondary-text`}>
+						{option.secondaryText}
+					</span>
+				)}
+				{showCheck && option.value === state.value && (
+					<CheckSVG key={`${option.value}-checked`} className={styles.Combobox__Check} />
+				)}
+			</span>
+		);
+	};
 
-	renderItem (option: FlySelectOptionFormatted, showCheck: boolean = false) {
+	const renderItem = (option: ComboboxOptionFormatted, showCheck: boolean = false) => {
 		const output = [];
 
 		if (option.download === true) {
-			output.push(
-				<DownloadSmallSVG
-					key="download-svg"
-					className="DownloadSmall"
-				/>,
-			);
+			output.push(<DownloadSmallSVG key={`${option.value}-download-svg`} className={styles.DownloadSmall} />);
 		}
 
 		if (option.icon) {
 			if (typeof option.icon === 'string') {
+				// eslint-disable-next-line jsx-a11y/alt-text
+				output.push(<img src={option.icon} key={`${option.value}-icon`} />);
+			} else {
 				output.push(
-					<img
-						src={option.icon}
-						key="icon"
-					/>,
+					React.cloneElement(option.icon as React.ReactElement, {
+						key: `${option.value}-icon`,
+						className: styles.Combobox__ItemIcon,
+					})
 				);
-			}
-			else {
-				output.push(React.cloneElement(option.icon as React.ReactElement, { key: 'icon', className: 'FlySelect__ItemIcon' }));
 			}
 		}
 
 		output.push(
-			<span
-				key="label"
-				className="FlySelect_Option_Label"
-			>
+			<span key={`${option.value}-label`} className={styles.Combobox_Option_Label}>
 				{option.label}
-			</span>,
-		);
-		output.push(this.renderItemRight(option, showCheck));
-
-		return output;
-	}
-
-	renderItemRight (option: FlySelectOptionFormatted, showCheck: boolean) {
-		return (
-			<span
-				className="FlySelect__Right"
-				key="right"
-			>
-				{
-					'secondaryText' in option && option.secondaryText
-					&&
-					<span
-						className="FlySelect__SecondaryText"
-						key="secondary-text"
-					>
-						{option.secondaryText}
-					</span>
-				}
-				{
-					showCheck && option.value === this.state.value
-					&&
-					<CheckSVG
-						key="checked"
-						className="FlySelect__Check"
-					/>
-				}
 			</span>
 		);
-	}
 
-	renderFooter () {
-		if (!this.props.footerText) {
-			return '';
-		}
+		output.push(renderItemRight(option, showCheck));
 
-		return (
-			<div className="FlySelect__Footer">
-				<a
-					className="FlySelect__FooterLink"
-					onClick={this.props.footerOnClick}
-				>
-					{this.props.footerText}
-					<ArrowRightSVG />
-				</a>
-			</div>
-		);
-	}
+		return output;
+	};
 
-	renderOption (optionValue: FlySelectOption['value'], i: number, group: any) {
-		const optionsFormatted = this.state.optionsFormatted;
-		const option = optionsFormatted[optionValue as string];
-		const disabled = typeof optionsFormatted[optionValue as string] === 'object' ? optionsFormatted[optionValue as string].disabled : false;
-
+	const renderOption = (option: ComboboxOptionFormatted, group?: string): React.ReactNode => {
 		if (option.optionGroup !== group) {
 			return null;
 		}
 
+		const filteredOptions = getFilteredOptions();
+
+		const isFocused = filteredOptions.indexOf(option) === state.focusedIndex;
+
 		return (
 			<div
-				id={`${this.props.id}_Option`}
-				tabIndex={0}
-				key={i}
+				role="option"
+				aria-selected={state.value === option.value}
+				tabIndex={-1}
+				key={option.value}
 				data-value={option.value}
-				className={classnames(
-					'FlySelect_Option',
-					{
-						'FlySelect_Option__Striped': this.props.striped,
-						'__Disabled': disabled,
-					},
-				)}
-				onKeyDown={(e) => this.onOptionKeyDown(e, optionValue)}
-				onClick={(e) => this.selectOption(e, optionValue)}
+				className={classnames(styles.Combobox_Option, {
+					[styles.Combobox_Option__Striped]: striped,
+					[styles.Combobox_Option__Focus]: isFocused && !option.disabled,
+					__Disabled: option.disabled,
+				})}
+				onKeyDown={() => {}}
+				onClick={(e) => selectOption(e, option.value)}
+				onMouseEnter={() =>
+					setState((prevState) => ({
+						...prevState,
+						focusedIndex: filteredOptions.indexOf(option),
+					}))
+				}
 			>
-				{this.renderItem(option, true)}
+				{renderItem(option, true)}
 			</div>
 		);
-	}
+	};
 
-	renderOptionGroups () {
-		if (!this.props.optionGroups) {
+	const renderOptionGroups = (opts: ComboboxOptionsFormatted) => {
+		if (!optionGroups) {
 			return null;
 		}
 
-		const output: any[] = [];
-		const optionsFormatted = this.state.optionsFormatted;
+		const output: React.ReactNode[] = [];
 
-		Object.keys(this.props.optionGroups).forEach((optionGroupID) => {
-			const optionGroup = this.props.optionGroups && this.props.optionGroups[optionGroupID];
-			const optionNodes = Object.keys(optionsFormatted)
-				.map((optionValue: any, i: number) => this.renderOption(optionValue, i, optionGroupID))
-				.filter((n) => n)
-			;
+		Object.entries(optionGroups).forEach(([optionGroupID, optionGroup]) => {
+			const optionNodes = Object.values(opts)
+				.map((option) => renderOption(option, optionGroupID))
+				.filter((n) => n);
 
 			if (!optionNodes.length || !optionGroup) {
 				return;
@@ -378,86 +460,116 @@ export default class FlySelect extends React.Component<IProps, IState> {
 
 			output.push(
 				<>
-					<div
-						tabIndex={0}
-						key={optionGroupID}
-						className="FlySelect_OptionGroup"
-					>
+					{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+					<div tabIndex={0} key={optionGroupID} className={styles.Combobox_OptionGroup}>
 						<span>{optionGroup.label}</span>
-						{
-							optionGroup.linkText
-								?
-								<a onClick={optionGroup.linkOnClick}>
-									{optionGroup.linkText}
-									<ArrowRightSVG/>
-								</a>
-								:
-								null
-						}
+						{optionGroup.linkText ? (
+							// eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+							<a onClick={optionGroup.linkOnClick}>
+								{optionGroup.linkText}
+								<ArrowRightSVG />
+							</a>
+						) : null}
 					</div>
-					<span key={`${optionGroupID}-empty`} /> {/* note: this is here to ensure that the expected alternating row color order is maintained */}
-				</>,
+					<span key={`${optionGroupID}-empty`} />{' '}
+					{/* note: this is here to ensure that the expected alternating row color order is maintained */}
+				</>
 			);
 
 			output.push(optionNodes);
 		});
 
 		return output;
-	}
+	};
 
-	render () {
-		const optionsFormatted = this.state.optionsFormatted;
-		const Tag: any = 'div';
-		return (
-			<Tag
-				className={classnames(
-					'FlySelect',
-					styles.FlySelect,
-					this.props.className,
-					{
-						'FlySelect__Focus': this.state.focus,
-						'FlySelect__HasFooter': this.props.footerText,
-						'FlySelect__Open': this.state.open,
-						[styles.Combobox__Readonly]: this.props.readonly,
-					},
-				)}
-				data-current-value={this.state.value}
-				disabled={this.props.disabled || !Object.keys(optionsFormatted).length}
-				id={this.props.id}
-				onBlur={this.onBlur}
-				onClick={this.onClick}
-				onKeyDown={this.onContainerKeyDown}
-				ref={this.__containerRef}
-				style={this.props.style}
-				tabIndex={0}
+	const clearFilter = () => {
+		setState((prevState) => ({
+			...prevState,
+			filter: '',
+		}));
+		inputRef.current?.focus();
+	};
+
+	const preventFocus = (event: React.MouseEvent) => {
+		event.persist();
+		event.preventDefault();
+	};
+
+	const getIconTop = (iconHeight: number) => ({
+		top: inputRef.current ? `${(inputRef.current.clientHeight - iconHeight) / 2}px` : '0',
+	});
+
+	return (
+		<Container
+			className={classnames(styles.Combobox, className, {
+				[styles.Combobox__Open]: state.open,
+				[styles.Combobox__Disabled]: disabled || !state.options.length,
+				[styles.Combobox__InputHeightLarge]: inputHeight === 'l',
+				[styles.Combobox__OptionHeightLarge]: optionHeight === 'l',
+			})}
+			id={id}
+			ref={containerRef}
+			style={style}
+			onKeyDown={onContainerKeyDown}
+			{...container}
+		>
+			<BasicInput
+				ref={inputRef}
+				role="combobox"
+				aria-expanded={state.open}
+				aria-controls={`${id}-Options`}
+				className={styles.Combobox__BasicInput}
+				placeholder={renderPlaceholder()}
+				onChange={handleTyping}
+				value={state.filter}
+				{...{ invalid, invalidMessage, onClick, onBlur, onFocus, disabled }}
+				// rightIcon={state.open ? CloseIcon : CaretIcon}
+			/>
+			<SearchIcon
+				aria-hidden
+				className={styles.Combobox__SearchIcon}
+				height={22}
+				width={22}
+				style={getIconTop(22)}
+			/>
+			{state.open ? (
+				state.filter && (
+					<IconButton
+						icon={CloseSmallIcon}
+						style={getIconTop(13)}
+						className={styles.Combobox__CloseIcon}
+						tabIndex={-1}
+						onMouseDown={preventFocus}
+						onClick={clearFilter}
+					/>
+				)
+			) : (
+				<IconButton
+					icon={CaretIcon}
+					onMouseDown={preventFocus}
+					tabIndex={-1}
+					className={styles.Combobox__CaretIcon}
+					style={getIconTop(5.95)}
+					onClick={onClick}
+				/>
+			)}
+			<div
+				className={styles.Combobox_Options}
+				id={`${id}-Options`}
+				style={{
+					maxHeight:
+						containerRef.current && state.open
+							? window.innerHeight - 50 - containerRef.current.getBoundingClientRect().top
+							: undefined,
+				}}
 			>
-				<CaretIcon className={styles.Combobox__Caret}/>
-				<span className="CurrentValue">
-					{
-						this.state.value in optionsFormatted
-							?
-							this.renderItem(optionsFormatted[this.state.value])
-							:
-							<span className="CurrentValue_Placeholder">
-								{this.renderPlaceholder()}
-							</span>
-					}
-				</span>
-				<div
-					className="FlySelect_Options"
-					style={this.calculateOptionsPosition()}
-				>
-					<div
-						tabIndex={0}
-						ref={this.__optionsRef}
-						className="FlySelect_OptionsContainer"
-					>
-						{Object.keys(optionsFormatted).map((optionValue, i) => this.renderOption(optionValue, i, null))}
-						{this.renderOptionGroups()}
-					</div>
-					{this.renderFooter()}
+				<div ref={optionsRef} className={styles.Combobox_OptionsContainer}>
+					{getFilteredOptions().map((option) => renderOption(option))}
+					{renderOptionGroups(getFilteredOptions())}
 				</div>
-			</Tag>
-		);
-	}
-}
+			</div>
+		</Container>
+	);
+};
+
+export default Combobox;
