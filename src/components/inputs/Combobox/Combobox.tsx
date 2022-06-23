@@ -293,12 +293,13 @@ const Combobox = (props: IComboboxProps) => {
 	const getAvailableFocusedIndex = (next: boolean = true) => {
 		const { focusedIndex } = state;
 		const filteredOptions = getFilteredOptions();
+		const len = filteredOptions.length;
 
-		let i = getNextIndex(focusedIndex, filteredOptions.length, next);
+		let i = getNextIndex(focusedIndex, len, next);
 		let option = filteredOptions[i];
 
 		while (option && i !== focusedIndex && option.disabled) {
-			i = getNextIndex(i, filteredOptions.length, next);
+			i = len === 1 && option.disabled ? focusedIndex : getNextIndex(i, len, next);
 			option = filteredOptions[i];
 		}
 
