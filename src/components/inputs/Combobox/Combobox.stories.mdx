@@ -1,6 +1,7 @@
 import Combobox from "./Combobox";
 import Avatar from "../../media/Avatar/Avatar";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
 <Meta title="Inputs/Combobox" component={Combobox} />
 
@@ -8,11 +9,84 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Canvas>
 	<Story name="Options = Array">
-		<Combobox
-			options={["Test 1", "Test 2"]}
-			onChange={() => console.log("onChange")}
-			value="Test 1"
-		/>
+		<div style={{ width: "90%", height: "125px" }}>
+			<Combobox
+				inputHeight='s'
+				options={["Test 1", "Test 2"]}
+				onChange={() => console.log("onChange")}
+				value="Test 1"
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+## Basic (Disabled)
+
+<Canvas>
+	<Story name="Disabled">
+		<div style={{ width: "90%", height: "125px" }}>
+			<Combobox
+				options={["Test 1", "Test 2"]}
+				onChange={() => console.log("onChange")}
+				disabled
+				placeholder="Select an option..."
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+## Basic (Disabled with Tooltip)
+
+<Canvas>
+	<Story name="Disabled with tooltip">
+		<div style={{ width: "90%", height: "125px" }}>
+			<Combobox
+				container={{
+					element: (
+						<Tooltip
+							content={"This combobox is disabled"}
+							popperOffsetModifier={{ offset: [-55, 10] }}
+							showDelay={300}
+						/>
+					),
+				}}
+				options={["Test 1", "Test 2"]}
+				onChange={() => console.log("onChange")}
+				disabled
+				placeholder="Select an option..."
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+## Basic (Invalid)
+
+<Canvas>
+	<Story name="Invalid">
+		<div style={{ width: "90%", height: "125px" }}>
+			<Combobox
+				invalid
+				options={["Test 1", "Test 2"]}
+				onChange={() => console.log("onChange")}
+				placeholder="Select an option..."
+			/>
+		</div>
+	</Story>
+</Canvas>
+
+## Basic (Invalid with message)
+
+<Canvas>
+	<Story name="Invalid with message">
+		<div style={{ width: "90%", height: "125px" }}>
+			<Combobox
+				invalid
+				options={["Test 1", "Test 2"]}
+				onChange={() => console.log("onChange")}
+				placeholder="Select an option..."
+				invalidMessage="Sample error message"
+			/>
+		</div>
 	</Story>
 </Canvas>
 
@@ -20,63 +94,14 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Canvas>
 	<Story name="Options = Object">
-		<Combobox
-			options={{
-				a: "Example A",
-				b: "Example B",
-			}}
-			onChange={() => console.log("onChange")}
-			value="b"
-		/>
-	</Story>
-</Canvas>
-
-## Has secondary text and various option icons
-
-<div>
-	<Combobox
-		style={{ width: "350px" }}
-		options={{
-			a: {
-				label: "Example A",
-				secondaryText: "This is a test",
-				download: true,
-			},
-			c: {
-				label: "Example B",
-				icon: (
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<path d="M13 13h10a1 1 0 1 0 0-2H13V1a1 1 0 0 0-2 0v10H1a1 1 0 1 0 0 2h10v10a1 1 0 1 0 2 0z"></path>
-					</svg>
-				),
-			},
-		}}
-		onChange={() => console.log("onChange")}
-		value="a"
-	/>
-</div>
-
-## Placeholder
-
-<Canvas>
-	<Story name="Placeholder">
-		<Combobox
-			options={["Example C", "Example D"]}
-			onChange={() => console.log("onChange")}
-			placeholder="Select Something!"
-		/>
-	</Story>
-</Canvas>
-
-## Constrained Width
-
-<Canvas>
-	<Story name="Constrained Width">
-		<div style={{ width: "150px" }}>
+		<div style={{ width: "90%", height: "125px" }}>
 			<Combobox
-				options={["Example C Testing 123", "Example D Testing 123"]}
+				options={{
+					a: "Example A",
+					b: "Example B",
+				}}
 				onChange={() => console.log("onChange")}
-				placeholder="Select Something!"
+				value="b"
 			/>
 		</div>
 	</Story>
@@ -86,7 +111,7 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Canvas>
 	<Story name="Striped">
-		<div style={{ width: "150px" }}>
+		<div style={{ width: "90%", height: "310px" }}>
 			<Combobox
 				optionGroups={{
 					active: {
@@ -128,42 +153,84 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 	</Story>
 </Canvas>
 
-## Using an Avatar within a form Combobox
+## Complex Example:
 
 <Canvas>
-	<Story name="Avatar">
-		<div>
-			<div className="FormRow">
-				<div className="FormField">
-					<Combobox
-						style={{ width: "350px" }}
-						options={{
-							a: {
-								label: "Me",
-								icon: (
-									<Avatar
-										size="s"
-										src="https://getflywheel.com/wp-content/uploads/2015/02/flyheadshots-4-copy.jpg"
-										type="user"
-									/>
-								),
-							},
-							c: {
-								label: "Flywheel",
-								icon: (
-									<Avatar
-										size="s"
-										src="https://avatars2.githubusercontent.com/u/2371558?s=400&v=4"
-										type="team"
-									/>
-								),
-							},
-						}}
-						onChange={() => console.log("onChange")}
-						value="a"
-					/>
-				</div>
-			</div>
+	<Story name="Connect">
+		<div style={{ width: "90%", height: "600px" }}>
+			<Combobox
+				optionHeight='l'
+				optionGroups={{
+					active: {
+						label: "Active Items",
+					},
+					inactive: {
+						label: "Inactive Items",
+					},
+					connected: {
+						label: "Connected sites",
+					},
+				}}
+				options={{
+					vi6tamon66: {
+						label: 'EduardoTest',
+						optionGroup: 'connected',
+						disabled: true,
+						secondaryText: 'EduardoTest',
+					},
+					f9tl99u20j: {
+						label: 'gameovertest',
+						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+					xvvkshuge5: {
+						label: 'Hot Thoughts',
+						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v3.svg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+					eb4048qhg3: {
+						label: "Let's Learn Local",
+						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+					xljat07he5: {
+						label: 'Local by WPE',
+						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v1.svg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+					'9tk3oojmil': {
+						label: 'Product Roadmaps',
+						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v1.svg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+					'47b1364yva': {
+						label: 'Spacemind 5000',
+						icon: 'https:flywheel-app-production.s3.amazonaws.com/uploads/site/657948/1643221998-57-0001-1961/expanded_brain_large.jpeg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+					'8eht8gi4t8': {
+						label: 'Star Map',
+						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+					vwddlo8lal: {
+						label: 'Starship Wingnut',
+						icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
+						optionGroup: undefined,
+						disabled: false,
+					},
+				}}
+				onChange={() => console.log("onChange")}
+				placeholder="Select Something!"
+				striped={true}
+			/>
 		</div>
 	</Story>
 </Canvas>

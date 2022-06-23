@@ -28,6 +28,12 @@ export {
 	FlySelectOptions,
 	FlySelectOptionGroups,
 } from './components/inputs/FlySelect/FlySelect';
+export {
+	default as Combobox,
+	ComboboxOption,
+	ComboboxOptions,
+	ComboboxOptionGroups,
+} from './components/inputs/Combobox/Combobox';
 export * from './components/icons/Icons';
 export { default as IconCheckbox } from './components/inputs/IconCheckbox/IconCheckbox';
 export { default as InputPasswordToggle } from './components/inputs/InputPasswordToggle/InputPasswordToggle';
