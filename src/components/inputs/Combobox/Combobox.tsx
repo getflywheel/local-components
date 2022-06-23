@@ -130,7 +130,7 @@ const Combobox = (props: IComboboxProps) => {
 		return formattedOptions;
 	};
 
-	const [state, setState] = useState<IState>({
+	const [state, unsafeSetState] = useState<IState>({
 		focusedIndex: -1,
 		open: false,
 		options: formatOptions(options),
@@ -140,6 +140,25 @@ const Combobox = (props: IComboboxProps) => {
 		shouldFilter: false,
 	});
 
+	/**
+	 * Helper function for setting the state object so that we can avoid having to
+	 * remember to spread ...prevState every time, since we have one single state
+	 * object and not several state variables.
+	 */
+	const setState = (
+		newState: Partial<IState> | ((prevstate: IState) => Partial<IState>),
+		callback: ((prevstate: IState) => void) | undefined = undefined
+	) => {
+		unsafeSetState((prevState) => {
+			callback?.(prevState);
+
+			return {
+				...prevState,
+				...(typeof newState === 'function' ? newState(prevState) : newState),
+			};
+		});
+	};
+
 	const containerRef = useRef<HTMLDivElement>(null);
 	const optionsRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -148,26 +167,20 @@ const Combobox = (props: IComboboxProps) => {
 	useEffect(() => {
 		if (optionsLoader) {
 			optionsLoader().then((opts: ComboboxOptions) =>
-				setState((prevState) => ({
-					...prevState,
+				setState({
 					options: formatOptions(opts),
 					optionsLoaded: true,
-				}))
+				})
 			);
 		}
 	}, []);
 
 	useEffect(() => {
-		setState((prevState) => ({
-			...prevState,
-			value,
-			options: formatOptions(options),
-		}));
+		setState({ value, options: formatOptions(options) });
 	}, [value, options]);
 
 	useEffect(() => {
 		setState((prevState) => ({
-			...prevState,
 			filter: prevState.value ? prevState.options.find((opt) => opt.value === prevState.value)!.label : '',
 		}));
 	}, [state.value, state.options]);
@@ -175,7 +188,6 @@ const Combobox = (props: IComboboxProps) => {
 	useEffect(() => {
 		if (!state.open) {
 			setState((prevState) => ({
-				...prevState,
 				shouldFilter: false,
 				filter: prevState.value ? prevState.options.find((opt) => opt.value === prevState.value)!.label : '',
 			}));
@@ -183,40 +195,25 @@ const Combobox = (props: IComboboxProps) => {
 	}, [state.open]);
 
 	const onClick = () => {
-		setState((prevState) => ({
-			...prevState,
-			open: true,
-		}));
+		setState({ open: true });
 		inputRef.current?.focus();
 	};
 
 	const onBlur = (event: React.FocusEvent<HTMLElement>) => {
 		if (!containerRef.current?.contains(event.relatedTarget as HTMLElement)) {
-			setState((prevState) => ({
-				...prevState,
-				open: false,
-			}));
+			setState({ open: false });
 		}
 	};
 
 	const onFocus = () => {
-		setState((prevState) => ({
-			...prevState,
-			focusedIndex: -1,
-		}));
+		setState({ focusedIndex: -1 });
 	};
 
 	const selectOption = (e: React.MouseEvent | React.KeyboardEvent, val: IComboboxProps['value']) => {
 		e.persist();
-		setState((prevState) => {
+		setState({ open: false, value: val! }, () => {
 			onChange(val!);
 			e.stopPropagation();
-
-			return {
-				...prevState,
-				open: false,
-				value: val!,
-			};
 		});
 	};
 
@@ -224,7 +221,6 @@ const Combobox = (props: IComboboxProps) => {
 		event.persist();
 
 		setState((prevState) => ({
-			...prevState,
 			filter: event.target.value,
 			shouldFilter: true,
 			open: true,
@@ -346,7 +342,7 @@ const Combobox = (props: IComboboxProps) => {
 			default:
 				return;
 		}
-		setState((prevState) => ({ ...prevState, open, focusedIndex }));
+		setState({ open, focusedIndex });
 	};
 
 	const renderPlaceholder = () => {
@@ -431,12 +427,7 @@ const Combobox = (props: IComboboxProps) => {
 				})}
 				onKeyDown={() => {}}
 				onClick={(e) => selectOption(e, option.value)}
-				onMouseEnter={() =>
-					setState((prevState) => ({
-						...prevState,
-						focusedIndex: filteredOptions.indexOf(option),
-					}))
-				}
+				onMouseEnter={() => setState({ focusedIndex: filteredOptions.indexOf(option) })}
 			>
 				{renderItem(option, true)}
 			</div>
@@ -484,10 +475,7 @@ const Combobox = (props: IComboboxProps) => {
 	};
 
 	const clearFilter = () => {
-		setState((prevState) => ({
-			...prevState,
-			filter: '',
-		}));
+		setState({ filter: '' });
 		inputRef.current?.focus();
 	};
 
