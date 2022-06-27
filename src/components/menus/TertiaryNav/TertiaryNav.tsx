@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import * as React from 'react';
 import classnames from 'classnames';
 import { Switch, Route, NavLink, RouteComponentProps, withRouter, Redirect } from 'react-router-dom';
@@ -11,11 +12,11 @@ import { FunctionGeneric } from '../../../common/structures/Generics';
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
 @(withRouter as any)
 export class TertiaryNav extends React.Component<IReactComponentProps & RouteComponentProps> {
-	render () {
+	render() {
 		/**
 		 * Store first route so we can automatically redirect to it.
 		 */
-		let firstRoute: React.ReactElement | undefined = undefined;
+		let firstRoute: React.ReactElement | undefined;
 
 		const tertiaryNavRoutes = React.Children.map(this.props.children, (child: any) => {
 			const propsWithoutChildren = { ...child.props };
@@ -25,40 +26,27 @@ export class TertiaryNav extends React.Component<IReactComponentProps & RouteCom
 				firstRoute = child;
 			}
 
-			return (
-				<Route
-					{...propsWithoutChildren}
-					path={`${this.props.match.url}${propsWithoutChildren.path}`}
-				/>
-			);
+			return <Route {...propsWithoutChildren} path={`${this.props.match.url}${propsWithoutChildren.path}`} />;
 		});
 
 		return (
 			<div
-				className={classnames(
-					styles.TertiaryNavContainer,
-					this.props.className,
-				)}
+				className={classnames(styles.TertiaryNavContainer, this.props.className)}
 				id={this.props.id}
 				style={this.props.style}
 			>
-				<ul className={classnames(styles.TertiaryNav)}>
-					{this.props.children}
-				</ul>
+				<ul className={classnames(styles.TertiaryNav)}>{this.props.children}</ul>
 				{/* globally scoping TertiaryContent so overflow can be hijacked
 				to make Drawer components work with overflowing content */}
-				<div className={classnames(styles.TertiaryContent, "TertiaryContent")}>
+				<div className={classnames(styles.TertiaryContent, 'TertiaryContent')}>
 					<Switch>
 						{tertiaryNavRoutes}
-						{firstRoute! &&
-							(
-								<Redirect
-									from={`${this.props.match.url}`}
-									to={`${this.props.match.url}${firstRoute!.props.path}`}
-								/>
-							)
-
-						}
+						{firstRoute! && (
+							<Redirect
+								from={`${this.props.match.url}`}
+								to={`${this.props.match.url}${firstRoute!.props.path}`}
+							/>
+						)}
 					</Switch>
 				</div>
 			</div>
@@ -78,19 +66,15 @@ interface ITertiaryNavItemProps extends IReactComponentProps {
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24077#issuecomment-455487092
 @(withRouter as any)
 export class TertiaryNavItem extends React.Component<ITertiaryNavItemProps & RouteComponentProps> {
-	render () {
+	render() {
 		return (
 			<li
-				className={classnames(
-					styles.TertiaryNavItem,
-					this.props.className,
-					{
-						[styles.TertiaryNavItem__Error]: this.props.variant === 'error',
-					},
-				)}
+				className={classnames(styles.TertiaryNavItem, this.props.className, {
+					[styles.TertiaryNavItem__Error]: this.props.variant === 'error',
+				})}
 			>
 				<NavLink
-					exact={true}
+					exact
 					to={`${this.props.match.url}${this.props.path}`}
 					activeClassName={styles.TertiaryNavItem__Active}
 				>

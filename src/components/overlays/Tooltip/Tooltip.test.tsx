@@ -7,53 +7,54 @@ const mockOnShow = jest.fn();
 const mockOnHide = jest.fn();
 
 const contentText = 'Tooltip content';
+// eslint-disable-next-line react/jsx-no-useless-fragment
 const content = <>{contentText}</>;
 const triggerText = 'Tooltip trigger';
 const trigger = <div>{triggerText}</div>;
 
 const renderTooltip = (props?: TooltipProps) => {
-    return render(<>
+	return render(
 		<Tooltip position="right" content={content} showDelay={0} hideDelay={0} {...props}>
 			{trigger}
 		</Tooltip>
-	</>);
+	);
 };
 
 describe('Tooltip', () => {
 	afterEach(() => {
-        jest.resetAllMocks();
-    });
+		jest.resetAllMocks();
+	});
 
-    test('renders correctly', () => {
-        renderTooltip();
-        expect(screen.getByText(triggerText)).toBeInTheDocument();
-    });
+	test('renders correctly', () => {
+		renderTooltip();
+		expect(screen.getByText(triggerText)).toBeInTheDocument();
+	});
 
 	test('renders popper correctly on hover', async () => {
-        renderTooltip();
+		renderTooltip();
 
 		userEvent.hover(screen.getByText(triggerText));
 		expect(screen.getByText(contentText)).toBeInTheDocument();
-	
+
 		userEvent.unhover(screen.getByText(triggerText));
 		expect(screen.queryByText(contentText)).not.toBeInTheDocument();
-    });
+	});
 
-	test('doesn\'t render popper when hideTooltip is true', () => {
-        const { unmount } = renderTooltip({ hideTooltip: true });
+	test("doesn't render popper when hideTooltip is true", () => {
+		const { unmount } = renderTooltip({ hideTooltip: true });
 		userEvent.hover(screen.getByText(triggerText));
-        expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+		expect(screen.queryByText(contentText)).not.toBeInTheDocument();
 		unmount();
 
-		renderTooltip({ hideTooltip: true, forceShow: true});
+		renderTooltip({ hideTooltip: true, forceShow: true });
 		userEvent.hover(screen.getByText(triggerText));
-        expect(screen.queryByText(contentText)).not.toBeInTheDocument(); 
-    });
+		expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+	});
 
 	test('shows the tooltip on click instead of hover when useClickInsteadOfHover is true', async () => {
-        renderTooltip({ useClickInsteadOfHover: true });
+		renderTooltip({ useClickInsteadOfHover: true });
 		userEvent.hover(screen.getByText(triggerText));
-        expect(screen.queryByText(contentText)).not.toBeInTheDocument();
+		expect(screen.queryByText(contentText)).not.toBeInTheDocument();
 		userEvent.unhover(screen.getByText(triggerText));
 
 		userEvent.click(screen.getByText(triggerText));
@@ -61,25 +62,25 @@ describe('Tooltip', () => {
 
 		userEvent.click(screen.getByText(triggerText));
 		expect(screen.queryByText(contentText)).not.toBeInTheDocument();
-    });
+	});
 
 	test('renders popper correctly immediately when forceShow is true', async () => {
-        const { unmount } = renderTooltip({ forceShow: true });
+		const { unmount } = renderTooltip({ forceShow: true });
 		expect(screen.getByText(contentText)).toBeInTheDocument();
 		unmount();
-    });
+	});
 
 	test('calls onHide and onShow at appropriate times', async () => {
-        renderTooltip({ onHide: mockOnHide, onShow: mockOnShow });
+		renderTooltip({ onHide: mockOnHide, onShow: mockOnShow });
 
 		userEvent.hover(screen.getByText(triggerText));
 		expect(screen.getByText(contentText)).toBeInTheDocument();
 		expect(mockOnShow).toHaveBeenCalledTimes(1);
 		expect(mockOnHide).not.toHaveBeenCalled();
-	
+
 		userEvent.unhover(screen.getByText(triggerText));
 		expect(screen.queryByText(contentText)).not.toBeInTheDocument();
 		expect(mockOnShow).toHaveBeenCalledTimes(1);
 		expect(mockOnHide).toHaveBeenCalledTimes(1);
-    });
+	});
 });
