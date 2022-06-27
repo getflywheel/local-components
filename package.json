@@ -31,8 +31,7 @@
     "untildify": "^4.0.0"
   },
   "scripts": {
-    "start": "run-p 'watch' 'styleguide'",
-    "styleguide": "yarn storybook",
+    "start": "run-p 'watch' 'storybook'",
     "clean-dist": "shx rm -rf dist && shx mkdir dist",
     "build": "yarn run clean-dist && yarn build:webpack",
     "build:webpack": "webpack --config webpack.prod.js --progress",
@@ -44,7 +43,7 @@
     "gh-pages:build": "yarn build-storybook",
     "gh-pages:deploy": "yarn gh-pages:build && gh-pages -d storybook-static",
     "tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json -t stylish",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "yarn start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
@@ -57,10 +56,10 @@
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-decorators": "^7.17.9",
     "@babel/plugin-transform-typescript": "^7.12.1",
-    "@storybook/addon-essentials": "^6.5.6",
-    "@storybook/builder-webpack5": "^6.5.6",
-    "@storybook/manager-webpack5": "^6.5.6",
-    "@storybook/react": "^6.5.6",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/react": "^6.5.9",
     "@svgr/webpack": "^6.2.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
@@ -97,7 +96,8 @@
     "globby": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
     "ignore-styles": "^5.0.1",
-    "jest": "^25.5.4",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
     "mini-css-extract-plugin": "^2.6.0",
     "mock-require": "^3.0.2",
     "npm-run-all": "^4.1.3",
@@ -111,10 +111,10 @@
     "sass-loader": "^13.0.0",
     "shx": "^0.3.2",
     "style-loader": "^3.3.1",
-    "ts-jest": "^25.4.0",
+    "ts-jest": "^28.0.5",
     "ts-loader": "^9.3.0",
     "ts-node": "^8.2.0",
-    "typescript": "^3.2.2",
+    "typescript": "^4.7.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
@@ -127,6 +127,8 @@
     "@types/react": "^16.14.26",
     "fstream": ">=1.0.12",
     "tar": ">=2.2.2",
-    "lodash": ">=4.17.13"
+    "lodash": ">=4.17.13",
+    "glob-parent": "^5.1.2",
+    "trim-newlines": "^3.0.1"
   }
 }
