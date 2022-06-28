@@ -146,31 +146,6 @@
 		font-weight: 700;
 		padding: 0 20px;
 		display: flex;
-
-		a {
-			margin-left: auto;
-			@include theme-color-gray-else-gray25;
-			display: flex;
-			align-items: center;
-
-			svg {
-				width: 6px;
-				height: 14px;
-				margin: -1px 0 0 10px;
-
-				path {
-					fill: $gray75;
-				}
-			}
-
-			&:hover {
-				@include theme-color-gray-else-white;
-
-				svg path {
-					@include theme-fill-gray-else-white;
-				}
-			}
-		}
 	}
 
 	.Combobox_Option {

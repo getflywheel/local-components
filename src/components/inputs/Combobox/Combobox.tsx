@@ -4,14 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import CheckSVG from '../../../svg/checkmark--big.svg';
 import DownloadSmallSVG from '../../../svg/download--small.svg';
-import ArrowRightSVG from '../../../svg/arrow--right.svg';
 import styles from './Combobox.scss';
-import { FunctionGeneric } from '../../../common/structures/Generics';
-import { CaretIcon, CloseSmallIcon, SearchIcon } from '../../icons/Icons';
+import { ArrowRightIcon, CaretIcon, CloseSmallIcon, SearchIcon } from '../../icons/Icons';
 import BasicInput from '../BasicInput/BasicInput';
 import { IconButton } from '../../buttons/IconButton/IconButton';
 import { Container } from '../../modules/Container/Container';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
+import TextButtonExternal from '../../buttons/TextButtonExternal/TextButtonExternal';
 
 /** Unformatted option for use in the { [value: string]: ComboboxOption } type for the "options" prop */
 export interface ComboboxOption {
@@ -69,8 +68,8 @@ export interface ComboboxOptionGroup {
 	label: string;
 	/** An optional link to display in the option group item */
 	linkText?: string;
-	/** A callback function to fire when clicking an option group link */
-	linkOnClick?: FunctionGeneric;
+	/** href for the textButtonExternal optionally rendered by passing linkText */
+	href?: string;
 }
 
 /** A group to separate Combobox options */
@@ -621,12 +620,14 @@ const Combobox = (props: IComboboxProps) => {
 					{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
 					<div tabIndex={0} key={`${id}-${optionGroup.name}`} className={styles.Combobox_OptionGroup}>
 						<span>{optionGroup.label}</span>
-						{optionGroup.linkText ? (
-							// eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-							<a onClick={optionGroup.linkOnClick}>
+						{optionGroup.linkText && optionGroup.href ? (
+							<TextButtonExternal
+								href={optionGroup.href}
+								rightIcon={ArrowRightIcon}
+								style={{ marginLeft: 'auto' }}
+							>
 								{optionGroup.linkText}
-								<ArrowRightSVG />
-							</a>
+							</TextButtonExternal>
 						) : null}
 					</div>
 					<span key={`${id}-${optionGroup.name}-empty`} />{' '}
