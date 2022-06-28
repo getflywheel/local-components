@@ -70,12 +70,6 @@ export const ComboboxConnectExample = () => (
 		loadingOptionsPlaceholder="Loading sites..."
 		optionHeight="l"
 		optionGroups={{
-			active: {
-				label: 'Active Items',
-			},
-			inactive: {
-				label: 'Inactive Items',
-			},
 			connected: {
 				label: 'Connected sites',
 			},

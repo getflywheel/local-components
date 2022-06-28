@@ -118,10 +118,13 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 
 <Canvas>
 	<Story name="Striped">
-		<div style={{ width: "90%", height: "310px" }}>
+		<div style={{ width: "90%", height: "500px" }}>
 			<Combobox
 				id="OptionGroupsStriped"
 				optionGroups={{
+					separate: {
+						label: "Separate Items",
+					},
 					active: {
 						label: "Active Items",
 					},
@@ -151,6 +154,18 @@ import { Tooltip } from "../../overlays/Tooltip/Tooltip";
 					e: {
 						label: "Item E",
 						optionGroup: "active",
+					},
+					f: {
+						label: "Item F",
+						optionGroup: "separate",
+					},
+					g: {
+						label: "Item G",
+						optionGroup: "separate",
+					},
+					h: {
+						label: "Item H",
+						optionGroup: "separate",
 					},
 				}}
 				onChange={() => console.log("onChange")}
