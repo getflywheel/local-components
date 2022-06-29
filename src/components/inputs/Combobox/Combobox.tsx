@@ -29,7 +29,7 @@ export interface ComboboxOption {
 	 *
 	 * Must match an object key or optionGroup.name field of an option group passed in the "optionGroups" prop
 	 */
-	optionGroup?: string;
+	optionGroup?: string | null;
 	/** Optional secondary text to be displayed to the right of the option labl */
 	secondaryText?: React.ReactNode;
 }
@@ -126,31 +126,6 @@ export interface IComboboxProps extends ILocalContainerProps {
 	invalidMessage?: string;
 }
 
-interface IState {
-	/** Index of the currently focused item in filteredOptions */
-	focusedIndex: number;
-	/** Array of possibly unsorted options - to get sorted, filtered options, use filteredOptions() */
-	options: ComboboxOptionsFormatted;
-	/** The filtered options object */
-	filteredOptions: ComboboxOptionsFormatted;
-	/** Whether combobox is open */
-	open: boolean;
-	/** Whether the options have been loaded */
-	optionsLoaded: boolean;
-	/** The formatted option groups derived from the "optionGroups" prop */
-	optionGroups: ComboboxOptionGroupsFormatted;
-	/** String representing currently selected value */
-	value: IComboboxProps['value'];
-	/**
-	 * The filter used to search through results using Fuse.js.
-	 *
-	 * This is also the text input value, i.e. the filter will always be the displayed text.
-	 */
-	filter: string;
-	/** Whether the filter should be applied - allows us to open the combobox without intial filtering */
-	shouldFilter: boolean;
-}
-
 /**
  * A combobox component for searching through a list of options in a dropdown.
  *
@@ -245,42 +220,16 @@ const Combobox = (props: IComboboxProps) => {
 	const optionsRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 
-	const [state, unsafeSetState] = useState<IState>({
-		focusedIndex: -1,
-		open: false,
-		options: formatOptions(options),
-		filteredOptions: [],
-		optionsLoaded: !optionsLoader,
-		optionGroups: formatOptionGroups(optionGroups),
-		value,
-		filter: '',
-		shouldFilter: false,
-	});
-
-	/**
-	 * Helper function for setting the state object so that we can avoid having to
-	 * remember to spread ...prevState every time, since we have one single state
-	 * object and not several state variables.
-	 *
-	 * @param newState Either an object with new state to set or a callback function
-	 * that will be passed previous state
-	 *
-	 * @param callback A callback function that will be passed previous state that will be called before the new state is set.
-	 * Defaults to undefined
-	 */
-	const setState = (
-		newState: Partial<IState> | ((prevstate: IState) => Partial<IState>),
-		callback: ((prevstate: IState) => void) | undefined = undefined
-	) => {
-		unsafeSetState((prevState) => {
-			callback?.(prevState);
-
-			return {
-				...prevState,
-				...(typeof newState === 'function' ? newState(prevState) : newState),
-			};
-		});
-	};
+	const [focusedIndex, setFocusedIndex] = useState(-1);
+	const [open, setOpen] = useState(false);
+	// Note a function is used here to set initial state to prevent re-calling on every render
+	const [unfilteredOptions, setUnfilteredOptions] = useState(() => formatOptions(options));
+	const [filteredOptions, setFilteredOptions] = useState<ComboboxOptionsFormatted>([]);
+	const [optionsLoaded, setOptionsLoaded] = useState(!optionsLoader);
+	const [formattedOptionGroups] = useState(() => formatOptionGroups(optionGroups));
+	const [currentValue, setCurrentValue] = useState(value);
+	const [filter, setFilter] = useState('');
+	const [shouldFilter, setShouldFilter] = useState(false);
 
 	// SORT AND FILTER:
 
@@ -290,7 +239,7 @@ const Combobox = (props: IComboboxProps) => {
 	 * This order is: ungrouped options followed by grouped options in the order the options and groups were passed as props.
 	 */
 	const sortOptions = (opts: ComboboxOptionsFormatted) => {
-		const optionGroupNames = state.optionGroups.map((group) => group.name);
+		const optionGroupNames = formattedOptionGroups.map((group) => group.name);
 
 		const hasOptionGroup = (option: ComboboxOptionFormatted) => {
 			return option.optionGroup && optionGroupNames.includes(option.optionGroup);
@@ -317,15 +266,15 @@ const Combobox = (props: IComboboxProps) => {
 	 * Note this will be run initially after state is set due to a useEffect watching state.options and state.filter
 	 */
 	const getFilteredOptions = (): ComboboxOptionsFormatted => {
-		let result = state.options;
+		let result = unfilteredOptions;
 
-		if (state.shouldFilter && state.filter) {
+		if (shouldFilter && filter) {
 			const fuse = new Fuse(result, {
 				keys: ['label'],
 				threshold: 0.5,
 			});
 
-			result = fuse.search(state.filter).map((option) => option.item);
+			result = fuse.search(filter).map((option) => option.item);
 
 			if (!result.length) {
 				return [
@@ -346,50 +295,48 @@ const Combobox = (props: IComboboxProps) => {
 	// Potentially load options on mount
 	useEffect(() => {
 		if (optionsLoader) {
-			optionsLoader().then((opts: ComboboxOptions) =>
-				setState({
-					options: formatOptions(opts),
-					optionsLoaded: true,
-				})
-			);
+			optionsLoader().then((opts: ComboboxOptions) => {
+				setUnfilteredOptions(formatOptions(opts));
+				setOptionsLoaded(true);
+			});
 		}
 	}, []);
 
 	// Watch for changes in the "value" prop, allowing this to be a controlled component
 	useEffect(() => {
-		setState({ value });
+		setCurrentValue(value);
 	}, [value]);
+
+	// Re-filter options whenever the filter or options changes
+	useEffect(() => {
+		setFilteredOptions(getFilteredOptions());
+	}, [filter, unfilteredOptions]);
+
+	// Maybe set the filter to the currently selected option's label, if one exists
+	const setFilterToCurrent = () => {
+		const currentOption = currentValue && unfilteredOptions.find((opt) => opt.value === currentValue)?.label;
+		setFilter(currentOption || '');
+	};
 
 	// Watch for changes in the stored value in state to keep the filter up to date
 	useEffect(() => {
-		setState((prevState) => ({
-			filter: prevState.value ? prevState.options.find((opt) => opt.value === prevState.value)!.label : '',
-		}));
-	}, [state.value, state.options]);
+		setFilterToCurrent();
+	}, [currentValue, unfilteredOptions]);
 
 	// When the combobox closes, set the filter equal to the selected option's label and
 	// reset shouldFilter (allows us to open combobox and show all options initially)
 	useEffect(() => {
-		if (!state.open) {
-			setState((prevState) => ({
-				shouldFilter: false,
-				filter: prevState.value ? prevState.options.find((opt) => opt.value === prevState.value)!.label : '',
-			}));
+		if (!open) {
+			setShouldFilter(false);
+			setFilterToCurrent();
 		}
-	}, [state.open]);
-
-	// Re-filter options whenever the filter or options changes
-	useEffect(() => {
-		setState({
-			filteredOptions: getFilteredOptions(),
-		});
-	}, [state.filter, state.options]);
+	}, [open]);
 
 	// EVENT HANDLERS:
 
 	/** Click handler for opening the combobox and focusing the text input */
 	const onClick = () => {
-		setState({ open: true });
+		setOpen(true);
 		inputRef.current?.focus();
 	};
 
@@ -400,34 +347,33 @@ const Combobox = (props: IComboboxProps) => {
 	 */
 	const onBlur = (event: React.FocusEvent<HTMLElement>) => {
 		if (!containerRef.current?.contains(event.relatedTarget as HTMLElement)) {
-			setState({ open: false });
+			setOpen(false);
 		}
 	};
 
 	/** Focus handler for the text input that resets the focusedIndex */
 	const onFocus = () => {
-		setState({ focusedIndex: -1 });
+		setFocusedIndex(-1);
 	};
 
 	/** Function to select an option, either by keyboard or by clicking */
 	const selectOption = (e: React.MouseEvent | React.KeyboardEvent, val: IComboboxProps['value']) => {
 		e.persist();
-		setState({ open: false, value: val! }, () => {
-			onChange(val!);
-			e.stopPropagation();
-		});
+		setOpen(false);
+		setCurrentValue(val);
+		onChange(val);
+		e.stopPropagation();
 	};
 
 	/** Function passed to onChange of text input, used to update the filter, open combobox, and set focusedIndex */
 	const handleTyping = (event: React.ChangeEvent<HTMLInputElement>) => {
 		event.persist();
-
-		setState((prevState) => ({
-			filter: event.target.value,
-			shouldFilter: true,
-			open: true,
-			focusedIndex: prevState.open ? prevState.focusedIndex : -1,
-		}));
+		setFilter(event.target.value);
+		setShouldFilter(true);
+		setOpen((prevOpen) => {
+			setFocusedIndex((prevFocusIndex) => (prevOpen ? prevFocusIndex : -1));
+			return true;
+		});
 	};
 
 	/** Helper function to determine the next array index going forward or backward, including wrapping */
@@ -451,7 +397,6 @@ const Combobox = (props: IComboboxProps) => {
 
 	/** Function to get the index of the next or previous focusable option, taking into account disabled options */
 	const getAvailableFocusedIndex = (next: boolean = true) => {
-		const { focusedIndex, filteredOptions } = state;
 		const len = filteredOptions.length;
 
 		let i = getNextIndex(focusedIndex, len, next);
@@ -467,56 +412,49 @@ const Combobox = (props: IComboboxProps) => {
 
 	/** Handler for keydown events on the container, allowing for accessible keyboard navigation */
 	const onContainerKeyDown = (event: React.KeyboardEvent) => {
-		let { open, focusedIndex } = state;
-
 		switch (event.key) {
 			case ' ':
 				if (!open) {
-					open = true;
-				} else {
-					return;
+					setOpen(true);
 				}
 				break;
 			case 'Enter':
 				if (!open) {
-					open = true;
+					setOpen(true);
 				} else {
-					const option = state.filteredOptions[focusedIndex];
-					if (state.options.includes(option)) {
-						selectOption(event, state.filteredOptions[focusedIndex].value);
+					const option = filteredOptions[focusedIndex];
+					if (unfilteredOptions.includes(option)) {
+						selectOption(event, filteredOptions[focusedIndex].value);
 						inputRef.current?.blur();
 					}
-					return;
 				}
 				break;
 			case 'ArrowUp':
 				event.preventDefault();
-				open = true;
-				focusedIndex = getAvailableFocusedIndex(false);
+				setOpen(true);
+				setFocusedIndex(getAvailableFocusedIndex(false));
 				break;
 			case 'ArrowDown':
 				event.preventDefault();
-				open = true;
-				focusedIndex = getAvailableFocusedIndex();
+				setOpen(true);
+				setFocusedIndex(getAvailableFocusedIndex());
 				break;
 			case 'Tab':
 				event.stopPropagation();
-				open = false;
+				setOpen(false);
 				break;
 			default:
-				return;
 		}
-		setState({ open, focusedIndex });
 	};
 
 	// RENDER FUNCTIONS, most if not all taken from FlySelect:
 
 	const renderPlaceholder = () => {
-		if (!state.optionsLoaded) {
+		if (!optionsLoaded) {
 			return loadingOptionsPlaceholder;
 		}
 
-		if (state.options.length) {
+		if (unfilteredOptions.length) {
 			return placeholder;
 		}
 
@@ -525,14 +463,14 @@ const Combobox = (props: IComboboxProps) => {
 
 	const renderItemRight = (option: ComboboxOptionFormatted, showCheck: boolean) => {
 		return (
-			<span className={styles.Combobox__Right} key={`${option.value}-right`}>
+			<span className={styles.Combobox__Right} key={`${id}-${option.value}-right`}>
 				{option.secondaryText && (
-					<span className={styles.Combobox__SecondaryText} key={`${option.value}-secondary-text`}>
+					<span className={styles.Combobox__SecondaryText} key={`${id}-${option.value}-secondary-text`}>
 						{option.secondaryText}
 					</span>
 				)}
-				{showCheck && option.value === state.value && (
-					<CheckSVG key={`${option.value}-checked`} className={styles.Combobox__Check} />
+				{showCheck && option.value === currentValue && (
+					<CheckSVG key={`${id}-${option.value}-checked`} className={styles.Combobox__Check} />
 				)}
 			</span>
 		);
@@ -542,17 +480,19 @@ const Combobox = (props: IComboboxProps) => {
 		const output = [];
 
 		if (option.download === true) {
-			output.push(<DownloadSmallSVG key={`${option.value}-download-svg`} className={styles.DownloadSmall} />);
+			output.push(
+				<DownloadSmallSVG key={`${id}-${option.value}-download-svg`} className={styles.DownloadSmall} />
+			);
 		}
 
 		if (option.icon) {
 			if (typeof option.icon === 'string') {
 				// eslint-disable-next-line jsx-a11y/alt-text
-				output.push(<img src={option.icon} key={`${option.value}-icon`} />);
+				output.push(<img src={option.icon} key={`${id}-${option.value}-icon`} />);
 			} else {
 				output.push(
 					React.cloneElement(option.icon as React.ReactElement, {
-						key: `${option.value}-icon`,
+						key: `${id}-${option.value}-icon`,
 						className: styles.Combobox__ItemIcon,
 					})
 				);
@@ -560,7 +500,7 @@ const Combobox = (props: IComboboxProps) => {
 		}
 
 		output.push(
-			<span key={`${option.value}-label`} className={styles.Combobox_Option_Label}>
+			<span key={`${id}-${option.value}-label`} className={styles.Combobox_Option_Label}>
 				{option.label}
 			</span>
 		);
@@ -578,12 +518,12 @@ const Combobox = (props: IComboboxProps) => {
 			return null;
 		}
 
-		const isFocused = state.filteredOptions.indexOf(option) === state.focusedIndex;
+		const isFocused = filteredOptions.indexOf(option) === focusedIndex;
 
 		return (
 			<div
 				role="option"
-				aria-selected={state.value === option.value}
+				aria-selected={currentValue === option.value}
 				tabIndex={-1}
 				key={`${id}-${option.value}`}
 				data-value={option.value}
@@ -594,7 +534,7 @@ const Combobox = (props: IComboboxProps) => {
 				})}
 				onKeyDown={() => {}}
 				onClick={(e) => selectOption(e, option.value)}
-				onMouseEnter={() => setState({ focusedIndex: state.filteredOptions.indexOf(option) })}
+				onMouseEnter={() => setFocusedIndex(filteredOptions.indexOf(option))}
 			>
 				{renderItem(option, true)}
 			</div>
@@ -602,13 +542,13 @@ const Combobox = (props: IComboboxProps) => {
 	};
 
 	const renderOptionGroups = (opts: ComboboxOptionsFormatted) => {
-		if (!state.optionGroups) {
+		if (!formattedOptionGroups) {
 			return null;
 		}
 
 		const output: React.ReactNode[] = [];
 
-		state.optionGroups.forEach((optionGroup) => {
+		formattedOptionGroups.forEach((optionGroup) => {
 			const optionNodes = opts.map((option) => renderOption(option, optionGroup)).filter((n) => n);
 
 			if (!optionNodes.length) {
@@ -616,15 +556,16 @@ const Combobox = (props: IComboboxProps) => {
 			}
 
 			output.push(
-				<>
+				<React.Fragment key={`${id}-${optionGroup.name}-fragment`}>
 					{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
 					<div tabIndex={0} key={`${id}-${optionGroup.name}`} className={styles.Combobox_OptionGroup}>
-						<span>{optionGroup.label}</span>
+						<span key={`${id}-${optionGroup.name}-label`}>{optionGroup.label}</span>
 						{optionGroup.linkText && optionGroup.href ? (
 							<TextButtonExternal
 								href={optionGroup.href}
 								rightIcon={ArrowRightIcon}
 								style={{ marginLeft: 'auto' }}
+								key={`${id}-${optionGroup.name}-TextButtonExternal`}
 							>
 								{optionGroup.linkText}
 							</TextButtonExternal>
@@ -632,7 +573,7 @@ const Combobox = (props: IComboboxProps) => {
 					</div>
 					<span key={`${id}-${optionGroup.name}-empty`} />{' '}
 					{/* note: this is here to ensure that the expected alternating row color order is maintained */}
-				</>
+				</React.Fragment>
 			);
 
 			output.push(optionNodes);
@@ -644,7 +585,7 @@ const Combobox = (props: IComboboxProps) => {
 	// HELPERS:
 
 	const clearFilter = () => {
-		setState({ filter: '' });
+		setFilter('');
 		inputRef.current?.focus();
 	};
 
@@ -661,8 +602,8 @@ const Combobox = (props: IComboboxProps) => {
 	return (
 		<Container
 			className={classnames(styles.Combobox, className, {
-				[styles.Combobox__Open]: state.open,
-				[styles.Combobox__Disabled]: disabled || !state.options.length,
+				[styles.Combobox__Open]: open,
+				[styles.Combobox__Disabled]: disabled || !unfilteredOptions.length,
 				[styles.Combobox__InputHeightLarge]: inputHeight === 'l',
 				[styles.Combobox__OptionHeightLarge]: optionHeight === 'l',
 			})}
@@ -675,12 +616,12 @@ const Combobox = (props: IComboboxProps) => {
 			<BasicInput
 				ref={inputRef}
 				role="combobox"
-				aria-expanded={state.open}
+				aria-expanded={open}
 				aria-controls={`${id}-Options`}
 				className={styles.Combobox__BasicInput}
 				placeholder={renderPlaceholder()}
 				onChange={handleTyping}
-				value={state.filter}
+				value={filter}
 				{...{ invalid, invalidMessage, onClick, onBlur, onFocus, disabled }}
 			/>
 			<SearchIcon
@@ -690,8 +631,8 @@ const Combobox = (props: IComboboxProps) => {
 				width={22}
 				style={getIconTop(22)}
 			/>
-			{state.open ? (
-				state.filter && (
+			{open ? (
+				filter && (
 					<IconButton
 						icon={CloseSmallIcon}
 						style={getIconTop(13)}
@@ -716,14 +657,14 @@ const Combobox = (props: IComboboxProps) => {
 				id={`${id}-Options`}
 				style={{
 					maxHeight:
-						containerRef.current && state.open
-							? window.innerHeight - 50 - containerRef.current.getBoundingClientRect().top
+						containerRef.current && open
+							? window.innerHeight - 75 - containerRef.current.getBoundingClientRect().top
 							: undefined,
 				}}
 			>
-				<div ref={optionsRef} className={styles.Combobox_OptionsContainer}>
-					{state.filteredOptions.map((option) => renderOption(option))}
-					{renderOptionGroups(state.filteredOptions)}
+				<div ref={optionsRef} key={`${id}-OptionsContainer`} className={styles.Combobox_OptionsContainer}>
+					{filteredOptions.map((option) => renderOption(option))}
+					{renderOptionGroups(filteredOptions)}
 				</div>
 			</div>
 		</Container>
