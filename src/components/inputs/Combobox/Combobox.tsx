@@ -188,9 +188,9 @@ const Combobox = (props: IComboboxProps) => {
 		optionValue: ComboboxOptionFormatted['value']
 	): ComboboxOptionFormatted => {
 		return {
+			...option,
 			value: optionValue,
 			optionGroup: option.optionGroup === null ? undefined : option.optionGroup,
-			...option,
 		};
 	};
 
