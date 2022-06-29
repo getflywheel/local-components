@@ -33,6 +33,7 @@ export {
 	ComboboxOption,
 	ComboboxOptions,
 	ComboboxOptionGroups,
+	ComboboxOptionsLoader,
 } from './components/inputs/Combobox/Combobox';
 export * from './components/icons/Icons';
 export { default as IconCheckbox } from './components/inputs/IconCheckbox/IconCheckbox';
