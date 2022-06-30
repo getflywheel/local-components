@@ -49,7 +49,7 @@ const optionsLoader = () =>
 					disabled: false,
 				},
 				'8eht8gi4t8': {
-					label: 'Star Map',
+					label: 'Really Really Long Site Name Really Really Long Site Name Really Really Long Site Name',
 					icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
 					optionGroup: null,
 					disabled: false,
