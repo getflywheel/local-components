@@ -10,24 +10,6 @@
 			background-color: $gray-dark-alt;
 		}
 	}
-
-	.Combobox__Caret {
-		position: absolute;
-		right: 9px;
-		top: 45%;
-		width: 14px;
-		height: 6px;
-
-		path {
-			@include __theme-fill($green-dark, $green)
-		}
-	}
-
-	&:hover {
-		.Combobox__Caret path {
-			@include __theme-fill($green, $green-dark50)
-		}
-	}
 }
 @import '../../../styles/_partials/index';
 
@@ -80,6 +62,7 @@
 	.Combobox__CaretIcon, .Combobox__CloseIcon {
 		position: absolute;
 		right: 20px;
+		margin: 0;
 	}
 
 	&:not(.Combobox__Open) {
