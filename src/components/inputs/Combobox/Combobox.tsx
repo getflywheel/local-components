@@ -2,10 +2,9 @@ import * as React from 'react';
 import classnames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
-import CheckSVG from '../../../svg/checkmark--big.svg';
 import DownloadSmallSVG from '../../../svg/download--small.svg';
 import styles from './Combobox.scss';
-import { ArrowRightIcon, CaretIcon, CloseSmallIcon, SearchIcon } from '../../icons/Icons';
+import { ArrowRightIcon, CaretIcon, CheckmarkIcon, CloseSmallIcon, SearchIcon } from '../../icons/Icons';
 import BasicInput from '../BasicInput/BasicInput';
 import { IconButton } from '../../buttons/IconButton/IconButton';
 import { Container } from '../../modules/Container/Container';
@@ -230,6 +229,7 @@ const Combobox = (props: IComboboxProps) => {
 	const [currentValue, setCurrentValue] = useState(value);
 	const [filter, setFilter] = useState('');
 	const [shouldFilter, setShouldFilter] = useState(false);
+	const [maxHeight, setMaxHeight] = useState<number | undefined>(undefined);
 
 	// SORT AND FILTER:
 
@@ -292,6 +292,14 @@ const Combobox = (props: IComboboxProps) => {
 
 	// USE EFFECTS:
 
+	const handleResize = () => {
+		setMaxHeight(
+			containerRef.current
+				? window.innerHeight - 75 - containerRef.current.getBoundingClientRect().top
+				: undefined
+		);
+	};
+
 	// Potentially load options on mount
 	useEffect(() => {
 		if (optionsLoader) {
@@ -300,6 +308,10 @@ const Combobox = (props: IComboboxProps) => {
 				setOptionsLoaded(true);
 			});
 		}
+
+		window.addEventListener('resize', handleResize);
+
+		return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
 	// Watch for changes in the "value" prop, allowing this to be a controlled component
@@ -330,6 +342,7 @@ const Combobox = (props: IComboboxProps) => {
 			setShouldFilter(false);
 			setFilterToCurrent();
 		}
+		handleResize();
 	}, [open]);
 
 	// EVENT HANDLERS:
@@ -416,7 +429,11 @@ const Combobox = (props: IComboboxProps) => {
 			case ' ':
 				if (!open) {
 					setOpen(true);
+					setFocusedIndex(-1);
 				}
+				break;
+			case 'Escape':
+				setOpen(false);
 				break;
 			case 'Enter':
 				if (!open) {
@@ -470,7 +487,12 @@ const Combobox = (props: IComboboxProps) => {
 					</span>
 				)}
 				{showCheck && option.value === currentValue && (
-					<CheckSVG key={`${id}-${option.value}-checked`} className={styles.Combobox__Check} />
+					<CheckmarkIcon
+						width={15}
+						height={15}
+						key={`${id}-${option.value}-checked`}
+						className={styles.Combobox__Check}
+					/>
 				)}
 			</span>
 		);
@@ -628,7 +650,7 @@ const Combobox = (props: IComboboxProps) => {
 				aria-hidden
 				className={styles.Combobox__SearchIcon}
 				height={22}
-				width={22}
+				width={inputHeight === 's' ? 18 : 22}
 				style={getIconTop(22)}
 			/>
 			{open ? (
@@ -652,16 +674,7 @@ const Combobox = (props: IComboboxProps) => {
 					onClick={onClick}
 				/>
 			)}
-			<div
-				className={styles.Combobox_Options}
-				id={`${id}-Options`}
-				style={{
-					maxHeight:
-						containerRef.current && open
-							? window.innerHeight - 75 - containerRef.current.getBoundingClientRect().top
-							: undefined,
-				}}
-			>
+			<div className={styles.Combobox_Options} id={`${id}-Options`} style={{ maxHeight }}>
 				<div ref={optionsRef} key={`${id}-OptionsContainer`} className={styles.Combobox_OptionsContainer}>
 					{filteredOptions.map((option) => renderOption(option))}
 					{renderOptionGroups(filteredOptions)}

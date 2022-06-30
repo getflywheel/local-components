@@ -165,7 +165,12 @@
 			margin: 0 0 0 auto;
 
 			.Combobox__Check {
-				margin-left: 10px;
+				margin: 0 10px;
+				vertical-align: middle;
+
+				* {
+					@include __theme-fill($green-dark, $green);
+				}
 			}
 		}
 
@@ -216,7 +221,7 @@
 				@include __theme-color($white, $gray-dark);
 			}
 
-			svg path {
+			svg path, .Combobox__Check path {
 				@include __theme-fill($white, $gray-dark);
 			}
 		}
