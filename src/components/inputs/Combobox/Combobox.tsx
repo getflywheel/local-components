@@ -229,7 +229,7 @@ const Combobox = (props: IComboboxProps) => {
 	const [currentValue, setCurrentValue] = useState(value);
 	const [filter, setFilter] = useState('');
 	const [shouldFilter, setShouldFilter] = useState(false);
-	const [maxHeight, setMaxHeight] = useState<number | undefined>(undefined);
+	const [maxHeight, setMaxHeight] = useState<number>(0);
 
 	// SORT AND FILTER:
 
@@ -294,9 +294,7 @@ const Combobox = (props: IComboboxProps) => {
 
 	const handleResize = () => {
 		setMaxHeight(
-			containerRef.current
-				? window.innerHeight - 75 - containerRef.current.getBoundingClientRect().top
-				: undefined
+			containerRef.current ? window.innerHeight - 75 - containerRef.current.getBoundingClientRect().top : 0
 		);
 	};
 
@@ -557,6 +555,11 @@ const Combobox = (props: IComboboxProps) => {
 				onKeyDown={() => {}}
 				onClick={(e) => selectOption(e, option.value)}
 				onMouseEnter={() => setFocusedIndex(filteredOptions.indexOf(option))}
+				ref={(el) => {
+					if (isFocused) {
+						el?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+					}
+				}}
 			>
 				{renderItem(option, true)}
 			</div>
