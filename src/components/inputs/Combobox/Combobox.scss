@@ -34,7 +34,7 @@
 		position: absolute;
 		margin-left: 15px;
 		opacity: 0;
-		transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+		transition: opacity none;
 	}
 
 	.Combobox__BasicInput {
@@ -44,7 +44,7 @@
 		input {
 			padding: 0;
 			height: var(--inputHeight);
-			transition: padding-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+			transition: padding-left none;
 			padding-left: 20px;
 			padding-right: 42px;
 		}
@@ -77,11 +77,13 @@
 		z-index: 5;
 
 		.Combobox__SearchIcon {
+			transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 			opacity: 1;
 		}
 
 		.Combobox__BasicInput {
 			input {
+				transition: padding-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 				padding-left: 45px;
 				border-radius: 4px 4px 0 0;
 			}
