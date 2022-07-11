@@ -31,6 +31,8 @@ export interface ComboboxOption {
 	optionGroup?: string | null;
 	/** Optional secondary text to be displayed to the right of the option labl */
 	secondaryText?: React.ReactNode;
+	/** Classname to be applied to option */
+	className?: string;
 }
 
 /**
@@ -271,7 +273,7 @@ const Combobox = (props: IComboboxProps) => {
 		if (shouldFilter && filter) {
 			const fuse = new Fuse(result, {
 				keys: ['label'],
-				threshold: 0.5,
+				threshold: 0.2,
 			});
 
 			result = fuse.search(filter).map((option) => option.item);
@@ -282,6 +284,7 @@ const Combobox = (props: IComboboxProps) => {
 						label: noResultsMessage,
 						value: noResultsMessage,
 						disabled: true,
+						className: styles.Combobox__NoResults,
 					},
 				];
 			}
@@ -486,8 +489,9 @@ const Combobox = (props: IComboboxProps) => {
 				)}
 				{showCheck && option.value === currentValue && (
 					<CheckmarkIcon
-						width={15}
-						height={15}
+						width={12}
+						height={12}
+						size="l"
 						key={`${id}-${option.value}-checked`}
 						className={styles.Combobox__Check}
 					/>
@@ -547,7 +551,7 @@ const Combobox = (props: IComboboxProps) => {
 				tabIndex={-1}
 				key={`${id}-${option.value}`}
 				data-value={option.value}
-				className={classnames(styles.Combobox_Option, {
+				className={classnames(styles.Combobox_Option, option.className, {
 					[styles.Combobox_Option__Striped]: striped,
 					[styles.Combobox_Option__Focus]: isFocused && !option.disabled,
 					__Disabled: option.disabled,
