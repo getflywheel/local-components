@@ -146,6 +146,12 @@
 
 		@include cursorPointer;
 
+		&.Combobox__NoResults {
+			filter: none;
+			opacity: 1;
+			@include theme-color-gray-else-gray25;
+		}
+
 		.Combobox__Right {
 			margin: 0 0 0 auto;
 
