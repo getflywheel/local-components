@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import classnames from 'classnames';
 import { Container } from '../../modules/Container/Container';
 import CircleWarnIcon from '../../icons/svgs/CircleWarnIcon';
-import { CloseSmallIcon } from '../../icons/svgs/CloseSmallIcon';
+import CloseSmallIcon from '../../icons/svgs/CloseSmallIcon';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import styles from './Alert.scss';
 

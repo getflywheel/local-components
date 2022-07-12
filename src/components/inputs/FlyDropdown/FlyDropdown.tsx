@@ -2,12 +2,11 @@ import * as React from 'react';
 import classnames from 'classnames';
 import { Rect } from '@popperjs/core';
 import styles from './FlyDropdown.scss';
-import { CaretIcon, CheckmarkMixedIcon } from '../../icons/Icons';
+import { CaretIcon, DashIcon } from '../../icons/Icons';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
 import { TextButton } from '../../buttons/TextButton/TextButton';
-import { DashIcon } from '../../icons/svgs/DashIcon';
 
 interface IItems {
 	color: 'red' | 'none';
