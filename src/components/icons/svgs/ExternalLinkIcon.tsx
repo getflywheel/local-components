@@ -2,10 +2,8 @@ import React from 'react';
 import ExternalLink from '../../../svg/external-link.svg';
 import withIconSvg from '../helpers/withIconSvg';
 
-export const ExternalLinkIcon: React.FC = (props) => {
-	return (
-		<ExternalLink {...props} />
-	);
+const ExternalLinkIcon: React.FC = (props) => {
+	return <ExternalLink {...props} />;
 };
 
-export default withIconSvg(ExternalLinkIcon, true, { tags: ['external', 'browser', 'open', 'link']});
+export default withIconSvg(ExternalLinkIcon, true, { tags: ['external', 'browser', 'open', 'link'] });

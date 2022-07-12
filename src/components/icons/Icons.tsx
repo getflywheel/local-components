@@ -1,4 +1,3 @@
-import * as React from 'react';
 import AddIcon from './svgs/AddIcon';
 import ArrowRightIcon from './svgs/ArrowRightIcon';
 import ArrowLeftIcon from './svgs/ArrowLeftIcon';
@@ -63,7 +62,7 @@ namespace Icons {
 	export const Circle = CircleIcon;
 	export const CircleComplete = CircleCompleteIcon;
 	export const CircleExclamation = CircleExclamationIcon;
-	export const CircleInfo= CircleInfoIcon;
+	export const CircleInfo = CircleInfoIcon;
 	export const CircleWarn = CircleWarnIcon;
 	export const Clock = ClockIcon;
 	export const Close = CloseIcon;
@@ -150,5 +149,5 @@ export {
 	StarIcon,
 	StopIcon,
 	YieldIcon,
-	WPIcon
-}
+	WPIcon,
+};
