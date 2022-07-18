@@ -554,7 +554,7 @@ const Combobox = (props: IComboboxProps) => {
 				className={classnames(styles.Combobox_Option, option.className, {
 					[styles.Combobox_Option__Striped]: striped,
 					[styles.Combobox_Option__Focus]: isFocused && !option.disabled,
-					__Disabled: option.disabled,
+					[styles.Combobox_Option__Disabled]: option.disabled,
 				})}
 				onKeyDown={() => {}}
 				onClick={(e) => selectOption(e, option.value)}
