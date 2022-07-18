@@ -1,4 +1,5 @@
 import React from 'react';
+import { ConnectPushIcon } from '../../icons/Icons';
 import Combobox, { ComboboxOptions } from './Combobox';
 
 const optionsLoader = () =>
@@ -7,10 +8,18 @@ const optionsLoader = () =>
 		setTimeout(() => {
 			resolve({
 				vi6tamon66: {
-					label: 'EduardoTest',
+					label: 'Remote EduardoTest Really Really Really Long Name',
 					optionGroup: 'connected',
 					disabled: true,
-					secondaryText: 'EduardoTest',
+					secondaryText: 'Local Site Name Kinda Long',
+					icon: <ConnectPushIcon />,
+				},
+				vi75amon66: {
+					label: 'Remote',
+					optionGroup: 'connected',
+					disabled: true,
+					secondaryText: 'Local',
+					icon: <ConnectPushIcon />,
 				},
 				f9tl99u20j: {
 					label: 'gameovertest',
@@ -53,6 +62,7 @@ const optionsLoader = () =>
 					icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
 					optionGroup: null,
 					disabled: false,
+					// secondaryText: 'EduardoTest Really Really Really Long Name',
 				},
 				vwddlo8lal: {
 					label: 'Starship Wingnut',
