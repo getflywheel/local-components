@@ -122,7 +122,7 @@
 	}
 
 	.Combobox_OptionGroup {
-		height: 37px;
+		min-height: 37px;
 		line-height: 37px;
 		text-align: left;
 		@include theme-color-gray-else-gray25;
