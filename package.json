@@ -1,7 +1,10 @@
 {
   "name": "@getflywheel/local-components",
   "version": "17.6.0-beta.4",
-  "repository": "https://github.com/getflywheel/local-components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getflywheel/local-components.git"
+  },
   "homepage": "https://build.localbyflywheel.com",
   "description": "",
   "main": "dist/index.js",
@@ -45,7 +48,8 @@
     "gh-pages:deploy": "yarn gh-pages:build && gh-pages -d storybook-static",
     "tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json -t stylish",
     "storybook": "yarn start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic"
   },
   "peerDependencies": {
     "react": ">= 16.9.0",
@@ -81,6 +85,7 @@
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "chokidar-cli": "^1.2.1",
+    "chromatic": "^6.7.0",
     "css-loader": "^6.7.1",
     "enzyme": "^3.8",
     "enzyme-adapter-react-16": "^1.7.1",
@@ -131,5 +136,8 @@
     "lodash": ">=4.17.13",
     "glob-parent": "^5.1.2",
     "trim-newlines": "^3.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/getflywheel/local-components/issues"
   }
 }
