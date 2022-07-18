@@ -153,7 +153,8 @@
 		}
 
 		.Combobox__Right {
-			margin: 0 0 0 auto;
+			flex-grow: 1;
+			margin-left: 10px;
 			text-align: right;
 
 			.Combobox__Check {
