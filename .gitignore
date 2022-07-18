@@ -10,3 +10,4 @@ node_modules
 /src/svg/*.tsx
 !/src/global.d.ts
 /coverage
+.env
