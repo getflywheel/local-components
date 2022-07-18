@@ -154,6 +154,7 @@
 
 		.Combobox__Right {
 			margin: 0 0 0 auto;
+			text-align: right;
 
 			.Combobox__Check {
 				margin: 0 10px;
@@ -167,7 +168,6 @@
 
 		.Combobox__SecondaryText {
 			margin-left: auto;
-			color: $gray75;
 			font-weight: 300;
 		}
 
@@ -187,12 +187,11 @@
 			}
 		}
 
-		svg.Combobox__ItemIcon {
-			height: 27px;
-		}
-
 		.Combobox_Option_Label {
 			max-width: 100%;
+		}
+
+		.Combobox_Option_Label, .Combobox__Right {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
