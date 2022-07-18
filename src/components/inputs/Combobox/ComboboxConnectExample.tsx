@@ -62,7 +62,6 @@ const optionsLoader = () =>
 					icon: 'https://app.getflywheel.com/assets/images/app/avatars/site-v2.svg',
 					optionGroup: null,
 					disabled: false,
-					// secondaryText: 'EduardoTest Really Really Really Long Name',
 				},
 				vwddlo8lal: {
 					label: 'Starship Wingnut',
