@@ -163,7 +163,7 @@ const RadioBlock: React.FC<IProps> = (props: IProps) => {
 					[styles.RadioBlock__DirectionVert]: direction === 'vert',
 					[styles.RadioBlock__Readonly]: readonly,
 				})}
-				id={id}
+				id={`RadioBlock-${id}`}
 				style={style}
 				{...otherProps}
 			>
