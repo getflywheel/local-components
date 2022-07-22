@@ -66,6 +66,7 @@ const RadioBlockItem: React.FC<IRadioBlockItemProps> = (props: IRadioBlockItemPr
 		<Container
 			{...container}
 			role="checkbox"
+			id={value ?? undefined}
 			aria-checked={selected}
 			tabIndex={selected ? -1 : 0}
 			onClick={handleClick}

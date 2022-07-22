@@ -40,6 +40,7 @@ export const Container = React.forwardRef((props: IContainerProps, ref: React.Fo
 			onClick={props.onClick}
 			onKeyDown={props.onKeyDown}
 			tabIndex={props.tabIndex}
+			aria-checked={props['aria-checked']}
 			ref={ref}
 		>
 			{props.children}
@@ -57,6 +58,7 @@ export const Container = React.forwardRef((props: IContainerProps, ref: React.Fo
 			onKeyDown: props.onKeyDown,
 			tabIndex: props.tabIndex,
 			ref,
+			'aira-checked': props['aria-checked'],
 		})
 	);
 });
