@@ -1,6 +1,6 @@
 {
   "name": "@getflywheel/local-components",
-  "version": "17.6.0",
+  "version": "17.6.1-beta",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/getflywheel/local-components.git"
