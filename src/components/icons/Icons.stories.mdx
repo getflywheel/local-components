@@ -1,9 +1,63 @@
 import { AddIcon, Icons } from "./Icons";
-import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import { IconsStoriesAll } from './IconsStoriesAll';
+import { CircleInfoIcon } from './Icons';
 import { Title } from '../text/Title/Title';
 
 <Meta title="Icons/Icons" component={Icons} />
+
+## Overview
+
+The Local Components Icon system is meant to standardize the icon implementation across Local projects and make those icons more discoverable within Storybook.
+
+### 🎯 Objectives
+
+1. A unified Icon system with a single approach
+1. Explicit width and height so icons don't resize and flicker when the app or a particular view is shown
+1. The option to neutralize svg colors out of the box for consistency and predictability
+1. Ability to override icon colors with a single `className` selector without using `!important` or nested selectors
+1. Allow each icon to define their own metadata for ease of discovery and implementation
+1. Dual export system that allows for importing via single namespace or individual component references
+1. Icons should allow additional, unknown props to be passed through and applied
+
+### 🏗 Adding a new svg icon
+
+1. Create a new icon component within `./src/components/icons/svgs/`
+1. Copy the new svg markup to the rendered component
+    1. Add `{...props}` to svg props to allow for maximum flexibility of common props without explicitly setting them
+    1. The props 'xmlns' and 'data-name' can optionally be removed
+1. Explicitly set `width` and `height` props of svg to match rounded viewport size
+1. Provide meta details to make this icon more discoverable within storybook example in 1 of 2 ways:
+    1. Wrap component in `withIconSvg` hoc
+    1. Add prototype property `meta` with details
+1. Export component and add to `Icons.tsx` namespace and export
+    1. Note: this will automatically include icons in the searchable storybook example via reflection
+
+### ⁉️ Q&A
+
+#### Why does the svg size flicker at an absurdly large size before scaling down to a reasonable size?
+
+Chances are, the exported svg xml does not include an explicit `width` and `height` attribute
+but a developer can add this after the fact.
+
+#### Why use `<svg>` and not `<img>`?
+
+The problem with both `<img>` and background-images is that you don’t get to control the innards of the svg.
+
+#### Why does `Icons.tsx` export both a namespace and object of objects?
+
+This setup allows icons to be imported and implemented in a dual export approach similar to React. See the [Ways to import icons](#ways-to-import-icons) section of this documentation.
+
+### 📝 Todo Improvements
+
+* Remove old svgs when it's confirmed that they're no longer being used (src/svg/*)
+* Break-up and componentize IconsStoriesAll (including helpers like `// filter out non-matching icons`)
+* How to handle larger icons? scale for story? show scale %?
+* Show icon dimensions in preview
+* How to manage colors?
+* Show no results and hide footer
+* Sort by relevance
+
 
 ## All Icons
 
@@ -11,24 +65,60 @@ import { Title } from '../text/Title/Title';
 	<Story name="All Icons">
 		// note: this layout is tricky and `max-height` is specifically used here and must match the examples `max-height: 100%` style */
 		<div style={{ maxHeight: '90vh', display: 'flex' }}>
-        	<IconsStoriesAll />
+			<IconsStoriesAll />
 		</div>
 	</Story>
 </Canvas>
 
-## Ways to Import Icons
+## Ways to Import Icons <a id="ways-to-import-icons" />
+
+There are two ways of importing and using icons from the `local-components` project:
+
+1. Individual named import
+2. Icons namespaced import
+
+```javascript
+// Individual named import
+import { AddIcon } from "./Icons";
+// ...
+<AddIcon />
+// ...
+```
+
+```javascript
+// Icons namespaced import
+import { Icons } from "./Icons";
+// ...
+<Icons.Add />
+// ...
+```
 
 <Canvas>
-    <Story name="Import Icons">
-		<div style={{ padding: '0 10px' }}>
-			<div>
-				<Title size="caption">Invidual named import</Title>
-				<AddIcon />
-			</div>
-			<div>
-				<Title size="caption">Icons namespaced import</Title>
-				<Icons.Add />
-			</div>
-		</div>
-    </Story>
+<Story name="Import Icons">
+<div><p>Individual named import: <code>&lt;AddIcon /&gt;</code></p> <AddIcon /></div>
+<div><p>Icons namespaced import: <code>&lt;Icons.Add /&gt;</code></p> <Icons.Add /></div>
+</Story>
+</Canvas>
+
+## Working with individual icons
+
+You can overwrite individual icon properties when calling the icon component. For example, omitting the `width` and `height` will use the default values, but we can explicitly pass values to override those defaults.
+
+Note that some icons allow for different styling depending on the size. For example, the `CircleInfoIcon` has a heavier weight at small sizes, and a lighter stroke when using `size='large'`. Note the visual differences comparing a `size='large'` value vs explicitly setting a large `width` and `height`.
+
+Default, small styling for the `CircleInfoIcon`:
+
+<Canvas>
+	<Story name="Default small icon">
+		<CircleInfoIcon />
+	</Story>
+</Canvas>
+
+Using the `large` size as well as custom `width` and `height` values.
+
+<Canvas>
+	<Story name="Different sizes - using the large size">
+		<CircleInfoIcon size='large' />
+		<CircleInfoIcon size='large' width='64' height='64' />
+	</Story>
 </Canvas>
