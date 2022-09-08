@@ -104,10 +104,21 @@ import { Icons } from "./Icons";
 
 Individual icon properties can be overwritten when calling the icon component. For example, omitting the `width` and `height` will use the default values, but we can explicitly pass values to override those defaults.
 
+Note that some icons allow for different styling depending on the size. For example, the `CircleInfoIcon` has a heavier weight at small sizes, and a lighter stroke when using `size='large'`. Note the visual differences comparing a `size='large'` value vs explicitly setting a large `width` and `height`.
+
+Default, small styling for the `CircleInfoIcon`:
+
 <Canvas>
-	<Story name="Working with individual icons">
+	<Story name="Default small icon">
 		<CircleInfoIcon />
-		<CircleInfoIcon width='64' height='64'/>
-		<CircleInfoIcon width='128' height='128'/>
+	</Story>
+</Canvas>
+
+Using the `large` size as well as custom `width` and `height` values.
+
+<Canvas>
+	<Story name="Differen sizes - using the large size">
+		<CircleInfoIcon size='large' />
+		<CircleInfoIcon size='large' width='64' height='64' />
 	</Story>
 </Canvas>
