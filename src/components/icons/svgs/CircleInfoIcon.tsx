@@ -15,7 +15,7 @@ const Icon: React.FC<PropType> = (props) => {
 					width="32"
 					height="32"
 					viewBox="0 0 32 32"
-					fill="#88000"
+					fill="#9F9C9C"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
