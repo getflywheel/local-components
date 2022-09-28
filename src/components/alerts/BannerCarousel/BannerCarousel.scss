@@ -1,14 +1,16 @@
 @import '../../../styles/_partials/index';
 
-.Banner_Wrapper {
+.Carousel_Wrapper {
 	max-height: var(--expanded-height);
-	transition:  max-height 0.35s ease, visibility 0s linear 0.35s;
+	transition:  max-height .35s ease;
 	overflow: hidden;
 	flex-shrink: 0;
+	display: flex;
 }
 
-.Banner_Container {
-	display: flex;
+.DummyBanner {
+	position: absolute;
+	z-index: -1;
 }
 
 // Screen Reader Only
@@ -17,6 +19,9 @@
 }
 
 .Carousel {
+	width: 45px;
+	transition:  width 0.35s ease;
+	min-height: 48px;
 	padding: 10px 0;
 	display: flex;
 	flex-direction: column;
@@ -27,12 +32,8 @@
 	overflow: hidden;
 	flex-shrink: 0;
 
-	.Carousel_LeftArrow {
-		margin-right: 26px;
-	}
-
-	.Carousel_RightArrow {
-		margin-left: 26px;
+	&.Carousel_Hidden {
+		width: 0px;
 	}
 
 	.Carousel_Radio {
@@ -65,5 +66,41 @@
 			font-weight: 600;
 			border: none;
 		}
+	}
+}
+
+.Banner_Wrapper {
+	width: 100%;
+}
+
+.Banner_Container {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	height: 100%;
+	position: relative;
+
+	&.Banner_Container_Sliding {
+		transition:  margin .35s ease;
+	}
+
+	&.Banner_Container_Down {
+		justify-content: flex-end;
+	}
+
+	&.Banner_Container_SlidingDown {
+		margin-top: var(--expanded-height);
+	}
+
+	&.Banner_Container_SlidingUp {
+		margin-top: calc(-1 * var(--expanded-height));
+	}
+
+	.Banner_Banner {
+		height: var(--expanded-height);
+		display: flex;
+		flex-shrink: 0;
+		transition:  height .35s ease;
+		overflow: hidden;
 	}
 }
