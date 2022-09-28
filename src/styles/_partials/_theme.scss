@@ -104,6 +104,10 @@
 	@include __theme-background($green, $gray-dark);
 }
 
+@mixin theme-background-greendark-else-green {
+	@include __theme-background($green-dark, $green);
+}
+
 @mixin theme-background-white-else-graydark {
 	@include __theme-background($white, $gray-dark);
 }

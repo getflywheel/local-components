@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import TextButtonExternal from "../../buttons/TextButtonExternal/TextButtonExternal"
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Meta title="Alerts/Banner" component={Banner} />
@@ -12,9 +13,9 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 			icon="warning"
 			buttonText="Complete Setup"
 			buttonOnClick={() => console.log("buttonOnClick")}
+			onDismiss={() => console.log("onDismiss")}
 		>
-			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-			butcher occupy or <a>learn more</a>.
+			<strong>Typewriter!</strong> Poke or <TextButtonExternal>learn more</TextButtonExternal>.
 		</Banner>
 	</Story>
 </Canvas>
@@ -26,11 +27,9 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 		<Banner
 			variant="warning"
 			icon="warning"
-			buttonText="Fix It"
-			buttonOnClick={() => console.log("buttonOnClick")}
+			onDismiss={() => console.log("onDismiss")}
 		>
-			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-			butcher occupy or <a>learn more</a>.
+			<strong>Typewriter!</strong> <TextButtonExternal>learn more</TextButtonExternal>.
 		</Banner>
 	</Story>
 </Canvas>
@@ -46,7 +45,7 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 			buttonOnClick={() => console.log("buttonOnClick")}
 		>
 			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-			butcher occupy or <a>learn more</a>.
+			butcher occupy or <TextButtonExternal>learn more</TextButtonExternal>.
 		</Banner>
 	</Story>
 </Canvas>
@@ -58,11 +57,9 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 		<Banner
 			variant="success"
 			icon="warning"
-			buttonText="Okay"
-			buttonOnClick={() => console.log("buttonOnClick")}
 		>
 			<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-			butcher occupy or <a>learn more</a>.
+			butcher occupy or <TextButtonExternal>learn more</TextButtonExternal>.
 		</Banner>
 	</Story>
 </Canvas>

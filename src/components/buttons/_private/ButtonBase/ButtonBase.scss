@@ -210,6 +210,8 @@ $disabled-text-dark-fill: $gray;
 }
 
 .ButtonBase__Form_Text {
+	vertical-align: baseline;
+
 	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor));
 	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
 
