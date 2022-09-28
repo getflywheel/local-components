@@ -9,13 +9,14 @@ interface IBanner {
 	component: any;
 }
 
-const bannerFactory = (id: string, onDismiss: () => void) => {
-	const variant =
-		Math.floor(Math.random() * 100) > 33
-			? Math.floor(Math.random() * 100) > 66
-				? 'success'
-				: 'neutral'
-			: 'warning';
+const loremIpsum =
+	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'.split(
+		' '
+	);
+
+const bannerFactory = (id: string, onDismiss: () => void, numBanners: number) => {
+	const variant = ['success', 'neutral', 'warning'][numBanners % 3] as 'success' | 'neutral' | 'warning';
+	const text = loremIpsum.slice(0, Math.floor(Math.random() * loremIpsum.length) + 1).join(' ');
 
 	return {
 		id,
@@ -26,8 +27,7 @@ const bannerFactory = (id: string, onDismiss: () => void) => {
 				onDismiss={onDismiss}
 				buttonOnClick={() => console.log('buttonOnClick')}
 			>
-				<strong>Typewriter!</strong> Poke selvage fam retro pug, offal butcher occupy or{' '}
-				<TextButtonExternal>learn more</TextButtonExternal>.
+				<strong>Banner!</strong> {text} <TextButtonExternal>learn more</TextButtonExternal>.
 			</Banner>
 		),
 	};
@@ -48,7 +48,7 @@ const BannerCarouselExample = () => {
 	const addBanner = () => {
 		setBanners((prev) => {
 			const id = `banner-${numBanners + 1}`;
-			prev.push(bannerFactory(id, () => dismissBanner(id)));
+			prev.push(bannerFactory(id, () => dismissBanner(id), numBanners));
 			setNumBanners((old) => old + 1);
 			return prev;
 		});
@@ -56,7 +56,7 @@ const BannerCarouselExample = () => {
 
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
-			<BannerCarousel>
+			<BannerCarousel id="interactive">
 				{banners.map((banner) => {
 					const BannerComponent = banner.component;
 					return <BannerComponent key={banner.id} id={banner.id} />;
