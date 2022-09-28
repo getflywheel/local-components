@@ -11,6 +11,7 @@ import CircleIcon from './svgs/CircleIcon';
 import CircleCompleteIcon from './svgs/CircleCompleteIcon';
 import CircleExclamationIcon from './svgs/CircleExclamationIcon';
 import CircleInfoIcon from './svgs/CircleInfoIcon';
+import CircleOutlineIcon from './svgs/CircleOutlineIcon';
 import CircleWarnIcon from './svgs/CircleWarnIcon';
 import ClockIcon from './svgs/ClockIcon';
 import CloseSmallIcon from './svgs/CloseSmallIcon';
@@ -25,7 +26,6 @@ import DownloadIcon from './svgs/DownloadIcon';
 import ExclamationIcon from './svgs/ExclamationIcon';
 import ExternalLinkIcon from './svgs/ExternalLinkIcon';
 import EyeIcon from './svgs/EyeIcon';
-import GearIcon from './svgs/GearIcon';
 import FileAddedIcon from './svgs/FileAddedIcon';
 import FileFolderClosedIcon from './svgs/FileFolderClosedIcon';
 import FileFolderOpenedIcon from './svgs/FileFolderOpenedIcon';
@@ -33,6 +33,7 @@ import FileLeftArrowIcon from './svgs/FileLeftArrowIcon';
 import FileLockedIcon from './svgs/FileLockedIcon';
 import FileRightArrowIcon from './svgs/FileRightArrowIcon';
 import FileUnlockedIcon from './svgs/FileUnlockedIcon';
+import GearIcon from './svgs/GearIcon';
 import PlayIcon from './svgs/PlayIcon';
 import PushIcon from './svgs/PushIcon';
 import OfflineIcon from './svgs/OfflineIcon';
@@ -42,6 +43,7 @@ import SiteShellIcon from './svgs/SiteShellIcon';
 import SpinnerIcon from './svgs/SpinnerIcon';
 import StarIcon from './svgs/StarIcon';
 import StopIcon from './svgs/StopIcon';
+import SuccessIcon from './svgs/SuccessIcon';
 import YieldIcon from './svgs/YieldIcon';
 import WPIcon from './svgs/WPIcon';
 
@@ -63,6 +65,7 @@ namespace Icons {
 	export const CircleComplete = CircleCompleteIcon;
 	export const CircleExclamation = CircleExclamationIcon;
 	export const CircleInfo = CircleInfoIcon;
+	export const CircleOutline = CircleOutlineIcon;
 	export const CircleWarn = CircleWarnIcon;
 	export const Clock = ClockIcon;
 	export const Close = CloseIcon;
@@ -94,6 +97,7 @@ namespace Icons {
 	export const Spinner = SpinnerIcon;
 	export const Stars = StarIcon;
 	export const Stop = StopIcon;
+	export const Success = SuccessIcon;
 	export const Yield = YieldIcon;
 	export const WP = WPIcon;
 }
@@ -117,6 +121,7 @@ export {
 	CircleCompleteIcon,
 	CircleExclamationIcon,
 	CircleInfoIcon,
+	CircleOutlineIcon,
 	CircleWarnIcon,
 	ClockIcon,
 	CloseIcon,
@@ -148,6 +153,7 @@ export {
 	SpinnerIcon,
 	StarIcon,
 	StopIcon,
+	SuccessIcon,
 	YieldIcon,
 	WPIcon,
 };

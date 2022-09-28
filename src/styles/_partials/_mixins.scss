@@ -72,6 +72,10 @@
 	background: repeating-linear-gradient(-65deg, $color1, $color1 24px, $color2 24px, $color2 48px);
 }
 
+@mixin stripes2($color1: $white, $color2: $gray2) {
+	background: repeating-linear-gradient(110deg, $color1, $color1 15px, $color2 15px, $color2 30px);
+}
+
 @mixin dragbar {
 	-webkit-user-select: none;
 	-webkit-app-region: drag;
@@ -80,10 +84,20 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 23px;
+	height: 10px;
 	width: 100%;
 }
 
 @mixin defaultOutline {
 	outline: 5px auto -webkit-focus-ring-color; // default chrome outline style
+}
+
+// Screen reader only
+@mixin visuallyHidden {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }

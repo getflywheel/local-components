@@ -1,179 +1,84 @@
 import * as React from 'react';
-import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
-import styles from './Banner.sass';
-import WarningSVG from '../../../svg/warning.svg';
-import CloseSVG from '../../../svg/close--small.svg';
-import { ButtonPropColor, ButtonPropForm } from '../../buttons/_private/ButtonBase/ButtonBase';
-import { TextButton, TextButtonPropSize } from '../../buttons/TextButton/TextButton';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
+import styles from './Banner.scss';
 import Close from '../../buttons/Close/Close';
 import { FunctionGeneric } from '../../../common/structures/Generics';
+import { Button } from '../../buttons/Button/Button';
+import { CircleInfoIcon, SuccessIcon, YieldIcon } from '../../icons/Icons';
 
-
-interface BannerProps extends IReactComponentProps {
+export interface BannerProps extends IReactComponentProps {
 	buttonText?: string;
-	currentIndex?: number;
 	buttonOnClick?: FunctionGeneric;
-	icon?: string | boolean;
-	numBanners?: number;
 	onDismiss?: FunctionGeneric;
-	onIndexChange?: FunctionGeneric;
 	variant?: 'warning' | 'neutral' | 'success' | 'error';
-	/**
-	 * Thin height is 40px; default height is 56px
-	 */
-	height: 'thin' | 'default';
-	noStripes: boolean;
-	closeSize: 'sm' | 'l';
+	closeSize?: 's' | 'm' | 'l';
 }
 
-export default class Banner extends React.Component<BannerProps> {
-	static defaultProps: Partial<BannerProps> = {
-		currentIndex: 0,
-		height: 'default',
-		icon: 'warning',
-		numBanners: 1,
-		variant: 'neutral',
-		noStripes: false,
-		closeSize: 'sm',
+const Banner = (props: BannerProps) => {
+	const {
+		variant = 'neutral',
+		closeSize = 'm',
+		className,
+		id,
+		style,
+		children,
+		buttonText,
+		buttonOnClick,
+		onDismiss,
+	} = props;
+
+	const renderIcon = () => {
+		switch (variant) {
+			case 'error':
+			case 'warning':
+				return <YieldIcon width={18} />;
+			case 'success':
+				return <SuccessIcon />;
+			case 'neutral':
+			default:
+				return <CircleInfoIcon />;
+		}
 	};
 
-	constructor (props: BannerProps) {
-		super(props);
-	}
-
-	renderIcon () {
-		if (this.props.icon !== 'warning') {
-			return null;
-		}
-
-		return (
-			<WarningSVG />
+	const renderButton = () => {
+		return !buttonText || !buttonOnClick ? null : (
+			<Button inline onClick={buttonOnClick} className={styles.CTA} style={{ padding: '7px 15px' }}>
+				{buttonText}
+			</Button>
 		);
-	}
+	};
 
-	renderButton () {
-		if (!this.props.buttonText || !this.props.buttonOnClick) {
-			return null;
-		}
+	const renderDismiss = () => {
+		return onDismiss ? (
+			<Close position="static" size={closeSize} className={classnames(styles.Dismiss)} onClick={onDismiss} />
+		) : null;
+	};
 
-		let buttonColor: ButtonPropColor = ButtonPropColor.gray;
-
-		switch (this.props.variant) {
-			case 'error':
-				buttonColor = ButtonPropColor.red;
-				break;
-			case 'neutral':
-				buttonColor = ButtonPropColor.green;
-				break;
-			case 'success':
-				buttonColor = ButtonPropColor.green;
-				break;
-			case 'warning':
-				buttonColor = ButtonPropColor.orange;
-				break;
-		}
-
-		return (
-			// note: use `TextButton` and `tiny` size as this button type and style should always be the same as that preset
-			<TextButton
-				inline
-				size={TextButtonPropSize.tiny}
-				privateOptions={{
-					color: buttonColor,
-					form: this.props.variant === 'neutral' ? ButtonPropForm.fill : ButtonPropForm.reversed
-				}}
-				onClick={this.props.buttonOnClick}
-				className={styles.CTA}
-			>
-				{this.props.buttonText}
-			</TextButton>
-		);
-	}
-
-	renderCarousel () {
-		if (!this.props.numBanners || this.props.numBanners <= 1) {
-			return null;
-		}
-
-		const items = [];
-
-		for (let index = 0; index < this.props.numBanners; index++) {
-			items.push(
-				<span
-					key={index}
-					className={classnames(
-						styles.Carousel_Item,
-						{
-							[styles.Carousel_Item__Active]: index === this.props.currentIndex,
-						},
-					)}
-					onClick={() => this.props.onIndexChange && this.props.onIndexChange(index)}
-				/>,
-			);
-		}
-
-		return (
-			<div className={styles.Carousel}>
-				{items}
+	return (
+		<div
+			className={classnames(
+				styles.Banner,
+				{
+					[styles.Banner__Neutral]: variant === 'neutral',
+					[styles.Banner__Error]: variant === 'error' || variant === 'warning',
+					[styles.Banner__Success]: variant === 'success',
+				},
+				className
+			)}
+			id={id}
+			style={style}
+		>
+			<div className={styles.Left_Wrapper}>
+				<div className={styles.Icon_Wrapper}>{renderIcon()}</div>
+				<span className={styles.Content}>{children}</span>
 			</div>
-		);
-	}
-
-	renderDismiss () {
-		if (!this.props.onDismiss) {
-			return null;
-		}
-
-		return this.props.closeSize === 'sm' ? (
-			<span
-				className={styles.Dismiss}
-				onClick={this.props.onDismiss}
-			>
-				<CloseSVG />
-			</span>
-		) : (
-			<Close
-				position="static"
-				className={classnames(styles.Dismiss__Large, styles.Dismiss)}
-				onClick={this.props.onDismiss}
-			/>
-		);
-	}
-
-	render () {
-		return (
-			<div
-				className={classnames(
-					styles.Banner,
-					{
-						[styles.Banner__Neutral]: this.props.variant === 'neutral',
-						[styles.Banner__Error]: this.props.variant === 'error',
-						[styles.Banner__Success]: this.props.variant === 'success',
-						[styles.Height__Thin]: this.props.height === 'thin',
-						[styles.Height__Default]: this.props.height === 'default',
-						[styles.Stripes__None]: this.props.noStripes,
-					},
-					this.props.className,
-				)}
-				id={this.props.id}
-				style={this.props.style}
-			>
-				{this.renderCarousel()}
-				{this.renderIcon() &&
-					<div className={styles.renderIcon}>
-						{this.renderIcon()}
-					</div>
-				}
-				<span className={styles.Content}>
-					{this.props.children}
-				</span>
-
-				<div className={styles.CTA_Container}>
-					{this.renderButton()}
-					{this.renderDismiss()}
-				</div>
+			<div className={styles.Buttons_Container}>
+				{renderButton()}
+				{renderDismiss()}
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
+
+export default Banner;

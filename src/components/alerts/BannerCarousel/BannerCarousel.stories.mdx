@@ -1,26 +1,50 @@
 import Banner from "../Banner/Banner";
 import BannerCarousel from "./BannerCarousel";
+import TextButtonExternal from "../../buttons/TextButtonExternal/TextButtonExternal"
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import BannerCarouselExample from "./BannerCarouselExample";
 
-<Meta title="Alerts/BannerCarousel" component={BannerCarousel} />
+<Meta title="Alerts/BannerCarousel" component={BannerCarousel, BannerCarouselExample} />
 
 # Example
 
 <Canvas>
 	<Story name="BannerCarousel">
         <BannerCarousel>
-            <Banner variant="neutral" icon="warning" buttonText="Click Me!"
-                buttonOnClick={() => console.log('buttonOnClick')}><strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-                butcher occupy banh mi artisan tousled.</Banner>
-            <Banner variant="warning" icon="warning" buttonText="Click Me!"
-                buttonOnClick={() => console.log('buttonOnClick')}><strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-                butcher occupy banh mi artisan tousled.</Banner>
-            <Banner variant="error" icon="warning" buttonText="Click Me!"
-                buttonOnClick={() => console.log('buttonOnClick')}><strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-                butcher occupy banh mi artisan tousled.</Banner>
-            <Banner variant="success" icon="warning" buttonText="Click Me!"
-                buttonOnClick={() => console.log('buttonOnClick')}><strong>Typewriter!</strong> Poke selvage fam retro pug, offal
-                butcher occupy banh mi artisan tousled.</Banner>
+			<Banner
+				variant="neutral"
+				buttonText="Complete Setup"
+				buttonOnClick={() => console.log("buttonOnClick")}
+				onDismiss={() => console.log("onDismiss")}
+			>
+				<strong>Typewriter!</strong> Poke or <TextButtonExternal>learn more</TextButtonExternal>.
+			</Banner>
+			<Banner
+				variant="error"
+				buttonText="Retry"
+				onDismiss={() => console.log("onDismiss")}
+				buttonOnClick={() => console.log("buttonOnClick")}
+			>
+				<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
+				butcher occupy or <TextButtonExternal>learn more</TextButtonExternal>.
+			</Banner>
+			<Banner
+				variant="success"
+				buttonText="Celebrate good times"
+				onDismiss={() => console.log("onDismiss")}
+				buttonOnClick={() => console.log("buttonOnClick")}
+			>
+				<strong>Typewriter!</strong> Poke selvage fam retro pug, offal
+				butcher occupy or <TextButtonExternal>learn more</TextButtonExternal>.
+			</Banner>
         </BannerCarousel>
+    </Story>
+</Canvas>
+
+# Interactive Example
+
+<Canvas>
+	<Story name="BannerCarouselInteractive">
+        <BannerCarouselExample />
     </Story>
 </Canvas>

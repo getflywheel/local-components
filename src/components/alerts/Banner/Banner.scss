@@ -1,0 +1,101 @@
+@import '../../../styles/_partials/index';
+@import '../../../common/styles/themeUtils';
+
+.Banner {
+	@include setupThemeVars(
+		'--Banner_Color1', // Darker
+		'--Banner_Color2', // Lighter
+		'--Banner_Color_Background'
+	);
+
+	justify-content: space-between;
+	background: var(--Banner_Color_Background);
+	box-shadow: inset 0px -10px 10px -10px  $theme-overlay-box-shadow-light;
+	flex-grow: 1;
+	color: $gray-dark;
+
+	.Left_Wrapper .Content a {
+		// TextbuttonExternal colors (no light/dark mode for banners)
+		@include setThemeVar('--Button_IfText__TextColor', var(--Banner_Color1));
+		@include setThemeVar('--Button_IfText__TextColor_Hover', var(--Banner_Color2));
+		@include setThemeVar('--Button_IfText__TextColor_Active', var(--Banner_Color1));
+	}
+
+	.Buttons_Container button {
+		// Button colors (no light/dark mode for banners)
+		@include setThemeVar('--Button_IfFill__Background_Hover', var(--Banner_Color2));
+		@include setThemeVar('--Button_IfFill__Background_Active', var(--Banner_Color1));
+		@include setThemeVar('--Button_IfText__TextColor', var(--Banner_Color1));
+		@include setThemeVar('--Button_IfText__TextColor_Hover', var(--Banner_Color2));
+		@include setThemeVar('--Button_IfText__TextColor_Active', var(--Banner_Color1));
+	}
+}
+
+.Banner__Neutral {
+	.Icon_Wrapper {
+		@include stripes2($gray-dark50, mix($gray1, $gray-dark50, 5%));
+	}
+
+	@include setThemeVar('--Banner_Color1', $gray-dark);
+	@include setThemeVar('--Banner_Color2', $gray-dark50);
+	@include setThemeVar('--Banner_Color_Background', $gray15);
+}
+
+.Banner__Error {
+	.Icon_Wrapper {
+		@include stripes2($red, mix($gray1, $red, 13%));
+	}
+
+	@include setThemeVar('--Banner_Color1', $red-dark50);
+	@include setThemeVar('--Banner_Color2', $red);
+	@include setThemeVar('--Banner_Color_Background', $red15);
+}
+
+.Banner__Success {
+	.Icon_Wrapper {
+		@include stripes2($green, mix($gray1, $green, 13%));
+	}
+
+	@include setThemeVar('--Banner_Color1', $green-dark);
+	@include setThemeVar('--Banner_Color2', $green-dark50);
+	@include setThemeVar('--Banner_Color_Background', $green15);
+}
+
+.Banner,
+.Left_Wrapper,
+.Icon_Wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.Left_Wrapper {
+	align-self: stretch;
+}
+
+.Icon_Wrapper {
+	align-self: stretch;
+	justify-content: center;
+	padding: 15px;
+
+	svg * {
+		fill: white !important;
+	}
+}
+
+.Content {
+	padding: 15px;
+}
+
+.Buttons_Container {
+	flex-shrink: 0;
+	display: flex;
+}
+
+.CTA,
+.Dismiss {
+	margin-right: 20px;
+
+	&:first-child {
+		margin-left: 20px;
+	}
+}

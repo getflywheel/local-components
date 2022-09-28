@@ -9,10 +9,11 @@ import { ButtonBase } from '../_private/ButtonBase/ButtonBase';
 interface IProps extends IReactComponentProps {
 	position?: 'absolute' | 'static';
 	onClick?: FunctionGeneric;
+	size?: 's' | 'm' | 'l';
 }
 
 const Close: React.FC<IProps> = (props: IProps) => {
-	const { position = 'absolute', onClick, className, ...otherProps } = props;
+	const { position = 'absolute', size = 'l', onClick, className, ...otherProps } = props;
 
 	return (
 		<ButtonBase
@@ -31,7 +32,7 @@ const Close: React.FC<IProps> = (props: IProps) => {
 			)}
 			{...otherProps}
 		>
-			<CloseIcon size="l" />
+			<CloseIcon size={size} />
 		</ButtonBase>
 	);
 };

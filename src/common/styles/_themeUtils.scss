@@ -1,6 +1,7 @@
 @import '../../styles/_partials/index';
 
 // set theme color for light and dark mode (if only one value is passed, it's used for both)
+// NOTE: use setThemeVar() on the same selector/level as setupThemeVars()
 @mixin setThemeVar($propName, $light, $dark: null) {
 	#{$propName + '_Light'}: #{$light};
 	#{$propName + '_Dark'}: #{useDarkUnlessNull($dark, $light)};

@@ -4,7 +4,8 @@ import {
 	ButtonBase,
 	ButtonPropColor,
 	ButtonPropForm,
-	ButtonPropPadding, IButtonBaseProps,
+	ButtonPropPadding,
+	IButtonBaseProps,
 	IButtonCommonProps,
 } from '../_private/ButtonBase/ButtonBase';
 
@@ -18,21 +19,30 @@ interface IProps extends IButtonCommonProps {
 	privateOptions?: IButtonBaseProps;
 }
 
+function setIntentColor(props: IProps, defaultValue: ButtonPropColor): ButtonPropColor {
+	switch (props.intent) {
+		case ButtonPropIntent.destructive:
+			return ButtonPropColor.red;
+		default:
+			return defaultValue;
+	}
+}
+
+function setForm(props: IProps, defaultValue: ButtonPropForm): ButtonPropForm {
+	switch (props.intent) {
+		case ButtonPropIntent.destructive:
+			return ButtonPropForm.fill;
+		default:
+			return defaultValue;
+	}
+}
+
 export const Button = (props: IProps) => {
-	const {
-		className,
-		id,
-		intent,
-		privateOptions,
-		...otherProps
-	} = props;
+	const { className, id, intent, privateOptions, ...otherProps } = props;
 
 	return (
 		<ButtonBase
-			className={classnames(
-				className,
-				'Button',
-			)}
+			className={classnames(className, 'Button')}
 			color={setIntentColor(props, ButtonPropColor.green)}
 			id={id}
 			form={setForm(props, ButtonPropForm.outline)}
@@ -42,24 +52,6 @@ export const Button = (props: IProps) => {
 		/>
 	);
 };
-
-function setIntentColor (props: IProps, defaultValue: ButtonPropColor): ButtonPropColor {
-	switch (props.intent) {
-		case ButtonPropIntent.destructive:
-			return ButtonPropColor.red;
-	}
-
-	return defaultValue;
-}
-
-function setForm (props: IProps, defaultValue: ButtonPropForm): ButtonPropForm {
-	switch (props.intent) {
-		case ButtonPropIntent.destructive:
-			return ButtonPropForm.fill;
-	}
-
-	return defaultValue;
-}
 
 Button.defaultProps = {
 	disabled: ButtonBase.defaultProps.disabled,
