@@ -22,7 +22,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	const [switchDirection, setSwitchDirection] = useState<Direction>('up');
 	const [carouselHeight, setCarouselHeight] = useState(0);
 	const [gettingHeight, setGettingHeight] = useState(false);
-	const [, setActiveTimeout] = useState<NodeJS.Timeout>(0 as unknown as NodeJS.Timeout);
+	const [activeTimeout, setActiveTimeout] = useState<NodeJS.Timeout>(0 as unknown as NodeJS.Timeout);
 
 	// Need to safely set these banners in state with unique keys to prevent React errors
 	const safeSetNextBanner = (banner: React.ReactNode) => {
@@ -46,6 +46,8 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		safeSetCurrentBanner(childrenArray[0]);
 		safeSetNextBanner(childrenArray[0]);
 		setGettingHeight(true);
+
+		return () => clearTimeout(activeTimeout);
 	}, []);
 
 	// useLayoutEffect to grab height of dummy banner BEFORE the browser paints
@@ -145,10 +147,9 @@ const BannerCarousel = (props: IReactComponentProps) => {
 
 		setSwitching(false);
 		setChildrenArray([]);
-		setGettingHeight(true);
 		safeSetNextBanner(next);
 		setNumBanners(0);
-		setGettingHeight(true);
+		setCarouselHeight(0);
 
 		updateCurrentBanner(next);
 	};
