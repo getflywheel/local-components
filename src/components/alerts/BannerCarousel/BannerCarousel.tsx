@@ -12,6 +12,9 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	// Dummy banner ref used to set height
 	const bannerRef = useRef<HTMLDivElement>(null);
 
+	// Timeout ref to store any active timeout
+	const activeTimeout = useRef(0 as unknown as NodeJS.Timeout);
+
 	// State
 	const [childrenArray, setChildrenArray] = useState(Children.toArray(children));
 	const [numBanners, setNumBanners] = useState(childrenArray.length);
@@ -22,7 +25,6 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	const [switchDirection, setSwitchDirection] = useState<Direction>('up');
 	const [carouselHeight, setCarouselHeight] = useState(0);
 	const [gettingHeight, setGettingHeight] = useState(false);
-	const [activeTimeout, setActiveTimeout] = useState<NodeJS.Timeout>(0 as unknown as NodeJS.Timeout);
 
 	// Need to safely set these banners in state with unique keys to prevent React errors
 	const safeSetNextBanner = (banner: React.ReactNode) => {
@@ -41,15 +43,6 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		}
 	};
 
-	// Set up inital banners and height
-	useEffect(() => {
-		safeSetCurrentBanner(childrenArray[0]);
-		safeSetNextBanner(childrenArray[0]);
-		setGettingHeight(true);
-
-		return () => clearTimeout(activeTimeout);
-	}, []);
-
 	// useLayoutEffect to grab height of dummy banner BEFORE the browser paints
 	// allows us to set the height without visual glitches
 	useLayoutEffect(() => {
@@ -59,39 +52,54 @@ const BannerCarousel = (props: IReactComponentProps) => {
 			const bannerHeight =
 				bannerRef.current!.scrollHeight + (bannerRef.current!.scrollHeight - bannerRef.current!.clientHeight);
 			setCarouselHeight(Math.max(buttonsHeight, bannerHeight));
-			setGettingHeight(false);
+			setTimeout(() => setGettingHeight(false), 0);
 		}
 	}, [gettingHeight]);
 
+	const resetHeight = () => {
+		// Setting the state in a timeout ensures the updates are seen by the useEffect
+		// We NEED to watch a state variable in order to leverage useLayoutEffect successfully
+		setTimeout(() => setGettingHeight(false), 0);
+		setTimeout(() => setGettingHeight(true), 0);
+	};
+
+	// Set up inital banners and height
+	useEffect(() => {
+		safeSetCurrentBanner(childrenArray[0]);
+		safeSetNextBanner(childrenArray[0]);
+		resetHeight();
+
+		return () => clearTimeout(activeTimeout.current);
+	}, []);
+
 	// Functions for handling children changing/banner switching
-	// Leaving this pretty verbose to add clarity to the code
+	// Leaving these pretty verbose to add clarity to the code
 
 	/**
 	 * Function for setting and clearing the transition timeouts
 	 * Making the decision to just skip to the next banner if another transition is still happening
 	 */
 	const updateCurrentBanner = (banner: React.ReactNode) => {
-		setActiveTimeout((prev) => {
-			clearTimeout(prev);
-
-			return setTimeout(
-				() => {
-					safeSetCurrentBanner(banner);
-					setSwitching(false);
-					setActiveTimeout(0 as unknown as NodeJS.Timeout);
-				},
-				prev ? 0 : 350
-			);
-		});
+		clearTimeout(activeTimeout.current);
+		activeTimeout.current = setTimeout(
+			() => {
+				safeSetCurrentBanner(banner);
+				setSwitching(false);
+				activeTimeout.current = 0 as unknown as NodeJS.Timeout;
+			},
+			activeTimeout.current ? 0 : 350
+		);
 	};
 
 	const addFirstBanner = (newChildrenArray: ChildrenArray) => {
+		clearTimeout(activeTimeout.current);
+
 		safeSetCurrentBanner(newChildrenArray[0]);
 		safeSetNextBanner(newChildrenArray[0]);
 		setCurrentIndex(0);
 		setNumBanners(1);
 		setChildrenArray(newChildrenArray);
-		setGettingHeight(true);
+		resetHeight();
 	};
 
 	const addBanner = (newChildrenArray: ChildrenArray, newNum: number) => {
@@ -105,7 +113,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		safeSetNextBanner(next);
 		setSwitchDirection('up');
 		setSwitching(true);
-		setGettingHeight(true);
+		resetHeight();
 
 		updateCurrentBanner(next);
 	};
@@ -121,7 +129,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		setChildrenArray(newChildrenArray);
 		safeSetNextBanner(next);
 		setSwitching(true);
-		setGettingHeight(true);
+		resetHeight();
 
 		updateCurrentBanner(next);
 	};
@@ -137,7 +145,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		setChildrenArray(newChildrenArray);
 		safeSetNextBanner(next);
 		setSwitching(true);
-		setGettingHeight(true);
+		resetHeight();
 
 		updateCurrentBanner(next);
 	};
@@ -163,7 +171,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		setCurrentIndex(newIndex);
 		safeSetNextBanner(next);
 		setSwitching(true);
-		setGettingHeight(true);
+		resetHeight();
 
 		updateCurrentBanner(next);
 	};
