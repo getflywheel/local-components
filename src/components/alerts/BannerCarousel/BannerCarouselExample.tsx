@@ -50,7 +50,7 @@ const BannerCarouselExample = () => {
 			const id = `banner-${numBanners + 1}`;
 			prev.push(bannerFactory(id, () => dismissBanner(id), numBanners));
 			setNumBanners((old) => old + 1);
-			return prev;
+			return [...prev];
 		});
 	};
 
