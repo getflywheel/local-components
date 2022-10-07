@@ -11,7 +11,7 @@
 	justify-content: space-between;
 	background: var(--Banner_Color_Background);
 	box-shadow: inset 0px -10px 10px -10px  $theme-overlay-box-shadow-light;
-	flex-grow: 1;
+	width: 100%;
 	color: $gray-dark;
 
 	.Left_Wrapper .Content a {
