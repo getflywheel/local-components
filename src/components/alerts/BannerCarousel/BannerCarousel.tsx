@@ -162,6 +162,16 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		updateCurrentBanner(next);
 	};
 
+	const updateChildrenArray = (newChildrenArray: ChildrenArray) => {
+		const next = newChildrenArray[currentIndex];
+
+		setChildrenArray(newChildrenArray);
+		safeSetNextBanner(next);
+		resetHeight();
+
+		updateCurrentBanner(next);
+	};
+
 	const switchToIndex = (newIndex: number) => {
 		setSwitching(false);
 
@@ -177,6 +187,10 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	};
 
 	// Handle banners being added/removed, call above functions
+	//
+	// Possible future improvement for finer control: instead of "children", pass in banners as an array of
+	// IBanner objects ({id: string, component: React.ReactNode}) and watch for added/removed ID's.
+	// Then we could replace updateChildrenArray - good for when banners change but the number of banners doesn't
 	useEffect(() => {
 		const newChildrenArray = Children.toArray(children);
 		const newNum = newChildrenArray.length;
@@ -185,19 +199,21 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		const isAddingBanner = newNum > numBanners;
 		const isDismissingBanner = newNum < numBanners && currentIndex !== 0;
 		const isDismissingBannerFromFirst = newNum < numBanners && currentIndex === 0 && newNum !== 0;
-		const isDismissingLastBanner = newNum === 0 && numBanners === 1;
+		const isDismissingLastBanner = newNum === 0;
 
-		// First banner skip slide in
 		if (isAddingFirstBanner) {
 			addFirstBanner(newChildrenArray);
 		} else if (isAddingBanner) {
 			addBanner(newChildrenArray, newNum);
-		} else if (isDismissingBanner) {
-			dismissBanner(newChildrenArray, newNum);
-		} else if (isDismissingBannerFromFirst) {
-			dismissBannerFromFirst(newChildrenArray, newNum);
 		} else if (isDismissingLastBanner) {
 			dismissLastBanner();
+		} else if (isDismissingBannerFromFirst) {
+			dismissBannerFromFirst(newChildrenArray, newNum);
+		} else if (isDismissingBanner) {
+			dismissBanner(newChildrenArray, newNum);
+		} else {
+			// Banners have maybe changed, though number of banners hasn't
+			updateChildrenArray(newChildrenArray);
 		}
 	}, [children]);
 
