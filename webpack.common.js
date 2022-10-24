@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
 const sharedRules = require('./webpack/shared-rules');
 
 module.exports = {

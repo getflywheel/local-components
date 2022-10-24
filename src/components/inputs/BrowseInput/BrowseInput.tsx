@@ -10,7 +10,7 @@ let remote: any;
 let dialog: any;
 
 try {
-	remote = require('electron').remote;
+	remote = require('@electron/remote');
 	dialog = remote.dialog;
 } catch (e) {
 	console.warn(`Electron wasn't detected so BrowseInput won't function normally.`);
