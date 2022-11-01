@@ -31,10 +31,11 @@ export const TableList = (props: IProps) => {
 interface ITableListRowProps extends IReactComponentProps {
 	label?: string;
 	selectable?: boolean;
+	alignMiddle?: boolean;
 }
 
 export const TableListRow = (props: ITableListRowProps) => {
-	const { className, label, selectable, children } = props;
+	const { className, label, selectable, children, alignMiddle, style } = props;
 
 	return (
 		<li
@@ -43,10 +44,11 @@ export const TableListRow = (props: ITableListRowProps) => {
 				'TableListRow', // this also needs to be globally accessible so other component styles can reference it
 				className
 			)}
+			style={style}
 		>
 			{label && <strong>{label}</strong>}
 
-			<div>
+			<div className={alignMiddle ? styles.TableListRow__AlignMiddle : ''}>
 				{selectable && typeof children !== 'object' ? (
 					<input type="text" readOnly value={children as string | string[] | number} />
 				) : (
