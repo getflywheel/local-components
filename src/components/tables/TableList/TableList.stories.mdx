@@ -1,4 +1,5 @@
 import { TableListRow, TableList } from './TableList';
+import Switch from '../../inputs/Switch/Switch'
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Meta title="Tables/TableList" component={TableList} />
@@ -9,6 +10,8 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
             <TableListRow label="Label">Some Content</TableListRow>
             <TableListRow label="Another Label">More Content</TableListRow>
             <TableListRow label="And Another Label">Some More Content</TableListRow>
+			<TableListRow label="A switch not centered"><Switch tiny flat/></TableListRow>
+			<TableListRow alignMiddle label="A switch centered"><Switch tiny flat/></TableListRow>
         </TableList>
 	</Story>
 </Canvas>
