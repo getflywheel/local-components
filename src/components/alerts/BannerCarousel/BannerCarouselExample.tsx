@@ -6,7 +6,7 @@ import BannerCarousel from './BannerCarousel';
 
 interface IBanner {
 	id: string;
-	component: any;
+	component: React.ReactNode;
 }
 
 const loremIpsum =
@@ -56,12 +56,7 @@ const BannerCarouselExample = () => {
 
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
-			<BannerCarousel id="interactive">
-				{banners.map((banner) => {
-					const BannerComponent = banner.component;
-					return <BannerComponent key={banner.id} id={banner.id} />;
-				})}
-			</BannerCarousel>
+			<BannerCarousel id="interactive" banners={banners} />
 			<Button style={{ marginTop: '20px' }} onClick={addBanner}>
 				Click to add Banner.
 			</Button>

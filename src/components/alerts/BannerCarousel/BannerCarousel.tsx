@@ -1,13 +1,21 @@
 import classnames from 'classnames';
-import React, { Children, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import styles from './BannerCarousel.scss';
 
 type Direction = 'up' | 'down';
-type ChildrenArray = ReturnType<typeof Children['toArray']>;
+interface IBanner {
+	id: string;
+	component: React.ReactNode | (() => JSX.Element);
+}
 
-const BannerCarousel = (props: IReactComponentProps) => {
-	const { children, className, id, style } = props;
+export interface BannerCarouselProps extends IReactComponentProps {
+	banners?: IBanner[];
+}
+
+const BannerCarousel = (props: BannerCarouselProps) => {
+	const { banners = [], className, id, style } = props;
+	const bannerIds = banners.map((banner) => banner.id);
 
 	// Dummy banner ref used to set height
 	const bannerRef = useRef<HTMLDivElement>(null);
@@ -16,9 +24,9 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	const activeTimeout = useRef(0 as unknown as NodeJS.Timeout);
 
 	// State
-	const [childrenArray, setChildrenArray] = useState(Children.toArray(children));
-	const [numBanners, setNumBanners] = useState(childrenArray.length);
-	const [currentIndex, setCurrentIndex] = useState(childrenArray.length ? 0 : -1);
+	const [bannerArray, setBannerArray] = useState(banners);
+	const [numBanners, setNumBanners] = useState(banners.length);
+	const [currentIndex, setCurrentIndex] = useState(banners.length ? 0 : -1);
 	const [currentBanner, setCurrentBanner] = useState<React.ReactNode>(null);
 	const [nextBanner, setNextBanner] = useState<React.ReactNode>(null);
 	const [switching, setSwitching] = useState(false);
@@ -27,17 +35,20 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	const [gettingHeight, setGettingHeight] = useState(false);
 
 	// Need to safely set these banners in state with unique keys to prevent React errors
+	// This also allows for functions or just raw JSX to be passed in the banners array prop
 	const safeSetNextBanner = (banner: React.ReactNode) => {
-		if (React.isValidElement(banner)) {
-			setNextBanner(React.cloneElement(banner, { key: 'next-banner' }));
+		const bannerEl = typeof banner === 'function' ? banner() : banner;
+		if (React.isValidElement(bannerEl)) {
+			setNextBanner(React.cloneElement(bannerEl, { key: 'next-banner' }));
 		} else {
 			setNextBanner(null);
 		}
 	};
 
 	const safeSetCurrentBanner = (banner: React.ReactNode) => {
-		if (React.isValidElement(banner)) {
-			setCurrentBanner(React.cloneElement(banner, { key: 'current-banner' }));
+		const bannerEl = typeof banner === 'function' ? banner() : banner;
+		if (React.isValidElement(bannerEl)) {
+			setCurrentBanner(React.cloneElement(bannerEl, { key: 'current-banner' }));
 		} else {
 			setCurrentBanner(null);
 		}
@@ -65,8 +76,8 @@ const BannerCarousel = (props: IReactComponentProps) => {
 
 	// Set up inital banners and height
 	useEffect(() => {
-		safeSetCurrentBanner(childrenArray[0]);
-		safeSetNextBanner(childrenArray[0]);
+		safeSetCurrentBanner(bannerArray[0]?.component);
+		safeSetNextBanner(bannerArray[0]?.component);
 		resetHeight();
 
 		return () => clearTimeout(activeTimeout.current);
@@ -91,25 +102,25 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		);
 	};
 
-	const addFirstBanner = (newChildrenArray: ChildrenArray) => {
+	const addFirstBanner = (newBanners: IBanner[]) => {
 		clearTimeout(activeTimeout.current);
 
-		safeSetCurrentBanner(newChildrenArray[0]);
-		safeSetNextBanner(newChildrenArray[0]);
+		safeSetCurrentBanner(newBanners[0].component);
+		safeSetNextBanner(newBanners[0].component);
 		setCurrentIndex(0);
 		setNumBanners(1);
-		setChildrenArray(newChildrenArray);
+		setBannerArray(newBanners);
 		resetHeight();
 	};
 
-	const addBanner = (newChildrenArray: ChildrenArray, newNum: number) => {
+	const addBanner = (newBanners: IBanner[], newNum: number) => {
 		const newIndex = newNum - 1;
-		const next = newChildrenArray[newIndex];
+		const next = newBanners[newIndex].component;
 
 		setSwitching(false);
 		setCurrentIndex(newIndex);
 		setNumBanners(newNum);
-		setChildrenArray(newChildrenArray);
+		setBannerArray(newBanners);
 		safeSetNextBanner(next);
 		setSwitchDirection('up');
 		setSwitching(true);
@@ -118,15 +129,15 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		updateCurrentBanner(next);
 	};
 
-	const dismissBanner = (newChildrenArray: ChildrenArray, newNum: number) => {
+	const dismissBanner = (newBanners: IBanner[], newNum: number) => {
 		const newIndex = (currentIndex + numBanners - 1) % numBanners;
-		const next = newChildrenArray[newIndex];
+		const next = newBanners[newIndex].component;
 
 		setSwitching(false);
 		setSwitchDirection('down');
 		setCurrentIndex(newIndex);
 		setNumBanners(newNum);
-		setChildrenArray(newChildrenArray);
+		setBannerArray(newBanners);
 		safeSetNextBanner(next);
 		setSwitching(true);
 		resetHeight();
@@ -134,15 +145,15 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		updateCurrentBanner(next);
 	};
 
-	const dismissBannerFromFirst = (newChildrenArray: ChildrenArray, newNum: number) => {
+	const dismissBannerFromFirst = (newBanners: IBanner[], newNum: number) => {
 		const newIndex = 0;
-		const next = newChildrenArray[newIndex];
+		const next = newBanners[newIndex].component;
 
 		setSwitching(false);
 		setSwitchDirection('down');
 		setCurrentIndex(newIndex);
 		setNumBanners(newNum);
-		setChildrenArray(newChildrenArray);
+		setBannerArray(newBanners);
 		safeSetNextBanner(next);
 		setSwitching(true);
 		resetHeight();
@@ -154,7 +165,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		const next = null;
 
 		setSwitching(false);
-		setChildrenArray([]);
+		setBannerArray([]);
 		safeSetNextBanner(next);
 		setNumBanners(0);
 		setCarouselHeight(0);
@@ -162,10 +173,10 @@ const BannerCarousel = (props: IReactComponentProps) => {
 		updateCurrentBanner(next);
 	};
 
-	const updateChildrenArray = (newChildrenArray: ChildrenArray) => {
-		const next = newChildrenArray[currentIndex];
+	const updateBannerArray = (newBanners: IBanner[]) => {
+		const next = newBanners[currentIndex]?.component;
 
-		setChildrenArray(newChildrenArray);
+		setBannerArray(newBanners);
 		safeSetNextBanner(next);
 		resetHeight();
 
@@ -175,7 +186,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	const switchToIndex = (newIndex: number) => {
 		setSwitching(false);
 
-		const next = childrenArray[newIndex];
+		const next = bannerArray[newIndex].component;
 
 		setSwitchDirection(newIndex > currentIndex ? 'up' : 'down');
 		setCurrentIndex(newIndex);
@@ -192,30 +203,29 @@ const BannerCarousel = (props: IReactComponentProps) => {
 	// IBanner objects ({id: string, component: React.ReactNode}) and watch for added/removed ID's.
 	// Then we could replace updateChildrenArray - good for when banners change but the number of banners doesn't
 	useEffect(() => {
-		const newChildrenArray = Children.toArray(children);
-		const newNum = newChildrenArray.length;
+		const newNum = banners.length;
 
 		const isAddingFirstBanner = newNum === 1 && numBanners === 0;
 		const isAddingBanner = newNum > numBanners;
 		const isDismissingBanner = newNum < numBanners && currentIndex !== 0;
 		const isDismissingBannerFromFirst = newNum < numBanners && currentIndex === 0 && newNum !== 0;
-		const isDismissingLastBanner = newNum === 0;
+		const isDismissingLastBanner = newNum === 0 && numBanners !== 0;
 
 		if (isAddingFirstBanner) {
-			addFirstBanner(newChildrenArray);
+			addFirstBanner(banners);
 		} else if (isAddingBanner) {
-			addBanner(newChildrenArray, newNum);
+			addBanner(banners, newNum);
 		} else if (isDismissingLastBanner) {
 			dismissLastBanner();
 		} else if (isDismissingBannerFromFirst) {
-			dismissBannerFromFirst(newChildrenArray, newNum);
+			dismissBannerFromFirst(banners, newNum);
 		} else if (isDismissingBanner) {
-			dismissBanner(newChildrenArray, newNum);
+			dismissBanner(banners, newNum);
 		} else {
 			// Banners have maybe changed, though number of banners hasn't
-			updateChildrenArray(newChildrenArray);
+			updateBannerArray(banners);
 		}
-	}, [children]);
+	}, [bannerIds.toString()]);
 
 	// Strategy for setting height dynamically - this is spread on top level of component
 	const expandedHeight = {
@@ -235,7 +245,7 @@ const BannerCarousel = (props: IReactComponentProps) => {
 						<span id="carousel-label" className={styles.SRO}>
 							Banner carousel controls
 						</span>
-						{childrenArray.map((_child, i) => {
+						{bannerArray.map((_b, i) => {
 							const key = `bannerCarousel-${id}-${i}`;
 							const checked = i === currentIndex;
 
