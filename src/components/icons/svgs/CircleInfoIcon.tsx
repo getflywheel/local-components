@@ -36,7 +36,7 @@ Icon.defaultProps = {
 	size: 's',
 };
 
-export default withIconSvg(Icon, true, {
+export default withIconSvg<Props>(Icon, true, {
 	additionalProps: [
 		{
 			propName: 'size',

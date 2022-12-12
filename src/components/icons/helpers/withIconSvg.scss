@@ -10,6 +10,12 @@
 	}
 }
 
+.IconSvg__greenFill {
+	path, circle, rect {
+		@include theme-fill-greendark-else-green;
+	}
+}
+
 .IconSvg__neutralizeStroke {
 	path, circle, rect {
 		stroke: $gray75;

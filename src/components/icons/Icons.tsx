@@ -1,4 +1,5 @@
 import AddIcon from './svgs/AddIcon';
+import AnnouncementIcon from './svgs/AnnouncementIcon';
 import ArrowRightIcon from './svgs/ArrowRightIcon';
 import ArrowLeftIcon from './svgs/ArrowLeftIcon';
 import BellIcon from './svgs/BellIcon';
@@ -53,6 +54,7 @@ import WPIcon from './svgs/WPIcon';
  */
 namespace Icons {
 	export const Add = AddIcon;
+	export const Announcement = AnnouncementIcon;
 	export const ArrowRight = ArrowRightIcon;
 	export const ArrowLeft = ArrowLeftIcon;
 	export const Bell = BellIcon;
@@ -109,6 +111,7 @@ namespace Icons {
 export {
 	Icons, // export the namespace 'Icons' here
 	AddIcon,
+	AnnouncementIcon,
 	ArrowRightIcon,
 	ArrowLeftIcon,
 	BellIcon,

@@ -4,6 +4,7 @@ const packageJson = require('../package.json');
 module.exports = {
 	sass: (styleLoader) => ({
 		test: /\.(css|sass|scss)$/,
+		exclude: /node_modules/,
 		use: [
 			styleLoader,
 			{

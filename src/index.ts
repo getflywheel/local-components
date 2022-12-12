@@ -7,6 +7,8 @@ addStyles();
 export { default as Banner, BannerProps } from './components/alerts/Banner/Banner';
 export { default as BannerCarousel } from './components/alerts/BannerCarousel/BannerCarousel';
 export { default as OfflineBanner } from './components/alerts/OfflineBanner/OfflineBanner';
+export { default as toast } from './components/alerts/Toast/Toast';
+export { default as ToastContainer } from './components/alerts/ToastContainer/ToastContainer';
 export { Alert } from './components/alerts/Alert/Alert';
 // Buttons
 export { ButtonBase, IButtonBaseProps, IButtonCommonProps } from './components/buttons/_private/ButtonBase/ButtonBase';

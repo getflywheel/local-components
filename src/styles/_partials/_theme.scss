@@ -19,6 +19,11 @@
 		@at-root :global(.Theme__Dark) #{$selector} :global(.Theme__Light) {
 			@content;
 		}
+
+		// Handle basic theme inversion
+		@at-root :global(.Theme__Dark) :global(.Theme__Inverted) #{$selector} {
+			@content;
+		}
 	}
 }
 
@@ -36,6 +41,11 @@
 
 		// support explicitly setting section theme color for selector pattern: html .Theme__Light div .my-custom-selector div .Theme__Dark div (e.g .Theme__Light body .Theme__Dark)
 		@at-root :global(.Theme__Light) #{$selector} :global(.Theme__Dark) {
+			@content;
+		}
+
+		// Handle basic theme inversion
+		@at-root :global(.Theme__Light) :global(.Theme__Inverted) #{$selector} {
 			@content;
 		}
 	}
@@ -98,6 +108,10 @@
 
 @mixin theme-background-gray25-else-graydark50 {
 	@include __theme-background($gray25, $gray-dark50);
+}
+
+@mixin theme-background-graydark-else-white {
+	@include __theme-background($gray-dark, $white);
 }
 
 @mixin theme-background-green-else-graydark {
@@ -308,6 +322,10 @@
 
 @mixin theme-fill-green-else-gray25 {
 	@include __theme-fill($green, $gray25);
+}
+
+@mixin theme-fill-greendark-else-green {
+	@include __theme-fill($green-dark, $green);
 }
 
 @mixin theme-fill-greendark50-else-white-hover {
