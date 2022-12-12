@@ -13,10 +13,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@electron/remote": "^2.0.8",
     "@popperjs/core": "^2.9.2",
     "@types/lz-string": "^1.3.34",
     "@types/untildify": "^3.0.0",
-	"@electron/remote": "^2.0.8",
     "classnames": "^2.2.6",
     "clipboard-copy": "^3.1.0",
     "fuse.js": "^6.6.2",
@@ -32,6 +32,7 @@
     "react-popper": "^2.2.5",
     "react-resize-observer": "^1.1.1",
     "react-router-dom": "^5.0.1",
+    "react-toastify": "^9.1.1",
     "react-truncate-markup": "^3.0.0",
     "untildify": "^4.0.0"
   },
@@ -137,7 +138,7 @@
     "lodash": ">=4.17.13",
     "glob-parent": "^5.1.2",
     "trim-newlines": "^3.0.1",
-	"loader-utils": "^2.0.4"
+    "loader-utils": "^2.0.4"
   },
   "bugs": {
     "url": "https://github.com/getflywheel/local-components/issues"

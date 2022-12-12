@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import ToastContainerExample from "./ToastContainerExample";
+
+<Meta title="Alerts/ToastContainer" component={ToastContainerExample} />
+
+We use [react-toastify](https://fkhadra.github.io/react-toastify/introduction) for our Toasts, and from Local Components we export a wrapper around their `toast` function and `ToastContainer` component.
+This is done to limit the interface to better suit our specific designs.
+
+## ToastContainer
+
+Local will use only one instance of `ToastContainer` wrapping the whole app, though a multi-container approach is possible and would require further implementation.
+See the [react-toastify docs](https://fkhadra.github.io/react-toastify/multi-containers) for more information on multi-container toasts.
+## toast()
+
+To trigger a Toast, import `toast` from Local Components (NOT `react-toastify`!) and call the function with an appropriate `options` object to customize.
+You may specify `style`, `className`, `toastId`, `autoClose`, `content` and `type` properties, think React props but as an arg object.
+
+`autoClose` is a number specifying the length in ms after which to close the toast.
+
+`content` must be a valid React child - i.e. a string, component, or JSX. Note that in lieu of greater abstraction, all Toast content must be passed and styled from outside of the component.
+Although many toasts may want a text button to the right (think "undo" or "Learn more"), keeping components more flexible often serves us well in the future.
+
+View the code in `ToastContainerEample.tsx` for detailed examples of how to implement different kinds of toasts, shown below.
+
+# Interactive Example
+
+<Canvas>
+	<Story name="ToastContainerInteractive">
+        <ToastContainerExample />
+    </Story>
+</Canvas>

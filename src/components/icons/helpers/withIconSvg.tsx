@@ -15,6 +15,7 @@ export interface IconSvgProps {
 	onClick?: any;
 	tabIndex?: number;
 	onMouseDown?: any;
+	greenFill?: boolean;
 }
 
 export interface IconSvgStoryMetaAdditionalProps {
@@ -47,12 +48,13 @@ export interface IconSvgStoryMeta {
 const _withIconSvg =
 	<P extends object>(IconComponent: any, neutralFill: boolean, neutralStroke: boolean): React.FC<P & IconSvgProps> =>
 	({ ...props }: P & IconSvgProps) => {
-		const { className, id, key, style, ...otherProps } = props;
+		const { className, id, key, style, greenFill, ...otherProps } = props;
 
 		const render = (
 			<IconComponent
 				className={classnames(styles.IconSvg, 'IconSvg', className, {
-					[styles.IconSvg__neutralizeFill]: neutralFill,
+					[styles.IconSvg__greenFill]: greenFill,
+					[styles.IconSvg__neutralizeFill]: neutralFill && !greenFill,
 					[styles.IconSvg__neutralizeStroke]: neutralStroke,
 				})}
 				id={id}
