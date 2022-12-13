@@ -1,10 +1,11 @@
 import {
 	CloseButtonProps,
+	Slide,
 	toast as toastDefault,
 	ToastContentProps,
 	ToastOptions as ToastOptionsDefault,
 } from 'react-toastify';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Toast.scss';
 import Close from '../../buttons/Close/Close';
@@ -21,7 +22,8 @@ enum ToastType {
 	cta = 'cta',
 }
 
-interface ToastOptions extends Pick<ToastOptionsDefault, 'style' | 'className' | 'toastId' | 'autoClose'> {
+interface ToastOptions
+	extends Pick<ToastOptionsDefault, 'style' | 'className' | 'toastId' | 'autoClose' | 'pauseOnHover'> {
 	/**
 	 * Content for toast. Can be simple string or valid React node.
 	 * E.g. Component or JSX for rendering icons, text buttons, external links, etc.
@@ -31,22 +33,51 @@ interface ToastOptions extends Pick<ToastOptionsDefault, 'style' | 'className' |
 	type?: keyof typeof ToastType | ToastType;
 }
 
-type ContentProps = Pick<ToastOptions, 'content' | 'autoClose' | 'type'> & Partial<ToastContentProps>;
+type ContentProps = Pick<ToastOptions, 'content' | 'autoClose' | 'type' | 'pauseOnHover'> & Partial<ToastContentProps>;
 
 const Content = (props: ContentProps) => {
-	const { content, autoClose, type, closeToast } = props;
+	const { content, autoClose, type, closeToast, pauseOnHover } = props;
 	const [progress, setProgress] = useState(1);
+	// This needs to be a ref and not state to prevent stale data in the setInterval callback
+	const hovered = useRef(false);
+	const contentRef = useRef<HTMLDivElement>(null);
+
+	const setHoveredTrue = () => {
+		hovered.current = true;
+	};
+	const setHoveredFalse = () => {
+		hovered.current = false;
+	};
+
+	useEffect(() => {
+		if (pauseOnHover) {
+			const toastElement = contentRef.current?.closest('.Toastify__toast');
+
+			toastElement?.addEventListener('mouseover', setHoveredTrue);
+			toastElement?.addEventListener('mouseout', setHoveredFalse);
+
+			return () => {
+				toastElement?.removeEventListener('mouseover', setHoveredTrue);
+				toastElement?.removeEventListener('mouseout', setHoveredFalse);
+			};
+		}
+	}, [contentRef.current]);
 
 	useEffect(() => {
 		if (autoClose) {
 			const interval = 100;
 			const intervalID = setInterval(() => {
 				setProgress((current) => {
+					if (pauseOnHover && hovered.current) {
+						return current;
+					}
+
 					if (current <= 0) {
 						closeToast?.();
 						clearInterval(intervalID);
 						return 0;
 					}
+
 					return current - 1 / (autoClose / interval);
 				});
 			}, interval);
@@ -55,6 +86,7 @@ const Content = (props: ContentProps) => {
 
 	return (
 		<div
+			ref={contentRef}
 			className={classNames(styles.Toast__content, {
 				[styles.Toast__content_Error]: type === ToastType.error,
 			})}
@@ -76,17 +108,19 @@ const Content = (props: ContentProps) => {
 };
 
 const toast = (options: ToastOptions) => {
-	const { content, autoClose, type = 'success', ...restOptions } = options;
+	const { content, autoClose = 7000, type = 'success', pauseOnHover = false, ...restOptions } = options;
 
 	const toastOptions: ToastOptionsDefault = {
 		closeButton: CloseButton,
 		hideProgressBar: true,
 		className: type === ToastType.cta ? 'Theme__Inverted' : undefined,
 		autoClose: false,
+		transition: Slide,
+		pauseOnHover: false,
 		...restOptions,
 	};
 
-	toastDefault(<Content {...{ content, autoClose, type }} />, toastOptions);
+	toastDefault(<Content {...{ content, autoClose, type, pauseOnHover }} />, toastOptions);
 };
 
 export default toast;
