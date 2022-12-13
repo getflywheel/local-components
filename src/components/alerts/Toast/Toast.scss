@@ -46,7 +46,10 @@
 	position: absolute;
 	display: inline;
 
-	path, rect, circle, * {
+	path,
+	rect,
+	circle,
+	* {
 		fill: var(--Toast_Progress_Color);
 	}
 }
@@ -65,4 +68,63 @@
 
 .Toast__Close {
 	margin-left: 20px;
+}
+
+// Toned down bounce animation - note, we are just using Slide, but I'm keeping the code just in case.
+// Use this transition by setting "transition" on the ToastOptions object as follows:
+//
+// transition: cssTransition({
+// 	enter: styles['Toast__bounce-enter'],
+// 	exit: styles['Toast__bounce-exit'],
+// }),
+//
+// Note - cssTransition imported from `react-toastify`
+
+@keyframes BounceInRight {
+	from {
+		opacity: 0;
+		transform: translate3d(3000px, 0, 0);
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	80% {
+		opacity: 1;
+		transform: translate3d(-20px, 0, 0);
+	}
+
+	to {
+		transform: none;
+	}
+}
+
+@keyframes BounceOutRight {
+	20% {
+		opacity: 1;
+		transform: translate3d(-10px, 0, 0);
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 0;
+		transform: translate3d(2000px, 0, 0);
+	}
+}
+
+.Toast__bounce-enter {
+	animation-name: BounceInRight;
+	animation-fill-mode: both;
+	animation-duration: 0.7s;
+	animation-timing-function: ease-in-out;
+}
+
+.Toast__bounce-exit {
+	animation-name: BounceOutRight;
+	animation-fill-mode: both;
+	animation-duration: 0.7s;
 }

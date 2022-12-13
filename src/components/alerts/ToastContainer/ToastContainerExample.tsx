@@ -6,8 +6,8 @@ import { TextButton } from '../../buttons/TextButton/TextButton';
 import { AnnouncementIcon } from '../../icons/Icons';
 
 const ToastContainerExample = () => {
-	const showSuccessToast = () => toast({ content: 'Site pushed to Flywheel!', autoClose: 5000 });
-	const showWarningToast = () => toast({ content: 'Site import failed.', autoClose: 5000, type: 'error' });
+	const showSuccessToast = () => toast({ content: 'Site pushed to Flywheel!' });
+	const showErrorToast = () => toast({ content: 'Site import failed.', type: 'error' });
 	const showCTAToast = () =>
 		toast({
 			content: (
@@ -24,6 +24,18 @@ const ToastContainerExample = () => {
 			autoClose: false,
 			type: 'cta',
 		});
+	const showUndoToast = () =>
+		toast({
+			content: (
+				<div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+					New group created
+					<TextButton onClick={() => console.log('Undo Button Clicked')} privateOptions={{ padding: 'none' }}>
+						Undo
+					</TextButton>
+				</div>
+			),
+			pauseOnHover: true,
+		});
 
 	return (
 		<div style={{ overflow: 'hidden' }}>
@@ -31,11 +43,14 @@ const ToastContainerExample = () => {
 				<Button container={{ marginBottom: '10' }} onClick={showSuccessToast}>
 					Pop a success toast
 				</Button>
-				<Button container={{ marginBottom: '10' }} onClick={showWarningToast}>
-					Pop a warning toast
+				<Button container={{ marginBottom: '10' }} onClick={showErrorToast}>
+					Pop an error toast
 				</Button>
 				<Button container={{ marginBottom: '10' }} onClick={showCTAToast}>
 					Pop a CTA toast
+				</Button>
+				<Button container={{ marginBottom: '10' }} onClick={showUndoToast}>
+					Pop an undo toast
 				</Button>
 				<ToastContainer className="testClassName" style={{ position: 'absolute' }} />
 			</div>
