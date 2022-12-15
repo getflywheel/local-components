@@ -1,6 +1,8 @@
 import React from 'react';
 import { toast as toastDefault, ToastContainer as ToastContainerDefault, ToastContainerProps } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { injectStyle } from 'react-toastify/dist/inject-style';
+
+injectStyle();
 
 const ToastContainer = (props: ToastContainerProps) => {
 	const defaultProps: ToastContainerProps = {
