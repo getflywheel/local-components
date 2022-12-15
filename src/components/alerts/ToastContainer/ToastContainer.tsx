@@ -4,12 +4,15 @@ import { injectStyle } from 'react-toastify/dist/inject-style';
 
 const injectToastStyles = () => {
 	injectStyle();
-	let toastStyleSheet: CSSStyleSheet | undefined;
 	// eslint-disable-next-line no-restricted-syntax
 	for (const sheet of document.styleSheets) {
 		try {
-			if (sheet.cssRules?.[0].cssText.includes(':root') && sheet.cssRules[1]?.cssText.includes('.Toastify')) {
-				toastStyleSheet = sheet;
+			const rules = sheet.cssRules;
+			const node = sheet.ownerNode;
+
+			if (rules?.[0].cssText.includes(':root') && rules[1]?.cssText.includes('.Toastify')) {
+				node?.remove();
+				document.head.insertBefore(node as Node, document.head.firstChild);
 				break;
 			}
 		} catch {
@@ -17,10 +20,6 @@ const injectToastStyles = () => {
 			continue;
 		}
 	}
-
-	const node = toastStyleSheet?.ownerNode;
-	node?.remove();
-	document.head.insertBefore(node as Node, document.head.firstChild);
 };
 
 injectToastStyles();
