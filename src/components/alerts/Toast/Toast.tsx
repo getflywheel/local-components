@@ -123,7 +123,8 @@ const toast = (options: ToastOptions) => {
 		...restOptions,
 	};
 
-	toastDefault(<Content {...{ content, autoClose, type, pauseOnHover }} />, toastOptions);
+	return toastDefault(<Content {...{ content, autoClose, type, pauseOnHover }} />, toastOptions);
 };
 
+export const { dismiss: dismissToast } = toastDefault;
 export default toast;
