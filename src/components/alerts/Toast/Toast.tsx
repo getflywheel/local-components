@@ -22,7 +22,7 @@ enum ToastType {
 	cta = 'cta',
 }
 
-interface ToastOptions
+export interface ToastOptions
 	extends Pick<ToastOptionsDefault, 'style' | 'className' | 'toastId' | 'autoClose' | 'pauseOnHover'> {
 	/**
 	 * Content for toast. Can be simple string or valid React node.
