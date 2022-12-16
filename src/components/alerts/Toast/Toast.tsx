@@ -1,6 +1,6 @@
 import {
 	CloseButtonProps,
-	Slide,
+	cssTransition,
 	toast as toastDefault,
 	ToastContentProps,
 	ToastOptions as ToastOptionsDefault,
@@ -108,14 +108,17 @@ const Content = (props: ContentProps) => {
 };
 
 const toast = (options: ToastOptions) => {
-	const { content, autoClose = 7000, type = 'success', pauseOnHover = false, ...restOptions } = options;
+	const { content, autoClose = 6000, type = 'success', pauseOnHover = false, ...restOptions } = options;
 
 	const toastOptions: ToastOptionsDefault = {
 		closeButton: CloseButton,
 		hideProgressBar: true,
 		className: type === ToastType.cta ? 'Theme__Inverted' : undefined,
 		autoClose: false,
-		transition: Slide,
+		transition: cssTransition({
+			enter: styles['Toast__slide-enter'],
+			exit: styles['Toast__slide-exit'],
+		}),
 		pauseOnHover: false,
 		...restOptions,
 	};

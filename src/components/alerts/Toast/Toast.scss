@@ -10,7 +10,6 @@
 		font-family: unset;
 		@include theme-background-white-else-graydark50;
 		box-shadow: 0px 0px 11px rgb(0 0 0 / 10%);
-		margin-bottom: 20px;
 
 		&.Theme__Inverted {
 			@include theme-background-graydark-else-white;
@@ -60,6 +59,10 @@
 		stroke: var(--Toast_Progress_Color);
 	}
 
+	svg circle {
+		stroke-width: 2px;
+	}
+
 	span {
 		margin: 0;
 		fill: var(--Toast_Progress_Color);
@@ -70,61 +73,48 @@
 	margin-left: 20px;
 }
 
-// Toned down bounce animation - note, we are just using Slide, but I'm keeping the code just in case.
-// Use this transition by setting "transition" on the ToastOptions object as follows:
-//
-// transition: cssTransition({
-// 	enter: styles['Toast__bounce-enter'],
-// 	exit: styles['Toast__bounce-exit'],
-// }),
-//
-// Note - cssTransition imported from `react-toastify`
-
-@keyframes BounceInRight {
+@keyframes SlideInRight {
 	from {
+		transform: translate3d(110%, 0, 0);
 		opacity: 0;
-		transform: translate3d(3000px, 0, 0);
-	}
-
-	50% {
-		opacity: 0;
-	}
-
-	80% {
-		opacity: 1;
-		transform: translate3d(-20px, 0, 0);
-	}
-
-	to {
-		transform: none;
-	}
-}
-
-@keyframes BounceOutRight {
-	20% {
-		opacity: 1;
-		transform: translate3d(-10px, 0, 0);
-	}
+	  }
 
 	50% {
 		opacity: 0;
 	}
 
 	to {
-		opacity: 0;
-		transform: translate3d(2000px, 0, 0);
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
 	}
 }
 
-.Toast__bounce-enter {
-	animation-name: BounceInRight;
+@keyframes SlideOutRight {
+	from {
+		transform: translate3d(0, 0, 0);
+		opacity: 1
+	  }
+
+	40% {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 0;
+		transform: translate3d(110%, 0, 0);
+	}
+}
+
+.Toast__slide-enter, .Toast__slide-exit {
 	animation-fill-mode: both;
-	animation-duration: 0.7s;
+	animation-duration: 0.4s;
 	animation-timing-function: ease-in-out;
 }
 
-.Toast__bounce-exit {
-	animation-name: BounceOutRight;
-	animation-fill-mode: both;
-	animation-duration: 0.7s;
+.Toast__slide-enter {
+	animation-name: SlideInRight;
+}
+
+.Toast__slide-exit {
+	animation-name: SlideOutRight;
 }
