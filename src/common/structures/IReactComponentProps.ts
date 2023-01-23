@@ -1,19 +1,20 @@
 import * as React from 'react';
 
-export default interface IReactComponentProps {
-	onKeyDown?: any;
-	children?: React.ReactNode;
+export default interface IReactComponentProps<T = HTMLElement> {
+	onKeyDown?: React.HTMLProps<T>['onKeyDown'];
+	children?: React.DOMAttributes<T>['children'];
 	className?: string;
 	key?: string | number;
 	id?: string;
 	innerRef?: (element: HTMLElement) => void | string;
-	onClick?: any;
-	onMouseDown?: any;
-	onBlur?: any;
-	onFocus?: any;
+	onClick?: React.HTMLProps<T>['onClick'];
+	onMouseDown?: React.HTMLProps<T>['onMouseDown'];
+	onBlur?: React.HTMLProps<T>['onBlur'];
+	onFocus?: React.HTMLProps<T>['onFocus'];
 	style?: object;
 	ref?: any;
 	role?: string;
 	tabIndex?: number;
 	'aria-checked'?: boolean;
+	onContextMenu?: React.HTMLProps<T>['onContextMenu'];
 }
