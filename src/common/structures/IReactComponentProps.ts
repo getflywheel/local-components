@@ -17,4 +17,5 @@ export default interface IReactComponentProps<T = HTMLElement> {
 	tabIndex?: number;
 	'aria-checked'?: boolean;
 	onContextMenu?: React.HTMLProps<T>['onContextMenu'];
+	onDoubleClick?: React.HTMLProps<T>['onDoubleClick'];
 }
