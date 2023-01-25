@@ -29,6 +29,7 @@ interface PropsBase extends ILocalContainerProps {
 
 interface PropsControlled extends PropsBase {
 	opened: boolean;
+	noHeader?: boolean;
 }
 
 const AccordionItemControlled: React.FC<PropsControlled> = ({
@@ -41,6 +42,7 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 	itemId,
 	onToggle,
 	opened,
+	noHeader,
 	style,
 }) => {
 	const onClick = (_: React.MouseEvent<HTMLElement>) => {
@@ -65,7 +67,7 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 				{React.Children.map(children?.props?.children || children, (child: React.ReactNode, index: number) => {
 					switch (index) {
 						case 0:
-							return (
+							return noHeader ? null : (
 								<TagSummary
 									className={classnames(styles.AccordionItem_Summary, 'AccordionItem_Summary', {
 										[styles.AccordionItem_Summary__ClickAreaAll]: clickArea === 'all',
@@ -101,7 +103,7 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 									animationStateClasses={animationStateClasses}
 									className={classnames('AccordionItem_Content')}
 									duration={200}
-									height={opened ? 'auto' : 0}
+									height={opened || noHeader ? 'auto' : 0}
 								>
 									{child}
 								</AnimateHeight>
