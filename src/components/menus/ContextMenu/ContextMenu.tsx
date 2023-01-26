@@ -1,11 +1,10 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import styles from './ContextMenu.scss';
-import { DotsIcon } from '../../icons/Icons';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
-import { PrimaryButton } from '../../buttons/PrimaryButton/PrimaryButton';
 import { TextButton } from '../../buttons/TextButton/TextButton';
+import { ThreeDotButton } from '../../buttons/ThreeDotButton/ThreeDotButton';
 
 export interface IMenuItem {
 	color?: 'red' | 'none';
@@ -53,6 +52,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 			{items
 				.filter((item: IMenuItem) => Object.keys(item).length !== 0)
 				.map((item: IMenuItem, i: number) => (
+					// eslint-disable-next-line react/no-array-index-key
 					<li key={i} className={classnames(styles.ContextMenu_Item, classNameListItem, item.className)}>
 						{item.type === 'separator' ? (
 							<div className={styles.ContextMenu_Divider} />
@@ -91,17 +91,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 			{...otherProps}
 			content={content}
 		>
-			<PrimaryButton
-				aria-label="Open context menu"
-				active={isShowing}
-				className={classnames({
-					[styles.ContextMenu_Trigger]: !noBG,
-					[styles.ContextMenu_Trigger_NoBG]: noBG,
-				})}
-				privateOptions={{ style: { padding: '6px' }, form: noBG ? 'text' : 'fill' }}
-			>
-				<DotsIcon />
-			</PrimaryButton>
+			<ThreeDotButton aria-label="Open context menu" active={isShowing} />
 		</Tooltip>
 	);
 };
