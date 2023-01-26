@@ -5,6 +5,7 @@ import styles from './AccordionItem.scss';
 import { Container } from '../../modules/Container/Container';
 import ILocalContainerProps from '../../../common/structures/ILocalContainerProps';
 import { CaretIcon, CheckmarkMixedIcon } from '../../icons/Icons';
+import { IconButton } from '../../buttons/IconButton/IconButton';
 
 const animationStateClasses = {
 	animating: 'AccordionItem_Content__animating',
@@ -22,6 +23,7 @@ const animationStateClasses = {
 interface PropsBase extends ILocalContainerProps {
 	children: (React.ReactNode & { props?: any[] }) | null;
 	clickArea?: 'icon' | 'all';
+	/** Defaults to "true" for default carot icons. Set to "false" for no icon, set to ReactNode for custom icon */
 	icon?: boolean | React.ReactNode;
 	itemId?: string;
 	onToggle?: (id: PropsControlled['itemId'] | undefined) => void;
@@ -44,14 +46,15 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 	opened,
 	noHeader,
 	style,
+	...restProps
 }) => {
-	const onClick = (_: React.MouseEvent<HTMLElement>) => {
+	const onClick = () => {
 		if (clickArea !== 'all') {
 			// accordion callback
 			onToggle?.(itemId);
 		}
 	};
-	const onClickSummary = (event: React.MouseEvent<HTMLElement>) => {
+	const onClickSummary = () => {
 		if (clickArea === 'all') {
 			// accordion callback
 			onToggle?.(itemId);
@@ -60,9 +63,54 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 
 	const TagSummary: any = clickArea === 'all' ? 'button' : 'div';
 
+	const renderIconButton = () => {
+		const buttonClassName = classnames(styles.AccordionItem_Summary_Action, 'AccordionItem_Summary_Action', {
+			// allow developers to override for custom open/close styles
+			AccordionItem_Summary_Action__Opened: opened,
+		});
+
+		// Default Caret icons
+		if (icon === true) {
+			return !opened ? (
+				<IconButton
+					onClick={onClick}
+					icon={CaretIcon}
+					privateOptions={{ color: 'gray' }}
+					className={buttonClassName}
+				/>
+			) : (
+				<IconButton
+					privateOptions={{ color: 'gray' }}
+					icon={React.memo(() => (
+						<CheckmarkMixedIcon width={14} height={3} />
+					))}
+					onClick={onClick}
+					className={buttonClassName}
+				/>
+			);
+		}
+
+		// Custom icon
+		if (icon) {
+			return (
+				<button className={buttonClassName} onClick={onClick} type="button">
+					{typeof icon === 'object' && icon}
+				</button>
+			);
+		}
+
+		// No icon if icon === false
+		return null;
+	};
+
 	return (
 		<Container {...container}>
-			<div className={classnames(styles.AccordionItem, 'AccordionItem', className)} id={id} style={style}>
+			<div
+				className={classnames(styles.AccordionItem, 'AccordionItem', className)}
+				id={id}
+				style={style}
+				{...restProps}
+			>
 				{/* need to unwrap children because of potential extra 'child' wrapper (plus this works with fragments) */}
 				{React.Children.map(children?.props?.children || children, (child: React.ReactNode, index: number) => {
 					switch (index) {
@@ -77,24 +125,7 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 								>
 									{React.cloneElement(child as React.ReactElement, {})}
 									{/* don't render if icon is disabled otherwise this can be tabbed to */}
-									{icon !== false && (
-										<button
-											className={classnames(
-												styles.AccordionItem_Summary_Action,
-												'AccordionItem_Summary_Action',
-												{
-													// allow developers to override for custom open/close styles
-													AccordionItem_Summary_Action__Opened: opened,
-												}
-											)}
-											onClick={onClick}
-											type="button"
-										>
-											{!opened && icon === true && <CaretIcon />}
-											{opened && icon === true && <CheckmarkMixedIcon width={14} height={3} />}
-											{typeof icon === 'object' && <>{icon}</>}
-										</button>
-									)}
+									{renderIconButton()}
 								</TagSummary>
 							);
 						case 1:
@@ -126,7 +157,7 @@ const AccordionItemUncontrolled: React.FC<PropsUncontrolled> = ({ openedDefault,
 
 	const onClick = (itemId: PropsBase['itemId']) => {
 		// toggle open state
-		setIsOpen((isOpen) => !isOpen);
+		setIsOpen((prev) => !prev);
 
 		// call optional callback
 		onToggle?.(itemId);
