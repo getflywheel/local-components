@@ -1,0 +1,16 @@
+import { ThreeDotButton } from "./ThreeDotButton";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+<Meta title="Buttons/ThreeDotButton" component={ThreeDotButton} />
+
+<Canvas>
+	<Story name="ThreeDotButton">
+        <ThreeDotButton onClick={() => console.log('Button clicked!')} />
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="ThreeDotButton no background">
+        <ThreeDotButton noBG onClick={() => console.log('Button clicked!')} />
+	</Story>
+</Canvas>
