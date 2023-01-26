@@ -2,11 +2,16 @@
 @import '../../../common/styles/themeUtils';
 
 
-.ContextMenu_Trigger {
+.ThreeDot {
 	@include setThemeVar('--Button_IfFill__Background', $gray5, $gray-darker);
 	@include setThemeVar('--Button_IfFill__TextColor', $green-dark, $green);
 }
 
-.ContextMenu_Trigger_NoBG {
+.ThreeDot_NoBG {
 	@include setThemeVar('--Button_SvgPathFillColor', $gray, $green);
+}
+
+.ThreeDot_BgOnHover {
+	@include setThemeVar('--Button_SvgPathFillColor', $gray, $gray75);
+	@include setThemeVar('--Button_IfFill__Background', transparent);
 }

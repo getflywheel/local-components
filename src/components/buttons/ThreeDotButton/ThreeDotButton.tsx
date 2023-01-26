@@ -8,17 +8,19 @@ import { DotsIcon } from '../../icons/Icons';
 interface IThreeDotButtonProps extends IButtonCommonProps {
 	noBG?: boolean;
 	privateOptions?: IButtonBaseProps;
+	bgOnHover?: boolean;
 }
 
 export const ThreeDotButton = (props: IThreeDotButtonProps) => {
-	const { noBG, privateOptions, ...restProps } = props;
+	const { noBG, privateOptions, bgOnHover, ...restProps } = props;
 
 	return (
 		<PrimaryButton
 			aria-label="Open context menu"
 			className={classnames({
-				[styles.ContextMenu_Trigger]: !noBG,
-				[styles.ContextMenu_Trigger_NoBG]: noBG,
+				[styles.ThreeDot]: !noBG,
+				[styles.ThreeDot_NoBG]: noBG && !bgOnHover,
+				[styles.ThreeDot_BgOnHover]: bgOnHover,
 			})}
 			privateOptions={{ style: { padding: '6px' }, form: noBG ? 'text' : 'fill', ...privateOptions }}
 			{...restProps}
