@@ -17,6 +17,7 @@ export { default as Close } from './components/buttons/Close/Close';
 export { PrimaryButton } from './components/buttons/PrimaryButton/PrimaryButton';
 export { TextButton, ITextButtonProps } from './components/buttons/TextButton/TextButton';
 export { IconButton, IIconButtonProps } from './components/buttons/IconButton/IconButton';
+export { ThreeDotButton } from './components/buttons/ThreeDotButton/ThreeDotButton';
 export { default as TextButtonExternal } from './components/buttons/TextButtonExternal/TextButtonExternal';
 export { CopyButton } from './components/buttons/CopyButton/CopyButton';
 export { RefreshButton } from './components/buttons/RefreshButton/RefreshButton';
