@@ -4,7 +4,8 @@ import {
 	ButtonBase,
 	ButtonPropColor,
 	ButtonPropForm,
-	ButtonPropPadding, IButtonBaseProps,
+	ButtonPropPadding,
+	IButtonBaseProps,
 	IButtonCommonProps,
 } from '../_private/ButtonBase/ButtonBase';
 
@@ -19,20 +20,11 @@ interface IProps extends IButtonCommonProps {
 }
 
 export const PrimaryButton = (props: IProps) => {
-	const {
-		className,
-		id,
-		intent,
-		privateOptions,
-		...otherProps
-	} = props;
+	const { className, id, intent, privateOptions, ...otherProps } = props;
 
 	return (
 		<ButtonBase
-			className={classnames(
-				className,
-				'PrimaryButton',
-			)}
+			className={classnames(className, 'PrimaryButton')}
 			color={intent === PrimaryButtonPropIntent.destructive ? ButtonPropColor.red : ButtonPropColor.green}
 			id={id}
 			form={ButtonPropForm.fill}
