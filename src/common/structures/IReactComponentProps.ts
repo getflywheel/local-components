@@ -18,4 +18,6 @@ export default interface IReactComponentProps<T = HTMLElement> {
 	'aria-checked'?: boolean;
 	onContextMenu?: React.HTMLProps<T>['onContextMenu'];
 	onDoubleClick?: React.HTMLProps<T>['onDoubleClick'];
+	onMouseEnter?: React.HTMLProps<T>['onMouseEnter'];
+	onMouseLeave?: React.HTMLProps<T>['onMouseLeave'];
 }
