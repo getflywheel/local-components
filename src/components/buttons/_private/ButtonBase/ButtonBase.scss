@@ -240,7 +240,7 @@ $disabled-text-dark-fill: $gray;
 	@include setThemeVar('--Button_IfFill__TextColor_Hover', $white, $gray-dark);
 	@include setThemeVar('--Button_IfFill__Background_Active', $gray-dark, $gray25);
 	@include setThemeVar('--Button_IfFill__TextColor_Active', $white, $gray-dark);
-	@include setThemeVar('--Button_IfText__TextColor', $gray, $white);
+	@include setThemeVar('--Button_IfText__TextColor', $gray, $gray75);
 	@include setThemeVar('--Button_IfText__TextColor_Hover', $gray-dark50, $gray15);
 	@include setThemeVar('--Button_IfText__TextColor_Active', $gray-dark, $gray25);
 }

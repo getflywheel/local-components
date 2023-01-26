@@ -25,6 +25,8 @@ export interface IContextMenuProps extends Omit<TooltipProps, 'content'> {
 	items: IMenuItem[];
 	/** whether to have background behind 3 dots - set to false for low key 3 dot dropdowns */
 	noBG?: boolean;
+	/** whether to have background behind 3 dots - set to false for low key 3 dot dropdowns */
+	bgOnHover?: boolean;
 }
 
 const ContextMenu = (props: IContextMenuProps) => {
@@ -36,6 +38,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 		onShow,
 		onHide,
 		noBG,
+		bgOnHover,
 		useClickInsteadOfHover,
 		...otherProps
 	} = props;
@@ -91,7 +94,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 			{...otherProps}
 			content={content}
 		>
-			<ThreeDotButton aria-label="Open context menu" active={isShowing} />
+			<ThreeDotButton aria-label="Open context menu" active={isShowing} noBG={noBG} bgOnHover={bgOnHover} />
 		</Tooltip>
 	);
 };
