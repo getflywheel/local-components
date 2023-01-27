@@ -23,7 +23,7 @@ const animationStateClasses = {
 interface PropsBase extends ILocalContainerProps {
 	children: (React.ReactNode & { props?: any[] }) | null;
 	clickArea?: 'icon' | 'all';
-	/** Defaults to "true" for default carot icons. Set to "false" for no icon, set to ReactNode for custom icon */
+	/** Defaults to "true" for default caret icons. Set to "false" for no icon, set to ReactNode for custom icon. */
 	icon?: boolean | React.ReactNode;
 	itemId?: string;
 	onToggle?: (id: PropsControlled['itemId'] | undefined) => void;
