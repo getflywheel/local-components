@@ -64,43 +64,26 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 	const TagSummary: any = clickArea === 'all' ? 'button' : 'div';
 
 	const renderIconButton = () => {
-		const buttonClassName = classnames(styles.AccordionItem_Summary_Action, 'AccordionItem_Summary_Action', {
-			// allow developers to override for custom open/close styles
-			AccordionItem_Summary_Action__Opened: opened,
-		});
+		if (!icon) {
+			return null;
+		}
 
-		// Default Caret icons
+		let iconForButton = icon;
 		if (icon === true) {
-			return !opened ? (
-				<IconButton
-					onClick={onClick}
-					icon={CaretIcon}
-					privateOptions={{ color: 'gray' }}
-					className={buttonClassName}
-				/>
-			) : (
-				<IconButton
-					privateOptions={{ color: 'gray' }}
-					icon={React.memo(() => (
-						<CheckmarkMixedIcon width={14} height={3} />
-					))}
-					onClick={onClick}
-					className={buttonClassName}
-				/>
-			);
+			iconForButton = opened ? React.memo(() => <CheckmarkMixedIcon width={14} height={3} />) : CaretIcon;
 		}
 
-		// Custom icon
-		if (icon) {
-			return (
-				<button className={buttonClassName} onClick={onClick} type="button">
-					{typeof icon === 'object' && icon}
-				</button>
-			);
-		}
-
-		// No icon if icon === false
-		return null;
+		return (
+			<IconButton
+				onClick={onClick}
+				icon={iconForButton}
+				privateOptions={{ color: 'gray' }}
+				className={classnames(styles.AccordionItem_Summary_Action, 'AccordionItem_Summary_Action', {
+					// allow developers to override for custom open/close styles
+					AccordionItem_Summary_Action__Opened: opened,
+				})}
+			/>
+		);
 	};
 
 	return (
