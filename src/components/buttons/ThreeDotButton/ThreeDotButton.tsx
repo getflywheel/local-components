@@ -12,12 +12,12 @@ interface IThreeDotButtonProps extends IButtonCommonProps {
 }
 
 export const ThreeDotButton = (props: IThreeDotButtonProps) => {
-	const { noBG, privateOptions, bgOnHover, ...restProps } = props;
+	const { noBG, privateOptions, bgOnHover, className, ...restProps } = props;
 
 	return (
 		<PrimaryButton
 			aria-label="Open context menu"
-			className={classnames({
+			className={classnames(className, {
 				[styles.ThreeDot]: !noBG,
 				[styles.ThreeDot_NoBG]: noBG && !bgOnHover,
 				[styles.ThreeDot_BgOnHover]: bgOnHover,
