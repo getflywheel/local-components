@@ -12,6 +12,6 @@
 }
 
 .ThreeDot_BgOnHover {
-	@include setThemeVar('--Button_SvgPathFillColor', $gray, $gray75);
+	@include setThemeVar('--Button_SvgPathFillColor', $gray75, $gray75);
 	@include setThemeVar('--Button_IfFill__Background', transparent);
 }
