@@ -61,8 +61,6 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 		}
 	};
 
-	const TagSummary: any = clickArea === 'all' ? 'button' : 'div';
-
 	const renderIconButton = () => {
 		if (!icon) {
 			return null;
@@ -99,17 +97,27 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 					switch (index) {
 						case 0:
 							return noHeader ? null : (
-								<TagSummary
+								<div
+									{...(clickArea === 'all' && {
+										role: 'button',
+										onClick: onClickSummary,
+										tabIndex: 0,
+										onKeyDown: (e: React.KeyboardEvent) => {
+											if (e.key === 'Enter' || e.key === ' ') {
+												e.preventDefault();
+												onClickSummary();
+											}
+										},
+									})}
 									className={classnames(styles.AccordionItem_Summary, 'AccordionItem_Summary', {
 										[styles.AccordionItem_Summary__ClickAreaAll]: clickArea === 'all',
 										AccordionItem_Summary__ClickAreaAll: clickArea === 'all',
 									})}
-									onClick={onClickSummary}
 								>
 									{React.cloneElement(child as React.ReactElement, {})}
 									{/* don't render if icon is disabled otherwise this can be tabbed to */}
 									{renderIconButton()}
-								</TagSummary>
+								</div>
 							);
 						case 1:
 							return (
