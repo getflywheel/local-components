@@ -9,6 +9,7 @@ export default interface IReactComponentProps<T = HTMLElement> {
 	innerRef?: (element: HTMLElement) => void | string;
 	onClick?: React.HTMLProps<T>['onClick'];
 	onMouseDown?: React.HTMLProps<T>['onMouseDown'];
+	onMouseUp?: React.HTMLProps<T>['onMouseUp'];
 	onBlur?: React.HTMLProps<T>['onBlur'];
 	onFocus?: React.HTMLProps<T>['onFocus'];
 	style?: object;
