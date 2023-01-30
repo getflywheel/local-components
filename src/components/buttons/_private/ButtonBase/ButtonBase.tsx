@@ -84,6 +84,8 @@ export interface IButtonCommonProps extends ILocalContainerProps {
 	svgStyle?: ButtonSvgStyle | keyof typeof ButtonSvgStyle;
 	/** Display inline-flex vs flex */
 	inline?: boolean;
+	/** Stop propagation - prevents button keydown event from bubbling up to wrapping elements with potential listeners */
+	stopKeyDownPropagation?: boolean;
 }
 
 /**
@@ -137,6 +139,7 @@ const ButtonBase = (props: IButtonBaseProps) => {
 		leftIcon,
 		rightIcon,
 		svgStyle,
+		stopKeyDownPropagation,
 		...otherProps
 	} = props;
 
@@ -147,6 +150,10 @@ const ButtonBase = (props: IButtonBaseProps) => {
 	const [isActive, setIsActive] = React.useState(active);
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
+		if (stopKeyDownPropagation) {
+			e.stopPropagation();
+		}
+
 		if (e.key === 'Enter' && !active) {
 			setIsActive(true);
 		}
