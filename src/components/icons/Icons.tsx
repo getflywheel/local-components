@@ -24,6 +24,7 @@ import DashIcon from './svgs/DashIcon';
 import DocIcon from './svgs/DocIcon';
 import DotsIcon from './svgs/DotsIcon';
 import DownloadIcon from './svgs/DownloadIcon';
+import DragIcon from './svgs/DragIcon';
 import ExclamationIcon from './svgs/ExclamationIcon';
 import ExternalLinkIcon from './svgs/ExternalLinkIcon';
 import EyeIcon from './svgs/EyeIcon';
@@ -79,6 +80,7 @@ namespace Icons {
 	export const Doc = DocIcon;
 	export const Dots = DotsIcon;
 	export const Download = DownloadIcon;
+	export const Drag = DragIcon;
 	export const Exclamation = ExclamationIcon;
 	export const ExternalLink = ExternalLinkIcon;
 	export const Eye = EyeIcon;
@@ -136,6 +138,7 @@ export {
 	DocIcon,
 	DotsIcon,
 	DownloadIcon,
+	DragIcon,
 	ExclamationIcon,
 	ExternalLinkIcon,
 	EyeIcon,
