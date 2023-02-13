@@ -27,6 +27,8 @@ interface PropsBase extends ILocalContainerProps {
 	icon?: boolean | React.ReactNode;
 	itemId?: string;
 	onToggle?: (id: PropsControlled['itemId'] | undefined) => void;
+	summaryClassName?: string;
+	contentClassName?: string;
 }
 
 interface PropsControlled extends PropsBase {
@@ -46,6 +48,8 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 	opened,
 	noHeader,
 	style,
+	summaryClassName,
+	contentClassName,
 	...restProps
 }) => {
 	const onClick = () => {
@@ -109,10 +113,15 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 											}
 										},
 									})}
-									className={classnames(styles.AccordionItem_Summary, 'AccordionItem_Summary', {
-										[styles.AccordionItem_Summary__ClickAreaAll]: clickArea === 'all',
-										AccordionItem_Summary__ClickAreaAll: clickArea === 'all',
-									})}
+									className={classnames(
+										styles.AccordionItem_Summary,
+										summaryClassName,
+										'AccordionItem_Summary',
+										{
+											[styles.AccordionItem_Summary__ClickAreaAll]: clickArea === 'all',
+											AccordionItem_Summary__ClickAreaAll: clickArea === 'all',
+										}
+									)}
 								>
 									{React.cloneElement(child as React.ReactElement, {})}
 									{/* don't render if icon is disabled otherwise this can be tabbed to */}
@@ -123,7 +132,7 @@ const AccordionItemControlled: React.FC<PropsControlled> = ({
 							return (
 								<AnimateHeight
 									animationStateClasses={animationStateClasses}
-									className={classnames('AccordionItem_Content')}
+									className={classnames('AccordionItem_Content', contentClassName)}
 									duration={200}
 									height={opened || noHeader ? 'auto' : 0}
 								>
