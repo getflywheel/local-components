@@ -41,7 +41,7 @@ export {
 export * from './components/icons/Icons';
 export { default as IconCheckbox } from './components/inputs/IconCheckbox/IconCheckbox';
 export { default as InputPasswordToggle } from './components/inputs/InputPasswordToggle/InputPasswordToggle';
-export { default as BasicInput } from './components/inputs/BasicInput/BasicInput';
+export { default as BasicInput, IBasicInputProps } from './components/inputs/BasicInput/BasicInput';
 export { default as InputSearch } from './components/inputs/InputSearch/InputSearch';
 export { default as RadioBlock } from './components/inputs/RadioBlock/RadioBlock';
 export { default as Switch } from './components/inputs/Switch/Switch';

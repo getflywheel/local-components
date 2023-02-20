@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export default interface IReactComponentProps<T = HTMLElement> {
+	onKeyUp?: React.HTMLProps<T>['onKeyUp'];
 	onKeyDown?: React.HTMLProps<T>['onKeyDown'];
 	children?: React.DOMAttributes<T>['children'];
 	className?: string;
