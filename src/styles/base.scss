@@ -20,7 +20,7 @@
 			outline: none;
 		}
 
-		&:focus {
+		:focus {
 			@include defaultOutline;
 		}
 	}
