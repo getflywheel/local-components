@@ -132,9 +132,11 @@
 			background: $green-dark50
 
 	.Popup_BubbleContent
-		transition: opacity $transiton-duration $ease-in $transiton-delay
+		transition: opacity $transiton-duration $ease-in $transiton-delay, visibility $transiton-duration $ease-in $transiton-delay
 		will-change: opacity
 		@include selectors_setAsDefaults()
 			opacity: 0
+			visibility: hidden
 		@include selectors_ifHostHasModifier('.Popup__Open')
 			opacity: 1
+			visibility: visible
