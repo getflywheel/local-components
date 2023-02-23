@@ -146,21 +146,21 @@
 	@include __theme-background(rgba($white, .85), $gray-dark);
 }
 
-@mixin __theme-border($property: "", $lightmodeLighten: 0%, $darkmodeLighten: 0%, $border-light: $theme-border-light, $border-dark: $theme-border-dark) {
+@mixin __theme-border($property: "", $lightmodeLighten: 0%, $darkmodeLighten: 0%, $border-light: $theme-border-light, $border-dark: $theme-border-dark, $border-width: 2px) {
 	@if $property == "" or $property == "box-shadow" {
 		@include if-theme-light() {
-			box-shadow: 0 0 0 1px $border-light;
+			box-shadow: 0 0 0 $border-width $border-light;
 		}
 		@include if-theme-dark() {
-			box-shadow: 0 0 0 1px lighten($border-dark, $darkmodeLighten);
+			box-shadow: 0 0 0 $border-width lighten($border-dark, $darkmodeLighten);
 		}
 	}
 	@else {
 		@include if-theme-light() {
-			#{$property}: 1px solid $border-light;
+			#{$property}: $border-width solid $border-light;
 		}
 		@include if-theme-dark() {
-			#{$property}: 1px solid lighten($border-dark, $darkmodeLighten);
+			#{$property}: $border-width solid lighten($border-dark, $darkmodeLighten);
 		}
 	}
 }
@@ -379,13 +379,13 @@
 @mixin theme-input-border-box-shadow {
 	border: none;
 	border-radius: 4px;
-	@include __theme-border("", 0%, 0%, $theme-border-light, $theme-input-border-box-shadow-dark);
+	@include __theme-border("", 0%, 0%, $theme-border-light, $theme-input-border-box-shadow-dark, 1px);
 }
 
 @mixin theme-input-border {
 	border: none;
 	border-radius: 4px;
-	@include __theme-border("border", 0%, 0%, $theme-border-light, $theme-input-border-box-shadow-dark);
+	@include __theme-border("border", 0%, 0%, $theme-border-light, $theme-input-border-box-shadow-dark, 1px);
 }
 
 // Theme Patterns
