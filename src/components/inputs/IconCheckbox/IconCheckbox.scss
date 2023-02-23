@@ -10,7 +10,7 @@
 	&:not(.IconCheckbox__Disabled) {
 		// mouse down
 		&:active {
-			transform: scale(0.9);
+			transform: scale(0.98);
 		}
 
 		// default unchecked and not using icon colors
@@ -72,6 +72,10 @@
 	margin: 0;
 	opacity: 0;
 	cursor: pointer;
+
+	&:focus + .IconCheckbox_Icon {
+		@include defaultOutline;
+	}
 }
 
 .IconCheckbox_Icon {

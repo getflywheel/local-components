@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import styles from './IconCheckbox.scss';
-import { FunctionGeneric } from '../../../common/structures/Generics';
 
 interface ISvgProps {
 	className?: string;
@@ -10,11 +9,11 @@ interface ISvgProps {
 
 interface IProps extends IReactComponentProps {
 	checked?: boolean;
-	disabled?: boolean;
+	onChange?: (checked: boolean) => void;
 	Icon: React.FC<ISvgProps>;
+	disabled?: boolean;
 	name?: string;
-	onChange: FunctionGeneric;
-	/** Whether to override svg icon path colors **/
+	/** Whether to override svg icon path colors * */
 	useIconColorsOnChecked?: boolean;
 	useIconColorsOnCheckedHover?: boolean;
 	useIconColorsOnUnchecked?: boolean;
@@ -27,33 +26,37 @@ export const IconCheckbox: React.FC<IProps> = ({
 	Icon,
 	name,
 	onChange,
+	className,
+	id,
+	style,
 	useIconColorsOnChecked,
 	useIconColorsOnCheckedHover,
 	useIconColorsOnUnchecked,
 	useIconColorsOnUncheckedHover,
-	...props
+	...restProps
 }) => {
-	const isCheckedProp = checked === undefined ? false : checked;
-	const [ isChecked, updateCheckedState ] = useState(isCheckedProp);
+	const [isChecked, setIsChecked] = useState(checked);
 	// state to track temporarily disabling hover to make the checked/unchecked effect play nicer with hover
-	const [ disableHoverStyles, setDisableHoverStyles ] = useState(isCheckedProp);
+	const [disableHoverStyles, setDisableHoverStyles] = useState(checked);
 
 	// to allow updates to the state via prop changes, an effect much be used
-	useEffect(() => { updateCheckedState(isCheckedProp)}, [checked] );
+	useEffect(() => {
+		setIsChecked(checked);
+	}, [checked]);
 
 	const handleChange = () => {
-		const checkedUpdate: boolean = !isChecked;
-
 		setDisableHoverStyles(true);
-		updateCheckedState(checkedUpdate);
-		onChange?.(checkedUpdate);
+		setIsChecked((prev) => {
+			onChange?.(!prev);
+			return !prev;
+		});
 	};
 
 	const onMouseLeave = () => {
 		if (disableHoverStyles) {
 			setDisableHoverStyles(false);
 		}
-	}
+	};
 
 	return (
 		<div
@@ -68,13 +71,14 @@ export const IconCheckbox: React.FC<IProps> = ({
 					[styles.IconCheckbox__UseIconColorsOnUnchecked]: useIconColorsOnUnchecked,
 					[styles.IconCheckbox__UseIconColorsOnUncheckedHover]: useIconColorsOnUncheckedHover,
 				},
-				props.className,
+				className
 			)}
 			onMouseLeave={onMouseLeave}
-			style={props.style}
+			style={style}
+			{...restProps}
 		>
 			<input
-				id={props.id}
+				id={id}
 				type="checkbox"
 				className={styles.IconCheckbox_InputHidden}
 				checked={isChecked}
