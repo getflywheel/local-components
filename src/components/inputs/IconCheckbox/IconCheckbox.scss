@@ -73,7 +73,7 @@
 	opacity: 0;
 	cursor: pointer;
 
-	&:focus + .IconCheckbox_Icon {
+	&:focus-visible + .IconCheckbox_Icon {
 		@include defaultOutline;
 	}
 }
