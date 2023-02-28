@@ -35,7 +35,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 	const { className, classNameList, classNameListItem, items, onShow, onHide, noBG, bgOnHover, id, ...otherProps } =
 		props;
 
-	const menuId = useRef(`${id ?? 'contextMenu'}-${shortid.generate()}`);
+	const menuId = useRef(id ?? `${'contextMenu'}-${shortid.generate()}`);
 
 	const [isShowing, setIsShowing] = React.useState(false);
 
