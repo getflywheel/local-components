@@ -1,4 +1,5 @@
-import { Tooltip } from "./Tooltip";
+import { Tooltip, hideTooltip } from "./Tooltip";
+import { TextButton } from "../../buttons/TextButton/TextButton";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
 <Meta title="Overlays/Tooltip" component={Tooltip} />
@@ -110,6 +111,35 @@ Turn off the delay before showing the tooltip along with the delay for hiding it
 				showDelay={0}
             >
                 <div style={{cursor: 'pointer'}}>Hover over me</div>
+            </Tooltip>
+        </div>
+	</Story>
+</Canvas>
+
+We can hide a tooltip using the exported `hideTooltip` function, passing along the ID of the tooltip. This is pretty much only useful
+for closing a click-triggered tooltip from within the tooltip itself. Click-triggered tooltips don't close when clicking the popper content.
+> Using this method gives us animations and doesn't mess up internal state. Changig the `hideTooltip` prop to `true` from the parent component
+> will hide it, but we lose animations. Internal state also gets behind if we hide via the prop, then trigger, in an attempt to do a "controlled" tooltip.
+
+<Canvas>
+	<Story name="Hide via hideTooltip">
+        <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
+            <Tooltip
+				id="hideableTooltip"
+				useClickInsteadOfHover
+                content={(
+					<div>
+						<div>Clicking the content doesn't close!</div>
+						<TextButton onClick={() => hideTooltip("hideableTooltip")}>
+							Click me to close
+						</TextButton>
+					</div>
+				)}
+				hideDelay={0}
+				position={'right'}
+				showDelay={0}
+            >
+                <div style={{cursor: 'pointer'}}>Click me</div>
             </Tooltip>
         </div>
 	</Story>
