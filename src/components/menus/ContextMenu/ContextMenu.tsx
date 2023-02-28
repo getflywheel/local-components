@@ -1,8 +1,10 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import shortid from 'shortid';
+import { useRef } from 'react';
 import styles from './ContextMenu.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
-import { Tooltip, TooltipProps } from '../../overlays/Tooltip/Tooltip';
+import { Tooltip, TooltipProps, hideTooltip } from '../../overlays/Tooltip/Tooltip';
 import { TextButton } from '../../buttons/TextButton/TextButton';
 import { ThreeDotButton } from '../../buttons/ThreeDotButton/ThreeDotButton';
 
@@ -16,7 +18,7 @@ export interface IMenuItem {
 	type?: 'normal' | 'separator';
 }
 
-export interface IContextMenuProps extends Omit<TooltipProps, 'content'> {
+export interface IContextMenuProps extends Omit<TooltipProps, 'content' | 'useClickInsteadOfHover'> {
 	/** className for the list items' container */
 	classNameList?: string;
 	/** className for an individual list item */
@@ -30,25 +32,21 @@ export interface IContextMenuProps extends Omit<TooltipProps, 'content'> {
 }
 
 const ContextMenu = (props: IContextMenuProps) => {
-	const {
-		className,
-		classNameList,
-		classNameListItem,
-		items,
-		onShow,
-		onHide,
-		noBG,
-		bgOnHover,
-		useClickInsteadOfHover,
-		...otherProps
-	} = props;
+	const { className, classNameList, classNameListItem, items, onShow, onHide, noBG, bgOnHover, id, ...otherProps } =
+		props;
 
-	const onClickItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, item: IMenuItem) => {
-		item.onClick?.call(null);
-		event.stopPropagation();
-	};
+	const menuId = useRef(`${id ?? 'contextMenu'}-${shortid.generate()}`);
 
 	const [isShowing, setIsShowing] = React.useState(false);
+
+	const onClickItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, item: IMenuItem) => {
+		event.preventDefault();
+		event.stopPropagation();
+		if (item.onClick) {
+			item.onClick.call(null);
+			hideTooltip(menuId.current);
+		}
+	};
 
 	const content = (
 		<ul className={classnames(styles.ContextMenu_Items, 'ContextMenu_Items', classNameList)}>
@@ -80,7 +78,6 @@ const ContextMenu = (props: IContextMenuProps) => {
 		<Tooltip
 			className={classnames(styles.ContextMenu, className)}
 			popperVisualContainerClassName={styles.ContextMenu_PopperVisualContainer}
-			hideDelay={useClickInsteadOfHover ? 0 : 300}
 			onShow={() => {
 				onShow?.call(null);
 				setIsShowing(true);
@@ -90,7 +87,8 @@ const ContextMenu = (props: IContextMenuProps) => {
 				setIsShowing(false);
 			}}
 			focusOnOpen
-			useClickInsteadOfHover={useClickInsteadOfHover}
+			useClickInsteadOfHover
+			id={menuId.current}
 			{...otherProps}
 			content={content}
 		>
@@ -100,12 +98,11 @@ const ContextMenu = (props: IContextMenuProps) => {
 };
 
 ContextMenu.defaultProps = {
-	forceShow: false,
 	items: [],
 	position: 'bottom-start',
-	useClickInsteadOfHover: true,
 	hideArrow: true,
 	showDelay: 0,
+	hideDelay: 0,
 } as Partial<IContextMenuProps>;
 
 export default ContextMenu;
