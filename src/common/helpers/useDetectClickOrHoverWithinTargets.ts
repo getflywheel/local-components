@@ -5,11 +5,13 @@ export const useDetectClickOrHoverWithinTargets = ({
 	alwaysBlurOnClick,
 	useClickInsteadOfHover,
 	ignoreClickOn,
+	id,
 }: {
 	targetEl: HTMLElement | null;
 	alwaysBlurOnClick: boolean;
 	useClickInsteadOfHover: boolean;
 	ignoreClickOn?: HTMLElement | null;
+	id?: string;
 }) => {
 	const [isClickFocus, setIsClickFocus] = useState(false);
 	const [isHover, setIsHover] = useState(false);
@@ -30,8 +32,8 @@ export const useDetectClickOrHoverWithinTargets = ({
 
 		if (targetEl && useClickInsteadOfHover) {
 			const listener = (event: { target: any }) => {
-				// if clicking ref's element or descendent elements
-				if (!targetEl || targetEl.contains(event.target)) {
+				// if clicking ref's descendent elements
+				if (targetEl.contains(event.target)) {
 					return;
 				}
 
@@ -45,7 +47,7 @@ export const useDetectClickOrHoverWithinTargets = ({
 			const onClick = () => {
 				// depending on whether to detect every click as cancelling something (e.g. tooltip)
 				// this should either toogle or set to true
-				setIsClickFocus((is) => (alwaysBlurOnClick ? !is : true));
+				setIsClickFocus((prev) => (alwaysBlurOnClick ? !prev : true));
 
 				// just to be safe because of intermittent re-processing code
 				document.removeEventListener('click', listener);
@@ -62,10 +64,23 @@ export const useDetectClickOrHoverWithinTargets = ({
 				document.addEventListener('touchend', listener);
 			}
 
+			const handleHideTooltip = (event: DocumentEventMap['hideTooltip']) => {
+				if (event.detail.id === id) {
+					document.removeEventListener('click', listener);
+					document.removeEventListener('touchend', listener);
+					setIsClickFocus(false);
+				}
+			};
+
+			if (id) {
+				document.addEventListener('hideTooltip', handleHideTooltip);
+			}
+
 			return () => {
 				targetEl?.removeEventListener('click', onClick);
 				document.removeEventListener('click', listener);
 				document.removeEventListener('touchend', listener);
+				document.removeEventListener('hideTooltip', handleHideTooltip);
 			};
 		}
 	}, [targetEl, alwaysBlurOnClick, useClickInsteadOfHover, ignoreClickOn]);
