@@ -164,13 +164,21 @@ const reducerInitialState: ReducerState = {
  * @param transitionEndPropName The specific css transition prop that indicates the end of fade out
  * used to eliminate events firing for each transition property being used
  */
-const useTooltipStage = (
-	isTransitionEnd: boolean,
-	isHoverTarget: boolean,
-	isHoverPopper: boolean,
-	hideDelay: number | undefined,
-	showDelay: number | undefined
-) => {
+const useTooltipStage = ({
+	isTransitionEnd,
+	isHoverPopper,
+	isHoverTarget,
+	hideDelay,
+	showDelay,
+	id,
+}: {
+	isTransitionEnd: boolean;
+	isHoverTarget: boolean;
+	isHoverPopper: boolean;
+	hideDelay?: number;
+	showDelay?: number;
+	id?: string;
+}) => {
 	// manage the complex, bi-directional stages of the tooltip state
 	const [state, dispatchState] = React.useReducer(reducer, reducerInitialState);
 	// use a single timer that when swapped out automatically cancels the active timeout if any exist
@@ -208,18 +216,37 @@ const useTooltipStage = (
 					clearTimeoutRef();
 				}
 				break;
+			default:
+				break;
 		}
 	}, [state.stage, isHoverTarget, isHoverPopper]);
 
 	// process and handle transition ends
 	useEffect(() => {
-		isTransitionEnd && dispatchState({ type: 'onTransitionEnd' });
+		if (isTransitionEnd) {
+			dispatchState({ type: 'onTransitionEnd' });
+		}
 	}, [isTransitionEnd]);
 
 	// process and handle mouse events
 	useEffect(() => {
 		dispatchState({ type: isHoverTarget || isHoverPopper ? 'onMouseOver' : 'onMouseOff' });
 	}, [isHoverTarget, isHoverPopper]);
+
+	// Set up a listener to dismiss the tooltip by id
+	const handleHideTooltip = (event: DocumentEventMap['hideTooltip']) => {
+		if (event.detail.id === id) {
+			dispatchState({ type: 'onMouseOff' });
+		}
+	};
+
+	useEffect(() => {
+		if (id) {
+			document.addEventListener('hideTooltip', handleHideTooltip);
+
+			return () => document.removeEventListener('hideTooltip', handleHideTooltip);
+		}
+	}, [id]);
 
 	// make it easier on anything that consumes this by turning each stage into a bool
 	return {
@@ -241,6 +268,7 @@ const useTooltip = ({
 	showDelay,
 	transitionEndPropName,
 	useClickInsteadOfHover,
+	id,
 }: {
 	hideDelay?: number;
 	placement?: TooltipProps['position'];
@@ -249,6 +277,7 @@ const useTooltip = ({
 	showDelay?: number;
 	transitionEndPropName: string;
 	useClickInsteadOfHover: boolean;
+	id?: string;
 }) => {
 	const [triggerElement, setReferenceElement] = useState<HTMLElement | null>(null);
 	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
@@ -258,15 +287,24 @@ const useTooltip = ({
 		alwaysBlurOnClick: true,
 		useClickInsteadOfHover,
 		ignoreClickOn: popperElement,
+		id,
 	});
 	const isHoverPopper = useDetectClickOrHoverWithinTargets({
 		targetEl: popperElement,
 		alwaysBlurOnClick: false,
 		useClickInsteadOfHover,
+		id,
 	}); // pass nulls to bypass otherwise this will conflict with other click detects (above)
 
 	const isTransitionEnd = useDetectTransitionEnd(transitionElement, transitionEndPropName);
-	const stages = useTooltipStage(isTransitionEnd, isHoverTarget, isHoverPopper, hideDelay, showDelay);
+	const stages = useTooltipStage({
+		isTransitionEnd,
+		isHoverTarget,
+		isHoverPopper,
+		hideDelay,
+		showDelay,
+		id,
+	});
 	const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null); // the ref for the arrow must be a callback ref
 	const { styles: popperStyles, attributes } = usePopper(triggerElement, popperElement, {
 		placement,
@@ -330,6 +368,7 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 		showDelay,
 		transitionEndPropName: 'transform',
 		useClickInsteadOfHover: !!useClickInsteadOfHover,
+		id,
 	});
 
 	const forwardedRef = useForwardedRef(ref);
@@ -432,9 +471,13 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 	);
 });
 
+export const hideTooltip = (id: string) => {
+	const hideTooltipEvent: DocumentEventMap['hideTooltip'] = new CustomEvent('hideTooltip', { detail: { id } });
+	document.dispatchEvent(hideTooltipEvent);
+};
+
 Tooltip.defaultProps = {
 	hideDelay: 500,
-	forceShow: false,
 	position: 'top',
 	showDelay: 1000,
 	useClickInsteadOfHover: false,

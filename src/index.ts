@@ -94,7 +94,7 @@ export { default as FlyModal } from './components/overlays/FlyModal/FlyModal';
 export { default as FlyTooltip } from './components/overlays/FlyTooltip/FlyTooltip';
 export { default as Popup } from './components/overlays/Popup/Popup';
 export { ScrollShadow } from './components/overlays/ScrollShadow/ScrollShadow';
-export { Tooltip } from './components/overlays/Tooltip/Tooltip';
+export { Tooltip, hideTooltip } from './components/overlays/Tooltip/Tooltip';
 export { default as Badge } from './components/overlays/Badge/Badge';
 // Tables
 export { TableList, TableListRow } from './components/tables/TableList/TableList';
