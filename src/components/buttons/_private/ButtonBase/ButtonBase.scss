@@ -98,10 +98,6 @@ $disabled-text-dark-fill: $gray;
 		&.ButtonBase_SVG_Right {
 			margin: 0 0 0 10px;
 		}
-
-		&.ButtonBase_SVG_MarginBottom {
-			margin-bottom: 1px;
-		}
 	}
 
 	&.ButtonBase__SVG_Fill svg {
@@ -211,6 +207,7 @@ $disabled-text-dark-fill: $gray;
 
 .ButtonBase__Form_Text {
 	vertical-align: baseline;
+	border-radius: 4px;
 
 	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor));
 	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
