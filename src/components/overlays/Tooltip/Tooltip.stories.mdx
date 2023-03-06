@@ -1,4 +1,4 @@
-import { Tooltip, hideTooltip } from "./Tooltip";
+import { Tooltip, hideTooltip, showTooltip } from "./Tooltip";
 import { TextButton } from "../../buttons/TextButton/TextButton";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
@@ -116,31 +116,66 @@ Turn off the delay before showing the tooltip along with the delay for hiding it
 	</Story>
 </Canvas>
 
-We can hide a tooltip using the exported `hideTooltip` function, passing along the ID of the tooltip. This is pretty much only useful
-for closing a click-triggered tooltip from within the tooltip itself. Click-triggered tooltips don't close when clicking the popper content.
-> Using this method gives us animations and doesn't mess up internal state. Changig the `hideTooltip` prop to `true` from the parent component
+We can hide a tooltip using the exported `hideTooltip` function, passing along the ID of the tooltip. We can hide hoverable and clickable tooltips from within the tooltip,
+and it also opens up possiblities for using the tooltip as a contextmenu, navigating via keyboard and opening/closing via events.
+
+We can show a tooltip using the exported `showTooltip` function, again, passing along the ID of the tooltip. Note that for hoverable tooltips, hovering over just the popper won't
+close it. We need to hover and leave the target, because it's interal state is set to "hovered" after the event. 
+
+> Using these methods gives us animations and doesn't mess up internal state. Changig the `hideTooltip` prop to `true` from the parent component
 > will hide it, but we lose animations. Internal state also gets behind if we hide via the prop, then trigger, in an attempt to do a "controlled" tooltip.
 
 <Canvas>
 	<Story name="Hide via hideTooltip">
         <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
             <Tooltip
-				id="hideableTooltip"
-				useClickInsteadOfHover
+				id="hideableHoverTooltip"
+				useClickInsteadOfHover={false}
                 content={(
 					<div>
 						<div>Clicking the content doesn't close!</div>
-						<TextButton onClick={() => hideTooltip("hideableTooltip")}>
+						<TextButton onClick={() => hideTooltip("hideableHoverTooltip")}>
 							Click me to close
 						</TextButton>
 					</div>
 				)}
-				hideDelay={0}
-				position={'right'}
-				showDelay={0}
+				position={'top'}
+				showDelay={200}
+				hideDelay={200}
+            >
+                Hover over me
+            </Tooltip>
+			<TextButton onClick={(e) => {
+				e.stopPropagation();
+				showTooltip("hideableHoverTooltip");
+			}}>
+				Click me to open that other tooltip
+			</TextButton>
+        </div>
+        <div style={{ height: '200px', display: 'flex', alignItems: 'center' }}>
+            <Tooltip
+				id="hideableClickTooltip"
+				useClickInsteadOfHover
+                content={(
+					<div>
+						<div>Clicking the content doesn't close!</div>
+						<TextButton onClick={() => hideTooltip("hideableClickTooltip")}>
+							Click me to close
+						</TextButton>
+					</div>
+				)}
+				position={'top'}
+				showDelay={200}
+				hideDelay={200}
             >
                 <div style={{cursor: 'pointer'}}>Click me</div>
             </Tooltip>
+			<TextButton onClick={(e) => {
+				e.stopPropagation();
+				showTooltip("hideableClickTooltip");
+			}}>
+				Click me to open that other tooltip
+			</TextButton>
         </div>
 	</Story>
 </Canvas>

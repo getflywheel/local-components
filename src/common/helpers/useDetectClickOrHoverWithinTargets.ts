@@ -24,24 +24,41 @@ export const useDetectClickOrHoverWithinTargets = ({
 			targetEl.addEventListener('mouseover', handleMouseOver);
 			targetEl.addEventListener('mouseout', handleMouseOut);
 
+			const handleHideTooltipHover = (event: WindowEventMap['hideTooltip']) => {
+				if (event.detail.id === id) {
+					setIsHover(false);
+				}
+			};
+
+			const handleShowTooltipHover = (event: WindowEventMap['showTooltip']) => {
+				if (event.detail.id === id) {
+					setIsHover(true);
+				}
+			};
+
+			if (id) {
+				window.addEventListener('hideTooltip', handleHideTooltipHover);
+				window.addEventListener('showTooltip', handleShowTooltipHover);
+			}
+
 			return () => {
 				targetEl.removeEventListener('mouseover', handleMouseOver);
 				targetEl.removeEventListener('mouseout', handleMouseOut);
+				window.removeEventListener('hideTooltip', handleHideTooltipHover);
+				window.removeEventListener('showTooltip', handleShowTooltipHover);
 			};
 		}
 
 		if (targetEl && useClickInsteadOfHover) {
 			const listener = (event: { target: any }) => {
-				// if clicking ref's descendent elements
-				if (targetEl.contains(event.target)) {
+				// if clicking ref's descendent elements or specifically ignored element
+				if (targetEl.contains(event.target) || ignoreClickOn?.contains(event.target)) {
 					return;
 				}
 
-				if (!ignoreClickOn || !ignoreClickOn.contains(event.target)) {
-					document.removeEventListener('click', listener);
-					document.removeEventListener('touchend', listener);
-					setIsClickFocus(false);
-				}
+				window.removeEventListener('click', listener);
+				window.removeEventListener('touchend', listener);
+				setIsClickFocus(false);
 			};
 
 			const onClick = () => {
@@ -50,37 +67,51 @@ export const useDetectClickOrHoverWithinTargets = ({
 				setIsClickFocus((prev) => (alwaysBlurOnClick ? !prev : true));
 
 				// just to be safe because of intermittent re-processing code
-				document.removeEventListener('click', listener);
-				document.removeEventListener('touchend', listener);
-				document.addEventListener('click', listener);
-				document.addEventListener('touchend', listener);
+				window.removeEventListener('click', listener);
+				window.removeEventListener('touchend', listener);
+				window.addEventListener('click', listener);
+				window.addEventListener('touchend', listener);
 			};
 
 			targetEl?.addEventListener('click', onClick);
 
 			// if re-processing in between click and click outside
 			if (isClickFocus) {
-				document.addEventListener('click', listener);
-				document.addEventListener('touchend', listener);
+				window.addEventListener('click', listener);
+				window.addEventListener('touchend', listener);
 			}
 
-			const handleHideTooltip = (event: DocumentEventMap['hideTooltip']) => {
+			const handleHideTooltipClick = (event: WindowEventMap['hideTooltip']) => {
 				if (event.detail.id === id) {
-					document.removeEventListener('click', listener);
-					document.removeEventListener('touchend', listener);
+					window.removeEventListener('click', listener);
+					window.removeEventListener('touchend', listener);
 					setIsClickFocus(false);
 				}
 			};
 
+			const handleShowTooltipClick = (event: WindowEventMap['showTooltip']) => {
+				if (event.detail.id === id) {
+					setIsClickFocus(true);
+
+					// just to be safe because of intermittent re-processing code
+					window.removeEventListener('click', listener);
+					window.removeEventListener('touchend', listener);
+					window.addEventListener('click', listener);
+					window.addEventListener('touchend', listener);
+				}
+			};
+
 			if (id) {
-				document.addEventListener('hideTooltip', handleHideTooltip);
+				window.addEventListener('hideTooltip', handleHideTooltipClick);
+				window.addEventListener('showTooltip', handleShowTooltipClick);
 			}
 
 			return () => {
 				targetEl?.removeEventListener('click', onClick);
-				document.removeEventListener('click', listener);
-				document.removeEventListener('touchend', listener);
-				document.removeEventListener('hideTooltip', handleHideTooltip);
+				window.removeEventListener('click', listener);
+				window.removeEventListener('touchend', listener);
+				window.removeEventListener('hideTooltip', handleHideTooltipClick);
+				window.removeEventListener('showTooltip', handleShowTooltipClick);
 			};
 		}
 	}, [targetEl, alwaysBlurOnClick, useClickInsteadOfHover, ignoreClickOn]);

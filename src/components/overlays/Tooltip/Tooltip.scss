@@ -3,7 +3,6 @@
 $arrowSize: 16px;
 $arrowSizeRotated: calculateRotatedSquaresLength($arrowSize, 45deg);
 $transitionEaseIn: cubic-bezier(.2,.3,.25,.9);
-$transitionDuration: 120ms;
 $extraShadowArea: 100%;
 $borderThickness: 1px;
 
@@ -27,11 +26,12 @@ $borderThickness: 1px;
 	@include theme-input-background-color;
 	@include theme-input-border;
 	@include tooltipBoxShadow;
+	--transition-duration: 120ms;
 
 	transition:
-		transform $transitionDuration $transitionEaseIn,
-		transform-origin $transitionDuration $transitionEaseIn,
-		opacity ($transitionDuration * 1.5) $transitionEaseIn;
+		transform var(--transition-duration) $transitionEaseIn,
+		transform-origin var(--transition-duration) $transitionEaseIn,
+		opacity calc(var(--transition-duration)* 1.5) $transitionEaseIn;
 	will-change: transform;
 
 	visibility: hidden;
@@ -83,6 +83,10 @@ $borderThickness: 1px;
 	visibility: visible;
 	opacity: 0;
 	transform: scale(0.0);
+}
+
+.Tooltip_Popper_VisualContain__NoAnimations {
+	--transition-duration: 1ms;
 }
 
 .Tooltip_Popper_Arrow_Container {

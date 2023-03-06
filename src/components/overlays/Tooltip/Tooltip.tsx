@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react';
 import classnames from 'classnames';
 import { usePopper } from 'react-popper';
@@ -11,7 +13,6 @@ import { useDetectTransitionEnd } from '../../../common/helpers/useDetectTransit
 import { useSwappableTimeout } from '../../../common/helpers/useTimeout';
 import { useDetectClickOrHoverWithinTargets } from '../../../common/helpers/useDetectClickOrHoverWithinTargets';
 import { FunctionGeneric } from '../../../common/structures/Generics';
-import useForwardedRef from '../../../common/helpers/useForwardedRef';
 import useCombinedRefs from '../../../common/helpers/useCombinedRefs';
 
 export interface TooltipProps extends IReactComponentProps {
@@ -60,6 +61,10 @@ export interface TooltipProps extends IReactComponentProps {
 	onHide?: FunctionGeneric;
 	/** focus the tooltip on opening, useful for dropdowns, contextmenus, etc */
 	focusOnOpen?: boolean;
+	/** Stop propagation of the popper click events */
+	stopPopperClickPropagation?: boolean;
+	/** Don't use show/hide animations (sets transition-duration to 1ms) */
+	noAnimations?: boolean;
 }
 
 // whether moving forward to the next stage or reverting back to a previous stage
@@ -170,7 +175,6 @@ const useTooltipStage = ({
 	isHoverTarget,
 	hideDelay,
 	showDelay,
-	id,
 }: {
 	isTransitionEnd: boolean;
 	isHoverTarget: boolean;
@@ -232,21 +236,6 @@ const useTooltipStage = ({
 	useEffect(() => {
 		dispatchState({ type: isHoverTarget || isHoverPopper ? 'onMouseOver' : 'onMouseOff' });
 	}, [isHoverTarget, isHoverPopper]);
-
-	// Set up a listener to dismiss the tooltip by id
-	const handleHideTooltip = (event: DocumentEventMap['hideTooltip']) => {
-		if (event.detail.id === id) {
-			dispatchState({ type: 'onMouseOff' });
-		}
-	};
-
-	useEffect(() => {
-		if (id) {
-			document.addEventListener('hideTooltip', handleHideTooltip);
-
-			return () => document.removeEventListener('hideTooltip', handleHideTooltip);
-		}
-	}, [id]);
 
 	// make it easier on anything that consumes this by turning each stage into a bool
 	return {
@@ -353,10 +342,12 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 		focusOnOpen,
 		content,
 		hideDelay,
+		noAnimations,
 		position,
 		popperArrowModifier,
 		popperOffsetModifier,
 		showDelay,
+		stopPopperClickPropagation,
 		...otherProps
 	} = props;
 
@@ -371,8 +362,7 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 		id,
 	});
 
-	const forwardedRef = useForwardedRef(ref);
-	const combinedRef = useCombinedRefs(forwardedRef, targetRef);
+	const combinedRef = useCombinedRefs(ref, targetRef);
 
 	const isShowing = (forceShow || !stages.isStage0Hidden) && !hideTooltip;
 	const isFirstRender = useRef(true);
@@ -395,19 +385,17 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 	}, [isShowing]);
 
 	return (
-		<>
-			<div
-				className={classnames(styles.Tooltip_Target_Container, 'Tooltip_Target_Container', className, {
-					[styles.Popper__Showing]: isShowing,
-					Popper__Showing: isShowing, // this also needs to be globally accessible so other component styles can reference it
-				})}
-				id={id}
-				ref={combinedRef}
-				style={style}
-				{...otherProps}
-			>
-				{children}
-			</div>
+		<div
+			className={classnames(styles.Tooltip_Target_Container, 'Tooltip_Target_Container', className, {
+				[styles.Popper__Showing]: isShowing,
+				Popper__Showing: isShowing, // this also needs to be globally accessible so other component styles can reference it
+			})}
+			id={id}
+			ref={combinedRef}
+			style={style}
+			{...otherProps}
+		>
+			{children}
 			{/*
 			 * render if forced or not in the hidden tooltip stage
 			 * note: this needs to render on hover when waiting for initial show delay even those it's not visible
@@ -427,6 +415,7 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 						ref={popperRefCallback}
 						style={popperStyles.popper}
 						tabIndex={-1}
+						onClick={(e) => stopPopperClickPropagation && e.stopPropagation()}
 					>
 						<div
 							className={classnames(
@@ -437,6 +426,7 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 									[styles.Tooltip_Popper_VisualContainer__IsShowing]: stages.isVisible || forceShow,
 									[styles.Tooltip_Popper_VisualContainer__IsTransitionLeaving]:
 										stages.isStage5FadingOutToHide,
+									[styles.Tooltip_Popper_VisualContain__NoAnimations]: noAnimations,
 								}
 							)}
 							ref={transitionRef}
@@ -467,13 +457,18 @@ export const Tooltip = React.forwardRef((props: TooltipProps, ref: React.Forward
 					</div>
 				</Portal>
 			)}
-		</>
+		</div>
 	);
 });
 
 export const hideTooltip = (id: string) => {
-	const hideTooltipEvent: DocumentEventMap['hideTooltip'] = new CustomEvent('hideTooltip', { detail: { id } });
-	document.dispatchEvent(hideTooltipEvent);
+	const hideTooltipEvent: WindowEventMap['hideTooltip'] = new CustomEvent('hideTooltip', { detail: { id } });
+	window.dispatchEvent(hideTooltipEvent);
+};
+
+export const showTooltip = (id: string) => {
+	const hideTooltipEvent: WindowEventMap['showTooltip'] = new CustomEvent('showTooltip', { detail: { id } });
+	window.dispatchEvent(hideTooltipEvent);
 };
 
 Tooltip.defaultProps = {

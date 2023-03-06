@@ -1,7 +1,8 @@
 export {};
 
 declare global {
-	interface DocumentEventMap {
+	interface WindowEventMap {
 		hideTooltip: CustomEvent<{ id: string }>;
+		showTooltip: CustomEvent<{ id: string }>;
 	}
 }
