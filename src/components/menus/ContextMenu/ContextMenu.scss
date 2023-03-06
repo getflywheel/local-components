@@ -17,8 +17,9 @@
 
 }
 
-.ContextMenu_Item_TextButton {
-	@include setThemeVar('--Button_IfText__TextColor', $gray, $white);
+.ContextMenu__Submenu {
+	display: flex;
+	flex-grow: 1;
 }
 
 .ContextMenu_Divider {
@@ -32,11 +33,13 @@
 .ContextMenu_Items {
 	left: auto;
 	border-radius: 4px;
-	padding: 0 20px;
 	min-width: 160px;
 	height: auto;
 	list-style-type: none;
 	margin: 0;
+	max-height: 100vh;
+	padding: 0 20px;
+	overflow: auto;
 }
 
 .ContextMenu_Item {
@@ -52,6 +55,26 @@
 
 	&:hover {
 		@include __theme-color($green, $green-dark50);
+	}
+
+	.ContextMenu_Item_TextButton {
+		@include setThemeVar('--Button_IfText__TextColor', $gray, $white);
+		flex-grow: 1;
+		justify-content: left;
+		padding: 5px 0;
+
+		&.ContextMenu_Item_TextButton__Checkbox:not(.ContextMenu_Item_TextButton__Checked){
+			padding-left: 20px;
+		}
+
+		&.ContextMenu_Item_TextButton__Red {
+			@include setThemeVar('--Button_IfText__TextColor', $red-dark50, $red);
+		}
+
+		&.ContextMenu_Submenu_Item_TextButton {
+			display: flex;
+			justify-content: space-between;
+		}
 	}
 }
 

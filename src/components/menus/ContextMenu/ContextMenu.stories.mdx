@@ -11,67 +11,130 @@ Basic:
 		<ContextMenu
 			items={[
 				{
-					label: "Open site",
-					onClick: () => console.log("onClick Option 1"),
+					label: 'Open site',
+					onClick: () => console.log('onClick Open a Site'),
 				},
 				{
-					label: "Admin dashboard",
-					onClick: () => console.log("onClick Option 2"),
+					label: 'Admin dashboard',
+					onClick: () => console.log('onClick Admin dashboard'),
 				},
 				{ type: 'separator' },
 				{
-					label: "Reveal in Finder",
-					onClick: () => console.log("onClick Option 3"),
+					label: 'Reveal in Finder',
+					onClick: () => console.log('onClick Reaveal in Finder'),
 					enabled: false,
 				},
 				{
-					label: "Open site shell",
-					onClick: () => console.log("onClick Option 4"),
-					color: "red",
+					label: 'Open site shell',
+					onClick: () => console.log('onClick Open site shell'),
+					color: 'red',
 				},
 				{ type: 'separator' },
 				{
-					label: "Restart",
-					onClick: () => console.log("onClick Option 5"),
+					label: 'Restart',
+					onClick: () => console.log('onClick Restart'),
 				},
 				{
 					enabled: false,
 					color: 'red',
-					label: "Stop",
-					onClick: () => console.log("onClick Option 6"),
+					label: 'Stop',
+					onClick: () => console.log('onClick Stop'),
 				},
 				{
-					label: "Start",
-					onClick: () => console.log("onClick Option 7"),
+					label: 'Start',
+					onClick: () => console.log('onClick Start'),
 				},
 				{ type: 'separator' },
 				{
-					label: "Clone site",
-					onClick: () => console.log("onClick Option 8"),
+					label: 'Clone site',
+					onClick: () => console.log('onClick Clone site'),
 				},
 				{
-					label: "Export",
-					onClick: () => console.log("onClick Option 9"),
+					label: 'Export',
+					onClick: () => console.log('onClick Export'),
 				},
 				{
-					label: "Save as Blueprint",
-					onClick: () => console.log("onClick Option 10"),
+					label: 'Save as Blueprint',
+					onClick: () => console.log('onClick Blueprint'),
 				},
 				{ type: 'separator' },
 				{
-					label: "Change domain",
-					onClick: () => console.log("onClick Option 11"),
+					label: 'Move to Group',
+					submenu: [
+						{
+							label: 'Site group 1',
+							type: 'checkbox',
+							onClick: () => console.log('onClick Site group 1'),
+						},
+						{
+							label: 'Site group 2',
+							type: 'checkbox',
+							checked: true,
+							onClick: () => console.log('onClick Site group 2'),
+						},
+						{ type: 'separator' },
+						{
+							label: 'Create a Group',
+							onClick: () => console.log('onClick Create a Group'),
+						},
+						{
+					label: 'Move to Group',
+					submenu: [
+						{
+							label: 'Site group 1',
+							type: 'checkbox',
+							onClick: () => console.log('onClick Site group 1'),
+						},
+						{
+							label: 'Site group 2',
+							type: 'checkbox',
+							checked: true,
+							onClick: () => console.log('onClick Site group 2'),
+						},
+						{ type: 'separator' },
+						{
+							label: 'Create a Group',
+							onClick: () => console.log('onClick Create a Group'),
+						},
+					],
 				},
-				{
-					label: "Rename",
-					onClick: () => console.log("onClick Option 12"),
+					],
 				},
 				{ type: 'separator' },
 				{
-					label: "Delete",
-					onClick: () => console.log("onClick Option 13"),
+					label: 'Change domain',
+					onClick: () => console.log('onClick Change Domain'),
 				},
-				{},
+				{
+					label: 'Rename',
+					onClick: () => console.log('onClick Rename'),
+				},
+				{ type: 'separator' },
+				{
+					label: 'Delete',
+					onClick: () => console.log('onClick Delete'),
+				},
+				{
+					label: 'Move to Group',
+					submenu: [
+						{
+							label: 'Site group 1',
+							type: 'checkbox',
+							onClick: () => console.log('onClick Site group 1'),
+						},
+						{
+							label: 'Site group 2',
+							type: 'checkbox',
+							checked: true,
+							onClick: () => console.log('onClick Site group 2'),
+						},
+						{ type: 'separator' },
+						{
+							label: 'Create a Group',
+							onClick: () => console.log('onClick Create a Group'),
+						},
+					],
+				},
 				{},
 				{},
 			]}
