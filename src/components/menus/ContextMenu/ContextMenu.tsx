@@ -8,6 +8,7 @@ import { Tooltip, TooltipProps, hideTooltip, showTooltip } from '../../overlays/
 import { ITextButtonProps, TextButton } from '../../buttons/TextButton/TextButton';
 import { ThreeDotButton } from '../../buttons/ThreeDotButton/ThreeDotButton';
 import { ArrowRightIcon, CheckmarkIcon } from '../../icons/Icons';
+import useUsingMouse from '../../../common/helpers/useUsingMouse';
 
 export interface IMenuItem {
 	color?: 'red' | 'none';
@@ -94,12 +95,12 @@ const ContextMenu = (props: IContextMenuProps) => {
 	const menuId = useRef(id ?? `${'contextMenu'}-${shortid.generate()}`);
 
 	const [isShowing, setIsShowing] = useState(false);
+	const { usingMouse } = useUsingMouse();
 
 	const triggerRef = useRef<HTMLElement | null>(null);
 	const contextMenuRef = useRef<HTMLElement | null>(null);
 
 	const [, setFocusedItemIndex] = useState(-1);
-
 	const enabledItemsWithRefs = useRef<Array<(IMenuItem & { ref: HTMLElement }) | undefined>>([]);
 
 	const renderItem = (item: IMenuItem, index: number) => {
@@ -117,7 +118,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 					className={styles.ContextMenu__Submenu}
 					popperOffsetModifier={{ offset: [-15, 15] }}
 					stopPopperClickPropagation
-					id={`${menuId.current}-submenu${index}`}
+					id={`${parentMenu}-submenu${index}`}
 					isSubmenu
 					parentMenuId={parentMenu}
 				>
@@ -157,7 +158,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 				.map((item: IMenuItem, i: number) => (
 					<li
 						// eslint-disable-next-line react/no-array-index-key
-						key={`${menuId}-${i}`}
+						key={`${menuId.current}-${i}`}
 						className={classnames(styles.ContextMenu_Item, classNameListItem, item.className)}
 						role={item.type !== 'separator' ? 'menuitem' : ''}
 					>
@@ -219,19 +220,14 @@ const ContextMenu = (props: IContextMenuProps) => {
 
 		switch (e.key) {
 			case 'ArrowDown':
-				if (isShowing) {
-					document.body.classList.remove('using-mouse');
-					focusNextItem();
-
-					if (isSubmenu) {
-						e.stopPropagation();
-					}
-				}
-				break;
 			case 'ArrowUp':
 				if (isShowing) {
 					document.body.classList.remove('using-mouse');
-					focusPreviousItem();
+					if (e.key === 'ArrowDown') {
+						focusNextItem();
+					} else {
+						focusPreviousItem();
+					}
 
 					if (isSubmenu) {
 						e.stopPropagation();
@@ -250,9 +246,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 					hideTooltip(menuId.current);
 					(contextMenuRef.current?.firstChild as HTMLElement)?.focus();
 				}
-
 				break;
-
 			default:
 		}
 	};
@@ -266,7 +260,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 				setIsShowing(true);
 				if (!isSubmenu) {
 					triggerRef.current?.focus();
-				} else {
+				} else if (!usingMouse) {
 					focusNextItem();
 				}
 			}}
