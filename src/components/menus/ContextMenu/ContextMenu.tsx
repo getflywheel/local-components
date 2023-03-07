@@ -160,7 +160,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 						// eslint-disable-next-line react/no-array-index-key
 						key={`${menuId.current}-${i}`}
 						className={classnames(styles.ContextMenu_Item, classNameListItem, item.className)}
-						role={item.type !== 'separator' ? 'menuitem' : ''}
+						role={item.type !== 'separator' ? 'menuitem' : 'separator'}
 					>
 						{renderItem(item, i)}
 					</li>
