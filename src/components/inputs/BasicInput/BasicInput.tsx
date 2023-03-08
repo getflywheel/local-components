@@ -32,7 +32,7 @@ const BasicInput = React.forwardRef((props: IBasicInputProps, ref: React.Forward
 
 	React.useEffect(() => {
 		if (autofocus) {
-			input.current?.focus();
+			setTimeout(() => input.current?.focus(), 100);
 		}
 
 		if (highlightText) {
