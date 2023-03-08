@@ -10,15 +10,24 @@ import { ThreeDotButton } from '../../buttons/ThreeDotButton/ThreeDotButton';
 import { ArrowRightIcon, CheckmarkIcon } from '../../icons/Icons';
 
 export interface IMenuItem {
+	/** Color for a textbutton item (not a separator) */
 	color?: 'red' | 'none';
+	/** Classname to add to the item component */
 	className?: string;
+	/** Will be rendered next to the label in the item's textButton */
 	content?: React.ReactNode;
+	/** Text to show in the item's TextButton */
 	label?: string;
+	/** Function to run when clicking the item - not run for items with submenus or separators */
 	onClick?: FunctionGeneric;
+	/** Set to false for a disabled textButton */
 	enabled?: boolean;
+	/** Available item types, checkbox will be styled with a check */
 	type?: 'normal' | 'separator' | 'checkbox';
-	submenu?: IMenuItem[];
+	/** Determines check icon for checkbox type items */
 	checked?: boolean;
+	/** Array of IMenuItem items that will recursively render a submenu to the side */
+	submenu?: IMenuItem[];
 }
 
 export interface IContextMenuProps extends Omit<TooltipProps, 'content' | 'useClickInsteadOfHover' | 'ref'> {
