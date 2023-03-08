@@ -53,9 +53,10 @@ interface ContextMenuTextButtonProps extends ITextButtonProps {
 }
 
 const ContextMenuTextButton = ({ item, menuToClose, ...restProps }: ContextMenuTextButtonProps) => {
-	const onClickItem = (event: React.MouseEvent<HTMLElement, MouseEvent>, menuItem: IMenuItem) => {
+	const onClickItem = (_event: React.MouseEvent<HTMLElement, MouseEvent>, menuItem: IMenuItem) => {
 		if (menuItem.onClick) {
 			menuItem.onClick.call(null);
+			document.getElementById(`${menuToClose}-ThreeDotButton`)?.focus();
 			hideTooltip(menuToClose);
 		}
 	};
@@ -175,6 +176,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 
 	const handleEscapeOrTab = (e: KeyboardEvent) => {
 		if (e.key === 'Escape' || e.key === 'Tab') {
+			triggerRef.current?.focus();
 			hideTooltip(menuId.current);
 		}
 	};
@@ -272,9 +274,6 @@ const ContextMenu = (props: IContextMenuProps) => {
 				onHide?.call(null);
 				setIsShowing(false);
 				setFocusedItemIndex(-1);
-				if (!isSubmenu) {
-					triggerRef.current?.focus();
-				}
 			}}
 			useClickInsteadOfHover
 			id={menuId.current}
@@ -285,7 +284,6 @@ const ContextMenu = (props: IContextMenuProps) => {
 		>
 			{children ?? (
 				<ThreeDotButton
-					data-testid="ThreeDotButton"
 					innerRef={(el) => {
 						triggerRef.current = el;
 					}}
@@ -294,6 +292,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 					noBG={noBG}
 					bgOnHover={bgOnHover}
 					aria-haspopup
+					id={`${menuId.current}-ThreeDotButton`}
 				/>
 			)}
 		</Tooltip>
