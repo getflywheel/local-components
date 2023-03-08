@@ -8,7 +8,6 @@ import { Tooltip, TooltipProps, hideTooltip, showTooltip } from '../../overlays/
 import { ITextButtonProps, TextButton } from '../../buttons/TextButton/TextButton';
 import { ThreeDotButton } from '../../buttons/ThreeDotButton/ThreeDotButton';
 import { ArrowRightIcon, CheckmarkIcon } from '../../icons/Icons';
-import useUsingMouse from '../../../common/helpers/useUsingMouse';
 
 export interface IMenuItem {
 	color?: 'red' | 'none';
@@ -46,8 +45,6 @@ interface ContextMenuTextButtonProps extends ITextButtonProps {
 
 const ContextMenuTextButton = ({ item, menuToClose, ...restProps }: ContextMenuTextButtonProps) => {
 	const onClickItem = (event: React.MouseEvent<HTMLElement, MouseEvent>, menuItem: IMenuItem) => {
-		event.preventDefault();
-		event.stopPropagation();
 		if (menuItem.onClick) {
 			menuItem.onClick.call(null);
 			hideTooltip(menuToClose);
@@ -95,7 +92,6 @@ const ContextMenu = (props: IContextMenuProps) => {
 	const menuId = useRef(id ?? `${'contextMenu'}-${shortid.generate()}`);
 
 	const [isShowing, setIsShowing] = useState(false);
-	const { usingMouse } = useUsingMouse();
 
 	const triggerRef = useRef<HTMLElement | null>(null);
 	const contextMenuRef = useRef<HTMLElement | null>(null);
@@ -170,7 +166,6 @@ const ContextMenu = (props: IContextMenuProps) => {
 
 	const handleEscapeOrTab = (e: KeyboardEvent) => {
 		if (e.key === 'Escape' || e.key === 'Tab') {
-			triggerRef.current?.focus();
 			hideTooltip(menuId.current);
 		}
 	};
@@ -260,7 +255,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 				setIsShowing(true);
 				if (!isSubmenu) {
 					triggerRef.current?.focus();
-				} else if (!usingMouse) {
+				} else {
 					focusNextItem();
 				}
 			}}
@@ -268,6 +263,9 @@ const ContextMenu = (props: IContextMenuProps) => {
 				onHide?.call(null);
 				setIsShowing(false);
 				setFocusedItemIndex(-1);
+				if (!isSubmenu) {
+					triggerRef.current?.focus();
+				}
 			}}
 			useClickInsteadOfHover
 			id={menuId.current}

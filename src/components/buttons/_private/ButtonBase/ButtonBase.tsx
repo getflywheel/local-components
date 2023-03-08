@@ -216,7 +216,6 @@ const ButtonBase = (props: IButtonBaseProps) => {
 				disabled={disabled}
 				id={id}
 				name={name}
-				onMouseDown={(e: React.MouseEvent) => e.preventDefault()}
 				onKeyDown={handleKeyDown}
 				onKeyUp={handleKeyUp}
 				onClick={onClick}
