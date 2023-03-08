@@ -16,11 +16,11 @@
 	body {
 		outline: none;
 
-		&.using-mouse :focus {
+		&.using-mouse :focus-visible {
 			outline: none;
 		}
 
-		:focus {
+		:focus-visible {
 			@include defaultOutline;
 		}
 	}

@@ -129,7 +129,7 @@ $disabled-text-dark-fill: $gray;
 	@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor));
 	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfFill__TextColor));
 
-	&:hover, &:focus {
+	&:hover, &:focus-visible {
 		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
 		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
 		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Hover));
@@ -155,7 +155,7 @@ $disabled-text-dark-fill: $gray;
 	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor_Light));
 	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
 
-	&:hover, &:focus {
+	&:hover, &:focus-visible {
 		@include setThemeVar('--Button_Background', var(--Button_IfText__TextColor_Hover_Light));
 		@include setThemeVar('--Button_TextColor_Hover', $white);
 		@include setThemeVar('--Button_TextColor', $white);
@@ -181,7 +181,7 @@ $disabled-text-dark-fill: $gray;
 	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor));
 	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
 
-	&:hover, &:focus {
+	&:hover, &:focus-visible {
 		@include setThemeVar('--Button_TextColor', var(--Button_IfFill__TextColor_Hover));
 		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfFill__TextColor_Hover));
 		@include setThemeVar('--Button_Background', var(--Button_IfFill__Background_Hover));
@@ -212,7 +212,7 @@ $disabled-text-dark-fill: $gray;
 	@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor));
 	@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor));
 
-	&:hover, &:focus {
+	&:hover, &:focus-visible {
 		@include setThemeVar('--Button_TextColor', var(--Button_IfText__TextColor_Hover));
 		@include setThemeVar('--Button_TextColor_Hover', var(--Button_IfText__TextColor_Hover));
 		@include setThemeVar('--Button_SvgPathFillColor', var(--Button_IfText__TextColor_Hover));
