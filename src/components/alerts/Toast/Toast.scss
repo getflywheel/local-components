@@ -118,3 +118,7 @@
 .Toast__slide-exit {
 	animation-name: SlideOutRight;
 }
+
+:global(.__NoMotion) .Toast__slide-exit {
+	display: none;
+}
