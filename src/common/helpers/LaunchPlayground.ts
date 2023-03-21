@@ -14,9 +14,9 @@ import { execSync } from 'child_process';
 //
 // returns happiness
 export const LaunchPlayground = (element: any): void => {
-  const unindented = element.innerHTML.replace(/[ \t]*[\n][ \t]*/g, '\n');
-  const encoded = compressToEncodedURIComponent(unindented);
-  execSync(`open https://testing-playground.com/#markup=${encoded}`);
+	const unindented = element.innerHTML.replace(/[ \t]*[\n][ \t]*/g, '\n');
+	const encoded = compressToEncodedURIComponent(unindented);
+	execSync(`open https://testing-playground.com/#markup=${encoded}`);
 };
 
 export default LaunchPlayground;
