@@ -10,6 +10,6 @@ describe('RadioBlock', () => {
 
 	it('renders basic react props like id, className, and style as element attributes', () => {
 		const shallowWrapper = shallow(<RadioBlock options={{}} {...TestComponentPropUtils.basicReactProps} />);
-		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true);
+		TestComponentPropUtils.expectsBasicReactProps(shallowWrapper, true, 0, 'RadioBlock-myId');
 	});
 });
