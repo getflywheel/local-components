@@ -1,0 +1,58 @@
+@import '../../../styles/_partials/index';
+
+.DownloaderOverlay {
+	z-index: 10;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	@include __theme-background(rgba($white, .9), rgba($gray-dark, .85));
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	.Downloader {
+		list-style: none;
+		padding: 0;
+		margin: 0 auto;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.DownloaderItem {
+		width: 50%;
+	}
+}
+
+.DownloaderItem_Content_Top, .DownloaderItem_Content_Bottom {
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.DownloaderItem_Content_Top {
+	justify-content: flex-end;
+}
+
+
+.DownloaderItem {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	text-align: center;
+
+	.DownloaderItemLabel {
+		margin-bottom: 25px;
+	}
+
+	.DownloadSizeProgress, .DownloaderItemCancelButton {
+		margin-top: 25px;
+	}
+
+	.DownloaderProgressBar {
+		align-self: center;
+	}
+}

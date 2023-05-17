@@ -1,10 +1,18 @@
-import DownloaderItem from "./DownloaderItem";
+import DownloaderItem, { DownloaderOverlay } from "./DownloaderItem";
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 
-<Meta title="Loaders/DownloaderItem" component={DownloaderItem} />
+<Meta title="Loaders/DownloaderItem" component={DownloaderItem, DownloaderOverlay} />
 
 <Canvas>
 	<Story name="DownloaderItem">
         <DownloaderItem progress={50} label="Item Label" itemSize={300} downloaded={150} showCancel={true} />
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="DownloaderOverlay">
+	<div style={{ height: '600px', position: 'relative' }}>
+		<DownloaderOverlay downloaderItems={[<DownloaderItem label="Item Label" stripes showCancel />]} />
+	</div>
 	</Story>
 </Canvas>
