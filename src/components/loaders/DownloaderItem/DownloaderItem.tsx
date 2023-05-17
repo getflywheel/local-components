@@ -96,7 +96,13 @@ export const DownloaderOverlay = (props: DownloaderOverlayProps) => {
 	return (
 		// Include global DownloaderOverlay classname for Playwright tests
 		<div className={classNames('DownloaderOverlay', styles.DownloaderOverlay)} {...restProps}>
-			<ul className={styles.Downloader}>{downloaderItems}</ul>
+			<ul className={styles.Downloader}>
+				{downloaderItems.filter(React.isValidElement).map((item, index) =>
+					React.cloneElement(item, {
+						key: (item as React.ReactElement<DownloaderItemProps>).props.label ?? index,
+					})
+				)}
+			</ul>
 		</div>
 	);
 };
