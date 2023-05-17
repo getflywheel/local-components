@@ -53,7 +53,12 @@ export { default as AdvancedToggle } from './components/layout/AdvancedToggle/Ad
 export { default as Divider } from './components/layout/Divider/Divider';
 // Loaders
 export { default as BigLoader } from './components/loaders/BigLoader/BigLoader';
-export { default as DownloaderItem } from './components/loaders/DownloaderItem/DownloaderItem';
+export {
+	default as DownloaderItem,
+	DownloaderItemProps,
+	DownloaderOverlay,
+	DownloaderOverlayProps,
+} from './components/loaders/DownloaderItem/DownloaderItem';
 export { default as InstallerStepStatus } from './components/loaders/InstallerStepStatus/InstallerStepStatus';
 export { default as LoadingIndicator } from './components/loaders/LoadingIndicator/LoadingIndicator';
 export { default as ProgressBar } from './components/loaders/ProgressBar/ProgressBar';

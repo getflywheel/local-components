@@ -1,13 +1,14 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { TextButton } from '../../buttons/TextButton/TextButton';
 import { FunctionGeneric } from '../../../common/structures/Generics';
-import classnames from 'classnames';
+import styles from './Downloader.scss';
 
 const { ipcRenderer } = require('electron');
 
-interface IProps extends IReactComponentProps {
+export interface DownloaderItemProps extends IReactComponentProps {
 	cancelText?: string;
 	downloaded?: number;
 	itemSize?: number;
@@ -23,68 +24,79 @@ interface IProps extends IReactComponentProps {
 	stripes?: boolean;
 }
 
-export default class DownloaderItem extends React.Component<IProps> {
-	static defaultProps: Partial<IProps> = {
-		cancelText: 'Cancel download',
-		showEllipsis: true,
+const DownloaderItem = (props: DownloaderItemProps) => {
+	const {
+		cancelText = 'Cancel download',
+		showEllipsis = true,
+		downloaded,
+		itemSize,
+		label,
+		onCancel,
+		onCancelIPCEvent,
+		progress,
+		progressText,
+		queueIndex,
+		queueLength,
+		showCancel,
+		stripes,
+		className,
+		style,
+		id,
+	} = props;
+
+	const cancelOnClick = (...args: any[]) => {
+		if (onCancelIPCEvent) {
+			ipcRenderer.send(onCancelIPCEvent);
+		}
+
+		if (onCancel) {
+			return onCancel(...args);
+		}
 	};
 
-	constructor (props: IProps) {
-		super(props);
-
-		this.cancelOnClick = this.cancelOnClick.bind(this);
-	}
-
-	cancelOnClick (...args: any[]) {
-		if (this.props.onCancel) {
-			return this.props.onCancel(...args);
-		}
-
-		if (this.props.onCancelIPCEvent) {
-			return ipcRenderer.send(this.props.onCancelIPCEvent);
-		}
-	}
-
-	render () {
-		return (
-			<li
-				className={classnames(
-					'DownloaderItem',
-					this.props.className,
+	return (
+		<li className={classNames(styles.DownloaderItem, className)} id={id} style={style}>
+			<div className={styles.DownloaderItem_Content_Top}>
+				<span className={styles.DownloaderItemLabel}>
+					{label}
+					{queueLength && queueLength > 1 && ` (${(queueIndex || 0) + 1} of ${queueLength})`}
+					{showEllipsis && '...'}
+				</span>
+			</div>
+			<ProgressBar className={styles.DownloaderProgressBar} progress={progress} stripes={stripes} />
+			<div className={styles.DownloaderItem_Content_Bottom}>
+				{(progressText || typeof itemSize === 'number') && (
+					<span className={styles.DownloadSizeProgress}>
+						{progressText || `${downloaded || 0}/${itemSize} MB`}
+					</span>
 				)}
-				id={this.props.id}
-				style={this.props.style}
-			>
-				<span>
-					{this.props.label}
-					{this.props.queueLength && this.props.queueLength > 1 && ` (${(this.props.queueIndex || 0) + 1} of ${this.props.queueLength})`}
-					{this.props.showEllipsis && '...'}
-				</span>
-				<ProgressBar
-					progress={this.props.progress}
-					stripes={this.props.stripes}
-				/>
-				<span className="DownloadSizeProgress">
-					{
-						this.props.progressText
-							?
-							this.props.progressText
-							:
-							!isNaN(this.props.itemSize || NaN)
-								?
-								`${!isNaN(this.props.downloaded || NaN) ? this.props.downloaded : 0}/${this.props.itemSize} MB`
-								:
-								<span>&nbsp;</span>
-					}
-				</span>
-				{
-					this.props.showCancel && (
-						<TextButton onClick={this.cancelOnClick}>
-							{this.props.cancelText}
-						</TextButton>
-					)
-				}
-			</li>
-		);
-	}
+				{showCancel && (
+					<TextButton
+						className={styles.DownloaderItemCancelButton}
+						privateOptions={{ padding: 'none' }}
+						onClick={cancelOnClick}
+					>
+						{cancelText}
+					</TextButton>
+				)}
+			</div>
+		</li>
+	);
+};
+
+export default DownloaderItem;
+
+export interface DownloaderOverlayProps extends IReactComponentProps {
+	downloaderItems: Array<React.ReactNode>;
 }
+
+export const DownloaderOverlay = (props: DownloaderOverlayProps) => {
+	const { downloaderItems, ...restProps } = props;
+
+	return (
+		// Include global DownloaderOverlay classname for Playwright tests
+		<div className={classNames('DownloaderOverlay', styles.DownloaderOverlay)} {...restProps}>
+			<ul className={styles.Downloader}>{downloaderItems}</ul>
+		</div>
+	);
+};
