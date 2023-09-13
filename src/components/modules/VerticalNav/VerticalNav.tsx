@@ -53,6 +53,7 @@ export const VerticalNavItem = (props: IProps) => {
 			<NavLink
 				to={routeTo || ''}
 				exact={false}
+				aria-label={tooltip || undefined}
 				activeClassName={navLinkActiveClassName || '__Active'}
 				className={classnames(navLinkClass, additionalNavLinkClass, {
 					__Active: navLinkActive,
