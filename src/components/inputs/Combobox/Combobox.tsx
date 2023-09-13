@@ -125,6 +125,8 @@ export interface IComboboxProps extends ILocalContainerProps {
 	invalid?: boolean;
 	/** Message shown below text input when combobox is invalid */
 	invalidMessage?: string;
+	/** Offset for the max height of the combobox options dropdown. The max height defaults to 75px above the bottom of the window. */
+	maxHeightOffset?: number;
 }
 
 /**
@@ -144,6 +146,7 @@ const Combobox = (props: IComboboxProps) => {
 		onChange,
 		options = {},
 		optionHeight = 's',
+		maxHeightOffset = 0,
 		inputHeight = 'l',
 		optionsLoader,
 		optionGroups,
@@ -297,7 +300,9 @@ const Combobox = (props: IComboboxProps) => {
 
 	const handleResize = () => {
 		setMaxHeight(
-			containerRef.current ? window.innerHeight - 75 - containerRef.current.getBoundingClientRect().top : 0
+			containerRef.current
+				? window.innerHeight - 75 - maxHeightOffset - containerRef.current.getBoundingClientRect().top
+				: 0
 		);
 	};
 
