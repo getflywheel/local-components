@@ -87,5 +87,6 @@ export const ComboboxConnectExample = () => (
 		onChange={() => console.log('onChange')}
 		placeholder="Select Something!"
 		striped
+		maxHeightOffset={75}
 	/>
 );
