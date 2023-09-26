@@ -6,12 +6,17 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import styles from './VerticalNav.scss';
 import FlyTooltip from '../../overlays/FlyTooltip/FlyTooltip';
 
-export const VerticalNav = (props: IReactComponentProps) => {
-	const { className, id, children, style } = props;
+interface INavProps extends IReactComponentProps {
+	title?: string | undefined;
+}
+
+export const VerticalNav = (props: INavProps) => {
+	const { className, id, children, style, title } = props;
+
 	return (
-		<div className={classnames(styles.VerticalNav, className)} id={id} style={style}>
+		<nav aria-label={title} className={classnames(styles.VerticalNav, className)} id={id} style={style}>
 			{children}
-		</div>
+		</nav>
 	);
 };
 
