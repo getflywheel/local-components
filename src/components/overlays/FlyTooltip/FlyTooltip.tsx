@@ -48,6 +48,7 @@ export default class FlyTooltip extends React.Component<IProps> {
 					)}
 					id={this.props.id}
 					style={this.props.style}
+					aria-hidden
 				>
 					{
 						this.props.exclamation
