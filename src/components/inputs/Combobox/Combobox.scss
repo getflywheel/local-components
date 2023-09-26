@@ -111,6 +111,7 @@
 	}
 
 	.Combobox_Options {
+		overflow: hidden;
 		position: absolute;
 		top: calc(var(--inputHeight) + 1px);
 		left: 0;
