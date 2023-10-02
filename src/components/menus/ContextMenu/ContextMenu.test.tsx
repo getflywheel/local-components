@@ -5,6 +5,10 @@ import ContextMenu, { IContextMenuProps, IMenuItem } from './ContextMenu';
 
 const mockOnClick = jest.fn();
 
+jest.mock('nanoid', () => ({
+	nanoid: () => 'a-fixed-random-id',
+}));
+
 const menuItems: IMenuItem[] = [
 	{
 		label: 'View site',

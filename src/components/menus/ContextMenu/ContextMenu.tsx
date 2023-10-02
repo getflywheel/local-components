@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import { useEffect, useRef, useState } from 'react';
 import styles from './ContextMenu.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
@@ -99,7 +99,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 		...otherProps
 	} = props;
 
-	const menuId = useRef(id ?? `${'contextMenu'}-${shortid.generate()}`);
+	const menuId = useRef(id ?? `${'contextMenu'}-${nanoid()}`);
 
 	const [isShowing, setIsShowing] = useState(false);
 
