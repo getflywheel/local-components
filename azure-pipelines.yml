@@ -14,7 +14,8 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '14.17.0'
+    versionSource: 'fromFile'
+    versionFilePath: '.nvmrc'
 
 - script: |
     git config --local user.name "Local Bot"
