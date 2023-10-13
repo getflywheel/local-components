@@ -24,7 +24,6 @@
     "lodash.isequal": "^4.5.0",
     "lz-string": "^1.4.4",
     "memoize-one": "^6.0.0",
-    "nanoid": "^5.0.1",
     "react-animate-height": "^2.0.23",
     "react-lowlight": "^2.0.0",
     "react-markdown": "^4.0.3",

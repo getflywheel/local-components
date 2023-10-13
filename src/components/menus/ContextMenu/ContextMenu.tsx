@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { nanoid } from 'nanoid';
 import { useEffect, useRef, useState } from 'react';
+import randomId from '../../../utils/randomId';
 import styles from './ContextMenu.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { Tooltip, TooltipProps, hideTooltip, showTooltip } from '../../overlays/Tooltip/Tooltip';
@@ -99,7 +99,7 @@ const ContextMenu = (props: IContextMenuProps) => {
 		...otherProps
 	} = props;
 
-	const menuId = useRef(id ?? `${'contextMenu'}-${nanoid()}`);
+	const menuId = useRef(id ?? `${'contextMenu'}-${randomId()}`);
 
 	const [isShowing, setIsShowing] = useState(false);
 
