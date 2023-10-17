@@ -3,24 +3,21 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-	core: {
-		builder: 'webpack5',
-	},
-	"stories": [
+    "stories": [
 		"../src/**/*.stories.mdx",
 	],
-	"addons": [
-		{
-			name: '@storybook/addon-essentials',
-			options: {
-				viewport: false,
-				backgrounds: false,
-				actions: false,
-				controls: false,
-			}
-		}
-	],
-	webpackFinal: (config) => {
+
+    "addons": [{
+        name: '@storybook/addon-essentials',
+        options: {
+            viewport: false,
+            backgrounds: false,
+            actions: false,
+            controls: false,
+        }
+    }, '@storybook/addon-mdx-gfm'],
+
+    webpackFinal: (config) => {
 		const fileLoaderRule = config.module.rules.find(rule => rule.test.test && rule.test.test('.svg'));
 		fileLoaderRule.exclude = /\.svg$/;
 
@@ -42,11 +39,21 @@ module.exports = {
 
 		return config;
 	},
-	babel: async (options) => ({
+
+    babel: async (options) => ({
 		...options,
 		'plugins': [
 			["@babel/plugin-proposal-decorators", { "legacy": true }],
 			["@babel/plugin-proposal-class-properties", { "loose": true }],
 		]
 	}),
+
+    framework: {
+        name: '@storybook/react-webpack5',
+        options: {}
+    },
+
+    docs: {
+        autodocs: true
+    }
 };
