@@ -48,7 +48,6 @@
     "prepublishOnly": "yarn run build",
     "gh-pages:build": "yarn build-storybook",
     "gh-pages:deploy": "yarn gh-pages:build && gh-pages -d storybook-static",
-    "tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json -t stylish",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic"
