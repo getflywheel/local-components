@@ -12,6 +12,7 @@ interface IProps extends IReactComponentProps {
 	onChange?: (checked: boolean) => void;
 	Icon: React.FC<ISvgProps>;
 	disabled?: boolean;
+	Label?: string | undefined;
 	name?: string;
 	/** Whether to override svg icon path colors * */
 	useIconColorsOnChecked?: boolean;
@@ -86,7 +87,7 @@ export const IconCheckbox: React.FC<IProps> = ({
 				name={name}
 				onChange={handleChange}
 			/>
-			<Icon className={styles.IconCheckbox_Icon} />
+			<Icon aria-hidden className={styles.IconCheckbox_Icon} />
 		</div>
 	);
 };

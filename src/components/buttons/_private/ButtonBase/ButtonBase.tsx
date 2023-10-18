@@ -224,9 +224,9 @@ const ButtonBase = (props: IButtonBaseProps) => {
 				{...otherProps}
 				{...tagProps}
 			>
-				{leftIcon && <LeftIcon className={styles.ButtonBase_SVG_Left} />}
+				{leftIcon && <LeftIcon aria-hidden className={styles.ButtonBase_SVG_Left} />}
 				{children}
-				{rightIcon && <RightIcon className={styles.ButtonBase_SVG_Right} />}
+				{rightIcon && <RightIcon aria-hidden className={styles.ButtonBase_SVG_Right} />}
 			</Tag>
 		</Container>
 	);
