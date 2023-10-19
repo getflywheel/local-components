@@ -4,22 +4,23 @@ import IReactComponentProps from '../../../common/structures/IReactComponentProp
 import styles from './Close.scss';
 import { FunctionGeneric } from '../../../common/structures/Generics';
 import { CloseIcon } from '../../icons/Icons';
-import { ButtonBase } from '../_private/ButtonBase/ButtonBase';
+import { ButtonBase, ButtonPropColor } from '../_private/ButtonBase/ButtonBase';
 
 interface IProps extends IReactComponentProps {
 	position?: 'absolute' | 'static';
 	onClick?: FunctionGeneric;
 	size?: 's' | 'm' | 'l';
+	color?: ButtonPropColor;
 }
 
 const Close: React.FC<IProps> = (props: IProps) => {
-	const { position = 'absolute', size = 'l', onClick, className, ...otherProps } = props;
+	const { position = 'absolute', size = 'l', color = 'green', onClick, className, ...otherProps } = props;
 
 	return (
 		<ButtonBase
 			tabIndex={0}
 			form="text"
-			color="green"
+			color={color}
 			padding="none"
 			onClick={onClick}
 			className={classnames(
