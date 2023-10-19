@@ -7,6 +7,7 @@
 	width: 68px;
 	height: 100%;
 	padding: 0;
+	z-index: 9;
 	@include theme-background-green-else-graydark;
 
 	@at-root :global(.__OsDarwin) .VerticalNav {
