@@ -6,7 +6,8 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 <Meta title="Inputs/IconCheckbox" component={IconCheckbox} />
 
 The `IconCheckbox` component takes an `Icon` prop representing an svg and, by default, automatically overrides its
-path fill colors to provide consistent styles for unchecked, unchecked hover, checked, and checked hover states.
+path fill colors to provide consistent styles for unchecked, unchecked hover, checked, and checked hover states. It
+also takes a `label` prop which adds `aria-label` to the checkbox input.
 
 ### Default
 
@@ -20,6 +21,7 @@ Default style overriddes with change handler.
 				onChange={(checked) =>
 					console.log("onChange - checked: ", checked)
 				}
+				label="Example Label"
 			/>
 		</div>
 	</Story>
