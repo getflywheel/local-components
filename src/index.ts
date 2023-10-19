@@ -11,7 +11,12 @@ export { default as toast, ToastOptions, dismissToast } from './components/alert
 export { default as ToastContainer } from './components/alerts/ToastContainer/ToastContainer';
 export { Alert } from './components/alerts/Alert/Alert';
 // Buttons
-export { ButtonBase, IButtonBaseProps, IButtonCommonProps } from './components/buttons/_private/ButtonBase/ButtonBase';
+export {
+	ButtonBase,
+	ButtonPropColor,
+	IButtonBaseProps,
+	IButtonCommonProps,
+} from './components/buttons/_private/ButtonBase/ButtonBase';
 export { Button } from './components/buttons/Button/Button';
 export { default as Close } from './components/buttons/Close/Close';
 export { PrimaryButton } from './components/buttons/PrimaryButton/PrimaryButton';
