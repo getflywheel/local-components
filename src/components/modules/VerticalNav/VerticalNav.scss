@@ -118,4 +118,25 @@
 			}
 		}
 	}
+
+	.VerticalNavButton {
+		background: none;
+		border: none;
+		cursor: pointer; /* Override 'cursor: default' in base.scss. */
+		width: 100%;
+
+		svg {
+			cursor: pointer; /* Override 'cursor: default' in base.scss. */
+			width: 22px;
+
+			path {
+				cursor: pointer; /* Override 'cursor: default' in base.scss. */
+			}
+		}
+
+		&:active svg path,
+		&:hover svg path {
+			@include theme-fill-greendark50-else-white-hover;
+		}
+	}
 }
