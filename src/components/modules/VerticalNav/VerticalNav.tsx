@@ -22,17 +22,18 @@ export const VerticalNav = (props: INavProps) => {
 
 interface IProps extends IReactComponentProps {
 	className?: string;
+	action?: () => void;
 	fadeIn?: boolean;
 	navLinkActive?: boolean;
 	navLinkActiveClassName?: string;
 	navLinkClass?: string;
 	routeTo?: string;
 	tooltip?: string | null;
-	type?: 'addsite' | 'filler' | 'navlink' | 'switcher';
+	type?: 'addsite' | 'button' | 'filler' | 'navlink' | 'switcher';
 }
 
 export const VerticalNavItem = (props: IProps) => {
-	const { className, fadeIn, navLinkActive, navLinkActiveClassName, navLinkClass, routeTo, tooltip, type, children } =
+	const { className, fadeIn, navLinkActive, navLinkActiveClassName, navLinkClass, routeTo, tooltip, type, children, action } =
 		props;
 
 	const renderWrapper = (child: any, additionalTooltipClassName?: string | string[]) => {
@@ -71,6 +72,23 @@ export const VerticalNavItem = (props: IProps) => {
 		);
 	};
 
+	const renderTypeButton = (additionalTooltipClassName?: string | string[]) => {
+		return renderWrapper(
+			<button
+				className={styles.VerticalNavButton}
+				type="button"
+				onClick={() => {
+					if (action) {
+						action();
+					}
+				}}
+			>
+				{children}
+			</button>,
+			additionalTooltipClassName
+		);
+	};
+
 	const renderTypeFiller = () => {
 		return <div className={styles.VerticalNavItem_DragRegion} />;
 	};
@@ -86,6 +104,8 @@ export const VerticalNavItem = (props: IProps) => {
 	switch (type) {
 		case 'addsite':
 			return renderTypeAddSite();
+		case 'button':
+			return renderTypeButton();
 		case 'filler':
 			return renderTypeFiller();
 		case 'navlink':
