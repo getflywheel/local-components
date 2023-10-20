@@ -10,12 +10,6 @@ module.exports = {
 
     "addons": [{
         name: '@storybook/addon-essentials',
-        options: {
-            viewport: false,
-            backgrounds: false,
-            actions: false,
-            controls: false,
-        }
     }, '@storybook/addon-mdx-gfm'],
 
     webpackFinal: (config) => {
