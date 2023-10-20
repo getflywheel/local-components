@@ -22,6 +22,7 @@ export const VerticalNav = (props: INavProps) => {
 
 interface IProps extends IReactComponentProps {
 	className?: string;
+	ariaLabel?: string;
 	action?: () => void;
 	fadeIn?: boolean;
 	navLinkActive?: boolean;
@@ -33,8 +34,19 @@ interface IProps extends IReactComponentProps {
 }
 
 export const VerticalNavItem = (props: IProps) => {
-	const { className, fadeIn, navLinkActive, navLinkActiveClassName, navLinkClass, routeTo, tooltip, type, children, action } =
-		props;
+	const {
+		ariaLabel,
+		className,
+		fadeIn,
+		navLinkActive,
+		navLinkActiveClassName,
+		navLinkClass,
+		routeTo,
+		tooltip,
+		type,
+		children,
+		action,
+	} = props;
 
 	const renderWrapper = (child: any, additionalTooltipClassName?: string | string[]) => {
 		return tooltip ? (
@@ -77,6 +89,7 @@ export const VerticalNavItem = (props: IProps) => {
 			<button
 				className={styles.VerticalNavButton}
 				type="button"
+				aria-label={ariaLabel || tooltip || undefined}
 				onClick={() => {
 					if (action) {
 						action();
