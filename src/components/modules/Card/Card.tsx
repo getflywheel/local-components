@@ -1,6 +1,6 @@
 import * as React from 'react';
-import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import classnames from 'classnames';
+import IReactComponentProps from '../../../common/structures/IReactComponentProps';
 import styles from './Card.sass';
 import Truncate from '../../text/Truncate/Truncate';
 import { Title } from '../../text/Title/Title';
@@ -13,19 +13,19 @@ interface IProps extends IReactComponentProps {
 	contentDescription?: React.ReactNode;
 	contentDescriptionClassName?: string;
 	contentDescriptionTruncate?: boolean;
-	contentDescriptionTruncateLines?: number;
 	contentDescriptionTruncateEllipsis?: React.ReactNode;
+	contentDescriptionTruncateLines?: number;
 	contentSub?: React.ReactNode;
 	contentSubClassName?: string;
 	contentSubTruncate?: boolean;
-	contentSubTruncateLines?: number;
 	contentSubTruncateEllipsis?: React.ReactNode;
+	contentSubTruncateLines?: number;
 	contentTitle?: React.ReactNode;
 	contentTitleClassName?: string;
 	contentTitleOnClick?: FunctionGeneric;
 	contentTitleTruncate?: boolean;
-	contentTitleTruncateLines?: number;
 	contentTitleTruncateEllipsis?: React.ReactNode;
+	contentTitleTruncateLines?: number;
 	footer?: React.ReactNode;
 	footerClassName?: string;
 	header?: React.ReactNode;
@@ -33,198 +33,184 @@ interface IProps extends IReactComponentProps {
 	headerClassName?: string;
 	headerIconClassName?: string;
 	headerIconContainerClassName?: string;
-	headerIconPath?: string;
 	headerIconMaxHeight?: string;
+	headerIconPath?: string;
 	headerOnClick?: FunctionGeneric;
 	overflow?: string;
 	tag?: string;
-	truncateDefaultLines?: number;
 	truncateDefaultEllipsis?: string;
+	truncateDefaultLines?: number;
 }
 
-export default class Card extends React.Component<IProps> {
-	static defaultProps: Partial<IProps> = {
-		overflow: 'hidden',
-		tag: 'article',
-		truncateDefaultEllipsis: '...',
-		truncateDefaultLines: 1,
+const Card = ({
+	children,
+	childrenClassName,
+	className,
+	content,
+	contentClassName,
+	contentDescription,
+	contentDescriptionClassName,
+	contentDescriptionTruncate,
+	contentDescriptionTruncateEllipsis,
+	contentDescriptionTruncateLines,
+	contentSub,
+	contentSubClassName,
+	contentSubTruncate,
+	contentSubTruncateEllipsis,
+	contentSubTruncateLines,
+	contentTitle,
+	contentTitleClassName,
+	contentTitleOnClick,
+	contentTitleTruncate,
+	contentTitleTruncateEllipsis,
+	contentTitleTruncateLines,
+	footer,
+	footerClassName,
+	header,
+	headerBackgroundColor,
+	headerClassName,
+	headerIconClassName,
+	headerIconContainerClassName,
+	headerIconMaxHeight,
+	headerIconPath,
+	headerOnClick,
+	id,
+	onClick,
+	overflow = 'hidden',
+	style,
+	tag = 'article',
+	truncateDefaultEllipsis = '...',
+	truncateDefaultLines = 1,
+}: IProps) => {
+	const hasHeader = () => {
+		return header || headerIconPath || headerBackgroundColor;
 	};
 
-	hasHeader () {
-		return this.props.header || this.props.headerIconPath || this.props.headerBackgroundColor;
-	}
-
-	renderHeader () {
+	const renderHeader = () => {
 		return (
-			<div
-				className={classnames(
-					styles.Card_Header,
-					this.props.headerClassName,
-				)}
-				onClick={this.props.headerOnClick}
-			>
-				{(this.props.headerIconPath || this.props.headerBackgroundColor) && (
+			<div className={classnames(styles.Card_Header, headerClassName)} onClick={headerOnClick}>
+				{(headerIconPath || headerBackgroundColor) && (
 					<div
-						className={classnames(
-							styles.Card_HeaderIconContainer,
-							this.props.headerIconContainerClassName,
-						)}
+						className={classnames(styles.Card_HeaderIconContainer, headerIconContainerClassName)}
 						style={{
-							...(this.props.headerBackgroundColor && {backgroundColor: this.props.headerBackgroundColor}), // conditionally add style
+							...(headerBackgroundColor && { backgroundColor: headerBackgroundColor }), // conditionally add style
 						}}
 					>
-						{this.props.headerIconPath && (
+						{headerIconPath && (
 							<img
-								src={this.props.headerIconPath}
-								className={this.props.headerIconClassName}
+								alt=""
+								src={headerIconPath}
+								className={headerIconClassName}
 								style={{
-									...(this.props.headerIconMaxHeight && {maxHeight: this.props.headerIconMaxHeight}),
+									...(headerIconMaxHeight && { maxHeight: headerIconMaxHeight }),
 								}}
 							/>
 						)}
 					</div>
 				)}
 
-				{this.props.header}
+				{header}
 			</div>
 		);
-	}
+	};
 
-	hasContent () {
-		return this.props.content || this.props.children || this.props.contentTitle || this.props.contentSub || this.props.contentDescription;
-	}
+	const hasContent = () => {
+		return content || children || contentTitle || contentSub || contentDescription;
+	};
 
-	renderContent () {
+	const renderContent = () => {
 		return (
-			<div
-				className={classnames(
-					styles.Card_Content,
-					this.props.contentClassName,
-				)}
-			>
-				{this.props.contentTitle && (
+			<div className={classnames(styles.Card_Content, contentClassName)}>
+				{contentTitle && (
 					<Title
 						size="s"
-						className={classnames(
-							styles.Card_Content_Title,
-							this.props.contentTitleClassName,
-						)}
+						className={classnames(styles.Card_Content_Title, contentTitleClassName)}
 						style={{
-							...(this.props.contentTitleOnClick && {cursor: 'pointer'}), // conditionally add style
+							...(contentTitleOnClick && { cursor: 'pointer' }), // conditionally add style
 						}}
-						onClick={this.props.contentTitleOnClick}
+						onClick={contentTitleOnClick}
 					>
-						{
-							this.props.contentTitleTruncate
-								?
-								// this adds a bunch of nested spans, so only use if this feature is enabled
-								<Truncate
-									lines={this.props.contentTitleTruncateLines || this.props.truncateDefaultLines}
-									ellipsis={this.props.contentTitleTruncateEllipsis || this.props.truncateDefaultEllipsis}
-								>
-									{this.props.contentTitle}
-								</Truncate>
-								:
-								this.props.contentTitleOnClick
-									?
-									<a>{this.props.contentTitle}</a>
-									:
-									this.props.contentTitle
-						}
+						{contentTitleTruncate ? (
+							// this adds a bunch of nested spans, so only use if this feature is enabled
+							<Truncate
+								lines={contentTitleTruncateLines || truncateDefaultLines}
+								ellipsis={contentTitleTruncateEllipsis || truncateDefaultEllipsis}
+							>
+								{contentTitle}
+							</Truncate>
+						) : contentTitleOnClick ? (
+							<a>{contentTitle}</a>
+						) : (
+							contentTitle
+						)}
 					</Title>
 				)}
-				{this.props.contentSub && (
-					<div
-						className={classnames(
-							styles.Card_Content_Sub,
-							this.props.contentSubClassName,
+				{contentSub && (
+					<div className={classnames(styles.Card_Content_Sub, contentSubClassName)}>
+						{contentSubTruncate ? (
+							// this adds a bunch of nested spans, so only use if this feature is enabled
+							<Truncate
+								lines={contentSubTruncateLines || truncateDefaultLines}
+								ellipsis={contentSubTruncateEllipsis || truncateDefaultEllipsis}
+							>
+								{contentSub}
+							</Truncate>
+						) : (
+							contentSub
 						)}
-					>
-						{
-							this.props.contentSubTruncate
-								?
-								// this adds a bunch of nested spans, so only use if this feature is enabled
-								<Truncate
-									lines={this.props.contentSubTruncateLines || this.props.truncateDefaultLines}
-									ellipsis={this.props.contentSubTruncateEllipsis || this.props.truncateDefaultEllipsis}
-								>
-									{this.props.contentSub}
-								</Truncate>
-								:
-								this.props.contentSub
-						}
 					</div>
 				)}
-				{this.props.contentDescription && (
-					<div
-						className={classnames(
-							styles.Card_Content_Description,
-							this.props.contentDescriptionClassName,
+				{contentDescription && (
+					<div className={classnames(styles.Card_Content_Description, contentDescriptionClassName)}>
+						{contentDescriptionTruncate ? (
+							// this adds a bunch of nested spans, so only use if this feature is enabled
+							<Truncate
+								lines={contentDescriptionTruncateLines || truncateDefaultLines}
+								ellipsis={contentDescriptionTruncateEllipsis || truncateDefaultEllipsis}
+							>
+								{contentDescription}
+							</Truncate>
+						) : (
+							contentDescription
 						)}
-					>
-						{
-							this.props.contentDescriptionTruncate
-								?
-								// this adds a bunch of nested spans, so only use if this feature is enabled
-								<Truncate
-									lines={this.props.contentDescriptionTruncateLines || this.props.truncateDefaultLines}
-									ellipsis={this.props.contentDescriptionTruncateEllipsis || this.props.truncateDefaultEllipsis}
-								>
-									{this.props.contentDescription}
-								</Truncate>
-								:
-								this.props.contentDescription
-						}
 					</div>
 				)}
-				{(this.props.content || this.props.children) && (
+				{(content || children) && (
 					// note this needs to be wrapped in a div for sibling :last-child styles to work
-					<div className={this.props.childrenClassName}>
-						{this.props.content}
-						{this.props.children}
+					<div className={childrenClassName}>
+						{content}
+						{children}
 					</div>
 				)}
 			</div>
 		);
-	}
+	};
 
-	hasFooter () {
-		return this.props.footer;
-	}
+	const hasFooter = () => {
+		return footer;
+	};
 
-	renderFooter () {
-		return (
-			<div
-				className={classnames(
-					styles.Card_Footer,
-					this.props.footerClassName,
-				)}
-			>
-				{this.props.footer}
-			</div>
-		);
-	}
+	const renderFooter = () => {
+		return <div className={classnames(styles.Card_Footer, footerClassName)}>{footer}</div>;
+	};
 
-	render () {
-		const Tag: any = this.props.tag;
+	const Tag: any = tag;
 
-		return (
-			<Tag
-				className={classnames(
-					styles.Card,
-					this.props.className,
-				)}
-				id={this.props.id}
-				onClick={this.props.onClick}
-				style={{
-					...(this.props.overflow !== 'hidden' && {overflow: this.props.overflow}), // conditionally add style
-					...this.props.style,
-				}}
-			>
-				{this.hasHeader() && this.renderHeader()}
-				{this.hasContent() && this.renderContent()}
-				{this.hasFooter() && this.renderFooter()}
-			</Tag>
-		);
-	}
-}
+	return (
+		<Tag
+			className={classnames(styles.Card, className)}
+			id={id}
+			onClick={onClick}
+			style={{
+				...(overflow !== 'hidden' && { overflow }), // conditionally add style
+				...style,
+			}}
+		>
+			{hasHeader() && renderHeader()}
+			{hasContent() && renderContent()}
+			{hasFooter() && renderFooter()}
+		</Tag>
+	);
+};
+
+export default Card;
