@@ -27,7 +27,7 @@ interface IProps extends IReactComponentProps {
 	contentTitleTruncateLines?: number;
 	contentTitleTruncateEllipsis?: React.ReactNode;
 	footer?: React.ReactNode;
-	footerClassName?: React.ReactNode;
+	footerClassName?: string;
 	header?: React.ReactNode;
 	headerBackgroundColor?: string;
 	headerClassName?: string;
