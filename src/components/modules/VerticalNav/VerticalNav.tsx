@@ -94,7 +94,7 @@ export const VerticalNavItem = (props: IProps) => {
 				className={styles.VerticalNavButton}
 				type="button"
 				aria-label={ariaLabel || tooltip || undefined}
-				aria-expanded={ariaExpanded || undefined}
+				aria-expanded={typeof ariaExpanded === 'undefined' ? undefined : ariaExpanded}
 				aria-controls={ariaControls || undefined}
 				onClick={() => {
 					if (action) {
