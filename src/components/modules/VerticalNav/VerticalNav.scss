@@ -136,7 +136,8 @@
 		}
 
 		&:active svg path,
-		&:hover svg path {
+		&:hover svg path,
+		&[aria-expanded="true"] svg path {
 			@include theme-fill-greendark50-else-white-hover;
 		}
 	}
