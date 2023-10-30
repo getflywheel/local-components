@@ -22,9 +22,6 @@ export const VerticalNav = (props: INavProps) => {
 
 interface IProps extends IReactComponentProps {
 	className?: string;
-	ariaLabel?: string;
-	ariaExpanded?: boolean;
-	ariaControls?: string;
 	action?: () => void;
 	fadeIn?: boolean;
 	navLinkActive?: boolean;
@@ -37,9 +34,9 @@ interface IProps extends IReactComponentProps {
 
 export const VerticalNavItem = (props: IProps) => {
 	const {
-		ariaLabel,
-		ariaControls,
-		ariaExpanded,
+		'aria-label': ariaLabel,
+		'aria-expanded': ariaExpanded,
+		'aria-controls': ariaControls,
 		className,
 		fadeIn,
 		navLinkActive,
@@ -95,7 +92,7 @@ export const VerticalNavItem = (props: IProps) => {
 				type="button"
 				aria-label={ariaLabel || tooltip || undefined}
 				aria-expanded={ariaExpanded}
-				aria-controls={ariaControls || undefined}
+				aria-controls={ariaControls}
 				onClick={() => {
 					if (action) {
 						action();
