@@ -36,6 +36,7 @@ export const VerticalNavItem = (props: IProps) => {
 		'aria-label': ariaLabel,
 		'aria-expanded': ariaExpanded,
 		'aria-controls': ariaControls,
+		id,
 		className,
 		fadeIn,
 		navLinkActive,
@@ -87,6 +88,7 @@ export const VerticalNavItem = (props: IProps) => {
 	const renderTypeButton = (additionalTooltipClassName?: string | string[]) => {
 		return renderWrapper(
 			<button
+				id={id}
 				className={styles.VerticalNavButton}
 				type="button"
 				aria-label={ariaLabel || tooltip || undefined}
