@@ -17,7 +17,10 @@ export default interface IReactComponentProps<T = HTMLElement> {
 	ref?: any;
 	role?: string;
 	tabIndex?: number;
-	'aria-checked'?: boolean;
+	'aria-checked'?: React.HTMLProps<T>['aria-checked'];
+	'aria-label'?: React.HTMLProps<T>['aria-label'];
+	'aria-expanded'?: React.HTMLProps<T>['aria-expanded'];
+	'aria-controls'?: React.HTMLProps<T>['aria-controls'];
 	onContextMenu?: React.HTMLProps<T>['onContextMenu'];
 	onDoubleClick?: React.HTMLProps<T>['onDoubleClick'];
 	onMouseEnter?: React.HTMLProps<T>['onMouseEnter'];
