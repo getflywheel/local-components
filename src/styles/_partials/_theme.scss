@@ -122,6 +122,14 @@
 	@include __theme-background($green-dark, $green);
 }
 
+@mixin theme-background-greendark50-else-green {
+	@include __theme-background($green-dark50, $green);
+}
+
+@mixin theme-background-greendark50-else-graydarker {
+	@include __theme-background($green-dark50, $gray-darker);
+}
+
 @mixin theme-background-white-else-graydark {
 	@include __theme-background($white, $gray-dark);
 }
@@ -326,6 +334,22 @@
 
 @mixin theme-fill-greendark-else-green {
 	@include __theme-fill($green-dark, $green);
+}
+
+@mixin theme-fill-greendark-else-gray75 {
+	@include __theme-fill($green-dark, $gray75);
+}
+
+@mixin theme-fill-greendark-else-graydark {
+	@include __theme-fill($green-dark, $gray-dark);
+}
+
+@mixin theme-fill-white-else-graydark {
+	@include __theme-fill($white, $gray-dark);
+}
+
+@mixin theme-fill-white-else-green75 {
+	@include __theme-fill($white, $green75);
 }
 
 @mixin theme-fill-greendark50-else-white-hover {
