@@ -110,6 +110,7 @@ export default class Popup extends React.Component<IProps, IState> {
 				className={classnames(
 					styles.Popup,
 					{
+						Popup__Open: this.state.open, // Omits class postfix to allow styling of popup trigger components when the popup is open, via `:global(.Popup__Open) {`.
 						[styles.Popup__Open]: this.state.open,
 						[styles.Popup__Padding]: this.props.padding,
 						[styles.Popup__PositionBottom]: this.props.position === 'bottom',
