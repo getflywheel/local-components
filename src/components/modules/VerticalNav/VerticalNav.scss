@@ -2,6 +2,7 @@
 
 .VerticalNav {
 	display: flex;
+	align-items: center;
 	flex-shrink: 0;
 	flex-direction: column;
 	width: 68px;
@@ -26,14 +27,9 @@
 	.VerticalNav_Add {
 		width: 48px;
 		height: 48px !important;
-		margin: 13px 0 10px 10px;
+		margin: 13px 0 10px 0;
 		padding: 11.5px 0 !important;
-		@include if-theme-light() {
-			background: $white;
-		}
-		@include if-theme-dark() {
-			background: $green;
-		}
+		background: $white;
 		border-radius: 100%;
 		transition: background-color .1s ease 0s;
 
@@ -43,15 +39,19 @@
 			transition: fill .1s ease 0s;
 
 			path {
-				@include theme-fill-green-else-white;
+				@include theme-fill-greendark-else-graydark;
 			}
 		}
 
-		&:hover {
-			background: $green-dark;
+		&:hover:not(:global(.__Active)) {
+			@include theme-background-greendark50-else-green;
 
-			svg path {
-				fill: $white;
+			svg {
+				transform: scale(1.08); // Add icon needs a little more zoom to be noticeable.
+
+				path {
+					@include theme-fill-white-else-graydark;
+				}
 			}
 		}
 	}
@@ -70,9 +70,12 @@
 	a {
 		display: flex;
 		align-items: center;
+		border-radius: 4px;
 		justify-content: center;
-		height: 62px;
-		padding: 15px 0;
+		height: 48px;
+		width: 48px;
+		padding: 8px;
+		margin: 7px 10px;
 		text-align: center;
 
 		svg path {
@@ -80,20 +83,24 @@
 		}
 
 		&:global(.__Active) {
-			@include if-theme-light() {
-				background: $green-dark;
-			}
-			@include if-theme-dark() {
-				background: none;
-			}
+			@include theme-background-greendark50-else-graydarker;
 
 			svg path {
-				fill: $white !important;
+				@include theme-fill-white-else-green75;
 			}
 		}
 
-		&:hover:not(.__Active) svg path {
-			@include theme-fill-greendark50-else-white-hover;
+		&:hover:not(:global(.__Active)) {
+			@include if-theme-light() {
+				background: #4bac72;
+			}
+			@include if-theme-dark() {
+				background: #383839;
+			}
+
+			svg {
+				transform: scale(1.05);
+			}
 		}
 	}
 
@@ -101,12 +108,7 @@
 		width: 32px;
 
 		path {
-			@include if-theme-light() {
-				fill: $green-dark;
-			}
-			@include if-theme-dark() {
-				fill: $gray75;
-			}
+			@include theme-fill-greendark-else-gray75;
 		}
 	}
 
@@ -126,18 +128,40 @@
 	}
 
 	.VerticalNavButton {
+		display: flex;
+		align-items: center;
+		border-radius: 4px;
+		justify-content: center;
 		background: none;
 		border: none;
-		width: 100%;
+		width: 48px;
+		height: 48px;
+		margin: 7px 10px;
 
 		svg {
 			width: 22px;
 		}
 
-		&:active svg path,
-		&:hover svg path,
-		&[aria-expanded="true"] svg path {
-			@include theme-fill-greendark50-else-white-hover;
+		&:hover:not(:active):not([aria-expanded="true"]) {
+			@include if-theme-light() {
+				background: #4bac72;
+			}
+			@include if-theme-dark() {
+				background: #383839;
+			}
+
+			svg {
+				transform: scale(1.05);
+			}
+		}
+
+		&:active,
+		&[aria-expanded="true"] {
+			@include theme-background-greendark50-else-graydarker;
+
+			svg path {
+				@include theme-fill-white-else-green75;
+			}
 		}
 	}
 }
