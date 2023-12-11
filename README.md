@@ -1,15 +1,12 @@
-ya# Local component library
+# ⚠️This repo is archived. Updates are still published to the [Local Components package](https://www.npmjs.com/package/@getflywheel/local-components). ⚠️
 
-[![npm version](https://badge.fury.io/js/%40getflywheel%2Flocal-components.svg)](https://badge.fury.io/js/%40getflywheel%2Flocal-components)
-
-Welcome to the official component library for [Local](https://localwp.com/)!
+Local Components is the official component library for [Local](https://localwp.com/).
 
 ## What's included in this component library?
 
-We appreciate curious minds and that's a great question!
-Take a quick look at our living component documentation [here](https://getflywheel.github.io/local-components/).
+Take a quick look at our [living component documentation](https://master--62d18352969d7c650b935483.chromatic.com/).
 
-In additional to a quickly growing set of React components, we also have SVGs, SASS partials, and more to come!
+In additional to a quickly growing set of React components, we also have SVGs, SASS partials, and more to come.
 
 ## Installation
 
