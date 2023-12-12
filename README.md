@@ -6,7 +6,7 @@ Local Components is the official component library for [Local](https://localwp.c
 
 Take a quick look at our [living component documentation](https://master--62d18352969d7c650b935483.chromatic.com/).
 
-In additional to a quickly growing set of React components, we also have SVGs, SASS partials, and more to come.
+In addition to a quickly growing set of React components, we also have SVGs, SASS partials, and more to come.
 
 ## Installation
 
